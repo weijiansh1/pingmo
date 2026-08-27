@@ -9,6 +9,7 @@ from stable_baselines3 import SAC
 
 from src.aircraft.parameters import PChannelParameters
 from src.aircraft.sampler import PlantRecord
+from src.envs.commands import CommandProfile
 from src.envs.p_channel_env import RollQualityEnv
 from src.envs.reward import RewardWeights
 
@@ -35,18 +36,19 @@ def load_persisted_records(library_path: str | Path, plant_ids: list[str]) -> li
     ]
 
 
-def build_multi_env(library_path: str | Path, plant_ids: list[str], horizon_steps: int = 250, correction_ratio: float = 0.5, pilot_signal: str = "step", reward_weights: RewardWeights = RewardWeights()) -> RollQualityEnv:
+def build_multi_env(library_path: str | Path, plant_ids: list[str], horizon_steps: int = 250, correction_ratio: float = 0.5, pilot_signal: str = "step", reward_weights: RewardWeights = RewardWeights(), command_profiles: tuple[CommandProfile, ...] | None = None) -> RollQualityEnv:
     return RollQualityEnv(
         load_persisted_records(library_path, plant_ids),
         horizon_steps=horizon_steps,
         correction_ratio=correction_ratio,
         pilot_signal=pilot_signal,
         reward_weights=reward_weights,
+        command_profiles=command_profiles,
     )
 
 
-def build_fixed_env(library_path: str | Path, plant_id: str, horizon_steps: int = 250, correction_ratio: float = 0.5, pilot_signal: str = "step", reward_weights: RewardWeights = RewardWeights()) -> RollQualityEnv:
-    return build_multi_env(library_path, [plant_id], horizon_steps, correction_ratio, pilot_signal, reward_weights)
+def build_fixed_env(library_path: str | Path, plant_id: str, horizon_steps: int = 250, correction_ratio: float = 0.5, pilot_signal: str = "step", reward_weights: RewardWeights = RewardWeights(), command_profiles: tuple[CommandProfile, ...] | None = None) -> RollQualityEnv:
+    return build_multi_env(library_path, [plant_id], horizon_steps, correction_ratio, pilot_signal, reward_weights, command_profiles)
 
 
 def evaluate(model: SAC, env: RollQualityEnv, seed: int = 0) -> dict[str, float]:

@@ -68,8 +68,10 @@ def audit_library(library_path: str | Path, command_profiles: Iterable[CommandPr
 
 def summarize_audit_rows(rows: Iterable[dict[str, object]]) -> dict[str, object]:
     grouped: dict[str, list[dict[str, object]]] = defaultdict(list)
+    by_command: dict[str, list[dict[str, object]]] = defaultdict(list)
     for row in rows:
         grouped[str(row["split"])].append(row)
+        by_command[str(row["command_id"])].append(row)
 
     def summarize(values: list[dict[str, object]]) -> dict[str, float | int]:
         return {
@@ -80,7 +82,11 @@ def summarize_audit_rows(rows: Iterable[dict[str, object]]) -> dict[str, object]
             "mean_saturation_fraction": float(np.mean([float(value["constrained_saturation_fraction"]) for value in values])),
         }
 
-    return {"pair_count": sum(len(values) for values in grouped.values()), "by_split": {split: summarize(values) for split, values in sorted(grouped.items())}}
+    return {
+        "pair_count": sum(len(values) for values in grouped.values()),
+        "by_split": {split: summarize(values) for split, values in sorted(grouped.items())},
+        "by_command": {command_id: summarize(values) for command_id, values in sorted(by_command.items())},
+    }
 
 
 def write_audit(destination: str | Path, rows: list[dict[str, object]]) -> Path:

@@ -26,5 +26,6 @@ def test_audit_summary_keeps_splits_separate() -> None:
     summary = summarize_audit_rows(rows)
 
     assert set(summary["by_split"]) == {"validation", "id_test"}
+    assert set(summary["by_command"]) == {"step-1.00"}
     assert summary["by_split"]["validation"]["improvement_rate"] == 1.0
     assert summary["by_split"]["id_test"]["improvement_rate"] == 0.0

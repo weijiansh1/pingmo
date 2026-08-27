@@ -7,13 +7,14 @@ import math
 from src.aircraft.p_channel import PChannel
 from src.aircraft.reference import ReferenceRollModel
 from src.aircraft.sampler import PlantRecord
+from src.envs.commands import CommandProfile
 from src.envs.reward import RewardWeights, roll_quality_reward
 
 
 class RollQualityEnv(gym.Env[np.ndarray, np.ndarray]):
     metadata = {"render_modes": []}
 
-    def __init__(self, plants: list[PlantRecord], horizon_steps: int = 250, action_limit: float = 1.0, correction_ratio: float = 0.3, pilot_signal: str = "sine", pilot_force_scale_n: float = 22.0, normalized_rate_limit_s_inv: float = 4.0, history_steps: int = 32, actuator_time_constant_s: float = 0.08, reward_weights: RewardWeights = RewardWeights()) -> None:
+    def __init__(self, plants: list[PlantRecord], horizon_steps: int = 250, action_limit: float = 1.0, correction_ratio: float = 0.3, pilot_signal: str = "sine", pilot_force_scale_n: float = 22.0, normalized_rate_limit_s_inv: float = 4.0, history_steps: int = 32, actuator_time_constant_s: float = 0.08, reward_weights: RewardWeights = RewardWeights(), command_profiles: tuple[CommandProfile, ...] | None = None) -> None:
         if not plants:
             raise ValueError("at least one plant is required")
         if not 0 < correction_ratio <= 1:
@@ -22,6 +23,8 @@ class RollQualityEnv(gym.Env[np.ndarray, np.ndarray]):
             raise ValueError("pilot_signal must be 'sine' or 'step'")
         if pilot_force_scale_n <= 0 or normalized_rate_limit_s_inv <= 0 or history_steps <= 0 or actuator_time_constant_s <= 0:
             raise ValueError("force scale, rate limit, history steps, and actuator time constant must be positive")
+        if command_profiles is not None and not command_profiles:
+            raise ValueError("command_profiles must be non-empty when supplied")
         self.plants, self.horizon_steps, self.action_limit, self.correction_ratio, self.pilot_signal = plants, horizon_steps, action_limit, correction_ratio, pilot_signal
         self.pilot_force_scale_n = pilot_force_scale_n
         self.normalized_rate_limit_s_inv = normalized_rate_limit_s_inv
@@ -30,6 +33,7 @@ class RollQualityEnv(gym.Env[np.ndarray, np.ndarray]):
         self.actuator_time_constant_s = actuator_time_constant_s
         self.reward_weights = reward_weights
         self._actuator_alpha = 1.0 - math.exp(-self._action_dt / actuator_time_constant_s)
+        self._command_profiles = tuple(command_profiles) if command_profiles is not None else None
         self.action_space = gym.spaces.Box(-action_limit, action_limit, (1,), np.float32)
         self.observation_space = gym.spaces.Box(-np.inf, np.inf, (6 + history_steps * 4 + 8,), np.float32)
         self._delay_state_width = max(int(math.floor(record.parameters.tau_p / 0.005)) + 3 for record in plants)
@@ -49,6 +53,8 @@ class RollQualityEnv(gym.Env[np.ndarray, np.ndarray]):
         return np.array([p.l_fa, p.lambda_s, p.t_r, p.zeta_d, p.omega_d, p.r_omega, p.r_zeta, p.tau_p], dtype=np.float32)
 
     def _pilot_command(self) -> float:
+        if self._command_profiles is not None:
+            return float(self._pilot_commands[min(self._episode_step, len(self._pilot_commands) - 1)])
         return self.pilot_force_scale_n if self.pilot_signal == "step" else float(self.pilot_force_scale_n * np.sin(0.04 * self._episode_step))
 
     def _append_history(self) -> None:
@@ -78,6 +84,9 @@ class RollQualityEnv(gym.Env[np.ndarray, np.ndarray]):
         super().reset(seed=seed)
         self._rng = np.random.default_rng(seed)
         self._record = self.plants[int(self._rng.integers(len(self.plants)))]
+        self._command_profile = None if self._command_profiles is None else self._command_profiles[int(self._rng.integers(len(self._command_profiles)))]
+        if self._command_profile is not None:
+            self._pilot_commands = self._command_profile.samples(self._action_dt, self.horizon_steps * self._action_dt, self.pilot_force_scale_n)
         self._plant = PChannel(self._record.parameters, dt=0.005)
         self._reference = ReferenceRollModel(self._record.parameters, dt=0.005)
         self._episode_step = 0
@@ -91,6 +100,7 @@ class RollQualityEnv(gym.Env[np.ndarray, np.ndarray]):
         return self._observation(), {
             "plant_id": self._record.plant_id,
             "quality_region": self._record.quality_region,
+            "command_id": self._command_profile.command_id if self._command_profile is not None else f"legacy-{self.pilot_signal}",
             "critic_state": self._critic_state(),
         }
 
@@ -147,4 +157,5 @@ class RollQualityEnv(gym.Env[np.ndarray, np.ndarray]):
             "saturation_fraction": self._saturation_count / self._diagnostic_count,
             "cancel_index": cancel_index, "cancel_correlation": cancel_correlation,
             "critic_state": self._critic_state(), "plant_id": self._record.plant_id, "p_ref": self._p_ref,
+            "command_id": self._command_profile.command_id if self._command_profile is not None else f"legacy-{self.pilot_signal}",
         }

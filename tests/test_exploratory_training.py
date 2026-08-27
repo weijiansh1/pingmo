@@ -7,6 +7,7 @@ import numpy as np
 import pytest
 
 from src.envs.reward import RewardWeights
+from src.envs.commands import CommandProfile
 from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, build_multi_env, collect_response_trace, load_completed_screening_report, response_metrics, reward_axis_limits, summarize_held_out_metrics
 from src.experiments.privileged_sac import train_fixed_privileged_sac
 
@@ -45,6 +46,20 @@ def test_build_multi_env_cycles_through_requested_persisted_plants() -> None:
     )
     seen = {env.reset(seed=seed)[1]["plant_id"] for seed in range(8)}
     assert seen == {"train_core-0000", "train_core-0001"}
+
+
+def test_build_multi_env_forwards_named_command_profiles() -> None:
+    root = Path(__file__).parents[1]
+    env = build_multi_env(
+        root / "data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+        ["train_core-0000"],
+        horizon_steps=8,
+        command_profiles=(CommandProfile("step-0.25", "step", amplitude=.25),),
+    )
+
+    _, info = env.reset(seed=8)
+
+    assert info["command_id"] == "step-0.25"
 
 
 def test_fixed_training_env_accepts_reference_tracking_experiment_settings() -> None:

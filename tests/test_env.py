@@ -2,6 +2,7 @@ import numpy as np
 import pytest
 
 from src.aircraft.sampler import generate_plant_library
+from src.envs.commands import CommandProfile
 from src.envs.p_channel_env import RollQualityEnv
 
 
@@ -69,3 +70,20 @@ def test_environment_exposes_rate_limited_command_and_lagged_applied_action() ->
     assert info["delta_f"] == pytest.approx(expected_applied * 0.3 * 22.0)
     assert info["command_delta"] == pytest.approx(rate_limited_command)
     assert info["applied_action_delta"] == pytest.approx(expected_applied)
+
+
+def test_environment_runs_a_named_multi_command_profile() -> None:
+    profile = CommandProfile("doublet-1.00", "doublet", amplitude=1.0)
+    env = RollQualityEnv(
+        generate_plant_library(23, {"train_core": 1}),
+        horizon_steps=4,
+        command_profiles=(profile,),
+    )
+
+    observation, reset_info = env.reset(seed=23)
+    next_observation, _, _, _, step_info = env.step(np.array([0.0], dtype=np.float32))
+
+    assert reset_info["command_id"] == "doublet-1.00"
+    assert observation[0] == pytest.approx(22.0)
+    assert step_info["command_id"] == "doublet-1.00"
+    assert next_observation[0] == pytest.approx(-22.0)
