@@ -1,6 +1,7 @@
 import numpy as np
+import pytest
 
-from src.envs.commands import CommandProfile, default_command_suite
+from src.envs.commands import DEFAULT_COMMAND_DURATION_S, CommandProfile, default_command_suite
 
 
 def test_doublet_profile_reverses_sign_at_half_duration() -> None:
@@ -25,6 +26,15 @@ def test_command_profile_samples_are_deterministic_and_force_scaled() -> None:
 
 
 def test_default_command_suite_contains_all_required_families() -> None:
-    kinds = {profile.kind for profile in default_command_suite()}
+    profiles = default_command_suite()
+    kinds = {profile.kind for profile in profiles}
 
     assert kinds == {"step", "doublet", "sine", "chirp"}
+    assert {profile.duration_s for profile in profiles} == {DEFAULT_COMMAND_DURATION_S}
+
+
+def test_default_command_cannot_silently_change_its_force_history() -> None:
+    profile = default_command_suite()[0]
+
+    with pytest.raises(ValueError, match="is defined for"):
+        profile.samples(action_dt=0.02, duration_s=5.0, nominal_force_n=22.0)

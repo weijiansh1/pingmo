@@ -18,6 +18,12 @@ def test_reference_oracle_trace_uses_same_force_and_constraint_contract() -> Non
     assert np.max(np.abs(np.diff(trace.delta_constrained))) <= 0.3 * 22.0 * 4.0 * 0.02 + 1e-9
     assert trace.metrics["constrained_tracking_rmse"] >= 0.0
     assert trace.metrics["oracle_gap_rmse"] >= 0.0
+    commands = trace.delta_constrained_command[::4]
+    expected_saturation = np.mean(np.isclose(np.abs(commands), 6.6, atol=1e-9, rtol=0.0))
+    expected_max_increment = np.max(np.abs(np.diff(commands, prepend=0.0)))
+    assert trace.metrics["constrained_saturation_fraction"] == pytest.approx(expected_saturation)
+    assert trace.metrics["constrained_max_increment_n"] == pytest.approx(expected_max_increment)
+    assert trace.metrics["constrained_max_increment_n"] <= trace.metrics["constrained_increment_limit_n"] + 1e-9
 
 
 def test_reference_oracle_trace_follows_supplied_command_profile() -> None:

@@ -10,11 +10,13 @@ The persisted 3000-aircraft library remains immutable. G0 is a read-only physics
 
 ## Command contract
 
-Every command is a deterministic 50 Hz sequence with a 200 Hz held plant input. The initial suite is: positive and negative steps at 0.25, 0.50, and 1.00 of the nominal 22 N; equal-amplitude doublets; sine waves at 0.25, 0.50, and 1.00 Hz; and a 0.10–1.50 Hz chirp. The same command identifier and force history drive raw, reference, constrained oracle, training, and evaluation.
+Every command is a deterministic 10 s, 50 Hz sequence with a 200 Hz held plant input. The initial suite is: positive and negative steps at 0.25, 0.50, and 1.00 of the nominal 22 N; equal-amplitude doublets; sine waves at 0.25, 0.50, and 1.00 Hz; and a 0.10–1.50 Hz chirp. The same command identifier and force-history hash drive raw, reference, constrained oracle, training, and evaluation. A caller cannot silently render a default command at another duration.
 
 ## G0: feasibility audit
 
-For every aircraft-command pair, run raw, unconstrained oracle, and constrained oracle through the same `±6.6 N` augmentation, `4 s^-1` normalized slew bound, and `0.08 s` actuator lag used by the learner. Persist per-pair metrics and a feasibility label. Feasibility is diagnostic, not a learned label: it separates reference error that is physically unavoidable from error a controller could reasonably improve.
+For every aircraft-command pair, run raw, unconstrained oracle, and constrained oracle through the same `±6.6 N` augmentation, `4 s^-1` normalized slew bound, and `0.08 s` actuator lag used by the learner. Persist per-pair absolute and reference-RMS-normalized tracking errors, unconstrained authority demand, command/applied RMS and total variation, command saturation, slew-bound occupancy, and a feasibility label. The exploratory label uses a manifest-recorded relative-RMSE threshold: `control_not_needed` when raw already passes, `constrained_feasible` when the constrained oracle passes, `authority_limited` when only the unconstrained oracle passes, and `oracle_unreachable` otherwise. This is a diagnostic sensitivity threshold, not a learned label or GJB limit; continuous metrics are authoritative and allow relabeling without rerunning physics.
+
+The audit is resumable. It appends pair records to a durable checkpoint, publishes progress through a run manifest, and atomically exposes final pairs and summaries only after all expected keys are present. The run identity binds source revision, aircraft-library hash, command force-history hash, physics settings, and feasibility policy.
 
 ## G1: constrained environment and metrics
 

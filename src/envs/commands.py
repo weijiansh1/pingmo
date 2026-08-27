@@ -6,6 +6,9 @@ import math
 import numpy as np
 
 
+DEFAULT_COMMAND_DURATION_S = 10.0
+
+
 @dataclass(frozen=True)
 class CommandProfile:
     command_id: str
@@ -13,10 +16,16 @@ class CommandProfile:
     amplitude: float = 1.0
     frequency_hz: float | None = None
     final_frequency_hz: float | None = None
+    duration_s: float | None = None
 
     def samples(self, action_dt: float, duration_s: float, nominal_force_n: float) -> np.ndarray:
         if action_dt <= 0 or duration_s <= 0 or nominal_force_n <= 0:
             raise ValueError("action_dt, duration_s, and nominal_force_n must be positive")
+        if self.duration_s is not None and not np.isclose(duration_s, self.duration_s):
+            raise ValueError(
+                f"command {self.command_id!r} is defined for {self.duration_s} s, "
+                f"not {duration_s} s"
+            )
         count = int(round(duration_s / action_dt))
         if count <= 0 or not np.isclose(count * action_dt, duration_s):
             raise ValueError("duration_s must be an integer multiple of action_dt")
@@ -45,11 +54,40 @@ class CommandProfile:
 
 def default_command_suite() -> tuple[CommandProfile, ...]:
     steps = tuple(
-        CommandProfile(f"step-{sign}{amplitude:.2f}", "step", amplitude=sign * amplitude)
+        CommandProfile(
+            f"step-{sign}{amplitude:.2f}",
+            "step",
+            amplitude=sign * amplitude,
+            duration_s=DEFAULT_COMMAND_DURATION_S,
+        )
         for sign in (1.0, -1.0)
         for amplitude in (0.25, 0.50, 1.00)
     )
-    doublets = tuple(CommandProfile(f"doublet-{amplitude:.2f}", "doublet", amplitude=amplitude) for amplitude in (0.25, 0.50, 1.00))
-    sines = tuple(CommandProfile(f"sine-{frequency:.2f}hz", "sine", amplitude=1.0, frequency_hz=frequency) for frequency in (0.25, 0.50, 1.00))
-    chirp = CommandProfile("chirp-0.10-1.50hz", "chirp", amplitude=1.0, frequency_hz=0.10, final_frequency_hz=1.50)
+    doublets = tuple(
+        CommandProfile(
+            f"doublet-{amplitude:.2f}",
+            "doublet",
+            amplitude=amplitude,
+            duration_s=DEFAULT_COMMAND_DURATION_S,
+        )
+        for amplitude in (0.25, 0.50, 1.00)
+    )
+    sines = tuple(
+        CommandProfile(
+            f"sine-{frequency:.2f}hz",
+            "sine",
+            amplitude=1.0,
+            frequency_hz=frequency,
+            duration_s=DEFAULT_COMMAND_DURATION_S,
+        )
+        for frequency in (0.25, 0.50, 1.00)
+    )
+    chirp = CommandProfile(
+        "chirp-0.10-1.50hz",
+        "chirp",
+        amplitude=1.0,
+        frequency_hz=0.10,
+        final_frequency_hz=1.50,
+        duration_s=DEFAULT_COMMAND_DURATION_S,
+    )
     return steps + doublets + sines + (chirp,)

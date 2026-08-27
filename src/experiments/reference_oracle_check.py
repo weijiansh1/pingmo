@@ -33,6 +33,10 @@ def _rmse(response: np.ndarray, reference: np.ndarray) -> float:
     return float(np.sqrt(np.mean((response - reference) ** 2)))
 
 
+def _rms(values: np.ndarray) -> float:
+    return float(np.sqrt(np.mean(values**2)))
+
+
 def simulate_reference_oracle(
     parameters: PChannelParameters,
     *,
@@ -110,9 +114,19 @@ def simulate_reference_oracle(
         f_eq_oracle[index] = f_pilot[index] + unconstrained_delta
         f_eq_constrained[index] = f_pilot[index] + constrained_delta
 
+    oracle_deltas_50hz = delta_oracle[::action_substeps]
+    constrained_commands_50hz = delta_constrained_command[::action_substeps]
     constrained_deltas_50hz = delta_constrained[::action_substeps]
     limit = augmentation_limit
     max_rate_increment = limit * normalized_rate_limit_s_inv * action_dt
+    oracle_increments = np.diff(oracle_deltas_50hz, prepend=0.0)
+    constrained_command_increments = np.diff(constrained_commands_50hz, prepend=0.0)
+    constrained_applied_increments = np.diff(constrained_deltas_50hz, prepend=0.0)
+    reference_rms = _rms(p_ref)
+    normalization = max(reference_rms, np.finfo(float).eps)
+    raw_rmse = _rmse(p_raw, p_ref)
+    oracle_rmse = _rmse(p_oracle, p_ref)
+    constrained_rmse = _rmse(p_constrained, p_ref)
     return ReferenceOracleTrace(
         time_s=np.arange(n_steps, dtype=float) * plant_dt,
         f_pilot=f_pilot,
@@ -126,14 +140,27 @@ def simulate_reference_oracle(
         p_oracle=p_oracle,
         p_constrained=p_constrained,
         metrics={
-            "raw_tracking_rmse": _rmse(p_raw, p_ref),
-            "oracle_tracking_rmse": _rmse(p_oracle, p_ref),
-            "constrained_tracking_rmse": _rmse(p_constrained, p_ref),
+            "reference_response_rms": reference_rms,
+            "reference_tracking_rmse": 0.0,
+            "raw_tracking_rmse": raw_rmse,
+            "oracle_tracking_rmse": oracle_rmse,
+            "constrained_tracking_rmse": constrained_rmse,
+            "raw_relative_tracking_rmse": raw_rmse / normalization,
+            "oracle_relative_tracking_rmse": oracle_rmse / normalization,
+            "constrained_relative_tracking_rmse": constrained_rmse / normalization,
             "oracle_gap_rmse": _rmse(p_constrained, p_oracle),
-            "constrained_saturation_fraction": float(np.mean(np.isclose(np.abs(constrained_deltas_50hz), limit, atol=1e-9))),
-            "constrained_max_increment_n": float(np.max(np.abs(np.diff(constrained_deltas_50hz))) if len(constrained_deltas_50hz) > 1 else 0.0),
+            "oracle_augmentation_rms_n": _rms(oracle_deltas_50hz),
+            "oracle_peak_augmentation_n": float(np.max(np.abs(oracle_deltas_50hz))),
+            "oracle_total_variation_n": float(np.sum(np.abs(oracle_increments))),
+            "oracle_authority_exceedance_fraction": float(np.mean(np.abs(oracle_deltas_50hz) > limit + 1e-9)),
+            "oracle_slew_exceedance_fraction": float(np.mean(np.abs(oracle_increments) > max_rate_increment + 1e-9)),
+            "constrained_saturation_fraction": float(np.mean(np.isclose(np.abs(constrained_commands_50hz), limit, atol=1e-9, rtol=0.0))),
+            "constrained_slew_bound_fraction": float(np.mean(np.isclose(np.abs(constrained_command_increments), max_rate_increment, atol=1e-9, rtol=0.0))),
+            "constrained_command_rms_n": _rms(constrained_commands_50hz),
+            "constrained_applied_rms_n": _rms(constrained_deltas_50hz),
+            "constrained_max_increment_n": float(np.max(np.abs(constrained_command_increments))),
             "constrained_increment_limit_n": max_rate_increment,
-            "constrained_command_total_variation_n": float(np.sum(np.abs(np.diff(delta_constrained_command[::action_substeps])))),
-            "constrained_applied_total_variation_n": float(np.sum(np.abs(np.diff(constrained_deltas_50hz)))),
+            "constrained_command_total_variation_n": float(np.sum(np.abs(constrained_command_increments))),
+            "constrained_applied_total_variation_n": float(np.sum(np.abs(constrained_applied_increments))),
         },
     )
