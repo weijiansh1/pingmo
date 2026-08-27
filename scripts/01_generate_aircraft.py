@@ -1,4 +1,4 @@
-"""Generate the manual-v1 IV-A response-calibrated plant bank."""
+"""Generate the level-balanced IV-A response-calibrated plant bank."""
 
 import argparse
 from pathlib import Path

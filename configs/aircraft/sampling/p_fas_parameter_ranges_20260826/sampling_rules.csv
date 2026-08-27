@@ -1,7 +1,7 @@
 ﻿step,variable,rule,suggested_design,reject_or_flag,basis,source_ids
 1,scenario/class/flight_phase,先选机类、飞行阶段、控制器/操纵器类型，再选参数；每条记录保存标签。,分层配额；配额是实验设计，不标称真实比例,缺class或phase的样本不得进入物理机队主表,GJB分类框架,S01
 2,"V,h,n_z,alpha,Mach,configuration,mass,cg",把theta视为飞机在特定状态的条件参数；同一飞机可有多个condition_id。,包线分层+危险/极限点显式覆盖,缺飞行状态时标为unknown，不与状态明确的实机点混算分布,GJB使用包线要求,"S01,S06,S12"
-3,T_R,在场景范围内按对数尺度或分位层化抽样，不跨机类用一个U分布。,core 80% + boundary/OOD 20%仅为覆盖起点，权重需后续锁定,T_R<=0；或不满足离散分辨率T_R>=5*dt,实机/模拟证据包络+数值分辨率,"S04,S06,S07,S09,S11,S12"
+3,T_R,在场景范围内按对数尺度或分位层化抽样，不跨机类用一个U分布。,IV-A活动机库按Level 1/2/3各30%+OOD 10%配额；生成后重新联合评级,T_R<=0；或不满足离散分辨率T_R>=5*dt,实机/模拟证据包络+数值分辨率,"S04,S06,S07,S09,S11,S12"
 4,lambda_s,先采stable/neutral/divergent类别；再采|lambda_s|。发散建议直接采T2再换算lambda=ln2/T2。,类别配额显式给出；|lambda|用log-LHS,跨0均匀采T_s；或只存有符号T_s而不存spiral_state,符号安全+GJB A19,"S01,S06,S07,S09"
 5,"omega_d,zeta_d",联合抽样并检查zeta_d*omega_d；在所选GJB边界两侧分层。,二维maximin LHS或按品质等级分桶,omega_d<=0；zeta_d<=0或>=1；场景品质约束不一致,GJB A35+实机点,"S01,S06,S07,S09,S10,S11"
 6,R_omega,核心0.80-1.15；扩展尾部0.65-0.80和1.15-1.35；算法OOD才到0.5-1.5。,围绕1分层；不要让近抵消点占据所有样本,未记录R_omega或omega_phi与omega_d不一致,运输构型评价+广域模拟,"S07,S08"
@@ -12,4 +12,4 @@
 11,tau_p,按核心、高延迟、极限三桶采样，并保存delay_definition。,0.01-0.10核心；0.10-0.20高延迟；0.20-0.25极限,等效时延直接当纯运输延迟且无说明；tau/dt取整造成未量化误差,飞行辨识+MIL-HDBK边界,"S02,S04,S05,S06,S09,S12"
 12,"F_as,max,Fdot_as,max,p_c,max","按操纵器和任务派生；p_c,max<=eta*K_pF*Fmax，eta建议0.6-0.8作为裕度。",Fdot用力感系统动态建模，默认只做500-2000 N/s敏感性,"使用统一[-1,1]却不保存物理缩放；把Fdot暂定值称为标准",操纵力指南+F-16/NT-33例证,"S02,S04,S13,S14"
 13,joint gates,检查极点/零点、响应有限、单位、可达性、品质等级、近抵消可辨识性。,保留reject_reason，不静默丢弃,不稳定非目标模态、非有限响应、动作无法达到命令、输入饱和占比失控,模型/数值/任务一致性,"S01,S15"
-14,OOD split,把大L_Fa+小T_R+大tau、低zeta_d、R_omega尾部、快速螺旋发散做组合留出。,按组合定义holdout，不只是每一维超界,训练集和OOD集仅因随机种子不同但覆盖区域相同,控制难度由交互决定,"S04,S05"
+14,OOD split,把超出A18/A19/A35、A31无可评等级、或超出有来源结构/增益包络的候选显式留出。,固定10% OOD配额；保存ood_reasons；不将OOD伪称Level 4,训练集和OOD集仅因随机种子不同但覆盖区域相同,控制难度由交互决定,"S01,S04,S05"

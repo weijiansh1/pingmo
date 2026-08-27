@@ -6,14 +6,20 @@ plant:
   transfer_function: "L_Fa*s*(s^2+2*zeta_phi*omega_phi*s+omega_phi^2)/((s-lambda_s)*(s+1/T_R)*(s^2+2*zeta_d*omega_d*s+omega_d^2))*exp(-tau_p*s)"
   derived: [omega_phi, zeta_phi, L_Fa]
 sampling:
-  method: scrambled_sobol_scenario_first
+  method: scrambled_sobol_level_targeted_then_regraded
+  quality_counts:
+    L1: 900
+    L2: 900
+    L3: 900
+    OOD: 300
+  level_basis: worst_of_A18_A19_A35_and_A31_when_defined
+  label_scope: static_appendix_A_recommended_boundaries_not_formal_compliance
   split_counts:
     train_core: 1200
     train_boundary: 600
     validation: 300
-    id_test: 450
+    id_test: 600
     ood_test: 300
-    extreme_test: 150
 teacher:
   experts: 4
   balance_coefficient: 0.001
