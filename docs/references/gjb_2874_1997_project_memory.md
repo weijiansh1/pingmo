@@ -67,7 +67,7 @@
 
 ```math
 \frac{p}{F_{as}} =
-\frac{L_{F_a}s^2(s^2+2\zeta_\phi\omega_\phi s+\omega_\phi^2)}
+\frac{L_{F_a}s(s^2+2\zeta_\phi\omega_\phi s+\omega_\phi^2)}
 {(s-\lambda_s)(s+1/T_R)(s^2+2\zeta_d\omega_d s+\omega_d^2)}
 e^{-\tau_p s}.
 ```
@@ -253,3 +253,10 @@ raw 和 reference 保留同一个 `tau_p`，所以二者的 tracking RMSE 主要
 - 引用任何阈值时同时给飞机类别、飞行阶段、等级、表号和页码。
 - OCR 文本不作为可引用原文；精确公式和措辞回到本地 PDF 页图核对。
 - 新实验的完整 manifest 和拟合结果才是运行证据；本文只保存标准理解和项目决策。
+
+## 12. 采样参数边界审计
+
+IV-A 的逐参数 GJB 映射、当前代码范围、3,000 样本静态计数和待定采样决策见
+[`gjb_2874_1997_iv_a_parameter_audit.md`](gjb_2874_1997_iv_a_parameter_audit.md)。该审计明确区分
+GJB 附录建议边界、外部机型证据包络和项目自定义 OOD 压力范围；在采样口径确认前不重建
+正式机库。
