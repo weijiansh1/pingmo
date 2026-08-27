@@ -31,6 +31,14 @@ def test_default_command_suite_contains_all_required_families() -> None:
 
     assert kinds == {"step", "doublet", "sine", "chirp"}
     assert {profile.duration_s for profile in profiles} == {DEFAULT_COMMAND_DURATION_S}
+    assert [profile.command_id for profile in profiles[:6]] == [
+        "step-pos-0.25",
+        "step-pos-0.50",
+        "step-pos-1.00",
+        "step-neg-0.25",
+        "step-neg-0.50",
+        "step-neg-1.00",
+    ]
 
 
 def test_default_command_cannot_silently_change_its_force_history() -> None:

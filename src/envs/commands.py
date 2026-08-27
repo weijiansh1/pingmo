@@ -55,7 +55,7 @@ class CommandProfile:
 def default_command_suite() -> tuple[CommandProfile, ...]:
     steps = tuple(
         CommandProfile(
-            f"step-{sign}{amplitude:.2f}",
+            f"step-{'pos' if sign > 0 else 'neg'}-{amplitude:.2f}",
             "step",
             amplitude=sign * amplitude,
             duration_s=DEFAULT_COMMAND_DURATION_S,
