@@ -64,6 +64,11 @@ def response_metrics(trace: dict[str, np.ndarray]) -> dict[str, float]:
     }
 
 
+def reward_axis_limits(rewards: np.ndarray) -> tuple[float, float]:
+    """Choose a compact negative reward axis without clipping the trace."""
+    return min(-0.03, 1.1 * float(np.min(rewards))), 0.0
+
+
 def save_response_comparison(raw: dict[str, np.ndarray], sac: dict[str, np.ndarray], output: str | Path) -> Path:
     """Save the raw/reference/SAC response and SAC effort for one matched rollout."""
     destination = Path(output)
@@ -80,11 +85,16 @@ def save_response_comparison(raw: dict[str, np.ndarray], sac: dict[str, np.ndarr
     response_axis.legend()
     effort_axis.plot(sac["time_s"], sac["commanded_delta_f"], label="ΔF_命令", color="#7f7f7f", linestyle="--")
     effort_axis.plot(sac["time_s"], sac["delta_f"], label="ΔF_RL（实际）", color="#9467bd")
-    effort_axis.plot(sac["time_s"], sac["reward"], label="每步奖励", color="#ff7f0e", alpha=.8)
     effort_axis.set_xlabel("时间（s）")
-    effort_axis.set_ylabel("控制增量 / 奖励")
+    effort_axis.set_ylabel("控制增量（N）")
     effort_axis.grid(alpha=.25)
-    effort_axis.legend()
+    reward_axis = effort_axis.twinx()
+    reward_axis.plot(sac["time_s"], sac["reward"], label="每步奖励", color="#ff7f0e", alpha=.8)
+    reward_axis.set_ylabel("每步奖励")
+    reward_axis.set_ylim(*reward_axis_limits(sac["reward"]))
+    effort_handles, effort_labels = effort_axis.get_legend_handles_labels()
+    reward_handles, reward_labels = reward_axis.get_legend_handles_labels()
+    effort_axis.legend(effort_handles + reward_handles, effort_labels + reward_labels)
     figure.savefig(destination, dpi=180)
     plt.close(figure)
     return destination

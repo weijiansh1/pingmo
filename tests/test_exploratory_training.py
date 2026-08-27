@@ -2,7 +2,7 @@ from pathlib import Path
 
 import numpy as np
 
-from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, collect_response_trace, response_metrics
+from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, collect_response_trace, response_metrics, reward_axis_limits
 from src.experiments.privileged_sac import train_fixed_privileged_sac
 
 
@@ -66,6 +66,10 @@ def test_response_metrics_include_tracking_and_effort() -> None:
         "applied_delta_f_rms_n": 3 / 2 ** 0.5,
         "commanded_delta_f_total_variation_n": 4.0,
     }
+
+
+def test_reward_axis_limits_make_small_negative_rewards_visible() -> None:
+    assert reward_axis_limits(np.array([-0.004, -0.013, -0.008])) == (-0.03, 0.0)
 
 
 def test_fixed_privileged_sac_cpu_smoke_persists_two_stream_checkpoint(tmp_path: Path) -> None:
