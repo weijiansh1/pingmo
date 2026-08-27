@@ -98,6 +98,14 @@ def summarize_held_out_metrics(records: list[dict[str, dict[str, float]]]) -> di
     }
 
 
+def load_completed_screening_report(run_dir: str | Path) -> dict[str, object] | None:
+    """Load a completed batch run report, or return None when it is absent."""
+    report_path = Path(run_dir) / "screening_report.json"
+    if not report_path.exists():
+        return None
+    return json.loads(report_path.read_text(encoding="utf-8"))
+
+
 def reward_axis_limits(rewards: np.ndarray) -> tuple[float, float]:
     """Choose a compact negative reward axis without clipping the trace."""
     return min(-0.03, 1.1 * float(np.min(rewards))), 0.0

@@ -15,6 +15,7 @@ from src.envs.reward import RewardWeights
 from src.experiments.exploratory_sac import (
     build_fixed_env,
     collect_response_trace,
+    load_completed_screening_report,
     load_persisted_records,
     response_metrics,
     summarize_held_out_metrics,
@@ -70,6 +71,11 @@ if __name__ == "__main__":
         for seed in seeds:
             run_id = f"{configuration['id']}-seed-{seed}"
             run_dir = output_root / run_id
+            completed = load_completed_screening_report(run_dir)
+            if completed is not None:
+                runs.append(completed)
+                print(json.dumps({"event": "run_skipped", "run_id": run_id}, ensure_ascii=False), flush=True)
+                continue
             print(json.dumps({"event": "run_started", "run_id": run_id}, ensure_ascii=False), flush=True)
             train_report = train_short_experiment(
                 library,

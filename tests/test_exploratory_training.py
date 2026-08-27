@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, build_multi_env, collect_response_trace, response_metrics, reward_axis_limits, summarize_held_out_metrics
+from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, build_multi_env, collect_response_trace, load_completed_screening_report, response_metrics, reward_axis_limits, summarize_held_out_metrics
 from src.experiments.privileged_sac import train_fixed_privileged_sac
 
 
@@ -91,6 +91,13 @@ def test_summarize_held_out_metrics_reports_harm_rate_and_median_change() -> Non
     ])
     assert summary["harm_rate"] == 0.5
     assert summary["median_rmse_change"] == pytest.approx(-0.045)
+
+
+def test_load_completed_screening_report_returns_only_existing_report(tmp_path: Path) -> None:
+    assert load_completed_screening_report(tmp_path) is None
+    report = {"run_id": "single-40k-seed-20260828"}
+    (tmp_path / "screening_report.json").write_text('{"run_id": "single-40k-seed-20260828"}\n', encoding="utf-8")
+    assert load_completed_screening_report(tmp_path) == report
 
 
 def test_fixed_privileged_sac_cpu_smoke_persists_two_stream_checkpoint(tmp_path: Path) -> None:
