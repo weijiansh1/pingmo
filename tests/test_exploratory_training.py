@@ -49,6 +49,8 @@ def test_collect_response_trace_records_raw_reference_and_control_effort() -> No
     assert trace["p"].shape == (8,)
     assert trace["p_ref"].shape == (8,)
     assert np.allclose(trace["delta_f"], 0.0)
+    assert trace["commanded_delta_f"].shape == (8,)
+    assert np.allclose(trace["commanded_delta_f"], 0.0)
 
 
 def test_fixed_privileged_sac_cpu_smoke_persists_two_stream_checkpoint(tmp_path: Path) -> None:

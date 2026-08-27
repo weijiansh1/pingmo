@@ -39,7 +39,7 @@ def evaluate(model: SAC, env: RollQualityEnv, seed: int = 0) -> dict[str, float]
 def collect_response_trace(model, env: RollQualityEnv, seed: int = 0) -> dict[str, np.ndarray]:
     """Roll out one deterministic episode and retain response-level diagnostics."""
     observation, _ = env.reset(seed=seed)
-    traces: dict[str, list[float]] = {name: [] for name in ("time_s", "p", "p_ref", "delta_f", "f_eq", "reward")}
+    traces: dict[str, list[float]] = {name: [] for name in ("time_s", "p", "p_ref", "delta_f", "commanded_delta_f", "f_eq", "reward")}
     while True:
         action, _ = model.predict(observation, deterministic=True)
         observation, reward, terminated, truncated, info = env.step(action)
@@ -47,6 +47,7 @@ def collect_response_trace(model, env: RollQualityEnv, seed: int = 0) -> dict[st
         traces["p"].append(env._p)
         traces["p_ref"].append(float(info["p_ref"]))
         traces["delta_f"].append(float(info["delta_f"]))
+        traces["commanded_delta_f"].append(float(info["commanded_action"]) * env.correction_ratio * env.pilot_force_scale_n)
         traces["f_eq"].append(float(info["f_eq"]))
         traces["reward"].append(float(reward))
         if terminated or truncated:
@@ -68,7 +69,8 @@ def save_response_comparison(raw: dict[str, np.ndarray], sac: dict[str, np.ndarr
     response_axis.set_ylabel("滚转角速度 p")
     response_axis.grid(alpha=.25)
     response_axis.legend()
-    effort_axis.plot(sac["time_s"], sac["delta_f"], label="ΔF_RL", color="#9467bd")
+    effort_axis.plot(sac["time_s"], sac["commanded_delta_f"], label="ΔF_命令", color="#7f7f7f", linestyle="--")
+    effort_axis.plot(sac["time_s"], sac["delta_f"], label="ΔF_RL（实际）", color="#9467bd")
     effort_axis.plot(sac["time_s"], sac["reward"], label="每步奖励", color="#ff7f0e", alpha=.8)
     effort_axis.set_xlabel("时间（s）")
     effort_axis.set_ylabel("控制增量 / 奖励")
