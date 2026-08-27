@@ -10,18 +10,43 @@ from stable_baselines3 import SAC
 from src.aircraft.parameters import PChannelParameters
 from src.aircraft.sampler import PlantRecord
 from src.envs.p_channel_env import RollQualityEnv
+from src.envs.reward import RewardWeights
 
 DEFAULT_TRAIN_PLANT_ID = "train_core-0000"
 
 
-def build_fixed_env(library_path: str | Path, plant_id: str, horizon_steps: int = 250, correction_ratio: float = 0.5, pilot_signal: str = "step") -> RollQualityEnv:
-    for line in Path(library_path).read_text(encoding="utf-8").splitlines():
-        row = json.loads(line)
-        if row["plant_id"] == plant_id:
-            values = {name: row["parameters"][name] for name in ("l_fa", "lambda_s", "t_r", "zeta_d", "omega_d", "r_omega", "r_zeta", "tau_p")}
-            record = PlantRecord(plant_id=row["plant_id"], split=row["split"], quality_region=row["quality_region"], aircraft_class=row["aircraft_class"], flight_phase=row["flight_phase"], parameters=PChannelParameters(**values))
-            return RollQualityEnv([record], horizon_steps=horizon_steps, correction_ratio=correction_ratio, pilot_signal=pilot_signal)
-    raise ValueError(f"plant_id {plant_id!r} not found in {library_path}")
+def load_persisted_records(library_path: str | Path, plant_ids: list[str]) -> list[PlantRecord]:
+    """Load requested P-channel records in the caller-specified order."""
+    rows = {row["plant_id"]: row for row in (json.loads(line) for line in Path(library_path).read_text(encoding="utf-8").splitlines())}
+    missing = [plant_id for plant_id in plant_ids if plant_id not in rows]
+    if missing:
+        raise ValueError(f"plant IDs not found in {library_path}: {missing}")
+    values = ("l_fa", "lambda_s", "t_r", "zeta_d", "omega_d", "r_omega", "r_zeta", "tau_p")
+    return [
+        PlantRecord(
+            plant_id=rows[plant_id]["plant_id"],
+            split=rows[plant_id]["split"],
+            quality_region=rows[plant_id]["quality_region"],
+            aircraft_class=rows[plant_id]["aircraft_class"],
+            flight_phase=rows[plant_id]["flight_phase"],
+            parameters=PChannelParameters(**{name: rows[plant_id]["parameters"][name] for name in values}),
+        )
+        for plant_id in plant_ids
+    ]
+
+
+def build_multi_env(library_path: str | Path, plant_ids: list[str], horizon_steps: int = 250, correction_ratio: float = 0.5, pilot_signal: str = "step", reward_weights: RewardWeights = RewardWeights()) -> RollQualityEnv:
+    return RollQualityEnv(
+        load_persisted_records(library_path, plant_ids),
+        horizon_steps=horizon_steps,
+        correction_ratio=correction_ratio,
+        pilot_signal=pilot_signal,
+        reward_weights=reward_weights,
+    )
+
+
+def build_fixed_env(library_path: str | Path, plant_id: str, horizon_steps: int = 250, correction_ratio: float = 0.5, pilot_signal: str = "step", reward_weights: RewardWeights = RewardWeights()) -> RollQualityEnv:
+    return build_multi_env(library_path, [plant_id], horizon_steps, correction_ratio, pilot_signal, reward_weights)
 
 
 def evaluate(model: SAC, env: RollQualityEnv, seed: int = 0) -> dict[str, float]:

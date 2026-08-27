@@ -2,7 +2,7 @@ from pathlib import Path
 
 import numpy as np
 
-from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, collect_response_trace, response_metrics, reward_axis_limits
+from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, build_multi_env, collect_response_trace, response_metrics, reward_axis_limits
 from src.experiments.privileged_sac import train_fixed_privileged_sac
 
 
@@ -19,6 +19,17 @@ def test_default_exploratory_plant_is_from_the_training_split() -> None:
     env = build_fixed_env(root / "data/aircraft/generated/p_channel_library_20260827_v2_stratified/plants.jsonl", DEFAULT_TRAIN_PLANT_ID, horizon_steps=8)
     _, info = env.reset(seed=2)
     assert info["plant_id"].startswith("train_core-")
+
+
+def test_build_multi_env_cycles_through_requested_persisted_plants() -> None:
+    root = Path(__file__).parents[1]
+    env = build_multi_env(
+        root / "data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+        ["train_core-0000", "train_core-0001"],
+        horizon_steps=8,
+    )
+    seen = {env.reset(seed=seed)[1]["plant_id"] for seed in range(8)}
+    assert seen == {"train_core-0000", "train_core-0001"}
 
 
 def test_fixed_training_env_accepts_reference_tracking_experiment_settings() -> None:
