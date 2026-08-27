@@ -1,6 +1,6 @@
 """Run the explicitly non-formal sequential SAC screening batch on one GPU."""
 
-from dataclasses import asdict
+from dataclasses import asdict, dataclass
 import json
 from pathlib import Path
 import sys
@@ -28,11 +28,51 @@ class _ZeroPolicy:
         return np.zeros(1, dtype=np.float32), None
 
 
+SCREENING_SEEDS = (20260828, 20260829)
+
+
+@dataclass(frozen=True)
+class ScreeningRun:
+    run_id: str
+    configuration_id: str
+    seed: int
+    timesteps: int
+    plant_ids: list[str]
+    reward_weights: RewardWeights
+
+
 def _evenly_spaced_train_ids(library: Path, count: int = 16) -> list[str]:
     rows = [json.loads(line) for line in library.read_text(encoding="utf-8").splitlines()]
     plant_ids = [row["plant_id"] for row in rows if row["split"] == "train_core"]
     indices = np.linspace(0, len(plant_ids) - 1, count, dtype=int)
     return [plant_ids[index] for index in indices]
+
+
+def screening_configurations(library: Path) -> tuple[dict[str, object], ...]:
+    multi_ids = _evenly_spaced_train_ids(library)
+    current = RewardWeights()
+    strong = RewardWeights(action_energy=0.20, command_delta=1.50, applied_delta=0.30, late_error=0.50)
+    return (
+        {"id": "single-40k", "plant_ids": ["train_core-0000"], "timesteps": 40_000, "weights": current},
+        {"id": "single-120k", "plant_ids": ["train_core-0000"], "timesteps": 120_000, "weights": current},
+        {"id": "multi-40k", "plant_ids": multi_ids, "timesteps": 40_000, "weights": current},
+        {"id": "multi-strong-40k", "plant_ids": multi_ids, "timesteps": 40_000, "weights": strong},
+    )
+
+
+def resolve_screening_run(run_id: str, library: Path) -> ScreeningRun:
+    for configuration in screening_configurations(library):
+        for seed in SCREENING_SEEDS:
+            if run_id == f"{configuration['id']}-seed-{seed}":
+                return ScreeningRun(
+                    run_id=run_id,
+                    configuration_id=str(configuration["id"]),
+                    seed=seed,
+                    timesteps=int(configuration["timesteps"]),
+                    plant_ids=list(configuration["plant_ids"]),
+                    reward_weights=configuration["weights"],
+                )
+    raise ValueError(f"unknown screening run ID: {run_id}")
 
 
 def _evaluate(model: SAC, library: Path, plant_ids: list[str], correction_ratio: float, reward_weights: RewardWeights) -> list[dict[str, object]]:
@@ -52,23 +92,14 @@ if __name__ == "__main__":
     root = Path(__file__).resolve().parents[1]
     library = root / "data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl"
     correction_ratio = 0.3
-    seeds = (20260828, 20260829)
-    multi_ids = _evenly_spaced_train_ids(library)
     held_out_ids = [f"id_test-{index:04d}" for index in range(2100, 2106)]
     load_persisted_records(library, held_out_ids)
-    current = RewardWeights()
-    strong = RewardWeights(action_energy=0.20, command_delta=1.50, applied_delta=0.30, late_error=0.50)
-    configurations = (
-        {"id": "single-40k", "plant_ids": ["train_core-0000"], "timesteps": 40_000, "weights": current},
-        {"id": "single-120k", "plant_ids": ["train_core-0000"], "timesteps": 120_000, "weights": current},
-        {"id": "multi-40k", "plant_ids": multi_ids, "timesteps": 40_000, "weights": current},
-        {"id": "multi-strong-40k", "plant_ids": multi_ids, "timesteps": 40_000, "weights": strong},
-    )
+    configurations = screening_configurations(library)
     output_root = root / "checkpoints/gpu_sac_screening_batch"
     output_root.mkdir(parents=True, exist_ok=True)
     runs: list[dict[str, object]] = []
     for configuration in configurations:
-        for seed in seeds:
+        for seed in SCREENING_SEEDS:
             run_id = f"{configuration['id']}-seed-{seed}"
             run_dir = output_root / run_id
             completed = load_completed_screening_report(run_dir)

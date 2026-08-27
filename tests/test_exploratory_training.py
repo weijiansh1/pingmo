@@ -1,3 +1,4 @@
+import importlib.util
 from pathlib import Path
 
 import numpy as np
@@ -5,6 +6,16 @@ import pytest
 
 from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, build_multi_env, collect_response_trace, load_completed_screening_report, response_metrics, reward_axis_limits, summarize_held_out_metrics
 from src.experiments.privileged_sac import train_fixed_privileged_sac
+
+
+def _load_batch_module():
+    root = Path(__file__).parents[1]
+    spec = importlib.util.spec_from_file_location("gpu_sac_screening_batch", root / "scripts/08_run_gpu_sac_screening_batch.py")
+    assert spec is not None
+    assert spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def test_fixed_training_env_loads_a_persisted_plant() -> None:
@@ -98,6 +109,22 @@ def test_load_completed_screening_report_returns_only_existing_report(tmp_path: 
     report = {"run_id": "single-40k-seed-20260828"}
     (tmp_path / "screening_report.json").write_text('{"run_id": "single-40k-seed-20260828"}\n', encoding="utf-8")
     assert load_completed_screening_report(tmp_path) == report
+
+
+def test_screening_run_spec_resolves_frozen_strong_seed() -> None:
+    root = Path(__file__).parents[1]
+    module = _load_batch_module()
+
+    run = module.resolve_screening_run(
+        "multi-strong-40k-seed-20260829",
+        root / "data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+    )
+
+    assert run.run_id == "multi-strong-40k-seed-20260829"
+    assert run.seed == 20260829
+    assert run.timesteps == 40_000
+    assert len(run.plant_ids) == 16
+    assert run.reward_weights.action_energy == 0.20
 
 
 def test_fixed_privileged_sac_cpu_smoke_persists_two_stream_checkpoint(tmp_path: Path) -> None:
