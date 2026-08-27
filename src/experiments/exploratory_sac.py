@@ -3,6 +3,7 @@
 import json
 from pathlib import Path
 
+import matplotlib.pyplot as plt
 import numpy as np
 from stable_baselines3 import SAC
 
@@ -33,6 +34,49 @@ def evaluate(model: SAC, env: RollQualityEnv, seed: int = 0) -> dict[str, float]
         if terminated or truncated:
             break
     return {"episode_reward": float(np.sum(rewards)), "action_rms": float(np.sqrt(np.mean(np.square(actions)))), "action_total_variation": float(np.sum(np.abs(np.diff(actions))))}
+
+
+def collect_response_trace(model, env: RollQualityEnv, seed: int = 0) -> dict[str, np.ndarray]:
+    """Roll out one deterministic episode and retain response-level diagnostics."""
+    observation, _ = env.reset(seed=seed)
+    traces: dict[str, list[float]] = {name: [] for name in ("time_s", "p", "p_ref", "delta_f", "f_eq", "reward")}
+    while True:
+        action, _ = model.predict(observation, deterministic=True)
+        observation, reward, terminated, truncated, info = env.step(action)
+        traces["time_s"].append(env._episode_step * env._action_dt)
+        traces["p"].append(env._p)
+        traces["p_ref"].append(float(info["p_ref"]))
+        traces["delta_f"].append(float(info["delta_f"]))
+        traces["f_eq"].append(float(info["f_eq"]))
+        traces["reward"].append(float(reward))
+        if terminated or truncated:
+            break
+    return {name: np.asarray(values, dtype=float) for name, values in traces.items()}
+
+
+def save_response_comparison(raw: dict[str, np.ndarray], sac: dict[str, np.ndarray], output: str | Path) -> Path:
+    """Save the raw/reference/SAC response and SAC effort for one matched rollout."""
+    destination = Path(output)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    plt.rcParams["font.sans-serif"] = ["Microsoft YaHei", "SimHei", "DejaVu Sans"]
+    plt.rcParams["axes.unicode_minus"] = False
+    figure, (response_axis, effort_axis) = plt.subplots(2, 1, figsize=(10, 7), sharex=True, layout="constrained")
+    response_axis.plot(raw["time_s"], raw["p"], label="raw：原始飞机", color="#1f77b4", linewidth=2)
+    response_axis.plot(raw["time_s"], raw["p_ref"], label="ref：参考响应", color="#2ca02c", linestyle="--", linewidth=2)
+    response_axis.plot(sac["time_s"], sac["p"], label="SAC：训练后控制", color="#d62728", linewidth=2)
+    response_axis.set_title("GPU 单机 SAC 探索：raw / ref / SAC 阶跃响应")
+    response_axis.set_ylabel("滚转角速度 p")
+    response_axis.grid(alpha=.25)
+    response_axis.legend()
+    effort_axis.plot(sac["time_s"], sac["delta_f"], label="ΔF_RL", color="#9467bd")
+    effort_axis.plot(sac["time_s"], sac["reward"], label="每步奖励", color="#ff7f0e", alpha=.8)
+    effort_axis.set_xlabel("时间（s）")
+    effort_axis.set_ylabel("控制增量 / 奖励")
+    effort_axis.grid(alpha=.25)
+    effort_axis.legend()
+    figure.savefig(destination, dpi=180)
+    plt.close(figure)
+    return destination
 
 
 def train_short_experiment(library_path: str | Path, plant_id: str, output_dir: str | Path, timesteps: int = 20_000, seed: int = 20260827, device: str = "auto", correction_ratio: float = 0.5) -> dict[str, float]:

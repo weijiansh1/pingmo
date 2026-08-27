@@ -1,6 +1,8 @@
 from pathlib import Path
 
-from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env
+import numpy as np
+
+from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, collect_response_trace
 from src.experiments.privileged_sac import train_fixed_privileged_sac
 
 
@@ -26,6 +28,27 @@ def test_fixed_training_env_accepts_reference_tracking_experiment_settings() -> 
     _, _, _, _, info = env.step(env.action_space.sample())
     assert info["f_pilot"] == 22.0
     assert "p_ref" in info
+
+
+def test_collect_response_trace_records_raw_reference_and_control_effort() -> None:
+    class ZeroPolicy:
+        def predict(self, observation, deterministic: bool):
+            return np.zeros(1, dtype=np.float32), None
+
+    root = Path(__file__).parents[1]
+    env = build_fixed_env(
+        root / "data/aircraft/generated/p_channel_library_20260827_v2_stratified/plants.jsonl",
+        "train_core-0000",
+        horizon_steps=8,
+        correction_ratio=0.3,
+        pilot_signal="step",
+    )
+    trace = collect_response_trace(ZeroPolicy(), env, seed=3)
+
+    assert trace["time_s"].shape == (8,)
+    assert trace["p"].shape == (8,)
+    assert trace["p_ref"].shape == (8,)
+    assert np.allclose(trace["delta_f"], 0.0)
 
 
 def test_fixed_privileged_sac_cpu_smoke_persists_two_stream_checkpoint(tmp_path: Path) -> None:
