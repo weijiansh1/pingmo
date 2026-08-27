@@ -1,0 +1,17 @@
+﻿source_id,vehicle,condition,parameter,min,nominal,max,unit,fact_type,locator,notes
+S04,NT-33A/LATHOS,up-and-away,T_R design levels,0.15,0.25,0.4,s,flight experiment matrix,"PDF pp.28,43-47",离散档，不是概率分位数
+S04,NT-33A,power approach,T_R design levels,0.2,0.3,0.45,s,flight experiment matrix,PDF pp.43-47,离散档
+S04,NT-33A/LATHOS,force command,K_p/F steady-state levels,5.0,18.0,25.0,deg/s/lbf,flight experiment matrix,"PDF pp.32,43",10/18常用核心；LATHOS含25，进近扩展含5
+S04,NT-33A/LATHOS,force command,L_Fa matrix extent,25.0,,120.0,deg/s^2/lbf,figure matrix design,"Figure 3, PDF p.28",约0.0981-0.4708 rad/(N*s^2)；后续扩展的K=5档可条件派生到更低值
+S04,NT-33A,feel-system variants,feel-system natural frequency,8.0,13.0,26.0,rad/s,flight experiment levels,experiment configuration tables,可用于Fdot敏感性，不是Fdot标准
+S04,NT-33A,up-and-away,Dutch-roll natural frequency,2.5,2.5,2.5,rad/s,configured aircraft mode,configuration description,zeta约0.6，且p通道中尽量抑制
+S04,NT-33A,power approach,Dutch-roll natural frequency,2.0,2.0,2.0,rad/s,configured aircraft mode,configuration description,zeta约0.6
+S07,SST concepts,approach,R_omega satisfactory,0.8,1.0,1.15,1,handling-quality region,discussion around Table V,用于核心带
+S07,SST concepts,approach,R_omega acceptable,0.65,1.0,1.35,1,handling-quality region,discussion around Table V,用于扩展带
+S12,F-16XL DFLCS,flight test,T_R,0.21,,0.61,s,flight-test observed range,PDF p.18,多飞行状态
+S12,F-16XL DFLCS,flight test,effective delay,0.15,0.15,0.15,s,approximate flight-test value,PDF p.18,等效时延
+S13,fighter concept/F-16-based,normal control law,maximum commanded roll rate,308.0,308.0,308.0,deg/s,simulator control-law limit,"PDF pp.25,40",高迎角调度可降到约90或165
+S14,F-16XL-2,rolling maneuver,maximum commanded roll rate,300.0,300.0,300.0,deg/s,flight control-law mapping,control system description,约9 lbf及以上到最大；breakout约1 lbf
+S02,piloted aircraft,centerstick Level 1,maximum roll force,20.0,,25.0,lbf,guidance boundary,Table XXXVI,按类别/阶段；约89-111 N
+S02,piloted aircraft,centerstick Level 3,maximum roll force,35.0,35.0,35.0,lbf,guidance boundary,Table XXXVI,约156 N
+S11,UltraStick25e,scaled comparison case,omega_d,7.85,7.85,7.85,rad/s,model/scale analysis,"Table 79, PDF p.270",仅用于UAS高频扩展

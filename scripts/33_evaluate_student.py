@@ -1,0 +1,1 @@
+"""Evaluate student script placeholder."""

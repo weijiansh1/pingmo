@@ -1,0 +1,1 @@
+"""Visualize aircraft script placeholder."""

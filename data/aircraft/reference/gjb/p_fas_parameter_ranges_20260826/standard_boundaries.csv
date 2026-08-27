@@ -1,0 +1,71 @@
+﻿table,class_phase,level,metric,operator,value,unit,source_id,locator,sampling_use
+GJB A18,"A:I,IV",1,T_R max recommended,<=,1.0,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,"A:I,IV",2,T_R max recommended,<=,1.4,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,"A:I,IV",3,T_R max recommended,<=,10.0,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,"A:II,III",1,T_R max recommended,<=,1.4,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,"A:II,III",2,T_R max recommended,<=,3.0,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,"A:II,III",3,T_R max recommended,<=,10.0,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,B:all,1,T_R max recommended,<=,1.4,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,B:all,2,T_R max recommended,<=,3.0,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,B:all,3,T_R max recommended,<=,10.0,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,"C:I,II-C,IV",1,T_R max recommended,<=,1.0,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,"C:I,II-C,IV",2,T_R max recommended,<=,1.4,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,"C:I,II-C,IV",3,T_R max recommended,<=,10.0,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,"C:II-L,III",1,T_R max recommended,<=,1.4,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,"C:II-L,III",2,T_R max recommended,<=,3.0,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A18,"C:II-L,III",3,T_R max recommended,<=,10.0,s,S01,evidence/GJB_A18_TR_and_p_Fas_LOES.png,品质标签/边界覆盖；不是采样上限分布
+GJB A19,"A,C",1,divergent spiral time-to-double min,>=,12.0,s,S01,evidence/GJB_A19_spiral.png,先采T2再换算lambda_s=ln2/T2
+GJB A19,"A,C",2,divergent spiral time-to-double min,>=,8.0,s,S01,evidence/GJB_A19_spiral.png,先采T2再换算lambda_s=ln2/T2
+GJB A19,"A,C",3,divergent spiral time-to-double min,>=,4.0,s,S01,evidence/GJB_A19_spiral.png,先采T2再换算lambda_s=ln2/T2
+GJB A19,B,1,divergent spiral time-to-double min,>=,20.0,s,S01,evidence/GJB_A19_spiral.png,先采T2再换算lambda_s=ln2/T2
+GJB A19,B,2,divergent spiral time-to-double min,>=,8.0,s,S01,evidence/GJB_A19_spiral.png,先采T2再换算lambda_s=ln2/T2
+GJB A19,B,3,divergent spiral time-to-double min,>=,4.0,s,S01,evidence/GJB_A19_spiral.png,先采T2再换算lambda_s=ln2/T2
+GJB A35,A(CO/GA):IV,1,zeta_d min,>=,0.4,1,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,A(CO/GA):IV,1,zeta_d*omega_d min,>=,0.4,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,A(CO/GA):IV,1,omega_d min,>=,1.0,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,"A:I,IV",1,zeta_d min,>=,0.19,1,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,"A:I,IV",1,zeta_d*omega_d min,>=,0.35,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,"A:I,IV",1,omega_d min,>=,1.0,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,"A:II,III",1,zeta_d min,>=,0.19,1,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,"A:II,III",1,zeta_d*omega_d min,>=,0.35,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,"A:II,III",1,omega_d min,>=,0.4,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,B:all,1,zeta_d min,>=,0.08,1,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,B:all,1,zeta_d*omega_d min,>=,0.15,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,B:all,1,omega_d min,>=,0.4,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,"C:I,II-C,IV",1,zeta_d min,>=,0.08,1,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,"C:I,II-C,IV",1,zeta_d*omega_d min,>=,0.15,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,"C:I,II-C,IV",1,omega_d min,>=,1.0,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,"C:II-L,III",1,zeta_d min,>=,0.08,1,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,"C:II-L,III",1,zeta_d*omega_d min,>=,0.1,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,"C:II-L,III",1,omega_d min,>=,0.4,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,all,2,zeta_d min,>=,0.02,1,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,all,2,zeta_d*omega_d min,>=,0.05,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,all,2,omega_d min,>=,0.4,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,all,3,zeta_d min,>=,0.0,1,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,all,3,zeta_d*omega_d min,N/A,,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+GJB A35,all,3,omega_d min,>=,0.4,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
+MIL-HDBK Table XXVII,roll response,1,allowable equivalent roll time delay max,<=,0.1,s,S02,Table XXVII,时延压力分桶；先统一时延定义
+MIL-HDBK Table XXVII,roll response,2,allowable equivalent roll time delay max,<=,0.2,s,S02,Table XXVII,时延压力分桶；先统一时延定义
+MIL-HDBK Table XXVII,roll response,3,allowable equivalent roll time delay max,<=,0.25,s,S02,Table XXVII,时延压力分桶；先统一时延定义
+MIL-HDBK Table XXXVI,"I,II-C,IV;A/B",1,centerstick max force,<=,20,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"I,II-C,IV;A/B",1,wheel max force,<=,40,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"I,II-C,IV;C",1,centerstick max force,<=,20,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"I,II-C,IV;C",1,wheel max force,<=,20,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"II-L,III;A/B",1,centerstick max force,<=,25,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"II-L,III;A/B",1,wheel max force,<=,50,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"II-L,III;C",1,centerstick max force,<=,25,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"II-L,III;C",1,wheel max force,<=,25,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"I,II-C,IV;A/B",2,centerstick max force,<=,30,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"I,II-C,IV;A/B",2,wheel max force,<=,60,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"I,II-C,IV;C",2,centerstick max force,<=,20,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"I,II-C,IV;C",2,wheel max force,<=,20,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"II-L,III;A/B",2,centerstick max force,<=,30,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"II-L,III;A/B",2,wheel max force,<=,60,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"II-L,III;C",2,centerstick max force,<=,30,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,"II-L,III;C",2,wheel max force,<=,30,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,all;all,3,centerstick max force,<=,35,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVI,all;all,3,wheel max force,<=,70,lbf,S02,Table XXXVI,"定义F_as,max时按操纵器分桶；侧杆另需具体型号"
+MIL-HDBK Table XXXVII,A,1,"max roll sensitivity, stick-controlled aircraft",<=,15.0,deg-in-1-sec/lbf,S02,Table XXXVII,仅作操纵灵敏度交叉核对；不是p_ss/F或L_Fa
+MIL-HDBK Table XXXVII,C,1,"max roll sensitivity, stick-controlled aircraft",<=,7.5,deg-in-1-sec/lbf,S02,Table XXXVII,仅作操纵灵敏度交叉核对；不是p_ss/F或L_Fa
+MIL-HDBK Table XXXVII,A,2,"max roll sensitivity, stick-controlled aircraft",<=,25.0,deg-in-1-sec/lbf,S02,Table XXXVII,仅作操纵灵敏度交叉核对；不是p_ss/F或L_Fa
+MIL-HDBK Table XXXVII,C,2,"max roll sensitivity, stick-controlled aircraft",<=,12.5,deg-in-1-sec/lbf,S02,Table XXXVII,仅作操纵灵敏度交叉核对；不是p_ss/F或L_Fa

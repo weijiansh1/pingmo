@@ -1,0 +1,6 @@
+﻿parameter,symbol,unit,evidence,recommendation,status,formula_or_gate,source_ids,warning
+最大杆力,"F_as,max",N,MIL-HDBK中杆Level 1按类约20-25 lbf=89-111 N；Level 3 35 lbf=156 N；F-16XL侧杆映射约9 lbf后达最大命令,按centerstick/sidestick/wheel分桶；力感侧杆研究默认可用±80 N并做±40/±100 N敏感性,标准边界+型号例证；没有跨操纵器统一值,"action_SI=clip(action_norm,-1,1)*F_as,max","S02,S13,S14",驾驶盘力不能直接当侧杆横向力。
+杆力变化率,"Fdot_as,max",N/s,未找到可跨机型直接套用的公开标准；NT-33力感系统试验频率8/13/26 rad/s,优先建力感系统动态；敏感性暂用500-2000 N/s，默认约1000 N/s,低置信工程先验，不是标准,一阶近似Fdot_scale约omega_feel*Fmax；需按真实加载器/操纵器校准,S04,不要在论文中把500-2000 N/s写成GJB/MIL要求。
+滚转率命令上限,"p_c,max",deg/s,F-16基础构型/XL例证约300-308 deg/s；高迎角限幅可约90-165 deg/s,"按任务和可达性派生：p_c,max<=eta*K_pF*Fmax，eta=0.6-0.8作为初始裕度；再施加型号控制律硬限",型号例证+工程派生；不是所有飞机统一300 deg/s,"p_c,max <= eta*K_pF*F_as,max(lbf)","S13,S14,S04",运输/通航机必须用本类任务限制，不能沿用战斗机上限。
+指令任务幅值,"p_c,test",deg/s,标准更多规定任务/响应品质，不给统一RL命令分布,"step用0.25/0.5/0.75*p_c,max；reversal用±0.5*p_c,max起步；另设饱和测试",实验设计建议,训练集必须记录command_profile_id和幅值占比,"S01,S04,S12",命令分布不等于飞行员真实任务统计。
+飞行状态,"V,h,n_z,alpha,Mach",mixed,同一飞机在不同速度/迎角的模态和控制限幅明显变化,每个theta绑定condition_id；至少保存V/h/Mach/alpha/n_z/构型/重量/重心,必须字段,"theta=f(aircraft,condition,configuration)","S01,S06,S10,S12,S13",没有condition_id时不要称3000架飞机，准确说法是3000个plant-condition样本。

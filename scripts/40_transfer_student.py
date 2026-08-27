@@ -1,0 +1,1 @@
+"""Transfer student script placeholder."""

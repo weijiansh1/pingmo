@@ -1,0 +1,20 @@
+simulation:
+  plant_dt_s: 0.005
+  rl_dt_s: 0.02
+  action_hold_substeps: 4
+plant:
+  transfer_function: "L_Fa*s^2*(s^2+2*zeta_phi*omega_phi*s+omega_phi^2)/((s-lambda_s)*(s+1/T_R)*(s^2+2*zeta_d*omega_d*s+omega_d^2))*exp(-tau_p*s)"
+  derived: [omega_phi, zeta_phi, L_Fa]
+sampling:
+  method: scrambled_sobol_scenario_first
+  split_counts:
+    train_core: 1200
+    train_boundary: 600
+    validation: 300
+    id_test: 450
+    ood_test: 300
+    extreme_test: 150
+teacher:
+  experts: 4
+  balance_coefficient: 0.001
+  curriculum: [1, 32, 256, 1200, 1800]

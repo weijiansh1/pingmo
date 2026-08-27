@@ -1,0 +1,23 @@
+schema_version: "1.0"
+model_version: GJB_s2_original
+profiles:
+  IV-A:
+    aircraft_class: IV
+    flight_phase: A
+    pilot_force_scale_n: 22.0
+    action_authority_ratios: [0.1, 0.2, 0.3, 0.5]
+    normalized_rate_limit_s_inv: 4.0
+    dt_plant_s: 0.005
+    dt_rl_s: 0.02
+    sensitivity_deg_per_n:
+      level_1_max: 3.38
+      level_2_max: 5.62
+    roll_mode_time_constant_s:
+      level_1_max: 1.0
+      level_2_max: 1.4
+      level_3_max: 10.0
+    equivalent_delay_s:
+      level_1_max: 0.10
+      level_2_max: 0.20
+      level_3_max: 0.25
+    a116_boundary_status: not_digitized

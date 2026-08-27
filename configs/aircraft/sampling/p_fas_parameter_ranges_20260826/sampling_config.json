@@ -1,0 +1,195 @@
+{
+  "schema_version": "1.0",
+  "created_utc": "2026-08-26",
+  "scope": "provisional mixed fixed-wing LOES research envelope",
+  "critical_warning": "Choose scenario first. These ranges are not independent uniform distributions or real fleet probabilities.",
+  "sign_conventions": {
+    "lambda_s": "stable < 0, neutral = 0, divergent > 0",
+    "T_s": "derived as -1/lambda_s; do not sample across lambda_s=0",
+    "L_Fa": "store magnitude plus a separate input sign convention"
+  },
+  "parameters": {
+    "T_R_s": {
+      "manned_core": [
+        0.15,
+        1.8
+      ],
+      "small_uas_core": [
+        0.06,
+        0.25
+      ],
+      "mixed_research": [
+        0.08,
+        2.0
+      ],
+      "ood": [
+        0.05,
+        3.0
+      ],
+      "extreme_quality_stress": [
+        3.0,
+        10.0
+      ]
+    },
+    "tau_p_s": {
+      "core": [
+        0.01,
+        0.1
+      ],
+      "high_delay": [
+        0.1,
+        0.2
+      ],
+      "extreme": [
+        0.2,
+        0.25
+      ],
+      "required_metadata": "delay_definition"
+    },
+    "zeta_d": {
+      "manned_core": [
+        0.08,
+        0.5
+      ],
+      "stress": [
+        0.02,
+        0.8
+      ],
+      "gate": [
+        0.02,
+        0.999
+      ]
+    },
+    "omega_d_rad_s": {
+      "manned_core": [
+        0.5,
+        3.5
+      ],
+      "small_uas_core": [
+        1.8,
+        6.0
+      ],
+      "stress": [
+        0.4,
+        8.0
+      ]
+    },
+    "lambda_s_1_s": {
+      "stable": [
+        -0.1,
+        -0.003
+      ],
+      "neutral_exact": 0.0,
+      "near_neutral_abs_max": 0.003,
+      "divergent_core": [
+        0.006931471805599453,
+        0.08664339756999316
+      ],
+      "divergent_slow": [
+        0.0023104906018664843,
+        0.006931471805599453
+      ],
+      "divergent_extreme": [
+        0.08664339756999316,
+        0.17328679513998632
+      ]
+    },
+    "R_omega": {
+      "core": [
+        0.8,
+        1.15
+      ],
+      "extended": [
+        0.65,
+        1.35
+      ],
+      "algorithm_ood": [
+        0.5,
+        1.5
+      ]
+    },
+    "zeta_phi": {
+      "core": [
+        0.2,
+        0.35
+      ],
+      "stress": [
+        0.1,
+        0.7
+      ],
+      "gate": [
+        0.001,
+        0.999
+      ]
+    },
+    "omega_phi_rad_s": {
+      "derived": "R_omega * omega_d_rad_s"
+    },
+    "K_pF_rad_s_N": {
+      "fighter_evidence_extended": [
+        0.019618281225092675,
+        0.09809140612546338
+      ],
+      "fighter_core": [
+        0.03923656245018535,
+        0.07062581241033364
+      ]
+    },
+    "L_Fa_rad_N_s2": {
+      "derived": "K_pF_rad_s_N / (T_R_s * R_omega**2)",
+      "fighter_evidence_cap_approx": 0.4708387494022242
+    }
+  },
+  "auxiliary": {
+    "F_as_max_N": {
+      "centerstick_level1_reference": [
+        88.96443230521,
+        111.20554038151249
+      ],
+      "sidestick_research_default": 80.0,
+      "note": "select by inceptor"
+    },
+    "Fdot_as_max_N_s": {
+      "sensitivity_only": [
+        500.0,
+        2000.0
+      ],
+      "default": 1000.0,
+      "confidence": "low; not a standard"
+    },
+    "p_command_max": {
+      "derived": "eta * K_pF * F_as_max",
+      "eta_initial": [
+        0.6,
+        0.8
+      ],
+      "fighter_example_cap_deg_s": 300.0
+    }
+  },
+  "required_metadata": [
+    "aircraft_class",
+    "flight_phase",
+    "condition_id",
+    "V",
+    "h",
+    "Mach",
+    "alpha",
+    "n_z",
+    "configuration",
+    "mass",
+    "cg",
+    "input_definition",
+    "inceptor_type",
+    "delay_definition",
+    "source_id",
+    "range_tier"
+  ],
+  "joint_rules": [
+    "sample scenario before continuous parameters",
+    "sample omega_phi only through R_omega * omega_d",
+    "derive L_Fa from K_pF, T_R, and R_omega",
+    "derive R_zeta only for reporting; do not sample it independently",
+    "grade quality after generation using scenario-specific GJB boundaries",
+    "hold out interaction OOD cases, especially high L_Fa + low T_R + high tau_p"
+  ]
+}

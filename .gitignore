@@ -1,0 +1,20 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+
+# Runtime and experiment artifacts
+checkpoints/
+results/
+img/
+tmp/
+
+# Regenerable sampled plant banks
+data/aircraft/generated/
+
+# Notebook and editor state
+.ipynb_checkpoints/
+.vscode/
+.idea/

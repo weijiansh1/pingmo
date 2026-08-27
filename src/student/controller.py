@@ -1,0 +1,1 @@
+"""Unified student controller placeholder."""

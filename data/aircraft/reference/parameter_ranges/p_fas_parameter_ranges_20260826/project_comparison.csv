@@ -1,0 +1,9 @@
+﻿parameter,current_project,evidence_recommendation,assessment,action
+L / L_Fa,L=1/(T_R*R_omega^2)，使三阶G(0)=1,改为先定义物理K_p/F和F_as单位，再派生L_Fa,必须重构（若要物理量纲）,保留normalized_gain供旧实验；新增L_Fa_SI、K_pF_SI、input_definition字段
+T_R,锚点0.3/0.8/1.4/2.5，±8% -> 0.276-2.70 s,有人core约0.15-1.8；2.0-3.0属于慢端压力,覆盖合理，但2.5档应标OOD/Level边界,按机类和A18情景分桶，不让四档等概率冒充真实分布
+tau_p,0.03/0.08/0.15 s等权设计轴,0.01-0.10核心；0.10-0.20高延迟,数值落在证据包络内，语义需重标,0.15标high-delay/OOD；增加delay_definition和fractional-delay说明
+zeta_d,0.05/0.10/0.20/0.35，±8% -> 0.046-0.378,core 0.08-0.50；0.02-0.08低阻尼压力；高迎角可到0.8,偏向低阻尼压力，缺少高阻尼实机区,保留0.05作压力，新增0.5/0.7场景并与omega_d联合分级
+omega_d,0.8/1.5/2.5/3.5，±8% -> 0.736-3.78 rad/s,有人0.5-3.5；UAS可更高,有人机覆盖基本合理；略缺0.4-0.7边界,运输/Level边界增加0.4-0.7；UAS另建场景，不混在同一总体
+R_omega,0.70/0.85/1.00/1.15/1.35，±8% -> 0.644-1.458,0.80-1.15核心；0.65-1.35扩展,设计逻辑有依据，抖动尾部略超可接受带,核心截断0.80-1.15；0.65-1.35单独尾桶；1.35再+8%仅OOD
+zeta_phi / Delta zeta,Delta zeta=-0.10/0/+0.10；zeta_phi=zeta_d+Delta,zeta_phi核心0.20-0.35，压力0.10-0.70；R_zeta仅派生,低zeta_d配-0.10可产生非正零点阻尼,优先直接采zeta_phi；或条件截断Delta并保存reject_reason
+T_s / lambda_s,T_s=-8/-14/-25/+15/+30/+60 s，lambda=-1/T_s,主存lambda；发散直接采T2；稳定/中性/发散分类,符号实现正确，但-8 s对应T2=5.55 s，属于较差压力,数据库改存lambda_s、spiral_state、T2；T_s只作为派生显示

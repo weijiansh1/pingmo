@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flight-rl-control"
+version = "0.1.0"
+description = "Local research implementation of privileged MoE-SAC roll-quality control"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "torch>=2.2",
+  "gymnasium>=0.29",
+  "PyYAML>=6.0",
+  "matplotlib>=3.8",
+  "stable-baselines3>=2.5",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
