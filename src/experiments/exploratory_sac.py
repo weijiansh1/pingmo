@@ -55,6 +55,15 @@ def collect_response_trace(model, env: RollQualityEnv, seed: int = 0) -> dict[st
     return {name: np.asarray(values, dtype=float) for name, values in traces.items()}
 
 
+def response_metrics(trace: dict[str, np.ndarray]) -> dict[str, float]:
+    """Compute tracking and effort measures from one matched response trace."""
+    return {
+        "tracking_rmse": float(np.sqrt(np.mean(np.square(trace["p"] - trace["p_ref"]))),),
+        "applied_delta_f_rms_n": float(np.sqrt(np.mean(np.square(trace["delta_f"]))),),
+        "commanded_delta_f_total_variation_n": float(np.sum(np.abs(np.diff(trace["commanded_delta_f"]))),),
+    }
+
+
 def save_response_comparison(raw: dict[str, np.ndarray], sac: dict[str, np.ndarray], output: str | Path) -> Path:
     """Save the raw/reference/SAC response and SAC effort for one matched rollout."""
     destination = Path(output)
