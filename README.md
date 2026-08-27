@@ -1,6 +1,6 @@
 # Flight RL Control
 
-本仓库正在按 `GJB_MoE_SAC_滚转品质实验手册_v1.md` 对齐：GJB-original `s^2` P-channel、分数延迟、IV-A profile、响应级增益标定、Reference/Oracle 与特权 SAC。当前历史数据和 GPU 短训仅是原型诊断，不能作 GJB 或正式 Teacher 结论；状态见 `docs/manual_alignment_status.md`。
+本仓库正在按 `GJB_MoE_SAC_滚转品质实验手册_v1.md` 对齐：GJB-original `s^2` P-channel、分数延迟、IV-A profile、响应级增益标定、Reference/Oracle 与特权 SAC。当前历史数据和 GPU 短训仅是原型诊断，不能作 GJB 或正式 Teacher 结论；状态见 `docs/manual_alignment_status.md`，GJB 2874-97 的全书项目记忆和延迟术语边界见 `docs/references/gjb_2874_1997_project_memory.md`。
 
 不包含 Student、蒸馏、迁移或任何远端/GPU 启动行为。
 
