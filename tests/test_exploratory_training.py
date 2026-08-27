@@ -1,8 +1,9 @@
 from pathlib import Path
 
 import numpy as np
+import pytest
 
-from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, build_multi_env, collect_response_trace, response_metrics, reward_axis_limits
+from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, build_multi_env, collect_response_trace, response_metrics, reward_axis_limits, summarize_held_out_metrics
 from src.experiments.privileged_sac import train_fixed_privileged_sac
 
 
@@ -81,6 +82,15 @@ def test_response_metrics_include_tracking_and_effort() -> None:
 
 def test_reward_axis_limits_make_small_negative_rewards_visible() -> None:
     assert reward_axis_limits(np.array([-0.004, -0.013, -0.008])) == (-0.03, 0.0)
+
+
+def test_summarize_held_out_metrics_reports_harm_rate_and_median_change() -> None:
+    summary = summarize_held_out_metrics([
+        {"raw": {"tracking_rmse": 0.01}, "sac": {"tracking_rmse": 0.02}},
+        {"raw": {"tracking_rmse": 0.20}, "sac": {"tracking_rmse": 0.10}},
+    ])
+    assert summary["harm_rate"] == 0.5
+    assert summary["median_rmse_change"] == pytest.approx(-0.045)
 
 
 def test_fixed_privileged_sac_cpu_smoke_persists_two_stream_checkpoint(tmp_path: Path) -> None:

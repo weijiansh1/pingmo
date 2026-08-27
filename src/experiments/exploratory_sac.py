@@ -89,6 +89,15 @@ def response_metrics(trace: dict[str, np.ndarray]) -> dict[str, float]:
     }
 
 
+def summarize_held_out_metrics(records: list[dict[str, dict[str, float]]]) -> dict[str, float]:
+    """Summarize whether a controller improves or harms held-out rollouts."""
+    deltas = np.asarray([record["sac"]["tracking_rmse"] - record["raw"]["tracking_rmse"] for record in records], dtype=float)
+    return {
+        "harm_rate": float(np.mean(deltas > 0.0)),
+        "median_rmse_change": float(np.median(deltas)),
+    }
+
+
 def reward_axis_limits(rewards: np.ndarray) -> tuple[float, float]:
     """Choose a compact negative reward axis without clipping the trace."""
     return min(-0.03, 1.1 * float(np.min(rewards))), 0.0
@@ -125,14 +134,15 @@ def save_response_comparison(raw: dict[str, np.ndarray], sac: dict[str, np.ndarr
     return destination
 
 
-def train_short_experiment(library_path: str | Path, plant_id: str, output_dir: str | Path, timesteps: int = 20_000, seed: int = 20260827, device: str = "auto", correction_ratio: float = 0.5) -> dict[str, float]:
-    env = build_fixed_env(library_path, plant_id, correction_ratio=correction_ratio, pilot_signal="step")
+def train_short_experiment(library_path: str | Path, plant_id: str, output_dir: str | Path, timesteps: int = 20_000, seed: int = 20260827, device: str = "auto", correction_ratio: float = 0.5, plant_ids: list[str] | None = None, reward_weights: RewardWeights = RewardWeights()) -> dict[str, object]:
+    training_plant_ids = plant_ids or [plant_id]
+    env = build_multi_env(library_path, training_plant_ids, correction_ratio=correction_ratio, pilot_signal="step", reward_weights=reward_weights)
     model = SAC("MlpPolicy", env, learning_starts=1_000, buffer_size=50_000, batch_size=128, train_freq=1, gradient_steps=1, learning_rate=3e-4, policy_kwargs={"net_arch": [128, 128]}, seed=seed, device=device, verbose=1)
     before = evaluate(model, env, seed)
     model.learn(total_timesteps=timesteps, progress_bar=False)
     after = evaluate(model, env, seed)
     destination = Path(output_dir); destination.mkdir(parents=True, exist_ok=True)
     model.save(destination / "fixed_plant_sac")
-    report = {"plant_id": plant_id, "timesteps": timesteps, "seed": seed, "correction_ratio": correction_ratio, "before_reward": before["episode_reward"], "after_reward": after["episode_reward"], "before_action_rms": before["action_rms"], "after_action_rms": after["action_rms"], "after_action_total_variation": after["action_total_variation"]}
+    report = {"plant_id": plant_id, "training_plant_ids": training_plant_ids, "timesteps": timesteps, "seed": seed, "correction_ratio": correction_ratio, "reward_weights": {"action_energy": reward_weights.action_energy, "command_delta": reward_weights.command_delta, "applied_delta": reward_weights.applied_delta, "late_error": reward_weights.late_error}, "before_reward": before["episode_reward"], "after_reward": after["episode_reward"], "before_action_rms": before["action_rms"], "after_action_rms": after["action_rms"], "after_action_total_variation": after["action_total_variation"]}
     (destination / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return report
