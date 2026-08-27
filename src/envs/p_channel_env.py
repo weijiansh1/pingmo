@@ -7,13 +7,13 @@ import math
 from src.aircraft.p_channel import PChannel
 from src.aircraft.reference import ReferenceRollModel
 from src.aircraft.sampler import PlantRecord
-from src.envs.reward import roll_quality_reward
+from src.envs.reward import RewardWeights, roll_quality_reward
 
 
 class RollQualityEnv(gym.Env[np.ndarray, np.ndarray]):
     metadata = {"render_modes": []}
 
-    def __init__(self, plants: list[PlantRecord], horizon_steps: int = 250, action_limit: float = 1.0, correction_ratio: float = 0.3, pilot_signal: str = "sine", pilot_force_scale_n: float = 22.0, normalized_rate_limit_s_inv: float = 4.0, history_steps: int = 32, actuator_time_constant_s: float = 0.08) -> None:
+    def __init__(self, plants: list[PlantRecord], horizon_steps: int = 250, action_limit: float = 1.0, correction_ratio: float = 0.3, pilot_signal: str = "sine", pilot_force_scale_n: float = 22.0, normalized_rate_limit_s_inv: float = 4.0, history_steps: int = 32, actuator_time_constant_s: float = 0.08, reward_weights: RewardWeights = RewardWeights()) -> None:
         if not plants:
             raise ValueError("at least one plant is required")
         if not 0 < correction_ratio <= 1:
@@ -28,6 +28,7 @@ class RollQualityEnv(gym.Env[np.ndarray, np.ndarray]):
         self.history_steps = history_steps
         self._action_dt = 0.02
         self.actuator_time_constant_s = actuator_time_constant_s
+        self.reward_weights = reward_weights
         self._actuator_alpha = 1.0 - math.exp(-self._action_dt / actuator_time_constant_s)
         self.action_space = gym.spaces.Box(-action_limit, action_limit, (1,), np.float32)
         self.observation_space = gym.spaces.Box(-np.inf, np.inf, (6 + history_steps * 4 + 8,), np.float32)
@@ -118,6 +119,7 @@ class RollQualityEnv(gym.Env[np.ndarray, np.ndarray]):
             command_delta,
             applied_action_delta=applied_action_delta,
             late_error=late_error,
+            weights=self.reward_weights,
         )
         self._diagnostic_count += 1
         self._saturation_count += int(abs(commanded_action) >= self.action_limit - 1e-9)
