@@ -1,5 +1,7 @@
 import importlib.util
 from pathlib import Path
+import subprocess
+import sys
 
 import numpy as np
 import pytest
@@ -151,6 +153,20 @@ def test_execute_screening_run_returns_existing_report(tmp_path: Path) -> None:
 
     assert skipped is True
     assert report["run_id"] == run.run_id
+
+
+def test_screening_worker_rejects_unknown_run_id() -> None:
+    root = Path(__file__).parents[1]
+
+    result = subprocess.run(
+        [sys.executable, "scripts/09_run_gpu_sac_screening_worker.py", "--run-id", "unknown"],
+        cwd=root,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode != 0
+    assert "unknown screening run ID" in result.stderr
 
 
 def test_fixed_privileged_sac_cpu_smoke_persists_two_stream_checkpoint(tmp_path: Path) -> None:
