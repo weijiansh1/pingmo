@@ -16,7 +16,7 @@
 - 新库 `data/aircraft/generated/p_channel_library_iv_a_manual_v1/` 已由 16,384 个 Sobol 候选生成，固定选出 3,000 个 IV-A plant；所有候选的数值 `S_1s` 标定相对误差小于 `6e-13`。
 - diagnostic reference 保留 raw 的 `S_1s` 和物理延迟，仅消除极零不匹配；constrained oracle 与 RL 共用 50 Hz、力幅与速率限幅。
 - `src.benchmark.time_domain.evaluate_roll_response` 中的绝对峰 `rho_osc` 只保留作造库诊断；它不是 A120/A116 指标，正式审计只使用严格的 `P1 -> P2 -> P3` 提取路径。
-- 50 Hz 环境使用 141 维 `[当前量, 32×历史, theta]` 输入，并记录 `F_pilot`、`ΔF`、`F_eq`、动作速率、饱和比例和 cancellation 指标；cancellation 仅作诊断，未写入 reward。
+- 50 Hz 环境使用 142 维 `[当前量（含命令/实际执行量）, 32×历史, theta]` 输入；命令端受速率限制，实际执行量经 `0.08 s` 一阶滞后后进入飞机。环境记录 `F_pilot`、命令/实际 `ΔF`、`F_eq`、动作速率、饱和比例和 cancellation 指标；cancellation 仅作诊断，未写入 reward。
 - 已生成 G2 基线：`img/手册G2_原始参考Oracle受限响应.png` 与 `results/手册G2_参考与Oracle训练前检查.json`。在 `train_core-0000`、0.3×22 N 下，raw/ref RMSE 为 0.3144，受限 oracle/ref RMSE 为 0.1254；但受限 oracle 饱和比例为 86.4%，因此只能证明可改善，不能声明已完全可实现。
 
 ## 当前 Gate
