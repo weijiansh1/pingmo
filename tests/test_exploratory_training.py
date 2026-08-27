@@ -4,6 +4,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
+from src.envs.reward import RewardWeights
 from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, build_multi_env, collect_response_trace, load_completed_screening_report, response_metrics, reward_axis_limits, summarize_held_out_metrics
 from src.experiments.privileged_sac import train_fixed_privileged_sac
 
@@ -125,6 +126,31 @@ def test_screening_run_spec_resolves_frozen_strong_seed() -> None:
     assert run.timesteps == 40_000
     assert len(run.plant_ids) == 16
     assert run.reward_weights.action_energy == 0.20
+
+
+def test_execute_screening_run_returns_existing_report(tmp_path: Path) -> None:
+    root = Path(__file__).parents[1]
+    module = _load_batch_module()
+    run = module.ScreeningRun(
+        run_id="single-40k-seed-20260828",
+        configuration_id="single-40k",
+        seed=20260828,
+        timesteps=40_000,
+        plant_ids=["train_core-0000"],
+        reward_weights=RewardWeights(),
+    )
+    run_dir = tmp_path / run.run_id
+    run_dir.mkdir()
+    (run_dir / "screening_report.json").write_text('{"run_id": "single-40k-seed-20260828"}', encoding="utf-8")
+
+    report, skipped = module.execute_screening_run(
+        run,
+        root / "data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+        tmp_path,
+    )
+
+    assert skipped is True
+    assert report["run_id"] == run.run_id
 
 
 def test_fixed_privileged_sac_cpu_smoke_persists_two_stream_checkpoint(tmp_path: Path) -> None:
