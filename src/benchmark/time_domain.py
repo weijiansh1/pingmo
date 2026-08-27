@@ -6,7 +6,7 @@ import numpy as np
 from scipy.signal import find_peaks
 from scipy import signal
 
-from src.aircraft.p_channel import PChannel
+from src.aircraft.p_channel import PChannel, p_channel_polynomials
 from src.aircraft.parameters import PChannelParameters
 
 
@@ -117,7 +117,7 @@ def no_spiral_step_response(parameters: PChannelParameters, time: np.ndarray) ->
     pure delay is omitted because it shifts time but does not change peak levels.
     """
     p = parameters
-    numerator = p.l_fa * np.array([1.0, 2 * p.zeta_phi * p.omega_phi, p.omega_phi**2, 0.0, 0.0])
+    numerator, _ = p_channel_polynomials(p)
     denominator = np.polymul(
         np.polymul([1.0, 0.0], [1.0, 1.0 / p.t_r]),
         [1.0, 2 * p.zeta_d * p.omega_d, p.omega_d**2],

@@ -1,4 +1,4 @@
-"""Response-level IV-A gain calibration for the GJB-original roll plant."""
+"""Response-level IV-A gain calibration for the single-s roll plant."""
 
 from dataclasses import replace
 

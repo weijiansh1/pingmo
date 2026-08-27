@@ -231,6 +231,6 @@ def build_iv_a_library(output_dir: str | Path, seed: int, candidate_count: int =
     destination = Path(output_dir); destination.mkdir(parents=True, exist_ok=True)
     for name, rows in (("candidates.jsonl", candidates), ("plants.jsonl", selected)):
         (destination / name).write_text("\n".join(json.dumps(row, ensure_ascii=False, sort_keys=True, allow_nan=False) for row in rows) + "\n", encoding="utf-8")
-    manifest = {"schema_version": "3.0", "model_version": "GJB_s2_original", "profile": "IV-A", "seed": seed, "candidate_count": candidate_count, "total_plants": len(selected), "split_counts": targets, "gain_calibration": "S1s_deg_per_n", "a116_boundary_status": "not_digitized"}
+    manifest = {"schema_version": "4.0", "model_version": "GJB_s1_corrected", "profile": "IV-A", "seed": seed, "candidate_count": candidate_count, "total_plants": len(selected), "split_counts": targets, "gain_calibration": "S1s_deg_per_n", "a116_boundary_status": "digitized_A_C_levels_1_2"}
     (destination / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return destination

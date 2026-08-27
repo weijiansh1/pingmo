@@ -13,6 +13,7 @@ import numpy as np
 from scipy import signal
 
 from src.aircraft.parameters import PChannelParameters
+from src.aircraft.p_channel import p_channel_polynomials
 from src.benchmark.time_domain import (
     extract_gjb_roll_peaks,
     gjb_roll_oscillation_ratio,
@@ -125,21 +126,6 @@ class A116BoundarySet:
         return float(np.interp(psi_p_deg, phases, limits))
 
 
-def _p_channel_polynomials(parameters: PChannelParameters) -> tuple[np.ndarray, np.ndarray]:
-    numerator = parameters.l_fa * np.array([
-        1.0,
-        2.0 * parameters.zeta_phi * parameters.omega_phi,
-        parameters.omega_phi**2,
-        0.0,
-        0.0,
-    ])
-    denominator = np.polymul(
-        np.polymul([1.0, -parameters.lambda_s], [1.0, 1.0 / parameters.t_r]),
-        [1.0, 2.0 * parameters.zeta_d * parameters.omega_d, parameters.omega_d**2],
-    )
-    return numerator, denominator
-
-
 def roll_rate_phase_proxy_deg(parameters: PChannelParameters) -> float:
     """Return the Figure A119-permitted ``psi_p`` proxy in ``[-360, 0)``.
 
@@ -148,7 +134,7 @@ def roll_rate_phase_proxy_deg(parameters: PChannelParameters) -> float:
     angle is the phase of that component.  Pure delay shifts its onset but is
     deliberately not inserted into this residue phase.
     """
-    numerator, denominator = _p_channel_polynomials(parameters)
+    numerator, denominator = p_channel_polynomials(parameters)
     residues, poles, _ = signal.residue(numerator, np.polymul(denominator, [1.0, 0.0]))
     candidates = [(residue, pole) for residue, pole in zip(residues, poles) if np.imag(pole) > 0]
     if not candidates:

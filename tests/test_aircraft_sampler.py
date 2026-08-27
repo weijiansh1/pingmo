@@ -39,8 +39,10 @@ def test_iv_a_library_calibrates_and_persists_response_sensitivity(tmp_path) -> 
     targets = {"train_core": 4, "train_boundary": 3, "validation": 1, "id_test": 1, "ood_test": 2, "extreme_test": 1}
     destination = build_iv_a_library(tmp_path, seed=15, candidate_count=64, target_counts=targets)
     rows = [json.loads(line) for line in (destination / "plants.jsonl").read_text(encoding="utf-8").splitlines()]
+    manifest = json.loads((destination / "manifest.json").read_text(encoding="utf-8"))
 
     assert len(rows) == sum(targets.values())
+    assert manifest["model_version"] == "GJB_s1_corrected"
     assert {row["aircraft_class"] for row in rows} == {"IV"}
     assert {row["flight_phase"] for row in rows} == {"A"}
     assert {row["profile"] for row in rows} == {"IV-A"}

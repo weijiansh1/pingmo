@@ -37,7 +37,7 @@ class ReferenceRollModel:
     def __init__(self, parameters: PChannelParameters, dt: float = 0.005) -> None:
         self.dt = dt
         self.parameters = diagnostic_reference_parameters(parameters, dt=dt)
-        numerator = np.array([self.parameters.l_fa, 0.0, 0.0])
+        numerator = np.array([self.parameters.l_fa, 0.0])
         denominator = np.polymul([1.0, -self.parameters.lambda_s], [1.0, 1.0 / self.parameters.t_r])
         self.transfer = _DiscreteTransfer(numerator, denominator, dt)
         self.delay = FractionalDelay(dt, self.parameters.tau_p)

@@ -3,7 +3,7 @@ simulation:
   rl_dt_s: 0.02
   action_hold_substeps: 4
 plant:
-  transfer_function: "L_Fa*s^2*(s^2+2*zeta_phi*omega_phi*s+omega_phi^2)/((s-lambda_s)*(s+1/T_R)*(s^2+2*zeta_d*omega_d*s+omega_d^2))*exp(-tau_p*s)"
+  transfer_function: "L_Fa*s*(s^2+2*zeta_phi*omega_phi*s+omega_phi^2)/((s-lambda_s)*(s+1/T_R)*(s^2+2*zeta_d*omega_d*s+omega_d^2))*exp(-tau_p*s)"
   derived: [omega_phi, zeta_phi, L_Fa]
 sampling:
   method: scrambled_sobol_scenario_first

@@ -23,3 +23,14 @@ def test_p_channel_is_linear_for_equal_initial_conditions() -> None:
     response_one = np.array([one.step(1.0)[0] for _ in range(300)])
     response_two = np.array([two.step(2.0)[0] for _ in range(300)])
     assert response_two == pytest.approx(2.0 * response_one, abs=1e-9)
+
+
+def test_p_channel_force_step_has_no_direct_roll_rate_feedthrough() -> None:
+    parameters = PChannelParameters(1.0, -0.04, 0.5, 0.2, 2.0, 1.0, 1.0, 0.0)
+    plant = PChannel(parameters, dt=0.005)
+
+    first, _ = plant.step(1.0)
+    second, _ = plant.step(1.0)
+
+    assert first == pytest.approx(0.0, abs=1e-12)
+    assert second > 0.0
