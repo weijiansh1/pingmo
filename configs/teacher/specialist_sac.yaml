@@ -1,1 +1,31 @@
-# Configuration placeholder.
+contract: fixed_aircraft_model_reference_sac_v1
+plant_dt_s: 0.001
+policy_dt_s: 0.001
+episode_duration_s: 5.0
+command_mode: step
+history_steps: 250
+action:
+  definition: direct_full_F_as
+  force_limit_n: 22.0
+  force_rate_limit_n_s: 88.0
+  actuator_time_constant_s: 0.0
+reference_model:
+  type: second_order_unity_dc
+  natural_frequency_rad_s: 2.0
+  damping_ratio: 0.7
+reward:
+  tracking_error: 1.0
+  force_energy: 0.02
+  force_delta: 0.05
+sac:
+  total_steps: 100000
+  warmup_steps: 10000
+  batch_size: 256
+  replay_capacity: 200000
+  network_width: 128
+  residual_blocks: 2
+  gamma: 0.9995
+  target_tau: 0.005
+  learning_rate: 0.0003
+  initial_alpha: 0.1
+  gradient_norm_limit: 10.0

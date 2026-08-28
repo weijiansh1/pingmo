@@ -1,1 +1,14 @@
-# Configuration placeholder.
+contract: dense_conditional_student_v1
+network_width: 512
+residual_blocks: 8
+residual_scale: 0.1
+epochs: 100
+batch_size: 1024
+learning_rate: 0.0003
+weight_decay: 0.00001
+gradient_norm_limit: 10.0
+patience_epochs: 15
+input:
+  observation: specialist_teacher_observation
+  aircraft_parameters: normalized_theta_8
+output: normalized_direct_full_F_as
