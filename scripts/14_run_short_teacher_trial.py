@@ -23,6 +23,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--update-every", type=int, default=defaults.update_every_steps)
     parser.add_argument("--replay-capacity", type=int, default=defaults.replay_capacity)
     parser.add_argument("--parallel-envs", type=int, default=defaults.parallel_envs)
+    parser.add_argument("--evaluation-plants", type=int, default=defaults.evaluation_plants)
     parser.add_argument("--evaluation-batch-size", type=int, default=defaults.evaluation_batch_size)
     parser.add_argument("--progress-interval", type=int, default=defaults.progress_interval_steps)
     parser.add_argument("--seed", type=int, default=20260828)
@@ -47,6 +48,7 @@ if __name__ == "__main__":
         update_every_steps=args.update_every,
         replay_capacity=args.replay_capacity,
         parallel_envs=args.parallel_envs,
+        evaluation_plants=args.evaluation_plants,
         evaluation_batch_size=args.evaluation_batch_size,
         progress_interval_steps=args.progress_interval,
         seed=args.seed,
