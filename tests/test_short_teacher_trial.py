@@ -1,10 +1,24 @@
 import pytest
 
+from src.aircraft.parameters import PChannelParameters
+from src.aircraft.sampler import PlantRecord
 from src.experiments.short_teacher_trial import (
     ShortTrialConfig,
+    balanced_episode_assignments,
     short_training_command_suite,
     summarize_trial_evaluation,
 )
+
+
+def _record(plant_id: str, level: str) -> PlantRecord:
+    return PlantRecord(
+        plant_id,
+        "train_core",
+        level,
+        "IV",
+        "A",
+        PChannelParameters(0.2, -0.05, 0.8, 0.3, 2.0, 1.0, 1.0, 0.02),
+    )
 
 
 def test_short_training_commands_cover_all_families_and_one_second_step() -> None:
@@ -19,6 +33,21 @@ def test_short_training_commands_cover_all_families_and_one_second_step() -> Non
 def test_short_trial_config_rejects_episode_too_short_for_sensitivity() -> None:
     with pytest.raises(ValueError, match="1 s sensitivity"):
         ShortTrialConfig(episode_duration_s=1.0)
+
+
+def test_balanced_assignments_cover_every_level_command_pair_before_repeat() -> None:
+    records = [
+        _record(f"p-{level}-{index}", level)
+        for level in ("level_1", "level_2", "level_3")
+        for index in range(2)
+    ]
+    profiles = short_training_command_suite()
+    pair_count = 3 * len(profiles)
+
+    assignments = balanced_episode_assignments(records, profiles, pair_count, seed=17)
+
+    assert len({(record.quality_region, profile.command_id) for record, profile in assignments}) == pair_count
+    assert len({record.plant_id for record, _ in assignments}) == len(records)
 
 
 def test_trial_summary_compares_matched_episode_costs() -> None:
@@ -43,3 +72,5 @@ def test_trial_summary_compares_matched_episode_costs() -> None:
     assert summary["harm_rate"] == 0.0
     assert summary["median_episode_cost_change"] == pytest.approx(-1.0)
     assert summary["median_onset_delay_change_s"] == pytest.approx(-0.02)
+    assert summary["raw_good_pairs"] == 0
+    assert summary["raw_good_harm_rate"] is None

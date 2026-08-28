@@ -14,12 +14,17 @@ from src.experiments.short_teacher_trial import ShortTrialConfig, run_short_teac
 
 def parse_args() -> argparse.Namespace:
     root = Path(__file__).resolve().parents[1]
+    defaults = ShortTrialConfig()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--teacher", choices=("mlp", "moe"), default="mlp")
-    parser.add_argument("--steps", type=int, default=6_000)
-    parser.add_argument("--warmup-steps", type=int, default=1_000)
-    parser.add_argument("--batch-size", type=int, default=64)
-    parser.add_argument("--update-every", type=int, default=2)
+    parser.add_argument("--steps", type=int, default=defaults.total_steps)
+    parser.add_argument("--warmup-steps", type=int, default=defaults.warmup_steps)
+    parser.add_argument("--batch-size", type=int, default=defaults.batch_size)
+    parser.add_argument("--update-every", type=int, default=defaults.update_every_steps)
+    parser.add_argument("--replay-capacity", type=int, default=defaults.replay_capacity)
+    parser.add_argument("--parallel-envs", type=int, default=defaults.parallel_envs)
+    parser.add_argument("--evaluation-batch-size", type=int, default=defaults.evaluation_batch_size)
+    parser.add_argument("--progress-interval", type=int, default=defaults.progress_interval_steps)
     parser.add_argument("--seed", type=int, default=20260828)
     parser.add_argument("--device", default="cuda")
     parser.add_argument(
@@ -40,6 +45,10 @@ if __name__ == "__main__":
         warmup_steps=args.warmup_steps,
         batch_size=args.batch_size,
         update_every_steps=args.update_every,
+        replay_capacity=args.replay_capacity,
+        parallel_envs=args.parallel_envs,
+        evaluation_batch_size=args.evaluation_batch_size,
+        progress_interval_steps=args.progress_interval,
         seed=args.seed,
         device=args.device,
     )

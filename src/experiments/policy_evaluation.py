@@ -18,12 +18,22 @@ class PredictivePolicy(Protocol):
 
 class ZeroPolicy:
     def predict(self, observation: np.ndarray, deterministic: bool = True) -> tuple[np.ndarray, None]:
-        return np.zeros(1, dtype=np.float32), None
+        shape = (observation.shape[0], 1) if observation.ndim == 2 else (1,)
+        return np.zeros(shape, dtype=np.float32), None
 
 
-def _policy_action(policy: PredictivePolicy, observation: np.ndarray) -> np.ndarray:
-    prediction = policy.predict(observation, deterministic=True)
-    return np.asarray(prediction[0] if isinstance(prediction, tuple) else prediction, dtype=np.float32)
+def _policy_actions(policy: PredictivePolicy, observations: np.ndarray) -> np.ndarray:
+    prediction = policy.predict(observations, deterministic=True)
+    actions = np.asarray(prediction[0] if isinstance(prediction, tuple) else prediction, dtype=np.float32)
+    batch_size = observations.shape[0]
+    if actions.ndim == 1:
+        if batch_size == 1:
+            return actions.reshape(1, -1)
+        if actions.size == batch_size:
+            return actions.reshape(batch_size, 1)
+    if actions.ndim != 2 or actions.shape[0] != batch_size:
+        raise ValueError(f"policy returned action shape {actions.shape} for observation batch {observations.shape}")
+    return actions
 
 
 def _prefixed(metrics: ModalResponseMetrics, prefix: str) -> dict[str, float | str | None]:
@@ -63,13 +73,29 @@ def evaluate_policy_pairs(
     plant_dt_s: float = 0.001,
     policy_dt_s: float = 0.001,
     seed: int = 0,
+    inference_batch_size: int = 1,
 ) -> list[dict[str, float | int | str | None]]:
-    """Evaluate every supplied aircraft-command pair with no split mutation."""
+    """Evaluate every supplied pair, optionally batching Actor inference."""
 
+    if inference_batch_size <= 0:
+        raise ValueError("inference_batch_size must be positive")
     rows: list[dict[str, float | int | str | None]] = []
-    pair_index = 0
-    for record in records:
-        for profile in profiles:
+    record_list = list(records)
+    profile_list = list(profiles)
+    pairs = [
+        (pair_index, record, profile)
+        for pair_index, (record, profile) in enumerate(
+            (record, profile) for record in record_list for profile in profile_list
+        )
+    ]
+    for chunk_start in range(0, len(pairs), inference_batch_size):
+        chunk = pairs[chunk_start:chunk_start + inference_batch_size]
+        environments: list[RollQualityEnv] = []
+        observations: list[np.ndarray] = []
+        reward_traces: list[list[float]] = []
+        final_infos: list[dict[str, object]] = []
+        finished = np.zeros(len(chunk), dtype=bool)
+        for pair_index, record, profile in chunk:
             duration_s = profile.duration_s or 10.0
             horizon_steps = int(round(duration_s / policy_dt_s))
             env = RollQualityEnv(
@@ -80,14 +106,28 @@ def evaluate_policy_pairs(
                 command_profiles=(profile,),
             )
             observation, _ = env.reset(seed=seed + pair_index)
-            rewards: list[float] = []
-            final_info: dict[str, object] = {}
-            while True:
-                observation, reward, terminated, truncated, info = env.step(_policy_action(policy, observation))
-                rewards.append(float(reward))
-                final_info = info
-                if terminated or truncated:
-                    break
+            environments.append(env)
+            observations.append(observation)
+            reward_traces.append([])
+            final_infos.append({})
+
+        while not bool(np.all(finished)):
+            active = np.flatnonzero(~finished)
+            observation_batch = np.stack([observations[index] for index in active])
+            action_batch = _policy_actions(policy, observation_batch)
+            for batch_index, state_index in enumerate(active):
+                observation, reward, terminated, truncated, info = environments[state_index].step(
+                    action_batch[batch_index]
+                )
+                observations[state_index] = observation
+                reward_traces[state_index].append(float(reward))
+                final_infos[state_index] = info
+                finished[state_index] = terminated or truncated
+
+        for state_index, (_, record, profile) in enumerate(chunk):
+            env = environments[state_index]
+            rewards = reward_traces[state_index]
+            final_info = final_infos[state_index]
             raw, controlled = _matched_metrics(env, profile)
             raw_onset = raw.response_onset_delay_s
             controlled_onset = controlled.response_onset_delay_s
@@ -124,7 +164,6 @@ def evaluate_policy_pairs(
             row.update(_prefixed(raw, "raw"))
             row.update(_prefixed(controlled, "controlled"))
             rows.append(row)
-            pair_index += 1
     return rows
 
 

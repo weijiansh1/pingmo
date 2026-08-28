@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections import Counter
 from dataclasses import dataclass
 import json
 from pathlib import Path
@@ -23,16 +24,18 @@ from src.teacher.sac.teacher import PrivilegedSAC
 @dataclass(frozen=True, slots=True)
 class ShortTrialConfig:
     teacher_kind: str = "mlp"
-    total_steps: int = 6_000
-    warmup_steps: int = 1_000
-    batch_size: int = 64
-    update_every_steps: int = 2
-    replay_capacity: int = 20_000
+    total_steps: int = 160_000
+    warmup_steps: int = 40_000
+    batch_size: int = 256
+    update_every_steps: int = 32
+    replay_capacity: int = 160_000
     episode_duration_s: float = 1.25
+    parallel_envs: int = 32
     evaluation_plants: int = 3
+    evaluation_batch_size: int = 15
     seed: int = 20260828
     device: str = "cuda"
-    progress_interval_steps: int = 500
+    progress_interval_steps: int = 10_000
     network_width: int = 896
     residual_blocks: int = 14
     moe_shared_blocks: int = 10
@@ -48,7 +51,9 @@ class ShortTrialConfig:
             self.batch_size,
             self.update_every_steps,
             self.replay_capacity,
+            self.parallel_envs,
             self.evaluation_plants,
+            self.evaluation_batch_size,
             self.progress_interval_steps,
             self.network_width,
             self.residual_blocks,
@@ -56,6 +61,12 @@ class ShortTrialConfig:
             raise ValueError("trial counts and network dimensions must be positive")
         if self.replay_capacity < self.batch_size or self.episode_duration_s < 1.10:
             raise ValueError("replay must fit one batch and episodes must cover the 1 s sensitivity metric")
+        horizon_steps = int(round(self.episode_duration_s / 0.001))
+        episode_batch_steps = self.parallel_envs * horizon_steps
+        if self.total_steps % episode_batch_steps != 0:
+            raise ValueError("total_steps must contain complete parallel episode batches")
+        if self.warmup_steps % self.parallel_envs != 0:
+            raise ValueError("warmup_steps must align with parallel_envs")
 
 
 def short_training_command_suite(duration_s: float = 1.25) -> tuple[CommandProfile, ...]:
@@ -122,13 +133,47 @@ def _held_out_profiles() -> tuple[CommandProfile, ...]:
     return tuple(profile for profile in evaluation_command_suite() if profile.command_id in selected_ids)
 
 
+def balanced_episode_assignments(
+    records: list[PlantRecord],
+    profiles: tuple[CommandProfile, ...],
+    episode_count: int,
+    seed: int,
+) -> list[tuple[PlantRecord, CommandProfile]]:
+    """Cover every quality-level/command pair before repeating either axis."""
+
+    if episode_count <= 0 or not records or not profiles:
+        raise ValueError("records, profiles, and episode_count must be non-empty")
+    groups: dict[str, list[PlantRecord]] = {}
+    for record in records:
+        groups.setdefault(record.quality_region, []).append(record)
+    levels = sorted(groups)
+    rng = np.random.default_rng(seed)
+    pools = {level: list(rng.permutation(group)) for level, group in groups.items()}
+    positions = {level: 0 for level in levels}
+    assignments: list[tuple[PlantRecord, CommandProfile]] = []
+    for episode_index in range(episode_count):
+        level = levels[episode_index % len(levels)]
+        profile = profiles[(episode_index // len(levels)) % len(profiles)]
+        if positions[level] >= len(pools[level]):
+            pools[level] = list(rng.permutation(groups[level]))
+            positions[level] = 0
+        record = pools[level][positions[level]]
+        positions[level] += 1
+        assignments.append((record, profile))
+    return assignments
+
+
 class _TeacherPolicy:
     def __init__(self, learner: PrivilegedSAC | MoETeacher) -> None:
         self.learner = learner
 
     def predict(self, observation: np.ndarray, deterministic: bool = True) -> np.ndarray:
-        tensor = torch.as_tensor(observation, dtype=torch.float32).unsqueeze(0)
-        return self.learner.act(tensor, deterministic=deterministic).numpy()[0]
+        tensor = torch.as_tensor(observation, dtype=torch.float32)
+        single = tensor.ndim == 1
+        if single:
+            tensor = tensor.unsqueeze(0)
+        actions = self.learner.act(tensor, deterministic=deterministic).numpy()
+        return actions[0] if single else actions
 
 
 def _build_learner(config: ShortTrialConfig, actor_dim: int, critic_dim: int) -> PrivilegedSAC | MoETeacher:
@@ -173,9 +218,15 @@ def summarize_trial_evaluation(
 ) -> dict[str, float | int | None]:
     raw_by_pair = {(row["plant_id"], row["command_id"]): row for row in raw_rows}
     cost_changes = []
+    raw_good_cost_changes = []
+    raw_good_action_rms = []
     for row in controlled_rows:
         raw = raw_by_pair[(row["plant_id"], row["command_id"])]
-        cost_changes.append(-float(row["episode_reward"]) + float(raw["episode_reward"]))
+        cost_change = -float(row["episode_reward"]) + float(raw["episode_reward"])
+        cost_changes.append(cost_change)
+        if abs(float(raw["episode_reward"])) <= 1e-12:
+            raw_good_cost_changes.append(cost_change)
+            raw_good_action_rms.append(float(row["controlled_action_rms_n"]))
     action_rms = [float(row["controlled_action_rms_n"]) for row in controlled_rows]
     action_tv = [float(row["controlled_action_total_variation_n"]) for row in controlled_rows]
     saturation = [float(row["controlled_action_saturation_fraction"]) for row in controlled_rows]
@@ -183,6 +234,13 @@ def summarize_trial_evaluation(
         "evaluation_pairs": len(controlled_rows),
         "harm_rate": float(np.mean(np.asarray(cost_changes) > 0.0)),
         "median_episode_cost_change": float(np.median(cost_changes)),
+        "raw_good_pairs": len(raw_good_cost_changes),
+        "raw_good_harm_rate": (
+            None if not raw_good_cost_changes else float(np.mean(np.asarray(raw_good_cost_changes) > 0.0))
+        ),
+        "raw_good_mean_action_rms_n": (
+            None if not raw_good_action_rms else float(np.mean(raw_good_action_rms))
+        ),
         "median_onset_delay_change_s": _metric_delta(controlled_rows, "response_onset_delay_s"),
         "median_sensitivity_1s_change_deg_per_n": _metric_delta(controlled_rows, "sensitivity_1s_deg_per_n"),
         "median_oscillation_ratio_change": _metric_delta(controlled_rows, "oscillation_ratio_proxy"),
@@ -220,18 +278,34 @@ def run_short_teacher_trial(
     )
     profiles = short_training_command_suite(config.episode_duration_s)
     horizon_steps = int(round(config.episode_duration_s / 0.001))
-    env = RollQualityEnv(train_records, horizon_steps=horizon_steps, command_profiles=profiles)
-    actor_obs, info = env.reset(seed=config.seed)
-    critic_obs = np.asarray(info["critic_state"], dtype=np.float32)
-    learner = _build_learner(config, actor_obs.size, critic_obs.size)
+    episode_count = config.total_steps // horizon_steps
+    assignments = balanced_episode_assignments(train_records, profiles, episode_count, config.seed)
+
+    def start_rollout(assignment_index: int) -> dict[str, object]:
+        record, profile = assignments[assignment_index]
+        env = RollQualityEnv([record], horizon_steps=horizon_steps, command_profiles=(profile,))
+        actor_observation, reset_info = env.reset(seed=config.seed + assignment_index)
+        return {
+            "env": env,
+            "record": record,
+            "profile": profile,
+            "actor_obs": actor_observation,
+            "critic_obs": np.asarray(reset_info["critic_state"], dtype=np.float32),
+            "episode_reward": 0.0,
+        }
+
+    rollouts = [start_rollout(index) for index in range(config.parallel_envs)]
+    next_assignment = config.parallel_envs
+    first_actor_obs = np.asarray(rollouts[0]["actor_obs"], dtype=np.float32)
+    first_critic_obs = np.asarray(rollouts[0]["critic_obs"], dtype=np.float32)
+    learner = _build_learner(config, first_actor_obs.size, first_critic_obs.size)
     replay = TwoStreamReplayBuffer(
         config.replay_capacity,
-        actor_obs.size,
-        critic_obs.size,
+        first_actor_obs.size,
+        first_critic_obs.size,
         1,
         seed=config.seed,
     )
-    episode_reward = 0.0
     completed_episodes: list[dict[str, object]] = []
     losses: dict[str, float] = {}
     updates = 0
@@ -239,32 +313,67 @@ def run_short_teacher_trial(
     if device.type == "cuda":
         torch.cuda.reset_peak_memory_stats(device)
 
-    for step in range(config.total_steps):
-        if step < config.warmup_steps:
-            action = np_rng.uniform(-1.0, 1.0, size=1).astype(np.float32)
+    transition_steps = 0
+    next_progress = config.progress_interval_steps
+    while transition_steps < config.total_steps:
+        actor_obs_batch = np.stack([np.asarray(rollout["actor_obs"]) for rollout in rollouts])
+        critic_obs_batch = np.stack([np.asarray(rollout["critic_obs"]) for rollout in rollouts])
+        if transition_steps < config.warmup_steps:
+            actions = np_rng.uniform(-1.0, 1.0, size=(config.parallel_envs, 1)).astype(np.float32)
         else:
-            action = learner.act(torch.as_tensor(actor_obs).unsqueeze(0)).numpy()[0].astype(np.float32)
-        next_actor_obs, reward, terminated, truncated, next_info = env.step(action)
-        done = terminated or truncated
-        next_critic_obs = np.asarray(next_info["critic_state"], dtype=np.float32)
-        replay.add(actor_obs, critic_obs, action, reward, next_actor_obs, next_critic_obs, done)
-        actor_obs, critic_obs = next_actor_obs, next_critic_obs
-        episode_reward += float(reward)
-        if step >= config.warmup_steps and step % config.update_every_steps == 0 and len(replay) >= config.batch_size:
+            actions = learner.act(torch.as_tensor(actor_obs_batch)).numpy().astype(np.float32)
+
+        next_actor_obs_batch: list[np.ndarray] = []
+        next_critic_obs_batch: list[np.ndarray] = []
+        rewards = np.empty(config.parallel_envs, dtype=np.float32)
+        dones = np.empty(config.parallel_envs, dtype=np.float32)
+        finished_indices: list[int] = []
+        for index, rollout in enumerate(rollouts):
+            env = rollout["env"]
+            next_actor_obs, reward, terminated, truncated, next_info = env.step(actions[index])
+            done = terminated or truncated
+            next_actor_obs_batch.append(next_actor_obs)
+            next_critic_obs_batch.append(np.asarray(next_info["critic_state"], dtype=np.float32))
+            rewards[index] = reward
+            dones[index] = float(done)
+            rollout["actor_obs"] = next_actor_obs
+            rollout["critic_obs"] = next_critic_obs_batch[-1]
+            rollout["episode_reward"] = float(rollout["episode_reward"]) + float(reward)
+            if done:
+                record = rollout["record"]
+                profile = rollout["profile"]
+                completed_episodes.append({
+                    "plant_id": record.plant_id,
+                    "quality_region": record.quality_region,
+                    "command_id": profile.command_id,
+                    "command_kind": profile.kind,
+                    "episode_reward": rollout["episode_reward"],
+                })
+                finished_indices.append(index)
+
+        replay.add_batch(
+            actor_obs_batch,
+            critic_obs_batch,
+            actions,
+            rewards,
+            np.stack(next_actor_obs_batch),
+            np.stack(next_critic_obs_batch),
+            dones,
+        )
+        transition_steps += config.parallel_envs
+        target_updates = max(0, transition_steps - config.warmup_steps) // config.update_every_steps
+        while updates < target_updates and len(replay) >= config.batch_size:
             losses = learner.update(replay.sample(config.batch_size, learner.device))
             updates += 1
-        if done:
-            completed_episodes.append({
-                "plant_id": next_info["plant_id"],
-                "command_id": next_info["command_id"],
-                "episode_reward": episode_reward,
-            })
-            actor_obs, reset_info = env.reset()
-            critic_obs = np.asarray(reset_info["critic_state"], dtype=np.float32)
-            episode_reward = 0.0
-        if (step + 1) % config.progress_interval_steps == 0:
+
+        for index in finished_indices:
+            if next_assignment < len(assignments):
+                rollouts[index] = start_rollout(next_assignment)
+                next_assignment += 1
+
+        if transition_steps >= next_progress:
             progress = {
-                "step": step + 1,
+                "step": transition_steps,
                 "updates": updates,
                 "completed_episodes": len(completed_episodes),
                 "elapsed_s": time.perf_counter() - started,
@@ -272,6 +381,8 @@ def run_short_teacher_trial(
             }
             _write_json(destination / "progress.json", progress)
             print(json.dumps(progress, ensure_ascii=False), flush=True)
+            while next_progress <= transition_steps:
+                next_progress += config.progress_interval_steps
 
     training_elapsed = time.perf_counter() - started
     checkpoint = {
@@ -280,8 +391,8 @@ def run_short_teacher_trial(
         "critic": learner.critic.state_dict(),
         "target_critic": learner.target_critic.state_dict(),
         "log_alpha": learner.log_alpha.detach().cpu(),
-        "actor_observation_dim": int(actor_obs.size),
-        "critic_observation_dim": int(critic_obs.size),
+        "actor_observation_dim": int(first_actor_obs.size),
+        "critic_observation_dim": int(first_critic_obs.size),
         "config": config.__dict__ if hasattr(config, "__dict__") else {
             field: getattr(config, field) for field in config.__dataclass_fields__
         },
@@ -305,6 +416,7 @@ def run_short_teacher_trial(
         held_out_profiles,
         controller_name="Raw",
         seed=config.seed + 10_000,
+        inference_batch_size=config.evaluation_batch_size,
     )
     controlled_rows = evaluate_policy_pairs(
         _TeacherPolicy(learner),
@@ -312,6 +424,7 @@ def run_short_teacher_trial(
         held_out_profiles,
         controller_name=f"{config.teacher_kind.upper()}-SAC",
         seed=config.seed + 20_000,
+        inference_batch_size=config.evaluation_batch_size,
     )
     evaluation_summary = summarize_trial_evaluation(raw_rows, controlled_rows)
     report: dict[str, object] = {
@@ -321,11 +434,18 @@ def run_short_teacher_trial(
         "training_aircraft_count": len(train_records),
         "training_command_count": len(profiles),
         "completed_episodes": completed_episodes,
+        "training_coverage": {
+            "quality_regions": dict(Counter(row["quality_region"] for row in completed_episodes)),
+            "command_kinds": dict(Counter(row["command_kind"] for row in completed_episodes)),
+            "unique_plants": len({row["plant_id"] for row in completed_episodes}),
+            "unique_commands": len({row["command_id"] for row in completed_episodes}),
+        },
         "updates": updates,
         "training_elapsed_s": training_elapsed,
         "evaluation_elapsed_s": time.perf_counter() - evaluation_started,
         "last_losses": losses,
         "evaluation_summary": evaluation_summary,
+        "raw_evaluation_rows": raw_rows,
         "evaluation_rows": controlled_rows,
     }
     if device.type == "cuda":

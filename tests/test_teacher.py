@@ -63,6 +63,25 @@ def test_two_stream_replay_preserves_actor_and_critic_states() -> None:
     assert batch["next_critic_obs"][0, 0].item() == 5.0
 
 
+def test_two_stream_replay_add_batch_wraps_without_losing_shape() -> None:
+    replay = TwoStreamReplayBuffer(capacity=4, actor_observation_dim=2, critic_observation_dim=3, action_dim=1, seed=9)
+    for offset in (0.0, 2.0, 4.0):
+        actor = np.arange(offset, offset + 4, dtype=np.float32).reshape(2, 2)
+        critic = np.arange(offset, offset + 6, dtype=np.float32).reshape(2, 3)
+        replay.add_batch(
+            actor,
+            critic,
+            np.zeros((2, 1), dtype=np.float32),
+            np.array([offset, offset + 1], dtype=np.float32),
+            actor + 1,
+            critic + 1,
+            np.zeros(2, dtype=np.float32),
+        )
+
+    assert len(replay) == 4
+    assert set(replay.rewards[:, 0]) == {2.0, 3.0, 4.0, 5.0}
+
+
 def test_privileged_sac_update_has_finite_losses() -> None:
     learner = _small_sac()
     batch = {
