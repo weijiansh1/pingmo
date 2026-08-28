@@ -5,6 +5,8 @@ from src.aircraft.sampler import PlantRecord
 from src.experiments.short_teacher_trial import (
     ShortTrialConfig,
     balanced_episode_assignments,
+    library_fingerprint,
+    require_balanced_quality_levels,
     short_training_command_suite,
     summarize_trial_evaluation,
 )
@@ -48,6 +50,23 @@ def test_balanced_assignments_cover_every_level_command_pair_before_repeat() -> 
 
     assert len({(record.quality_region, profile.command_id) for record, profile in assignments}) == pair_count
     assert len({record.plant_id for record, _ in assignments}) == len(records)
+
+
+def test_level_balance_guard_rejects_stale_core_boundary_library() -> None:
+    records = [_record("core", "core"), _record("boundary", "boundary")]
+
+    with pytest.raises(ValueError, match="level_1/level_2/level_3"):
+        require_balanced_quality_levels(records, "training source")
+
+
+def test_library_fingerprint_requires_level_balanced_manifest(tmp_path) -> None:
+    plants = tmp_path / "plants.jsonl"
+    manifest = tmp_path / "manifest.json"
+    plants.write_text("{}\n", encoding="utf-8")
+    manifest.write_text('{"sampling_policy": "old_core_boundary"}\n', encoding="utf-8")
+
+    with pytest.raises(ValueError, match="level-balanced"):
+        library_fingerprint(plants)
 
 
 def test_trial_summary_compares_matched_episode_costs() -> None:

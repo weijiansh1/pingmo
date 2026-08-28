@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
+import hashlib
 import json
 from pathlib import Path
 import time
@@ -19,6 +20,9 @@ from src.experiments.policy_evaluation import ZeroPolicy, evaluate_policy_pairs
 from src.teacher.moe.teacher import MoETeacher
 from src.teacher.sac.replay import TwoStreamReplayBuffer
 from src.teacher.sac.teacher import PrivilegedSAC
+
+
+_EXPECTED_QUALITY_LEVELS = {"level_1", "level_2", "level_3"}
 
 
 @dataclass(frozen=True, slots=True)
@@ -99,6 +103,45 @@ def _records_for_splits(library_path: str | Path, splits: set[str]) -> list[Plan
     if not plant_ids:
         raise ValueError(f"no plants found for splits {sorted(splits)}")
     return load_persisted_records(library_path, plant_ids)
+
+
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def library_fingerprint(library_path: str | Path) -> dict[str, object]:
+    plants_path = Path(library_path)
+    manifest_path = plants_path.with_name("manifest.json")
+    if not manifest_path.is_file():
+        raise ValueError(f"aircraft library manifest is missing: {manifest_path}")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if manifest.get("sampling_policy") != "equal_L1_L2_L3_plus_held_out_OOD":
+        raise ValueError("aircraft library is not the level-balanced IV-A sampling distribution")
+    return {
+        "plants_path": str(plants_path.resolve()),
+        "plants_sha256": _sha256_file(plants_path),
+        "manifest_path": str(manifest_path.resolve()),
+        "manifest_sha256": _sha256_file(manifest_path),
+        "schema_version": manifest.get("schema_version"),
+        "model_version": manifest.get("model_version"),
+        "sampling_policy": manifest.get("sampling_policy"),
+        "seed": manifest.get("seed"),
+    }
+
+
+def require_balanced_quality_levels(records: list[PlantRecord], source_name: str) -> dict[str, int]:
+    counts = Counter(record.quality_region for record in records)
+    if set(counts) != _EXPECTED_QUALITY_LEVELS:
+        raise ValueError(
+            f"{source_name} must contain level_1/level_2/level_3, got {sorted(counts)}"
+        )
+    if len(set(counts.values())) != 1:
+        raise ValueError(f"{source_name} quality levels are not balanced: {dict(counts)}")
+    return {level: counts[level] for level in sorted(counts)}
 
 
 def _balanced_evaluation_records(records: list[PlantRecord], count: int) -> list[PlantRecord]:
@@ -271,9 +314,15 @@ def run_short_teacher_trial(
     destination.mkdir(parents=True, exist_ok=True)
     torch.manual_seed(config.seed)
     np_rng = np.random.default_rng(config.seed)
+    source_fingerprint = library_fingerprint(library_path)
     train_records = _records_for_splits(library_path, {"train_core", "train_boundary"})
+    validation_pool = _records_for_splits(library_path, {"validation"})
+    source_level_counts = {
+        "training": require_balanced_quality_levels(train_records, "training source"),
+        "validation": require_balanced_quality_levels(validation_pool, "validation source"),
+    }
     validation_records = _balanced_evaluation_records(
-        _records_for_splits(library_path, {"validation"}),
+        validation_pool,
         config.evaluation_plants,
     )
     profiles = short_training_command_suite(config.episode_duration_s)
@@ -393,6 +442,7 @@ def run_short_teacher_trial(
         "log_alpha": learner.log_alpha.detach().cpu(),
         "actor_observation_dim": int(first_actor_obs.size),
         "critic_observation_dim": int(first_critic_obs.size),
+        "aircraft_library": source_fingerprint,
         "config": config.__dict__ if hasattr(config, "__dict__") else {
             field: getattr(config, field) for field in config.__dataclass_fields__
         },
@@ -431,6 +481,8 @@ def run_short_teacher_trial(
         "status": "complete",
         "config": checkpoint["config"],
         "parameter_counts": learner.parameter_counts(),
+        "aircraft_library": source_fingerprint,
+        "source_level_counts": source_level_counts,
         "training_aircraft_count": len(train_records),
         "training_command_count": len(profiles),
         "completed_episodes": completed_episodes,
