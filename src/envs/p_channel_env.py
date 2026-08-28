@@ -179,7 +179,8 @@ class RollQualityEnv(gym.Env[np.ndarray, np.ndarray]):
 
     def reset(self, *, seed: int | None = None, options: dict | None = None) -> tuple[np.ndarray, dict]:
         super().reset(seed=seed)
-        self._rng = np.random.default_rng(seed)
+        if seed is not None:
+            self._rng = np.random.default_rng(seed)
         self._record = self.plants[int(self._rng.integers(len(self.plants)))]
         self._select_commands()
         self._raw_roll_rate = self._precompute_raw_response()
