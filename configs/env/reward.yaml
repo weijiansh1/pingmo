@@ -1,1 +1,17 @@
-# Configuration placeholder.
+schema_version: "2.0"
+reference_model_in_reward: false
+costs_are_integrated_at_1khz: true
+weights:
+  wrong_way_response: 0.25
+  added_onset_delay: 1.0
+  sensitivity_violation: 1.0
+  oscillation_response: 1.0
+  spiral_recovery: 0.5
+  action_energy: 0.02
+  action_delta: 0.05
+delay_contract:
+  actor_feedback: elapsed_wait_for_current_response
+  reward_cost: controller_added_onset_delay_relative_to_matched_raw
+  sampled_tau_p_is_directly_penalized: false
+  reward_is_shifted_to_old_actions: false
+  custom_delay_replay_or_n_step_target: false

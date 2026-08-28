@@ -13,7 +13,11 @@ from src.teacher.sac.teacher import PrivilegedSAC
 
 
 def _batch(seed: int, size: int = 32) -> dict[str, torch.Tensor]:
-    env = RollQualityEnv(generate_plant_library(seed, {"train_core": 2, "train_boundary": 2}), horizon_steps=20)
+    env = RollQualityEnv(
+        generate_plant_library(seed, {"train_core": 2, "train_boundary": 2}),
+        horizon_steps=20,
+        pilot_signal="step",
+    )
     observation, info = env.reset(seed=seed)
     critic_state = info["critic_state"]
     rows: list[tuple[np.ndarray, np.ndarray, np.ndarray, float, np.ndarray, np.ndarray, float]] = []
@@ -45,7 +49,27 @@ def run_local_smoke(output_dir: str | Path, updates: int = 4, seed: int = 0) -> 
     batch = _batch(seed)
     actor_dim = batch["actor_obs"].shape[1]
     critic_dim = batch["critic_obs"].shape[1]
-    sac, moe = PrivilegedSAC(actor_dim, critic_dim, 1), MoETeacher(actor_dim, critic_dim, 1, experts=4)
+    sac = PrivilegedSAC(
+        actor_dim,
+        critic_dim,
+        1,
+        actor_width=32,
+        actor_residual_blocks=2,
+        critic_width=32,
+        critic_residual_blocks=2,
+    )
+    moe = MoETeacher(
+        actor_dim,
+        critic_dim,
+        1,
+        experts=4,
+        actor_width=32,
+        shared_residual_blocks=2,
+        expert_residual_blocks=1,
+        expert_bottleneck_width=16,
+        critic_width=32,
+        critic_residual_blocks=2,
+    )
     sac_losses, moe_losses = {}, {}
     for _ in range(updates):
         sac_losses, moe_losses = sac.update(batch), moe.update(batch)

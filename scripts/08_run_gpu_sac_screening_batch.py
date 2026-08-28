@@ -6,7 +6,6 @@ from pathlib import Path
 import sys
 
 import numpy as np
-from stable_baselines3 import SAC
 import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -53,7 +52,7 @@ def _evenly_spaced_train_ids(library: Path, count: int = 16) -> list[str]:
 def screening_configurations(library: Path) -> tuple[dict[str, object], ...]:
     multi_ids = _evenly_spaced_train_ids(library)
     current = RewardWeights()
-    strong = RewardWeights(action_energy=0.20, command_delta=1.50, applied_delta=0.30, late_error=0.50)
+    strong = RewardWeights(action_energy=0.20, action_delta=0.15)
     return (
         {"id": "single-40k", "plant_ids": ["train_core-0000"], "timesteps": 40_000, "weights": current},
         {"id": "single-120k", "plant_ids": ["train_core-0000"], "timesteps": 120_000, "weights": current},
@@ -77,7 +76,7 @@ def resolve_screening_run(run_id: str, library: Path) -> ScreeningRun:
     raise ValueError(f"unknown screening run ID: {run_id}")
 
 
-def _evaluate(model: SAC, library: Path, plant_ids: list[str], correction_ratio: float, reward_weights: RewardWeights) -> list[dict[str, object]]:
+def _evaluate(model: object, library: Path, plant_ids: list[str], correction_ratio: float, reward_weights: RewardWeights) -> list[dict[str, object]]:
     records: list[dict[str, object]] = []
     for plant_id in plant_ids:
         raw_env = build_fixed_env(library, plant_id, horizon_steps=500, correction_ratio=correction_ratio, pilot_signal="step", reward_weights=reward_weights)
@@ -93,6 +92,8 @@ def execute_screening_run(run: ScreeningRun, library: Path, output_root: Path) -
     completed = load_completed_screening_report(run_dir)
     if completed is not None:
         return completed, True
+
+    from stable_baselines3 import SAC
 
     train_report = train_short_experiment(
         library,

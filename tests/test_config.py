@@ -23,6 +23,8 @@ def test_iv_a_profile_exposes_force_scale_and_rejects_unknown_profile() -> None:
 
     assert profile["pilot_force_scale_n"] == 22.0
     assert profile["action_authority_ratios"] == [0.1, 0.2, 0.3, 0.5]
-    assert profile["model_version"] == "GJB_s1_corrected"
+    assert profile["model_version"] == "GJB_s1_1khz"
+    assert profile["dt_plant_s"] == pytest.approx(0.001)
+    assert profile["dt_rl_s"] == pytest.approx(0.001)
     with pytest.raises(ValueError, match="unknown roll profile"):
         load_roll_profile(root / "data/gjb_roll_spec.yaml", "unknown")

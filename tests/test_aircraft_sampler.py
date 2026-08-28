@@ -50,7 +50,9 @@ def test_iv_a_library_calibrates_and_persists_response_sensitivity(tmp_path) -> 
     manifest = json.loads((destination / "manifest.json").read_text(encoding="utf-8"))
 
     assert len(rows) == sum(targets.values())
-    assert manifest["model_version"] == "GJB_s1_corrected"
+    assert manifest["model_version"] == "GJB_s1_1khz"
+    assert manifest["plant_dt_s"] == pytest.approx(0.001)
+    assert manifest["transport_delay_sampling_lower_bound_s"] == pytest.approx(0.001)
     assert {row["aircraft_class"] for row in rows} == {"IV"}
     assert {row["flight_phase"] for row in rows} == {"A"}
     assert {row["profile"] for row in rows} == {"IV-A"}

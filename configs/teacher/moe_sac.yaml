@@ -1,1 +1,55 @@
-# Configuration placeholder.
+schema_version: "3.0"
+teacher: privileged_4_expert_moe_sac
+runs:
+  seeds: [20260827, 20260828, 20260829, 20260830, 20260831]
+  short_throughput_steps: 50000
+  planned_training_steps: 2000000
+network:
+  architecture: pre_layernorm_residual_moe
+  activation: silu
+  residual_scale: 0.1
+  experts: 4
+  router_input: privileged_theta_only
+  actor:
+    observation_dim: 268
+    model_width: 896
+    shared_residual_blocks: 10
+    expert_residual_blocks: 2
+    expert_bottleneck_width: 448
+    theta_encoder: [512, 256]
+    router_hidden_width: 512
+    output: squashed_gaussian_1d
+  critic:
+    observation_dim: 273
+    action_dim: 1
+    width: 896
+    residual_blocks_per_q: 14
+    twin_q: true
+  parameter_counts:
+    actor: 23046790
+    actor_ratio_to_mlp: 1.01199
+    twin_critics: 45556226
+    entropy_temperature: 1
+    trainable_total: 68603017
+    frozen_target_critics: 45556226
+    stored_network_total_excluding_optimizer: 114159242
+sac:
+  gamma: 0.9999
+  target_tau: 0.005
+  learning_rate: 0.0003
+  initial_alpha: 0.1
+  automatic_entropy_tuning: true
+  target_entropy: -1.0
+  replay_capacity: 200000
+  batch_size: 256
+  warmup_steps: 20000
+  updates_per_environment_step: 1
+  gradient_norm_limit: 10.0
+moe_regularization:
+  balance_coefficient: 0.01
+  report: [expert_mean_usage, router_entropy, router_max_mean, router_min_mean]
+comparison_contract:
+  same_training_aircraft: true
+  same_commands: true
+  same_reward_and_action_constraints: true
+  same_seeds_as_mlp: true

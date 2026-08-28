@@ -21,6 +21,8 @@
     },
     "level_basis": "worst directly assessable result from GJB A18, A19, A35, and A31",
     "level_scope_warning": "Appendix A recommended static boundaries only; A116 and fitted tau_e are not included",
+    "plant_dt_s": 0.001,
+    "transport_delay_sampling_lower_bound_s": 0.001,
     "in_distribution_evidence_gates": {
       "L_Fa_rad_N_s2": [
         0.04,
@@ -68,7 +70,7 @@
     },
     "tau_p_s": {
       "core": [
-        0.01,
+        0.001,
         0.1
       ],
       "high_delay": [

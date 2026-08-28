@@ -1,7 +1,7 @@
 simulation:
-  plant_dt_s: 0.005
-  rl_dt_s: 0.02
-  action_hold_substeps: 4
+  plant_dt_s: 0.001
+  policy_dt_s: 0.001
+  action_hold_substeps: 1
 plant:
   transfer_function: "L_Fa*s*(s^2+2*zeta_phi*omega_phi*s+omega_phi^2)/((s-lambda_s)*(s+1/T_R)*(s^2+2*zeta_d*omega_d*s+omega_d^2))*exp(-tau_p*s)"
   derived: [omega_phi, zeta_phi, L_Fa]

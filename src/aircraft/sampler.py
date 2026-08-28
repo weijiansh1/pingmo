@@ -18,6 +18,8 @@ IV_A_LEVELS = ("L1", "L2", "L3")
 IV_A_L_FA_EVIDENCE_MIN = 0.04
 IV_A_L_FA_EVIDENCE_MAX = 0.4708387494022242
 IV_A_TRANSPORT_DELAY_RESEARCH_MAX_S = 0.25
+IV_A_TRANSPORT_DELAY_MIN_S = 0.001
+IV_A_PLANT_DT_S = 0.001
 IV_A_DEFAULT_SPLIT_COUNTS = {
     "train_core": 1200,
     "train_boundary": 600,
@@ -59,7 +61,7 @@ def generate_plant_library(seed: int, split_counts: dict[str, int]) -> list[Plan
             zeta_d = float(_scale(row[3], 0.08 if region == "core" else 0.02, 0.5 if region == "core" else 0.8))
             r_omega = float(_scale(row[4], 0.8 if region == "core" else 0.65, 1.15 if region == "core" else 1.35))
             r_zeta = float(_scale(row[5], 0.8 if region == "core" else 0.5, 1.4 if region == "core" else 2.0))
-            tau_p = float(_scale(row[6], 0.01 if region != "extreme" else 0.2, 0.1 if region == "core" else 0.25))
+            tau_p = float(_scale(row[6], IV_A_TRANSPORT_DELAY_MIN_S if region != "extreme" else 0.2, 0.1 if region == "core" else 0.25))
             kp_over_f = 1.0
             l_fa = kp_over_f / (t_r * r_omega**2)
             records.append(PlantRecord(
@@ -95,7 +97,7 @@ def _conditioned_parameters(unit: np.ndarray) -> tuple[str, PChannelParameters]:
     severity, class_latent, u_tr, u_noise, u_omega, u_zeta, u_ratio, u_gain = unit[1:9]
     if region == "core":
         t_r = float(np.exp(_scale(u_tr, np.log(.08), np.log(.35 if class_latent > .55 else 2.0))))
-        tau = float(np.clip(.01 + .09 * (.2 + .58 * (np.log(t_r)-np.log(.08))/(np.log(2)-np.log(.08)) + .22*u_noise), .01, .1))
+        tau = float(np.clip(.001 + .099 * (.2 + .58 * (np.log(t_r)-np.log(.08))/(np.log(2)-np.log(.08)) + .22*u_noise), .001, .1))
         omega = float(_scale(u_omega, 1.8, 6.0) if class_latent > .55 else _scale(u_omega, .5, 3.5))
         zeta = float(np.clip(.08 + .42 * (.2 + .58*u_zeta - .12*severity), .08, .5))
         r_omega, r_zeta, kp = .8+.35*u_ratio, .8+.6*(.35*u_ratio+.65*u_zeta), .7+.6*u_gain
@@ -106,7 +108,7 @@ def _conditioned_parameters(unit: np.ndarray) -> tuple[str, PChannelParameters]:
         r_omega, r_zeta, kp = .65+.7*u_ratio, .5+1.5*(.3*u_ratio+.7*severity), 1.0+1.1*severity+.25*u_gain
     elif region == "ood":
         t_r = float(np.exp(_scale(u_tr, np.log(.05), np.log(3.0))))
-        tau = float(np.clip(.02+.22*(.55*severity+.45*u_noise), .01, .25))
+        tau = float(np.clip(.02+.22*(.55*severity+.45*u_noise), .001, .25))
         omega, zeta = float(.4+7.6*u_omega), float(.02+.78*u_zeta)
         r_omega, r_zeta, kp = .65+.7*u_ratio, .5+1.5*u_zeta, .55+1.7*u_gain
     else:
@@ -121,16 +123,16 @@ def _conditioned_parameters(unit: np.ndarray) -> tuple[str, PChannelParameters]:
 
 
 def _raw_benchmark(parameters: PChannelParameters) -> dict[str, float | bool]:
-    plant = PChannel(parameters, dt=.005)
-    # Candidate screening uses the initial 0.75 s transient at the mandated
-    # 200 Hz plant rate; full-horizon reports are reserved for the 3000 finalists.
-    response = np.empty(150)
+    plant = PChannel(parameters, dt=IV_A_PLANT_DT_S)
+    # Candidate screening uses the initial 0.75 s transient on the same 1 kHz
+    # grid as training; full-horizon reports are reserved for the finalists.
+    response = np.empty(int(round(0.75 / IV_A_PLANT_DT_S)))
     for index in range(len(response)):
         response[index] = plant.step(1.0)[0]
     valid = bool(np.isfinite(response).all() and np.max(np.abs(response)) < 1e5)
     if not valid:
         return {"valid": False, "rho_osc": float("inf"), "peak": float("inf")}
-    metrics = evaluate_roll_response(np.arange(len(response))*.005, response)
+    metrics = evaluate_roll_response(np.arange(len(response)) * IV_A_PLANT_DT_S, response)
     return {"valid": True, "rho_osc": metrics["p_osc_over_p_av"], "peak": metrics["peak"], "settling_time_s": metrics["settling_time_s"]}
 
 
@@ -259,7 +261,7 @@ def _iv_a_candidate(unit: np.ndarray) -> tuple[str, float, PChannelParameters]:
     zeta, omega = _level_one_dutch(u_zeta, u_omega)
     r_omega = _log_scale(u_rw, .65, 1.35)
     zeta_phi = _scale(u_rz, .1, .7)
-    tau = _scale(u_tau, .01, .20)
+    tau = _scale(u_tau, IV_A_TRANSPORT_DELAY_MIN_S, .20)
 
     if proposed_bucket == "L2":
         if anchor == 0:
@@ -295,7 +297,7 @@ def _iv_a_candidate(unit: np.ndarray) -> tuple[str, float, PChannelParameters]:
         lam = -1e-6
     r_zeta = float(zeta_phi / zeta)
     uncalibrated = PChannelParameters(1.0, float(lam), t_r, zeta, omega, r_omega, r_zeta, tau)
-    return proposed_bucket, sensitivity, calibrate_l_fa_for_sensitivity(uncalibrated, sensitivity)
+    return proposed_bucket, sensitivity, calibrate_l_fa_for_sensitivity(uncalibrated, sensitivity, dt=IV_A_PLANT_DT_S)
 
 
 def _iv_a_bucket_schedule(targets: dict[str, int]) -> dict[str, list[str]]:
@@ -321,7 +323,7 @@ def build_iv_a_library(output_dir: str | Path, seed: int, candidate_count: int =
     candidates: list[dict[str, object]] = []
     for index, row in enumerate(unit):
         proposed_bucket, target_sensitivity, parameters = _iv_a_candidate(row)
-        measured_sensitivity = sensitivity_1s_deg_per_n(parameters)
+        measured_sensitivity = sensitivity_1s_deg_per_n(parameters, dt=IV_A_PLANT_DT_S)
         metrics = _raw_benchmark(parameters)
         assessment = classify_iv_a_quality(parameters, measured_sensitivity)
         candidates.append({
@@ -366,8 +368,8 @@ def build_iv_a_library(output_dir: str | Path, seed: int, candidate_count: int =
         (destination / name).write_text("\n".join(json.dumps(row, ensure_ascii=False, sort_keys=True, allow_nan=False) for row in rows) + "\n", encoding="utf-8")
     level_counts = {bucket: sum(row["sampling_bucket"] == bucket for row in selected) for bucket in (*IV_A_LEVELS, "OOD")}
     manifest = {
-        "schema_version": "5.0",
-        "model_version": "GJB_s1_corrected",
+        "schema_version": "6.0",
+        "model_version": "GJB_s1_1khz",
         "profile": "IV-A",
         "seed": seed,
         "candidate_count": candidate_count,
@@ -381,6 +383,8 @@ def build_iv_a_library(output_dir: str | Path, seed: int, candidate_count: int =
         "inceptor_assumption": "stick_controlled_for_A31_gate",
         "input_definition": "equivalent_roll_control_force_N",
         "delay_definition": "pure_transport_delay_before_p_channel",
+        "plant_dt_s": IV_A_PLANT_DT_S,
+        "transport_delay_sampling_lower_bound_s": IV_A_TRANSPORT_DELAY_MIN_S,
         "gjb_label_scope": "static_appendix_A_recommended_boundaries_not_formal_compliance",
         "ungraded_parameters": ["r_omega", "zeta_phi", "tau_p"],
         "l_fa_evidence_range": [IV_A_L_FA_EVIDENCE_MIN, IV_A_L_FA_EVIDENCE_MAX],
