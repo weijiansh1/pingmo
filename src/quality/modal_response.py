@@ -70,7 +70,7 @@ def _sensitivity_1s(time_s: np.ndarray, force_n: np.ndarray, roll_rate: np.ndarr
     end = int(np.searchsorted(time_s, end_time, side="left"))
     if end >= len(time_s) or not np.allclose(force_n[edge:end + 1], force_n[edge], atol=1e-10):
         return None
-    bank_change = float(np.trapezoid(roll_rate[edge:end + 1], time_s[edge:end + 1]))
+    bank_change = float(np.trapz(roll_rate[edge:end + 1], time_s[edge:end + 1]))
     return abs(math.degrees(bank_change) / delta_force)
 
 

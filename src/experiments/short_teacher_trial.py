@@ -274,6 +274,29 @@ def run_short_teacher_trial(
             print(json.dumps(progress, ensure_ascii=False), flush=True)
 
     training_elapsed = time.perf_counter() - started
+    checkpoint = {
+        "teacher_kind": config.teacher_kind,
+        "actor": learner.actor.state_dict(),
+        "critic": learner.critic.state_dict(),
+        "target_critic": learner.target_critic.state_dict(),
+        "log_alpha": learner.log_alpha.detach().cpu(),
+        "actor_observation_dim": int(actor_obs.size),
+        "critic_observation_dim": int(critic_obs.size),
+        "config": config.__dict__ if hasattr(config, "__dict__") else {
+            field: getattr(config, field) for field in config.__dataclass_fields__
+        },
+    }
+    torch.save(checkpoint, destination / "checkpoint.pt")
+    _write_json(destination / "progress.json", {
+        "status": "training_complete",
+        "step": config.total_steps,
+        "updates": updates,
+        "completed_episodes": len(completed_episodes),
+        "elapsed_s": training_elapsed,
+        "checkpoint": str(destination / "checkpoint.pt"),
+        "last_losses": losses,
+    })
+
     evaluation_started = time.perf_counter()
     held_out_profiles = _held_out_profiles()
     raw_rows = evaluate_policy_pairs(
@@ -291,19 +314,6 @@ def run_short_teacher_trial(
         seed=config.seed + 20_000,
     )
     evaluation_summary = summarize_trial_evaluation(raw_rows, controlled_rows)
-    checkpoint = {
-        "teacher_kind": config.teacher_kind,
-        "actor": learner.actor.state_dict(),
-        "critic": learner.critic.state_dict(),
-        "target_critic": learner.target_critic.state_dict(),
-        "log_alpha": learner.log_alpha.detach().cpu(),
-        "actor_observation_dim": int(actor_obs.size),
-        "critic_observation_dim": int(critic_obs.size),
-        "config": config.__dict__ if hasattr(config, "__dict__") else {
-            field: getattr(config, field) for field in config.__dataclass_fields__
-        },
-    }
-    torch.save(checkpoint, destination / "checkpoint.pt")
     report: dict[str, object] = {
         "status": "complete",
         "config": checkpoint["config"],
