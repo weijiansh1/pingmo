@@ -26,6 +26,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--evaluation-plants", type=int, default=defaults.evaluation_plants)
     parser.add_argument("--evaluation-batch-size", type=int, default=defaults.evaluation_batch_size)
     parser.add_argument("--progress-interval", type=int, default=defaults.progress_interval_steps)
+    parser.add_argument("--actor-snapshot-interval", type=int, default=defaults.actor_snapshot_interval_steps)
     parser.add_argument("--seed", type=int, default=20260828)
     parser.add_argument("--device", default="cuda")
     parser.add_argument(
@@ -51,6 +52,7 @@ if __name__ == "__main__":
         evaluation_plants=args.evaluation_plants,
         evaluation_batch_size=args.evaluation_batch_size,
         progress_interval_steps=args.progress_interval,
+        actor_snapshot_interval_steps=args.actor_snapshot_interval,
         seed=args.seed,
         device=args.device,
     )

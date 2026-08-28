@@ -7,6 +7,7 @@ from dataclasses import dataclass
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 import time
 
 import numpy as np
@@ -40,6 +41,7 @@ class ShortTrialConfig:
     seed: int = 20260828
     device: str = "cuda"
     progress_interval_steps: int = 10_000
+    actor_snapshot_interval_steps: int = 0
     network_width: int = 896
     residual_blocks: int = 14
     moe_shared_blocks: int = 10
@@ -65,12 +67,16 @@ class ShortTrialConfig:
             raise ValueError("trial counts and network dimensions must be positive")
         if self.replay_capacity < self.batch_size or self.episode_duration_s < 1.10:
             raise ValueError("replay must fit one batch and episodes must cover the 1 s sensitivity metric")
+        if self.actor_snapshot_interval_steps < 0:
+            raise ValueError("actor_snapshot_interval_steps cannot be negative")
         horizon_steps = int(round(self.episode_duration_s / 0.001))
         episode_batch_steps = self.parallel_envs * horizon_steps
         if self.total_steps % episode_batch_steps != 0:
             raise ValueError("total_steps must contain complete parallel episode batches")
         if self.warmup_steps % self.parallel_envs != 0:
             raise ValueError("warmup_steps must align with parallel_envs")
+        if self.actor_snapshot_interval_steps and self.actor_snapshot_interval_steps % episode_batch_steps != 0:
+            raise ValueError("actor snapshots must align with complete parallel episode batches")
 
 
 def short_training_command_suite(duration_s: float = 1.25) -> tuple[CommandProfile, ...]:
@@ -300,6 +306,63 @@ def _write_json(path: Path, payload: object) -> None:
     temporary.replace(path)
 
 
+def _config_payload(config: ShortTrialConfig) -> dict[str, object]:
+    return {field: getattr(config, field) for field in config.__dataclass_fields__}
+
+
+def source_revision() -> dict[str, object]:
+    root = Path(__file__).resolve().parents[2]
+    try:
+        commit = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=root,
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        ).stdout.strip()
+        tracked_status = subprocess.run(
+            ["git", "status", "--porcelain", "--untracked-files=no"],
+            cwd=root,
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        ).stdout
+    except (OSError, subprocess.SubprocessError):
+        return {"commit": None, "tracked_dirty": None}
+    return {"commit": commit, "tracked_dirty": bool(tracked_status.strip())}
+
+
+def _write_actor_snapshot(
+    destination: Path,
+    learner: PrivilegedSAC | MoETeacher,
+    config: ShortTrialConfig,
+    source_fingerprint: dict[str, object],
+    source_state: dict[str, object],
+    transition_steps: int,
+    completed_episodes: int,
+    actor_observation_dim: int,
+) -> Path:
+    snapshot_dir = destination / "actor_snapshots"
+    snapshot_dir.mkdir(parents=True, exist_ok=True)
+    path = snapshot_dir / f"actor_step_{transition_steps:09d}.pt"
+    temporary = path.with_suffix(".pt.tmp")
+    actor_state = {name: tensor.detach().cpu() for name, tensor in learner.actor.state_dict().items()}
+    torch.save({
+        "teacher_kind": config.teacher_kind,
+        "actor": actor_state,
+        "actor_observation_dim": actor_observation_dim,
+        "transition_steps": transition_steps,
+        "completed_episodes": completed_episodes,
+        "aircraft_library": source_fingerprint,
+        "source": source_state,
+        "config": _config_payload(config),
+    }, temporary)
+    temporary.replace(path)
+    return path
+
+
 def run_short_teacher_trial(
     library_path: str | Path,
     output_dir: str | Path,
@@ -315,6 +378,7 @@ def run_short_teacher_trial(
     torch.manual_seed(config.seed)
     np_rng = np.random.default_rng(config.seed)
     source_fingerprint = library_fingerprint(library_path)
+    source_state = source_revision()
     train_records = _records_for_splits(library_path, {"train_core", "train_boundary"})
     validation_pool = _records_for_splits(library_path, {"validation"})
     source_level_counts = {
@@ -357,6 +421,7 @@ def run_short_teacher_trial(
     )
     completed_episodes: list[dict[str, object]] = []
     losses: dict[str, float] = {}
+    actor_snapshots: list[str] = []
     updates = 0
     started = time.perf_counter()
     if device.type == "cuda":
@@ -420,10 +485,33 @@ def run_short_teacher_trial(
                 rollouts[index] = start_rollout(next_assignment)
                 next_assignment += 1
 
+        if (
+            config.actor_snapshot_interval_steps
+            and transition_steps % config.actor_snapshot_interval_steps == 0
+        ):
+            snapshot = _write_actor_snapshot(
+                destination,
+                learner,
+                config,
+                source_fingerprint,
+                source_state,
+                transition_steps,
+                len(completed_episodes),
+                int(first_actor_obs.size),
+            )
+            actor_snapshots.append(str(snapshot))
+            print(json.dumps({
+                "event": "actor_snapshot",
+                "step": transition_steps,
+                "completed_episodes": len(completed_episodes),
+                "path": str(snapshot),
+            }, ensure_ascii=False), flush=True)
+
         if transition_steps >= next_progress:
             progress = {
                 "step": transition_steps,
                 "updates": updates,
+                "replay_size": len(replay),
                 "completed_episodes": len(completed_episodes),
                 "elapsed_s": time.perf_counter() - started,
                 "last_losses": losses,
@@ -443,9 +531,8 @@ def run_short_teacher_trial(
         "actor_observation_dim": int(first_actor_obs.size),
         "critic_observation_dim": int(first_critic_obs.size),
         "aircraft_library": source_fingerprint,
-        "config": config.__dict__ if hasattr(config, "__dict__") else {
-            field: getattr(config, field) for field in config.__dataclass_fields__
-        },
+        "source": source_state,
+        "config": _config_payload(config),
     }
     torch.save(checkpoint, destination / "checkpoint.pt")
     _write_json(destination / "progress.json", {
@@ -455,6 +542,7 @@ def run_short_teacher_trial(
         "completed_episodes": len(completed_episodes),
         "elapsed_s": training_elapsed,
         "checkpoint": str(destination / "checkpoint.pt"),
+        "actor_snapshots": actor_snapshots,
         "last_losses": losses,
     })
 
@@ -482,6 +570,7 @@ def run_short_teacher_trial(
         "config": checkpoint["config"],
         "parameter_counts": learner.parameter_counts(),
         "aircraft_library": source_fingerprint,
+        "source": source_state,
         "source_level_counts": source_level_counts,
         "training_aircraft_count": len(train_records),
         "training_command_count": len(profiles),
@@ -493,6 +582,7 @@ def run_short_teacher_trial(
             "unique_commands": len({row["command_id"] for row in completed_episodes}),
         },
         "updates": updates,
+        "actor_snapshots": actor_snapshots,
         "training_elapsed_s": training_elapsed,
         "evaluation_elapsed_s": time.perf_counter() - evaluation_started,
         "last_losses": losses,
