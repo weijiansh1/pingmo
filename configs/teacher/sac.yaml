@@ -1,1 +1,45 @@
-# Configuration placeholder.
+schema_version: "3.0"
+teacher: privileged_mlp_sac
+runs:
+  seeds: [20260827, 20260828, 20260829, 20260830, 20260831]
+  short_throughput_steps: 50000
+  planned_training_steps: 2000000
+network:
+  architecture: pre_layernorm_residual_mlp
+  activation: silu
+  residual_scale: 0.1
+  actor:
+    observation_dim: 268
+    width: 896
+    residual_blocks: 14
+    output: squashed_gaussian_1d
+  critic:
+    observation_dim: 273
+    action_dim: 1
+    width: 896
+    residual_blocks_per_q: 14
+    twin_q: true
+  parameter_counts:
+    actor: 22773634
+    twin_critics: 45556226
+    entropy_temperature: 1
+    trainable_total: 68329861
+    frozen_target_critics: 45556226
+    stored_network_total_excluding_optimizer: 113886086
+sac:
+  gamma: 0.9999
+  target_tau: 0.005
+  learning_rate: 0.0003
+  initial_alpha: 0.1
+  automatic_entropy_tuning: true
+  target_entropy: -1.0
+  replay_capacity: 200000
+  batch_size: 256
+  warmup_steps: 20000
+  updates_per_environment_step: 1
+  gradient_norm_limit: 10.0
+comparison_contract:
+  same_training_aircraft: true
+  same_commands: true
+  same_reward_and_action_constraints: true
+  same_seeds_as_moe: true

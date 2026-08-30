@@ -1,1 +1,11 @@
-# Configuration placeholder.
+contract: specialist_action_distillation_v1
+sample_stride: 10
+validation_aircraft_fraction: 0.2
+split_rule: aircraft_holdout
+single_aircraft_fallback: command_holdout
+features:
+  teacher_input: observation_only
+  student_input: observation_plus_normalized_theta
+label: normalized_direct_full_F_as
+artifact_layout: one_npz_shard_per_teacher
+collection_commands: teacher_training_suite

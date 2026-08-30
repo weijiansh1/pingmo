@@ -20,6 +20,25 @@ GJB A19,"A,C",3,divergent spiral time-to-double min,>=,4.0,s,S01,evidence/GJB_A1
 GJB A19,B,1,divergent spiral time-to-double min,>=,20.0,s,S01,evidence/GJB_A19_spiral.png,先采T2再换算lambda_s=ln2/T2
 GJB A19,B,2,divergent spiral time-to-double min,>=,8.0,s,S01,evidence/GJB_A19_spiral.png,先采T2再换算lambda_s=ln2/T2
 GJB A19,B,3,divergent spiral time-to-double min,>=,4.0,s,S01,evidence/GJB_A19_spiral.png,先采T2再换算lambda_s=ln2/T2
+GJB A21,all,1,fitted equivalent roll time delay max,<=,0.10,s,S01,GJB PDF 250 / printed 246,只用于端到端LOES拟合tau_e；不得直接给纯运输tau_p打等级
+GJB A21,all,2,fitted equivalent roll time delay max,<=,0.20,s,S01,GJB PDF 250 / printed 246,只用于端到端LOES拟合tau_e；不得直接给纯运输tau_p打等级
+GJB A21,all,3,fitted equivalent roll time delay max,<=,0.25,s,S01,GJB PDF 250 / printed 246,只用于端到端LOES拟合tau_e；不得直接给纯运输tau_p打等级
+GJB A30,IV A central stick,1,max roll control force,<=,88.96,N,S01,GJB PDF 275 / printed 271,表A30是获得规定滚转性能的操纵力范围；不是规定阶跃幅值
+GJB A30,IV A central stick,2,max roll control force,<=,133.50,N,S01,GJB PDF 275 / printed 271,表A30是获得规定滚转性能的操纵力范围；不是规定阶跃幅值
+GJB A30,IV A central stick,3,max roll control force,<=,155.68,N,S01,GJB PDF 275 / printed 271,表A30是获得规定滚转性能的操纵力范围；不是规定阶跃幅值
+GJB A30,IV A central stick,1,min roll control force increment above breakout,>=,22.24,N,S01,GJB PDF 276 / printed 272,实际建议下限是启动力加表A30最大力的1/4
+GJB A30,IV A central stick,2,min roll control force increment above breakout,>=,16.6875,N,S01,GJB PDF 276 / printed 272,实际建议下限是启动力加表A30最大力的1/8
+GJB A30,IV A central stick,3,min roll control force increment above breakout,>=,0,N,S01,GJB PDF 276 / printed 272,等级3建议增量为零
+GJB A30,IV A wheel,1,max roll control force,<=,177.92,N,S01,GJB PDF 275 / printed 271,侧杆无建议数值
+GJB A30,IV A wheel,2,max roll control force,<=,266.88,N,S01,GJB PDF 275 / printed 271,侧杆无建议数值
+GJB A30,IV A wheel,3,max roll control force,<=,311.36,N,S01,GJB PDF 275 / printed 271,侧杆无建议数值
+GJB A30,IV A wheel,1,min roll control force increment above breakout,>=,44.48,N,S01,GJB PDF 276 / printed 272,实际建议下限是启动力加表A30最大力的1/4
+GJB A30,IV A wheel,2,min roll control force increment above breakout,>=,33.36,N,S01,GJB PDF 276 / printed 272,实际建议下限是启动力加表A30最大力的1/8
+GJB A30,IV A wheel,3,min roll control force increment above breakout,>=,0,N,S01,GJB PDF 276 / printed 272,等级3建议增量为零
+GJB A31,IV stick-controlled A,1,max roll sensitivity,<=,3.38,deg-in-1-sec/N,S01,GJB PDF 276 / printed 272,约束S_1s而非L_Fa；需记录操纵器类型
+GJB A31,IV stick-controlled A,2,max roll sensitivity,<=,5.62,deg-in-1-sec/N,S01,GJB PDF 276 / printed 272,约束S_1s而非L_Fa；需记录操纵器类型
+GJB A31,IV stick-controlled C,1,max roll sensitivity,<=,1.69,deg-in-1-sec/N,S01,GJB PDF 276 / printed 272,约束S_1s而非L_Fa；需记录操纵器类型
+GJB A31,IV stick-controlled C,2,max roll sensitivity,<=,2.81,deg-in-1-sec/N,S01,GJB PDF 276 / printed 272,约束S_1s而非L_Fa；需记录操纵器类型
 GJB A35,A(CO/GA):IV,1,zeta_d min,>=,0.4,1,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
 GJB A35,A(CO/GA):IV,1,zeta_d*omega_d min,>=,0.4,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d
 GJB A35,A(CO/GA):IV,1,omega_d min,>=,1.0,rad/s,S01,evidence/GJB_A35_Dutch_roll.png,联合检查；不能只检查zeta_d

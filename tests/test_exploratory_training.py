@@ -1,16 +1,32 @@
+import importlib.util
 from pathlib import Path
+import subprocess
+import sys
 
 import numpy as np
+import pytest
 
-from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, collect_response_trace
+from src.envs.reward import RewardWeights
+from src.envs.commands import CommandProfile
+from src.experiments.exploratory_sac import DEFAULT_TRAIN_PLANT_ID, build_fixed_env, build_multi_env, collect_response_trace, load_completed_screening_report, response_metrics, reward_axis_limits, summarize_held_out_metrics
 from src.experiments.privileged_sac import train_fixed_privileged_sac
+
+
+def _load_batch_module():
+    root = Path(__file__).parents[1]
+    spec = importlib.util.spec_from_file_location("gpu_sac_screening_batch", root / "scripts/08_run_gpu_sac_screening_batch.py")
+    assert spec is not None
+    assert spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def test_fixed_training_env_loads_a_persisted_plant() -> None:
     root = Path(__file__).parents[1]
     env = build_fixed_env(root / "data/aircraft/generated/p_channel_library_20260827_v2_stratified/plants.jsonl", "id_test-2152", horizon_steps=8)
     observation, info = env.reset(seed=2)
-    assert observation.shape == (141,)
+    assert observation.shape == (268,)
     assert info["plant_id"] == "id_test-2152"
 
 
@@ -21,16 +37,42 @@ def test_default_exploratory_plant_is_from_the_training_split() -> None:
     assert info["plant_id"].startswith("train_core-")
 
 
-def test_fixed_training_env_accepts_reference_tracking_experiment_settings() -> None:
+def test_build_multi_env_cycles_through_requested_persisted_plants() -> None:
+    root = Path(__file__).parents[1]
+    env = build_multi_env(
+        root / "data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+        ["train_core-0000", "train_core-0001"],
+        horizon_steps=8,
+    )
+    seen = {env.reset(seed=seed)[1]["plant_id"] for seed in range(8)}
+    assert seen == {"train_core-0000", "train_core-0001"}
+
+
+def test_build_multi_env_forwards_named_command_profiles() -> None:
+    root = Path(__file__).parents[1]
+    env = build_multi_env(
+        root / "data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+        ["train_core-0000"],
+        horizon_steps=8,
+        command_profiles=(CommandProfile("step-0.25", "step", amplitude=.25, onset_s=0.0),),
+    )
+
+    _, info = env.reset(seed=8)
+
+    assert info["command_id"] == "step-0.25"
+
+
+def test_fixed_training_env_exposes_response_cost_feedback() -> None:
     root = Path(__file__).parents[1]
     env = build_fixed_env(root / "data/aircraft/generated/p_channel_library_20260827_v2_stratified/plants.jsonl", "train_core-0000", horizon_steps=8, correction_ratio=0.5, pilot_signal="step")
     env.reset(seed=2)
     _, _, _, _, info = env.step(env.action_space.sample())
     assert info["f_pilot"] == 22.0
-    assert "p_ref" in info
+    assert "actor_response_feedback" in info
+    assert "p_ref" not in info
 
 
-def test_collect_response_trace_records_raw_reference_and_control_effort() -> None:
+def test_collect_response_trace_records_raw_response_costs_and_control_effort() -> None:
     class ZeroPolicy:
         def predict(self, observation, deterministic: bool):
             return np.zeros(1, dtype=np.float32), None
@@ -45,10 +87,104 @@ def test_collect_response_trace_records_raw_reference_and_control_effort() -> No
     )
     trace = collect_response_trace(ZeroPolicy(), env, seed=3)
 
-    assert trace["time_s"].shape == (8,)
-    assert trace["p"].shape == (8,)
-    assert trace["p_ref"].shape == (8,)
+    assert trace["time_s"].shape == (9,)
+    assert trace["p"].shape == (9,)
+    assert trace["raw_p"].shape == (9,)
     assert np.allclose(trace["delta_f"], 0.0)
+    assert trace["commanded_delta_f"].shape == (9,)
+    assert np.allclose(trace["commanded_delta_f"], 0.0)
+    assert trace["added_delay_cost"].shape == (9,)
+
+
+def test_response_metrics_include_response_energy_cost_and_effort() -> None:
+    trace = {
+        "p": np.array([0.0, 1.0]),
+        "delta_f": np.array([0.0, 3.0]),
+        "commanded_delta_f": np.array([0.0, 4.0]),
+        "reward": np.array([0.0, -0.25]),
+    }
+    metrics = response_metrics(trace)
+    assert metrics == {
+        "episode_cost": 0.25,
+        "roll_rate_rms_rad_s": 2 ** -0.5,
+        "applied_delta_f_rms_n": 3 / 2 ** 0.5,
+        "commanded_delta_f_total_variation_n": 4.0,
+    }
+
+
+def test_reward_axis_limits_make_small_negative_rewards_visible() -> None:
+    assert reward_axis_limits(np.array([-0.004, -0.013, -0.008])) == (-0.03, 0.0)
+
+
+def test_summarize_held_out_metrics_reports_harm_rate_and_median_change() -> None:
+    summary = summarize_held_out_metrics([
+        {"raw": {"episode_cost": 0.01}, "sac": {"episode_cost": 0.02}},
+        {"raw": {"episode_cost": 0.20}, "sac": {"episode_cost": 0.10}},
+    ])
+    assert summary["harm_rate"] == 0.5
+    assert summary["median_episode_cost_change"] == pytest.approx(-0.045)
+
+
+def test_load_completed_screening_report_returns_only_existing_report(tmp_path: Path) -> None:
+    assert load_completed_screening_report(tmp_path) is None
+    report = {"run_id": "single-40k-seed-20260828"}
+    (tmp_path / "screening_report.json").write_text('{"run_id": "single-40k-seed-20260828"}\n', encoding="utf-8")
+    assert load_completed_screening_report(tmp_path) == report
+
+
+def test_screening_run_spec_resolves_frozen_strong_seed() -> None:
+    root = Path(__file__).parents[1]
+    module = _load_batch_module()
+
+    run = module.resolve_screening_run(
+        "multi-strong-40k-seed-20260829",
+        root / "data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+    )
+
+    assert run.run_id == "multi-strong-40k-seed-20260829"
+    assert run.seed == 20260829
+    assert run.timesteps == 40_000
+    assert len(run.plant_ids) == 16
+    assert run.reward_weights.action_energy == 0.20
+
+
+def test_execute_screening_run_returns_existing_report(tmp_path: Path) -> None:
+    root = Path(__file__).parents[1]
+    module = _load_batch_module()
+    run = module.ScreeningRun(
+        run_id="single-40k-seed-20260828",
+        configuration_id="single-40k",
+        seed=20260828,
+        timesteps=40_000,
+        plant_ids=["train_core-0000"],
+        reward_weights=RewardWeights(),
+    )
+    run_dir = tmp_path / run.run_id
+    run_dir.mkdir()
+    (run_dir / "screening_report.json").write_text('{"run_id": "single-40k-seed-20260828"}', encoding="utf-8")
+
+    report, skipped = module.execute_screening_run(
+        run,
+        root / "data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+        tmp_path,
+    )
+
+    assert skipped is True
+    assert report["run_id"] == run.run_id
+
+
+def test_screening_worker_rejects_unknown_run_id() -> None:
+    root = Path(__file__).parents[1]
+
+    result = subprocess.run(
+        [sys.executable, "scripts/09_run_gpu_sac_screening_worker.py", "--run-id", "unknown"],
+        cwd=root,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode != 0
+    assert "unknown screening run ID" in result.stderr
 
 
 def test_fixed_privileged_sac_cpu_smoke_persists_two_stream_checkpoint(tmp_path: Path) -> None:
@@ -61,9 +197,12 @@ def test_fixed_privileged_sac_cpu_smoke_persists_two_stream_checkpoint(tmp_path:
         warmup_steps=16,
         batch_size=16,
         seed=13,
+        network_width=32,
+        actor_residual_blocks=2,
+        critic_residual_blocks=2,
     )
 
-    assert report["actor_observation_dim"] == 141
+    assert report["actor_observation_dim"] == 268
     assert report["critic_observation_dim"] > 19
     assert report["updates"] > 0
     assert (tmp_path / "privileged_sac.pt").exists()

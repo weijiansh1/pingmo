@@ -1,1 +1,54 @@
-# Configuration placeholder.
+schema_version: "2.0"
+stage: siso_roll_quality_shaping
+simulation:
+  plant_dt_s: 0.001
+  policy_dt_s: 0.001
+  episode_duration_s: 10.0
+  one_policy_decision_per_plant_sample: true
+  explicit_delay_queue_in_actor_or_critic: false
+plant:
+  input: equivalent_roll_control_force_N
+  output: roll_rate_p_rad_s
+  transport_delay_field: tau_p
+  transport_delay_definition: pure_transport_delay_before_p_channel
+  transport_delay_sampling_min_s: 0.001
+action:
+  definition: normalized_delta_force
+  pilot_force_scale_n: 22.0
+  correction_ratio: 0.3
+  correction_limit_n: 6.6
+  normalized_rate_limit_s_inv: 4.0
+  correction_rate_limit_n_s: 26.4
+  augmentation_lag_time_constant_s: 0.0
+observation:
+  actor_dim: 268
+  critic_dim: 273
+  current_physical:
+    - pilot_force_normalized
+    - roll_rate_p
+    - roll_acceleration_normalized
+    - bank_angle_phi
+    - previous_commanded_action
+    - applied_action
+  current_response_feedback:
+    - roll_cost
+    - oscillation_cost
+    - spiral_recovery_cost
+    - delay_response_cost
+  history:
+    samples: 50
+    duration_s: 0.050
+    per_sample: [pilot_force_normalized, roll_rate_p, roll_acceleration_normalized, bank_angle_phi, applied_action]
+  privileged_theta_last_8:
+    - L_Fa
+    - lambda_s
+    - T_R
+    - zeta_d
+    - omega_d
+    - R_omega
+    - R_zeta
+    - tau_p
+  critic_only: [continuous_plant_state, episode_progress]
+commands:
+  training: [step, pulse, doublet, square, sine, chirp, staircase, piecewise]
+  fixed_duration_s: 10.0

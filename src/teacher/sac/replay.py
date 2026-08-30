@@ -24,16 +24,45 @@ class TwoStreamReplayBuffer:
         return self._size
 
     def add(self, actor_obs: np.ndarray, critic_obs: np.ndarray, action: np.ndarray, reward: float, next_actor_obs: np.ndarray, next_critic_obs: np.ndarray, done: bool) -> None:
-        index = self._position
-        self.actor_obs[index] = actor_obs
-        self.critic_obs[index] = critic_obs
-        self.actions[index] = action
-        self.rewards[index, 0] = reward
-        self.next_actor_obs[index] = next_actor_obs
-        self.next_critic_obs[index] = next_critic_obs
-        self.dones[index, 0] = float(done)
-        self._position = (index + 1) % self.capacity
-        self._size = min(self._size + 1, self.capacity)
+        self.add_batch(
+            np.asarray(actor_obs)[None, :],
+            np.asarray(critic_obs)[None, :],
+            np.asarray(action)[None, :],
+            np.asarray([reward], dtype=np.float32),
+            np.asarray(next_actor_obs)[None, :],
+            np.asarray(next_critic_obs)[None, :],
+            np.asarray([done], dtype=np.float32),
+        )
+
+    def add_batch(
+        self,
+        actor_obs: np.ndarray,
+        critic_obs: np.ndarray,
+        actions: np.ndarray,
+        rewards: np.ndarray,
+        next_actor_obs: np.ndarray,
+        next_critic_obs: np.ndarray,
+        dones: np.ndarray,
+    ) -> None:
+        """Append one synchronous vector-environment transition batch."""
+
+        batch_size = int(np.asarray(actor_obs).shape[0])
+        if batch_size <= 0 or batch_size > self.capacity:
+            raise ValueError("batch size must be between one and replay capacity")
+        arrays = (critic_obs, actions, rewards, next_actor_obs, next_critic_obs, dones)
+        if any(int(np.asarray(array).shape[0]) != batch_size for array in arrays):
+            raise ValueError("all replay batch arrays must have the same leading dimension")
+
+        indices = (self._position + np.arange(batch_size)) % self.capacity
+        self.actor_obs[indices] = actor_obs
+        self.critic_obs[indices] = critic_obs
+        self.actions[indices] = actions
+        self.rewards[indices, 0] = np.asarray(rewards).reshape(batch_size)
+        self.next_actor_obs[indices] = next_actor_obs
+        self.next_critic_obs[indices] = next_critic_obs
+        self.dones[indices, 0] = np.asarray(dones).reshape(batch_size)
+        self._position = (self._position + batch_size) % self.capacity
+        self._size = min(self._size + batch_size, self.capacity)
 
     def sample(self, batch_size: int, device: str | torch.device) -> dict[str, torch.Tensor]:
         if batch_size > self._size:

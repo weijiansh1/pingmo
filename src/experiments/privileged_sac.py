@@ -14,13 +14,11 @@ from src.teacher.sac.teacher import PrivilegedSAC
 def evaluate_fixed_privileged_sac(learner: PrivilegedSAC, env, seed: int = 0) -> dict[str, float]:
     actor_obs, info = env.reset(seed=seed)
     critic_obs = info["critic_state"]
-    rewards, actions, errors = [], [], []
+    rewards, actions = [], []
     while True:
         action = learner.act(torch.as_tensor(actor_obs, dtype=torch.float32).unsqueeze(0), deterministic=True).numpy()[0]
         actor_obs, reward, terminated, truncated, info = env.step(action)
         critic_obs = info["critic_state"]
-        scale = max(abs(env._record.parameters.l_fa), 1.0)
-        errors.append((env._p - env._p_ref) / scale)
         rewards.append(float(reward)); actions.append(float(action[0]))
         if terminated or truncated:
             break
@@ -29,22 +27,52 @@ def evaluate_fixed_privileged_sac(learner: PrivilegedSAC, env, seed: int = 0) ->
         "episode_reward": float(np.sum(rewards)),
         "action_rms": float(np.sqrt(np.mean(np.square(action_values)))),
         "action_total_variation": float(np.sum(np.abs(np.diff(action_values)))),
-        "tracking_nrmse": float(np.sqrt(np.mean(np.square(errors)))),
+        "episode_cost": float(-np.sum(rewards)),
         "critic_observation_dim": float(np.asarray(critic_obs).size),
     }
 
 
-def train_fixed_privileged_sac(library_path: str | Path, plant_id: str, output_dir: str | Path, timesteps: int = 20_000, warmup_steps: int = 1_000, batch_size: int = 128, seed: int = 20260827, device: str = "cpu", correction_ratio: float = 0.5) -> dict[str, float | int | str]:
+def train_fixed_privileged_sac(
+    library_path: str | Path,
+    plant_id: str,
+    output_dir: str | Path,
+    timesteps: int = 20_000,
+    warmup_steps: int = 1_000,
+    batch_size: int = 128,
+    seed: int = 20260827,
+    device: str = "cpu",
+    correction_ratio: float = 0.3,
+    network_width: int = 896,
+    actor_residual_blocks: int = 14,
+    critic_residual_blocks: int = 14,
+) -> dict[str, float | int | str]:
     """Train only on one persisted train plant; this is not a formal global Teacher run."""
     if timesteps <= warmup_steps or batch_size <= 0:
         raise ValueError("timesteps must exceed warmup_steps and batch_size must be positive")
     np_rng = np.random.default_rng(seed)
     torch.manual_seed(seed)
-    env = build_fixed_env(library_path, plant_id, correction_ratio=correction_ratio, pilot_signal="step")
+    episode_steps = min(10_000, max(128, timesteps))
+    env = build_fixed_env(
+        library_path,
+        plant_id,
+        horizon_steps=episode_steps,
+        correction_ratio=correction_ratio,
+        pilot_signal="step",
+    )
     actor_obs, info = env.reset(seed=seed)
-    learner = PrivilegedSAC(actor_obs.size, info["critic_state"].size, env.action_space.shape[0], device=device)
+    learner = PrivilegedSAC(
+        actor_obs.size,
+        info["critic_state"].size,
+        env.action_space.shape[0],
+        actor_width=network_width,
+        actor_residual_blocks=actor_residual_blocks,
+        critic_width=network_width,
+        critic_residual_blocks=critic_residual_blocks,
+        device=device,
+    )
     replay = TwoStreamReplayBuffer(50_000, actor_obs.size, info["critic_state"].size, env.action_space.shape[0], seed=seed)
     before = evaluate_fixed_privileged_sac(learner, env, seed=seed)
+    actor_obs, info = env.reset(seed=seed)
     critic_obs = info["critic_state"]
     losses: dict[str, float] = {}
     updates = 0
@@ -73,6 +101,9 @@ def train_fixed_privileged_sac(library_path: str | Path, plant_id: str, output_d
         "critic_observation_dim": critic_obs.size,
         "plant_id": plant_id,
         "correction_ratio": correction_ratio,
+        "network_width": network_width,
+        "actor_residual_blocks": actor_residual_blocks,
+        "critic_residual_blocks": critic_residual_blocks,
     }
     torch.save(checkpoint, destination / "privileged_sac.pt")
     report: dict[str, float | int | str] = {
@@ -82,6 +113,9 @@ def train_fixed_privileged_sac(library_path: str | Path, plant_id: str, output_d
         "batch_size": batch_size,
         "seed": seed,
         "correction_ratio": correction_ratio,
+        "network_width": network_width,
+        "actor_residual_blocks": actor_residual_blocks,
+        "critic_residual_blocks": critic_residual_blocks,
         "actor_observation_dim": int(actor_obs.size),
         "critic_observation_dim": int(critic_obs.size),
         "updates": updates,

@@ -1,1 +1,1 @@
-"""Distillation package."""
+"""Specialist-to-Student distillation package."""

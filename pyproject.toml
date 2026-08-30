@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "flight-rl-control"
 version = "0.1.0"
-description = "Local research implementation of privileged MoE-SAC roll-quality control"
+description = "Specialist SAC and policy-distillation research for P-channel roll-rate control"
 requires-python = ">=3.10"
 dependencies = [
   "numpy>=1.26",

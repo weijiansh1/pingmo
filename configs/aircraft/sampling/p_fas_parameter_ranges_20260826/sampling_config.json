@@ -3,6 +3,43 @@
   "created_utc": "2026-08-26",
   "scope": "provisional mixed fixed-wing LOES research envelope",
   "critical_warning": "Choose scenario first. These ranges are not independent uniform distributions or real fleet probabilities.",
+  "active_iv_a_policy": {
+    "profile": "IV-A ordinary task, stick sensitivity gate",
+    "total_plants": 3000,
+    "quality_counts": {
+      "L1": 900,
+      "L2": 900,
+      "L3": 900,
+      "OOD": 300
+    },
+    "split_counts": {
+      "train_core": 1200,
+      "train_boundary": 600,
+      "validation": 300,
+      "id_test": 600,
+      "ood_test": 300
+    },
+    "level_basis": "worst directly assessable result from GJB A18, A19, A35, and A31",
+    "level_scope_warning": "Appendix A recommended static boundaries only; A116 and fitted tau_e are not included",
+    "plant_dt_s": 0.001,
+    "transport_delay_sampling_lower_bound_s": 0.001,
+    "in_distribution_evidence_gates": {
+      "L_Fa_rad_N_s2": [
+        0.04,
+        0.4708387494022242
+      ],
+      "R_omega": [
+        0.65,
+        1.35
+      ],
+      "zeta_phi": [
+        0.1,
+        0.7
+      ],
+      "transport_delay_s_max": 0.25
+    },
+    "legacy_split_note": "train_core and train_boundary are retained as data-use names; quality is stored separately in sampling_bucket and gjb_level"
+  },
   "sign_conventions": {
     "lambda_s": "stable < 0, neutral = 0, divergent > 0",
     "T_s": "derived as -1/lambda_s; do not sample across lambda_s=0",
@@ -33,7 +70,7 @@
     },
     "tau_p_s": {
       "core": [
-        0.01,
+        0.001,
         0.1
       ],
       "high_delay": [
