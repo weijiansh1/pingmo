@@ -26,6 +26,8 @@ from src.distillation.collect_data import (
     collect_teacher_bank_data,
 )
 from src.distillation.dataset import (
+    DISTILLATION_DATASET_SCHEMA_V2,
+    SUPPORTED_DISTILLATION_DATASET_SCHEMAS,
     DistillationArrays,
     TRAIN_SPLIT,
     VALIDATION_SPLIT,
@@ -82,11 +84,15 @@ class StudentDrivenDistillationConfig:
             raise ValueError(
                 "explicit validation plant IDs require the aircraft_holdout strategy"
             )
-        if self.max_student_teacher_rmse_gap_deg_s < 0 or min(
-            self.maximum_student_peak_error_deg_s,
-            self.maximum_mean_student_requested_force_variation_n,
-            self.maximum_student_teacher_force_variation_ratio,
-        ) <= 0:
+        if (
+            self.max_student_teacher_rmse_gap_deg_s < 0
+            or min(
+                self.maximum_student_peak_error_deg_s,
+                self.maximum_mean_student_requested_force_variation_n,
+                self.maximum_student_teacher_force_variation_ratio,
+            )
+            <= 0
+        ):
             raise ValueError("Student quality thresholds cannot be negative")
         if not 0 <= self.minimum_student_improvement_rate <= 1:
             raise ValueError("minimum Student improvement rate must be in [0, 1]")
@@ -97,7 +103,9 @@ class StudentDrivenDistillationConfig:
 def _write_json(path: Path, payload: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
-    temporary.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    temporary.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     temporary.replace(path)
 
 
@@ -110,12 +118,13 @@ def _json_compatible(value: object) -> object:
 def _load_complete_artifact(
     path: Path,
     *,
-    schema_version: str,
+    schema_version: str | tuple[str, ...],
 ) -> dict[str, object] | None:
     if not path.is_file():
         return None
     payload = json.loads(path.read_text(encoding="utf-8"))
-    if payload.get("schema_version") != schema_version:
+    supported = (schema_version,) if isinstance(schema_version, str) else schema_version
+    if payload.get("schema_version") not in supported:
         raise ValueError(f"unsupported artifact schema in {path}")
     if payload.get("status") != "complete":
         raise ValueError(f"artifact is not complete: {path}")
@@ -139,7 +148,9 @@ def _verified_student_training_artifact(
     if not isinstance(dataset_reference, dict):
         raise ValueError(f"Student report is missing dataset provenance: {report_path}")
     if Path(str(dataset_reference.get("path"))).resolve() != dataset_path.resolve():
-        raise ValueError(f"Student report references a different dataset: {report_path}")
+        raise ValueError(
+            f"Student report references a different dataset: {report_path}"
+        )
     if str(dataset_reference.get("sha256")) != sha256_file(dataset_path):
         raise ValueError(f"Student dataset hash changed since {report_path}")
     checkpoint = Path(str(report.get("checkpoint")))
@@ -222,11 +233,13 @@ def _collect_student_driven_profile(
     *,
     sample_stride: int,
     seed: int,
-) -> tuple[np.ndarray, np.ndarray, dict[str, float]]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, dict[str, float]]:
     environment = build_specialist_env(record, training_config, (profile,))
     observation, _ = environment.reset(seed=seed)
     observations: list[np.ndarray] = []
     teacher_actions: list[np.ndarray] = []
+    student_actions: list[np.ndarray] = []
+    policy_steps: list[int] = []
     squared_action_error = 0.0
     action_elements = 0
     episode_return = 0.0
@@ -243,16 +256,37 @@ def _collect_student_driven_profile(
             )
             observations.append(observation.copy())
             teacher_actions.append(teacher_action.copy())
-            squared_action_error += float(np.square(student_action - teacher_action).sum())
+            student_actions.append(student_action.copy())
+            policy_steps.append(step)
+            squared_action_error += float(
+                np.square(student_action - teacher_action).sum()
+            )
             action_elements += student_action.size
-        observation, reward, terminated, truncated, last_info = environment.step(student_action)
+        observation, reward, terminated, truncated, last_info = environment.step(
+            student_action
+        )
         episode_return += reward
         step += 1
         if terminated or truncated:
             break
+    observations_array = np.asarray(observations, dtype=np.float32)
+    teacher_action_array = np.asarray(teacher_actions, dtype=np.float32)
+    student_action_array = np.asarray(student_actions, dtype=np.float32)
+    policy_step_array = np.asarray(policy_steps, dtype=np.int32)
+    if len(student_action_array) > 1:
+        step_delta = np.diff(policy_step_array).astype(np.float32)[:, None]
+        student_rate = np.diff(student_action_array, axis=0) / step_delta
+        teacher_rate = np.diff(teacher_action_array, axis=0) / step_delta
+        action_delta_rmse = float(
+            np.sqrt(np.mean(np.square(student_rate - teacher_rate)))
+        )
+    else:
+        action_delta_rmse = 0.0
     return (
-        np.asarray(observations, dtype=np.float32),
-        np.asarray(teacher_actions, dtype=np.float32),
+        observations_array,
+        teacher_action_array,
+        student_action_array,
+        policy_step_array,
         {
             "visited_action_rmse": float(
                 np.sqrt(squared_action_error / max(action_elements, 1))
@@ -260,6 +294,16 @@ def _collect_student_driven_profile(
             "student_episode_return": float(episode_return),
             "student_saturation_fraction": float(
                 last_info.get("action_saturation_fraction", 0.0)
+            ),
+            "visited_action_delta_rmse_per_policy_step": action_delta_rmse,
+            "student_normalized_action_total_variation": float(
+                np.sum(np.abs(np.diff(student_action_array, axis=0)))
+            ),
+            "teacher_on_visited_states_normalized_action_total_variation": float(
+                np.sum(np.abs(np.diff(teacher_action_array, axis=0)))
+            ),
+            "hard_tracking_state_fraction": float(
+                np.mean(np.abs(observations_array[:, 3]) >= 0.2)
             ),
         },
     )
@@ -304,7 +348,9 @@ def collect_student_driven_round(
     """Roll out the Student, label visited states with the matching Teacher."""
 
     if round_index <= 0 or sample_stride <= 0:
-        raise ValueError("student-driven rounds start at one and require a positive stride")
+        raise ValueError(
+            "student-driven rounds start at one and require a positive stride"
+        )
     bank_path = Path(teacher_bank_path)
     checkpoint_path = Path(student_checkpoint_path)
     previous_path = Path(previous_dataset_manifest_path)
@@ -313,7 +359,7 @@ def collect_student_driven_round(
     shard_dir.mkdir(parents=True, exist_ok=True)
     bank = _load_complete_bank(bank_path)
     previous = json.loads(previous_path.read_text(encoding="utf-8"))
-    if previous.get("schema_version") != "specialist_distillation_dataset_v1":
+    if previous.get("schema_version") not in SUPPORTED_DISTILLATION_DATASET_SCHEMAS:
         raise ValueError("unsupported prior distillation dataset schema")
     model, _ = load_dense_student(checkpoint_path, device=device)
     teachers = bank["teachers"]
@@ -330,8 +376,8 @@ def collect_student_driven_round(
 
     for teacher_index, entry in enumerate(teachers):
         actor_path = bank_path.parent / str(entry["actor_checkpoint"])
-        teacher_policy, record, training_config, teacher_payload = load_specialist_actor(
-            actor_path, device=device
+        teacher_policy, record, training_config, teacher_payload = (
+            load_specialist_actor(actor_path, device=device)
         )
         if int(teacher_payload["actor_observation_dim"]) != model.observation_dim:
             raise ValueError("Student and Teacher observation contracts differ")
@@ -349,18 +395,30 @@ def collect_student_driven_round(
         action_parts: list[np.ndarray] = []
         command_parts: list[np.ndarray] = []
         split_parts: list[np.ndarray] = []
+        episode_parts: list[np.ndarray] = []
+        policy_step_parts: list[np.ndarray] = []
+        driver_action_parts: list[np.ndarray] = []
         for profile_index, (profile, split_code) in enumerate(profile_splits):
             if profile.command_id not in command_lookup:
                 command_lookup[profile.command_id] = len(command_ids)
                 command_ids.append(profile.command_id)
-            observations, actions, profile_diagnostics = _collect_student_driven_profile(
+            (
+                observations,
+                actions,
+                driver_actions,
+                policy_steps,
+                profile_diagnostics,
+            ) = _collect_student_driven_profile(
                 teacher_policy,
                 student_policy,
                 record,
                 training_config,
                 profile,
                 sample_stride=sample_stride,
-                seed=seed + round_index * 100_000 + teacher_index * 1000 + profile_index,
+                seed=seed
+                + round_index * 100_000
+                + teacher_index * 1000
+                + profile_index,
             )
             row_count = len(observations)
             observation_parts.append(observations)
@@ -369,6 +427,9 @@ def collect_student_driven_round(
                 np.full(row_count, command_lookup[profile.command_id], dtype=np.int32)
             )
             split_parts.append(np.full(row_count, split_code, dtype=np.uint8))
+            episode_parts.append(np.full(row_count, profile_index, dtype=np.int64))
+            policy_step_parts.append(policy_steps)
+            driver_action_parts.append(driver_actions)
             diagnostics.append(
                 {
                     "plant_id": record.plant_id,
@@ -390,6 +451,9 @@ def collect_student_driven_round(
             plant_indices=np.full(rows, teacher_index, dtype=np.int32),
             command_indices=np.concatenate(command_parts),
             split_codes=split_codes,
+            episode_indices=np.concatenate(episode_parts),
+            policy_step_indices=np.concatenate(policy_step_parts),
+            driver_actions=np.concatenate(driver_action_parts),
         )
         shard_path = save_distillation_shard(
             shard_dir / f"{teacher_index:04d}-{record.plant_id}.npz", arrays
@@ -409,15 +473,45 @@ def collect_student_driven_round(
                 "rows": rows,
                 "train_rows": train_rows,
                 "validation_rows": validation_rows,
+                "episode_count": len(profile_splits),
+                "temporal_pair_count": rows - len(profile_splits),
                 "collection_round": round_index,
                 "driver": "student",
                 "labeler": "matching_specialist_teacher",
             }
         )
+        aircraft_diagnostics = diagnostics[-len(profile_splits) :]
+        print(
+            json.dumps(
+                {
+                    "event": "student_driven_collection_aircraft",
+                    "round": round_index,
+                    "plant_id": record.plant_id,
+                    "aircraft_index": teacher_index,
+                    "aircraft_count": len(teachers),
+                    "rows": rows,
+                    "mean_visited_action_rmse": float(
+                        np.mean(
+                            [row["visited_action_rmse"] for row in aircraft_diagnostics]
+                        )
+                    ),
+                    "mean_visited_action_delta_rmse_per_policy_step": float(
+                        np.mean(
+                            [
+                                row["visited_action_delta_rmse_per_policy_step"]
+                                for row in aircraft_diagnostics
+                            ]
+                        )
+                    ),
+                },
+                separators=(",", ":"),
+            ),
+            flush=True,
+        )
 
     all_shards = prior_shards + new_shards
     manifest: dict[str, object] = {
-        "schema_version": "specialist_distillation_dataset_v1",
+        "schema_version": DISTILLATION_DATASET_SCHEMA_V2,
         "status": "complete",
         "source": git_source_revision(),
         "collection_method": "student_driven_dagger",
@@ -443,6 +537,12 @@ def collect_student_driven_round(
         "aircraft_parameter_normalization": AIRCRAFT_PARAMETER_NORMALIZATION,
         "action_dim": 1,
         "action_definition": "normalized_direct_full_F_as",
+        "temporal_contract": {
+            "episode_index": "one deterministic command rollout within one shard",
+            "policy_step_index": "environment policy step before action application",
+            "driver_action": "Student action used to visit the recorded state",
+            "predecessor_scope": "same shard and episode only",
+        },
         "command_ids": command_ids,
         "train_plant_ids": sorted(train_plants),
         "validation_plant_ids": sorted(validation_plants),
@@ -450,6 +550,12 @@ def collect_student_driven_round(
         "train_rows": int(sum(int(shard["train_rows"]) for shard in all_shards)),
         "validation_rows": int(
             sum(int(shard["validation_rows"]) for shard in all_shards)
+        ),
+        "episode_count": int(
+            sum(int(shard.get("episode_count", 0)) for shard in all_shards)
+        ),
+        "temporal_pair_count": int(
+            sum(int(shard.get("temporal_pair_count", 0)) for shard in all_shards)
         ),
         "new_rows": new_train_rows + new_validation_rows,
         "new_train_rows": new_train_rows,
@@ -482,6 +588,96 @@ def _round_score(evaluation: dict[str, object]) -> tuple[float, float, float]:
     )
 
 
+def _quality_gate_fallback_score(
+    row: dict[str, object], thresholds: dict[str, float]
+) -> tuple[float, ...]:
+    """Rank failed-gate rounds by safety violations before tracking accuracy."""
+
+    summary = _validation_summary(row["closed_loop_evaluation"])
+    checks = row["quality_checks"]
+    comparisons = (
+        (
+            "student_teacher_rmse_gap",
+            float(np.rad2deg(summary["median_student_minus_teacher_rmse_rad_s"])),
+            thresholds["max_student_teacher_rmse_gap_deg_s"],
+            "maximum",
+            max(thresholds["max_student_teacher_rmse_gap_deg_s"], 1.0),
+        ),
+        (
+            "student_improvement_rate",
+            float(summary["student_improvement_rate"]),
+            thresholds["minimum_student_improvement_rate"],
+            "minimum",
+            1.0,
+        ),
+        (
+            "student_harm_rate",
+            float(summary["student_harm_rate"]),
+            thresholds["maximum_student_harm_rate"],
+            "maximum",
+            1.0,
+        ),
+        (
+            "student_peak_error",
+            float(summary["maximum_student_peak_error_deg_s"]),
+            thresholds["maximum_student_peak_error_deg_s"],
+            "maximum",
+            thresholds["maximum_student_peak_error_deg_s"],
+        ),
+        (
+            "student_requested_force_variation",
+            float(summary["mean_student_requested_force_total_variation_n"]),
+            thresholds["maximum_mean_student_requested_force_variation_n"],
+            "maximum",
+            thresholds["maximum_mean_student_requested_force_variation_n"],
+        ),
+        (
+            "student_teacher_force_variation_ratio",
+            float(summary["student_teacher_requested_force_variation_ratio"]),
+            thresholds["maximum_student_teacher_force_variation_ratio"],
+            "maximum",
+            thresholds["maximum_student_teacher_force_variation_ratio"],
+        ),
+    )
+    violations: list[float] = []
+    for check_name, observed, threshold, direction, scale in comparisons:
+        if bool(checks[check_name]):
+            violations.append(0.0)
+        elif direction == "maximum":
+            violations.append(max(observed - threshold, 0.0) / scale)
+        else:
+            violations.append(max(threshold - observed, 0.0) / scale)
+    return (
+        float(sum(not bool(value) for value in checks.values())),
+        float(sum(violations)),
+        float(max(violations, default=0.0)),
+        *_round_score(row["closed_loop_evaluation"]),
+    )
+
+
+def _select_student_round(
+    rounds: list[dict[str, object]], thresholds: dict[str, float]
+) -> tuple[dict[str, object], list[dict[str, object]], str]:
+    eligible_rounds = [row for row in rounds if all(row["quality_checks"].values())]
+    if eligible_rounds:
+        return (
+            min(
+                eligible_rounds,
+                key=lambda row: _round_score(row["closed_loop_evaluation"]),
+            ),
+            eligible_rounds,
+            "validation_mean_student_rmse_then_peak_then_force_variation_among_quality_eligible_rounds",
+        )
+    return (
+        min(
+            rounds,
+            key=lambda row: _quality_gate_fallback_score(row, thresholds),
+        ),
+        [],
+        "fewest_quality_gate_violations_then_normalized_excess_then_validation_tracking_fallback",
+    )
+
+
 def _student_quality_checks(
     evaluation: dict[str, object], config: StudentDrivenDistillationConfig
 ) -> dict[str, bool]:
@@ -511,7 +707,10 @@ def _student_quality_checks(
 def _save_progress_plot(rounds: list[dict[str, object]], output_path: Path) -> None:
     indices = np.asarray([row["round"] for row in rounds], dtype=int)
     action_rmse = np.asarray(
-        [row["student_training"]["validation_metrics"]["action_rmse"] for row in rounds],
+        [
+            row["student_training"]["validation_metrics"]["action_rmse"]
+            for row in rounds
+        ],
         dtype=float,
     )
     gap_deg_s = np.asarray(
@@ -605,6 +804,7 @@ def run_student_driven_distillation(
     config: StudentDrivenDistillationConfig = StudentDrivenDistillationConfig(),
     *,
     resume: bool = False,
+    initial_checkpoint_path: str | Path | None = None,
 ) -> dict[str, object]:
     """Run initial Teacher collection followed by pure Student-driven DAgger rounds."""
 
@@ -615,6 +815,17 @@ def run_student_driven_distillation(
     destination.mkdir(parents=True, exist_ok=True)
     pipeline_path = destination / "pipeline_report.json"
     expected_config = _json_compatible(asdict(config))
+    bootstrap_checkpoint: dict[str, object] | None = None
+    if initial_checkpoint_path is not None:
+        initial_path = Path(initial_checkpoint_path)
+        if not initial_path.is_file():
+            raise FileNotFoundError(
+                f"initial Student checkpoint is missing: {initial_path}"
+            )
+        bootstrap_checkpoint = {
+            "path": str(initial_path.resolve()),
+            "sha256": sha256_file(initial_path),
+        }
     rounds: list[dict[str, object]] = []
     if resume and pipeline_path.is_file():
         prior = json.loads(pipeline_path.read_text(encoding="utf-8"))
@@ -628,6 +839,8 @@ def run_student_driven_distillation(
             raise ValueError("Teacher Bank changed since the interrupted run")
         if _json_compatible(prior.get("config")) != expected_config:
             raise ValueError("pipeline config changed since the interrupted run")
+        if prior.get("bootstrap_student_checkpoint") != bootstrap_checkpoint:
+            raise ValueError("bootstrap Student changed since the interrupted run")
         prior_rounds = prior.get("rounds")
         if not isinstance(prior_rounds, list):
             raise ValueError("interrupted pipeline has invalid round metadata")
@@ -642,6 +855,7 @@ def run_student_driven_distillation(
                 "schema_version": "student_driven_distillation_pipeline_v1",
                 "status": "running",
                 "teacher_bank": str(bank_path.resolve()),
+                "bootstrap_student_checkpoint": bootstrap_checkpoint,
                 "config": asdict(config),
                 "rounds": rounds,
             },
@@ -655,12 +869,16 @@ def run_student_driven_distillation(
         dataset_path = Path(str(first["dataset_manifest"]))
         dataset = _load_complete_artifact(
             dataset_path,
-            schema_version="specialist_distillation_dataset_v1",
+            schema_version=SUPPORTED_DISTILLATION_DATASET_SCHEMAS,
         )
         if dataset is None:
-            raise FileNotFoundError(f"completed round dataset is missing: {dataset_path}")
+            raise FileNotFoundError(
+                f"completed round dataset is missing: {dataset_path}"
+            )
         student_checkpoint = Path(str(first["student_checkpoint"]))
-        evaluation_path = student_checkpoint.parent.parent / "evaluation/evaluation.json"
+        evaluation_path = (
+            student_checkpoint.parent.parent / "evaluation/evaluation.json"
+        )
         if (
             _verified_evaluation_artifact(
                 evaluation_path, student_checkpoint, bank_path
@@ -676,7 +894,7 @@ def run_student_driven_distillation(
         dataset = (
             _load_complete_artifact(
                 dataset_path,
-                schema_version="specialist_distillation_dataset_v1",
+                schema_version=SUPPORTED_DISTILLATION_DATASET_SCHEMAS,
             )
             if resume
             else None
@@ -714,6 +932,7 @@ def run_student_driven_distillation(
                 dataset_path,
                 round_dir / "student",
                 config.student_training,
+                initial_checkpoint_path=initial_checkpoint_path,
             )
         student_checkpoint = Path(str(student_training["checkpoint"]))
         evaluation = (
@@ -751,7 +970,7 @@ def run_student_driven_distillation(
             dataset_path = Path(str(completed["dataset_manifest"]))
             dataset = _load_complete_artifact(
                 dataset_path,
-                schema_version="specialist_distillation_dataset_v1",
+                schema_version=SUPPORTED_DISTILLATION_DATASET_SCHEMAS,
             )
             if dataset is None:
                 raise FileNotFoundError(
@@ -776,7 +995,7 @@ def run_student_driven_distillation(
         dataset = (
             _load_complete_artifact(
                 next_dataset_path,
-                schema_version="specialist_distillation_dataset_v1",
+                schema_version=SUPPORTED_DISTILLATION_DATASET_SCHEMAS,
             )
             if resume
             else None
@@ -843,13 +1062,15 @@ def run_student_driven_distillation(
         row["quality_checks"] = _student_quality_checks(
             row["closed_loop_evaluation"], config
         )
-    eligible_rounds = [
-        row for row in rounds if all(row["quality_checks"].values())
-    ]
-    best_pool = eligible_rounds or rounds
-    best = min(
-        best_pool, key=lambda row: _round_score(row["closed_loop_evaluation"])
-    )
+    thresholds = {
+        "max_student_teacher_rmse_gap_deg_s": config.max_student_teacher_rmse_gap_deg_s,
+        "minimum_student_improvement_rate": config.minimum_student_improvement_rate,
+        "maximum_student_harm_rate": config.maximum_student_harm_rate,
+        "maximum_student_peak_error_deg_s": config.maximum_student_peak_error_deg_s,
+        "maximum_mean_student_requested_force_variation_n": config.maximum_mean_student_requested_force_variation_n,
+        "maximum_student_teacher_force_variation_ratio": config.maximum_student_teacher_force_variation_ratio,
+    }
+    best, eligible_rounds, selection_metric = _select_student_round(rounds, thresholds)
     best_evaluation = _validation_summary(best["closed_loop_evaluation"])
     gap_deg_s = float(
         np.rad2deg(best_evaluation["median_student_minus_teacher_rmse_rad_s"])
@@ -872,14 +1093,7 @@ def run_student_driven_distillation(
                 "student_teacher_requested_force_variation_ratio"
             ],
         },
-        "thresholds": {
-            "max_student_teacher_rmse_gap_deg_s": config.max_student_teacher_rmse_gap_deg_s,
-            "minimum_student_improvement_rate": config.minimum_student_improvement_rate,
-            "maximum_student_harm_rate": config.maximum_student_harm_rate,
-            "maximum_student_peak_error_deg_s": config.maximum_student_peak_error_deg_s,
-            "maximum_mean_student_requested_force_variation_n": config.maximum_mean_student_requested_force_variation_n,
-            "maximum_student_teacher_force_variation_ratio": config.maximum_student_teacher_force_variation_ratio,
-        },
+        "thresholds": thresholds,
     }
     final_dir = destination / "final"
     final_dir.mkdir(parents=True, exist_ok=True)
@@ -897,16 +1111,13 @@ def run_student_driven_distillation(
             "path": str(bank_path.resolve()),
             "sha256": sha256_file(bank_path),
         },
+        "bootstrap_student_checkpoint": bootstrap_checkpoint,
         "config": asdict(config),
         "round_count": len(rounds),
         "student_driven_round_count": config.dagger_rounds,
         "best_round": best["round"],
         "quality_eligible_rounds": [row["round"] for row in eligible_rounds],
-        "selection_metric": (
-            "validation_mean_student_rmse_then_peak_then_force_variation_among_quality_eligible_rounds"
-            if eligible_rounds
-            else "validation_mean_student_rmse_then_peak_then_force_variation_fallback_no_eligible_round"
-        ),
+        "selection_metric": selection_metric,
         "quality_gate": quality_gate,
         "final_checkpoint": {
             "path": str(final_checkpoint),
@@ -938,19 +1149,13 @@ def reselect_student_driven_distillation(output_dir: str | Path) -> dict[str, ob
     if any("quality_checks" not in row for row in rounds):
         raise ValueError("Student-driven rounds have not completed quality checks")
 
-    eligible_rounds = [
-        row for row in rounds if all(row["quality_checks"].values())
-    ]
-    best_pool = eligible_rounds or rounds
-    best = min(
-        best_pool, key=lambda row: _round_score(row["closed_loop_evaluation"])
-    )
-    best_evaluation = _validation_summary(best["closed_loop_evaluation"])
-    checks = best["quality_checks"]
     prior_gate = report.get("quality_gate", {})
     thresholds = prior_gate.get("thresholds")
     if not isinstance(thresholds, dict):
         raise ValueError("Student-driven report is missing quality thresholds")
+    best, eligible_rounds, selection_metric = _select_student_round(rounds, thresholds)
+    best_evaluation = _validation_summary(best["closed_loop_evaluation"])
+    checks = best["quality_checks"]
     quality_gate = {
         "passed": all(checks.values()),
         "checks": checks,
@@ -988,11 +1193,7 @@ def reselect_student_driven_distillation(output_dir: str | Path) -> dict[str, ob
             "source": git_source_revision(),
             "best_round": best["round"],
             "quality_eligible_rounds": [row["round"] for row in eligible_rounds],
-            "selection_metric": (
-                "validation_mean_student_rmse_then_peak_then_force_variation_among_quality_eligible_rounds"
-                if eligible_rounds
-                else "validation_mean_student_rmse_then_peak_then_force_variation_fallback_no_eligible_round"
-            ),
+            "selection_metric": selection_metric,
             "quality_gate": quality_gate,
             "final_checkpoint": {
                 "path": str(final_checkpoint),

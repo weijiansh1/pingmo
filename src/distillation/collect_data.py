@@ -15,6 +15,7 @@ from src.context.aircraft_parameters import (
     normalize_aircraft_parameters,
 )
 from src.distillation.dataset import (
+    DISTILLATION_DATASET_SCHEMA_V2,
     DistillationArrays,
     TRAIN_SPLIT,
     VALIDATION_SPLIT,
@@ -129,22 +130,28 @@ def _collect_profile(
     *,
     sample_stride: int,
     seed: int,
-) -> tuple[np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     env = build_specialist_env(record, training_config, (profile,))
     observation, _ = env.reset(seed=seed)
     observations: list[np.ndarray] = []
     actions: list[np.ndarray] = []
+    policy_steps: list[int] = []
     step = 0
     while True:
         action = np.asarray(policy.predict(observation, deterministic=True), dtype=np.float32)
         if step % sample_stride == 0:
             observations.append(observation.copy())
             actions.append(action.copy())
+            policy_steps.append(step)
         observation, _, terminated, truncated, _ = env.step(action)
         step += 1
         if terminated or truncated:
             break
-    return np.asarray(observations, dtype=np.float32), np.asarray(actions, dtype=np.float32)
+    return (
+        np.asarray(observations, dtype=np.float32),
+        np.asarray(actions, dtype=np.float32),
+        np.asarray(policy_steps, dtype=np.int32),
+    )
 
 
 def collect_teacher_bank_data(
@@ -235,11 +242,13 @@ def collect_teacher_bank_data(
         action_parts: list[np.ndarray] = []
         command_parts: list[np.ndarray] = []
         split_parts: list[np.ndarray] = []
+        episode_parts: list[np.ndarray] = []
+        policy_step_parts: list[np.ndarray] = []
         for profile_index, (profile, split_code) in enumerate(profile_splits):
             if profile.command_id not in command_lookup:
                 command_lookup[profile.command_id] = len(command_ids)
                 command_ids.append(profile.command_id)
-            observations, actions = _collect_profile(
+            observations, actions, policy_steps = _collect_profile(
                 policy,
                 record,
                 training_config,
@@ -254,6 +263,10 @@ def collect_teacher_bank_data(
                 np.full(row_count, command_lookup[profile.command_id], dtype=np.int32)
             )
             split_parts.append(np.full(row_count, split_code, dtype=np.uint8))
+            episode_parts.append(
+                np.full(row_count, profile_index, dtype=np.int64)
+            )
+            policy_step_parts.append(policy_steps)
 
         observations = np.concatenate(observation_parts)
         actions = np.concatenate(action_parts)
@@ -267,6 +280,9 @@ def collect_teacher_bank_data(
             plant_indices=np.full(rows, teacher_index, dtype=np.int32),
             command_indices=np.concatenate(command_parts),
             split_codes=split_codes,
+            episode_indices=np.concatenate(episode_parts),
+            policy_step_indices=np.concatenate(policy_step_parts),
+            driver_actions=actions,
         )
         shard_name = f"{teacher_index:04d}-{record.plant_id}.npz"
         shard_path = save_distillation_shard(shard_dir / shard_name, arrays)
@@ -286,10 +302,25 @@ def collect_teacher_bank_data(
                 "rows": rows,
                 "train_rows": shard_train_rows,
                 "validation_rows": shard_validation_rows,
+                "episode_count": len(profile_splits),
+                "temporal_pair_count": rows - len(profile_splits),
                 "collection_round": 0,
                 "driver": "teacher",
                 "labeler": "matching_specialist_teacher",
             }
+        )
+        print(
+            json.dumps(
+                {
+                    "event": "teacher_driven_collection_aircraft",
+                    "plant_id": record.plant_id,
+                    "aircraft_index": teacher_index,
+                    "aircraft_count": len(teachers),
+                    "rows": rows,
+                },
+                separators=(",", ":"),
+            ),
+            flush=True,
         )
 
     split_strategy = (
@@ -298,7 +329,7 @@ def collect_teacher_bank_data(
         else config.split_strategy
     )
     manifest: dict[str, object] = {
-        "schema_version": "specialist_distillation_dataset_v1",
+        "schema_version": DISTILLATION_DATASET_SCHEMA_V2,
         "status": "complete",
         "source": git_source_revision(),
         "collection_method": "teacher_driven_initialization",
@@ -329,12 +360,24 @@ def collect_teacher_bank_data(
         "aircraft_parameter_normalization": AIRCRAFT_PARAMETER_NORMALIZATION,
         "action_dim": 1,
         "action_definition": "normalized_direct_full_F_as",
+        "temporal_contract": {
+            "episode_index": "one deterministic command rollout within one shard",
+            "policy_step_index": "environment policy step before action application",
+            "driver_action": "teacher action; identical to label in round zero",
+            "predecessor_scope": "same shard and episode only",
+        },
         "command_ids": command_ids,
         "train_plant_ids": train_plants,
         "validation_plant_ids": validation_plants,
         "row_count": total_rows,
         "train_rows": train_rows,
         "validation_rows": validation_rows,
+        "episode_count": int(
+            sum(int(shard["episode_count"]) for shard in shard_entries)
+        ),
+        "temporal_pair_count": int(
+            sum(int(shard["temporal_pair_count"]) for shard in shard_entries)
+        ),
         "shards": shard_entries,
     }
     _write_json(destination / "dataset.json", manifest)

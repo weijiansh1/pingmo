@@ -8,10 +8,13 @@ __pycache__/
 
 # Runtime and experiment artifacts
 checkpoints/
-# Keep the frozen coverage-v3 delivery in Git; other runs remain regenerable.
+# Keep the frozen coverage-v3 and stability-aware-v4 deliveries in Git; other
+# runs remain regenerable.
 results/*
 !results/pure_reward_teacher_bank_coverage_v3/
 !results/pure_reward_teacher_bank_coverage_v3/**
+!results/pure_reward_teacher_bank_coverage_v4/
+!results/pure_reward_teacher_bank_coverage_v4/**
 img/
 tmp/
 

@@ -28,12 +28,16 @@ def imitation_metrics(
     model: torch.nn.Module,
     batches: Iterable[dict[str, torch.Tensor]],
     device: str | torch.device,
-) -> dict[str, float]:
+) -> dict[str, float | int]:
     target_device = torch.device(device)
     squared_error = 0.0
     absolute_error = 0.0
     maximum_error = 0.0
     sample_count = 0
+    delta_squared_error = 0.0
+    delta_absolute_error = 0.0
+    delta_maximum_error = 0.0
+    temporal_count = 0
     model.eval()
     with torch.no_grad():
         for batch in batches:
@@ -46,14 +50,39 @@ def imitation_metrics(
             absolute_error += float(error.abs().sum())
             maximum_error = max(maximum_error, float(error.abs().max()))
             sample_count += error.numel()
+            if "previous_observation" in batch:
+                previous_observation = batch["previous_observation"].to(target_device)
+                previous_target = batch["previous_teacher_action"].to(target_device)
+                temporal_mask = batch["temporal_mask"].to(target_device).bool()
+                step_delta = batch["policy_step_delta"].to(target_device).clamp_min(1.0)
+                previous_prediction = model(previous_observation, theta)
+                prediction_rate = (prediction - previous_prediction) / step_delta.unsqueeze(-1)
+                target_rate = (target - previous_target) / step_delta.unsqueeze(-1)
+                delta_error = prediction_rate - target_rate
+                valid_delta_error = delta_error[temporal_mask]
+                if valid_delta_error.numel():
+                    delta_squared_error += float(valid_delta_error.square().sum())
+                    delta_absolute_error += float(valid_delta_error.abs().sum())
+                    delta_maximum_error = max(
+                        delta_maximum_error,
+                        float(valid_delta_error.abs().max()),
+                    )
+                    temporal_count += valid_delta_error.numel()
     if sample_count == 0:
         raise ValueError("cannot validate an empty distillation loader")
+    delta_mse = delta_squared_error / max(temporal_count, 1)
     return {
         "action_mse": squared_error / sample_count,
         "action_rmse": float(np.sqrt(squared_error / sample_count)),
         "action_mae": absolute_error / sample_count,
         "action_max_abs_error": maximum_error,
         "action_elements": sample_count,
+        "action_delta_mse_per_policy_step": delta_mse,
+        "action_delta_rmse_per_policy_step": float(np.sqrt(delta_mse)),
+        "action_delta_mae_per_policy_step": delta_absolute_error
+        / max(temporal_count, 1),
+        "action_delta_max_abs_error_per_policy_step": delta_maximum_error,
+        "temporal_action_elements": temporal_count,
     }
 
 

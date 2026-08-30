@@ -1,0 +1,54 @@
+contract: stability_aware_student_driven_distillation_v2
+teacher_bank:
+  path: results/pure_reward_teacher_bank_coverage_v3/merged_bank/teacher_bank.json
+  sha256: 579765e3d206145c0e9527f43760f83d6b5bb6c8e9777403efbdb2aaa2564d5c
+bootstrap_student:
+  path: results/pure_reward_teacher_bank_coverage_v3/student_driven_dense_balanced_holdout/final/dense_student.pt
+  sha256: 1dcbcd7114c704306309a423eb3ab11f5265c7bd50f4b3f742379cb61bf49759
+split:
+  strategy: aircraft_holdout
+  validation_plant_ids:
+    - train_core-0054
+    - train_core-0334
+    - train_core-0515
+    - train_boundary-1605
+    - train_boundary-1351
+    - train_boundary-1448
+collection:
+  dagger_rounds: 2
+  initial_sample_stride: 2
+  student_sample_stride: 1
+  label: normalized_direct_full_F_as_from_matching_teacher
+  driver_action_recorded: true
+  temporal_keys:
+    - episode_index
+    - policy_step_index
+student:
+  architecture: dense
+  network_width: 256
+  residual_blocks: 4
+  residual_scale: 0.1
+  enforce_odd_policy: true
+  epochs: 50
+  batch_size: 4096
+  learning_rate: 0.0001
+  weight_decay: 0.00001
+  gradient_norm_limit: 10.0
+  patience_epochs: 10
+objective:
+  teacher_action_mse_weight: 1.0
+  teacher_action_delta_mse_per_policy_step_weight: 1.0
+  hard_case_weight_boost: 7.0
+  maximum_sample_weight: 8.0
+  hard_tracking_error_scale: 0.2
+  hard_teacher_mismatch_scale: 0.1
+  hard_action_rate_scale: 0.05
+quality_gate:
+  maximum_student_teacher_rmse_gap_deg_s: 0.5
+  minimum_student_improvement_rate: 1.0
+  maximum_student_harm_rate: 0.0
+  maximum_student_peak_error_deg_s: 5.0
+  maximum_mean_student_requested_force_variation_n: 360.0
+  maximum_student_teacher_force_variation_ratio: 1.25
+seed: 20260904
+device: cuda

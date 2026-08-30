@@ -20,6 +20,7 @@ from src.distillation.collect_data import (
     collect_teacher_bank_data,
 )
 from src.distillation.dataset import (
+    DISTILLATION_DATASET_SCHEMA_V2,
     DistillationArrays,
     DistillationDataset,
     TRAIN_SPLIT,
@@ -29,10 +30,12 @@ from src.distillation.dataset import (
     save_distillation_shard,
 )
 from src.distillation.distill import DenseStudentTrainingConfig, train_dense_student
+from src.distillation.losses import teacher_action_rate_mse
 from src.distillation.student_driven import (
     StudentDrivenDistillationConfig,
     _profile_splits,
     _round_score,
+    _select_student_round,
     run_student_driven_distillation,
 )
 from src.distillation.validate import evaluate_dense_student_bank
@@ -185,9 +188,7 @@ def test_independent_test_command_bank_is_frozen_and_disjoint() -> None:
         "test-v1-sine-0.43hz",
         "test-v1-multisine",
     ]
-    assert not validation_ids.intersection(
-        profile.command_id for profile in profiles
-    )
+    assert not validation_ids.intersection(profile.command_id for profile in profiles)
     assert all(
         not np.array_equal(test.samples(0.02), validation.samples(0.02))
         for test in profiles
@@ -296,8 +297,7 @@ def test_long_dwell_and_mixed_duration_commands_are_reproducible() -> None:
     assert short_sequences
     assert all(profile.kind == "step" for profile in long_steps)
     assert all(
-        15.0 <= profile.duration_s - profile.onset_s <= 30.0
-        for profile in long_steps
+        15.0 <= profile.duration_s - profile.onset_s <= 30.0 for profile in long_steps
     )
     assert all(
         2.0 <= segment.duration_s <= 5.0
@@ -515,9 +515,7 @@ def test_reference_derivative_is_optional_causal_actor_state() -> None:
     assert observation[-1] == pytest.approx(0.0)
     assert info["actor_includes_reference_derivative"] is True
 
-    observation, _, _, _, _ = derivative_env.step(
-        np.asarray([0.0], dtype=np.float32)
-    )
+    observation, _, _, _, _ = derivative_env.step(np.asarray([0.0], dtype=np.float32))
     contract = derivative_env.actor_observation_contract()
     trace = derivative_env.trajectory()
     assert observation[-1] > 0.0
@@ -625,6 +623,105 @@ def test_distillation_shards_preserve_aircraft_splits(tmp_path: Path) -> None:
     assert set(validation.plant_indices.tolist()) == {1}
 
 
+def test_temporal_distillation_pairs_stay_inside_one_episode() -> None:
+    arrays = DistillationArrays(
+        observations=np.asarray(
+            [
+                [0.0, 0.0, 0.0, 0.00],
+                [1.0, 0.0, 0.0, 0.25],
+                [2.0, 0.0, 0.0, 0.00],
+                [3.0, 0.0, 0.0, 0.00],
+            ],
+            dtype=np.float32,
+        ),
+        aircraft_parameters=np.zeros((4, 8), dtype=np.float32),
+        teacher_actions=np.asarray([[0.0], [0.1], [0.0], [0.0]], dtype=np.float32),
+        plant_indices=np.zeros(4, dtype=np.int32),
+        command_indices=np.asarray([0, 0, 1, 1], dtype=np.int32),
+        split_codes=np.full(4, TRAIN_SPLIT, dtype=np.uint8),
+        episode_indices=np.asarray([0, 0, 1, 1], dtype=np.int64),
+        policy_step_indices=np.asarray([0, 2, 0, 2], dtype=np.int32),
+        driver_actions=np.asarray([[0.0], [0.4], [0.7], [0.7]], dtype=np.float32),
+    )
+    dataset = DistillationDataset(
+        arrays,
+        "train",
+        hard_case_weight_boost=7.0,
+        hard_tracking_error_scale=0.2,
+        hard_teacher_mismatch_scale=0.1,
+        hard_action_rate_scale=0.05,
+    )
+
+    assert dataset[0]["temporal_mask"] == 0.0
+    assert dataset[1]["temporal_mask"] == 1.0
+    assert dataset[1]["policy_step_delta"] == 2.0
+    assert dataset[1]["previous_observation"] == pytest.approx(
+        torch.tensor([0.0, 0.0, 0.0, 0.0])
+    )
+    assert dataset[2]["temporal_mask"] == 0.0
+    assert dataset[2]["previous_observation"] == pytest.approx(
+        torch.tensor([2.0, 0.0, 0.0, 0.0])
+    )
+    assert dataset[1]["sample_weight"] == pytest.approx(8.0)
+
+
+def test_teacher_action_rate_loss_uses_policy_step_interval() -> None:
+    loss = teacher_action_rate_mse(
+        torch.tensor([[0.4], [0.9]]),
+        torch.tensor([[0.1], [0.9]]),
+        torch.tensor([[0.3], [0.0]]),
+        torch.tensor([[0.1], [0.0]]),
+        torch.tensor([2.0, 1.0]),
+        torch.tensor([1.0, 0.0]),
+        torch.ones(2),
+    )
+
+    assert loss == pytest.approx(0.0025)
+
+
+def test_v2_distillation_shard_records_temporal_contract(tmp_path: Path) -> None:
+    arrays = DistillationArrays(
+        observations=np.zeros((2, 4), dtype=np.float32),
+        aircraft_parameters=np.zeros((2, 8), dtype=np.float32),
+        teacher_actions=np.asarray([[0.0], [0.1]], dtype=np.float32),
+        plant_indices=np.zeros(2, dtype=np.int32),
+        command_indices=np.zeros(2, dtype=np.int32),
+        split_codes=np.asarray([TRAIN_SPLIT, VALIDATION_SPLIT], dtype=np.uint8),
+        episode_indices=np.zeros(2, dtype=np.int64),
+        policy_step_indices=np.asarray([0, 2], dtype=np.int32),
+        driver_actions=np.asarray([[0.0], [0.2]], dtype=np.float32),
+    )
+    shard = save_distillation_shard(tmp_path / "v2.npz", arrays)
+    loaded = load_distillation_shard(shard)
+
+    assert loaded.episode_indices.tolist() == [0, 0]
+    assert loaded.policy_step_indices.tolist() == [0, 2]
+    assert loaded.driver_actions[:, 0].tolist() == pytest.approx([0.0, 0.2])
+    assert DISTILLATION_DATASET_SCHEMA_V2 == "specialist_distillation_dataset_v2"
+
+
+def test_legacy_distillation_shard_gets_safe_temporal_defaults(
+    tmp_path: Path,
+) -> None:
+    shard = tmp_path / "legacy-v1.npz"
+    with shard.open("wb") as stream:
+        np.savez_compressed(
+            stream,
+            observations=np.zeros((3, 4), dtype=np.float32),
+            aircraft_parameters=np.zeros((3, 8), dtype=np.float32),
+            teacher_actions=np.asarray([[0.0], [0.1], [0.2]], dtype=np.float32),
+            plant_indices=np.zeros(3, dtype=np.int32),
+            command_indices=np.asarray([4, 4, 5], dtype=np.int32),
+            split_codes=np.full(3, TRAIN_SPLIT, dtype=np.uint8),
+        )
+
+    loaded = load_distillation_shard(shard)
+
+    assert loaded.episode_indices.tolist() == [4, 4, 5]
+    assert loaded.policy_step_indices.tolist() == [0, 1, 0]
+    assert loaded.driver_actions == pytest.approx(loaded.teacher_actions)
+
+
 def test_all_aircraft_command_holdout_is_preserved_in_student_driven_rounds() -> None:
     profile_splits = _profile_splits(
         11,
@@ -671,6 +768,54 @@ def test_student_round_selection_prioritizes_absolute_tracking_quality() -> None
             }
         }
     )
+
+
+def test_failed_gate_round_selection_prioritizes_fewer_quality_violations() -> None:
+    thresholds = {
+        "max_student_teacher_rmse_gap_deg_s": 0.5,
+        "minimum_student_improvement_rate": 1.0,
+        "maximum_student_harm_rate": 0.0,
+        "maximum_student_peak_error_deg_s": 5.0,
+        "maximum_mean_student_requested_force_variation_n": 360.0,
+        "maximum_student_teacher_force_variation_ratio": 1.25,
+    }
+
+    def round_row(
+        round_index: int, rmse: float, peak: float, variation_ratio: float
+    ) -> dict[str, object]:
+        summary = {
+            "mean_student_tracking_rmse_deg_s": rmse,
+            "median_student_minus_teacher_rmse_rad_s": np.deg2rad(0.2),
+            "student_improvement_rate": 1.0,
+            "student_harm_rate": 0.0,
+            "maximum_student_peak_error_deg_s": peak,
+            "mean_student_requested_force_total_variation_n": 250.0,
+            "student_teacher_requested_force_variation_ratio": variation_ratio,
+        }
+        return {
+            "round": round_index,
+            "closed_loop_evaluation": {
+                "by_distillation_split": {"validation_aircraft": summary}
+            },
+            "quality_checks": {
+                "student_teacher_rmse_gap": True,
+                "student_improvement_rate": True,
+                "student_harm_rate": True,
+                "student_peak_error": peak <= 5.0,
+                "student_requested_force_variation": True,
+                "student_teacher_force_variation_ratio": variation_ratio <= 1.25,
+            },
+        }
+
+    stable = round_row(0, rmse=0.95, peak=4.75, variation_ratio=2.13)
+    slightly_more_accurate = round_row(1, rmse=0.92, peak=5.45, variation_ratio=2.54)
+    best, eligible, selection_metric = _select_student_round(
+        [stable, slightly_more_accurate], thresholds
+    )
+
+    assert best["round"] == 0
+    assert eligible == []
+    assert selection_metric.startswith("fewest_quality_gate_violations")
 
 
 def test_dense_student_conditions_on_theta() -> None:
@@ -930,12 +1075,19 @@ def test_one_aircraft_teacher_to_student_pipeline(tmp_path: Path) -> None:
         data_dir,
         DistillationCollectionConfig(sample_stride=20, seed=31, device="cpu"),
     )
+    assert dataset_manifest["schema_version"] == DISTILLATION_DATASET_SCHEMA_V2
+    assert dataset_manifest["episode_count"] > 0
+    assert dataset_manifest["temporal_pair_count"] == (
+        dataset_manifest["row_count"] - dataset_manifest["episode_count"]
+    )
     assert dataset_manifest["split_strategy"] == "single_aircraft_command_holdout"
     assert dataset_manifest["train_rows"] > 0
     assert dataset_manifest["validation_rows"] > 0
     arrays, _ = load_distillation_arrays(data_dir / "dataset.json")
     assert arrays.observations.shape[1] == 7
     assert arrays.aircraft_parameters.shape[1] == 8
+    assert arrays.driver_actions.shape == arrays.teacher_actions.shape
+    assert arrays.policy_step_indices.shape == arrays.plant_indices.shape
     observation_contract = dataset_manifest["actor_observation_contract"]
     assert observation_contract["raw_history_steps"] == 0
     assert observation_contract["uses_raw_history_window"] is False

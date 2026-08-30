@@ -46,6 +46,12 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Resume a previously interrupted pipeline from verified round artifacts.",
     )
+    parser.add_argument(
+        "--initial-student-checkpoint",
+        type=Path,
+        default=None,
+        help="Optional compatible Student used to initialize round zero.",
+    )
     parser.add_argument("--dagger-rounds", type=int, default=pipeline_defaults.dagger_rounds)
     parser.add_argument(
         "--initial-sample-stride",
@@ -88,6 +94,31 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--network-width", type=int, default=student_defaults.network_width)
     parser.add_argument("--residual-blocks", type=int, default=student_defaults.residual_blocks)
     parser.add_argument("--patience-epochs", type=int, default=student_defaults.patience_epochs)
+    parser.add_argument(
+        "--action-delta-weight",
+        type=float,
+        default=student_defaults.action_delta_weight,
+    )
+    parser.add_argument(
+        "--hard-case-weight-boost",
+        type=float,
+        default=student_defaults.hard_case_weight_boost,
+    )
+    parser.add_argument(
+        "--hard-tracking-error-scale",
+        type=float,
+        default=student_defaults.hard_tracking_error_scale,
+    )
+    parser.add_argument(
+        "--hard-teacher-mismatch-scale",
+        type=float,
+        default=student_defaults.hard_teacher_mismatch_scale,
+    )
+    parser.add_argument(
+        "--hard-action-rate-scale",
+        type=float,
+        default=student_defaults.hard_action_rate_scale,
+    )
     parser.add_argument(
         "--moe-experts", type=int, default=student_defaults.moe_expert_count
     )
@@ -169,6 +200,11 @@ if __name__ == "__main__":
         network_width=args.network_width,
         residual_blocks=args.residual_blocks,
         patience_epochs=args.patience_epochs,
+        action_delta_weight=args.action_delta_weight,
+        hard_case_weight_boost=args.hard_case_weight_boost,
+        hard_tracking_error_scale=args.hard_tracking_error_scale,
+        hard_teacher_mismatch_scale=args.hard_teacher_mismatch_scale,
+        hard_action_rate_scale=args.hard_action_rate_scale,
         enforce_odd_policy=not args.disable_odd_policy,
         moe_expert_count=args.moe_experts,
         moe_router_temperature=args.moe_router_temperature,
@@ -204,5 +240,6 @@ if __name__ == "__main__":
             ),
         ),
         resume=args.resume,
+        initial_checkpoint_path=args.initial_student_checkpoint,
     )
     print(json.dumps(result, ensure_ascii=False, indent=2))

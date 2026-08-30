@@ -1,15 +1,17 @@
 # Flight RL Control
 
-本仓库实现单通道、分飞机的控制学习路线。当前 v3 实验先为每个固定 P-channel 训练无 PID
+本仓库实现单通道、分飞机的控制学习路线。当前实验先为每个固定 P-channel 训练无 PID
 示范的纯奖励 TD3 Teacher，再用 Student-driven / DAgger 把 32 个 Teacher 蒸馏为一个读取飞机
-参数的 Dense Student。PID-guided TD3、theta-routed linear MoE、历史 Global SAC 和 G0-G4
-仍保留作工程对照与诊断，不与 v3 结果混写。
+参数的 Dense Student。v4 在蒸馏中加入同轨迹动作增量匹配、困难样本加权和稳定性优先的闭环
+选型。PID-guided TD3、theta-routed linear MoE、历史 Global SAC 和 G0-G4 仍保留作工程对照与
+诊断，不与当前结果混写。
 
 当前控制契约见 [`docs/第一阶段_SAC控制设计.md`](docs/第一阶段_SAC控制设计.md)。GJB 阅读边界见
 [`docs/references/gjb_2874_1997_project_memory.md`](docs/references/gjb_2874_1997_project_memory.md)。
 实验目录与 manifest 规则见 [`docs/experiment_artifacts.md`](docs/experiment_artifacts.md)。
 当前代码、训练配置、时域曲线、未见飞机结果和失败门禁的完整快照见
-[`docs/current_code_and_results_20260830.md`](docs/current_code_and_results_20260830.md)。
+[`docs/stability_aware_v4_results_20260830.md`](docs/stability_aware_v4_results_20260830.md)。v3 历史
+快照保留在 [`docs/current_code_and_results_20260830.md`](docs/current_code_and_results_20260830.md)。
 
 ## PID-guided / MoE 工程流水线
 
@@ -72,7 +74,7 @@ python scripts/35_run_teacher_student_pipeline.py \
 
 `scripts/41_train_pure_reward_td3.py` 是不使用 PID 示范、行为克隆或控制先验的独立实验入口。
 它与上面的 7 维 PID-guided 正式流水线使用不同的 Actor 输入合同：在相同 7 个当前控制量后增加
-`commanded/applied F_as` 和固定 26 步 requested-action 队列，共 34 维，在 50 Hz 下覆盖 0.52 s，
+`p_ref` 导数、`commanded/applied F_as` 和固定 26 步 requested-action 队列，共 35 维，在 50 Hz 下覆盖 0.52 s，
 超过当前 3000 架库中的最大 `tau_p=0.498005 s`。所有待蒸馏 Teacher 必须使用同一个队列宽度。
 
 该入口默认从连续参数分布采样 4--8 s 的 step、doublet、sine 和 multisine 指令，使用

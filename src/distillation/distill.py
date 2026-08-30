@@ -16,7 +16,10 @@ import torch
 from torch.utils.data import DataLoader
 
 from src.distillation.dataset import DistillationDataset, load_distillation_arrays
-from src.distillation.losses import teacher_action_mse
+from src.distillation.losses import (
+    teacher_action_rate_mse,
+    weighted_teacher_action_mse,
+)
 from src.distillation.validate import imitation_metrics
 from src.student.dense.network import DenseConditionalStudent
 from src.student.moe.network import ThetaRoutedLinearMoEStudent
@@ -39,6 +42,11 @@ class DenseStudentTrainingConfig:
     residual_scale: float = 0.1
     gradient_norm_limit: float = 10.0
     patience_epochs: int = 15
+    action_delta_weight: float = 1.0
+    hard_case_weight_boost: float = 7.0
+    hard_tracking_error_scale: float = 0.2
+    hard_teacher_mismatch_scale: float = 0.1
+    hard_action_rate_scale: float = 0.05
     enforce_odd_policy: bool = True
     moe_expert_count: int = 0
     moe_router_temperature: float = 0.2
@@ -61,8 +69,18 @@ class DenseStudentTrainingConfig:
             self.gradient_norm_limit,
             self.patience_epochs,
         )
-        if min(positive) <= 0 or self.weight_decay < 0:
+        if min(positive) <= 0 or min(
+            self.weight_decay,
+            self.action_delta_weight,
+            self.hard_case_weight_boost,
+        ) < 0:
             raise ValueError("invalid dense Student training configuration")
+        if min(
+            self.hard_tracking_error_scale,
+            self.hard_teacher_mismatch_scale,
+            self.hard_action_rate_scale,
+        ) <= 0:
+            raise ValueError("hard-case scales must be positive")
         if self.architecture not in SUPPORTED_STUDENT_ARCHITECTURES:
             raise ValueError(f"unsupported Student architecture: {self.architecture}")
         if self.moe_expert_count < 0:
@@ -325,6 +343,47 @@ def _save_routing_plot(
     plt.close(figure)
 
 
+def _save_training_plot(
+    history: list[dict[str, float | int]], output_path: Path
+) -> None:
+    epochs = np.asarray([row["epoch"] for row in history], dtype=int)
+    figure, axes = plt.subplots(
+        2, 1, figsize=(8.5, 7.0), sharex=True, layout="constrained"
+    )
+    axes[0].plot(
+        epochs,
+        [row["train_action_mse"] for row in history],
+        label="Train weighted action MSE",
+    )
+    axes[0].plot(
+        epochs,
+        [row["action_mse"] for row in history],
+        label="Validation action MSE",
+    )
+    axes[0].set_yscale("log")
+    axes[0].set_ylabel("Action MSE")
+    axes[0].grid(alpha=0.25)
+    axes[0].legend(loc="best")
+    axes[1].plot(
+        epochs,
+        [row["train_action_delta_mse_per_policy_step"] for row in history],
+        label="Train weighted delta MSE",
+    )
+    axes[1].plot(
+        epochs,
+        [row["action_delta_mse_per_policy_step"] for row in history],
+        label="Validation delta MSE",
+    )
+    axes[1].set_yscale("log")
+    axes[1].set_xlabel("Epoch")
+    axes[1].set_ylabel("Action-delta MSE / policy step")
+    axes[1].grid(alpha=0.25)
+    axes[1].legend(loc="best")
+    figure.suptitle("Stability-aware Student distillation")
+    figure.savefig(output_path, dpi=180)
+    plt.close(figure)
+
+
 def _checkpoint_payload(
     model: StudentModel,
     config: DenseStudentTrainingConfig,
@@ -349,6 +408,10 @@ def _checkpoint_payload(
         "temporal_contract": {
             "uses_raw_history_window": False,
             "raw_history_steps": 0,
+            "uses_predecessor_pairs_during_training": config.action_delta_weight > 0,
+            "action_delta_definition": "normalized_action_increment_per_policy_step",
+            "action_delta_weight": config.action_delta_weight,
+            "hard_case_weight_boost": config.hard_case_weight_boost,
             "router_input": (
                 "normalized_aircraft_theta_only"
                 if isinstance(model, ThetaRoutedLinearMoEStudent)
@@ -426,8 +489,23 @@ def train_dense_student(
         or bool(observation_contract.get("uses_raw_history_window", False))
     ):
         raise ValueError("Student distillation requires the no-raw-history contract")
-    train_dataset = DistillationDataset(arrays, "train")
-    validation_dataset = DistillationDataset(arrays, "validation")
+    dataset_weighting = {
+        "hard_tracking_error_scale": config.hard_tracking_error_scale,
+        "hard_teacher_mismatch_scale": config.hard_teacher_mismatch_scale,
+        "hard_action_rate_scale": config.hard_action_rate_scale,
+    }
+    train_dataset = DistillationDataset(
+        arrays,
+        "train",
+        hard_case_weight_boost=config.hard_case_weight_boost,
+        **dataset_weighting,
+    )
+    validation_dataset = DistillationDataset(
+        arrays,
+        "validation",
+        hard_case_weight_boost=0.0,
+        **dataset_weighting,
+    )
     generator = torch.Generator().manual_seed(config.seed)
     train_loader = DataLoader(
         train_dataset,
@@ -501,7 +579,7 @@ def train_dense_student(
         if config.architecture == "theta_routed_linear_moe"
         else "dense_student.pt"
     )
-    best_validation_mse = float("inf")
+    best_validation_objective = float("inf")
     best_epoch = 0
     epochs_without_improvement = 0
     history: list[dict[str, float | int]] = []
@@ -510,6 +588,7 @@ def train_dense_student(
         model.train()
         loss_sum = 0.0
         imitation_loss_sum = 0.0
+        action_delta_loss_sum = 0.0
         balance_loss_sum = 0.0
         z_loss_sum = 0.0
         anchor_loss_sum = 0.0
@@ -519,8 +598,25 @@ def train_dense_student(
             theta = batch["aircraft_parameters"].to(device)
             target = batch["teacher_action"].to(device)
             prediction = model(observation, theta)
-            imitation_loss = teacher_action_mse(prediction, target)
-            loss = imitation_loss
+            sample_weight = batch["sample_weight"].to(device)
+            imitation_loss = weighted_teacher_action_mse(
+                prediction,
+                target,
+                sample_weight,
+            )
+            previous_prediction = model(
+                batch["previous_observation"].to(device), theta
+            )
+            action_delta_loss = teacher_action_rate_mse(
+                prediction,
+                previous_prediction,
+                target,
+                batch["previous_teacher_action"].to(device),
+                batch["policy_step_delta"].to(device),
+                batch["temporal_mask"].to(device),
+                sample_weight,
+            )
+            loss = imitation_loss + config.action_delta_weight * action_delta_loss
             if isinstance(model, ThetaRoutedLinearMoEStudent):
                 router = model.router_regularization(theta)
                 loss = (
@@ -537,6 +633,9 @@ def train_dense_student(
             optimizer.step()
             loss_sum += float(loss.detach()) * len(observation)
             imitation_loss_sum += float(imitation_loss.detach()) * len(observation)
+            action_delta_loss_sum += float(action_delta_loss.detach()) * len(
+                observation
+            )
             if isinstance(model, ThetaRoutedLinearMoEStudent):
                 balance_loss_sum += float(router["router_balance_loss"].detach()) * len(
                     observation
@@ -548,10 +647,18 @@ def train_dense_student(
             sample_count += len(observation)
 
         validation = imitation_metrics(model, validation_loader, device)
+        validation_objective = float(validation["action_mse"]) + (
+            config.action_delta_weight
+            * float(validation["action_delta_mse_per_policy_step"])
+        )
         epoch_row: dict[str, float | int] = {
             "epoch": epoch,
             "train_total_loss": loss_sum / sample_count,
             "train_action_mse": imitation_loss_sum / sample_count,
+            "train_action_delta_mse_per_policy_step": (
+                action_delta_loss_sum / sample_count
+            ),
+            "validation_objective": validation_objective,
             **validation,
         }
         if isinstance(model, ThetaRoutedLinearMoEStudent):
@@ -563,8 +670,27 @@ def train_dense_student(
                 }
             )
         history.append(epoch_row)
-        if validation["action_mse"] < best_validation_mse:
-            best_validation_mse = validation["action_mse"]
+        print(
+            json.dumps(
+                {
+                    "event": "student_distillation_epoch",
+                    "epoch": epoch,
+                    "train_action_mse": epoch_row["train_action_mse"],
+                    "train_action_delta_mse_per_policy_step": epoch_row[
+                        "train_action_delta_mse_per_policy_step"
+                    ],
+                    "validation_action_mse": validation["action_mse"],
+                    "validation_action_delta_mse_per_policy_step": validation[
+                        "action_delta_mse_per_policy_step"
+                    ],
+                    "validation_objective": validation_objective,
+                },
+                separators=(",", ":"),
+            ),
+            flush=True,
+        )
+        if validation_objective < best_validation_objective:
+            best_validation_objective = validation_objective
             best_epoch = epoch
             epochs_without_improvement = 0
             checkpoint = _checkpoint_payload(
@@ -575,7 +701,7 @@ def train_dense_student(
                 initial_checkpoint,
                 initialization,
                 best_epoch,
-                validation,
+                {**validation, "selection_objective": validation_objective},
             )
             _save_checkpoint(checkpoint, checkpoint_path)
         else:
@@ -606,7 +732,23 @@ def train_dense_student(
         "temporal_contract": {
             "uses_raw_history_window": False,
             "raw_history_steps": 0,
+            "uses_predecessor_pairs_during_training": config.action_delta_weight > 0,
+            "action_delta_definition": "normalized_action_increment_per_policy_step",
         },
+        "hard_case_statistics": {
+            "train_mean_hardness": float(train_dataset.hardness_scores.mean()),
+            "train_full_weight_fraction": float(
+                (train_dataset.hardness_scores >= 1.0 - 1e-6).float().mean()
+            ),
+            "train_mean_sample_weight": float(train_dataset.sample_weights.mean()),
+            "train_max_sample_weight": float(train_dataset.sample_weights.max()),
+            "validation_mean_hardness": float(
+                validation_dataset.hardness_scores.mean()
+            ),
+        },
+        "checkpoint_selection_metric": (
+            "validation_action_mse_plus_weighted_action_delta_mse"
+        ),
         "initialization": initialization,
         "parameter_count": model.parameter_count,
         "best_epoch": best_epoch,
@@ -617,8 +759,12 @@ def train_dense_student(
         "train_routing": train_routing,
         "validation_routing": validation_routing,
         "checkpoint": str(checkpoint_path),
+        "artifacts": {
+            "training_curves": str(destination / "training_curves.png"),
+        },
         "history": history,
     }
+    _save_training_plot(history, destination / "training_curves.png")
     _write_json(destination / "report.json", report)
     if train_routing is not None:
         _write_json(
