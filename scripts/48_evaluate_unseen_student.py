@@ -26,6 +26,7 @@ from src.context.aircraft_parameters import (
     normalize_aircraft_parameters,
 )
 from src.controllers.pid import PIDGains, RollRatePIDPolicy
+from src.controllers.policy_wrappers import ForceSlewLimitedPolicy
 from src.envs.roll_rate_commands import (
     SPECIALIST_INDEPENDENT_TEST_SUITE_VERSION,
     specialist_independent_test_commands,
@@ -57,6 +58,8 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--pid-report-root", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--plant-id", action="append", required=True)
+    parser.add_argument("--student-force-rate-limit", type=float)
+    parser.add_argument("--slew-limit-scan", type=Path)
     parser.add_argument("--device", default="cpu")
     return parser.parse_args()
 
@@ -248,6 +251,32 @@ def main() -> None:
         environment_actor, device=args.device
     )
     student_model, student_payload = load_dense_student(student_path, device=args.device)
+    student_hash_before = sha256_file(student_path)
+    selection_report: dict[str, object] | None = None
+    selection_verified = args.student_force_rate_limit is None
+    if args.student_force_rate_limit is not None:
+        if (
+            not np.isfinite(args.student_force_rate_limit)
+            or args.student_force_rate_limit <= 0
+        ):
+            raise ValueError("Student force-rate limit must be finite and positive")
+        if args.slew_limit_scan is None:
+            raise ValueError("a slew-limit scan is required for a limited Student")
+        scan_path = args.slew_limit_scan.resolve()
+        selection_report = json.loads(scan_path.read_text(encoding="utf-8"))
+        selected = selection_report.get("selected")
+        if not isinstance(selected, dict):
+            raise ValueError("slew-limit scan has no selected candidate")
+        selected_rate = float(selected["force_rate_limit_n_s"])
+        selected_student = selection_report.get("student_checkpoint")
+        selection_verified = bool(
+            np.isclose(selected_rate, args.student_force_rate_limit)
+            and isinstance(selected_student, dict)
+            and selected_student.get("sha256") == student_hash_before
+            and selection_report.get("selection_is_training_only") is True
+        )
+        if not selection_verified:
+            raise ValueError("slew-limit selection does not match the frozen Student")
     dataset = student_payload.get("dataset_manifest")
     if not isinstance(dataset, dict):
         raise ValueError("Student checkpoint has no dataset manifest")
@@ -266,7 +295,6 @@ def main() -> None:
     seen_theta = np.stack(
         [normalize_aircraft_parameters(lookup[plant_id].parameters) for plant_id in seen_ids]
     )
-    student_hash_before = sha256_file(student_path)
     aircraft_rows: list[dict[str, object]] = []
     flat_rows: list[dict[str, object]] = []
     pid_checks: list[dict[str, object]] = []
@@ -282,6 +310,13 @@ def main() -> None:
         _validate_pid_contract(pid_payload, record, config)
         gains = PIDGains(**pid_payload["gains"])
         student = DenseStudentPolicy(student_model, record.parameters, device=args.device)
+        if args.student_force_rate_limit is not None:
+            student = ForceSlewLimitedPolicy(
+                student,
+                force_rate_limit_n_s=args.student_force_rate_limit,
+                policy_dt_s=config.policy_dt_s,
+                force_limit_n=config.force_limit_n,
+            )
         traces = []
         command_rows: list[dict[str, object]] = []
         for command_index, profile in enumerate(profiles):
@@ -407,6 +442,7 @@ def main() -> None:
             and all(row["verified"] for row in pid_checks)
             and sha256_file(student_path) == student_hash_before
             and len(flat_rows) == len(plant_ids) * len(profiles)
+            and selection_verified
         ),
         "student_checkpoint_unchanged": sha256_file(student_path)
         == student_hash_before,
@@ -438,6 +474,15 @@ def main() -> None:
                 "version": SPECIALIST_INDEPENDENT_TEST_SUITE_VERSION,
                 "selection_independent": True,
             },
+            "deployment_wrapper": {
+                "kind": (
+                    "requested_force_slew_limit"
+                    if args.student_force_rate_limit is not None
+                    else "none"
+                ),
+                "force_rate_limit_n_s": args.student_force_rate_limit,
+                "selected_on_training_aircraft_only": selection_verified,
+            },
             "seen_plant_ids": seen_ids,
             "target_plant_ids": plant_ids,
         },
@@ -452,6 +497,15 @@ def main() -> None:
             "teacher_bank": str(bank_path),
             "actor_checkpoint": str(environment_actor),
         },
+        "slew_limit_selection": (
+            {
+                "path": str(args.slew_limit_scan.resolve()),
+                "sha256": sha256_file(args.slew_limit_scan.resolve()),
+                "verified": selection_verified,
+            }
+            if args.slew_limit_scan is not None
+            else None
+        ),
         "self_check": self_check,
         "overall": {
             label: _aggregate(flat_rows, label) for label in CONTROLLER_LABELS

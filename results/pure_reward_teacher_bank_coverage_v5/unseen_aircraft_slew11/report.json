@@ -1,0 +1,4149 @@
+{
+  "schema_version": "unseen_aircraft_student_evaluation_v1",
+  "status": "complete",
+  "source": {
+    "commit": "edb5e2764feeab026ed0b69287407352a1438f76",
+    "tracked_dirty": true,
+    "working_tree_sha256": "09e8a5ffa73bfc6af82d7383d0b3457d11a44164c0f225b2e39c6b873f3be9d8"
+  },
+  "scope": {
+    "zero_shot_unseen_aircraft": true,
+    "student_training_or_adaptation": false,
+    "target_aircraft_teacher_used": false,
+    "target_specific_pid_used_for_comparison": true,
+    "pid_tuning_window_matches_test_window": false,
+    "command_suite": {
+      "name": "independent-test-v1",
+      "version": "specialist-independent-test-v1",
+      "selection_independent": true
+    },
+    "deployment_wrapper": {
+      "kind": "requested_force_slew_limit",
+      "force_rate_limit_n_s": 11.0,
+      "selected_on_training_aircraft_only": true
+    },
+    "seen_plant_ids": [
+      "train_boundary-1205",
+      "train_boundary-1228",
+      "train_boundary-1231",
+      "train_boundary-1351",
+      "train_boundary-1388",
+      "train_boundary-1402",
+      "train_boundary-1448",
+      "train_boundary-1451",
+      "train_boundary-1453",
+      "train_boundary-1488",
+      "train_boundary-1531",
+      "train_boundary-1584",
+      "train_boundary-1605",
+      "train_boundary-1743",
+      "train_boundary-1760",
+      "train_core-0054",
+      "train_core-0175",
+      "train_core-0191",
+      "train_core-0312",
+      "train_core-0330",
+      "train_core-0334",
+      "train_core-0481",
+      "train_core-0515",
+      "train_core-0742",
+      "train_core-0750",
+      "train_core-0754",
+      "train_core-0760",
+      "train_core-0892",
+      "train_core-0906",
+      "train_core-0914",
+      "train_core-0964",
+      "train_core-1187"
+    ],
+    "target_plant_ids": [
+      "train_core-0387",
+      "train_core-0452",
+      "train_core-0596",
+      "train_core-0867",
+      "train_core-0925",
+      "train_core-1167",
+      "train_boundary-1578",
+      "train_boundary-1592",
+      "train_boundary-1717",
+      "train_boundary-1798"
+    ]
+  },
+  "library": {
+    "path": "/home/jovyan/work/other/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+    "sha256": "479c16d7b5ddb363c0e2d069a7a1e2d510f0a77cf8335eb86da6bb359ca4b118"
+  },
+  "student_checkpoint": {
+    "path": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v4/student_driven_dense_stability/final/dense_student.pt",
+    "sha256": "3c7e545fe7273363c65185355b5ab63f2fd29f7eedb02f5fc91c0b913520e432",
+    "parameter_count": 540417,
+    "architecture": "dense"
+  },
+  "environment_contract_source": {
+    "teacher_bank": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/teacher_bank.json",
+    "actor_checkpoint": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0312.pt"
+  },
+  "slew_limit_selection": {
+    "path": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/slew_limit_training_scan/scan_report.json",
+    "sha256": "6cf71497712b8d97b050136dad94883d903cf17679ad4f9cf0598d661b916739",
+    "verified": true
+  },
+  "self_check": {
+    "passed": true,
+    "student_checkpoint_unchanged": true,
+    "target_seen_overlap": [],
+    "pid_oracles": [
+      {
+        "plant_id": "train_core-0387",
+        "verified": true,
+        "tuning_episode_duration_s": 5.0,
+        "test_episode_duration_s": 30.0
+      },
+      {
+        "plant_id": "train_core-0452",
+        "verified": true,
+        "tuning_episode_duration_s": 5.0,
+        "test_episode_duration_s": 30.0
+      },
+      {
+        "plant_id": "train_core-0596",
+        "verified": true,
+        "tuning_episode_duration_s": 5.0,
+        "test_episode_duration_s": 30.0
+      },
+      {
+        "plant_id": "train_core-0867",
+        "verified": true,
+        "tuning_episode_duration_s": 5.0,
+        "test_episode_duration_s": 30.0
+      },
+      {
+        "plant_id": "train_core-0925",
+        "verified": true,
+        "tuning_episode_duration_s": 5.0,
+        "test_episode_duration_s": 30.0
+      },
+      {
+        "plant_id": "train_core-1167",
+        "verified": true,
+        "tuning_episode_duration_s": 5.0,
+        "test_episode_duration_s": 30.0
+      },
+      {
+        "plant_id": "train_boundary-1578",
+        "verified": true,
+        "tuning_episode_duration_s": 5.0,
+        "test_episode_duration_s": 30.0
+      },
+      {
+        "plant_id": "train_boundary-1592",
+        "verified": true,
+        "tuning_episode_duration_s": 5.0,
+        "test_episode_duration_s": 30.0
+      },
+      {
+        "plant_id": "train_boundary-1717",
+        "verified": true,
+        "tuning_episode_duration_s": 5.0,
+        "test_episode_duration_s": 30.0
+      },
+      {
+        "plant_id": "train_boundary-1798",
+        "verified": true,
+        "tuning_episode_duration_s": 5.0,
+        "test_episode_duration_s": 30.0
+      }
+    ],
+    "environment_observation_dim_matches_student": true
+  },
+  "overall": {
+    "raw": {
+      "pair_count": 60,
+      "mean_tracking_rmse_deg_s": 48.37700199501934,
+      "maximum_peak_error_deg_s": 849.7529848440753,
+      "mean_requested_force_total_variation_n": 145.65428423229605,
+      "mean_force_saturation_fraction": 0.0
+    },
+    "PID": {
+      "pair_count": 60,
+      "mean_tracking_rmse_deg_s": 1.409364490941647,
+      "maximum_peak_error_deg_s": 21.460382326952544,
+      "mean_requested_force_total_variation_n": 72.20046981939923,
+      "mean_force_saturation_fraction": 0.07687097490561848
+    },
+    "Student": {
+      "pair_count": 60,
+      "mean_tracking_rmse_deg_s": 2.67477425024339,
+      "maximum_peak_error_deg_s": 47.58512076399681,
+      "mean_requested_force_total_variation_n": 89.8400723405357,
+      "mean_force_saturation_fraction": 0.0
+    }
+  },
+  "generalization": {
+    "pair_count": 60,
+    "student_improves_raw_rate": 0.95,
+    "student_beats_or_equals_pid_rate": 0.11666666666666667,
+    "mean_student_to_pid_rmse_ratio": 6.091978455345826,
+    "median_student_to_pid_rmse_ratio": 2.254016002210962,
+    "maximum_student_to_pid_rmse_ratio": 68.70863844529413
+  },
+  "by_split": {
+    "train_boundary": {
+      "controllers": {
+        "raw": {
+          "pair_count": 24,
+          "mean_tracking_rmse_deg_s": 23.732381383864553,
+          "maximum_peak_error_deg_s": 181.56787907170596,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 24,
+          "mean_tracking_rmse_deg_s": 1.8873150232271907,
+          "maximum_peak_error_deg_s": 20.979099907057634,
+          "mean_requested_force_total_variation_n": 72.69790793157053,
+          "mean_force_saturation_fraction": 0.11758827448367754
+        },
+        "Student": {
+          "pair_count": 24,
+          "mean_tracking_rmse_deg_s": 2.7345595519780606,
+          "maximum_peak_error_deg_s": 19.622646290041327,
+          "mean_requested_force_total_variation_n": 95.43502930505686,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "generalization": {
+        "pair_count": 24,
+        "student_improves_raw_rate": 0.9166666666666666,
+        "student_beats_or_equals_pid_rate": 0.16666666666666666,
+        "mean_student_to_pid_rmse_ratio": 3.6820285500234498,
+        "median_student_to_pid_rmse_ratio": 1.7677364917527731,
+        "maximum_student_to_pid_rmse_ratio": 17.590604376647065
+      }
+    },
+    "train_core": {
+      "controllers": {
+        "raw": {
+          "pair_count": 36,
+          "mean_tracking_rmse_deg_s": 64.80674906912253,
+          "maximum_peak_error_deg_s": 849.7529848440753,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 36,
+          "mean_tracking_rmse_deg_s": 1.0907308027512845,
+          "maximum_peak_error_deg_s": 21.460382326952544,
+          "mean_requested_force_total_variation_n": 71.86884441128505,
+          "mean_force_saturation_fraction": 0.04972610852024576
+        },
+        "Student": {
+          "pair_count": 36,
+          "mean_tracking_rmse_deg_s": 2.634917382420278,
+          "maximum_peak_error_deg_s": 47.58512076399681,
+          "mean_requested_force_total_variation_n": 86.11010103085492,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "generalization": {
+        "pair_count": 36,
+        "student_improves_raw_rate": 0.9722222222222222,
+        "student_beats_or_equals_pid_rate": 0.08333333333333333,
+        "mean_student_to_pid_rmse_ratio": 7.698611725560743,
+        "median_student_to_pid_rmse_ratio": 2.6056125191904207,
+        "maximum_student_to_pid_rmse_ratio": 68.70863844529413
+      }
+    }
+  },
+  "by_quality_region": {
+    "level_1": {
+      "controllers": {
+        "raw": {
+          "pair_count": 24,
+          "mean_tracking_rmse_deg_s": 19.178289532037507,
+          "maximum_peak_error_deg_s": 132.68012914912407,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 24,
+          "mean_tracking_rmse_deg_s": 1.4105244818429432,
+          "maximum_peak_error_deg_s": 21.460382326952544,
+          "mean_requested_force_total_variation_n": 66.41472929565872,
+          "mean_force_saturation_fraction": 0.08344437041972019
+        },
+        "Student": {
+          "pair_count": 24,
+          "mean_tracking_rmse_deg_s": 2.2992804033051883,
+          "maximum_peak_error_deg_s": 21.1870045594942,
+          "mean_requested_force_total_variation_n": 76.31039380885098,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "generalization": {
+        "pair_count": 24,
+        "student_improves_raw_rate": 0.9583333333333334,
+        "student_beats_or_equals_pid_rate": 0.125,
+        "mean_student_to_pid_rmse_ratio": 5.140775276105098,
+        "median_student_to_pid_rmse_ratio": 2.091158759126978,
+        "maximum_student_to_pid_rmse_ratio": 17.590604376647065
+      }
+    },
+    "level_2": {
+      "controllers": {
+        "raw": {
+          "pair_count": 18,
+          "mean_tracking_rmse_deg_s": 26.36500854500293,
+          "maximum_peak_error_deg_s": 181.56787907170596,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 18,
+          "mean_tracking_rmse_deg_s": 1.8727367134569073,
+          "maximum_peak_error_deg_s": 20.979099907057634,
+          "mean_requested_force_total_variation_n": 71.60954991765013,
+          "mean_force_saturation_fraction": 0.13535420830557404
+        },
+        "Student": {
+          "pair_count": 18,
+          "mean_tracking_rmse_deg_s": 3.0067811005868332,
+          "maximum_peak_error_deg_s": 19.622646290041327,
+          "mean_requested_force_total_variation_n": 99.49132812668621,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "generalization": {
+        "pair_count": 18,
+        "student_improves_raw_rate": 0.8888888888888888,
+        "student_beats_or_equals_pid_rate": 0.05555555555555555,
+        "mean_student_to_pid_rmse_ratio": 4.011719247989744,
+        "median_student_to_pid_rmse_ratio": 4.188192890831673,
+        "maximum_student_to_pid_rmse_ratio": 9.150090595937783
+      }
+    },
+    "level_3": {
+      "controllers": {
+        "raw": {
+          "pair_count": 18,
+          "mean_tracking_rmse_deg_s": 109.32061206234486,
+          "maximum_peak_error_deg_s": 849.7529848440753,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 18,
+          "mean_tracking_rmse_deg_s": 0.9444456138913249,
+          "maximum_peak_error_deg_s": 21.01549920058999,
+          "mean_requested_force_total_variation_n": 80.50571041946907,
+          "mean_force_saturation_fraction": 0.009623214153527277
+        },
+        "Student": {
+          "pair_count": 18,
+          "mean_tracking_rmse_deg_s": 2.843425862484217,
+          "maximum_peak_error_deg_s": 47.58512076399681,
+          "mean_requested_force_total_variation_n": 98.22838792996481,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "generalization": {
+        "pair_count": 18,
+        "student_improves_raw_rate": 1.0,
+        "student_beats_or_equals_pid_rate": 0.16666666666666666,
+        "mean_student_to_pid_rmse_ratio": 9.44050856835621,
+        "median_student_to_pid_rmse_ratio": 1.8647955439901638,
+        "maximum_student_to_pid_rmse_ratio": 68.70863844529413
+      }
+    }
+  },
+  "aircraft": [
+    {
+      "plant_id": "train_core-0387",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "parameters": {
+        "l_fa": 0.32556102788378044,
+        "lambda_s": 0.01920043746996347,
+        "t_r": 0.27676522941636383,
+        "zeta_d": 0.47256437403149903,
+        "omega_d": 4.166832424156728,
+        "r_omega": 0.9452651433185462,
+        "r_zeta": 1.3713117713249316,
+        "tau_p": 0.13794775106012822
+      },
+      "normalized_parameters": {
+        "l_fa": 0.7007135152816772,
+        "lambda_s": 0.04675130173563957,
+        "t_r": -0.7858244180679321,
+        "zeta_d": 0.8409814834594727,
+        "omega_d": 0.7307263016700745,
+        "r_omega": 0.024762539193034172,
+        "r_zeta": -0.3429160416126251,
+        "tau_p": 0.09998194873332977
+      },
+      "parameter_distance": {
+        "nearest_seen_plant_id": "train_boundary-1743",
+        "nearest_distance": 0.6480575799942017,
+        "inside_seen_axis_aligned_envelope": true,
+        "outside_global_normalization_bounds": false
+      },
+      "summary": {
+        "raw": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 46.227469824865324,
+          "maximum_peak_error_deg_s": 132.68012914912407,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 0.4864520388219711,
+          "maximum_peak_error_deg_s": 4.478081995101198,
+          "mean_requested_force_total_variation_n": 25.063757838804232,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "Student": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 0.7812814363171775,
+          "maximum_peak_error_deg_s": 3.0782664107263478,
+          "mean_requested_force_total_variation_n": 23.79811598742769,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "commands": [
+        {
+          "plant_id": "train_core-0387",
+          "command_id": "test-v1-step-pos-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 1.1192882345256008,
+            "tracking_rmse_deg_s": 64.13049189696599,
+            "tracking_peak_error_deg_s": 88.53005626164808,
+            "episode_cost": 6870.057727992713,
+            "tracking_error_cost": 6859.103007123534,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.0044010187834283175,
+            "tracking_rmse_deg_s": 0.25215980184824266,
+            "tracking_peak_error_deg_s": 2.2795945344298425,
+            "episode_cost": 0.6025530988964658,
+            "tracking_error_cost": 0.10604492563098411,
+            "force_energy_cost": 0.4956389205851156,
+            "requested_force_delta_cost": 0.000869252680365992,
+            "force_rms_n": 2.826832255082406,
+            "force_total_variation_n": 6.940194174647331,
+            "requested_force_total_variation_n": 6.940194174647331,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.011629032940607513,
+            "tracking_rmse_deg_s": 0.6662945073154194,
+            "tracking_peak_error_deg_s": 1.8085098948032867,
+            "episode_cost": 1.2700539826804933,
+            "tracking_error_cost": 0.7404072267650277,
+            "force_energy_cost": 0.5285754813390366,
+            "requested_force_delta_cost": 0.0010712745764290266,
+            "force_rms_n": 2.919247008540366,
+            "force_total_variation_n": 6.84653802216053,
+            "requested_force_total_variation_n": 6.84653802216053,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0387",
+          "command_id": "test-v1-step-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 1.1192882345256008,
+            "tracking_rmse_deg_s": 64.13049189696599,
+            "tracking_peak_error_deg_s": 88.53005626164808,
+            "episode_cost": 6870.057727992713,
+            "tracking_error_cost": 6859.103007123534,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.0044010187834283175,
+            "tracking_rmse_deg_s": 0.25215980184824266,
+            "tracking_peak_error_deg_s": 2.2795945344298425,
+            "episode_cost": 0.6025530988964658,
+            "tracking_error_cost": 0.10604492563098411,
+            "force_energy_cost": 0.4956389205851156,
+            "requested_force_delta_cost": 0.000869252680365992,
+            "force_rms_n": 2.826832255082406,
+            "force_total_variation_n": 6.940194174647331,
+            "requested_force_total_variation_n": 6.940194174647331,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.011629032940607513,
+            "tracking_rmse_deg_s": 0.6662945073154194,
+            "tracking_peak_error_deg_s": 1.8085098948032867,
+            "episode_cost": 1.2700539826804933,
+            "tracking_error_cost": 0.7404072267650277,
+            "force_energy_cost": 0.5285754813390366,
+            "requested_force_delta_cost": 0.0010712745764290266,
+            "force_rms_n": 2.919247008540366,
+            "force_total_variation_n": 6.84653802216053,
+            "requested_force_total_variation_n": 6.84653802216053,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0387",
+          "command_id": "test-v1-step-pos-27deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 1.6764069666964636,
+            "tracking_rmse_deg_s": 96.05104393803572,
+            "tracking_peak_error_deg_s": 132.68012914912407,
+            "episode_cost": 15411.197061612214,
+            "tracking_error_cost": 15386.58929491255,
+            "force_energy_cost": 23.79776674258043,
+            "requested_force_delta_cost": 0.8099999570846563,
+            "force_rms_n": 19.587789966450643,
+            "force_total_variation_n": 19.799999475479126,
+            "requested_force_total_variation_n": 19.799999475479126,
+            "force_rate_limit_active_fraction": 0.0073284477015323115,
+            "mean_abs_force_rate_limit_gap_n": 0.06771485291823494,
+            "maximum_abs_force_rate_limit_gap_n": 18.039999475479124,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.006617133360815376,
+            "tracking_rmse_deg_s": 0.3791338140499392,
+            "tracking_peak_error_deg_s": 3.4265217122337415,
+            "episode_cost": 1.3569233025502159,
+            "tracking_error_cost": 0.2397304620922632,
+            "force_energy_cost": 1.115216818897803,
+            "requested_force_delta_cost": 0.0019760215601494604,
+            "force_rms_n": 4.240303985913736,
+            "force_total_variation_n": 10.48862837255001,
+            "requested_force_total_variation_n": 10.48862837255001,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.012553042311634802,
+            "tracking_rmse_deg_s": 0.7192363445058209,
+            "tracking_peak_error_deg_s": 1.7949943559089014,
+            "episode_cost": 2.0282537175082425,
+            "tracking_error_cost": 0.8627429775626689,
+            "force_energy_cost": 1.1638502681400673,
+            "requested_force_delta_cost": 0.0016604718055062834,
+            "force_rms_n": 4.331775018332952,
+            "force_total_variation_n": 9.47665074467659,
+            "requested_force_total_variation_n": 9.47665074467659,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0387",
+          "command_id": "test-v1-doublet-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.21062423457160945,
+            "tracking_rmse_deg_s": 12.067879704126666,
+            "tracking_peak_error_deg_s": 63.35862726314186,
+            "episode_cost": 245.60308304571473,
+            "tracking_error_cost": 242.88468283384643,
+            "force_energy_cost": 0.5584000402069101,
+            "requested_force_delta_cost": 2.1600001716613804,
+            "force_rms_n": 3.000475309116497,
+            "force_total_variation_n": 52.800002098083496,
+            "requested_force_total_variation_n": 52.800002098083496,
+            "force_rate_limit_active_fraction": 0.019320453031312457,
+            "mean_abs_force_rate_limit_gap_n": 0.18057296674145198,
+            "maximum_abs_force_rate_limit_gap_n": 24.640001049041764,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.009770659126634093,
+            "tracking_rmse_deg_s": 0.5598175310171125,
+            "tracking_peak_error_deg_s": 4.478081995101198,
+            "episode_cost": 0.5494431650230381,
+            "tracking_error_cost": 0.5226743307990865,
+            "force_energy_cost": 0.021298572254689053,
+            "requested_force_delta_cost": 0.005470261969262733,
+            "force_rms_n": 0.5859932084493393,
+            "force_total_variation_n": 18.02058536074284,
+            "requested_force_total_variation_n": 18.02058536074284,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.00869019666651327,
+            "tracking_rmse_deg_s": 0.49791159212986735,
+            "tracking_peak_error_deg_s": 3.0782664107263478,
+            "episode_cost": 0.43718520321074467,
+            "tracking_error_cost": 0.41346871813280706,
+            "force_energy_cost": 0.019883023202136065,
+            "requested_force_delta_cost": 0.0038334618758014798,
+            "force_rms_n": 0.5661852439859739,
+            "force_total_variation_n": 14.206034525413997,
+            "requested_force_total_variation_n": 14.206034525413997,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0387",
+          "command_id": "test-v1-sine-0.43hz",
+          "raw": {
+            "tracking_rmse_rad_s": 0.4438424537841177,
+            "tracking_rmse_deg_s": 25.43029937056024,
+            "tracking_peak_error_deg_s": 37.14926510819858,
+            "episode_cost": 1080.8190913750009,
+            "tracking_error_cost": 1078.5520991561675,
+            "force_energy_cost": 1.976298846696558,
+            "requested_force_delta_cost": 0.29069337213651114,
+            "force_rms_n": 5.644736134608205,
+            "force_total_variation_n": 410.77084416151047,
+            "requested_force_total_variation_n": 410.77084416151047,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.015703437613478168,
+            "tracking_rmse_deg_s": 0.8997406990992888,
+            "tracking_peak_error_deg_s": 1.3337946673359369,
+            "episode_cost": 1.4099067480141432,
+            "tracking_error_cost": 1.3501216908323683,
+            "force_energy_cost": 0.052416804609151726,
+            "requested_force_delta_cost": 0.0073682525726231135,
+            "force_rms_n": 0.9192901526564579,
+            "force_total_variation_n": 64.92848785966635,
+            "requested_force_total_variation_n": 64.92848785966635,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.022852356113774955,
+            "tracking_rmse_deg_s": 1.3093435572492886,
+            "tracking_peak_error_deg_s": 2.0144940747040447,
+            "episode_cost": 2.9213337601095093,
+            "tracking_error_cost": 2.8592057854624917,
+            "force_energy_cost": 0.05436649265359283,
+            "requested_force_delta_cost": 0.007761481993425015,
+            "force_rms_n": 0.9362309522124925,
+            "force_total_variation_n": 66.29517780989408,
+            "requested_force_total_variation_n": 66.29517780989408,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0387",
+          "command_id": "test-v1-multisine",
+          "raw": {
+            "tracking_rmse_rad_s": 0.2714791957579661,
+            "tracking_rmse_deg_s": 15.554612142537339,
+            "tracking_peak_error_deg_s": 36.30326429529483,
+            "episode_cost": 404.8790176311393,
+            "tracking_error_cost": 403.51209368451094,
+            "force_energy_cost": 1.0908970220171241,
+            "requested_force_delta_cost": 0.27602692461125067,
+            "force_rms_n": 4.193814481106864,
+            "force_total_variation_n": 364.15485860966146,
+            "requested_force_total_variation_n": 364.15485860966146,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.010047870715111765,
+            "tracking_rmse_deg_s": 0.5757005850690006,
+            "tracking_peak_error_deg_s": 1.4312273023001625,
+            "episode_cost": 0.6104223654519443,
+            "tracking_error_cost": 0.5527535295964812,
+            "force_energy_cost": 0.05381117135227101,
+            "requested_force_delta_cost": 0.003857664503192214,
+            "force_rms_n": 0.931437158926616,
+            "force_total_variation_n": 43.06445709057152,
+            "requested_force_total_variation_n": 43.06445709057152,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.01446193971753283,
+            "tracking_rmse_deg_s": 0.828608109387249,
+            "tracking_peak_error_deg_s": 1.818508598151255,
+            "episode_cost": 1.2052304801903468,
+            "tracking_error_cost": 1.145081877569344,
+            "force_energy_cost": 0.05709175835943747,
+            "requested_force_delta_cost": 0.003056844261565512,
+            "force_rms_n": 0.9594095703694262,
+            "force_total_variation_n": 39.117756800260395,
+            "requested_force_total_variation_n": 39.117756800260395,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        }
+      ],
+      "pid_report": {
+        "path": "/home/jovyan/work/other/pingmo/results/teacher_student_pipeline/00_pid_oracles/train_core-0387/pid_report.json",
+        "sha256": "3153dd27e91177aa06f3f241abbbf23970cbe7c1f0c8d4591dd647d431036212"
+      },
+      "plots": {
+        "full": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0387/raw_pid_student.png",
+        "zoom": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0387/pid_student_zoom.png"
+      }
+    },
+    {
+      "plant_id": "train_core-0452",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "parameters": {
+        "l_fa": 0.19854787623785894,
+        "lambda_s": 0.10733941327680878,
+        "t_r": 0.21311573665719047,
+        "zeta_d": 0.5157659989776919,
+        "omega_d": 1.0460283233484386,
+        "r_omega": 0.8754526041319873,
+        "r_zeta": 1.2739880642505876,
+        "tau_p": 0.0741274347435683
+      },
+      "normalized_parameters": {
+        "l_fa": 0.2995840609073639,
+        "lambda_s": 0.5920193195343018,
+        "t_r": -0.9159260988235474,
+        "zeta_d": 0.8763864040374756,
+        "omega_d": -0.2900491952896118,
+        "r_omega": -0.18518617749214172,
+        "r_zeta": -0.3647092282772064,
+        "tau_p": -0.4126310348510742
+      },
+      "parameter_distance": {
+        "nearest_seen_plant_id": "train_boundary-1584",
+        "nearest_distance": 0.7853448987007141,
+        "inside_seen_axis_aligned_envelope": false,
+        "outside_global_normalization_bounds": false
+      },
+      "summary": {
+        "raw": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 132.4931674383612,
+          "maximum_peak_error_deg_s": 849.7529848440753,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 0.9602980735477907,
+          "maximum_peak_error_deg_s": 21.01549920058999,
+          "mean_requested_force_total_variation_n": 55.25243349511495,
+          "mean_force_saturation_fraction": 0.028869642460581834
+        },
+        "Student": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 5.222191396564257,
+          "maximum_peak_error_deg_s": 47.58512076399681,
+          "mean_requested_force_total_variation_n": 48.815596940616764,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "commands": [
+        {
+          "plant_id": "train_core-0452",
+          "command_id": "test-v1-step-pos-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 3.804079248535524,
+            "tracking_rmse_deg_s": 217.95768587438326,
+            "tracking_peak_error_deg_s": 568.8515999715837,
+            "episode_cost": 79239.66005465387,
+            "tracking_error_cost": 79228.7053337847,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.0018912405763693609,
+            "tracking_rmse_deg_s": 0.10836010306985364,
+            "tracking_peak_error_deg_s": 0.8988103395329466,
+            "episode_cost": 5.891061517036868,
+            "tracking_error_cost": 0.019582899797668075,
+            "force_energy_cost": 5.867835262866786,
+            "requested_force_delta_cost": 0.003643354372414132,
+            "force_rms_n": 9.726493327981979,
+            "force_total_variation_n": 34.56295025348663,
+            "requested_force_total_variation_n": 34.56295025348663,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.1299445649748321,
+            "tracking_rmse_deg_s": 7.445275143721379,
+            "tracking_peak_error_deg_s": 18.30008414807082,
+            "episode_cost": 97.51464914021439,
+            "tracking_error_cost": 92.44846118948757,
+            "force_energy_cost": 5.063251933639436,
+            "requested_force_delta_cost": 0.0029360170874018036,
+            "force_rms_n": 9.035082146266834,
+            "force_total_variation_n": 32.893471121788025,
+            "requested_force_total_variation_n": 32.893471121788025,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0452",
+          "command_id": "test-v1-step-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 3.804079248535524,
+            "tracking_rmse_deg_s": 217.95768587438326,
+            "tracking_peak_error_deg_s": 568.8515999715837,
+            "episode_cost": 79239.66005465387,
+            "tracking_error_cost": 79228.7053337847,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.0018912405763693609,
+            "tracking_rmse_deg_s": 0.10836010306985364,
+            "tracking_peak_error_deg_s": 0.8988103395329466,
+            "episode_cost": 5.891061517036868,
+            "tracking_error_cost": 0.019582899797668075,
+            "force_energy_cost": 5.867835262866786,
+            "requested_force_delta_cost": 0.003643354372414132,
+            "force_rms_n": 9.726493327981979,
+            "force_total_variation_n": 34.56295025348663,
+            "requested_force_total_variation_n": 34.56295025348663,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.1299445649748321,
+            "tracking_rmse_deg_s": 7.445275143721379,
+            "tracking_peak_error_deg_s": 18.30008414807082,
+            "episode_cost": 97.51464914021439,
+            "tracking_error_cost": 92.44846118948757,
+            "force_energy_cost": 5.063251933639436,
+            "requested_force_delta_cost": 0.0029360170874018036,
+            "force_rms_n": 9.035082146266834,
+            "force_total_variation_n": 32.893471121788025,
+            "requested_force_total_variation_n": 32.893471121788025,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0452",
+          "command_id": "test-v1-step-pos-27deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 5.681858166635274,
+            "tracking_rmse_deg_s": 325.5464927401408,
+            "tracking_peak_error_deg_s": 849.7529848440753,
+            "episode_cost": 176776.56212452773,
+            "tracking_error_cost": 176751.9543578281,
+            "force_energy_cost": 23.79776674258043,
+            "requested_force_delta_cost": 0.8099999570846563,
+            "force_rms_n": 19.587789966450643,
+            "force_total_variation_n": 19.799999475479126,
+            "requested_force_total_variation_n": 19.799999475479126,
+            "force_rate_limit_active_fraction": 0.0073284477015323115,
+            "mean_abs_force_rate_limit_gap_n": 0.06771485291823494,
+            "maximum_abs_force_rate_limit_gap_n": 18.039999475479124,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.0837182034786889,
+            "tracking_rmse_deg_s": 4.79669972774632,
+            "tracking_peak_error_deg_s": 21.01549920058999,
+            "episode_cost": 49.43040480067018,
+            "tracking_error_cost": 38.37277860613402,
+            "force_energy_cost": 11.049768016542112,
+            "requested_force_delta_cost": 0.00785817799404535,
+            "force_rms_n": 13.347315215100199,
+            "force_total_variation_n": 43.78519427776337,
+            "requested_force_total_variation_n": 43.78519427776337,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.173217854763491
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.26533045543388717,
+            "tracking_rmse_deg_s": 15.202315272645714,
+            "tracking_peak_error_deg_s": 47.58512076399681,
+            "episode_cost": 393.96118970235995,
+            "tracking_error_cost": 385.44077207002744,
+            "force_energy_cost": 8.51535421274617,
+            "requested_force_delta_cost": 0.005063419586265149,
+            "force_rms_n": 11.71706113399998,
+            "force_total_variation_n": 39.92544972896576,
+            "requested_force_total_variation_n": 39.92544972896576,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0452",
+          "command_id": "test-v1-doublet-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.13206953303874458,
+            "tracking_rmse_deg_s": 7.5670268453836504,
+            "tracking_peak_error_deg_s": 27.68412909554095,
+            "episode_cost": 98.21518111566164,
+            "tracking_error_cost": 95.49678090379335,
+            "force_energy_cost": 0.5584000402069101,
+            "requested_force_delta_cost": 2.1600001716613804,
+            "force_rms_n": 3.000475309116497,
+            "force_total_variation_n": 52.800002098083496,
+            "requested_force_total_variation_n": 52.800002098083496,
+            "force_rate_limit_active_fraction": 0.019320453031312457,
+            "mean_abs_force_rate_limit_gap_n": 0.18057296674145198,
+            "maximum_abs_force_rate_limit_gap_n": 24.640001049041764,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.003403339512706876,
+            "tracking_rmse_deg_s": 0.19499699032821421,
+            "tracking_peak_error_deg_s": 1.6887569820746011,
+            "episode_cost": 0.14341034890469342,
+            "tracking_error_cost": 0.06341529242425507,
+            "force_energy_cost": 0.06760758757512757,
+            "requested_force_delta_cost": 0.012387468905310778,
+            "force_rms_n": 1.0440349962986841,
+            "force_total_variation_n": 23.385112795769718,
+            "requested_force_total_variation_n": 23.385112795769718,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.0031073094556457502,
+            "tracking_rmse_deg_s": 0.17803571744959476,
+            "tracking_peak_error_deg_s": 0.8406267914548337,
+            "episode_cost": 0.12042571221952006,
+            "tracking_error_cost": 0.052863079720417455,
+            "force_energy_cost": 0.06042183323528188,
+            "requested_force_delta_cost": 0.007140799263820705,
+            "force_rms_n": 0.9869934846644298,
+            "force_total_variation_n": 21.111572854220867,
+            "requested_force_total_variation_n": 21.111572854220867,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0452",
+          "command_id": "test-v1-sine-0.43hz",
+          "raw": {
+            "tracking_rmse_rad_s": 0.2369413406390563,
+            "tracking_rmse_deg_s": 13.575738810789503,
+            "tracking_peak_error_deg_s": 30.655746413643158,
+            "episode_cost": 309.63957785485906,
+            "tracking_error_cost": 307.3725856360259,
+            "force_energy_cost": 1.976298846696558,
+            "requested_force_delta_cost": 0.29069337213651114,
+            "force_rms_n": 5.644736134608205,
+            "force_total_variation_n": 410.77084416151047,
+            "requested_force_total_variation_n": 410.77084416151047,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.0061584861183678445,
+            "tracking_rmse_deg_s": 0.3528552627723822,
+            "tracking_peak_error_deg_s": 0.5167136112874325,
+            "episode_cost": 0.4372979208086185,
+            "tracking_error_cost": 0.20764973503968506,
+            "force_energy_cost": 0.20136476757000416,
+            "requested_force_delta_cost": 0.028283418198929256,
+            "force_rms_n": 1.8018103589860859,
+            "force_total_variation_n": 127.56586050987244,
+            "requested_force_total_variation_n": 127.56586050987244,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.009928492939207672,
+            "tracking_rmse_deg_s": 0.5688607423420374,
+            "tracking_peak_error_deg_s": 0.9469670175004065,
+            "episode_cost": 0.7158839282709863,
+            "tracking_error_cost": 0.5396971320123098,
+            "force_energy_cost": 0.15460294807159433,
+            "requested_force_delta_cost": 0.0215838481870821,
+            "force_rms_n": 1.5787967452398262,
+            "force_total_variation_n": 111.48792981542647,
+            "requested_force_total_variation_n": 111.48792981542647,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0452",
+          "command_id": "test-v1-multisine",
+          "raw": {
+            "tracking_rmse_rad_s": 0.21562451178914338,
+            "tracking_rmse_deg_s": 12.35437448508678,
+            "tracking_peak_error_deg_s": 39.24553441754338,
+            "episode_cost": 255.9207949972535,
+            "tracking_error_cost": 254.55387105062513,
+            "force_energy_cost": 1.0908970220171241,
+            "requested_force_delta_cost": 0.27602692461125067,
+            "force_rms_n": 4.193814481106864,
+            "force_total_variation_n": 364.15485860966146,
+            "requested_force_total_variation_n": 364.15485860966146,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.003499668841303332,
+            "tracking_rmse_deg_s": 0.20051625430012002,
+            "tracking_peak_error_deg_s": 0.4868652432376425,
+            "episode_cost": 0.23997827045477177,
+            "tracking_error_cost": 0.06705595458451574,
+            "force_energy_cost": 0.16330255619418388,
+            "requested_force_delta_cost": 0.00961975967607219,
+            "force_rms_n": 1.6226088048911727,
+            "force_total_variation_n": 67.6525328803109,
+            "requested_force_total_variation_n": 67.6525328803109,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.008611216457798266,
+            "tracking_rmse_deg_s": 0.4933863595054352,
+            "tracking_peak_error_deg_s": 1.1025465641318537,
+            "episode_cost": 0.5594196388214405,
+            "tracking_error_cost": 0.405987310798651,
+            "force_energy_cost": 0.14738380329994585,
+            "requested_force_delta_cost": 0.006048524722843653,
+            "force_rms_n": 1.541495341537065,
+            "force_total_variation_n": 54.581687001511455,
+            "requested_force_total_variation_n": 54.581687001511455,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        }
+      ],
+      "pid_report": {
+        "path": "/home/jovyan/work/other/pingmo/results/teacher_student_pipeline/00_pid_oracles/train_core-0452/pid_report.json",
+        "sha256": "2fe93de4560a95e5ed0ed27de91db2df18fd7e27673ce9278ae8f4787a111cba"
+      },
+      "plots": {
+        "full": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0452/raw_pid_student.png",
+        "zoom": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0452/pid_student_zoom.png"
+      }
+    },
+    {
+      "plant_id": "train_core-0596",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "parameters": {
+        "l_fa": 0.10184311201671994,
+        "lambda_s": -0.06203526174935525,
+        "t_r": 7.824367860524105,
+        "zeta_d": 0.617372883213684,
+        "omega_d": 2.4260050629698067,
+        "r_omega": 1.1427981069613613,
+        "r_zeta": 0.7749360493532668,
+        "tau_p": 0.1738266390003264
+      },
+      "normalized_parameters": {
+        "l_fa": -0.2419367879629135,
+        "lambda_s": -0.45580989122390747,
+        "t_r": 0.8778597712516785,
+        "zeta_d": 0.9491637945175171,
+        "omega_d": 0.3312431573867798,
+        "r_omega": 0.5440477728843689,
+        "r_zeta": -0.5118787884712219,
+        "tau_p": 0.38816574215888977
+      },
+      "parameter_distance": {
+        "nearest_seen_plant_id": "train_boundary-1760",
+        "nearest_distance": 0.9979088306427002,
+        "inside_seen_axis_aligned_envelope": false,
+        "outside_global_normalization_bounds": false
+      },
+      "summary": {
+        "raw": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 179.28746861137913,
+          "maximum_peak_error_deg_s": 569.9265706632548,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 0.8357319169794494,
+          "maximum_peak_error_deg_s": 6.446403974426804,
+          "mean_requested_force_total_variation_n": 78.65078036955869,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "Student": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 2.393944363726987,
+          "maximum_peak_error_deg_s": 13.355515371207362,
+          "mean_requested_force_total_variation_n": 154.51320253312588,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "commands": [
+        {
+          "plant_id": "train_core-0596",
+          "command_id": "test-v1-step-pos-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 5.167804562910452,
+            "tracking_rmse_deg_s": 296.093390803218,
+            "tracking_peak_error_deg_s": 379.9547173475284,
+            "episode_cost": 146227.19406764494,
+            "tracking_error_cost": 146216.23934677575,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.006621433740734657,
+            "tracking_rmse_deg_s": 0.37938020766961683,
+            "tracking_peak_error_deg_s": 3.2449670968497157,
+            "episode_cost": 0.2970319036324954,
+            "tracking_error_cost": 0.24004215811014878,
+            "force_energy_cost": 0.051564337899449,
+            "requested_force_delta_cost": 0.005425407622897618,
+            "force_rms_n": 0.9117841947700978,
+            "force_total_variation_n": 19.502339780330658,
+            "requested_force_total_variation_n": 19.502339780330658,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.01401960102821477,
+            "tracking_rmse_deg_s": 0.8032639693739757,
+            "tracking_peak_error_deg_s": 1.2273984050411044,
+            "episode_cost": 1.1226026742804363,
+            "tracking_error_cost": 1.0761052663846087,
+            "force_energy_cost": 0.04418554710864725,
+            "requested_force_delta_cost": 0.0023118607871804634,
+            "force_rms_n": 0.8440291680555181,
+            "force_total_variation_n": 8.581685876473784,
+            "requested_force_total_variation_n": 8.581685876473784,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0596",
+          "command_id": "test-v1-step-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 5.167804562910452,
+            "tracking_rmse_deg_s": 296.093390803218,
+            "tracking_peak_error_deg_s": 379.9547173475284,
+            "episode_cost": 146227.19406764494,
+            "tracking_error_cost": 146216.23934677575,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.006621433740734657,
+            "tracking_rmse_deg_s": 0.37938020766961683,
+            "tracking_peak_error_deg_s": 3.2449670968497157,
+            "episode_cost": 0.2970319036324954,
+            "tracking_error_cost": 0.24004215811014878,
+            "force_energy_cost": 0.051564337899449,
+            "requested_force_delta_cost": 0.005425407622897618,
+            "force_rms_n": 0.9117841947700978,
+            "force_total_variation_n": 19.502339780330658,
+            "requested_force_total_variation_n": 19.502339780330658,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.01401960102821477,
+            "tracking_rmse_deg_s": 0.8032639693739757,
+            "tracking_peak_error_deg_s": 1.2273984050411044,
+            "episode_cost": 1.1226026742804363,
+            "tracking_error_cost": 1.0761052663846087,
+            "force_energy_cost": 0.04418554710864725,
+            "requested_force_delta_cost": 0.0023118607871804634,
+            "force_rms_n": 0.8440291680555181,
+            "force_total_variation_n": 8.581685876473784,
+            "requested_force_total_variation_n": 8.581685876473784,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0596",
+          "command_id": "test-v1-step-pos-27deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 7.74941724258058,
+            "tracking_rmse_deg_s": 444.0089016857753,
+            "tracking_peak_error_deg_s": 569.9265706632548,
+            "episode_cost": 328816.83117679856,
+            "tracking_error_cost": 328792.2234100989,
+            "force_energy_cost": 23.79776674258043,
+            "requested_force_delta_cost": 0.8099999570846563,
+            "force_rms_n": 19.587789966450643,
+            "force_total_variation_n": 19.799999475479126,
+            "requested_force_total_variation_n": 19.799999475479126,
+            "force_rate_limit_active_fraction": 0.0073284477015323115,
+            "mean_abs_force_rate_limit_gap_n": 0.06771485291823494,
+            "maximum_abs_force_rate_limit_gap_n": 18.039999475479124,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.009968293892044741,
+            "tracking_rmse_deg_s": 0.5711411689602007,
+            "tracking_peak_error_deg_s": 4.884682534969873,
+            "episode_cost": 0.6728315575772269,
+            "tracking_error_cost": 0.5440328383963535,
+            "force_energy_cost": 0.11629964625668102,
+            "requested_force_delta_cost": 0.012499072924192388,
+            "force_rms_n": 1.3693249890575097,
+            "force_total_variation_n": 29.84259742498398,
+            "requested_force_total_variation_n": 29.84259742498398,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.025607299184162356,
+            "tracking_rmse_deg_s": 1.467190167981299,
+            "tracking_peak_error_deg_s": 2.370581638953242,
+            "episode_cost": 3.688047771114925,
+            "tracking_error_cost": 3.5901368116894568,
+            "force_energy_cost": 0.09492739995265405,
+            "requested_force_delta_cost": 0.0029835594728138837,
+            "force_rms_n": 1.2371237081189679,
+            "force_total_variation_n": 10.829887636005878,
+            "requested_force_total_variation_n": 10.829887636005878,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0596",
+          "command_id": "test-v1-doublet-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.17617068192601415,
+            "tracking_rmse_deg_s": 10.093836548302264,
+            "tracking_peak_error_deg_s": 56.19568195747244,
+            "episode_cost": 172.6408334696768,
+            "tracking_error_cost": 169.92243325780854,
+            "force_energy_cost": 0.5584000402069101,
+            "requested_force_delta_cost": 2.1600001716613804,
+            "force_rms_n": 3.000475309116497,
+            "force_total_variation_n": 52.800002098083496,
+            "requested_force_total_variation_n": 52.800002098083496,
+            "force_rate_limit_active_fraction": 0.019320453031312457,
+            "mean_abs_force_rate_limit_gap_n": 0.18057296674145198,
+            "maximum_abs_force_rate_limit_gap_n": 24.640001049041764,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.015232101964585229,
+            "tracking_rmse_deg_s": 0.8727351556836633,
+            "tracking_peak_error_deg_s": 6.446403974426804,
+            "episode_cost": 1.3832554804851636,
+            "tracking_error_cost": 1.2702907162236095,
+            "force_energy_cost": 0.08748408795181502,
+            "requested_force_delta_cost": 0.025480676309738926,
+            "force_rms_n": 1.1876319460154667,
+            "force_total_variation_n": 45.068282009987186,
+            "requested_force_total_variation_n": 45.068282009987186,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.0983006526031298,
+            "tracking_rmse_deg_s": 5.632212517541027,
+            "tracking_peak_error_deg_s": 13.355515371207362,
+            "episode_cost": 53.76262711466861,
+            "tracking_error_cost": 52.904942868846106,
+            "force_energy_cost": 0.7145788767468068,
+            "requested_force_delta_cost": 0.14310536907568533,
+            "force_rms_n": 3.394239036822405,
+            "force_total_variation_n": 317.15639485418797,
+            "requested_force_total_variation_n": 317.15639485418797,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0596",
+          "command_id": "test-v1-sine-0.43hz",
+          "raw": {
+            "tracking_rmse_rad_s": 0.16422488778440592,
+            "tracking_rmse_deg_s": 9.409392961056009,
+            "tracking_peak_error_deg_s": 27.94864933541199,
+            "episode_cost": 149.92649279577873,
+            "tracking_error_cost": 147.65950057694567,
+            "force_energy_cost": 1.976298846696558,
+            "requested_force_delta_cost": 0.29069337213651114,
+            "force_rms_n": 5.644736134608205,
+            "force_total_variation_n": 410.77084416151047,
+            "requested_force_total_variation_n": 410.77084416151047,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.031613980070574574,
+            "tracking_rmse_deg_s": 1.8113476316546195,
+            "tracking_peak_error_deg_s": 2.678123605504462,
+            "episode_cost": 5.90392851532275,
+            "tracking_error_cost": 5.471945938104334,
+            "force_energy_cost": 0.3762039251393251,
+            "requested_force_delta_cost": 0.05577865207909151,
+            "force_rms_n": 2.4627991674288805,
+            "force_total_variation_n": 178.6856163740158,
+            "requested_force_total_variation_n": 178.6856163740158,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.040019929994855985,
+            "tracking_rmse_deg_s": 2.2929730851142582,
+            "tracking_peak_error_deg_s": 3.697698605427553,
+            "episode_cost": 9.482025475987918,
+            "tracking_error_cost": 8.768717865729624,
+            "force_energy_cost": 0.5913540741180103,
+            "requested_force_delta_cost": 0.12195353614028266,
+            "force_rms_n": 3.087742912157063,
+            "force_total_variation_n": 283.6347134411335,
+            "requested_force_total_variation_n": 283.6347134411335,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0596",
+          "command_id": "test-v1-multisine",
+          "raw": {
+            "tracking_rmse_rad_s": 0.34951787089540176,
+            "tracking_rmse_deg_s": 20.025898866704914,
+            "tracking_peak_error_deg_s": 46.45325839629583,
+            "episode_cost": 670.2068958962496,
+            "tracking_error_cost": 668.8399719496213,
+            "force_energy_cost": 1.0908970220171241,
+            "requested_force_delta_cost": 0.27602692461125067,
+            "force_rms_n": 4.193814481106864,
+            "force_total_variation_n": 364.15485860966146,
+            "requested_force_total_variation_n": 364.15485860966146,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.017460398283097905,
+            "tracking_rmse_deg_s": 1.0004071302389788,
+            "tracking_peak_error_deg_s": 2.4702445478223223,
+            "episode_cost": 1.848107356951386,
+            "tracking_error_cost": 1.6691360597507958,
+            "force_energy_cost": 0.11588069034266288,
+            "requested_force_delta_cost": 0.06309060685792714,
+            "force_rms_n": 1.3668563470043453,
+            "force_total_variation_n": 179.30350684770383,
+            "requested_force_total_variation_n": 179.30350684770383,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.05872618370100214,
+            "tracking_rmse_deg_s": 3.3647624729773873,
+            "tracking_peak_error_deg_s": 7.157283437905538,
+            "episode_cost": 19.402141022046457,
+            "tracking_error_cost": 18.881957084261018,
+            "force_energy_cost": 0.38840439304940877,
+            "requested_force_delta_cost": 0.13177954473603268,
+            "force_rms_n": 2.5024153970349494,
+            "force_total_variation_n": 298.29484751448035,
+            "requested_force_total_variation_n": 298.29484751448035,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        }
+      ],
+      "pid_report": {
+        "path": "/home/jovyan/work/other/pingmo/results/teacher_student_pipeline/00_pid_oracles/train_core-0596/pid_report.json",
+        "sha256": "1b952d7a26a0d1f08fdbdbebb462ac0a5df6f05622f53a927b497b1c757a18f0"
+      },
+      "plots": {
+        "full": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0596/raw_pid_student.png",
+        "zoom": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0596/pid_student_zoom.png"
+      }
+    },
+    {
+      "plant_id": "train_core-0867",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "parameters": {
+        "l_fa": 0.07578743272530082,
+        "lambda_s": -0.07529360537251022,
+        "t_r": 0.6743364431598786,
+        "zeta_d": 0.3632723885215819,
+        "omega_d": 3.1424610271787916,
+        "r_omega": 1.3000946203592425,
+        "r_zeta": 0.39605506374033084,
+        "tau_p": 0.07877164678648113
+      },
+      "normalized_parameters": {
+        "l_fa": -0.4816323518753052,
+        "lambda_s": -0.5378320813179016,
+        "t_r": -0.3424713909626007,
+        "zeta_d": 0.7345306277275085,
+        "omega_d": 0.5223476886749268,
+        "r_omega": 0.8969265222549438,
+        "r_zeta": -0.7105890512466431,
+        "tau_p": -0.3753281533718109
+      },
+      "parameter_distance": {
+        "nearest_seen_plant_id": "train_core-0334",
+        "nearest_distance": 0.7352288961410522,
+        "inside_seen_axis_aligned_envelope": true,
+        "outside_global_normalization_bounds": false
+      },
+      "summary": {
+        "raw": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 13.434170770056218,
+          "maximum_peak_error_deg_s": 58.359176228040056,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 0.28360523140452504,
+          "maximum_peak_error_deg_s": 2.5639004368099005,
+          "mean_requested_force_total_variation_n": 103.51358961330607,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "Student": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 1.9604398860116465,
+          "maximum_peak_error_deg_s": 15.472010741452422,
+          "mean_requested_force_total_variation_n": 134.8995678750798,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "commands": [
+        {
+          "plant_id": "train_core-0867",
+          "command_id": "test-v1-step-pos-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.29599305571752954,
+            "tracking_rmse_deg_s": 16.959152857795065,
+            "tracking_peak_error_deg_s": 38.993785551599665,
+            "episode_cost": 490.629066810003,
+            "tracking_error_cost": 479.6743459408242,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.0020978696165611247,
+            "tracking_rmse_deg_s": 0.12019907499768076,
+            "tracking_peak_error_deg_s": 1.05942016916008,
+            "episode_cost": 4.011254281503424,
+            "tracking_error_cost": 0.024095749181197133,
+            "force_energy_cost": 3.9780825076122537,
+            "requested_force_delta_cost": 0.009076024709973093,
+            "force_rms_n": 8.008556245711034,
+            "force_total_variation_n": 29.27657088637352,
+            "requested_force_total_variation_n": 29.27657088637352,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.020550170811973606,
+            "tracking_rmse_deg_s": 1.1774380557990196,
+            "tracking_peak_error_deg_s": 2.141786038416325,
+            "episode_cost": 5.954846127880832,
+            "tracking_error_cost": 2.3121410258232302,
+            "force_energy_cost": 3.634121921636962,
+            "requested_force_delta_cost": 0.008583180420639838,
+            "force_rms_n": 7.654504515392154,
+            "force_total_variation_n": 47.88771855831146,
+            "requested_force_total_variation_n": 47.88771855831146,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0867",
+          "command_id": "test-v1-step-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.29599305571752954,
+            "tracking_rmse_deg_s": 16.959152857795065,
+            "tracking_peak_error_deg_s": 38.993785551599665,
+            "episode_cost": 490.629066810003,
+            "tracking_error_cost": 479.6743459408242,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.0020978696165611247,
+            "tracking_rmse_deg_s": 0.12019907499768076,
+            "tracking_peak_error_deg_s": 1.05942016916008,
+            "episode_cost": 4.011254281503424,
+            "tracking_error_cost": 0.024095749181197133,
+            "force_energy_cost": 3.9780825076122537,
+            "requested_force_delta_cost": 0.009076024709973093,
+            "force_rms_n": 8.008556245711034,
+            "force_total_variation_n": 29.27657088637352,
+            "requested_force_total_variation_n": 29.27657088637352,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.020550170811973606,
+            "tracking_rmse_deg_s": 1.1774380557990196,
+            "tracking_peak_error_deg_s": 2.141786038416325,
+            "episode_cost": 5.954846127880832,
+            "tracking_error_cost": 2.3121410258232302,
+            "force_energy_cost": 3.634121921636962,
+            "requested_force_delta_cost": 0.008583180420639838,
+            "force_rms_n": 7.654504515392154,
+            "force_total_variation_n": 47.88771855831146,
+            "requested_force_total_variation_n": 47.88771855831146,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0867",
+          "command_id": "test-v1-step-pos-27deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.4431679589493334,
+            "tracking_rmse_deg_s": 25.391653663223725,
+            "tracking_peak_error_deg_s": 58.359176228040056,
+            "episode_cost": 1099.8842663723403,
+            "tracking_error_cost": 1075.2764996726753,
+            "force_energy_cost": 23.79776674258043,
+            "requested_force_delta_cost": 0.8099999570846563,
+            "force_rms_n": 19.587789966450643,
+            "force_total_variation_n": 19.799999475479126,
+            "requested_force_total_variation_n": 19.799999475479126,
+            "force_rate_limit_active_fraction": 0.0073284477015323115,
+            "mean_abs_force_rate_limit_gap_n": 0.06771485291823494,
+            "maximum_abs_force_rate_limit_gap_n": 18.039999475479124,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.003155685541884288,
+            "tracking_rmse_deg_s": 0.1808074630204239,
+            "tracking_peak_error_deg_s": 1.6135659578282326,
+            "episode_cost": 9.026675068215692,
+            "tracking_error_cost": 0.05452188818278535,
+            "force_energy_cost": 8.951092723474778,
+            "requested_force_delta_cost": 0.021060456558128545,
+            "force_rms_n": 12.013107540108551,
+            "force_total_variation_n": 44.159661531448364,
+            "requested_force_total_variation_n": 44.159661531448364,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.04397465726693055,
+            "tracking_rmse_deg_s": 2.519562266929416,
+            "tracking_peak_error_deg_s": 4.414181003876124,
+            "episode_cost": 18.37175732435712,
+            "tracking_error_cost": 10.587376910465203,
+            "force_energy_cost": 7.765830041336928,
+            "requested_force_delta_cost": 0.018550372554989106,
+            "force_rms_n": 11.189515382590866,
+            "force_total_variation_n": 69.24499297142029,
+            "requested_force_total_variation_n": 69.24499297142029,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0867",
+          "command_id": "test-v1-doublet-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.08513117997380791,
+            "tracking_rmse_deg_s": 4.877657317467827,
+            "tracking_peak_error_deg_s": 24.97369580022452,
+            "episode_cost": 42.397403435065875,
+            "tracking_error_cost": 39.679003223197576,
+            "force_energy_cost": 0.5584000402069101,
+            "requested_force_delta_cost": 2.1600001716613804,
+            "force_rms_n": 3.000475309116497,
+            "force_total_variation_n": 52.800002098083496,
+            "requested_force_total_variation_n": 52.800002098083496,
+            "force_rate_limit_active_fraction": 0.019320453031312457,
+            "mean_abs_force_rate_limit_gap_n": 0.18057296674145198,
+            "maximum_abs_force_rate_limit_gap_n": 24.640001049041764,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.006413872795593937,
+            "tracking_rmse_deg_s": 0.36748784152130715,
+            "tracking_peak_error_deg_s": 2.5639004368099005,
+            "episode_cost": 0.529127625641639,
+            "tracking_error_cost": 0.22522890868072232,
+            "force_energy_cost": 0.22043250109085982,
+            "requested_force_delta_cost": 0.08346621587005684,
+            "force_rms_n": 1.8851901026467133,
+            "force_total_variation_n": 91.89203518356408,
+            "requested_force_total_variation_n": 91.89203518356408,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.10101720769543511,
+            "tracking_rmse_deg_s": 5.7878596591448925,
+            "tracking_peak_error_deg_s": 15.472010741452422,
+            "episode_cost": 56.7386806676693,
+            "tracking_error_cost": 55.86942052263247,
+            "force_energy_cost": 0.7256469097586478,
+            "requested_force_delta_cost": 0.14361323527819186,
+            "force_rms_n": 3.4204245264993838,
+            "force_total_variation_n": 317.6946344077587,
+            "requested_force_total_variation_n": 317.6946344077587,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0867",
+          "command_id": "test-v1-sine-0.43hz",
+          "raw": {
+            "tracking_rmse_rad_s": 0.14110423749371812,
+            "tracking_rmse_deg_s": 8.084677279801676,
+            "tracking_peak_error_deg_s": 12.301575792087045,
+            "episode_cost": 111.27629453497833,
+            "tracking_error_cost": 109.00930231614527,
+            "force_energy_cost": 1.976298846696558,
+            "requested_force_delta_cost": 0.29069337213651114,
+            "force_rms_n": 5.644736134608205,
+            "force_total_variation_n": 410.77084416151047,
+            "requested_force_total_variation_n": 410.77084416151047,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.006647027038748354,
+            "tracking_rmse_deg_s": 0.3808465956296222,
+            "tracking_peak_error_deg_s": 0.757054369613538,
+            "episode_cost": 0.5295566990172785,
+            "tracking_error_cost": 0.24190137581490245,
+            "force_energy_cost": 0.249737709157755,
+            "requested_force_delta_cost": 0.03791761404462102,
+            "force_rms_n": 2.0065934888409283,
+            "force_total_variation_n": 146.49265845119953,
+            "requested_force_total_variation_n": 146.49265845119953,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.007934228444161053,
+            "tracking_rmse_deg_s": 0.4545978035430779,
+            "tracking_peak_error_deg_s": 0.9874478261078921,
+            "episode_cost": 0.6335789593237948,
+            "tracking_error_cost": 0.3446615596025251,
+            "force_energy_cost": 0.24557427534271986,
+            "requested_force_delta_cost": 0.04334312437854984,
+            "force_rms_n": 1.9897970032442507,
+            "force_total_variation_n": 153.25948356091976,
+            "requested_force_total_variation_n": 153.25948356091976,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0867",
+          "command_id": "test-v1-multisine",
+          "raw": {
+            "tracking_rmse_rad_s": 0.14543358542405962,
+            "tracking_rmse_deg_s": 8.332730644253944,
+            "tracking_peak_error_deg_s": 14.413120788733414,
+            "episode_cost": 117.16807326276482,
+            "tracking_error_cost": 115.80114931613645,
+            "force_energy_cost": 1.0908970220171241,
+            "requested_force_delta_cost": 0.27602692461125067,
+            "force_rms_n": 4.193814481106864,
+            "force_total_variation_n": 364.15485860966146,
+            "requested_force_total_variation_n": 364.15485860966146,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.009286745773987479,
+            "tracking_rmse_deg_s": 0.5320913382604356,
+            "tracking_peak_error_deg_s": 1.0678676396710223,
+            "episode_cost": 1.1295176129063211,
+            "tracking_error_cost": 0.47218323285547104,
+            "force_energy_cost": 0.5100117926415146,
+            "requested_force_delta_cost": 0.14732258740933551,
+            "force_rms_n": 2.8675265384968593,
+            "force_total_variation_n": 279.9840407408774,
+            "requested_force_total_variation_n": 279.9840407408774,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.011270349759479477,
+            "tracking_rmse_deg_s": 0.6457434748544565,
+            "tracking_peak_error_deg_s": 1.4657091720799935,
+            "episode_cost": 0.9494817035107599,
+            "tracking_error_cost": 0.6954377084566437,
+            "force_energy_cost": 0.19732845560375326,
+            "requested_force_delta_cost": 0.05671553945036303,
+            "force_rms_n": 1.7836605022301026,
+            "force_total_variation_n": 173.42285919375718,
+            "requested_force_total_variation_n": 173.42285919375718,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        }
+      ],
+      "pid_report": {
+        "path": "/home/jovyan/work/other/pingmo/results/teacher_student_pipeline/00_pid_oracles/train_core-0867/pid_report.json",
+        "sha256": "0989bf41d8bada338f9648084a7c55edcb27f5e4a521dfbc9d2e7c4ddf15a11e"
+      },
+      "plots": {
+        "full": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0867/raw_pid_student.png",
+        "zoom": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0867/pid_student_zoom.png"
+      }
+    },
+    {
+      "plant_id": "train_core-0925",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "parameters": {
+        "l_fa": 0.06768722768336403,
+        "lambda_s": -0.006756025567726781,
+        "t_r": 1.016945744152733,
+        "zeta_d": 0.3757334712147713,
+        "omega_d": 4.053812007926765,
+        "r_omega": 0.8210546586640706,
+        "r_zeta": 1.119871822448939,
+        "tau_p": 0.056351851029321554
+      },
+      "normalized_parameters": {
+        "l_fa": -0.5733206272125244,
+        "lambda_s": -0.11382724344730377,
+        "t_r": -0.137945294380188,
+        "zeta_d": 0.7481807470321655,
+        "omega_d": 0.710417628288269,
+        "r_omega": -0.36072981357574463,
+        "r_zeta": -0.4028800427913666,
+        "tau_p": -0.5554068088531494
+      },
+      "parameter_distance": {
+        "nearest_seen_plant_id": "train_core-1187",
+        "nearest_distance": 0.9368626475334167,
+        "inside_seen_axis_aligned_envelope": true,
+        "outside_global_normalization_bounds": false
+      },
+      "summary": {
+        "raw": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 9.339037223117229,
+          "maximum_peak_error_deg_s": 23.877687216265002,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 0.22862058654671313,
+          "maximum_peak_error_deg_s": 1.5371248367821118,
+          "mean_requested_force_total_variation_n": 88.38600608277922,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "Student": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 1.0528793045887768,
+          "maximum_peak_error_deg_s": 12.22587400365941,
+          "mean_requested_force_total_variation_n": 66.72106960592403,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "commands": [
+        {
+          "plant_id": "train_core-0925",
+          "command_id": "test-v1-step-pos-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.23180254386827348,
+            "tracking_rmse_deg_s": 13.28130744404819,
+            "tracking_peak_error_deg_s": 15.920046568377083,
+            "episode_cost": 305.1392589385323,
+            "tracking_error_cost": 294.1845380693535,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.0018292645110086544,
+            "tracking_rmse_deg_s": 0.10480913609385821,
+            "tracking_peak_error_deg_s": 0.7845766987168102,
+            "episode_cost": 3.5083113402418022,
+            "tracking_error_cost": 0.018320463853466754,
+            "force_energy_cost": 3.4817419543270205,
+            "requested_force_delta_cost": 0.008248922061314917,
+            "force_rms_n": 7.492308082929868,
+            "force_total_variation_n": 15.610559463500977,
+            "requested_force_total_variation_n": 15.610559463500977,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.009654744033648972,
+            "tracking_rmse_deg_s": 0.5531760854071985,
+            "tracking_peak_error_deg_s": 1.8819796396621973,
+            "episode_cost": 3.8069500225412582,
+            "tracking_error_cost": 0.5103463066456833,
+            "force_energy_cost": 3.292666448976238,
+            "requested_force_delta_cost": 0.003937266919336671,
+            "force_rms_n": 7.286034210309984,
+            "force_total_variation_n": 12.961037337779999,
+            "requested_force_total_variation_n": 12.961037337779999,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0925",
+          "command_id": "test-v1-step-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.23180254386827348,
+            "tracking_rmse_deg_s": 13.28130744404819,
+            "tracking_peak_error_deg_s": 15.920046568377083,
+            "episode_cost": 305.1392589385323,
+            "tracking_error_cost": 294.1845380693535,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.0018292645110086544,
+            "tracking_rmse_deg_s": 0.10480913609385821,
+            "tracking_peak_error_deg_s": 0.7845766987168102,
+            "episode_cost": 3.5083113402418022,
+            "tracking_error_cost": 0.018320463853466754,
+            "force_energy_cost": 3.4817419543270205,
+            "requested_force_delta_cost": 0.008248922061314917,
+            "force_rms_n": 7.492308082929868,
+            "force_total_variation_n": 15.610559463500977,
+            "requested_force_total_variation_n": 15.610559463500977,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.009654744033648972,
+            "tracking_rmse_deg_s": 0.5531760854071985,
+            "tracking_peak_error_deg_s": 1.8819796396621973,
+            "episode_cost": 3.8069500225412582,
+            "tracking_error_cost": 0.5103463066456833,
+            "force_energy_cost": 3.292666448976238,
+            "requested_force_delta_cost": 0.003937266919336671,
+            "force_rms_n": 7.286034210309984,
+            "force_total_variation_n": 12.961037337779999,
+            "requested_force_total_variation_n": 12.961037337779999,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0925",
+          "command_id": "test-v1-step-pos-27deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.3471921385712102,
+            "tracking_rmse_deg_s": 19.892644220251583,
+            "tracking_peak_error_deg_s": 23.877687216265002,
+            "episode_cost": 684.576276037817,
+            "tracking_error_cost": 659.968509338152,
+            "force_energy_cost": 23.79776674258043,
+            "requested_force_delta_cost": 0.8099999570846563,
+            "force_rms_n": 19.587789966450643,
+            "force_total_variation_n": 19.799999475479126,
+            "requested_force_total_variation_n": 19.799999475479126,
+            "force_rate_limit_active_fraction": 0.0073284477015323115,
+            "mean_abs_force_rate_limit_gap_n": 0.06771485291823494,
+            "maximum_abs_force_rate_limit_gap_n": 18.039999475479124,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.002750972280616064,
+            "tracking_rmse_deg_s": 0.15761910123677925,
+            "tracking_peak_error_deg_s": 1.2010959735419395,
+            "episode_cost": 7.89545061788354,
+            "tracking_error_cost": 0.04143390599234421,
+            "force_energy_cost": 7.834575091241776,
+            "requested_force_delta_cost": 0.019441620649419115,
+            "force_rms_n": 11.238932440573029,
+            "force_total_variation_n": 23.86680519580841,
+            "requested_force_total_variation_n": 23.86680519580841,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.025171645594550564,
+            "tracking_rmse_deg_s": 1.4422290559668192,
+            "tracking_peak_error_deg_s": 7.319794584587284,
+            "episode_cost": 10.738339741698184,
+            "tracking_error_cost": 3.4690188882914317,
+            "force_energy_cost": 7.260584990568346,
+            "requested_force_delta_cost": 0.008735862838407285,
+            "force_rms_n": 10.819399163031342,
+            "force_total_variation_n": 23.941270112991333,
+            "requested_force_total_variation_n": 23.941270112991333,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0925",
+          "command_id": "test-v1-doublet-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.03407581405901515,
+            "tracking_rmse_deg_s": 1.9524003290541228,
+            "tracking_peak_error_deg_s": 9.683899048752846,
+            "episode_cost": 9.07574736118036,
+            "tracking_error_cost": 6.357347149312069,
+            "force_energy_cost": 0.5584000402069101,
+            "requested_force_delta_cost": 2.1600001716613804,
+            "force_rms_n": 3.000475309116497,
+            "force_total_variation_n": 52.800002098083496,
+            "requested_force_total_variation_n": 52.800002098083496,
+            "force_rate_limit_active_fraction": 0.019320453031312457,
+            "mean_abs_force_rate_limit_gap_n": 0.18057296674145198,
+            "maximum_abs_force_rate_limit_gap_n": 24.640001049041764,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.004331203325270938,
+            "tracking_rmse_deg_s": 0.24815967075105266,
+            "tracking_peak_error_deg_s": 1.5371248367821118,
+            "episode_cost": 0.43387333536692263,
+            "tracking_error_cost": 0.10270712944788175,
+            "force_energy_cost": 0.27460089874786564,
+            "requested_force_delta_cost": 0.056565307171175166,
+            "force_rms_n": 2.1041093877430677,
+            "force_total_variation_n": 51.59615438304913,
+            "requested_force_total_variation_n": 51.59615438304913,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.03308692968799896,
+            "tracking_rmse_deg_s": 1.895741428168446,
+            "tracking_peak_error_deg_s": 12.22587400365941,
+            "episode_cost": 6.173047327093882,
+            "tracking_error_cost": 5.99371908808187,
+            "force_energy_cost": 0.16430043842326872,
+            "requested_force_delta_cost": 0.015027800588743511,
+            "force_rms_n": 1.62755883909377,
+            "force_total_variation_n": 36.58386167592835,
+            "requested_force_total_variation_n": 36.58386167592835,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0925",
+          "command_id": "test-v1-sine-0.43hz",
+          "raw": {
+            "tracking_rmse_rad_s": 0.08445148703246265,
+            "tracking_rmse_deg_s": 4.838713780563911,
+            "tracking_peak_error_deg_s": 7.491548820948845,
+            "episode_cost": 41.31492524814291,
+            "tracking_error_cost": 39.047933029309846,
+            "force_energy_cost": 1.976298846696558,
+            "requested_force_delta_cost": 0.29069337213651114,
+            "force_rms_n": 5.644736134608205,
+            "force_total_variation_n": 410.77084416151047,
+            "requested_force_total_variation_n": 410.77084416151047,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.009399898962087008,
+            "tracking_rmse_deg_s": 0.5385745383769885,
+            "tracking_peak_error_deg_s": 0.7901916586973635,
+            "episode_cost": 1.7374523025093005,
+            "tracking_error_cost": 0.48375984735040856,
+            "force_energy_cost": 1.0959180306401146,
+            "requested_force_delta_cost": 0.1577744245187772,
+            "force_rms_n": 4.20345471487052,
+            "force_total_variation_n": 300.51099543459713,
+            "requested_force_total_variation_n": 300.51099543459713,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.02072244856349039,
+            "tracking_rmse_deg_s": 1.1873088438649348,
+            "tracking_peak_error_deg_s": 1.9007843183588202,
+            "episode_cost": 2.9902678199625528,
+            "tracking_error_cost": 2.3510701537450585,
+            "force_energy_cost": 0.5567181190465573,
+            "requested_force_delta_cost": 0.08247954717093735,
+            "force_rms_n": 2.995953131115688,
+            "force_total_variation_n": 223.05889939889312,
+            "requested_force_total_variation_n": 223.05889939889312,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-0925",
+          "command_id": "test-v1-multisine",
+          "raw": {
+            "tracking_rmse_rad_s": 0.048657163658988756,
+            "tracking_rmse_deg_s": 2.7878501207373816,
+            "tracking_peak_error_deg_s": 7.275642621704314,
+            "episode_cost": 14.329073448671537,
+            "tracking_error_cost": 12.962149502043163,
+            "force_energy_cost": 1.0908970220171241,
+            "requested_force_delta_cost": 0.27602692461125067,
+            "force_rms_n": 4.193814481106864,
+            "force_total_variation_n": 364.15485860966146,
+            "requested_force_total_variation_n": 364.15485860966146,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.003800488248493466,
+            "tracking_rmse_deg_s": 0.21775193672774207,
+            "tracking_peak_error_deg_s": 0.5146573855344765,
+            "episode_cost": 0.5126753381576299,
+            "tracking_error_cost": 0.07907919425441395,
+            "force_energy_cost": 0.40165044474545497,
+            "requested_force_delta_cost": 0.031945699157760965,
+            "force_rms_n": 2.544728553883768,
+            "force_total_variation_n": 123.12096255621873,
+            "requested_force_total_variation_n": 123.12096255621873,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.011966751033756521,
+            "tracking_rmse_deg_s": 0.6856443287180636,
+            "tracking_peak_error_deg_s": 1.5286387430460724,
+            "episode_cost": 1.1698032097745323,
+            "tracking_error_cost": 0.7840359182226329,
+            "force_energy_cost": 0.36838235200931135,
+            "requested_force_delta_cost": 0.01738493954258817,
+            "force_rms_n": 2.437062937617523,
+            "force_total_variation_n": 90.82031177217141,
+            "requested_force_total_variation_n": 90.82031177217141,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        }
+      ],
+      "pid_report": {
+        "path": "/home/jovyan/work/other/pingmo/results/teacher_student_pipeline/00_pid_oracles/train_core-0925/pid_report.json",
+        "sha256": "cd56e62009e2adc5b3c328ca805562c7be8f4657ebbd3d49d54dc07e70bece81"
+      },
+      "plots": {
+        "full": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0925/raw_pid_student.png",
+        "zoom": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0925/pid_student_zoom.png"
+      }
+    },
+    {
+      "plant_id": "train_core-1167",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "parameters": {
+        "l_fa": 0.053906127105264545,
+        "lambda_s": -0.0700429403491982,
+        "t_r": 0.9215567669345259,
+        "zeta_d": 0.26184033291623293,
+        "omega_d": 1.7296150313183716,
+        "r_omega": 0.7834527400690788,
+        "r_zeta": 2.250984392588947,
+        "tau_p": 0.0799041702505201
+      },
+      "normalized_parameters": {
+        "l_fa": -0.757981538772583,
+        "lambda_s": -0.5053490400314331,
+        "t_r": -0.1869795173406601,
+        "zeta_d": 0.6020167469978333,
+        "omega_d": 0.08136072009801865,
+        "r_omega": -0.48900923132896423,
+        "r_zeta": -0.19619856774806976,
+        "tau_p": -0.3662315607070923
+      },
+      "parameter_distance": {
+        "nearest_seen_plant_id": "train_core-1187",
+        "nearest_distance": 0.6821219325065613,
+        "inside_seen_axis_aligned_envelope": true,
+        "outside_global_normalization_bounds": false
+      },
+      "summary": {
+        "raw": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 8.059180546956087,
+          "maximum_peak_error_deg_s": 22.446365979292406,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 3.749676969207259,
+          "maximum_peak_error_deg_s": 21.460382326952544,
+          "mean_requested_force_total_variation_n": 80.34649906814717,
+          "mean_force_saturation_fraction": 0.26948700866089276
+        },
+        "Student": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 4.398767907312817,
+          "maximum_peak_error_deg_s": 21.1870045594942,
+          "mean_requested_force_total_variation_n": 87.91305324295536,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "commands": [
+        {
+          "plant_id": "train_core-1167",
+          "command_id": "test-v1-step-pos-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.17318498778279084,
+            "tracking_rmse_deg_s": 9.92276887497864,
+            "tracking_peak_error_deg_s": 14.97222458572533,
+            "episode_cost": 175.1663592708606,
+            "tracking_error_cost": 164.2116384016818,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.07526203028136386,
+            "tracking_rmse_deg_s": 4.312196692707949,
+            "tracking_peak_error_deg_s": 10.45544663027529,
+            "episode_cost": 52.99569701628814,
+            "tracking_error_cost": 31.012395016909625,
+            "force_energy_cost": 21.971873685203207,
+            "requested_force_delta_cost": 0.011428314175302724,
+            "force_rms_n": 18.82135488892095,
+            "force_total_variation_n": 25.716896533966064,
+            "requested_force_total_variation_n": 25.716896533966064,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.42704863424383743
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.08016569504610845,
+            "tracking_rmse_deg_s": 4.593155987874825,
+            "tracking_peak_error_deg_s": 9.305745302764711,
+            "episode_cost": 53.186232412984054,
+            "tracking_error_cost": 35.185244417060545,
+            "force_energy_cost": 17.995402898961572,
+            "requested_force_delta_cost": 0.005585096961930616,
+            "force_rms_n": 17.033273667404462,
+            "force_total_variation_n": 24.840054988861084,
+            "requested_force_total_variation_n": 24.840054988861084,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-1167",
+          "command_id": "test-v1-step-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.17318498778279084,
+            "tracking_rmse_deg_s": 9.92276887497864,
+            "tracking_peak_error_deg_s": 14.97222458572533,
+            "episode_cost": 175.1663592708606,
+            "tracking_error_cost": 164.2116384016818,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.07526203028136386,
+            "tracking_rmse_deg_s": 4.312196692707949,
+            "tracking_peak_error_deg_s": 10.45544663027529,
+            "episode_cost": 52.99569701628814,
+            "tracking_error_cost": 31.012395016909625,
+            "force_energy_cost": 21.971873685203207,
+            "requested_force_delta_cost": 0.011428314175302724,
+            "force_rms_n": 18.82135488892095,
+            "force_total_variation_n": 25.716896533966064,
+            "requested_force_total_variation_n": 25.716896533966064,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.42704863424383743
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.08016569504610845,
+            "tracking_rmse_deg_s": 4.593155987874825,
+            "tracking_peak_error_deg_s": 9.305745302764711,
+            "episode_cost": 53.186232412984054,
+            "tracking_error_cost": 35.185244417060545,
+            "force_energy_cost": 17.995402898961572,
+            "requested_force_delta_cost": 0.005585096961930616,
+            "force_rms_n": 17.033273667404462,
+            "force_total_variation_n": 24.840054988861084,
+            "requested_force_total_variation_n": 24.840054988861084,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-1167",
+          "command_id": "test-v1-step-pos-27deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.25882313413229385,
+            "tracking_rmse_deg_s": 14.82947322612884,
+            "tracking_peak_error_deg_s": 22.446365979292406,
+            "episode_cost": 391.3742417250792,
+            "tracking_error_cost": 366.7664750254141,
+            "force_energy_cost": 23.79776674258043,
+            "requested_force_delta_cost": 0.8099999570846563,
+            "force_rms_n": 19.587789966450643,
+            "force_total_variation_n": 19.799999475479126,
+            "requested_force_total_variation_n": 19.799999475479126,
+            "force_rate_limit_active_fraction": 0.0073284477015323115,
+            "mean_abs_force_rate_limit_gap_n": 0.06771485291823494,
+            "maximum_abs_force_rate_limit_gap_n": 18.039999475479124,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.22376908978719037,
+            "tracking_rmse_deg_s": 12.821024430289981,
+            "tracking_peak_error_deg_s": 21.460382326952544,
+            "episode_cost": 301.6372344498773,
+            "tracking_error_cost": 274.1470887006454,
+            "force_energy_cost": 27.463445147387326,
+            "requested_force_delta_cost": 0.026700601844600158,
+            "force_rms_n": 21.04237931476297,
+            "force_total_variation_n": 28.663257479667664,
+            "requested_force_total_variation_n": 28.663257479667664,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.7628247834776816
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.22088333175701347,
+            "tracking_rmse_deg_s": 12.655682674464858,
+            "tracking_peak_error_deg_s": 21.1870045594942,
+            "episode_cost": 291.51389950089884,
+            "tracking_error_cost": 267.12180248786865,
+            "force_energy_cost": 24.380184276550494,
+            "requested_force_delta_cost": 0.011912736479726418,
+            "force_rms_n": 19.826033187042874,
+            "force_total_variation_n": 31.271369338035583,
+            "requested_force_total_variation_n": 31.271369338035583,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-1167",
+          "command_id": "test-v1-doublet-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.05663560515551955,
+            "tracking_rmse_deg_s": 3.2449811455806366,
+            "tracking_peak_error_deg_s": 16.313221933376955,
+            "episode_cost": 20.27993782897485,
+            "tracking_error_cost": 17.561537617106563,
+            "force_energy_cost": 0.5584000402069101,
+            "requested_force_delta_cost": 2.1600001716613804,
+            "force_rms_n": 3.000475309116497,
+            "force_total_variation_n": 52.800002098083496,
+            "requested_force_total_variation_n": 52.800002098083496,
+            "force_rate_limit_active_fraction": 0.019320453031312457,
+            "mean_abs_force_rate_limit_gap_n": 0.18057296674145198,
+            "maximum_abs_force_rate_limit_gap_n": 24.640001049041764,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.004611956533032853,
+            "tracking_rmse_deg_s": 0.2642456446405699,
+            "tracking_peak_error_deg_s": 2.285997617587126,
+            "episode_cost": 0.31665714093756553,
+            "tracking_error_cost": 0.1164538520310856,
+            "force_energy_cost": 0.14723202188893655,
+            "requested_force_delta_cost": 0.05297126701754338,
+            "force_rms_n": 1.540701391992832,
+            "force_total_variation_n": 46.12012609154782,
+            "requested_force_total_variation_n": 46.12012609154782,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.04740440716404815,
+            "tracking_rmse_deg_s": 2.716072460819683,
+            "tracking_peak_error_deg_s": 13.03814464607919,
+            "episode_cost": 12.742716278368171,
+            "tracking_error_cost": 12.303279409163398,
+            "force_energy_cost": 0.41802667939200644,
+            "requested_force_delta_cost": 0.021410189812766982,
+            "force_rms_n": 2.5960875653746687,
+            "force_total_variation_n": 53.180546837858856,
+            "requested_force_total_variation_n": 53.180546837858856,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-1167",
+          "command_id": "test-v1-sine-0.43hz",
+          "raw": {
+            "tracking_rmse_rad_s": 0.1033452358385919,
+            "tracking_rmse_deg_s": 5.921245846335455,
+            "tracking_peak_error_deg_s": 11.331099783619186,
+            "episode_cost": 60.74120300937759,
+            "tracking_error_cost": 58.47421079054452,
+            "force_energy_cost": 1.976298846696558,
+            "requested_force_delta_cost": 0.29069337213651114,
+            "force_rms_n": 5.644736134608205,
+            "force_total_variation_n": 410.77084416151047,
+            "requested_force_total_variation_n": 410.77084416151047,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.008095947955690717,
+            "tracking_rmse_deg_s": 0.46386364901864485,
+            "tracking_peak_error_deg_s": 0.6817510912303038,
+            "episode_cost": 0.8876740415987947,
+            "tracking_error_cost": 0.3588548853402442,
+            "force_energy_cost": 0.4616688580413972,
+            "requested_force_delta_cost": 0.06715029821715332,
+            "force_rms_n": 2.7282403448892754,
+            "force_total_variation_n": 196.60779784619808,
+            "requested_force_total_variation_n": 196.60779784619808,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.013298509047662407,
+            "tracking_rmse_deg_s": 0.7619484422475956,
+            "tracking_peak_error_deg_s": 1.4995693408936266,
+            "episode_cost": 1.531374916855663,
+            "tracking_error_cost": 0.9682541204377224,
+            "force_energy_cost": 0.4781530147800389,
+            "requested_force_delta_cost": 0.08496778163790174,
+            "force_rms_n": 2.7765198714794295,
+            "force_total_variation_n": 230.15215864032507,
+            "requested_force_total_variation_n": 230.15215864032507,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_core-1167",
+          "command_id": "test-v1-multisine",
+          "raw": {
+            "tracking_rmse_rad_s": 0.07878146265038008,
+            "tracking_rmse_deg_s": 4.513845313734307,
+            "tracking_peak_error_deg_s": 9.371008216996,
+            "episode_cost": 35.34756180662623,
+            "tracking_error_cost": 33.980637859997856,
+            "force_energy_cost": 1.0908970220171241,
+            "requested_force_delta_cost": 0.27602692461125067,
+            "force_rms_n": 4.193814481106864,
+            "force_total_variation_n": 364.15485860966146,
+            "requested_force_total_variation_n": 364.15485860966146,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.0056641991545704415,
+            "tracking_rmse_deg_s": 0.3245347058784553,
+            "tracking_peak_error_deg_s": 0.8019827802406881,
+            "episode_cost": 0.6080394383567147,
+            "tracking_error_cost": 0.17565498417193653,
+            "force_energy_cost": 0.37858227959875773,
+            "requested_force_delta_cost": 0.05380217458602042,
+            "force_rms_n": 2.4705717882478204,
+            "force_total_variation_n": 159.25401992353727,
+            "requested_force_total_variation_n": 159.25401992353727,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.018720260021075567,
+            "tracking_rmse_deg_s": 1.0725918905951155,
+            "tracking_peak_error_deg_s": 2.3279762899012453,
+            "episode_cost": 2.4841937067844206,
+            "tracking_error_cost": 1.9187005544659743,
+            "force_energy_cost": 0.5126117707023932,
+            "requested_force_delta_cost": 0.052881381616053075,
+            "force_rms_n": 2.8748263975623285,
+            "force_total_variation_n": 163.19413466379046,
+            "requested_force_total_variation_n": 163.19413466379046,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        }
+      ],
+      "pid_report": {
+        "path": "/home/jovyan/work/other/pingmo/results/teacher_student_pipeline/00_pid_oracles/train_core-1167/pid_report.json",
+        "sha256": "6b0fba339727feb1a8943baba5d1e1c83c7a701eef48cebecbb9537d8ec9929c"
+      },
+      "plots": {
+        "full": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-1167/raw_pid_student.png",
+        "zoom": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-1167/pid_student_zoom.png"
+      }
+    },
+    {
+      "plant_id": "train_boundary-1578",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "parameters": {
+        "l_fa": 0.2828007727610351,
+        "lambda_s": -0.06925380904479068,
+        "t_r": 0.21563176839979295,
+        "zeta_d": 0.6254494795016945,
+        "omega_d": 2.413032269504994,
+        "r_omega": 0.8829984781860778,
+        "r_zeta": 0.4874862849131122,
+        "tau_p": 0.05471380639821291
+      },
+      "normalized_parameters": {
+        "l_fa": 0.5864977836608887,
+        "lambda_s": -0.5004671216011047,
+        "t_r": -0.9100831151008606,
+        "zeta_d": 0.9544241428375244,
+        "omega_d": 0.3272832930088043,
+        "r_omega": -0.16170108318328857,
+        "r_zeta": -0.6490988731384277,
+        "tau_p": -0.5685638189315796
+      },
+      "parameter_distance": {
+        "nearest_seen_plant_id": "train_boundary-1488",
+        "nearest_distance": 0.928511917591095,
+        "inside_seen_axis_aligned_envelope": true,
+        "outside_global_normalization_bounds": false
+      },
+      "summary": {
+        "raw": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 8.9923369862724,
+          "maximum_peak_error_deg_s": 31.81719151820678,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 1.122363687938019,
+          "maximum_peak_error_deg_s": 14.470583021671144,
+          "mean_requested_force_total_variation_n": 56.73507066237736,
+          "mean_force_saturation_fraction": 0.064290473017988
+        },
+        "Student": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 2.0566323835791125,
+          "maximum_peak_error_deg_s": 13.393650026386124,
+          "mean_requested_force_total_variation_n": 58.63083812994106,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "commands": [
+        {
+          "plant_id": "train_boundary-1578",
+          "command_id": "test-v1-step-pos-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.15535576151125563,
+            "tracking_rmse_deg_s": 8.901229457635903,
+            "tracking_peak_error_deg_s": 22.05500566749009,
+            "episode_cost": 143.09589939371796,
+            "tracking_error_cost": 132.14117852453919,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.002158604674982311,
+            "tracking_rmse_deg_s": 0.12367893751369523,
+            "tracking_peak_error_deg_s": 0.8303855266966195,
+            "episode_cost": 11.589087160799606,
+            "tracking_error_cost": 0.025511128729288127,
+            "force_energy_cost": 11.560003125994395,
+            "requested_force_delta_cost": 0.003572906075921133,
+            "force_rms_n": 13.652001038107194,
+            "force_total_variation_n": 24.201823234558105,
+            "requested_force_total_variation_n": 24.201823234558105,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.03797116084319466,
+            "tracking_rmse_deg_s": 2.175587259527466,
+            "tracking_peak_error_deg_s": 3.58575027085162,
+            "episode_cost": 17.114077671519954,
+            "tracking_error_cost": 7.89389229516796,
+            "force_energy_cost": 9.217045331696408,
+            "requested_force_delta_cost": 0.0031400446555839012,
+            "force_rms_n": 12.190266456775145,
+            "force_total_variation_n": 20.927719354629517,
+            "requested_force_total_variation_n": 20.927719354629517,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1578",
+          "command_id": "test-v1-step-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.15535576151125563,
+            "tracking_rmse_deg_s": 8.901229457635903,
+            "tracking_peak_error_deg_s": 22.05500566749009,
+            "episode_cost": 143.09589939371796,
+            "tracking_error_cost": 132.14117852453919,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.002158604674982311,
+            "tracking_rmse_deg_s": 0.12367893751369523,
+            "tracking_peak_error_deg_s": 0.8303855266966195,
+            "episode_cost": 11.589087160799606,
+            "tracking_error_cost": 0.025511128729288127,
+            "force_energy_cost": 11.560003125994395,
+            "requested_force_delta_cost": 0.003572906075921133,
+            "force_rms_n": 13.652001038107194,
+            "force_total_variation_n": 24.201823234558105,
+            "requested_force_total_variation_n": 24.201823234558105,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.03797116084319466,
+            "tracking_rmse_deg_s": 2.175587259527466,
+            "tracking_peak_error_deg_s": 3.58575027085162,
+            "episode_cost": 17.114077671519954,
+            "tracking_error_cost": 7.89389229516796,
+            "force_energy_cost": 9.217045331696408,
+            "requested_force_delta_cost": 0.0031400446555839012,
+            "force_rms_n": 12.190266456775145,
+            "force_total_variation_n": 20.927719354629517,
+            "requested_force_total_variation_n": 20.927719354629517,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1578",
+          "command_id": "test-v1-step-pos-27deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.23149851911953884,
+            "tracking_rmse_deg_s": 13.26388810907817,
+            "tracking_peak_error_deg_s": 31.81719151820678,
+            "episode_cost": 318.0211249029852,
+            "tracking_error_cost": 293.41335820332006,
+            "force_energy_cost": 23.79776674258043,
+            "requested_force_delta_cost": 0.8099999570846563,
+            "force_rms_n": 19.587789966450643,
+            "force_total_variation_n": 19.799999475479126,
+            "requested_force_total_variation_n": 19.799999475479126,
+            "force_rate_limit_active_fraction": 0.0073284477015323115,
+            "mean_abs_force_rate_limit_gap_n": 0.06771485291823494,
+            "maximum_abs_force_rate_limit_gap_n": 18.039999475479124,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.09723370965449851,
+            "tracking_rmse_deg_s": 5.571081189603211,
+            "tracking_peak_error_deg_s": 14.470583021671144,
+            "episode_cost": 73.11013581540703,
+            "tracking_error_cost": 51.76272819705249,
+            "force_energy_cost": 21.339300102776406,
+            "requested_force_delta_cost": 0.008107515578128496,
+            "force_rms_n": 18.548441404578984,
+            "force_total_variation_n": 28.76511025428772,
+            "requested_force_total_variation_n": 28.76511025428772,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.38574283810792803
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.11334013378301222,
+            "tracking_rmse_deg_s": 6.493911315214722,
+            "tracking_peak_error_deg_s": 13.393650026386124,
+            "episode_cost": 87.9380777473904,
+            "tracking_error_cost": 70.33166348775619,
+            "force_energy_cost": 17.600257504527242,
+            "requested_force_delta_cost": 0.006156755106964826,
+            "force_rms_n": 16.845226227093086,
+            "force_total_variation_n": 26.406123109161854,
+            "requested_force_total_variation_n": 26.406123109161854,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1578",
+          "command_id": "test-v1-doublet-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.08757016738351324,
+            "tracking_rmse_deg_s": 5.017401002329487,
+            "tracking_peak_error_deg_s": 29.888792937316307,
+            "episode_cost": 44.70355970085008,
+            "tracking_error_cost": 41.985159488981786,
+            "force_energy_cost": 0.5584000402069101,
+            "requested_force_delta_cost": 2.1600001716613804,
+            "force_rms_n": 3.000475309116497,
+            "force_total_variation_n": 52.800002098083496,
+            "requested_force_total_variation_n": 52.800002098083496,
+            "force_rate_limit_active_fraction": 0.019320453031312457,
+            "mean_abs_force_rate_limit_gap_n": 0.18057296674145198,
+            "maximum_abs_force_rate_limit_gap_n": 24.640001049041764,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.004244894746569553,
+            "tracking_rmse_deg_s": 0.24321455345569054,
+            "tracking_peak_error_deg_s": 1.5379274661737286,
+            "episode_cost": 0.24367354508125305,
+            "tracking_error_cost": 0.09865459093109902,
+            "force_energy_cost": 0.1307240351095602,
+            "requested_force_delta_cost": 0.01429491904059379,
+            "force_rms_n": 1.4517607792587965,
+            "force_total_variation_n": 34.349658144628364,
+            "requested_force_total_variation_n": 34.349658144628364,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.009700714008052723,
+            "tracking_rmse_deg_s": 0.5558099709248578,
+            "tracking_peak_error_deg_s": 4.041837795342114,
+            "episode_cost": 0.6228167282796814,
+            "tracking_error_cost": 0.5152177893255742,
+            "force_energy_cost": 0.09817697596372259,
+            "requested_force_delta_cost": 0.009421962990384865,
+            "force_rms_n": 1.258120278216045,
+            "force_total_variation_n": 29.264261633856222,
+            "requested_force_total_variation_n": 29.264261633856222,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1578",
+          "command_id": "test-v1-sine-0.43hz",
+          "raw": {
+            "tracking_rmse_rad_s": 0.19139091150641413,
+            "tracking_rmse_deg_s": 10.965891466479354,
+            "tracking_peak_error_deg_s": 16.26636797621352,
+            "episode_cost": 202.81856361612392,
+            "tracking_error_cost": 200.55157139729084,
+            "force_energy_cost": 1.976298846696558,
+            "requested_force_delta_cost": 0.29069337213651114,
+            "force_rms_n": 5.644736134608205,
+            "force_total_variation_n": 410.77084416151047,
+            "requested_force_total_variation_n": 410.77084416151047,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.008126727994217245,
+            "tracking_rmse_deg_s": 0.46562721531946505,
+            "tracking_peak_error_deg_s": 0.7457154654862764,
+            "episode_cost": 0.7386575062807281,
+            "tracking_error_cost": 0.36158873796987256,
+            "force_energy_cost": 0.33103204033351447,
+            "requested_force_delta_cost": 0.046036727977340944,
+            "force_rms_n": 2.310214749596784,
+            "force_total_variation_n": 162.19230516254902,
+            "requested_force_total_variation_n": 162.19230516254902,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.005097314841738058,
+            "tracking_rmse_deg_s": 0.2920546272809859,
+            "tracking_peak_error_deg_s": 0.6980143360921711,
+            "episode_cost": 0.5317913019177206,
+            "tracking_error_cost": 0.14225461542185514,
+            "force_energy_cost": 0.3414248771649388,
+            "requested_force_delta_cost": 0.04811180933092671,
+            "force_rms_n": 2.3461993913288284,
+            "force_total_variation_n": 167.3865744434297,
+            "requested_force_total_variation_n": 167.3865744434297,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1578",
+          "command_id": "test-v1-multisine",
+          "raw": {
+            "tracking_rmse_rad_s": 0.12050420612392751,
+            "tracking_rmse_deg_s": 6.904382424475576,
+            "tracking_peak_error_deg_s": 16.615314479128998,
+            "episode_cost": 80.87071893748865,
+            "tracking_error_cost": 79.50379499086027,
+            "force_energy_cost": 1.0908970220171241,
+            "requested_force_delta_cost": 0.27602692461125067,
+            "force_rms_n": 4.193814481106864,
+            "force_total_variation_n": 364.15485860966146,
+            "requested_force_total_variation_n": 364.15485860966146,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.0036111088108176656,
+            "tracking_rmse_deg_s": 0.20690129422235787,
+            "tracking_peak_error_deg_s": 0.47229344684348495,
+            "episode_cost": 0.3140260789409282,
+            "tracking_error_cost": 0.0713944738576455,
+            "force_energy_cost": 0.23345237876083044,
+            "requested_force_delta_cost": 0.009179226322452234,
+            "force_rms_n": 1.94006592846829,
+            "force_total_variation_n": 66.69970394368283,
+            "requested_force_total_variation_n": 66.69970394368283,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.011289555260374503,
+            "tracking_rmse_deg_s": 0.6468438689991762,
+            "tracking_peak_error_deg_s": 1.7595016844108127,
+            "episode_cost": 0.9762287692809717,
+            "tracking_error_cost": 0.697809881426219,
+            "force_energy_cost": 0.26339795005781286,
+            "requested_force_delta_cost": 0.015020937796939884,
+            "force_rms_n": 2.0607415713079846,
+            "force_total_variation_n": 86.87263088393956,
+            "requested_force_total_variation_n": 86.87263088393956,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        }
+      ],
+      "pid_report": {
+        "path": "/home/jovyan/work/other/pingmo/results/teacher_student_pipeline/00_pid_oracles/train_boundary-1578/pid_report.json",
+        "sha256": "a422d334841451ca84ec85c7b1cfc3a12f49151b4f645596c94a8b28e8e4d19e"
+      },
+      "plots": {
+        "full": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1578/raw_pid_student.png",
+        "zoom": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1578/pid_student_zoom.png"
+      }
+    },
+    {
+      "plant_id": "train_boundary-1592",
+      "split": "train_boundary",
+      "quality_region": "level_3",
+      "parameters": {
+        "l_fa": 0.13199701410592507,
+        "lambda_s": -0.04090862076927679,
+        "t_r": 0.260181554524168,
+        "zeta_d": 0.00829826741407569,
+        "omega_d": 0.692974161581176,
+        "r_omega": 1.3257208794022035,
+        "r_zeta": 31.03481682180844,
+        "tau_p": 0.18316144166514278
+      },
+      "normalized_parameters": {
+        "l_fa": -0.031568508595228195,
+        "lambda_s": -0.3251108229160309,
+        "t_r": -0.8165857195854187,
+        "zeta_d": -0.7949633598327637,
+        "omega_d": -0.5941521525382996,
+        "r_omega": 0.9503392577171326,
+        "r_zeta": 0.5805345773696899,
+        "tau_p": 0.46314406394958496
+      },
+      "parameter_distance": {
+        "nearest_seen_plant_id": "train_boundary-1451",
+        "nearest_distance": 1.2528212070465088,
+        "inside_seen_axis_aligned_envelope": true,
+        "outside_global_normalization_bounds": false
+      },
+      "summary": {
+        "raw": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 16.18120013729425,
+          "maximum_peak_error_deg_s": 68.98130669078824,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 1.0373068511467343,
+          "maximum_peak_error_deg_s": 6.652024915870293,
+          "mean_requested_force_total_variation_n": 107.61391739373357,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "Student": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 0.9141418271614065,
+          "maximum_peak_error_deg_s": 7.640753408452876,
+          "mean_requested_force_total_variation_n": 91.35636431615178,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "commands": [
+        {
+          "plant_id": "train_boundary-1592",
+          "command_id": "test-v1-step-pos-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.36995496957912477,
+            "tracking_rmse_deg_s": 21.19685836677461,
+            "tracking_peak_error_deg_s": 45.99125344720649,
+            "episode_cost": 760.298625020596,
+            "tracking_error_cost": 749.3439041514171,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.008405873681884791,
+            "tracking_rmse_deg_s": 0.4816210850920925,
+            "tracking_peak_error_deg_s": 3.5358957794920225,
+            "episode_cost": 4.54962198532688,
+            "tracking_error_cost": 0.38685584808614704,
+            "force_energy_cost": 4.155793380977075,
+            "requested_force_delta_cost": 0.006972756263658991,
+            "force_rms_n": 8.185482990752726,
+            "force_total_variation_n": 28.73131537437439,
+            "requested_force_total_variation_n": 28.73131537437439,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.010920091456657123,
+            "tracking_rmse_deg_s": 0.6256751523633205,
+            "tracking_peak_error_deg_s": 2.15500469707591,
+            "episode_cost": 4.975620582697439,
+            "tracking_error_cost": 0.6528839598039796,
+            "force_energy_cost": 4.319486401653753,
+            "requested_force_delta_cost": 0.0032502212397062663,
+            "force_rms_n": 8.345135494550041,
+            "force_total_variation_n": 23.246180951595306,
+            "requested_force_total_variation_n": 23.246180951595306,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1592",
+          "command_id": "test-v1-step-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.36995496957912477,
+            "tracking_rmse_deg_s": 21.19685836677461,
+            "tracking_peak_error_deg_s": 45.99125344720649,
+            "episode_cost": 760.298625020596,
+            "tracking_error_cost": 749.3439041514171,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.008405873681884791,
+            "tracking_rmse_deg_s": 0.4816210850920925,
+            "tracking_peak_error_deg_s": 3.5358957794920225,
+            "episode_cost": 4.54962198532688,
+            "tracking_error_cost": 0.38685584808614704,
+            "force_energy_cost": 4.155793380977075,
+            "requested_force_delta_cost": 0.006972756263658991,
+            "force_rms_n": 8.185482990752726,
+            "force_total_variation_n": 28.73131537437439,
+            "requested_force_total_variation_n": 28.73131537437439,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.010920091456657123,
+            "tracking_rmse_deg_s": 0.6256751523633205,
+            "tracking_peak_error_deg_s": 2.15500469707591,
+            "episode_cost": 4.975620582697439,
+            "tracking_error_cost": 0.6528839598039796,
+            "force_energy_cost": 4.319486401653753,
+            "requested_force_delta_cost": 0.0032502212397062663,
+            "force_rms_n": 8.345135494550041,
+            "force_total_variation_n": 23.246180951595306,
+            "requested_force_total_variation_n": 23.246180951595306,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1592",
+          "command_id": "test-v1-step-pos-27deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.5542064950482009,
+            "tracking_rmse_deg_s": 31.753693144999865,
+            "tracking_peak_error_deg_s": 68.98130669078824,
+            "episode_cost": 1706.223143975848,
+            "tracking_error_cost": 1681.6153772761827,
+            "force_energy_cost": 23.79776674258043,
+            "requested_force_delta_cost": 0.8099999570846563,
+            "force_rms_n": 19.587789966450643,
+            "force_total_variation_n": 19.799999475479126,
+            "requested_force_total_variation_n": 19.799999475479126,
+            "force_rate_limit_active_fraction": 0.0073284477015323115,
+            "mean_abs_force_rate_limit_gap_n": 0.06771485291823494,
+            "maximum_abs_force_rate_limit_gap_n": 18.039999475479124,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.012660481311815878,
+            "tracking_rmse_deg_s": 0.7253921457713018,
+            "tracking_peak_error_deg_s": 5.322334767872399,
+            "episode_cost": 10.2445737980016,
+            "tracking_error_cost": 0.8775742683168746,
+            "force_energy_cost": 9.3510307942047,
+            "requested_force_delta_cost": 0.015968735480026752,
+            "force_rms_n": 12.278549926096488,
+            "force_total_variation_n": 43.52118521928787,
+            "requested_force_total_variation_n": 43.52118521928787,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.020412305913352205,
+            "tracking_rmse_deg_s": 1.1695389789650144,
+            "tracking_peak_error_deg_s": 2.5646738036082435,
+            "episode_cost": 12.186524913537223,
+            "tracking_error_cost": 2.281222173779013,
+            "force_energy_cost": 9.898764711856858,
+            "requested_force_delta_cost": 0.0065380279013506765,
+            "force_rms_n": 12.633039020811912,
+            "force_total_variation_n": 36.31928414106369,
+            "requested_force_total_variation_n": 36.31928414106369,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1592",
+          "command_id": "test-v1-doublet-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.1231778616747108,
+            "tracking_rmse_deg_s": 7.057571603407183,
+            "tracking_peak_error_deg_s": 20.702082953463286,
+            "episode_cost": 85.78927212605316,
+            "tracking_error_cost": 83.07087191418486,
+            "force_energy_cost": 0.5584000402069101,
+            "requested_force_delta_cost": 2.1600001716613804,
+            "force_rms_n": 3.000475309116497,
+            "force_total_variation_n": 52.800002098083496,
+            "requested_force_total_variation_n": 52.800002098083496,
+            "force_rate_limit_active_fraction": 0.019320453031312457,
+            "mean_abs_force_rate_limit_gap_n": 0.18057296674145198,
+            "maximum_abs_force_rate_limit_gap_n": 24.640001049041764,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.016817900668197005,
+            "tracking_rmse_deg_s": 0.9635947285579355,
+            "tracking_peak_error_deg_s": 6.652024915870293,
+            "episode_cost": 1.760820790962776,
+            "tracking_error_cost": 1.5485563512865193,
+            "force_energy_cost": 0.18844017427589263,
+            "requested_force_delta_cost": 0.023824265400364277,
+            "force_rms_n": 1.7430268834721772,
+            "force_total_variation_n": 41.74284562077082,
+            "requested_force_total_variation_n": 41.74284562077082,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.019635419952708465,
+            "tracking_rmse_deg_s": 1.1250266922571615,
+            "tracking_peak_error_deg_s": 7.640753408452876,
+            "episode_cost": 2.3193615135110806,
+            "tracking_error_cost": 2.110881413883252,
+            "force_energy_cost": 0.13676951523095587,
+            "requested_force_delta_cost": 0.07171058439687239,
+            "force_rms_n": 1.4849505469795186,
+            "force_total_variation_n": 193.860910421703,
+            "requested_force_total_variation_n": 193.860910421703,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1592",
+          "command_id": "test-v1-sine-0.43hz",
+          "raw": {
+            "tracking_rmse_rad_s": 0.14788215084605014,
+            "tracking_rmse_deg_s": 8.473023108795669,
+            "tracking_peak_error_deg_s": 15.636379131911045,
+            "episode_cost": 122.00029557870015,
+            "tracking_error_cost": 119.73330335986708,
+            "force_energy_cost": 1.976298846696558,
+            "requested_force_delta_cost": 0.29069337213651114,
+            "force_rms_n": 5.644736134608205,
+            "force_total_variation_n": 410.77084416151047,
+            "requested_force_total_variation_n": 410.77084416151047,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.032207727965707394,
+            "tracking_rmse_deg_s": 1.8453668801405063,
+            "tracking_peak_error_deg_s": 2.953103823236049,
+            "episode_cost": 6.301671187325496,
+            "tracking_error_cost": 5.679415291557309,
+            "force_energy_cost": 0.5446386493250306,
+            "requested_force_delta_cost": 0.07761724644315687,
+            "force_rms_n": 2.9632723275436064,
+            "force_total_variation_n": 211.28736259043217,
+            "requested_force_total_variation_n": 211.28736259043217,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.014345559473129797,
+            "tracking_rmse_deg_s": 0.8219400125642542,
+            "tracking_peak_error_deg_s": 1.5681158123461507,
+            "episode_cost": 1.4311507880004255,
+            "tracking_error_cost": 1.1267262908504931,
+            "force_energy_cost": 0.2574050829848944,
+            "requested_force_delta_cost": 0.04701941416503799,
+            "force_rms_n": 2.0371635465223314,
+            "force_total_variation_n": 154.25355207920074,
+            "requested_force_total_variation_n": 154.25355207920074,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1592",
+          "command_id": "test-v1-multisine",
+          "raw": {
+            "tracking_rmse_rad_s": 0.12931486919244758,
+            "tracking_rmse_deg_s": 7.409196233013558,
+            "tracking_peak_error_deg_s": 16.960288396625106,
+            "episode_cost": 92.92156774415369,
+            "tracking_error_cost": 91.55464379752533,
+            "force_energy_cost": 1.0908970220171241,
+            "requested_force_delta_cost": 0.27602692461125067,
+            "force_rms_n": 4.193814481106864,
+            "force_total_variation_n": 364.15485860966146,
+            "requested_force_total_variation_n": 364.15485860966146,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.03012866212654151,
+            "tracking_rmse_deg_s": 1.7262451822264764,
+            "tracking_peak_error_deg_s": 4.315338981375648,
+            "episode_cost": 5.759802690026994,
+            "tracking_error_cost": 4.969848406854823,
+            "force_energy_cost": 0.6268870053058957,
+            "requested_force_delta_cost": 0.16306727786627373,
+            "force_rms_n": 3.1791569626144325,
+            "force_total_variation_n": 291.6694801831618,
+            "requested_force_total_variation_n": 291.6694801831618,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.019495240032476126,
+            "tracking_rmse_deg_s": 1.116994974455368,
+            "tracking_peak_error_deg_s": 2.5030077381558695,
+            "episode_cost": 2.626089888175948,
+            "tracking_error_cost": 2.080849263567535,
+            "force_energy_cost": 0.516554055422876,
+            "requested_force_delta_cost": 0.028686569185537025,
+            "force_rms_n": 2.8858597742090892,
+            "force_total_variation_n": 117.21207735175267,
+            "requested_force_total_variation_n": 117.21207735175267,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        }
+      ],
+      "pid_report": {
+        "path": "/home/jovyan/work/other/pingmo/results/teacher_student_pipeline/00_pid_oracles/train_boundary-1592/pid_report.json",
+        "sha256": "a8983c4e91d5dc59321260f61f10f04885ba9de8cffb0c90a9270dbddb97c175"
+      },
+      "plots": {
+        "full": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1592/raw_pid_student.png",
+        "zoom": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1592/pid_student_zoom.png"
+      }
+    },
+    {
+      "plant_id": "train_boundary-1717",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "parameters": {
+        "l_fa": 0.055849766349545714,
+        "lambda_s": -0.04266723265249757,
+        "t_r": 0.721834723723524,
+        "zeta_d": 0.2307806746712296,
+        "omega_d": 0.4533771536153381,
+        "r_omega": 0.6859050033698408,
+        "r_zeta": 0.6247049828936215,
+        "tau_p": 0.07106519943103194
+      },
+      "normalized_parameters": {
+        "l_fa": -0.7292497158050537,
+        "lambda_s": -0.33599039912223816,
+        "t_r": -0.30858513712882996,
+        "zeta_d": 0.5509134531021118,
+        "omega_d": -0.9074907898902893,
+        "r_omega": -0.8528727293014526,
+        "r_zeta": -0.5756757855415344,
+        "tau_p": -0.4372272789478302
+      },
+      "parameter_distance": {
+        "nearest_seen_plant_id": "train_core-1187",
+        "nearest_distance": 1.0773729085922241,
+        "inside_seen_axis_aligned_envelope": true,
+        "outside_global_normalization_bounds": false
+      },
+      "summary": {
+        "raw": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 7.939922227070043,
+          "maximum_peak_error_deg_s": 22.90643535927422,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 4.753328599565703,
+          "maximum_peak_error_deg_s": 20.979099907057634,
+          "mean_requested_force_total_variation_n": 80.68294264414969,
+          "mean_force_saturation_fraction": 0.4060626249167221
+        },
+        "Student": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 6.3249559060283325,
+          "maximum_peak_error_deg_s": 19.622646290041327,
+          "mean_requested_force_total_variation_n": 131.3862172002555,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "commands": [
+        {
+          "plant_id": "train_boundary-1717",
+          "command_id": "test-v1-step-pos-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.18903062287805147,
+            "tracking_rmse_deg_s": 10.830656889641451,
+            "tracking_peak_error_deg_s": 15.27294954281217,
+            "episode_cost": 206.59027211403208,
+            "tracking_error_cost": 195.63555124485327,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.10642998637786005,
+            "tracking_rmse_deg_s": 6.0979890330862245,
+            "tracking_peak_error_deg_s": 10.078765064777652,
+            "episode_cost": 88.22403262116899,
+            "tracking_error_cost": 62.0171009352305,
+            "force_energy_cost": 26.198810610180168,
+            "requested_force_delta_cost": 0.008121075758327483,
+            "force_rms_n": 20.55219086807831,
+            "force_total_variation_n": 22.0,
+            "requested_force_total_variation_n": 22.0,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.7834776815456362
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.1125001375261537,
+            "tracking_rmse_deg_s": 6.445783074889941,
+            "tracking_peak_error_deg_s": 10.003574603331892,
+            "episode_cost": 92.21814347898164,
+            "tracking_error_cost": 69.29303032472775,
+            "force_energy_cost": 22.917219594631163,
+            "requested_force_delta_cost": 0.007893559622730046,
+            "force_rms_n": 19.22198791957609,
+            "force_total_variation_n": 27.935469932854176,
+            "requested_force_total_variation_n": 27.935469932854176,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1717",
+          "command_id": "test-v1-step-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.18903062287805147,
+            "tracking_rmse_deg_s": 10.830656889641451,
+            "tracking_peak_error_deg_s": 15.27294954281217,
+            "episode_cost": 206.59027211403208,
+            "tracking_error_cost": 195.63555124485327,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.10642998637786005,
+            "tracking_rmse_deg_s": 6.0979890330862245,
+            "tracking_peak_error_deg_s": 10.078765064777652,
+            "episode_cost": 88.22403262116899,
+            "tracking_error_cost": 62.0171009352305,
+            "force_energy_cost": 26.198810610180168,
+            "requested_force_delta_cost": 0.008121075758327483,
+            "force_rms_n": 20.55219086807831,
+            "force_total_variation_n": 22.0,
+            "requested_force_total_variation_n": 22.0,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.7834776815456362
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.1125001375261537,
+            "tracking_rmse_deg_s": 6.445783074889941,
+            "tracking_peak_error_deg_s": 10.003574603331892,
+            "episode_cost": 92.21814347898164,
+            "tracking_error_cost": 69.29303032472775,
+            "force_energy_cost": 22.917219594631163,
+            "requested_force_delta_cost": 0.007893559622730046,
+            "force_rms_n": 19.22198791957609,
+            "force_total_variation_n": 27.935469932854176,
+            "requested_force_total_variation_n": 27.935469932854176,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1717",
+          "command_id": "test-v1-step-pos-27deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.2829388243595035,
+            "tracking_rmse_deg_s": 16.211200496192838,
+            "tracking_peak_error_deg_s": 22.90643535927422,
+            "episode_cost": 462.9048059365232,
+            "tracking_error_cost": 438.29703923685804,
+            "force_energy_cost": 23.79776674258043,
+            "requested_force_delta_cost": 0.8099999570846563,
+            "force_rms_n": 19.587789966450643,
+            "force_total_variation_n": 19.799999475479126,
+            "requested_force_total_variation_n": 19.799999475479126,
+            "force_rate_limit_active_fraction": 0.0073284477015323115,
+            "mean_abs_force_rate_limit_gap_n": 0.06771485291823494,
+            "maximum_abs_force_rate_limit_gap_n": 18.039999475479124,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.25504434062921844,
+            "tracking_rmse_deg_s": 14.612964306751163,
+            "tracking_peak_error_deg_s": 20.979099907057634,
+            "episode_cost": 384.147936343324,
+            "tracking_error_cost": 356.13514163489515,
+            "force_energy_cost": 27.996229498387244,
+            "requested_force_delta_cost": 0.016565210041516513,
+            "force_rms_n": 21.245507482332815,
+            "force_total_variation_n": 22.0,
+            "requested_force_total_variation_n": 22.0,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.8694203864090606
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.25653663300658475,
+            "tracking_rmse_deg_s": 14.698466361773797,
+            "tracking_peak_error_deg_s": 19.622646290041327,
+            "episode_cost": 386.1885617069843,
+            "tracking_error_cost": 360.31490555075777,
+            "force_energy_cost": 25.864886170694387,
+            "requested_force_delta_cost": 0.008769985532094807,
+            "force_rms_n": 20.420793920355894,
+            "force_total_variation_n": 25.138739466667175,
+            "requested_force_total_variation_n": 25.138739466667175,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1717",
+          "command_id": "test-v1-doublet-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.0321617455674155,
+            "tracking_rmse_deg_s": 1.8427322827864914,
+            "tracking_peak_error_deg_s": 9.592885367754459,
+            "episode_cost": 8.38161027998084,
+            "tracking_error_cost": 5.66321006811255,
+            "force_energy_cost": 0.5584000402069101,
+            "requested_force_delta_cost": 2.1600001716613804,
+            "force_rms_n": 3.000475309116497,
+            "force_total_variation_n": 52.800002098083496,
+            "requested_force_total_variation_n": 52.800002098083496,
+            "force_rate_limit_active_fraction": 0.019320453031312457,
+            "mean_abs_force_rate_limit_gap_n": 0.18057296674145198,
+            "maximum_abs_force_rate_limit_gap_n": 24.640001049041764,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.007219957563401599,
+            "tracking_rmse_deg_s": 0.41367309664646906,
+            "tracking_peak_error_deg_s": 2.236155798858377,
+            "episode_cost": 0.5210986810897933,
+            "tracking_error_cost": 0.2853991908494529,
+            "force_energy_cost": 0.1982694364401598,
+            "requested_force_delta_cost": 0.03743005380018071,
+            "force_rms_n": 1.7879082277009606,
+            "force_total_variation_n": 41.058498996309936,
+            "requested_force_total_variation_n": 41.058498996309936,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.043863079127838725,
+            "tracking_rmse_deg_s": 2.513169310473531,
+            "tracking_peak_error_deg_s": 13.819600100455958,
+            "episode_cost": 10.869397227386814,
+            "tracking_error_cost": 10.53371777182457,
+            "force_energy_cost": 0.24608750946028915,
+            "requested_force_delta_cost": 0.08959194610195462,
+            "force_rms_n": 1.9918751905619358,
+            "force_total_variation_n": 222.17389283736702,
+            "requested_force_total_variation_n": 222.17389283736702,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1717",
+          "command_id": "test-v1-sine-0.43hz",
+          "raw": {
+            "tracking_rmse_rad_s": 0.08283741977705895,
+            "tracking_rmse_deg_s": 4.746234538979015,
+            "tracking_peak_error_deg_s": 7.936406993667999,
+            "episode_cost": 39.83659243082753,
+            "tracking_error_cost": 37.56960021199447,
+            "force_energy_cost": 1.976298846696558,
+            "requested_force_delta_cost": 0.29069337213651114,
+            "force_rms_n": 5.644736134608205,
+            "force_total_variation_n": 410.77084416151047,
+            "requested_force_total_variation_n": 410.77084416151047,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.014215394668928015,
+            "tracking_rmse_deg_s": 0.8144821186423454,
+            "tracking_peak_error_deg_s": 1.242468825134152,
+            "episode_cost": 1.9335515093968072,
+            "tracking_error_cost": 1.106372292781971,
+            "force_energy_cost": 0.723859496986048,
+            "requested_force_delta_cost": 0.10331971962878822,
+            "force_rms_n": 3.416209335978026,
+            "force_total_variation_n": 243.62488840846345,
+            "requested_force_total_variation_n": 243.62488840846345,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.10451060465344009,
+            "tracking_rmse_deg_s": 5.988016561002419,
+            "tracking_peak_error_deg_s": 9.839137705122475,
+            "episode_cost": 60.81858169594575,
+            "tracking_error_cost": 59.80041093843743,
+            "force_energy_cost": 0.875883618846893,
+            "requested_force_delta_cost": 0.14228713866143405,
+            "force_rms_n": 3.757859503143551,
+            "force_total_variation_n": 315.7555599063635,
+            "requested_force_total_variation_n": 315.7555599063635,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1717",
+          "command_id": "test-v1-multisine",
+          "raw": {
+            "tracking_rmse_rad_s": 0.055467475827837696,
+            "tracking_rmse_deg_s": 3.178052265179012,
+            "tracking_peak_error_deg_s": 6.982096994460274,
+            "episode_cost": 18.211506520533252,
+            "tracking_error_cost": 16.844582573904876,
+            "force_energy_cost": 1.0908970220171241,
+            "requested_force_delta_cost": 0.27602692461125067,
+            "force_rms_n": 4.193814481106864,
+            "force_total_variation_n": 364.15485860966146,
+            "requested_force_total_variation_n": 364.15485860966146,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.008427741332527617,
+            "tracking_rmse_deg_s": 0.48287400918179296,
+            "tracking_peak_error_deg_s": 1.1135637123791784,
+            "episode_cost": 0.768771050445092,
+            "tracking_error_cost": 0.388871256026323,
+            "force_energy_cost": 0.34215257403402444,
+            "requested_force_delta_cost": 0.03774722038474463,
+            "force_rms_n": 2.348698349822008,
+            "force_total_variation_n": 133.41426846012473,
+            "requested_force_total_variation_n": 133.41426846012473,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.03243724178176188,
+            "tracking_rmse_deg_s": 1.8585170531403705,
+            "tracking_peak_error_deg_s": 3.276794817088539,
+            "episode_cost": 6.439518579099648,
+            "tracking_error_cost": 5.7606472676190705,
+            "force_energy_cost": 0.6231964067693303,
+            "requested_force_delta_cost": 0.05567490471124661,
+            "force_rms_n": 3.169785009198915,
+            "force_total_variation_n": 169.3781711254269,
+            "requested_force_total_variation_n": 169.3781711254269,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        }
+      ],
+      "pid_report": {
+        "path": "/home/jovyan/work/other/pingmo/results/teacher_student_pipeline/00_pid_oracles/train_boundary-1717/pid_report.json",
+        "sha256": "0a09e5c964fc7d858f1a653b622322d8a7e837e580f3974d9926bdd0536d19ed"
+      },
+      "plots": {
+        "full": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1717/raw_pid_student.png",
+        "zoom": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1717/pid_student_zoom.png"
+      }
+    },
+    {
+      "plant_id": "train_boundary-1798",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "parameters": {
+        "l_fa": 0.22677848850977803,
+        "lambda_s": 0.013734100706082247,
+        "t_r": 1.2556555826542322,
+        "zeta_d": 0.4422183872852474,
+        "omega_d": 2.069113832749702,
+        "r_omega": 0.6639459385527566,
+        "r_zeta": 0.3408013913574145,
+        "tau_p": 0.17500413021072747
+      },
+      "normalized_parameters": {
+        "l_fa": 0.40742114186286926,
+        "lambda_s": 0.012934044003486633,
+        "t_r": -0.0329744778573513,
+        "zeta_d": 0.8141199350357056,
+        "omega_d": 0.21372276544570923,
+        "r_omega": -0.9419108033180237,
+        "r_zeta": -0.7550700902938843,
+        "tau_p": 0.3976234793663025
+      },
+      "parameter_distance": {
+        "nearest_seen_plant_id": "train_boundary-1488",
+        "nearest_distance": 0.9955835342407227,
+        "inside_seen_axis_aligned_envelope": true,
+        "outside_global_normalization_bounds": false
+      },
+      "summary": {
+        "raw": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 61.816066184821516,
+          "maximum_peak_error_deg_s": 181.56787907170596,
+          "mean_requested_force_total_variation_n": 145.65428423229605,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "PID": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 0.6362609542583058,
+          "maximum_peak_error_deg_s": 5.699788949570932,
+          "mean_requested_force_total_variation_n": 45.7597010260215,
+          "mean_force_saturation_fraction": 0.0
+        },
+        "Student": {
+          "pair_count": 6,
+          "mean_tracking_rmse_deg_s": 1.64250809114339,
+          "maximum_peak_error_deg_s": 5.986604173796201,
+          "mean_requested_force_total_variation_n": 100.36669757387911,
+          "mean_force_saturation_fraction": 0.0
+        }
+      },
+      "commands": [
+        {
+          "plant_id": "train_boundary-1798",
+          "command_id": "test-v1-step-pos-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 1.6350145695670921,
+            "tracking_rmse_deg_s": 93.6794342785933,
+            "tracking_peak_error_deg_s": 121.11686191635967,
+            "episode_cost": 14647.099661472159,
+            "tracking_error_cost": 14636.144940602979,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.00593961899590233,
+            "tracking_rmse_deg_s": 0.3403151003809353,
+            "tracking_peak_error_deg_s": 2.916654635601308,
+            "episode_cost": 0.4912721010540965,
+            "tracking_error_cost": 0.19315262854275153,
+            "force_energy_cost": 0.29542739599329376,
+            "requested_force_delta_cost": 0.0026920765180512736,
+            "force_rms_n": 2.1824420465388776,
+            "force_total_variation_n": 18.484054788947105,
+            "requested_force_total_variation_n": 18.484054788947105,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.026891746227582208,
+            "tracking_rmse_deg_s": 1.5407835625773134,
+            "tracking_peak_error_deg_s": 2.615282712812854,
+            "episode_cost": 4.204670761920671,
+            "tracking_error_cost": 3.9593277711659622,
+            "force_energy_cost": 0.2433376501982557,
+            "requested_force_delta_cost": 0.002005340556452878,
+            "force_rms_n": 1.9807150060626335,
+            "force_total_variation_n": 14.71699594706297,
+            "requested_force_total_variation_n": 14.71699594706297,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1798",
+          "command_id": "test-v1-step-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 1.6350145695670921,
+            "tracking_rmse_deg_s": 93.6794342785933,
+            "tracking_peak_error_deg_s": 121.11686191635967,
+            "episode_cost": 14647.099661472159,
+            "tracking_error_cost": 14636.144940602979,
+            "force_energy_cost": 10.59472084056856,
+            "requested_force_delta_cost": 0.36000002861023006,
+            "force_rms_n": 13.069593976224759,
+            "force_total_variation_n": 13.200000524520874,
+            "requested_force_total_variation_n": 13.200000524520874,
+            "force_rate_limit_active_fraction": 0.004663557628247834,
+            "mean_abs_force_rate_limit_gap_n": 0.028727517436140017,
+            "maximum_abs_force_rate_limit_gap_n": 11.440000524520874,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.00593961899590233,
+            "tracking_rmse_deg_s": 0.3403151003809353,
+            "tracking_peak_error_deg_s": 2.916654635601308,
+            "episode_cost": 0.4912721010540965,
+            "tracking_error_cost": 0.19315262854275153,
+            "force_energy_cost": 0.29542739599329376,
+            "requested_force_delta_cost": 0.0026920765180512736,
+            "force_rms_n": 2.1824420465388776,
+            "force_total_variation_n": 18.484054788947105,
+            "requested_force_total_variation_n": 18.484054788947105,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.026891746227582208,
+            "tracking_rmse_deg_s": 1.5407835625773134,
+            "tracking_peak_error_deg_s": 2.615282712812854,
+            "episode_cost": 4.204670761920671,
+            "tracking_error_cost": 3.9593277711659622,
+            "force_energy_cost": 0.2433376501982557,
+            "requested_force_delta_cost": 0.002005340556452878,
+            "force_rms_n": 1.9807150060626335,
+            "force_total_variation_n": 14.71699594706297,
+            "requested_force_total_variation_n": 14.71699594706297,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1798",
+          "command_id": "test-v1-step-pos-27deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 2.449710064439913,
+            "tracking_rmse_deg_s": 140.35804772312795,
+            "tracking_peak_error_deg_s": 181.56787907170596,
+            "episode_cost": 32880.466347291265,
+            "tracking_error_cost": 32855.85858059161,
+            "force_energy_cost": 23.79776674258043,
+            "requested_force_delta_cost": 0.8099999570846563,
+            "force_rms_n": 19.587789966450643,
+            "force_total_variation_n": 19.799999475479126,
+            "requested_force_total_variation_n": 19.799999475479126,
+            "force_rate_limit_active_fraction": 0.0073284477015323115,
+            "mean_abs_force_rate_limit_gap_n": 0.06771485291823494,
+            "maximum_abs_force_rate_limit_gap_n": 18.039999475479124,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.008948351619299818,
+            "tracking_rmse_deg_s": 0.5127027813849355,
+            "tracking_peak_error_deg_s": 4.387726940973518,
+            "episode_cost": 1.1093792700779679,
+            "tracking_error_cost": 0.43839897466868155,
+            "force_energy_cost": 0.6648353037647563,
+            "requested_force_delta_cost": 0.006144991644529829,
+            "force_rms_n": 3.2739675713572978,
+            "force_total_variation_n": 27.92024317383766,
+            "requested_force_total_variation_n": 27.92024317383766,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.045524808273172505,
+            "tracking_rmse_deg_s": 2.608379377195038,
+            "tracking_peak_error_deg_s": 3.594888212424007,
+            "episode_cost": 11.894868366154304,
+            "tracking_error_cost": 11.3469645622666,
+            "force_energy_cost": 0.5441824979187394,
+            "requested_force_delta_cost": 0.0037213059689660127,
+            "force_rms_n": 2.9620311523329286,
+            "force_total_variation_n": 23.064268097281456,
+            "requested_force_total_variation_n": 23.064268097281456,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1798",
+          "command_id": "test-v1-doublet-neg-18deg-s",
+          "raw": {
+            "tracking_rmse_rad_s": 0.17536321578526345,
+            "tracking_rmse_deg_s": 10.047572146337533,
+            "tracking_peak_error_deg_s": 46.13140008854848,
+            "episode_cost": 171.08674772278226,
+            "tracking_error_cost": 168.368347510914,
+            "force_energy_cost": 0.5584000402069101,
+            "requested_force_delta_cost": 2.1600001716613804,
+            "force_rms_n": 3.000475309116497,
+            "force_total_variation_n": 52.800002098083496,
+            "requested_force_total_variation_n": 52.800002098083496,
+            "force_rate_limit_active_fraction": 0.019320453031312457,
+            "mean_abs_force_rate_limit_gap_n": 0.18057296674145198,
+            "maximum_abs_force_rate_limit_gap_n": 24.640001049041764,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.011733926175681754,
+            "tracking_rmse_deg_s": 0.6723044469846471,
+            "tracking_peak_error_deg_s": 5.699788949570932,
+            "episode_cost": 0.8370933911698945,
+            "tracking_error_cost": 0.7538243304693706,
+            "force_energy_cost": 0.07159949083372776,
+            "requested_force_delta_cost": 0.01166956986679614,
+            "force_rms_n": 1.074415595972478,
+            "force_total_variation_n": 35.76955120568164,
+            "requested_force_total_variation_n": 35.76955120568164,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.022566544150725946,
+            "tracking_rmse_deg_s": 1.2929677380322313,
+            "tracking_peak_error_deg_s": 5.986604173796201,
+            "episode_cost": 2.9502318726022834,
+            "tracking_error_cost": 2.7881334699554117,
+            "force_energy_cost": 0.05118697495656425,
+            "requested_force_delta_cost": 0.11091142769030779,
+            "force_rms_n": 0.9084417161994573,
+            "force_total_variation_n": 258.37779028341174,
+            "requested_force_total_variation_n": 258.37779028341174,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1798",
+          "command_id": "test-v1-sine-0.43hz",
+          "raw": {
+            "tracking_rmse_rad_s": 0.4243929455314575,
+            "tracking_rmse_deg_s": 24.315924634077945,
+            "tracking_peak_error_deg_s": 39.19718137664271,
+            "episode_cost": 988.3642704477755,
+            "tracking_error_cost": 986.0972782289425,
+            "force_energy_cost": 1.976298846696558,
+            "requested_force_delta_cost": 0.29069337213651114,
+            "force_rms_n": 5.644736134608205,
+            "force_total_variation_n": 410.77084416151047,
+            "requested_force_total_variation_n": 410.77084416151047,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.015715715981321782,
+            "tracking_rmse_deg_s": 0.900444197756037,
+            "tracking_peak_error_deg_s": 1.5738767022514881,
+            "episode_cost": 1.4284465959883286,
+            "tracking_error_cost": 1.3522338107356027,
+            "force_energy_cost": 0.06711708089556358,
+            "requested_force_delta_cost": 0.009095704357162405,
+            "force_rms_n": 1.0402407595791623,
+            "force_total_variation_n": 71.64121823012829,
+            "requested_force_total_variation_n": 71.64121823012829,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.03493235784808163,
+            "tracking_rmse_deg_s": 2.001476673135776,
+            "tracking_peak_error_deg_s": 3.4969568439237118,
+            "episode_cost": 6.823774343026145,
+            "tracking_error_cost": 6.680965798370099,
+            "force_energy_cost": 0.06449901740379342,
+            "requested_force_delta_cost": 0.07830952725225254,
+            "force_rms_n": 1.0197504041953744,
+            "force_total_variation_n": 211.9536882257089,
+            "requested_force_total_variation_n": 211.9536882257089,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        },
+        {
+          "plant_id": "train_boundary-1798",
+          "command_id": "test-v1-multisine",
+          "raw": {
+            "tracking_rmse_rad_s": 0.15386794844437285,
+            "tracking_rmse_deg_s": 8.815984048199105,
+            "tracking_peak_error_deg_s": 25.687789942566393,
+            "episode_cost": 130.98923914872807,
+            "tracking_error_cost": 129.62231520209968,
+            "force_energy_cost": 1.0908970220171241,
+            "requested_force_delta_cost": 0.27602692461125067,
+            "force_rms_n": 4.193814481106864,
+            "force_total_variation_n": 364.15485860966146,
+            "requested_force_total_variation_n": 364.15485860966146,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "PID": {
+            "tracking_rmse_rad_s": 0.01835185955402281,
+            "tracking_rmse_deg_s": 1.0514840986623442,
+            "tracking_peak_error_deg_s": 2.658471326548543,
+            "episode_cost": 2.1822226938094342,
+            "tracking_error_cost": 1.8439264815770924,
+            "force_energy_cost": 0.3163290542956645,
+            "requested_force_delta_cost": 0.02196715793667737,
+            "force_rms_n": 2.258327267678025,
+            "force_total_variation_n": 102.25908396858722,
+            "requested_force_total_variation_n": 102.25908396858722,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          },
+          "Student": {
+            "tracking_rmse_rad_s": 0.01519584235945113,
+            "tracking_rmse_deg_s": 0.8706576333426685,
+            "tracking_peak_error_deg_s": 2.2597936152925073,
+            "episode_cost": 1.5382395577493364,
+            "tracking_error_cost": 1.2642501294014257,
+            "force_energy_cost": 0.26057246334834827,
+            "requested_force_delta_cost": 0.013416964999562336,
+            "force_rms_n": 2.0496589165608,
+            "force_total_variation_n": 79.37044694274664,
+            "requested_force_total_variation_n": 79.37044694274664,
+            "force_rate_limit_active_fraction": 0.0,
+            "mean_abs_force_rate_limit_gap_n": 0.0,
+            "maximum_abs_force_rate_limit_gap_n": 0.0,
+            "force_saturation_fraction": 0.0
+          }
+        }
+      ],
+      "pid_report": {
+        "path": "/home/jovyan/work/other/pingmo/results/teacher_student_pipeline/00_pid_oracles/train_boundary-1798/pid_report.json",
+        "sha256": "e2f69aa31b2b0ce1ec20eb1fe302df433aa4be44e4ee8c61caa94f8c087a43f2"
+      },
+      "plots": {
+        "full": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1798/raw_pid_student.png",
+        "zoom": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1798/pid_student_zoom.png"
+      }
+    }
+  ],
+  "artifacts": {
+    "summary_plot": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/summary.png",
+    "distance_plot": "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/distance_vs_generalization.png",
+    "aircraft_full_plots": [
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0387/raw_pid_student.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0452/raw_pid_student.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0596/raw_pid_student.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0867/raw_pid_student.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0925/raw_pid_student.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-1167/raw_pid_student.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1578/raw_pid_student.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1592/raw_pid_student.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1717/raw_pid_student.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1798/raw_pid_student.png"
+    ],
+    "aircraft_zoom_plots": [
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0387/pid_student_zoom.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0452/pid_student_zoom.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0596/pid_student_zoom.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0867/pid_student_zoom.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-0925/pid_student_zoom.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_core-1167/pid_student_zoom.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1578/pid_student_zoom.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1592/pid_student_zoom.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1717/pid_student_zoom.png",
+      "/home/jovyan/work/other/pingmo/results/pure_reward_teacher_bank_coverage_v5/unseen_aircraft_slew11/aircraft/train_boundary-1798/pid_student_zoom.png"
+    ]
+  }
+}

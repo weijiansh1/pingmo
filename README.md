@@ -6,10 +6,16 @@
 选型。PID-guided TD3、theta-routed linear MoE、历史 Global SAC 和 G0-G4 仍保留作工程对照与
 诊断，不与当前结果混写。
 
+v5 先对冻结 v4 做了 requested-force 硬限速诊断，没有重新训练网络。训练飞机选出的 `11 N/s`
+把 holdout 平均动作 TV 从 `249.48 N` 降到 `67.30 N`，但在 `boundary-1605` doublet 上把最大
+峰值误差从 `4.76 deg/s` 推高到 `7.98 deg/s`，因此不能作为最终控制器。完整选择合同、时域
+失败曲线和未见飞机结果见
+[`docs/student_slew_limit_diagnostic_v5_20260830.md`](docs/student_slew_limit_diagnostic_v5_20260830.md)。
+
 当前控制契约见 [`docs/第一阶段_SAC控制设计.md`](docs/第一阶段_SAC控制设计.md)。GJB 阅读边界见
 [`docs/references/gjb_2874_1997_project_memory.md`](docs/references/gjb_2874_1997_project_memory.md)。
 实验目录与 manifest 规则见 [`docs/experiment_artifacts.md`](docs/experiment_artifacts.md)。
-当前代码、训练配置、时域曲线、未见飞机结果和失败门禁的完整快照见
+v4 训练配置、时域曲线、未见飞机结果和失败门禁的完整快照见
 [`docs/stability_aware_v4_results_20260830.md`](docs/stability_aware_v4_results_20260830.md)。v3 历史
 快照保留在 [`docs/current_code_and_results_20260830.md`](docs/current_code_and_results_20260830.md)。
 
