@@ -1,0 +1,21 @@
+{
+  "candidate_count": 8192,
+  "gjb_label_status": "provisional_mixed_fixed_wing",
+  "pipeline": [
+    "conditioned_sobol_candidates",
+    "constraints_and_derived_parameters",
+    "raw_p_channel_benchmark",
+    "stratified_selection"
+  ],
+  "schema_version": "2.0",
+  "seed": 20260827,
+  "split_counts": {
+    "extreme_test": 150,
+    "id_test": 450,
+    "ood_test": 300,
+    "train_boundary": 600,
+    "train_core": 1200,
+    "validation": 300
+  },
+  "total_plants": 3000
+}

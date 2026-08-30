@@ -7,6 +7,8 @@ from dataclasses import dataclass
 import numpy as np
 from scipy import signal
 
+from src.aircraft.delay import FractionalDelay
+
 
 @dataclass(frozen=True, slots=True)
 class SecondOrderReferenceConfig:
@@ -26,9 +28,10 @@ class SecondOrderRollRateReference:
         config: SecondOrderReferenceConfig = SecondOrderReferenceConfig(),
         *,
         dt_s: float = 0.001,
+        delay_s: float = 0.0,
     ) -> None:
-        if dt_s <= 0:
-            raise ValueError("dt_s must be positive")
+        if dt_s <= 0 or delay_s < 0:
+            raise ValueError("reference dt must be positive and delay non-negative")
         omega = config.natural_frequency_rad_s
         numerator = np.array([omega**2], dtype=float)
         denominator = np.array([1.0, 2.0 * config.damping_ratio * omega, omega**2], dtype=float)
@@ -40,14 +43,18 @@ class SecondOrderRollRateReference:
         )
         self.config = config
         self.dt_s = dt_s
+        self.delay_s = delay_s
         self._state = np.zeros(self._ad.shape[0], dtype=float)
+        self._delay = FractionalDelay(dt_s, delay_s)
 
     def reset(self) -> None:
         self._state.fill(0.0)
+        self._delay.reset()
 
     def step(self, command_rad_s: float) -> float:
-        output = float((self._cd @ self._state + self._dd.squeeze() * command_rad_s).item())
-        self._state = self._ad @ self._state + self._bd[:, 0] * command_rad_s
+        delayed_command = self._delay.push(command_rad_s)
+        output = float((self._cd @ self._state + self._dd.squeeze() * delayed_command).item())
+        self._state = self._ad @ self._state + self._bd[:, 0] * delayed_command
         return output
 
     def rollout(self, command_rad_s: np.ndarray) -> np.ndarray:

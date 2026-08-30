@@ -1,0 +1,21 @@
+UNSEEN_STARTED_2026-08-30T07:41:10Z
+{"plant_id": "train_core-0387", "split": "train_core", "quality_region": "level_1", "nearest_seen_distance": 0.6480575799942017, "pid_rmse_deg_s": 0.4864520388219706, "student_rmse_deg_s": 0.664814353335211}
+{"plant_id": "train_core-0452", "split": "train_core", "quality_region": "level_3", "nearest_seen_distance": 0.7853448987007141, "pid_rmse_deg_s": 0.9602980735477944, "student_rmse_deg_s": 5.018848676022597}
+{"plant_id": "train_core-0596", "split": "train_core", "quality_region": "level_3", "nearest_seen_distance": 0.9979088306427002, "pid_rmse_deg_s": 0.8357319169794493, "student_rmse_deg_s": 1.682899486158833}
+{"plant_id": "train_core-0867", "split": "train_core", "quality_region": "level_1", "nearest_seen_distance": 0.7352288961410522, "pid_rmse_deg_s": 0.28360523140452426, "student_rmse_deg_s": 1.4914753614619334}
+{"plant_id": "train_core-0925", "split": "train_core", "quality_region": "level_2", "nearest_seen_distance": 0.9368626475334167, "pid_rmse_deg_s": 0.22862058654671288, "student_rmse_deg_s": 0.7490602307667861}
+{"plant_id": "train_core-1167", "split": "train_core", "quality_region": "level_1", "nearest_seen_distance": 0.6821219325065613, "pid_rmse_deg_s": 3.749676969207259, "student_rmse_deg_s": 4.20901120114582}
+{"plant_id": "train_boundary-1578", "split": "train_boundary", "quality_region": "level_1", "nearest_seen_distance": 0.928511917591095, "pid_rmse_deg_s": 1.122363687938019, "student_rmse_deg_s": 1.995708192640478}
+{"plant_id": "train_boundary-1592", "split": "train_boundary", "quality_region": "level_3", "nearest_seen_distance": 1.2528212070465088, "pid_rmse_deg_s": 1.0373068511467338, "student_rmse_deg_s": 0.7219516698025287}
+{"plant_id": "train_boundary-1717", "split": "train_boundary", "quality_region": "level_2", "nearest_seen_distance": 1.0773729085922241, "pid_rmse_deg_s": 4.753328599565703, "student_rmse_deg_s": 6.347338267600364}
+{"plant_id": "train_boundary-1798", "split": "train_boundary", "quality_region": "level_2", "nearest_seen_distance": 0.9955835342407227, "pid_rmse_deg_s": 0.6362609542583058, "student_rmse_deg_s": 1.2309049607701235}
+{
+  "pair_count": 60,
+  "student_improves_raw_rate": 0.9666666666666667,
+  "student_beats_or_equals_pid_rate": 0.11666666666666667,
+  "mean_student_to_pid_rmse_ratio": 5.428114582331541,
+  "median_student_to_pid_rmse_ratio": 2.1454156238399102,
+  "maximum_student_to_pid_rmse_ratio": 64.79311310610836
+}
+report=/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/unseen_aircraft_v3/report.json
+UNSEEN_EXIT_CODE:0

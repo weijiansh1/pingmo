@@ -1,6 +1,9 @@
 * text=auto eol=lf
 
 *.png binary
+*.pdf binary
+*.pt binary
+*.npz binary
 *.zip binary
 *.xlsx binary
 *.ipynb text eol=lf

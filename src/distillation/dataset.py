@@ -11,6 +11,8 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset
 
+from src.utils.provenance import sha256_file
+
 
 TRAIN_SPLIT = np.uint8(0)
 VALIDATION_SPLIT = np.uint8(1)
@@ -120,10 +122,18 @@ def load_distillation_arrays(manifest_path: str | Path) -> tuple[DistillationArr
     manifest = json.loads(source.read_text(encoding="utf-8"))
     if manifest.get("schema_version") != "specialist_distillation_dataset_v1":
         raise ValueError("unsupported distillation dataset schema")
+    if manifest.get("status") != "complete":
+        raise ValueError("distillation dataset manifest is incomplete")
     shards = manifest.get("shards")
     if not isinstance(shards, list) or not shards:
         raise ValueError("distillation dataset manifest has no shards")
-    loaded = [load_distillation_shard(source.parent / str(shard["path"])) for shard in shards]
+    loaded: list[DistillationArrays] = []
+    for shard in shards:
+        shard_path = source.parent / str(shard["path"])
+        expected_hash = shard.get("sha256")
+        if expected_hash is None or sha256_file(shard_path) != str(expected_hash):
+            raise ValueError(f"distillation shard hash mismatch: {shard_path}")
+        loaded.append(load_distillation_shard(shard_path))
     arrays = DistillationArrays(
         observations=np.concatenate([item.observations for item in loaded]),
         aircraft_parameters=np.concatenate([item.aircraft_parameters for item in loaded]),
@@ -134,4 +144,14 @@ def load_distillation_arrays(manifest_path: str | Path) -> tuple[DistillationArr
     )
     if len(arrays.observations) != int(manifest["row_count"]):
         raise ValueError("distillation shard rows do not match the manifest")
+    if arrays.observations.shape[1] != int(manifest["observation_dim"]):
+        raise ValueError("distillation observation dimension does not match the manifest")
+    if arrays.aircraft_parameters.shape[1] != int(manifest["aircraft_parameter_dim"]):
+        raise ValueError("distillation theta dimension does not match the manifest")
+    if int(np.sum(arrays.split_codes == TRAIN_SPLIT)) != int(manifest["train_rows"]):
+        raise ValueError("distillation train rows do not match the manifest")
+    if int(np.sum(arrays.split_codes == VALIDATION_SPLIT)) != int(
+        manifest["validation_rows"]
+    ):
+        raise ValueError("distillation validation rows do not match the manifest")
     return arrays, manifest

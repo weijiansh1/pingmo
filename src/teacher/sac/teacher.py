@@ -25,6 +25,7 @@ class PrivilegedSAC:
         gradient_norm_limit: float = 10.0,
         actor_width: int = 896,
         actor_residual_blocks: int = 14,
+        actor_enforce_odd_symmetry: bool = False,
         critic_width: int = 896,
         critic_residual_blocks: int = 14,
         residual_scale: float = 0.1,
@@ -49,6 +50,7 @@ class PrivilegedSAC:
             width=actor_width,
             residual_blocks=actor_residual_blocks,
             residual_scale=residual_scale,
+            enforce_odd_symmetry=actor_enforce_odd_symmetry,
         ).to(self.device)
         self.critic = TwinQCritic(
             critic_observation_dim,

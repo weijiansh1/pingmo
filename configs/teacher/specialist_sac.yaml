@@ -1,22 +1,26 @@
-contract: fixed_aircraft_model_reference_sac_v1
+contract: fixed_aircraft_model_reference_sac_v3
 plant_dt_s: 0.001
-policy_dt_s: 0.001
+policy_dt_s: 0.020
 episode_duration_s: 5.0
 command_mode: step
-history_steps: 250
+history_steps: 0
+enforce_odd_policy: true
+odd_policy_projection_stage: inference
 action:
   definition: direct_full_F_as
   force_limit_n: 22.0
   force_rate_limit_n_s: 88.0
   actuator_time_constant_s: 0.0
 reference_model:
-  type: second_order_unity_dc
+  type: delayed_second_order_unity_dc
   natural_frequency_rad_s: 2.0
   damping_ratio: 0.7
+  transport_delay: match_plant_tau_p
 reward:
   tracking_error: 1.0
   force_energy: 0.02
-  force_delta: 0.05
+  force_delta: 0.02
+  scale: 50.0
 sac:
   total_steps: 100000
   warmup_steps: 10000
@@ -24,8 +28,15 @@ sac:
   replay_capacity: 200000
   network_width: 128
   residual_blocks: 2
-  gamma: 0.9995
+  gamma: 0.995
   target_tau: 0.005
   learning_rate: 0.0003
-  initial_alpha: 0.1
+  initial_alpha: 0.005
   gradient_norm_limit: 10.0
+quality_gate:
+  enforce: true
+  minimum_tracking_improvement_rate: 1.0
+  maximum_mean_tracking_rmse_deg_s: 1.0
+  maximum_peak_error_deg_s: 3.0
+  maximum_mean_requested_force_total_variation_n: 50.0
+  maximum_saturation_fraction: 0.01

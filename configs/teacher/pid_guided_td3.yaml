@@ -1,0 +1,62 @@
+schema_version: "1.0"
+teacher: pid_guided_state_matched_td3
+
+deployment:
+  actor_observation_dim: 7
+  raw_history_steps: 0
+  aircraft_parameters_theta: false
+  pid_controller_object: false
+  embedded_linear_control_prior: true
+  action: normalized_direct_full_F_as
+  force_limit_n: 22.0
+
+actor:
+  architecture: pid_initialized_bounded_residual_mlp_v1
+  network_width: 704
+  residual_blocks: 10
+  residual_action_limit: 0.05
+  odd_symmetry: initialization_td3_and_inference
+  expected_parameter_count: 9948225
+
+critic:
+  privileged_training_only: true
+  includes_actor_observation: true
+  includes_plant_continuous_state: true
+  includes_exact_transport_delay_fifo: true
+  includes_actuator_state: true
+  includes_episode_progress: true
+  includes_fixed_parametric_command_context: true
+
+pid_guidance:
+  initialization: exact_embedded_pid_linear_prior
+  require_initialization_quality_gate: true
+  online_behavior_target: matching_pid_on_replay_actor_state
+
+td3:
+  total_steps: 5000
+  batch_size: 256
+  replay_capacity: 50000
+  update_interval_steps: 4
+  updates_per_interval: 1
+  exploration_std: 0.01
+  gamma: 0.995
+  target_tau: 0.005
+  target_policy_noise: 0.05
+  target_noise_clip: 0.25
+  policy_delay: 2
+  actor_learning_rate: 0.00001
+  critic_learning_rate: 0.0003
+  reward_multiplier: 1.0
+  behavior_regularization_weight: 100.0
+  q_normalization_scale: 0.05
+  maximum_q_coefficient: 1.0
+  critic_warmup_updates: 500
+  actor_trust_region_l2: 0.002
+
+quality_gate:
+  minimum_tracking_improvement_rate: 1.0
+  maximum_mean_tracking_rmse_deg_s: 1.0
+  maximum_peak_error_deg_s: 3.0
+  maximum_mean_requested_force_variation_n: 50.0
+  maximum_saturation_fraction: 0.01
+  minimum_online_actor_updates: 1

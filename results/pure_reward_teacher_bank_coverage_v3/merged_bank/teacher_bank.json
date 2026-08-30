@@ -1,0 +1,3333 @@
+{
+  "schema_version": "specialist_teacher_bank_v1",
+  "status": "complete",
+  "algorithm": "merged_pure_reward_td3_best_validation",
+  "source": {
+    "commit": null,
+    "tracked_dirty": null,
+    "working_tree_sha256": "8b983f7f8ef940c9ea3f76d02230bffdb08248e3d2185928e43e7a075c554d7e"
+  },
+  "library": {
+    "path": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+    "sha256": "479c16d7b5ddb363c0e2d069a7a1e2d510f0a77cf8335eb86da6bb359ca4b118"
+  },
+  "source_banks": [
+    {
+      "path": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19",
+      "status": "complete",
+      "accepted_teacher_count": 11,
+      "rejected_teacher_count": 9
+    },
+    {
+      "path": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "status": "complete",
+      "accepted_teacher_count": 21,
+      "rejected_teacher_count": 27
+    }
+  ],
+  "coverage_selection": {
+    "path": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/selection/selection.json",
+    "sha256": "0141c43b72136af6c431861c1a13e746e07c062dae12c914c620fc7468c96001",
+    "selected_candidate_count": 48,
+    "accepted_candidate_ids": [
+      "train_boundary-1205",
+      "train_boundary-1231",
+      "train_boundary-1351",
+      "train_boundary-1388",
+      "train_boundary-1402",
+      "train_boundary-1451",
+      "train_boundary-1453",
+      "train_boundary-1488",
+      "train_boundary-1531",
+      "train_boundary-1743",
+      "train_boundary-1760",
+      "train_core-0054",
+      "train_core-0175",
+      "train_core-0191",
+      "train_core-0481",
+      "train_core-0515",
+      "train_core-0742",
+      "train_core-0754",
+      "train_core-0892",
+      "train_core-0906",
+      "train_core-0964"
+    ],
+    "rejected_candidate_ids": [
+      "train_boundary-1207",
+      "train_boundary-1226",
+      "train_boundary-1236",
+      "train_boundary-1260",
+      "train_boundary-1344",
+      "train_boundary-1354",
+      "train_boundary-1357",
+      "train_boundary-1368",
+      "train_boundary-1437",
+      "train_boundary-1457",
+      "train_boundary-1509",
+      "train_boundary-1658",
+      "train_boundary-1796",
+      "train_core-0009",
+      "train_core-0149",
+      "train_core-0232",
+      "train_core-0249",
+      "train_core-0333",
+      "train_core-0497",
+      "train_core-0548",
+      "train_core-0551",
+      "train_core-0570",
+      "train_core-0608",
+      "train_core-0628",
+      "train_core-0788",
+      "train_core-0840",
+      "train_core-0951"
+    ],
+    "acceptance_rate": 0.4375
+  },
+  "attempted_teacher_count": 68,
+  "teacher_count": 32,
+  "accepted_teacher_count": 32,
+  "rejected_teacher_count": 36,
+  "quality_region_counts": {
+    "level_1": 9,
+    "level_2": 14,
+    "level_3": 9
+  },
+  "split_counts": {
+    "train_core": 17,
+    "train_boundary": 15
+  },
+  "actor_observation_contract": {
+    "names": [
+      "p_command_normalized",
+      "p_reference_normalized",
+      "p_normalized",
+      "tracking_error_normalized",
+      "integrated_tracking_error_normalized",
+      "p_dot_normalized",
+      "previous_force_normalized",
+      "p_reference_dot_normalized",
+      "commanded_force_normalized",
+      "applied_force_normalized",
+      "requested_force_lag_2_normalized",
+      "requested_force_lag_3_normalized",
+      "requested_force_lag_4_normalized",
+      "requested_force_lag_5_normalized",
+      "requested_force_lag_6_normalized",
+      "requested_force_lag_7_normalized",
+      "requested_force_lag_8_normalized",
+      "requested_force_lag_9_normalized",
+      "requested_force_lag_10_normalized",
+      "requested_force_lag_11_normalized",
+      "requested_force_lag_12_normalized",
+      "requested_force_lag_13_normalized",
+      "requested_force_lag_14_normalized",
+      "requested_force_lag_15_normalized",
+      "requested_force_lag_16_normalized",
+      "requested_force_lag_17_normalized",
+      "requested_force_lag_18_normalized",
+      "requested_force_lag_19_normalized",
+      "requested_force_lag_20_normalized",
+      "requested_force_lag_21_normalized",
+      "requested_force_lag_22_normalized",
+      "requested_force_lag_23_normalized",
+      "requested_force_lag_24_normalized",
+      "requested_force_lag_25_normalized",
+      "requested_force_lag_26_normalized"
+    ],
+    "instantaneous_signal_names": [
+      "p_command_normalized",
+      "p_reference_normalized",
+      "p_normalized",
+      "tracking_error_normalized"
+    ],
+    "controller_state_names": [
+      "integrated_tracking_error_normalized",
+      "p_dot_normalized",
+      "previous_force_normalized",
+      "p_reference_dot_normalized"
+    ],
+    "raw_history_steps": 0,
+    "raw_history_signal_names": [
+      "p_command_normalized",
+      "p_reference_normalized",
+      "p_normalized",
+      "tracking_error_normalized",
+      "force_normalized"
+    ],
+    "uses_raw_history_window": false,
+    "includes_actor_actuator_state": true,
+    "includes_reference_derivative": true,
+    "reference_derivative_scale_rad_s2": 5.0,
+    "requested_action_history_steps": 26,
+    "requested_action_history_order": "newest_in_previous_force_then_lag_2_to_lag_k",
+    "delay_coverage_s": 0.52
+  },
+  "selection_contract": {
+    "method": "union_of_source_bank_quality_eligible_teachers",
+    "duplicate_aircraft_allowed": false,
+    "actor_hashes_verified": true,
+    "observation_contracts_identical": true
+  },
+  "teachers": [
+    {
+      "plant_id": "train_core-0312",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 70000,
+          "updates": 60000,
+          "actor_updates": 29750,
+          "episodes": 46,
+          "mean_episode_cost": 0.920572334768598,
+          "median_episode_cost": 0.7543447119766415,
+          "mean_tracking_rmse_deg_s": 0.439542373435196,
+          "maximum_peak_error_deg_s": 1.488398311501478,
+          "mean_requested_force_total_variation_n": 38.08191032284716,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.269397010761572
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 70000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_pilot_v1/runs/train_core-0312/report.json",
+      "source_report_sha256": "84286fb1cb32942a6ad8e1da1a8eaf7a552c40ab5bf6b6f4cd8117e20a4cb277",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_pilot_v1/runs/train_core-0312/validation_checkpoints/actor_step_00070000.pt",
+      "actor_checkpoint": "actors/train_core-0312.pt",
+      "actor_checkpoint_sha256": "2a12dbea1a1cc0f84c2bd7dfda7f974dfa14eb9281f0450cae7edb03aa1461ec",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/actors/train_core-0312.pt"
+    },
+    {
+      "plant_id": "train_core-0334",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 50000,
+          "updates": 40000,
+          "actor_updates": 19750,
+          "episodes": 33,
+          "mean_episode_cost": 2.9457999500714487,
+          "median_episode_cost": 3.5780806846046396,
+          "mean_tracking_rmse_deg_s": 0.763831856268529,
+          "maximum_peak_error_deg_s": 2.7486436985835128,
+          "mean_requested_force_total_variation_n": 339.27359536014654,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 11.309119845338218
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 50000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_pilot_v1/runs/train_core-0334/report.json",
+      "source_report_sha256": "b38ee06af6f352b8891e61c20a98bd27a62dc2ceb131a1ea10cf9801339bc30b",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_pilot_v1/runs/train_core-0334/validation_checkpoints/actor_step_00050000.pt",
+      "actor_checkpoint": "actors/train_core-0334.pt",
+      "actor_checkpoint_sha256": "8b80192c06c5770745e0308024c18de2c288ef34a0f6bda11bedbfd408bc952c",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/actors/train_core-0334.pt"
+    },
+    {
+      "plant_id": "train_core-0760",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 40000,
+          "updates": 30000,
+          "actor_updates": 14750,
+          "episodes": 26,
+          "mean_episode_cost": 1.9088439968880149,
+          "median_episode_cost": 1.5458271658638845,
+          "mean_tracking_rmse_deg_s": 0.5068474773968027,
+          "maximum_peak_error_deg_s": 1.5462384043372637,
+          "mean_requested_force_total_variation_n": 70.30775145980685,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 2.343591715326895
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 40000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_pilot_v1/runs/train_core-0760/report.json",
+      "source_report_sha256": "6fa6592deeb3d9f385bca19ca545b30122a46833ec906cc6d78dcf801c498ae4",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_pilot_v1/runs/train_core-0760/validation_checkpoints/actor_step_00040000.pt",
+      "actor_checkpoint": "actors/train_core-0760.pt",
+      "actor_checkpoint_sha256": "eb1d04e379d46e2c7fdaa1a6b0ebe3cce7ae12e190950b6d85fe2f6ffdd5c9af",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/actors/train_core-0760.pt"
+    },
+    {
+      "plant_id": "train_core-1187",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 3.0564231666975537,
+          "median_episode_cost": 1.90675827645653,
+          "mean_tracking_rmse_deg_s": 0.6757240603450109,
+          "maximum_peak_error_deg_s": 2.962020300697579,
+          "mean_requested_force_total_variation_n": 78.41068143440255,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 2.6136893811467514
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_pilot_v1/runs/train_core-1187/report.json",
+      "source_report_sha256": "ef339d6bcce76146b0bc683a2b31b50deb8e57b9eb62f3a6c73f2a063900d34c",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_pilot_v1/runs/train_core-1187/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_core-1187.pt",
+      "actor_checkpoint_sha256": "1197215de5bedc916adf5396f17167f12da56de1b6493bd1e34787a5e3b0854a",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/actors/train_core-1187.pt"
+    },
+    {
+      "plant_id": "train_core-0330",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 1.4062447648984433,
+          "median_episode_cost": 1.101105247956312,
+          "mean_tracking_rmse_deg_s": 0.8309530893645564,
+          "maximum_peak_error_deg_s": 2.4589023997313997,
+          "mean_requested_force_total_variation_n": 25.422947481662657,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 0.8474315827220885
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_core-0330/report.json",
+      "source_report_sha256": "c0b21a66333c7ffe6da1a42099e25dc907b753457d5bf0cc99df195bbb53ef9b",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_core-0330/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_core-0330.pt",
+      "actor_checkpoint_sha256": "ba8f268595b7fb46b0f1a351e12b77f14edb3b79421b609b6f38e3697aa9a058",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/actors/train_core-0330.pt"
+    },
+    {
+      "plant_id": "train_boundary-1228",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 30000,
+          "updates": 20000,
+          "actor_updates": 9750,
+          "episodes": 20,
+          "mean_episode_cost": 2.857822453612123,
+          "median_episode_cost": 2.3549663545735506,
+          "mean_tracking_rmse_deg_s": 0.8864883259941044,
+          "maximum_peak_error_deg_s": 3.5647931826622465,
+          "mean_requested_force_total_variation_n": 332.0089791876574,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 11.066965972921913
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 30000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_boundary-1228/report.json",
+      "source_report_sha256": "cafcfa47b76da3a6f13090a813e248db7d53b5e80e82fca69650c04867137f0b",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_boundary-1228/validation_checkpoints/actor_step_00030000.pt",
+      "actor_checkpoint": "actors/train_boundary-1228.pt",
+      "actor_checkpoint_sha256": "5f642798bd64a94264726aaa34a2a55a7c3a4094090d78677e340cbb9b6224ec",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/actors/train_boundary-1228.pt"
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "split": "train_boundary",
+      "quality_region": "level_3",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 2.3768808265533434,
+          "median_episode_cost": 2.0584461869373687,
+          "mean_tracking_rmse_deg_s": 0.7033760552320892,
+          "maximum_peak_error_deg_s": 2.6550877157306783,
+          "mean_requested_force_total_variation_n": 22.63490016188007,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 0.7544966720626689
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_boundary-1448/report.json",
+      "source_report_sha256": "b9586e8096598c4c4a245d8350f063b583342d152b9288f9239c617c327e0b35",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_boundary-1448/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_boundary-1448.pt",
+      "actor_checkpoint_sha256": "c40c0939fe0211a0b8105426272a4c874810572c674d1f99f369b57927a569a2",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/actors/train_boundary-1448.pt"
+    },
+    {
+      "plant_id": "train_core-0750",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 1.038296445832886,
+          "median_episode_cost": 0.7665329592125223,
+          "mean_tracking_rmse_deg_s": 0.27866439143057303,
+          "maximum_peak_error_deg_s": 0.9641453294148898,
+          "mean_requested_force_total_variation_n": 41.69173813977977,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.3897246046593257
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_core-0750/report.json",
+      "source_report_sha256": "50958d934c36b2932249869207c387cd791734a492362dd82b50138e5d34e0b4",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_core-0750/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_core-0750.pt",
+      "actor_checkpoint_sha256": "1a5e05bae9a299efe07bc9f9d7475a44260701b2007549c075325dc549d98205",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/actors/train_core-0750.pt"
+    },
+    {
+      "plant_id": "train_core-0914",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 60000,
+          "updates": 50000,
+          "actor_updates": 24750,
+          "episodes": 40,
+          "mean_episode_cost": 4.307251956928085,
+          "median_episode_cost": 3.221276521449654,
+          "mean_tracking_rmse_deg_s": 1.3685210428316819,
+          "maximum_peak_error_deg_s": 3.9988367134487497,
+          "mean_requested_force_total_variation_n": 206.51215825703306,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 6.883738608567769
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 60000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_core-0914/report.json",
+      "source_report_sha256": "6eef7e402865e90e14307eeee099e5dad43bfd0fe4252ec6dc3d000581f6eeeb",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_core-0914/validation_checkpoints/actor_step_00060000.pt",
+      "actor_checkpoint": "actors/train_core-0914.pt",
+      "actor_checkpoint_sha256": "819d1c509b23d4243d4384da1a0349087ec05bc86883826fd726a2adc4006cd6",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/actors/train_core-0914.pt"
+    },
+    {
+      "plant_id": "train_boundary-1605",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 50000,
+          "updates": 40000,
+          "actor_updates": 19750,
+          "episodes": 33,
+          "mean_episode_cost": 1.0608695225364475,
+          "median_episode_cost": 0.8264437121729082,
+          "mean_tracking_rmse_deg_s": 0.6587761135285009,
+          "maximum_peak_error_deg_s": 1.9343011564873684,
+          "mean_requested_force_total_variation_n": 61.57303738731813,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 2.052434579577271
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 50000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/backup_l1_boundary_1605/runs/train_boundary-1605/report.json",
+      "source_report_sha256": "c675d886088f6046cd82870ccd90f67c82addf3396ceb0ca010d57c4af17fe81",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/backup_l1_boundary_1605/runs/train_boundary-1605/validation_checkpoints/actor_step_00050000.pt",
+      "actor_checkpoint": "actors/train_boundary-1605.pt",
+      "actor_checkpoint_sha256": "57560ec3d34b775f94a3f62b41194bfc2e6c51c91e7e74bbc9a1db85f442a1b9",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/actors/train_boundary-1605.pt"
+    },
+    {
+      "plant_id": "train_boundary-1584",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 30000,
+          "updates": 20000,
+          "actor_updates": 9750,
+          "episodes": 20,
+          "mean_episode_cost": 1.831918428450641,
+          "median_episode_cost": 1.3548393856906706,
+          "mean_tracking_rmse_deg_s": 0.6417541272829949,
+          "maximum_peak_error_deg_s": 3.3105602961130454,
+          "mean_requested_force_total_variation_n": 52.94705365918344,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.764901788639448
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 30000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/backup_l1_boundary_1584/runs/train_boundary-1584/report.json",
+      "source_report_sha256": "546ddcd02da46e2716d24bfccc7c94ed39b26c6ccdb8f39ce32d50b42117bba2",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/backup_l1_boundary_1584/runs/train_boundary-1584/validation_checkpoints/actor_step_00030000.pt",
+      "actor_checkpoint": "actors/train_boundary-1584.pt",
+      "actor_checkpoint_sha256": "b4ad751778cc3019c2b7c151c1261ef0f30367c91994732cafd2240af6719852",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/actors/train_boundary-1584.pt"
+    },
+    {
+      "plant_id": "train_core-0742",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 1.0726500342748326,
+          "median_episode_cost": 0.8629882918089813,
+          "mean_tracking_rmse_deg_s": 0.4359240212005167,
+          "maximum_peak_error_deg_s": 3.0688312217000924,
+          "mean_requested_force_total_variation_n": 47.46380654365445,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.5821268847884817
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0742/report.json",
+      "source_report_sha256": "55160f1c43837df3a63a3c4b4a231d44afd0e9428857523d17ed39a0160f6556",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0742/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_core-0742.pt",
+      "actor_checkpoint_sha256": "ac1ae8baf008bd1a9e07b225ab3ca1f0b6cefdc78fa12c3dc45a716aefa18ef0",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_core-0742.pt"
+    },
+    {
+      "plant_id": "train_boundary-1451",
+      "split": "train_boundary",
+      "quality_region": "level_3",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 60000,
+          "updates": 50000,
+          "actor_updates": 24750,
+          "episodes": 40,
+          "mean_episode_cost": 6.779706560988991,
+          "median_episode_cost": 4.925680565575885,
+          "mean_tracking_rmse_deg_s": 0.8586904379507357,
+          "maximum_peak_error_deg_s": 4.116472687051096,
+          "mean_requested_force_total_variation_n": 69.40447217680048,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 2.313482405893349
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 60000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1451/report.json",
+      "source_report_sha256": "4223229db43ff01f37de9c4f8af5d7fc3a3129a177757a4b7d2f1a11aba617c6",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1451/validation_checkpoints/actor_step_00060000.pt",
+      "actor_checkpoint": "actors/train_boundary-1451.pt",
+      "actor_checkpoint_sha256": "682572efffbec8c70226770887bfe5942c06b7893c668a91fa324a92db3f2fe1",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_boundary-1451.pt"
+    },
+    {
+      "plant_id": "train_core-0754",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 2.051496985824155,
+          "median_episode_cost": 1.9028880457712427,
+          "mean_tracking_rmse_deg_s": 0.8969434281146268,
+          "maximum_peak_error_deg_s": 3.140171861908065,
+          "mean_requested_force_total_variation_n": 93.84576983905087,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 3.1281923279683626
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0754/report.json",
+      "source_report_sha256": "d3b4e7da70f4666e6e8fabbd37fb3c87e44065e262e0956d986aa139e38dfdbe",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0754/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_core-0754.pt",
+      "actor_checkpoint_sha256": "30b54664fb2a39cc8ffaff21f783cf931eca86c4ddbb4b2cd94b2c2834600ac7",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_core-0754.pt"
+    },
+    {
+      "plant_id": "train_boundary-1231",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 70000,
+          "updates": 60000,
+          "actor_updates": 29750,
+          "episodes": 46,
+          "mean_episode_cost": 0.41093644636698784,
+          "median_episode_cost": 0.26825665066207904,
+          "mean_tracking_rmse_deg_s": 0.3557627104997003,
+          "maximum_peak_error_deg_s": 2.3986696668736442,
+          "mean_requested_force_total_variation_n": 22.587168445189793,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 0.7529056148396598
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 70000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1231/report.json",
+      "source_report_sha256": "00ce9d6ba0932b4aa2b64198fabd4acf4d099c2c85e8694f77842c54f0fca52d",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1231/validation_checkpoints/actor_step_00070000.pt",
+      "actor_checkpoint": "actors/train_boundary-1231.pt",
+      "actor_checkpoint_sha256": "88cb2cad85545f84af283f886d8cd51833e4efa9a0d8944e236ffababe8e10f4",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_boundary-1231.pt"
+    },
+    {
+      "plant_id": "train_boundary-1488",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 50000,
+          "updates": 40000,
+          "actor_updates": 19750,
+          "episodes": 33,
+          "mean_episode_cost": 2.5940917135856076,
+          "median_episode_cost": 2.1734357285984727,
+          "mean_tracking_rmse_deg_s": 0.6578369843883607,
+          "maximum_peak_error_deg_s": 3.4633179898383437,
+          "mean_requested_force_total_variation_n": 55.53757765351717,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.8512525884505722
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 50000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1488/report.json",
+      "source_report_sha256": "8fc142b98950b285640ee99805684509b5d2341ccbaa73da1466537b08473fd0",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1488/validation_checkpoints/actor_step_00050000.pt",
+      "actor_checkpoint": "actors/train_boundary-1488.pt",
+      "actor_checkpoint_sha256": "57ebe09e6da3ce2bbfbb903ebbf6de4d9974e3ebf220bb766e22b2e93d16dc82",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_boundary-1488.pt"
+    },
+    {
+      "plant_id": "train_core-0892",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 2.782328515461776,
+          "median_episode_cost": 2.89834444045958,
+          "mean_tracking_rmse_deg_s": 0.6922568215080335,
+          "maximum_peak_error_deg_s": 2.3015077520736735,
+          "mean_requested_force_total_variation_n": 19.86805614019977,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 0.662268538006659
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0892/report.json",
+      "source_report_sha256": "214a031e804ace10fcb4379ab82c49bc6cc1a0049456459f323cbe0cc6aee81a",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0892/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_core-0892.pt",
+      "actor_checkpoint_sha256": "8a873856d8a48f995d284f2d380eff65e7a1f761a18205b68647735a32648a73",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_core-0892.pt"
+    },
+    {
+      "plant_id": "train_core-0515",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 3.3869940165094348,
+          "median_episode_cost": 2.4178276879673346,
+          "mean_tracking_rmse_deg_s": 1.1325869318717865,
+          "maximum_peak_error_deg_s": 3.567615640612697,
+          "mean_requested_force_total_variation_n": 122.89338433707599,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 4.0964461445691995
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0515/report.json",
+      "source_report_sha256": "23084fdfe4778f407ed6d9324e60f28b7a5bc9291346cc83ffa6f294be475f22",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0515/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_core-0515.pt",
+      "actor_checkpoint_sha256": "d254daf2cad92cca114501495ba9286885f0d4210066c7cb93211067a349bb56",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_core-0515.pt"
+    },
+    {
+      "plant_id": "train_boundary-1760",
+      "split": "train_boundary",
+      "quality_region": "level_3",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 50000,
+          "updates": 40000,
+          "actor_updates": 19750,
+          "episodes": 33,
+          "mean_episode_cost": 3.8901901064000115,
+          "median_episode_cost": 4.741076179291278,
+          "mean_tracking_rmse_deg_s": 1.1891100460081439,
+          "maximum_peak_error_deg_s": 3.037254150536428,
+          "mean_requested_force_total_variation_n": 262.06656927747343,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 8.735552309249114
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 50000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1760/report.json",
+      "source_report_sha256": "2dc724f9d1e2ea8b4eedebae8be554648f1a020c414a6a754724fe92d3d30ab6",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1760/validation_checkpoints/actor_step_00050000.pt",
+      "actor_checkpoint": "actors/train_boundary-1760.pt",
+      "actor_checkpoint_sha256": "1821859f6e5988cbf04518e7e5f7fce1f8a05ebc93bea96eec81b551952dc0b9",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_boundary-1760.pt"
+    },
+    {
+      "plant_id": "train_core-0481",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 70000,
+          "updates": 60000,
+          "actor_updates": 29750,
+          "episodes": 46,
+          "mean_episode_cost": 0.667001006107233,
+          "median_episode_cost": 0.5030497032551806,
+          "mean_tracking_rmse_deg_s": 0.5606748363492033,
+          "maximum_peak_error_deg_s": 2.365709885978678,
+          "mean_requested_force_total_variation_n": 23.856780817984447,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 0.7952260272661482
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 70000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0481/report.json",
+      "source_report_sha256": "349ab1d156f402b7e0c85e0f5055fc296b9f2038982e0e796db5373f46b063da",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0481/validation_checkpoints/actor_step_00070000.pt",
+      "actor_checkpoint": "actors/train_core-0481.pt",
+      "actor_checkpoint_sha256": "25209c0476dfc31f3f6a30e665ad51c354990c430c5bd4285aa79645be192613",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_core-0481.pt"
+    },
+    {
+      "plant_id": "train_boundary-1453",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 0.7273551950710461,
+          "median_episode_cost": 0.4467412522696147,
+          "mean_tracking_rmse_deg_s": 0.5202792838931365,
+          "maximum_peak_error_deg_s": 1.9480391685904264,
+          "mean_requested_force_total_variation_n": 50.00608272080232,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.6668694240267439
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1453/report.json",
+      "source_report_sha256": "370a977e173560aaec3e38ef8a888638bff39349a1933505194866d35da52cd0",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1453/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_boundary-1453.pt",
+      "actor_checkpoint_sha256": "8e6ff721dae9f7b5b527bb6c49957d979fd70ab58831c86eb74fbe0cca525d44",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_boundary-1453.pt"
+    },
+    {
+      "plant_id": "train_core-0175",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 60000,
+          "updates": 50000,
+          "actor_updates": 24750,
+          "episodes": 40,
+          "mean_episode_cost": 1.6567760514837107,
+          "median_episode_cost": 1.692577353760958,
+          "mean_tracking_rmse_deg_s": 0.5159467774992926,
+          "maximum_peak_error_deg_s": 2.533499470002717,
+          "mean_requested_force_total_variation_n": 332.479698626829,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 11.082656620894301
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 60000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0175/report.json",
+      "source_report_sha256": "9f8c9b737105dc45304b50fe01e3e08a8699fba6b761768e20fc6b41f07347b0",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0175/validation_checkpoints/actor_step_00060000.pt",
+      "actor_checkpoint": "actors/train_core-0175.pt",
+      "actor_checkpoint_sha256": "7909f8eb8ee00c9c41dff8f3315d2032cc71528ffd63a2c310a8bbf9d2cd8788",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_core-0175.pt"
+    },
+    {
+      "plant_id": "train_boundary-1531",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 0.8501912239060618,
+          "median_episode_cost": 0.6170746137757008,
+          "mean_tracking_rmse_deg_s": 0.292730996845494,
+          "maximum_peak_error_deg_s": 1.2610119976572303,
+          "mean_requested_force_total_variation_n": 27.2733832586091,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 0.90911277528697
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1531/report.json",
+      "source_report_sha256": "3873433f6d0a0f546da415ca078c6f564c897a103cd3a9e0dbcf2effc93d9473",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1531/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_boundary-1531.pt",
+      "actor_checkpoint_sha256": "18581effbde1910ec4e721d8ddaa6e8541c0e69737f37e1e622895994e982cbe",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_boundary-1531.pt"
+    },
+    {
+      "plant_id": "train_boundary-1205",
+      "split": "train_boundary",
+      "quality_region": "level_3",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 1.484305430720166,
+          "median_episode_cost": 0.97547857689212,
+          "mean_tracking_rmse_deg_s": 0.8089755442365302,
+          "maximum_peak_error_deg_s": 2.562193204758783,
+          "mean_requested_force_total_variation_n": 39.26111019658856,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.3087036732196187
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1205/report.json",
+      "source_report_sha256": "482fbea367e8ff2efe26cbc81a7b4ac94cb830dd12eac5845a7cd1b8cb6b9e2f",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1205/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_boundary-1205.pt",
+      "actor_checkpoint_sha256": "03da5ba984e8aa8f10c25aa0c35424060baa6bae42f0cf813d087ed845142f7f",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_boundary-1205.pt"
+    },
+    {
+      "plant_id": "train_core-0906",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 2.789437878437525,
+          "median_episode_cost": 2.1115552842459984,
+          "mean_tracking_rmse_deg_s": 0.7488277272140204,
+          "maximum_peak_error_deg_s": 2.461613814729841,
+          "mean_requested_force_total_variation_n": 53.75737859440657,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.7919126198135522
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0906/report.json",
+      "source_report_sha256": "4f12a897cb0b259da363bf9983f121168a01fd395e91aaac2337e5bb8eb1bf53",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0906/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_core-0906.pt",
+      "actor_checkpoint_sha256": "e01be73cbc14028242e150a6475229221395df5dc414a71447c3fb83dae9ea04",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_core-0906.pt"
+    },
+    {
+      "plant_id": "train_core-0964",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 70000,
+          "updates": 60000,
+          "actor_updates": 29750,
+          "episodes": 46,
+          "mean_episode_cost": 0.5248637964050179,
+          "median_episode_cost": 0.4565682586731208,
+          "mean_tracking_rmse_deg_s": 0.4944849953393484,
+          "maximum_peak_error_deg_s": 2.0341932355409624,
+          "mean_requested_force_total_variation_n": 35.42362797714304,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.1807875992381014
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 70000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0964/report.json",
+      "source_report_sha256": "e41e1d396a25deb08c9a17da1344fac74d81fd0fa0db868ec52acc59cf8c5b9a",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0964/validation_checkpoints/actor_step_00070000.pt",
+      "actor_checkpoint": "actors/train_core-0964.pt",
+      "actor_checkpoint_sha256": "c0ac42b0af0a1db65317367eb4a9de58a4209f9708745d6f96c9bb942d854f2c",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_core-0964.pt"
+    },
+    {
+      "plant_id": "train_core-0054",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 1.6084042388199429,
+          "median_episode_cost": 1.3026308127193835,
+          "mean_tracking_rmse_deg_s": 0.6116438543852228,
+          "maximum_peak_error_deg_s": 1.894442365287307,
+          "mean_requested_force_total_variation_n": 142.15510004820922,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 4.738503334940307
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0054/report.json",
+      "source_report_sha256": "d50546cbf3b6415e5af10deaf253675eba069d9c0a09035737ce06fbe357cb2d",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0054/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_core-0054.pt",
+      "actor_checkpoint_sha256": "35df3d41aa8a67068cee2d5501d689fc2737f10504d079301c71268d006e8d90",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_core-0054.pt"
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 70000,
+          "updates": 60000,
+          "actor_updates": 29750,
+          "episodes": 46,
+          "mean_episode_cost": 0.36050816580005246,
+          "median_episode_cost": 0.3008875843404404,
+          "mean_tracking_rmse_deg_s": 0.3960496308393435,
+          "maximum_peak_error_deg_s": 1.459684233206065,
+          "mean_requested_force_total_variation_n": 14.784877068033287,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 0.4928292356011096
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 70000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1351/report.json",
+      "source_report_sha256": "fda1db7c1f84b0a2aa4bff18167689ce0ece1a0c1f9e7acb6b6bdb197b23abec",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1351/validation_checkpoints/actor_step_00070000.pt",
+      "actor_checkpoint": "actors/train_boundary-1351.pt",
+      "actor_checkpoint_sha256": "8a932f60fdf2f9e0743c752c12e4c009758926e2e7b766d5a8cc124e58a4c922",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_boundary-1351.pt"
+    },
+    {
+      "plant_id": "train_boundary-1388",
+      "split": "train_boundary",
+      "quality_region": "level_3",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 60000,
+          "updates": 50000,
+          "actor_updates": 24750,
+          "episodes": 40,
+          "mean_episode_cost": 1.900871432131626,
+          "median_episode_cost": 1.1597342278356155,
+          "mean_tracking_rmse_deg_s": 0.8727642402260248,
+          "maximum_peak_error_deg_s": 3.9865570349749557,
+          "mean_requested_force_total_variation_n": 75.58506500843214,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 2.519502166947738
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 60000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1388/report.json",
+      "source_report_sha256": "5e46b67c03475c315099fbe4b3e72daaa889d2a0c130aadb6397134be6a2211b",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1388/validation_checkpoints/actor_step_00060000.pt",
+      "actor_checkpoint": "actors/train_boundary-1388.pt",
+      "actor_checkpoint_sha256": "894cf04b0c02b4e33b325fca3b86f1bd0b48fd6c49a9f0c0c2c0a16ec0789729",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_boundary-1388.pt"
+    },
+    {
+      "plant_id": "train_boundary-1743",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 0.6616667446212844,
+          "median_episode_cost": 0.49832360526564246,
+          "mean_tracking_rmse_deg_s": 0.47338958792323776,
+          "maximum_peak_error_deg_s": 1.6592920937969156,
+          "mean_requested_force_total_variation_n": 33.74882130308348,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.1249607101027828
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1743/report.json",
+      "source_report_sha256": "89e0535fa6caa0f30a816053558cb8b3e0a6024a2c5e5ae5a96083b71394150c",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1743/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_boundary-1743.pt",
+      "actor_checkpoint_sha256": "5daf0d901f20b4adf4e8819118f2c469514b67e862d29824fede8f07c9878a1c",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_boundary-1743.pt"
+    },
+    {
+      "plant_id": "train_boundary-1402",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 50000,
+          "updates": 40000,
+          "actor_updates": 19750,
+          "episodes": 33,
+          "mean_episode_cost": 3.6559413488686343,
+          "median_episode_cost": 2.8864662448204115,
+          "mean_tracking_rmse_deg_s": 1.149381355330226,
+          "maximum_peak_error_deg_s": 3.7549888206868944,
+          "mean_requested_force_total_variation_n": 61.69101888108222,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 2.056367296036074
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 50000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1402/report.json",
+      "source_report_sha256": "aa721518ab25ad9f58a232975cb916bf7ac23ff0db198638441780a0a4453fa0",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1402/validation_checkpoints/actor_step_00050000.pt",
+      "actor_checkpoint": "actors/train_boundary-1402.pt",
+      "actor_checkpoint_sha256": "4ed2e77f1d111b64e07fee485f8ff1026c792373888752544dc2a74cc5e7d646",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_boundary-1402.pt"
+    },
+    {
+      "plant_id": "train_core-0191",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "status": "complete",
+      "quality_gate": {
+        "passed": true,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 1.1820080946585472,
+          "median_episode_cost": 1.3915528846936502,
+          "mean_tracking_rmse_deg_s": 0.6349511674339584,
+          "maximum_peak_error_deg_s": 2.142550714528272,
+          "mean_requested_force_total_variation_n": 33.67372508300468,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.1224575027668229
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_among_quality_eligible_checkpoints",
+      "source_report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0191/report.json",
+      "source_report_sha256": "88abe8b5a2ad232c80b11727fdac2b4825944d95f09f3aa69810fa0386b04422",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0191/validation_checkpoints/actor_step_00080000.pt",
+      "actor_checkpoint": "actors/train_core-0191.pt",
+      "actor_checkpoint_sha256": "a9377ed77587c8f51c9271879bf998a573d31f170d6a469bbe95ed014b76ad56",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900",
+      "source_actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/actors/train_core-0191.pt"
+    }
+  ],
+  "rejected_teachers": [
+    {
+      "plant_id": "train_core-0306",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": false,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 1.8788452928140165,
+          "median_episode_cost": 1.6762716934828155,
+          "mean_tracking_rmse_deg_s": 0.35470990231399196,
+          "maximum_peak_error_deg_s": 1.5817562781582089,
+          "mean_requested_force_total_variation_n": 651.8080807069006,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 21.72693602356335
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0306/report.json",
+      "source_report_sha256": "6daa73d509b73a94a4861a0c867564a8ccc3e7577e7b311093a712890c8802fb",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_pilot_v1/runs/train_core-0306/validation_checkpoints/actor_step_00080000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19"
+    },
+    {
+      "plant_id": "train_core-0803",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 30000,
+          "updates": 20000,
+          "actor_updates": 9750,
+          "episodes": 20,
+          "mean_episode_cost": 8.486160540180064,
+          "median_episode_cost": 5.960788447356166,
+          "mean_tracking_rmse_deg_s": 1.4049810183693119,
+          "maximum_peak_error_deg_s": 6.556212314494381,
+          "mean_requested_force_total_variation_n": 255.4769911233258,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 8.51589970411086
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 30000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0803/report.json",
+      "source_report_sha256": "2c61fcf508183249734f42edcc60238dbff989c9e06c0cd73059eab9f88c65f1",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_pilot_v1/runs/train_core-0803/validation_checkpoints/actor_step_00030000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19"
+    },
+    {
+      "plant_id": "train_boundary-1254",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": false,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 70000,
+          "updates": 60000,
+          "actor_updates": 29750,
+          "episodes": 46,
+          "mean_episode_cost": 14.721254405802346,
+          "median_episode_cost": 9.351742759222368,
+          "mean_tracking_rmse_deg_s": 1.835824038548351,
+          "maximum_peak_error_deg_s": 9.21217703321606,
+          "mean_requested_force_total_variation_n": 1544.054852807778,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 51.4684950935926
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 70000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1254/report.json",
+      "source_report_sha256": "92f5cbe5540027310de6405e7eb2cff6bcdbea10a45dde48847c90240bab29fe",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_boundary-1254/validation_checkpoints/actor_step_00070000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19"
+    },
+    {
+      "plant_id": "train_core-1006",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 137.66709625077092,
+          "median_episode_cost": 62.52469480824684,
+          "mean_tracking_rmse_deg_s": 5.906547871984658,
+          "maximum_peak_error_deg_s": 27.25523873943557,
+          "mean_requested_force_total_variation_n": 66.01022382018466,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 2.2003407940061552
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-1006/report.json",
+      "source_report_sha256": "6d306253cd92f39b000ab5904fae36eb1f2f16652eb72f9645270cbf2286f17b",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_core-1006/validation_checkpoints/actor_step_00080000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19"
+    },
+    {
+      "plant_id": "train_core-0533",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": false,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 8.076750338019467,
+          "median_episode_cost": 5.394868279478465,
+          "mean_tracking_rmse_deg_s": 1.0970278061461733,
+          "maximum_peak_error_deg_s": 4.201806975749674,
+          "mean_requested_force_total_variation_n": 811.4176849117599,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 27.04725616372533
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0533/report.json",
+      "source_report_sha256": "364c52288e60d919bf121306a4f7ae60b57e6c00ab214a37a42499d77110b8eb",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_core-0533/validation_checkpoints/actor_step_00080000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19"
+    },
+    {
+      "plant_id": "train_boundary-1473",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 50000,
+          "updates": 40000,
+          "actor_updates": 19750,
+          "episodes": 33,
+          "mean_episode_cost": 63.8223852254566,
+          "median_episode_cost": 23.177764208910972,
+          "mean_tracking_rmse_deg_s": 3.7524759383271022,
+          "maximum_peak_error_deg_s": 19.83506983787432,
+          "mean_requested_force_total_variation_n": 227.11308882563995,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 7.570436294187998
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 50000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1473/report.json",
+      "source_report_sha256": "e25837e1375ed5ed0ebe10bd764620cc5a6c724a6dd15fc5cde7df1ba1adc841",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_boundary-1473/validation_checkpoints/actor_step_00050000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19"
+    },
+    {
+      "plant_id": "train_core-0163",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 40000,
+          "updates": 30000,
+          "actor_updates": 14750,
+          "episodes": 26,
+          "mean_episode_cost": 196.71572994831084,
+          "median_episode_cost": 111.9978389012357,
+          "mean_tracking_rmse_deg_s": 7.460114715578993,
+          "maximum_peak_error_deg_s": 25.097934817764983,
+          "mean_requested_force_total_variation_n": 261.0872423282902,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 8.702908077609672
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 40000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0163/report.json",
+      "source_report_sha256": "2b6a617d025608dd004eae79554205ebfb1059bf29c36cb7e3bd3c8458093b84",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_core-0163/validation_checkpoints/actor_step_00040000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19"
+    },
+    {
+      "plant_id": "train_boundary-1270",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 40000,
+          "updates": 30000,
+          "actor_updates": 14750,
+          "episodes": 26,
+          "mean_episode_cost": 63.87138080025671,
+          "median_episode_cost": 15.55316071305451,
+          "mean_tracking_rmse_deg_s": 3.2747544642260498,
+          "maximum_peak_error_deg_s": 24.17097014851492,
+          "mean_requested_force_total_variation_n": 226.27750122653865,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 7.542583374217955
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 40000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1270/report.json",
+      "source_report_sha256": "ad216d5c466d4d02cbd9ae1fd5ff9669728a0b3ff8f5492aae2c3230bf225ac2",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_boundary-1270/validation_checkpoints/actor_step_00040000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19"
+    },
+    {
+      "plant_id": "train_boundary-1358",
+      "split": "train_boundary",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 0,
+          "updates": 0,
+          "actor_updates": 0,
+          "episodes": 0,
+          "mean_episode_cost": 921.3356405230562,
+          "median_episode_cost": 898.4594643264345,
+          "mean_tracking_rmse_deg_s": 18.172089925329466,
+          "maximum_peak_error_deg_s": 115.34365598823103,
+          "mean_requested_force_total_variation_n": 74.18657204759074,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 2.4728857349196915
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 0,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1358/report.json",
+      "source_report_sha256": "c67b08aa290abe76af6c8dfb059531056fdce11dd50567c7eff94cda85950ec8",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/new_candidates_all/runs/train_boundary-1358/validation_checkpoints/actor_step_00000000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v2/merged_bank/teacher_bank.json",
+      "source_bank_sha256": "bf462d744c05ca864d59e5b57efd785b53618c09e2075efa3f80220445513e19"
+    },
+    {
+      "plant_id": "train_core-0249",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 30000,
+          "updates": 20000,
+          "actor_updates": 9750,
+          "episodes": 20,
+          "mean_episode_cost": 45.779905282797365,
+          "median_episode_cost": 13.215727948001547,
+          "mean_tracking_rmse_deg_s": 3.0258646989603064,
+          "maximum_peak_error_deg_s": 19.646734727646223,
+          "mean_requested_force_total_variation_n": 267.8325752323338,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 8.92775250774446
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 30000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0249/report.json",
+      "source_report_sha256": "8ca318d58e11046f6c5faa1501e412cad981e90daea62594897e8c2aa6b93a45",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0249/validation_checkpoints/actor_step_00030000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1344",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 70000,
+          "updates": 60000,
+          "actor_updates": 29750,
+          "episodes": 46,
+          "mean_episode_cost": 118.13600539297393,
+          "median_episode_cost": 52.37940321608179,
+          "mean_tracking_rmse_deg_s": 5.435514932057256,
+          "maximum_peak_error_deg_s": 24.433106005465152,
+          "mean_requested_force_total_variation_n": 30.048803875707865,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.001626795856929
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 70000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1344/report.json",
+      "source_report_sha256": "0a187ed9c2ddc652d247628fd6c728a0b2d743a29f448c498d682ae91319cc03",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1344/validation_checkpoints/actor_step_00070000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1207",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 60000,
+          "updates": 50000,
+          "actor_updates": 24750,
+          "episodes": 40,
+          "mean_episode_cost": 34.98344373286575,
+          "median_episode_cost": 11.051284581048684,
+          "mean_tracking_rmse_deg_s": 2.4111946196180987,
+          "maximum_peak_error_deg_s": 16.134625639138147,
+          "mean_requested_force_total_variation_n": 131.55284895697454,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 4.385094965232485
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 60000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1207/report.json",
+      "source_report_sha256": "b7beb930c9053af41d161ffdaa220ea8c87d100c08d8222e54eec053e285313b",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1207/validation_checkpoints/actor_step_00060000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0548",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 116.5797241129258,
+          "median_episode_cost": 49.364030455012916,
+          "mean_tracking_rmse_deg_s": 5.559374137792293,
+          "maximum_peak_error_deg_s": 25.204825773203915,
+          "mean_requested_force_total_variation_n": 40.48640770963781,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.3495469236545936
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0548/report.json",
+      "source_report_sha256": "b99adb6b53d7a4abfcd59febf8a8229b3bb6aeb505928a56258f54cf009c1834",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0548/validation_checkpoints/actor_step_00080000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0009",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 70000,
+          "updates": 60000,
+          "actor_updates": 29750,
+          "episodes": 46,
+          "mean_episode_cost": 69.98616695824941,
+          "median_episode_cost": 22.752592808930835,
+          "mean_tracking_rmse_deg_s": 3.7958669425632787,
+          "maximum_peak_error_deg_s": 22.374483832336157,
+          "mean_requested_force_total_variation_n": 325.425364926341,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 10.847512164211366
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 70000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0009/report.json",
+      "source_report_sha256": "90f23e27105ed3cc43030c19f8b5a7c34549d1e5db2f2d934fed12220d510942",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0009/validation_checkpoints/actor_step_00070000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1236",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 30000,
+          "updates": 20000,
+          "actor_updates": 9750,
+          "episodes": 20,
+          "mean_episode_cost": 59.92590840334851,
+          "median_episode_cost": 16.421527793746733,
+          "mean_tracking_rmse_deg_s": 3.5511959003592506,
+          "maximum_peak_error_deg_s": 22.654631117940088,
+          "mean_requested_force_total_variation_n": 341.55797120715334,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 11.38526570690511
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 30000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1236/report.json",
+      "source_report_sha256": "8f375c8ada2e8318fe695183e19143d56c25a3aee8d71e0398b4dfb351a0ac15",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1236/validation_checkpoints/actor_step_00030000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0551",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 6.071486641686011,
+          "median_episode_cost": 4.051646945547537,
+          "mean_tracking_rmse_deg_s": 1.3632809481306725,
+          "maximum_peak_error_deg_s": 5.514392275108427,
+          "mean_requested_force_total_variation_n": 285.47884570993483,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 9.515961523664494
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0551/report.json",
+      "source_report_sha256": "557a1213641b72ae1aa29dcdd1fb2ca0a0a9f9728ed55f4f4be550628117bd37",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0551/validation_checkpoints/actor_step_00080000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1457",
+      "split": "train_boundary",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": false,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 60000,
+          "updates": 50000,
+          "actor_updates": 24750,
+          "episodes": 40,
+          "mean_episode_cost": 3.02492898842058,
+          "median_episode_cost": 3.1128298806429595,
+          "mean_tracking_rmse_deg_s": 0.5835640579787772,
+          "maximum_peak_error_deg_s": 2.6490336690937673,
+          "mean_requested_force_total_variation_n": 701.7553076530652,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 23.391843588435506
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 60000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1457/report.json",
+      "source_report_sha256": "97b0747aee1bb0224ac0cf6d96347fea271d3a4288829e6e434ec2eee7edc0f7",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1457/validation_checkpoints/actor_step_00060000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0570",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 50000,
+          "updates": 40000,
+          "actor_updates": 19750,
+          "episodes": 33,
+          "mean_episode_cost": 50.61514336712067,
+          "median_episode_cost": 12.719618750034156,
+          "mean_tracking_rmse_deg_s": 3.105331633536135,
+          "maximum_peak_error_deg_s": 21.288937634498772,
+          "mean_requested_force_total_variation_n": 128.2184449954657,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 4.273948166515523
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 50000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0570/report.json",
+      "source_report_sha256": "1bf0fb65b20732ce1fd315b4527dc9446c7dbd3624a0ef75717528b38d29256f",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0570/validation_checkpoints/actor_step_00050000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1354",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 50000,
+          "updates": 40000,
+          "actor_updates": 19750,
+          "episodes": 33,
+          "mean_episode_cost": 219.57675432310234,
+          "median_episode_cost": 126.1296843416897,
+          "mean_tracking_rmse_deg_s": 8.22976984482448,
+          "maximum_peak_error_deg_s": 30.163999493342647,
+          "mean_requested_force_total_variation_n": 140.18291961277524,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 4.672763987092508
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 50000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1354/report.json",
+      "source_report_sha256": "3ab70b1987b95f3ed51cdb3b7eedfe23d86330a18db5a92354e332923e1614ad",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1354/validation_checkpoints/actor_step_00050000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0333",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 70000,
+          "updates": 60000,
+          "actor_updates": 29750,
+          "episodes": 46,
+          "mean_episode_cost": 121.58761022091062,
+          "median_episode_cost": 56.68903265705431,
+          "mean_tracking_rmse_deg_s": 5.613074288851461,
+          "maximum_peak_error_deg_s": 23.88571877980511,
+          "mean_requested_force_total_variation_n": 63.74779609305551,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 2.1249265364351837
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 70000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0333/report.json",
+      "source_report_sha256": "4af70a02fac3c6b212383236122cb68f3b7714a24c446e127d5d362ff6a3d796",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0333/validation_checkpoints/actor_step_00070000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1368",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 70000,
+          "updates": 60000,
+          "actor_updates": 29750,
+          "episodes": 46,
+          "mean_episode_cost": 14.34854725163752,
+          "median_episode_cost": 4.850114906258191,
+          "mean_tracking_rmse_deg_s": 1.3411084744839972,
+          "maximum_peak_error_deg_s": 14.840663452323984,
+          "mean_requested_force_total_variation_n": 25.44630962922626,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 0.8482103209742087
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 70000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1368/report.json",
+      "source_report_sha256": "01db4eb72d1bcacfce34c64417e39ab8bb6e86114df8e11b696545c64ef3a30e",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1368/validation_checkpoints/actor_step_00070000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0149",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": false,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 50000,
+          "updates": 40000,
+          "actor_updates": 19750,
+          "episodes": 33,
+          "mean_episode_cost": 98.62035242970063,
+          "median_episode_cost": 41.58384014393333,
+          "mean_tracking_rmse_deg_s": 4.697887610972374,
+          "maximum_peak_error_deg_s": 25.892644568663037,
+          "mean_requested_force_total_variation_n": 1482.9744901385275,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 49.43248300461758
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 50000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0149/report.json",
+      "source_report_sha256": "7d80b5b6c9626c5f86a4e8415d9d5358ed526bc7fcd1914f5f2d66c02dcef0fe",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0149/validation_checkpoints/actor_step_00050000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1796",
+      "split": "train_boundary",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": false,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 60000,
+          "updates": 50000,
+          "actor_updates": 24750,
+          "episodes": 40,
+          "mean_episode_cost": 261.6058448320403,
+          "median_episode_cost": 100.99939550830081,
+          "mean_tracking_rmse_deg_s": 9.152122801070439,
+          "maximum_peak_error_deg_s": 93.45248372794072,
+          "mean_requested_force_total_variation_n": 906.6436944538533,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 30.22145648179511
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 60000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1796/report.json",
+      "source_report_sha256": "3ff47a06bb84c16c379e66b81b53c6a692a2d8de3aede53e5be9e60c1fe12f31",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1796/validation_checkpoints/actor_step_00060000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0840",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 27.823913853016673,
+          "median_episode_cost": 7.184610961312842,
+          "mean_tracking_rmse_deg_s": 2.1144591331027573,
+          "maximum_peak_error_deg_s": 19.783066290746746,
+          "mean_requested_force_total_variation_n": 50.57840376686848,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.6859467922289495
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0840/report.json",
+      "source_report_sha256": "81bea9cb0054ebe29c5fa4ada2e0e343d0e9356cfcf4cd0ce404c5a76a9a8584",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0840/validation_checkpoints/actor_step_00080000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1260",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 60000,
+          "updates": 50000,
+          "actor_updates": 24750,
+          "episodes": 40,
+          "mean_episode_cost": 79.55709416944717,
+          "median_episode_cost": 24.538689170780508,
+          "mean_tracking_rmse_deg_s": 4.412416904684368,
+          "maximum_peak_error_deg_s": 23.631372736411553,
+          "mean_requested_force_total_variation_n": 122.60067413238964,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 4.086689137746322
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 60000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1260/report.json",
+      "source_report_sha256": "f63658ad84c2dbe39bb7a71e15b2106be9ee8b7afeafa5295bbd4b00566b293c",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1260/validation_checkpoints/actor_step_00060000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0497",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": false,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 80000,
+          "updates": 70000,
+          "actor_updates": 34750,
+          "episodes": 53,
+          "mean_episode_cost": 8.526543120210876,
+          "median_episode_cost": 6.199734978542775,
+          "mean_tracking_rmse_deg_s": 1.463749986464763,
+          "maximum_peak_error_deg_s": 6.657603313621809,
+          "mean_requested_force_total_variation_n": 426.58796075430774,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 14.219598691810258
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 80000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0497/report.json",
+      "source_report_sha256": "1a2a86e0579febc2dc05f04de0475425d68f764c19cadc8583d0f78d5c32dd32",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0497/validation_checkpoints/actor_step_00080000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1437",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 50000,
+          "updates": 40000,
+          "actor_updates": 19750,
+          "episodes": 33,
+          "mean_episode_cost": 14.342981906797272,
+          "median_episode_cost": 6.945680654283028,
+          "mean_tracking_rmse_deg_s": 1.4005373002186587,
+          "maximum_peak_error_deg_s": 11.430833338093558,
+          "mean_requested_force_total_variation_n": 76.83546518258906,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 2.561182172752969
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 50000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1437/report.json",
+      "source_report_sha256": "c91362ad519bd65872273b18b885c3f0fbd10f78cb75a90ce20fb1f4efb5811b",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1437/validation_checkpoints/actor_step_00050000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1357",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 30000,
+          "updates": 20000,
+          "actor_updates": 9750,
+          "episodes": 20,
+          "mean_episode_cost": 88.10760708902977,
+          "median_episode_cost": 37.83533857182714,
+          "mean_tracking_rmse_deg_s": 4.650615076018101,
+          "maximum_peak_error_deg_s": 21.061952916564636,
+          "mean_requested_force_total_variation_n": 99.34348418427787,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 3.3114494728092625
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 30000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1357/report.json",
+      "source_report_sha256": "a2b565447c29e5d152d0efce5ec37b7e874d74a04a7797009271cd467c45e390",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1357/validation_checkpoints/actor_step_00030000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0788",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": false,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 30000,
+          "updates": 20000,
+          "actor_updates": 9750,
+          "episodes": 20,
+          "mean_episode_cost": 197.1347684634668,
+          "median_episode_cost": 207.89911583876363,
+          "mean_tracking_rmse_deg_s": 5.60252804426214,
+          "maximum_peak_error_deg_s": 20.8884898596741,
+          "mean_requested_force_total_variation_n": 7244.326439084485,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 241.47754796948283
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 30000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0788/report.json",
+      "source_report_sha256": "5a1a7a599b7c8d73cbe4f8309bc491b21e2d1be967a709127cdc5851da334e58",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0788/validation_checkpoints/actor_step_00030000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1226",
+      "split": "train_boundary",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": false,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 50000,
+          "updates": 40000,
+          "actor_updates": 19750,
+          "episodes": 33,
+          "mean_episode_cost": 61.10824448042453,
+          "median_episode_cost": 34.51954559150653,
+          "mean_tracking_rmse_deg_s": 4.214549614060899,
+          "maximum_peak_error_deg_s": 19.50605945914736,
+          "mean_requested_force_total_variation_n": 516.5009228385558,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 17.21669742795186
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 50000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1226/report.json",
+      "source_report_sha256": "6ce71959f6bf7bc2fa93314e9b952a3dc51f29280849f7ad02b2832a6310a382",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1226/validation_checkpoints/actor_step_00050000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1509",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 60000,
+          "updates": 50000,
+          "actor_updates": 24750,
+          "episodes": 40,
+          "mean_episode_cost": 32.385734231116196,
+          "median_episode_cost": 7.550896103847682,
+          "mean_tracking_rmse_deg_s": 2.0743366032859574,
+          "maximum_peak_error_deg_s": 19.502672120449674,
+          "mean_requested_force_total_variation_n": 130.85721769804755,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 4.361907256601585
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 60000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1509/report.json",
+      "source_report_sha256": "29885b55f3dc282210662199ff7d20bc30b885d4dc9666347c1fbf127ce87007",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1509/validation_checkpoints/actor_step_00060000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0232",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": false,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 40000,
+          "updates": 30000,
+          "actor_updates": 14750,
+          "episodes": 26,
+          "mean_episode_cost": 87.69620732498036,
+          "median_episode_cost": 37.05490845726595,
+          "mean_tracking_rmse_deg_s": 4.820369843741649,
+          "maximum_peak_error_deg_s": 23.31637227514639,
+          "mean_requested_force_total_variation_n": 725.8584604193069,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 24.195282013976897
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 40000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0232/report.json",
+      "source_report_sha256": "ef33b31404e711aed962cf81672b420a0f8ec8df1630d9baab0e1c08d7e940e5",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0232/validation_checkpoints/actor_step_00040000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0608",
+      "split": "train_core",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 60000,
+          "updates": 50000,
+          "actor_updates": 24750,
+          "episodes": 40,
+          "mean_episode_cost": 122.08705548235679,
+          "median_episode_cost": 54.52048052312375,
+          "mean_tracking_rmse_deg_s": 5.679609190521458,
+          "maximum_peak_error_deg_s": 24.559378193281066,
+          "mean_requested_force_total_variation_n": 56.07188722483503,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 1.869062907494501
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 60000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0608/report.json",
+      "source_report_sha256": "fee0020966fd1d4e7bcffdf9471ae2406fe708d7591e0064ee94fe8362fe6aac",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0608/validation_checkpoints/actor_step_00060000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0951",
+      "split": "train_core",
+      "quality_region": "level_1",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": true,
+          "requested_force_tv_rate": false,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 70000,
+          "updates": 60000,
+          "actor_updates": 29750,
+          "episodes": 46,
+          "mean_episode_cost": 4.79784756233564,
+          "median_episode_cost": 5.168850229505951,
+          "mean_tracking_rmse_deg_s": 0.6695321919640573,
+          "maximum_peak_error_deg_s": 3.2957566707374295,
+          "mean_requested_force_total_variation_n": 1152.403090182789,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 38.4134363394263
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 70000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0951/report.json",
+      "source_report_sha256": "4645ed35acdd6bcf0781af1d47b5486394863d3a44da5e29f3648fbd1041425d",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0951/validation_checkpoints/actor_step_00070000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_core-0628",
+      "split": "train_core",
+      "quality_region": "level_2",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": true,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": true,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 40000,
+          "updates": 30000,
+          "actor_updates": 14750,
+          "episodes": 26,
+          "mean_episode_cost": 9.309147884407286,
+          "median_episode_cost": 4.400903712508793,
+          "mean_tracking_rmse_deg_s": 1.1352920234736636,
+          "maximum_peak_error_deg_s": 7.1052170621919775,
+          "mean_requested_force_total_variation_n": 99.61326694170323,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 3.320442231390108
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 40000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_core-0628/report.json",
+      "source_report_sha256": "4638f6877397ff0b3c2339307c9e0bb46b1a796fc6ed5fb8790ef2088134170b",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0628/validation_checkpoints/actor_step_00040000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    },
+    {
+      "plant_id": "train_boundary-1658",
+      "split": "train_boundary",
+      "quality_region": "level_3",
+      "status": "quality_gate_failed",
+      "quality_gate": {
+        "passed": false,
+        "checks": {
+          "tracking_improvement_rate": true,
+          "mean_tracking_rmse": false,
+          "peak_tracking_error": false,
+          "requested_force_tv_rate": false,
+          "force_saturation": true
+        },
+        "observed": {
+          "step": 40000,
+          "updates": 30000,
+          "actor_updates": 14750,
+          "episodes": 26,
+          "mean_episode_cost": 12.977644547481754,
+          "median_episode_cost": 14.140768264772879,
+          "mean_tracking_rmse_deg_s": 2.075383027702999,
+          "maximum_peak_error_deg_s": 9.125284259963657,
+          "mean_requested_force_total_variation_n": 1092.2389138451351,
+          "mean_force_saturation_fraction": 0.0,
+          "tracking_improvement_rate": 1.0,
+          "harm_rate": 0.0,
+          "mean_requested_force_total_variation_rate_n_s": 36.40796379483784
+        },
+        "thresholds": {
+          "minimum_tracking_improvement_rate": 1.0,
+          "maximum_mean_tracking_rmse_deg_s": 1.5,
+          "maximum_peak_error_deg_s": 5.0,
+          "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+          "maximum_saturation_fraction": 0.01
+        }
+      },
+      "selected_validation_step": 40000,
+      "selection_method": "minimum_cost_fallback_no_quality_eligible_checkpoint",
+      "source_report": "runs/train_boundary-1658/report.json",
+      "source_report_sha256": "adda776d0a8c7a59a93941fa74491d3a92254368ed461fa9667a81dd10cda177",
+      "source_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1658/validation_checkpoints/actor_step_00040000.pt",
+      "source_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+      "source_bank_sha256": "9de2b323cbc46d39153e4c344052475c302f8fb80603e0fa186f0bc00f8f6900"
+    }
+  ]
+}

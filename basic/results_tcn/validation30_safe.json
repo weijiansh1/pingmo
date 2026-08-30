@@ -1,0 +1,944 @@
+{
+  "split": "validation",
+  "per_level": 10,
+  "overall": {
+    "aircraft": 30.0,
+    "mean_energy_reduction_percent": 14.262817165409835,
+    "median_energy_reduction_percent": 13.154699545632266,
+    "energy_improved_fraction": 0.9666666666666667,
+    "mean_peak_reduction_percent": 5.767875993668858,
+    "peak_improved_fraction": 0.8666666666666667,
+    "mean_residual_force_rms_n": 0.251008067074284
+  },
+  "by_dutch_roll_level": {
+    "1": {
+      "aircraft": 10.0,
+      "mean_energy_reduction_percent": 8.558197533458822,
+      "median_energy_reduction_percent": 7.457507741265212,
+      "energy_improved_fraction": 0.9,
+      "mean_peak_reduction_percent": 2.2667536530027066,
+      "peak_improved_fraction": 0.7,
+      "mean_residual_force_rms_n": 0.2010697804348187
+    },
+    "2": {
+      "aircraft": 10.0,
+      "mean_energy_reduction_percent": 9.143149020117058,
+      "median_energy_reduction_percent": 6.06868189308476,
+      "energy_improved_fraction": 1.0,
+      "mean_peak_reduction_percent": 4.449454245176943,
+      "peak_improved_fraction": 0.9,
+      "mean_residual_force_rms_n": 0.23739942490729654
+    },
+    "3": {
+      "aircraft": 10.0,
+      "mean_energy_reduction_percent": 25.08710494265355,
+      "median_energy_reduction_percent": 24.749190369654993,
+      "energy_improved_fraction": 1.0,
+      "mean_peak_reduction_percent": 10.587420082826926,
+      "peak_improved_fraction": 1.0,
+      "mean_residual_force_rms_n": 0.31455499588073677
+    }
+  },
+  "cases": [
+    {
+      "plant_id": "validation-2059",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.13424025948608664,
+      "controlled_energy": 0.12697621715681606,
+      "energy_ratio": 0.9458877511330834,
+      "raw_high_frequency_energy": 0.0022738987691784535,
+      "controlled_high_frequency_energy": 0.0018828059860370233,
+      "high_frequency_energy_ratio": 0.8280078302330364,
+      "raw_peak_deg_s": 9.070334674847349,
+      "controlled_peak_deg_s": 8.772615295739044,
+      "peak_ratio": 0.9671765828074789,
+      "raw_return": -27.185737080474134,
+      "controlled_return": -25.97697929982981,
+      "residual_force_rms_n": 0.1827411449847192,
+      "residual_force_max_abs_n": 0.9355179905891418,
+      "router_mean_weights": [
+        0.21077999472618103,
+        0.2454991340637207,
+        0.24188841879367828,
+        0.30183255672454834
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.008,
+        0.0,
+        0.992
+      ]
+    },
+    {
+      "plant_id": "validation-2044",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.15296621107084074,
+      "controlled_energy": 0.1403603458054261,
+      "energy_ratio": 0.9175905242264472,
+      "raw_high_frequency_energy": 0.001972143869534393,
+      "controlled_high_frequency_energy": 0.001578156513499807,
+      "high_frequency_energy_ratio": 0.8002238264049149,
+      "raw_peak_deg_s": 14.196161492475753,
+      "controlled_peak_deg_s": 13.71609809578923,
+      "peak_ratio": 0.9661835773747033,
+      "raw_return": -31.012271460859896,
+      "controlled_return": -28.84790254155734,
+      "residual_force_rms_n": 0.19386672699656549,
+      "residual_force_max_abs_n": 0.852776625752449,
+      "router_mean_weights": [
+        0.2009940892457962,
+        0.23620696365833282,
+        0.23570716381072998,
+        0.32709163427352905
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.014,
+        0.0,
+        0.986
+      ]
+    },
+    {
+      "plant_id": "validation-1914",
+      "gjb_level": 1,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.22768092531251838,
+      "controlled_energy": 0.21073413750990191,
+      "energy_ratio": 0.925567819177847,
+      "raw_high_frequency_energy": 0.0011431731012040982,
+      "controlled_high_frequency_energy": 0.0010555007600664469,
+      "high_frequency_energy_ratio": 0.9233079040739267,
+      "raw_peak_deg_s": 12.900460731017281,
+      "controlled_peak_deg_s": 12.705603538189186,
+      "peak_ratio": 0.9848953307257011,
+      "raw_return": -45.83691802701923,
+      "controlled_return": -42.80648504621448,
+      "residual_force_rms_n": 0.13670484649018347,
+      "residual_force_max_abs_n": 0.6328740522265434,
+      "router_mean_weights": [
+        0.19801662862300873,
+        0.23190422356128693,
+        0.23591715097427368,
+        0.3341618478298187
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.012,
+        0.0,
+        0.988
+      ]
+    },
+    {
+      "plant_id": "validation-1939",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.8229056252027531,
+      "controlled_energy": 0.6396123521763779,
+      "energy_ratio": 0.7772608821561838,
+      "raw_high_frequency_energy": 0.01040983305762497,
+      "controlled_high_frequency_energy": 0.006239668511521102,
+      "high_frequency_energy_ratio": 0.5994014002895738,
+      "raw_peak_deg_s": 21.345862448652646,
+      "controlled_peak_deg_s": 20.88850871008379,
+      "peak_ratio": 0.9785741269686798,
+      "raw_return": -165.85939313825924,
+      "controlled_return": -131.60806598656006,
+      "residual_force_rms_n": 0.35042121111430863,
+      "residual_force_max_abs_n": 1.6258346021175383,
+      "router_mean_weights": [
+        0.1867108941078186,
+        0.21079972386360168,
+        0.23485539853572845,
+        0.36763399839401245
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.006,
+        0.148,
+        0.846
+      ]
+    },
+    {
+      "plant_id": "validation-1841",
+      "gjb_level": 3,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.7323204136981982,
+      "controlled_energy": 0.6022787118809543,
+      "energy_ratio": 0.8224251306056909,
+      "raw_high_frequency_energy": 0.0025809554251321563,
+      "controlled_high_frequency_energy": 0.002150020222507267,
+      "high_frequency_energy_ratio": 0.8330326830023329,
+      "raw_peak_deg_s": 36.04731633079612,
+      "controlled_peak_deg_s": 32.11266656948399,
+      "peak_ratio": 0.8908476368891112,
+      "raw_return": -147.2523109775077,
+      "controlled_return": -125.44529121455088,
+      "residual_force_rms_n": 0.3228610050234745,
+      "residual_force_max_abs_n": 0.6106875076889992,
+      "router_mean_weights": [
+        0.16704660654067993,
+        0.19269977509975433,
+        0.214864119887352,
+        0.42538949847221375
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.006,
+        0.0,
+        0.994
+      ]
+    },
+    {
+      "plant_id": "validation-1969",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.05407407763850164,
+      "controlled_energy": 0.05475693096557122,
+      "energy_ratio": 1.0126281086407913,
+      "raw_high_frequency_energy": 0.0005588710769653192,
+      "controlled_high_frequency_energy": 0.0005421209144430269,
+      "high_frequency_energy_ratio": 0.9700285750816701,
+      "raw_peak_deg_s": 5.9992062354477875,
+      "controlled_peak_deg_s": 6.085020320837829,
+      "peak_ratio": 1.014304239931441,
+      "raw_return": -10.910561404010274,
+      "controlled_return": -11.258317829486085,
+      "residual_force_rms_n": 0.11393442139232489,
+      "residual_force_max_abs_n": 0.6328740522265434,
+      "router_mean_weights": [
+        0.21738429367542267,
+        0.2533171772956848,
+        0.24308153986930847,
+        0.2862170934677124
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.008,
+        0.0,
+        0.992
+      ]
+    },
+    {
+      "plant_id": "validation-2064",
+      "gjb_level": 1,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.18791273843462733,
+      "controlled_energy": 0.17387227932940788,
+      "energy_ratio": 0.9252820259968487,
+      "raw_high_frequency_energy": 0.00272936851885408,
+      "controlled_high_frequency_energy": 0.0022198437263842023,
+      "high_frequency_energy_ratio": 0.8133177000649949,
+      "raw_peak_deg_s": 10.479486130034456,
+      "controlled_peak_deg_s": 10.536532299624707,
+      "peak_ratio": 1.0054436037113266,
+      "raw_return": -38.11728809891631,
+      "controlled_return": -35.639624170348014,
+      "residual_force_rms_n": 0.21917647910949617,
+      "residual_force_max_abs_n": 1.1278531730175019,
+      "router_mean_weights": [
+        0.20245550572872162,
+        0.23671798408031464,
+        0.23806433379650116,
+        0.3227621018886566
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.014,
+        0.0,
+        0.986
+      ]
+    },
+    {
+      "plant_id": "validation-2005",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.04345287525507692,
+      "controlled_energy": 0.042263481222707205,
+      "energy_ratio": 0.9726279555636368,
+      "raw_high_frequency_energy": 0.0019342969528457743,
+      "controlled_high_frequency_energy": 0.0018582173215650516,
+      "high_frequency_energy_ratio": 0.9606680705520458,
+      "raw_peak_deg_s": 7.103385074852135,
+      "controlled_peak_deg_s": 7.141624014810025,
+      "peak_ratio": 1.0053831996372076,
+      "raw_return": -8.881717936967066,
+      "controlled_return": -8.77452949640638,
+      "residual_force_rms_n": 0.16256188944036723,
+      "residual_force_max_abs_n": 0.8463333785533904,
+      "router_mean_weights": [
+        0.21556125581264496,
+        0.252206951379776,
+        0.24104571342468262,
+        0.29118627309799194
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.01,
+        0.0,
+        0.99
+      ]
+    },
+    {
+      "plant_id": "validation-1932",
+      "gjb_level": 1,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.07822937739073842,
+      "controlled_energy": 0.07807241802953868,
+      "energy_ratio": 0.9979936007873902,
+      "raw_high_frequency_energy": 0.000850063275617597,
+      "controlled_high_frequency_energy": 0.0009821039757699035,
+      "high_frequency_energy_ratio": 1.155330437085845,
+      "raw_peak_deg_s": 10.10281292208934,
+      "controlled_peak_deg_s": 9.976494891581076,
+      "peak_ratio": 0.9874967465514406,
+      "raw_return": -15.77361764206757,
+      "controlled_return": -15.829178904093524,
+      "residual_force_rms_n": 0.11093516231960694,
+      "residual_force_max_abs_n": 0.6328740522265434,
+      "router_mean_weights": [
+        0.20874705910682678,
+        0.2451322078704834,
+        0.23877674341201782,
+        0.3073440194129944
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.014,
+        0.0,
+        0.986
+      ]
+    },
+    {
+      "plant_id": "validation-1853",
+      "gjb_level": 3,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.4796581108474521,
+      "controlled_energy": 0.40623034366896416,
+      "energy_ratio": 0.8469164483661978,
+      "raw_high_frequency_energy": 0.0026894244625762964,
+      "controlled_high_frequency_energy": 0.002043651036778104,
+      "high_frequency_energy_ratio": 0.7598841555938021,
+      "raw_peak_deg_s": 18.359765206776757,
+      "controlled_peak_deg_s": 17.86441121587861,
+      "peak_ratio": 0.9730195901026389,
+      "raw_return": -96.64471342171689,
+      "controlled_return": -83.19082643717363,
+      "residual_force_rms_n": 0.21749491747714042,
+      "residual_force_max_abs_n": 0.594973075389862,
+      "router_mean_weights": [
+        0.18742945790290833,
+        0.2173055112361908,
+        0.23297028243541718,
+        0.3622947037220001
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.004,
+        0.0,
+        0.996
+      ]
+    },
+    {
+      "plant_id": "validation-1819",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.11679503602560512,
+      "controlled_energy": 0.11337358232557088,
+      "energy_ratio": 0.9707054870098747,
+      "raw_high_frequency_energy": 0.001227248607962096,
+      "controlled_high_frequency_energy": 0.0011500140073991579,
+      "high_frequency_energy_ratio": 0.9370668664345118,
+      "raw_peak_deg_s": 10.944724645504733,
+      "controlled_peak_deg_s": 10.865657988856626,
+      "peak_ratio": 0.9927758203875342,
+      "raw_return": -23.515807164553166,
+      "controlled_return": -22.932489402422938,
+      "residual_force_rms_n": 0.12924183934996333,
+      "residual_force_max_abs_n": 0.6472117647528648,
+      "router_mean_weights": [
+        0.2038021683692932,
+        0.23993419110774994,
+        0.23758232593536377,
+        0.3186814486980438
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.008,
+        0.0,
+        0.992
+      ]
+    },
+    {
+      "plant_id": "validation-2092",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.050748643558344464,
+      "controlled_energy": 0.05069097682244933,
+      "energy_ratio": 0.998863679266051,
+      "raw_high_frequency_energy": 0.0016328737040671927,
+      "controlled_high_frequency_energy": 0.0016271496506137077,
+      "high_frequency_energy_ratio": 0.9964944910073403,
+      "raw_peak_deg_s": 5.755797156341209,
+      "controlled_peak_deg_s": 5.631389869127568,
+      "peak_ratio": 0.9783857415689883,
+      "raw_return": -10.286067153307147,
+      "controlled_return": -10.569331902728022,
+      "residual_force_rms_n": 0.15825599058071296,
+      "residual_force_max_abs_n": 0.7774541169404983,
+      "router_mean_weights": [
+        0.21885362267494202,
+        0.25467273592948914,
+        0.24344788491725922,
+        0.2830258011817932
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.01,
+        0.0,
+        0.99
+      ]
+    },
+    {
+      "plant_id": "validation-2065",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.08458982894306576,
+      "controlled_energy": 0.08287184294737107,
+      "energy_ratio": 0.9796903952028204,
+      "raw_high_frequency_energy": 0.0013398515583300193,
+      "controlled_high_frequency_energy": 0.0012296762080659335,
+      "high_frequency_energy_ratio": 0.9177704801855755,
+      "raw_peak_deg_s": 7.636802544832811,
+      "controlled_peak_deg_s": 7.506867586277982,
+      "peak_ratio": 0.9829856857248791,
+      "raw_return": -17.10246503738851,
+      "controlled_return": -17.05492124142654,
+      "residual_force_rms_n": 0.15009792515223827,
+      "residual_force_max_abs_n": 0.6713239073753356,
+      "router_mean_weights": [
+        0.21457648277282715,
+        0.2496308982372284,
+        0.24122795462608337,
+        0.29456472396850586
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.008,
+        0.0,
+        0.992
+      ]
+    },
+    {
+      "plant_id": "validation-1882",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.31326176228234914,
+      "controlled_energy": 0.2741203419758309,
+      "energy_ratio": 0.8750520330941659,
+      "raw_high_frequency_energy": 0.003638942889701932,
+      "controlled_high_frequency_energy": 0.0028579126533939793,
+      "high_frequency_energy_ratio": 0.7853689216947487,
+      "raw_peak_deg_s": 14.567874315561879,
+      "controlled_peak_deg_s": 13.69040326286094,
+      "peak_ratio": 0.9397667062679422,
+      "raw_return": -63.32961373002452,
+      "controlled_return": -56.30297144328024,
+      "residual_force_rms_n": 0.2405773012892992,
+      "residual_force_max_abs_n": 1.1239398211240768,
+      "router_mean_weights": [
+        0.2004953920841217,
+        0.23206867277622223,
+        0.2379174381494522,
+        0.32951846718788147
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.01,
+        0.0,
+        0.99
+      ]
+    },
+    {
+      "plant_id": "validation-1834",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.20340275441175198,
+      "controlled_energy": 0.18756296690981583,
+      "energy_ratio": 0.9221259930931349,
+      "raw_high_frequency_energy": 0.0032270363075642535,
+      "controlled_high_frequency_energy": 0.0026429600674255623,
+      "high_frequency_energy_ratio": 0.8190053707268177,
+      "raw_peak_deg_s": 11.63040788727259,
+      "controlled_peak_deg_s": 10.861631014986417,
+      "peak_ratio": 0.9338994057871812,
+      "raw_return": -41.190288240520694,
+      "controlled_return": -38.72929241313292,
+      "residual_force_rms_n": 0.22877699501666138,
+      "residual_force_max_abs_n": 1.0822111040353775,
+      "router_mean_weights": [
+        0.21360233426094055,
+        0.2456621378660202,
+        0.24224533140659332,
+        0.2984901964664459
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.01,
+        0.0,
+        0.99
+      ]
+    },
+    {
+      "plant_id": "validation-1966",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.06712272217654588,
+      "controlled_energy": 0.06420290853318256,
+      "energy_ratio": 0.95650036904517,
+      "raw_high_frequency_energy": 0.0013520590890102745,
+      "controlled_high_frequency_energy": 0.0013263471406627083,
+      "high_frequency_energy_ratio": 0.9809831178559011,
+      "raw_peak_deg_s": 7.119195962704857,
+      "controlled_peak_deg_s": 6.7343511573546735,
+      "peak_ratio": 0.9459426587825003,
+      "raw_return": -13.69381298258796,
+      "controlled_return": -13.493673005018662,
+      "residual_force_rms_n": 0.1768227201286763,
+      "residual_force_max_abs_n": 0.7854370951652526,
+      "router_mean_weights": [
+        0.21796630322933197,
+        0.2535923421382904,
+        0.24309778213500977,
+        0.2853434681892395
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.018,
+        0.0,
+        0.982
+      ]
+    },
+    {
+      "plant_id": "validation-1816",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.6429162927506633,
+      "controlled_energy": 0.5288573911613895,
+      "energy_ratio": 0.822591365508436,
+      "raw_high_frequency_energy": 0.0025785950460912904,
+      "controlled_high_frequency_energy": 0.002155543059711725,
+      "high_frequency_energy_ratio": 0.8359370204248084,
+      "raw_peak_deg_s": 24.129355458702353,
+      "controlled_peak_deg_s": 22.251756910372684,
+      "peak_ratio": 0.9221861291925846,
+      "raw_return": -129.3674317273393,
+      "controlled_return": -108.47788441093294,
+      "residual_force_rms_n": 0.23888064988572302,
+      "residual_force_max_abs_n": 0.6328740522265434,
+      "router_mean_weights": [
+        0.17878276109695435,
+        0.20660856366157532,
+        0.22726933658123016,
+        0.387339323759079
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.022,
+        0.0,
+        0.978
+      ]
+    },
+    {
+      "plant_id": "validation-1831",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 1.2448781524998151,
+      "controlled_energy": 0.8996094048760505,
+      "energy_ratio": 0.7226485604792426,
+      "raw_high_frequency_energy": 0.010967542540122575,
+      "controlled_high_frequency_energy": 0.012103112028883223,
+      "high_frequency_energy_ratio": 1.1035391004508432,
+      "raw_peak_deg_s": 30.98561411918596,
+      "controlled_peak_deg_s": 26.952505902198745,
+      "peak_ratio": 0.8698393324891386,
+      "raw_return": -251.6020041120695,
+      "controlled_return": -189.12798171082358,
+      "residual_force_rms_n": 0.55166486829064,
+      "residual_force_max_abs_n": 2.520911049842834,
+      "router_mean_weights": [
+        0.16169172525405884,
+        0.18135219812393188,
+        0.21864725649356842,
+        0.4383091330528259
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.02,
+        0.0,
+        0.98
+      ]
+    },
+    {
+      "plant_id": "validation-1933",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.43377560504424756,
+      "controlled_energy": 0.37370066565644044,
+      "energy_ratio": 0.861506874316551,
+      "raw_high_frequency_energy": 0.005872749625323299,
+      "controlled_high_frequency_energy": 0.006468773218230663,
+      "high_frequency_energy_ratio": 1.1014896991925742,
+      "raw_peak_deg_s": 15.974967349246327,
+      "controlled_peak_deg_s": 15.793730780515034,
+      "peak_ratio": 0.9886549646851176,
+      "raw_return": -87.82094538830869,
+      "controlled_return": -77.15454058165875,
+      "residual_force_rms_n": 0.3116574576104179,
+      "residual_force_max_abs_n": 1.862683117389679,
+      "router_mean_weights": [
+        0.19517399370670319,
+        0.2249964326620102,
+        0.23715227842330933,
+        0.3426773250102997
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.016,
+        0.0,
+        0.984
+      ]
+    },
+    {
+      "plant_id": "validation-2020",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.08467848501353184,
+      "controlled_energy": 0.08264623024627124,
+      "energy_ratio": 0.9760003409728476,
+      "raw_high_frequency_energy": 0.002050972821467371,
+      "controlled_high_frequency_energy": 0.002386411244712621,
+      "high_frequency_energy_ratio": 1.1635508865520998,
+      "raw_peak_deg_s": 7.679464191901007,
+      "controlled_peak_deg_s": 7.684211103682283,
+      "peak_ratio": 1.0006181305964394,
+      "raw_return": -17.255689098701094,
+      "controlled_return": -17.097500032418417,
+      "residual_force_rms_n": 0.18801850176863322,
+      "residual_force_max_abs_n": 1.0888560622930525,
+      "router_mean_weights": [
+        0.21077391505241394,
+        0.24683567881584167,
+        0.24026598036289215,
+        0.30212458968162537
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.016,
+        0.0,
+        0.984
+      ]
+    },
+    {
+      "plant_id": "validation-1910",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.5972357438365168,
+      "controlled_energy": 0.2883188198424589,
+      "energy_ratio": 0.4827554660247885,
+      "raw_high_frequency_energy": 0.02816870240420848,
+      "controlled_high_frequency_energy": 0.015733550262094297,
+      "high_frequency_energy_ratio": 0.5585472144341183,
+      "raw_peak_deg_s": 14.145230962891546,
+      "controlled_peak_deg_s": 11.115723213868593,
+      "peak_ratio": 0.7858283292107049,
+      "raw_return": -124.89376273667783,
+      "controlled_return": -62.311773690525676,
+      "residual_force_rms_n": 0.47253239649410406,
+      "residual_force_max_abs_n": 2.210241991281509,
+      "router_mean_weights": [
+        0.2208404541015625,
+        0.25096046924591064,
+        0.2418317049741745,
+        0.2863672375679016
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.372,
+        0.0,
+        0.628
+      ]
+    },
+    {
+      "plant_id": "validation-1964",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.12841160195329807,
+      "controlled_energy": 0.08916800374131477,
+      "energy_ratio": 0.6943921139909478,
+      "raw_high_frequency_energy": 0.0037412109011227632,
+      "controlled_high_frequency_energy": 0.002049400161491067,
+      "high_frequency_energy_ratio": 0.5477905992618667,
+      "raw_peak_deg_s": 9.827269238665128,
+      "controlled_peak_deg_s": 8.680778012513505,
+      "peak_ratio": 0.8833357265067305,
+      "raw_return": -26.472255594802256,
+      "controlled_return": -18.75434612024022,
+      "residual_force_rms_n": 0.21979809103508965,
+      "residual_force_max_abs_n": 0.6978572711348533,
+      "router_mean_weights": [
+        0.21287593245506287,
+        0.248866468667984,
+        0.2402367889881134,
+        0.29802075028419495
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.014,
+        0.0,
+        0.986
+      ]
+    },
+    {
+      "plant_id": "validation-2024",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.09602430329034166,
+      "controlled_energy": 0.09179799879454364,
+      "energy_ratio": 0.955987137099873,
+      "raw_high_frequency_energy": 0.0014252573990952166,
+      "controlled_high_frequency_energy": 0.0015648862593911847,
+      "high_frequency_energy_ratio": 1.0979674691635402,
+      "raw_peak_deg_s": 7.251802180401249,
+      "controlled_peak_deg_s": 7.19313295182936,
+      "peak_ratio": 0.991909703669186,
+      "raw_return": -19.499351689152128,
+      "controlled_return": -19.06175310341637,
+      "residual_force_rms_n": 0.17567479740094533,
+      "residual_force_max_abs_n": 0.7461347624659538,
+      "router_mean_weights": [
+        0.21820564568042755,
+        0.25211215019226074,
+        0.2415052354335785,
+        0.2881770730018616
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.246,
+        0.0,
+        0.754
+      ]
+    },
+    {
+      "plant_id": "validation-1829",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.4993827377114843,
+      "controlled_energy": 0.37837453483514716,
+      "energy_ratio": 0.7576844497451393,
+      "raw_high_frequency_energy": 0.011348119811845773,
+      "controlled_high_frequency_energy": 0.007709038744031152,
+      "high_frequency_energy_ratio": 0.679322995513675,
+      "raw_peak_deg_s": 13.64309876194805,
+      "controlled_peak_deg_s": 12.169735410964831,
+      "peak_ratio": 0.8920066931500508,
+      "raw_return": -101.84343488045783,
+      "controlled_return": -79.75948569455889,
+      "residual_force_rms_n": 0.38138519871133797,
+      "residual_force_max_abs_n": 1.1721136540174484,
+      "router_mean_weights": [
+        0.2167353332042694,
+        0.24524693191051483,
+        0.24138033390045166,
+        0.2966375946998596
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.12,
+        0.258,
+        0.622
+      ]
+    },
+    {
+      "plant_id": "validation-1871",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.4872341205644528,
+      "controlled_energy": 0.2716186026656485,
+      "energy_ratio": 0.5574704052971142,
+      "raw_high_frequency_energy": 0.009429620635450834,
+      "controlled_high_frequency_energy": 0.003556013192007845,
+      "high_frequency_energy_ratio": 0.37711094957934443,
+      "raw_peak_deg_s": 16.42850304580538,
+      "controlled_peak_deg_s": 14.008583400108046,
+      "peak_ratio": 0.8526999301792624,
+      "raw_return": -99.40970078770107,
+      "controlled_return": -56.57548879875317,
+      "residual_force_rms_n": 0.29403462913555706,
+      "residual_force_max_abs_n": 0.9593105524778366,
+      "router_mean_weights": [
+        0.20803549885749817,
+        0.23911793529987335,
+        0.24035115540027618,
+        0.31249508261680603
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.006,
+        0.102,
+        0.892
+      ]
+    },
+    {
+      "plant_id": "validation-1991",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.4867325537569209,
+      "controlled_energy": 0.41949238670072075,
+      "energy_ratio": 0.8618539759931887,
+      "raw_high_frequency_energy": 0.007251965951179963,
+      "controlled_high_frequency_energy": 0.007912310664600646,
+      "high_frequency_energy_ratio": 1.091057337812409,
+      "raw_peak_deg_s": 15.015101005343373,
+      "controlled_peak_deg_s": 14.005971100187967,
+      "peak_ratio": 0.9327923332119916,
+      "raw_return": -98.76489528230401,
+      "controlled_return": -87.13804404306563,
+      "residual_force_rms_n": 0.3563553527065753,
+      "residual_force_max_abs_n": 1.9420160472393035,
+      "router_mean_weights": [
+        0.21899425983428955,
+        0.2414630502462387,
+        0.24258552491664886,
+        0.2969569265842438
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.064,
+        0.342,
+        0.594
+      ]
+    },
+    {
+      "plant_id": "validation-2078",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.649817864166105,
+      "controlled_energy": 0.48562951696996226,
+      "energy_ratio": 0.747331742861761,
+      "raw_high_frequency_energy": 0.004760246153598816,
+      "controlled_high_frequency_energy": 0.003568682655894946,
+      "high_frequency_energy_ratio": 0.7496844786475947,
+      "raw_peak_deg_s": 20.51562033825112,
+      "controlled_peak_deg_s": 18.74073852518386,
+      "peak_ratio": 0.9134863199940382,
+      "raw_return": -131.15207441419824,
+      "controlled_return": -99.92643768196953,
+      "residual_force_rms_n": 0.2863582152197324,
+      "residual_force_max_abs_n": 1.0489512026309966,
+      "router_mean_weights": [
+        0.196986123919487,
+        0.2229008972644806,
+        0.2361847460269928,
+        0.3439285457134247
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.018,
+        0.154,
+        0.828
+      ]
+    },
+    {
+      "plant_id": "validation-1805",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.760216935410739,
+      "controlled_energy": 0.5665301248160335,
+      "energy_ratio": 0.7452216576968809,
+      "raw_high_frequency_energy": 0.004792907050674476,
+      "controlled_high_frequency_energy": 0.002960511549500482,
+      "high_frequency_energy_ratio": 0.6176859926970351,
+      "raw_peak_deg_s": 32.020661100092674,
+      "controlled_peak_deg_s": 26.60789459229062,
+      "peak_ratio": 0.8309601887705439,
+      "raw_return": -153.45095752296203,
+      "controlled_return": -118.375683730967,
+      "residual_force_rms_n": 0.35208060716067563,
+      "residual_force_max_abs_n": 0.6756493851542472,
+      "router_mean_weights": [
+        0.1739174723625183,
+        0.19951535761356354,
+        0.22134776413440704,
+        0.40521934628486633
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.016,
+        0.0,
+        0.984
+      ]
+    },
+    {
+      "plant_id": "validation-1940",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.20848074992304744,
+      "controlled_energy": 0.17598137208967432,
+      "energy_ratio": 0.8441132917769675,
+      "raw_high_frequency_energy": 0.005699489723080393,
+      "controlled_high_frequency_energy": 0.006401158547952096,
+      "high_frequency_energy_ratio": 1.123110814996342,
+      "raw_peak_deg_s": 9.817688498374789,
+      "controlled_peak_deg_s": 9.099379079080443,
+      "peak_ratio": 0.9268351792366141,
+      "raw_return": -42.86578708741665,
+      "controlled_return": -37.64422213229089,
+      "residual_force_rms_n": 0.32715822191570565,
+      "residual_force_max_abs_n": 1.5919196069240569,
+      "router_mean_weights": [
+        0.22163601219654083,
+        0.2541758716106415,
+        0.24429595470428467,
+        0.2798923850059509
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.416,
+        0.0,
+        0.584
+      ]
+    },
+    {
+      "plant_id": "validation-2054",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.5822731464090058,
+      "controlled_energy": 0.49171759885310967,
+      "energy_ratio": 0.844479265247985,
+      "raw_high_frequency_energy": 0.004470493339094042,
+      "controlled_high_frequency_energy": 0.0034656152699927556,
+      "high_frequency_energy_ratio": 0.7752198710791665,
+      "raw_peak_deg_s": 13.415077147124006,
+      "controlled_peak_deg_s": 12.494850985286595,
+      "peak_ratio": 0.9314035877881855,
+      "raw_return": -117.62295587854297,
+      "controlled_return": -101.39656926107494,
+      "residual_force_rms_n": 0.2801724490276444,
+      "residual_force_max_abs_n": 0.758873587846756,
+      "router_mean_weights": [
+        0.23512864112854004,
+        0.2500942647457123,
+        0.2478228062391281,
+        0.2669541537761688
+      ],
+      "router_top_expert_fraction": [
+        0.298,
+        0.034,
+        0.212,
+        0.456
+      ]
+    }
+  ]
+}

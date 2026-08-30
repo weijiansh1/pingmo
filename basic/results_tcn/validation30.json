@@ -1,0 +1,854 @@
+{
+  "split": "validation",
+  "per_level": 10,
+  "overall": {
+    "aircraft": 30.0,
+    "mean_energy_reduction_percent": 20.78063434500731,
+    "median_energy_reduction_percent": 18.687519239282114,
+    "energy_improved_fraction": 0.9333333333333333,
+    "mean_peak_reduction_percent": 6.169175971018026,
+    "peak_improved_fraction": 0.6666666666666666,
+    "mean_residual_force_rms_n": 0.5330555424875065
+  },
+  "by_dutch_roll_level": {
+    "1": {
+      "aircraft": 10.0,
+      "mean_energy_reduction_percent": 12.329704427980715,
+      "median_energy_reduction_percent": 11.321695497122274,
+      "energy_improved_fraction": 0.8,
+      "mean_peak_reduction_percent": 1.7300622464754944,
+      "peak_improved_fraction": 0.5,
+      "mean_residual_force_rms_n": 0.3961600065259195
+    },
+    "2": {
+      "aircraft": 10.0,
+      "mean_energy_reduction_percent": 14.48655822509075,
+      "median_energy_reduction_percent": 12.59474462255361,
+      "energy_improved_fraction": 1.0,
+      "mean_peak_reduction_percent": 5.0639544603847675,
+      "peak_improved_fraction": 0.7,
+      "mean_residual_force_rms_n": 0.5867496776088539
+    },
+    "3": {
+      "aircraft": 10.0,
+      "mean_energy_reduction_percent": 35.525640381950396,
+      "median_energy_reduction_percent": 35.576262683997186,
+      "energy_improved_fraction": 1.0,
+      "mean_peak_reduction_percent": 11.713511206193827,
+      "peak_improved_fraction": 0.8,
+      "mean_residual_force_rms_n": 0.6162569433277465
+    }
+  },
+  "cases": [
+    {
+      "plant_id": "validation-2059",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.13196636071690818,
+      "controlled_energy": 0.11954213611273778,
+      "energy_ratio": 0.9058530936469286,
+      "raw_peak_deg_s": 9.070334674847349,
+      "controlled_peak_deg_s": 8.880348567746262,
+      "peak_ratio": 0.9790541238100143,
+      "raw_return": -26.434437038332987,
+      "controlled_return": -25.618259041978064,
+      "residual_force_rms_n": 0.30471471068025474,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.1817212849855423,
+        0.275252103805542,
+        0.24986879527568817,
+        0.2931581735610962
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.46,
+        0.0,
+        0.54
+      ]
+    },
+    {
+      "plant_id": "validation-2044",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.15099406720130631,
+      "controlled_energy": 0.13494212217312923,
+      "energy_ratio": 0.8936915514251529,
+      "raw_peak_deg_s": 14.196161492475753,
+      "controlled_peak_deg_s": 13.851428007062323,
+      "peak_ratio": 0.9757164297126272,
+      "raw_return": -30.27551045273795,
+      "controlled_return": -27.848476132135655,
+      "residual_force_rms_n": 0.2905766519479075,
+      "residual_force_max_abs_n": 1.332361927628517,
+      "router_mean_weights": [
+        0.16788579523563385,
+        0.2849096357822418,
+        0.24642275273799896,
+        0.300782173871994
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.718,
+        0.0,
+        0.282
+      ]
+    },
+    {
+      "plant_id": "validation-1914",
+      "gjb_level": 1,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.22653775221131428,
+      "controlled_energy": 0.19814370395837066,
+      "energy_ratio": 0.8746608546444054,
+      "raw_peak_deg_s": 12.900460731017281,
+      "controlled_peak_deg_s": 12.936520058093988,
+      "peak_ratio": 1.0027951968405289,
+      "raw_return": -45.408864251377324,
+      "controlled_return": -40.95368010528923,
+      "residual_force_rms_n": 0.24118859794243816,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.16461971402168274,
+        0.29348519444465637,
+        0.2428988218307495,
+        0.2989964783191681
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.682,
+        0.0,
+        0.318
+      ]
+    },
+    {
+      "plant_id": "validation-1939",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.812495792145128,
+      "controlled_energy": 0.5514680733468798,
+      "energy_ratio": 0.6787334515184499,
+      "raw_peak_deg_s": 21.345862448652646,
+      "controlled_peak_deg_s": 20.331810899096933,
+      "peak_ratio": 0.9524942338593716,
+      "raw_return": -162.65435469493713,
+      "controlled_return": -118.78626238921458,
+      "residual_force_rms_n": 1.3570012702511376,
+      "residual_force_max_abs_n": 5.18807504177094,
+      "router_mean_weights": [
+        0.1536019742488861,
+        0.32531434297561646,
+        0.22304624319076538,
+        0.2980376183986664
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.782,
+        0.0,
+        0.218
+      ]
+    },
+    {
+      "plant_id": "validation-1841",
+      "gjb_level": 3,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.7297394582730661,
+      "controlled_energy": 0.5541601963174259,
+      "energy_ratio": 0.7593945894454579,
+      "raw_peak_deg_s": 36.04731633079612,
+      "controlled_peak_deg_s": 31.58928917715276,
+      "peak_ratio": 0.8763284591636921,
+      "raw_return": -146.2692929654189,
+      "controlled_return": -117.86446742169183,
+      "residual_force_rms_n": 0.40727663847527235,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.13163167238235474,
+        0.3378683030605316,
+        0.22236289083957672,
+        0.3081371486186981
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.61,
+        0.0,
+        0.39
+      ]
+    },
+    {
+      "plant_id": "validation-1969",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.05351520656153631,
+      "controlled_energy": 0.054320500007940156,
+      "energy_ratio": 1.01504793680424,
+      "raw_peak_deg_s": 5.9992062354477875,
+      "controlled_peak_deg_s": 6.13609292581512,
+      "peak_ratio": 1.0228174670106362,
+      "raw_return": -10.719976546349137,
+      "controlled_return": -12.208140500099105,
+      "residual_force_rms_n": 0.2308947324797763,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.19036279618740082,
+        0.26288679242134094,
+        0.25524231791496277,
+        0.2915083169937134
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "plant_id": "validation-2064",
+      "gjb_level": 1,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.18518336991577328,
+      "controlled_energy": 0.16293813216703434,
+      "energy_ratio": 0.8798745386324015,
+      "raw_peak_deg_s": 10.479486130034456,
+      "controlled_peak_deg_s": 10.64860620324878,
+      "peak_ratio": 1.0161382028771069,
+      "raw_return": -37.11820101154904,
+      "controlled_return": -34.13862744481878,
+      "residual_force_rms_n": 0.3435528982549986,
+      "residual_force_max_abs_n": 1.6992552638053893,
+      "router_mean_weights": [
+        0.17016693949699402,
+        0.28645575046539307,
+        0.24539270997047424,
+        0.29798442125320435
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.732,
+        0.0,
+        0.268
+      ]
+    },
+    {
+      "plant_id": "validation-2005",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.041518578302231136,
+      "controlled_energy": 0.04089531920453687,
+      "energy_ratio": 0.984988428718409,
+      "raw_peak_deg_s": 7.103385074852135,
+      "controlled_peak_deg_s": 7.30145918594279,
+      "peak_ratio": 1.0278844676169803,
+      "raw_return": -8.28687264799607,
+      "controlled_return": -9.012359391248665,
+      "residual_force_rms_n": 0.2510406476300424,
+      "residual_force_max_abs_n": 1.311775106191635,
+      "router_mean_weights": [
+        0.18707258999347687,
+        0.262580007314682,
+        0.25552594661712646,
+        0.2948214113712311
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "plant_id": "validation-1932",
+      "gjb_level": 1,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.07737931411512082,
+      "controlled_energy": 0.07782251706418931,
+      "energy_ratio": 1.0057276670662798,
+      "raw_peak_deg_s": 10.10281292208934,
+      "controlled_peak_deg_s": 10.197513303405374,
+      "peak_ratio": 1.0093736647452884,
+      "raw_return": -15.496581565967517,
+      "controlled_return": -15.883108500676608,
+      "residual_force_rms_n": 0.17751536137542429,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.17772117257118225,
+        0.27328208088874817,
+        0.251520037651062,
+        0.2974766194820404
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "plant_id": "validation-1853",
+      "gjb_level": 3,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.4769686863848758,
+      "controlled_energy": 0.36681631943934645,
+      "energy_ratio": 0.7690574453002034,
+      "raw_peak_deg_s": 18.359765206776757,
+      "controlled_peak_deg_s": 17.70600205299379,
+      "peak_ratio": 0.9643915297162048,
+      "raw_return": -95.62056383284492,
+      "controlled_return": -77.11129098845755,
+      "residual_force_rms_n": 0.35783855622194266,
+      "residual_force_max_abs_n": 1.250944125652313,
+      "router_mean_weights": [
+        0.15274859964847565,
+        0.31530916690826416,
+        0.2328895628452301,
+        0.2990526854991913
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.714,
+        0.0,
+        0.286
+      ]
+    },
+    {
+      "plant_id": "validation-1819",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.11556778741764304,
+      "controlled_energy": 0.11224460716793486,
+      "energy_ratio": 0.971244753196678,
+      "raw_peak_deg_s": 10.944724645504733,
+      "controlled_peak_deg_s": 11.113066666793461,
+      "peak_ratio": 1.0153811106940795,
+      "raw_return": -23.126298563584314,
+      "controlled_return": -22.778865527828025,
+      "residual_force_rms_n": 0.19860780358214286,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.17192469537258148,
+        0.28201332688331604,
+        0.24827469885349274,
+        0.29778698086738586
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.444,
+        0.0,
+        0.556
+      ]
+    },
+    {
+      "plant_id": "validation-2092",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.049115769854277264,
+      "controlled_energy": 0.04895953371825698,
+      "energy_ratio": 0.9968190229638296,
+      "raw_peak_deg_s": 5.755797156341209,
+      "controlled_peak_deg_s": 5.473675712965093,
+      "peak_ratio": 0.9509848183122124,
+      "raw_return": -9.809646719159119,
+      "controlled_return": -11.430079327389702,
+      "residual_force_rms_n": 0.27232319570209784,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.19252023100852966,
+        0.2603182792663574,
+        0.2560032904148102,
+        0.2911583483219147
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "plant_id": "validation-2065",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.08324997738473573,
+      "controlled_energy": 0.07816138594553848,
+      "energy_ratio": 0.9388757619034469,
+      "raw_peak_deg_s": 7.636802544832811,
+      "controlled_peak_deg_s": 7.454027937427918,
+      "peak_ratio": 0.9760666055810804,
+      "raw_return": -16.672581217487206,
+      "controlled_return": -17.062457597959597,
+      "residual_force_rms_n": 0.25691789382238583,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.18563434481620789,
+        0.2655907869338989,
+        0.2533932030200958,
+        0.29538142681121826
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.214,
+        0.0,
+        0.786
+      ]
+    },
+    {
+      "plant_id": "validation-1882",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.30962281939264724,
+      "controlled_energy": 0.24446397529603905,
+      "energy_ratio": 0.7895541283926583,
+      "raw_peak_deg_s": 14.567874315561879,
+      "controlled_peak_deg_s": 13.078109898317443,
+      "peak_ratio": 0.8977363213757946,
+      "raw_return": -62.05960931729082,
+      "controlled_return": -51.96955598624309,
+      "residual_force_rms_n": 0.3773830771976358,
+      "residual_force_max_abs_n": 1.530787780880928,
+      "router_mean_weights": [
+        0.16772319376468658,
+        0.29253286123275757,
+        0.24159839749336243,
+        0.29814574122428894
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.558,
+        0.0,
+        0.442
+      ]
+    },
+    {
+      "plant_id": "validation-1834",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.20017571810418777,
+      "controlled_energy": 0.16611624492917026,
+      "energy_ratio": 0.8298521244355412,
+      "raw_peak_deg_s": 11.63040788727259,
+      "controlled_peak_deg_s": 10.318335486627694,
+      "peak_ratio": 0.8871860373804494,
+      "raw_return": -40.106241120431804,
+      "controlled_return": -36.27454984623909,
+      "residual_force_rms_n": 0.36833096764869055,
+      "residual_force_max_abs_n": 1.435923197865486,
+      "router_mean_weights": [
+        0.18514662981033325,
+        0.27186083793640137,
+        0.2493969053030014,
+        0.2935957610607147
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.352,
+        0.0,
+        0.648
+      ]
+    },
+    {
+      "plant_id": "validation-1966",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.06577066308753561,
+      "controlled_energy": 0.06039410758147508,
+      "energy_ratio": 0.9182529831133867,
+      "raw_peak_deg_s": 7.119195962704857,
+      "controlled_peak_deg_s": 6.390355109800355,
+      "peak_ratio": 0.8976231506025876,
+      "raw_return": -13.195893872468314,
+      "controlled_return": -13.905754957372876,
+      "residual_force_rms_n": 0.3104030925677078,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.19147615134716034,
+        0.26176589727401733,
+        0.2553781270980835,
+        0.2913799583911896
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.14,
+        0.0,
+        0.86
+      ]
+    },
+    {
+      "plant_id": "validation-1816",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.6403376977045719,
+      "controlled_energy": 0.4727500868773577,
+      "energy_ratio": 0.738282454042659,
+      "raw_peak_deg_s": 24.129355458702353,
+      "controlled_peak_deg_s": 21.544130902626986,
+      "peak_ratio": 0.8928597756993548,
+      "raw_return": -128.34825374214444,
+      "controlled_return": -99.34189995647546,
+      "residual_force_rms_n": 0.3770285193216924,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.14339901506900787,
+        0.32794666290283203,
+        0.22738522291183472,
+        0.30126917362213135
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.642,
+        0.0,
+        0.358
+      ]
+    },
+    {
+      "plant_id": "validation-1831",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 1.2339106099596926,
+      "controlled_energy": 0.7878701918789054,
+      "energy_ratio": 0.6385148044919091,
+      "raw_peak_deg_s": 30.98561411918596,
+      "controlled_peak_deg_s": 27.33632411347003,
+      "peak_ratio": 0.8822263134214814,
+      "raw_return": -247.3858144428032,
+      "controlled_return": -170.9874661002903,
+      "residual_force_rms_n": 2.0824942232027417,
+      "residual_force_max_abs_n": 6.075908839702606,
+      "router_mean_weights": [
+        0.12537921965122223,
+        0.35786598920822144,
+        0.20831845700740814,
+        0.30843615531921387
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.738,
+        0.0,
+        0.262
+      ]
+    },
+    {
+      "plant_id": "validation-1933",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.42790285541892426,
+      "controlled_energy": 0.3304437743646753,
+      "energy_ratio": 0.7722401712911338,
+      "raw_peak_deg_s": 15.974967349246327,
+      "controlled_peak_deg_s": 16.919788316534213,
+      "peak_ratio": 1.059143843404003,
+      "raw_return": -85.75516560292695,
+      "controlled_return": -70.85699179666062,
+      "residual_force_rms_n": 1.3209785981595021,
+      "residual_force_max_abs_n": 4.847702693939209,
+      "router_mean_weights": [
+        0.1625431478023529,
+        0.3043946325778961,
+        0.2347235530614853,
+        0.2983386218547821
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.766,
+        0.0,
+        0.234
+      ]
+    },
+    {
+      "plant_id": "validation-2020",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.08262751219206446,
+      "controlled_energy": 0.07913302727000276,
+      "energy_ratio": 0.9577079736596825,
+      "raw_peak_deg_s": 7.679464191901007,
+      "controlled_peak_deg_s": 7.943611477063095,
+      "peak_ratio": 1.0343965774904798,
+      "raw_return": -16.551534555553737,
+      "controlled_return": -16.749910173562785,
+      "residual_force_rms_n": 0.3030294048839429,
+      "residual_force_max_abs_n": 1.9604161083698273,
+      "router_mean_weights": [
+        0.1809675097465515,
+        0.2713779807090759,
+        0.25191426277160645,
+        0.2957402765750885
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.094,
+        0.0,
+        0.906
+      ]
+    },
+    {
+      "plant_id": "validation-1910",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.5690670414323084,
+      "controlled_energy": 0.20248618823925785,
+      "energy_ratio": 0.35582132419690304,
+      "raw_peak_deg_s": 14.145230962891546,
+      "controlled_peak_deg_s": 14.392844600434458,
+      "peak_ratio": 1.0175050968197337,
+      "raw_return": -114.17315584178672,
+      "controlled_return": -44.028836904200595,
+      "residual_force_rms_n": 1.489153172276782,
+      "residual_force_max_abs_n": 6.067231822013855,
+      "router_mean_weights": [
+        0.20577073097229004,
+        0.25829973816871643,
+        0.24731680750846863,
+        0.2886126637458801
+      ],
+      "router_top_expert_fraction": [
+        0.11,
+        0.328,
+        0.01,
+        0.552
+      ]
+    },
+    {
+      "plant_id": "validation-1964",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.12467039105217531,
+      "controlled_energy": 0.07223037699148656,
+      "energy_ratio": 0.5793707421777293,
+      "raw_peak_deg_s": 9.827269238665128,
+      "controlled_peak_deg_s": 8.073082223790768,
+      "peak_ratio": 0.8214980202259486,
+      "raw_return": -25.023156739138898,
+      "controlled_return": -15.77629029978437,
+      "residual_force_rms_n": 0.3249999591539843,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.1843760907649994,
+        0.26711976528167725,
+        0.2534903585910797,
+        0.29501381516456604
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.296,
+        0.0,
+        0.704
+      ]
+    },
+    {
+      "plant_id": "validation-2024",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.09459904589124644,
+      "controlled_energy": 0.08015771386092146,
+      "energy_ratio": 0.8473416735415374,
+      "raw_peak_deg_s": 7.251802180401249,
+      "controlled_peak_deg_s": 7.036011714469493,
+      "peak_ratio": 0.970243194648228,
+      "raw_return": -18.96640514015622,
+      "controlled_return": -17.887403429500925,
+      "residual_force_rms_n": 0.30173335449468136,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.19060876965522766,
+        0.2597602307796478,
+        0.2551065683364868,
+        0.29452475905418396
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.232,
+        0.0,
+        0.768
+      ]
+    },
+    {
+      "plant_id": "validation-1829",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.48803461789963853,
+      "controlled_energy": 0.2959084322787668,
+      "energy_ratio": 0.606326726477462,
+      "raw_peak_deg_s": 13.64309876194805,
+      "controlled_peak_deg_s": 10.891246990679772,
+      "peak_ratio": 0.7982971596640887,
+      "raw_return": -97.78375499341331,
+      "controlled_return": -62.626520246709575,
+      "residual_force_rms_n": 0.5326912638744338,
+      "residual_force_max_abs_n": 2.144949173927307,
+      "router_mean_weights": [
+        0.20048606395721436,
+        0.2690848112106323,
+        0.24659959971904755,
+        0.28382930159568787
+      ],
+      "router_top_expert_fraction": [
+        0.09,
+        0.376,
+        0.0,
+        0.534
+      ]
+    },
+    {
+      "plant_id": "validation-1871",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.477804499929002,
+      "controlled_energy": 0.2182190368138049,
+      "energy_ratio": 0.4567119749735102,
+      "raw_peak_deg_s": 16.42850304580538,
+      "controlled_peak_deg_s": 12.77325580584288,
+      "peak_ratio": 0.7775057636248983,
+      "raw_return": -95.83002196104341,
+      "controlled_return": -47.42761369960143,
+      "residual_force_rms_n": 0.4157653698554363,
+      "residual_force_max_abs_n": 1.379101064801216,
+      "router_mean_weights": [
+        0.17790654301643372,
+        0.2811666429042816,
+        0.2454923838376999,
+        0.2954346835613251
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.418,
+        0.0,
+        0.582
+      ]
+    },
+    {
+      "plant_id": "validation-1991",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.4794805878057409,
+      "controlled_energy": 0.38185713700564405,
+      "energy_ratio": 0.7963974907788165,
+      "raw_peak_deg_s": 15.015101005343373,
+      "controlled_peak_deg_s": 16.139938532291428,
+      "peak_ratio": 1.0749137502669988,
+      "raw_return": -96.11788466004569,
+      "controlled_return": -80.5609641601921,
+      "residual_force_rms_n": 1.269769328649082,
+      "residual_force_max_abs_n": 4.900601148605347,
+      "router_mean_weights": [
+        0.19613516330718994,
+        0.26961299777030945,
+        0.24221259355545044,
+        0.2920394241809845
+      ],
+      "router_top_expert_fraction": [
+        0.088,
+        0.388,
+        0.0,
+        0.524
+      ]
+    },
+    {
+      "plant_id": "validation-2078",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.6450576180125062,
+      "controlled_energy": 0.4042735660524135,
+      "energy_ratio": 0.626724737083216,
+      "raw_peak_deg_s": 20.51562033825112,
+      "controlled_peak_deg_s": 17.704292249171672,
+      "peak_ratio": 0.8629664595694548,
+      "raw_return": -129.31464428355093,
+      "controlled_return": -85.76837113808229,
+      "residual_force_rms_n": 0.4327202359352854,
+      "residual_force_max_abs_n": 1.7041006565093992,
+      "router_mean_weights": [
+        0.16226710379123688,
+        0.3033519387245178,
+        0.23474466800689697,
+        0.2996364235877991
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.5,
+        0.0,
+        0.5
+      ]
+    },
+    {
+      "plant_id": "validation-1805",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.7554240283600645,
+      "controlled_energy": 0.49990185774500373,
+      "energy_ratio": 0.6617500092368402,
+      "raw_peak_deg_s": 32.020661100092674,
+      "controlled_peak_deg_s": 25.870696462898696,
+      "peak_ratio": 0.8079376119696611,
+      "raw_return": -151.56294356291255,
+      "controlled_return": -107.10488313321233,
+      "residual_force_rms_n": 0.4637479508056655,
+      "residual_force_max_abs_n": 1.2872953891754149,
+      "router_mean_weights": [
+        0.13732436299324036,
+        0.3296957314014435,
+        0.22491978108882904,
+        0.30806002020835876
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.674,
+        0.0,
+        0.326
+      ]
+    },
+    {
+      "plant_id": "validation-1940",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.20278126019996706,
+      "controlled_energy": 0.1368099825204414,
+      "energy_ratio": 0.6746677793871587,
+      "raw_peak_deg_s": 9.817688498374789,
+      "controlled_peak_deg_s": 8.052569831830738,
+      "peak_ratio": 0.8202103614474785,
+      "raw_return": -40.70118782070288,
+      "controlled_return": -29.41018798186561,
+      "residual_force_rms_n": 0.5531845534186693,
+      "residual_force_max_abs_n": 3.1423111259937286,
+      "router_mean_weights": [
+        0.20398001372814178,
+        0.26092708110809326,
+        0.2535570561885834,
+        0.2815361022949219
+      ],
+      "router_top_expert_fraction": [
+        0.074,
+        0.36,
+        0.0,
+        0.566
+      ]
+    },
+    {
+      "plant_id": "validation-2054",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.5778026530699119,
+      "controlled_energy": 0.48669675532648643,
+      "energy_ratio": 0.8423235039517861,
+      "raw_peak_deg_s": 13.415077147124006,
+      "controlled_peak_deg_s": 11.772688853362808,
+      "peak_ratio": 0.8775714611441277,
+      "raw_return": -115.89870572782803,
+      "controlled_return": -99.65633219300972,
+      "residual_force_rms_n": 0.3788042448134453,
+      "residual_force_max_abs_n": 1.3484999924898147,
+      "router_mean_weights": [
+        0.2261325865983963,
+        0.2543388307094574,
+        0.24431699514389038,
+        0.2752118706703186
+      ],
+      "router_top_expert_fraction": [
+        0.242,
+        0.296,
+        0.0,
+        0.462
+      ]
+    }
+  ]
+}

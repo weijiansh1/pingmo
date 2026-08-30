@@ -1,0 +1,39 @@
+{
+  "status": "complete",
+  "algorithm": "pure_reward_td3",
+  "plant_id": "train_boundary-1531",
+  "step": 80000,
+  "updates": 70000,
+  "actor_updates": 34750,
+  "latest_validation": {
+    "step": 80000,
+    "updates": 70000,
+    "actor_updates": 34750,
+    "episodes": 53,
+    "mean_episode_cost": 0.8501912239060618,
+    "median_episode_cost": 0.6170746137757008,
+    "mean_tracking_rmse_deg_s": 0.292730996845494,
+    "maximum_peak_error_deg_s": 1.2610119976572303,
+    "mean_requested_force_total_variation_n": 27.2733832586091,
+    "mean_force_saturation_fraction": 0.0,
+    "tracking_improvement_rate": 1.0,
+    "harm_rate": 0.0
+  },
+  "best_validation": {
+    "step": 80000,
+    "updates": 70000,
+    "actor_updates": 34750,
+    "episodes": 53,
+    "mean_episode_cost": 0.8501912239060618,
+    "median_episode_cost": 0.6170746137757008,
+    "mean_tracking_rmse_deg_s": 0.292730996845494,
+    "maximum_peak_error_deg_s": 1.2610119976572303,
+    "mean_requested_force_total_variation_n": 27.2733832586091,
+    "mean_force_saturation_fraction": 0.0,
+    "tracking_improvement_rate": 1.0,
+    "harm_rate": 0.0
+  },
+  "accepted_for_distillation": true,
+  "actor_checkpoint": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1531/teacher_actor.pt",
+  "report": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1531/report.json"
+}

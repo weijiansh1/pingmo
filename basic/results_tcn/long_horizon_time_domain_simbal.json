@@ -1,0 +1,35 @@
+{
+  "level_1": {
+    "plant_id": "validation-2011",
+    "duration_s": 20.0,
+    "zeta_d": 0.6102282073325981,
+    "omega_d_rad_s": 1.425132893374402,
+    "damped_period_s": 5.565133486741259,
+    "raw_completed_s": 19.999999999999662,
+    "controlled_completed_s": 19.999999999999662,
+    "raw_peak_abs_p_deg_s": 7.143441870093087,
+    "controlled_peak_abs_p_deg_s": 7.187378686095149
+  },
+  "level_2": {
+    "plant_id": "validation-2065",
+    "duration_s": 50.0,
+    "zeta_d": 0.214558229878837,
+    "omega_d_rad_s": 0.44743129551598665,
+    "damped_period_s": 14.377631339068621,
+    "raw_completed_s": 50.00000000000222,
+    "controlled_completed_s": 50.00000000000222,
+    "raw_peak_abs_p_deg_s": 39.5244509504559,
+    "controlled_peak_abs_p_deg_s": 36.975303735711655
+  },
+  "level_3": {
+    "plant_id": "validation-1967",
+    "duration_s": 50.0,
+    "zeta_d": 0.009865536083200555,
+    "omega_d_rad_s": 0.8434426336652208,
+    "damped_period_s": 7.449814422643268,
+    "raw_completed_s": 50.00000000000222,
+    "controlled_completed_s": 50.00000000000222,
+    "raw_peak_abs_p_deg_s": 8.487454101051934,
+    "controlled_peak_abs_p_deg_s": 8.20274411607348
+  }
+}

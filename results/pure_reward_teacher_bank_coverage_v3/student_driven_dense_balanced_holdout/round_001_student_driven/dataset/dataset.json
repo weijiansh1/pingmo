@@ -1,0 +1,3878 @@
+{
+  "schema_version": "specialist_distillation_dataset_v1",
+  "status": "complete",
+  "source": {
+    "commit": null,
+    "tracked_dirty": null,
+    "working_tree_sha256": "8b983f7f8ef940c9ea3f76d02230bffdb08248e3d2185928e43e7a075c554d7e"
+  },
+  "collection_method": "student_driven_dagger",
+  "collection_round": 1,
+  "driver_checkpoint": {
+    "path": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/student_driven_dense_balanced_holdout/round_000_teacher_driven/student/dense_student.pt",
+    "sha256": "927108db98c27bb7f3b8598d781d8415563717487e884bf59450f97554b4cc9a"
+  },
+  "teacher_bank": {
+    "path": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/teacher_bank.json",
+    "sha256": "579765e3d206145c0e9527f43760f83d6b5bb6c8e9777403efbdb2aaa2564d5c"
+  },
+  "previous_dataset": {
+    "path": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/student_driven_dense_balanced_holdout/round_000_teacher_driven/dataset/dataset.json",
+    "sha256": "bad7285400875d8e8f8f40dcfb9f5cb3e3b6a64daa6bb37686d5de26d4e734e0"
+  },
+  "split_strategy": "aircraft_holdout",
+  "aircraft_split_method": "explicit_quality_preserving_aircraft_holdout",
+  "observation_dim": 35,
+  "actor_observation_contract": {
+    "names": [
+      "p_command_normalized",
+      "p_reference_normalized",
+      "p_normalized",
+      "tracking_error_normalized",
+      "integrated_tracking_error_normalized",
+      "p_dot_normalized",
+      "previous_force_normalized",
+      "p_reference_dot_normalized",
+      "commanded_force_normalized",
+      "applied_force_normalized",
+      "requested_force_lag_2_normalized",
+      "requested_force_lag_3_normalized",
+      "requested_force_lag_4_normalized",
+      "requested_force_lag_5_normalized",
+      "requested_force_lag_6_normalized",
+      "requested_force_lag_7_normalized",
+      "requested_force_lag_8_normalized",
+      "requested_force_lag_9_normalized",
+      "requested_force_lag_10_normalized",
+      "requested_force_lag_11_normalized",
+      "requested_force_lag_12_normalized",
+      "requested_force_lag_13_normalized",
+      "requested_force_lag_14_normalized",
+      "requested_force_lag_15_normalized",
+      "requested_force_lag_16_normalized",
+      "requested_force_lag_17_normalized",
+      "requested_force_lag_18_normalized",
+      "requested_force_lag_19_normalized",
+      "requested_force_lag_20_normalized",
+      "requested_force_lag_21_normalized",
+      "requested_force_lag_22_normalized",
+      "requested_force_lag_23_normalized",
+      "requested_force_lag_24_normalized",
+      "requested_force_lag_25_normalized",
+      "requested_force_lag_26_normalized"
+    ],
+    "instantaneous_signal_names": [
+      "p_command_normalized",
+      "p_reference_normalized",
+      "p_normalized",
+      "tracking_error_normalized"
+    ],
+    "controller_state_names": [
+      "integrated_tracking_error_normalized",
+      "p_dot_normalized",
+      "previous_force_normalized",
+      "p_reference_dot_normalized"
+    ],
+    "raw_history_steps": 0,
+    "raw_history_signal_names": [
+      "p_command_normalized",
+      "p_reference_normalized",
+      "p_normalized",
+      "tracking_error_normalized",
+      "force_normalized"
+    ],
+    "uses_raw_history_window": false,
+    "includes_actor_actuator_state": true,
+    "includes_reference_derivative": true,
+    "reference_derivative_scale_rad_s2": 5.0,
+    "requested_action_history_steps": 26,
+    "requested_action_history_order": "newest_in_previous_force_then_lag_2_to_lag_k",
+    "delay_coverage_s": 0.52
+  },
+  "aircraft_parameter_dim": 8,
+  "aircraft_parameter_names": [
+    "l_fa",
+    "lambda_s",
+    "t_r",
+    "zeta_d",
+    "omega_d",
+    "r_omega",
+    "r_zeta",
+    "tau_p"
+  ],
+  "aircraft_parameter_normalization": "log_linear_bounds_v1_unclipped",
+  "action_dim": 1,
+  "action_definition": "normalized_direct_full_F_as",
+  "command_ids": [
+    "train-step-pos-10deg-s",
+    "train-step-pos-20deg-s",
+    "train-step-pos-30deg-s",
+    "train-step-neg-10deg-s",
+    "train-step-neg-20deg-s",
+    "train-step-neg-30deg-s",
+    "train-doublet-pos-20deg-s",
+    "train-doublet-neg-20deg-s",
+    "train-sine-0.50hz",
+    "train-sine-1.00hz",
+    "train-multisine"
+  ],
+  "train_plant_ids": [
+    "train_boundary-1205",
+    "train_boundary-1228",
+    "train_boundary-1231",
+    "train_boundary-1388",
+    "train_boundary-1402",
+    "train_boundary-1451",
+    "train_boundary-1453",
+    "train_boundary-1488",
+    "train_boundary-1531",
+    "train_boundary-1584",
+    "train_boundary-1743",
+    "train_boundary-1760",
+    "train_core-0175",
+    "train_core-0191",
+    "train_core-0312",
+    "train_core-0330",
+    "train_core-0481",
+    "train_core-0742",
+    "train_core-0750",
+    "train_core-0754",
+    "train_core-0760",
+    "train_core-0892",
+    "train_core-0906",
+    "train_core-0914",
+    "train_core-0964",
+    "train_core-1187"
+  ],
+  "validation_plant_ids": [
+    "train_boundary-1351",
+    "train_boundary-1448",
+    "train_boundary-1605",
+    "train_core-0054",
+    "train_core-0334",
+    "train_core-0515"
+  ],
+  "row_count": 528000,
+  "train_rows": 429000,
+  "validation_rows": 99000,
+  "new_rows": 264000,
+  "new_train_rows": 214500,
+  "new_validation_rows": 49500,
+  "sample_stride": 2,
+  "shards": [
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0000-train_core-0312.npz",
+      "sha256": "e407b1c4b534986d7a9c90c0fd8787a900d34703f2f83950ea13610f90178056",
+      "plant_index": 0,
+      "plant_id": "train_core-0312",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0312.pt",
+      "teacher_actor_sha256": "2a12dbea1a1cc0f84c2bd7dfda7f974dfa14eb9281f0450cae7edb03aa1461ec",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0001-train_core-0334.npz",
+      "sha256": "e78d6f05249e32a7335fba87f254b7ebcf60885e4191a24c3af211c865b2372c",
+      "plant_index": 1,
+      "plant_id": "train_core-0334",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0334.pt",
+      "teacher_actor_sha256": "8b80192c06c5770745e0308024c18de2c288ef34a0f6bda11bedbfd408bc952c",
+      "rows": 8250,
+      "train_rows": 0,
+      "validation_rows": 8250,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0002-train_core-0760.npz",
+      "sha256": "a7fecc50100f33febd9891c1ffa2332d3287fe943c0d5b469fdf937644180cd2",
+      "plant_index": 2,
+      "plant_id": "train_core-0760",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0760.pt",
+      "teacher_actor_sha256": "eb1d04e379d46e2c7fdaa1a6b0ebe3cce7ae12e190950b6d85fe2f6ffdd5c9af",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0003-train_core-1187.npz",
+      "sha256": "a482a8cb8d57e0031179e0e6f1d662923e034612da7d500538c4f6244f8b2361",
+      "plant_index": 3,
+      "plant_id": "train_core-1187",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-1187.pt",
+      "teacher_actor_sha256": "1197215de5bedc916adf5396f17167f12da56de1b6493bd1e34787a5e3b0854a",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0004-train_core-0330.npz",
+      "sha256": "0714288b417ba9d2ffc672c3a9473df5fac8d0f7d9b2388f1096a95de3a3a2ad",
+      "plant_index": 4,
+      "plant_id": "train_core-0330",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0330.pt",
+      "teacher_actor_sha256": "ba8f268595b7fb46b0f1a351e12b77f14edb3b79421b609b6f38e3697aa9a058",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0005-train_boundary-1228.npz",
+      "sha256": "66534380737f47aedeef15ab7e05b9fb1c8de2e1cb77f025a2412956578f2f1e",
+      "plant_index": 5,
+      "plant_id": "train_boundary-1228",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1228.pt",
+      "teacher_actor_sha256": "5f642798bd64a94264726aaa34a2a55a7c3a4094090d78677e340cbb9b6224ec",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0006-train_boundary-1448.npz",
+      "sha256": "dc010cfbf44aa69f5578eb447535a8c718bb58f1bf88d7273b538a761ace97f9",
+      "plant_index": 6,
+      "plant_id": "train_boundary-1448",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1448.pt",
+      "teacher_actor_sha256": "c40c0939fe0211a0b8105426272a4c874810572c674d1f99f369b57927a569a2",
+      "rows": 8250,
+      "train_rows": 0,
+      "validation_rows": 8250,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0007-train_core-0750.npz",
+      "sha256": "e87cb339672b97ce34ebe16606ae953aa769f83763b79d153ed0a3d8e1fc49c0",
+      "plant_index": 7,
+      "plant_id": "train_core-0750",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0750.pt",
+      "teacher_actor_sha256": "1a5e05bae9a299efe07bc9f9d7475a44260701b2007549c075325dc549d98205",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0008-train_core-0914.npz",
+      "sha256": "f24ebe17717f26cbb796be44713e4ef7a9335ff582942da061f182d3c719872b",
+      "plant_index": 8,
+      "plant_id": "train_core-0914",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0914.pt",
+      "teacher_actor_sha256": "819d1c509b23d4243d4384da1a0349087ec05bc86883826fd726a2adc4006cd6",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0009-train_boundary-1605.npz",
+      "sha256": "b3881c46dd0eade38a96f977227fb3aa1b7c3c6c6017e2137bb0b24caeff3c91",
+      "plant_index": 9,
+      "plant_id": "train_boundary-1605",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1605.pt",
+      "teacher_actor_sha256": "57560ec3d34b775f94a3f62b41194bfc2e6c51c91e7e74bbc9a1db85f442a1b9",
+      "rows": 8250,
+      "train_rows": 0,
+      "validation_rows": 8250,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0010-train_boundary-1584.npz",
+      "sha256": "75c6d41251e57f457782b2c5596cd48d8e4a72b4c13db7e3717fda0850deeeed",
+      "plant_index": 10,
+      "plant_id": "train_boundary-1584",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1584.pt",
+      "teacher_actor_sha256": "b4ad751778cc3019c2b7c151c1261ef0f30367c91994732cafd2240af6719852",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0011-train_core-0742.npz",
+      "sha256": "8bcc6d8a48154f3add9791e42240fcc34920149f22771b0a34ecd5c48e6e18ca",
+      "plant_index": 11,
+      "plant_id": "train_core-0742",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0742.pt",
+      "teacher_actor_sha256": "ac1ae8baf008bd1a9e07b225ab3ca1f0b6cefdc78fa12c3dc45a716aefa18ef0",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0012-train_boundary-1451.npz",
+      "sha256": "3b3598e97372deefb7de65e2bca2d5ab7dc0f23f8fa69e5885cc46ff04a6603d",
+      "plant_index": 12,
+      "plant_id": "train_boundary-1451",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1451.pt",
+      "teacher_actor_sha256": "682572efffbec8c70226770887bfe5942c06b7893c668a91fa324a92db3f2fe1",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0013-train_core-0754.npz",
+      "sha256": "95491ac57e12ef6aa2570d2a2070d3c46e94575bbf8896947d38d187c067d5bd",
+      "plant_index": 13,
+      "plant_id": "train_core-0754",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0754.pt",
+      "teacher_actor_sha256": "30b54664fb2a39cc8ffaff21f783cf931eca86c4ddbb4b2cd94b2c2834600ac7",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0014-train_boundary-1231.npz",
+      "sha256": "5809c4dbf2791990e041bfb0f6e9dfade54862260511fcbdecf7966f083b357f",
+      "plant_index": 14,
+      "plant_id": "train_boundary-1231",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1231.pt",
+      "teacher_actor_sha256": "88cb2cad85545f84af283f886d8cd51833e4efa9a0d8944e236ffababe8e10f4",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0015-train_boundary-1488.npz",
+      "sha256": "f3e1bc8f8ad9a35a04da0259c02310379540532abe6766de524c8c788d8d0076",
+      "plant_index": 15,
+      "plant_id": "train_boundary-1488",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1488.pt",
+      "teacher_actor_sha256": "57ebe09e6da3ce2bbfbb903ebbf6de4d9974e3ebf220bb766e22b2e93d16dc82",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0016-train_core-0892.npz",
+      "sha256": "58fc1cfb726da43013cdf1672a52909358b46df33089059d4b51995551695eab",
+      "plant_index": 16,
+      "plant_id": "train_core-0892",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0892.pt",
+      "teacher_actor_sha256": "8a873856d8a48f995d284f2d380eff65e7a1f761a18205b68647735a32648a73",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0017-train_core-0515.npz",
+      "sha256": "be9b5548d385bddbd92aafa7795d54ce8a4ff7ee6f4bf1aa7eee87f669531919",
+      "plant_index": 17,
+      "plant_id": "train_core-0515",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0515.pt",
+      "teacher_actor_sha256": "d254daf2cad92cca114501495ba9286885f0d4210066c7cb93211067a349bb56",
+      "rows": 8250,
+      "train_rows": 0,
+      "validation_rows": 8250,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0018-train_boundary-1760.npz",
+      "sha256": "988d81fbabe1201ae65879c066486963d2e3592f666265202c491214e741e6d9",
+      "plant_index": 18,
+      "plant_id": "train_boundary-1760",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1760.pt",
+      "teacher_actor_sha256": "1821859f6e5988cbf04518e7e5f7fce1f8a05ebc93bea96eec81b551952dc0b9",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0019-train_core-0481.npz",
+      "sha256": "653003e9b0ab0167f60335734691392e075c7088beda202e221c9c91224be6b2",
+      "plant_index": 19,
+      "plant_id": "train_core-0481",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0481.pt",
+      "teacher_actor_sha256": "25209c0476dfc31f3f6a30e665ad51c354990c430c5bd4285aa79645be192613",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0020-train_boundary-1453.npz",
+      "sha256": "5aed2008c8d34eb0678353231f6373169f95e90dd511d255ad87619551ed031f",
+      "plant_index": 20,
+      "plant_id": "train_boundary-1453",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1453.pt",
+      "teacher_actor_sha256": "8e6ff721dae9f7b5b527bb6c49957d979fd70ab58831c86eb74fbe0cca525d44",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0021-train_core-0175.npz",
+      "sha256": "cc117be5c50809758800123376002bc8087aeafb73fd6c6a6c230993a087555a",
+      "plant_index": 21,
+      "plant_id": "train_core-0175",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0175.pt",
+      "teacher_actor_sha256": "7909f8eb8ee00c9c41dff8f3315d2032cc71528ffd63a2c310a8bbf9d2cd8788",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0022-train_boundary-1531.npz",
+      "sha256": "a0cb4f0c330e7a7d04906406ced1915fe393ef0a58bfb533556aa46b0139d7a8",
+      "plant_index": 22,
+      "plant_id": "train_boundary-1531",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1531.pt",
+      "teacher_actor_sha256": "18581effbde1910ec4e721d8ddaa6e8541c0e69737f37e1e622895994e982cbe",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0023-train_boundary-1205.npz",
+      "sha256": "82f8b54a7c221b903879402bdf3317c72751f7e7d2527de74c86b0d1d43a932f",
+      "plant_index": 23,
+      "plant_id": "train_boundary-1205",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1205.pt",
+      "teacher_actor_sha256": "03da5ba984e8aa8f10c25aa0c35424060baa6bae42f0cf813d087ed845142f7f",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0024-train_core-0906.npz",
+      "sha256": "aceff061e07bf304e387822a32bd4e1ab75a1c24ceda940dc2dc0eb1ee7be408",
+      "plant_index": 24,
+      "plant_id": "train_core-0906",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0906.pt",
+      "teacher_actor_sha256": "e01be73cbc14028242e150a6475229221395df5dc414a71447c3fb83dae9ea04",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0025-train_core-0964.npz",
+      "sha256": "070426b45cba0c08d9845aef07aca90ff7bbdd844f3c32ba7097f55ae235fbdc",
+      "plant_index": 25,
+      "plant_id": "train_core-0964",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0964.pt",
+      "teacher_actor_sha256": "c0ac42b0af0a1db65317367eb4a9de58a4209f9708745d6f96c9bb942d854f2c",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0026-train_core-0054.npz",
+      "sha256": "21f177403285cf95d125eaed53a74c6a75e777a144e6dd3a2372b206cb4ff2cd",
+      "plant_index": 26,
+      "plant_id": "train_core-0054",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0054.pt",
+      "teacher_actor_sha256": "35df3d41aa8a67068cee2d5501d689fc2737f10504d079301c71268d006e8d90",
+      "rows": 8250,
+      "train_rows": 0,
+      "validation_rows": 8250,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0027-train_boundary-1351.npz",
+      "sha256": "e5eefcd5b28a939e6cd146f37c65cc3f5497af78094472467ef31beaec30d8cb",
+      "plant_index": 27,
+      "plant_id": "train_boundary-1351",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1351.pt",
+      "teacher_actor_sha256": "8a932f60fdf2f9e0743c752c12e4c009758926e2e7b766d5a8cc124e58a4c922",
+      "rows": 8250,
+      "train_rows": 0,
+      "validation_rows": 8250,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0028-train_boundary-1388.npz",
+      "sha256": "ed85d45688f68c8374eaf7a4ab5a8c075ec114fe50115bdc336a2b63a6664cbc",
+      "plant_index": 28,
+      "plant_id": "train_boundary-1388",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1388.pt",
+      "teacher_actor_sha256": "894cf04b0c02b4e33b325fca3b86f1bd0b48fd6c49a9f0c0c2c0a16ec0789729",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0029-train_boundary-1743.npz",
+      "sha256": "ea56060881bd3e95df884df94e08e4e5ae925ce4de93b9acf006d0780d8b4f39",
+      "plant_index": 29,
+      "plant_id": "train_boundary-1743",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1743.pt",
+      "teacher_actor_sha256": "5daf0d901f20b4adf4e8819118f2c469514b67e862d29824fede8f07c9878a1c",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0030-train_boundary-1402.npz",
+      "sha256": "8b38badd0d010a9759f178a63a6dab581d4610347a3d784d25288b8742dc9ca9",
+      "plant_index": 30,
+      "plant_id": "train_boundary-1402",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1402.pt",
+      "teacher_actor_sha256": "4ed2e77f1d111b64e07fee485f8ff1026c792373888752544dc2a74cc5e7d646",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "../../round_000_teacher_driven/dataset/shards/0031-train_core-0191.npz",
+      "sha256": "85003ec50567108bb350184e455959b8b1bf47eb8b5c7571cdbadd74375d32f4",
+      "plant_index": 31,
+      "plant_id": "train_core-0191",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0191.pt",
+      "teacher_actor_sha256": "a9377ed77587c8f51c9271879bf998a573d31f170d6a469bbe95ed014b76ad56",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 0,
+      "driver": "teacher",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0000-train_core-0312.npz",
+      "sha256": "fec982745c1ea58fbb2fb692d2459cf3fc185690c2e80de09cf575af00d0862c",
+      "plant_index": 0,
+      "plant_id": "train_core-0312",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0312.pt",
+      "teacher_actor_sha256": "2a12dbea1a1cc0f84c2bd7dfda7f974dfa14eb9281f0450cae7edb03aa1461ec",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0001-train_core-0334.npz",
+      "sha256": "b5a5657f7588f719df8602391773aa888bda3f7643fdae0f6404dbb506e5734f",
+      "plant_index": 1,
+      "plant_id": "train_core-0334",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0334.pt",
+      "teacher_actor_sha256": "8b80192c06c5770745e0308024c18de2c288ef34a0f6bda11bedbfd408bc952c",
+      "rows": 8250,
+      "train_rows": 0,
+      "validation_rows": 8250,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0002-train_core-0760.npz",
+      "sha256": "f51e84c35f9621f184ed23223c1f5def87d324572f5119faa0b2f655a40ee12a",
+      "plant_index": 2,
+      "plant_id": "train_core-0760",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0760.pt",
+      "teacher_actor_sha256": "eb1d04e379d46e2c7fdaa1a6b0ebe3cce7ae12e190950b6d85fe2f6ffdd5c9af",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0003-train_core-1187.npz",
+      "sha256": "c56a27e0e9fa0fa7304d280cd0fc4451372cf00d5a4d8909acb7a307dd1b4cf8",
+      "plant_index": 3,
+      "plant_id": "train_core-1187",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-1187.pt",
+      "teacher_actor_sha256": "1197215de5bedc916adf5396f17167f12da56de1b6493bd1e34787a5e3b0854a",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0004-train_core-0330.npz",
+      "sha256": "f837d1479cc7c2385418842b8e5a2fad46f3e382363aa664c5d80a4a9a379a6d",
+      "plant_index": 4,
+      "plant_id": "train_core-0330",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0330.pt",
+      "teacher_actor_sha256": "ba8f268595b7fb46b0f1a351e12b77f14edb3b79421b609b6f38e3697aa9a058",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0005-train_boundary-1228.npz",
+      "sha256": "2391690e0a7f4dca1f49c276ba9ea737710d90a56835be0cdc764538848894c3",
+      "plant_index": 5,
+      "plant_id": "train_boundary-1228",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1228.pt",
+      "teacher_actor_sha256": "5f642798bd64a94264726aaa34a2a55a7c3a4094090d78677e340cbb9b6224ec",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0006-train_boundary-1448.npz",
+      "sha256": "e4a9ec30e08b04f2975297a5f9a407c4defdd9415c9aed1a14965e05cf305c1a",
+      "plant_index": 6,
+      "plant_id": "train_boundary-1448",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1448.pt",
+      "teacher_actor_sha256": "c40c0939fe0211a0b8105426272a4c874810572c674d1f99f369b57927a569a2",
+      "rows": 8250,
+      "train_rows": 0,
+      "validation_rows": 8250,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0007-train_core-0750.npz",
+      "sha256": "8559f3413dcdfb505ca40ebe1a49245ba6667b3ed9be1f20fa052078542a6f49",
+      "plant_index": 7,
+      "plant_id": "train_core-0750",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0750.pt",
+      "teacher_actor_sha256": "1a5e05bae9a299efe07bc9f9d7475a44260701b2007549c075325dc549d98205",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0008-train_core-0914.npz",
+      "sha256": "4c8f5cccac29f640f37e974f0bb13d4e5067c44c6a950192a6cbab0b6470ead8",
+      "plant_index": 8,
+      "plant_id": "train_core-0914",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0914.pt",
+      "teacher_actor_sha256": "819d1c509b23d4243d4384da1a0349087ec05bc86883826fd726a2adc4006cd6",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0009-train_boundary-1605.npz",
+      "sha256": "ef26c28162af5957f3e8a18a531869bea995d722fb22eb9812a53e4920ee4281",
+      "plant_index": 9,
+      "plant_id": "train_boundary-1605",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1605.pt",
+      "teacher_actor_sha256": "57560ec3d34b775f94a3f62b41194bfc2e6c51c91e7e74bbc9a1db85f442a1b9",
+      "rows": 8250,
+      "train_rows": 0,
+      "validation_rows": 8250,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0010-train_boundary-1584.npz",
+      "sha256": "c1aeafae7371f781d89ee21032ffac6bcb5c9f81dad6d02121136dd4db84b60a",
+      "plant_index": 10,
+      "plant_id": "train_boundary-1584",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1584.pt",
+      "teacher_actor_sha256": "b4ad751778cc3019c2b7c151c1261ef0f30367c91994732cafd2240af6719852",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0011-train_core-0742.npz",
+      "sha256": "b770f77366e5fe62998845be9e0817dd0f3643149146cfcf0b76ba65ea64255c",
+      "plant_index": 11,
+      "plant_id": "train_core-0742",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0742.pt",
+      "teacher_actor_sha256": "ac1ae8baf008bd1a9e07b225ab3ca1f0b6cefdc78fa12c3dc45a716aefa18ef0",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0012-train_boundary-1451.npz",
+      "sha256": "8c29ae2ac24e86f66e38f48323e368bf6a7138110ce5451a0e278606497fa4ff",
+      "plant_index": 12,
+      "plant_id": "train_boundary-1451",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1451.pt",
+      "teacher_actor_sha256": "682572efffbec8c70226770887bfe5942c06b7893c668a91fa324a92db3f2fe1",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0013-train_core-0754.npz",
+      "sha256": "a4078dbfd0137b7aa3088c2fca6089419a57f703aadbfbc46ef95adcf2b09ad3",
+      "plant_index": 13,
+      "plant_id": "train_core-0754",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0754.pt",
+      "teacher_actor_sha256": "30b54664fb2a39cc8ffaff21f783cf931eca86c4ddbb4b2cd94b2c2834600ac7",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0014-train_boundary-1231.npz",
+      "sha256": "1a5a6a55f85081527f6bade9af9071f02042de4be8cdcb64c75d1f6eece4d521",
+      "plant_index": 14,
+      "plant_id": "train_boundary-1231",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1231.pt",
+      "teacher_actor_sha256": "88cb2cad85545f84af283f886d8cd51833e4efa9a0d8944e236ffababe8e10f4",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0015-train_boundary-1488.npz",
+      "sha256": "75b1702098214708238d0a29b1b610fee213c5b05fa6af32c376c113fed7786c",
+      "plant_index": 15,
+      "plant_id": "train_boundary-1488",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1488.pt",
+      "teacher_actor_sha256": "57ebe09e6da3ce2bbfbb903ebbf6de4d9974e3ebf220bb766e22b2e93d16dc82",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0016-train_core-0892.npz",
+      "sha256": "eac0b131d9d77d48af80cf64fda1388721c6543b8b0a10bd2af310c2c1df5bda",
+      "plant_index": 16,
+      "plant_id": "train_core-0892",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0892.pt",
+      "teacher_actor_sha256": "8a873856d8a48f995d284f2d380eff65e7a1f761a18205b68647735a32648a73",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0017-train_core-0515.npz",
+      "sha256": "a95038e6a9a38cb9d4ed9db24aaf1e237a2f4179f849f0b09ef938656054e6c0",
+      "plant_index": 17,
+      "plant_id": "train_core-0515",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0515.pt",
+      "teacher_actor_sha256": "d254daf2cad92cca114501495ba9286885f0d4210066c7cb93211067a349bb56",
+      "rows": 8250,
+      "train_rows": 0,
+      "validation_rows": 8250,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0018-train_boundary-1760.npz",
+      "sha256": "51956a0cab976170763182f8b9a395eac630e0e6978a17a59f018f611f8051fc",
+      "plant_index": 18,
+      "plant_id": "train_boundary-1760",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1760.pt",
+      "teacher_actor_sha256": "1821859f6e5988cbf04518e7e5f7fce1f8a05ebc93bea96eec81b551952dc0b9",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0019-train_core-0481.npz",
+      "sha256": "3cf481dfb2026f1d97557af0add967c496743cc7b933e37e50bee8e8b9346439",
+      "plant_index": 19,
+      "plant_id": "train_core-0481",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0481.pt",
+      "teacher_actor_sha256": "25209c0476dfc31f3f6a30e665ad51c354990c430c5bd4285aa79645be192613",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0020-train_boundary-1453.npz",
+      "sha256": "2d75cc27b05b221ab21bb34419fc50a543ed0ca3d90fbd12308e49b266a8a286",
+      "plant_index": 20,
+      "plant_id": "train_boundary-1453",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1453.pt",
+      "teacher_actor_sha256": "8e6ff721dae9f7b5b527bb6c49957d979fd70ab58831c86eb74fbe0cca525d44",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0021-train_core-0175.npz",
+      "sha256": "94e64212aaf8e6c94b03f87c8a6a069f3f000019c677d8d63b3a959d721de60c",
+      "plant_index": 21,
+      "plant_id": "train_core-0175",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0175.pt",
+      "teacher_actor_sha256": "7909f8eb8ee00c9c41dff8f3315d2032cc71528ffd63a2c310a8bbf9d2cd8788",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0022-train_boundary-1531.npz",
+      "sha256": "0f5c19e8846b5a5496cfee01aa67548fd729bdf7a9779d5163d3abd1c6b505f6",
+      "plant_index": 22,
+      "plant_id": "train_boundary-1531",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1531.pt",
+      "teacher_actor_sha256": "18581effbde1910ec4e721d8ddaa6e8541c0e69737f37e1e622895994e982cbe",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0023-train_boundary-1205.npz",
+      "sha256": "675db721043a12be9aca018de686f26f895f724efa3810e4896684d88395d9f8",
+      "plant_index": 23,
+      "plant_id": "train_boundary-1205",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1205.pt",
+      "teacher_actor_sha256": "03da5ba984e8aa8f10c25aa0c35424060baa6bae42f0cf813d087ed845142f7f",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0024-train_core-0906.npz",
+      "sha256": "5467bac21254c7bd9918225ab3375d4d97dd23ff02bc028b0dbf10ed6970c1cf",
+      "plant_index": 24,
+      "plant_id": "train_core-0906",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0906.pt",
+      "teacher_actor_sha256": "e01be73cbc14028242e150a6475229221395df5dc414a71447c3fb83dae9ea04",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0025-train_core-0964.npz",
+      "sha256": "a60fa87e70e24399907a0e0a1f8e185cae726657297d97fbc86c4d9491e594a6",
+      "plant_index": 25,
+      "plant_id": "train_core-0964",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0964.pt",
+      "teacher_actor_sha256": "c0ac42b0af0a1db65317367eb4a9de58a4209f9708745d6f96c9bb942d854f2c",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0026-train_core-0054.npz",
+      "sha256": "64242891ca87c2b559f45e29170257a0ae723900952152019952adb6f58ecb8c",
+      "plant_index": 26,
+      "plant_id": "train_core-0054",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0054.pt",
+      "teacher_actor_sha256": "35df3d41aa8a67068cee2d5501d689fc2737f10504d079301c71268d006e8d90",
+      "rows": 8250,
+      "train_rows": 0,
+      "validation_rows": 8250,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0027-train_boundary-1351.npz",
+      "sha256": "c94337f8a6aeb9dc064f402dcf5f7082f148c4780b843751e7e591a5c71381f1",
+      "plant_index": 27,
+      "plant_id": "train_boundary-1351",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1351.pt",
+      "teacher_actor_sha256": "8a932f60fdf2f9e0743c752c12e4c009758926e2e7b766d5a8cc124e58a4c922",
+      "rows": 8250,
+      "train_rows": 0,
+      "validation_rows": 8250,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0028-train_boundary-1388.npz",
+      "sha256": "f086e65847e86d138510404366ac808f73cdcf3008fc029a524f6ec0586496d1",
+      "plant_index": 28,
+      "plant_id": "train_boundary-1388",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1388.pt",
+      "teacher_actor_sha256": "894cf04b0c02b4e33b325fca3b86f1bd0b48fd6c49a9f0c0c2c0a16ec0789729",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0029-train_boundary-1743.npz",
+      "sha256": "466be56df7ae00cbb213a90bcec4f86f7d99163b865309fc87a0a30b05e32ed0",
+      "plant_index": 29,
+      "plant_id": "train_boundary-1743",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1743.pt",
+      "teacher_actor_sha256": "5daf0d901f20b4adf4e8819118f2c469514b67e862d29824fede8f07c9878a1c",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0030-train_boundary-1402.npz",
+      "sha256": "061b29b639c4d21126c88c6a9d0f12af196c0a683e80c2dfde3d26e9e7cbb578",
+      "plant_index": 30,
+      "plant_id": "train_boundary-1402",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_boundary-1402.pt",
+      "teacher_actor_sha256": "4ed2e77f1d111b64e07fee485f8ff1026c792373888752544dc2a74cc5e7d646",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    },
+    {
+      "path": "shards/0031-train_core-0191.npz",
+      "sha256": "81d7eafaed670772f7d8643e27dd592e6e76154fb357a1891a0c093b40eaeebd",
+      "plant_index": 31,
+      "plant_id": "train_core-0191",
+      "teacher_actor": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/actors/train_core-0191.pt",
+      "teacher_actor_sha256": "a9377ed77587c8f51c9271879bf998a573d31f170d6a469bbe95ed014b76ad56",
+      "rows": 8250,
+      "train_rows": 8250,
+      "validation_rows": 0,
+      "collection_round": 1,
+      "driver": "student",
+      "labeler": "matching_specialist_teacher"
+    }
+  ],
+  "rollout_diagnostics": [
+    {
+      "plant_id": "train_core-0312",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.08585164058463031,
+      "student_episode_return": -14.3634956349476,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0312",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.06482357248768397,
+      "student_episode_return": -9.542951138138985,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0312",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.06520659759775933,
+      "student_episode_return": -16.04639612803386,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0312",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.08585164058463031,
+      "student_episode_return": -14.3634956349476,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0312",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.06482357248768397,
+      "student_episode_return": -9.542951138138985,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0312",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.06520659759775933,
+      "student_episode_return": -16.04639612803386,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0312",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.034561569998698444,
+      "student_episode_return": -1.1171544806066505,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0312",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.034561569998698444,
+      "student_episode_return": -1.1171544806066505,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0312",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.050578696744706,
+      "student_episode_return": -6.723996269607596,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0312",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.06500806009344803,
+      "student_episode_return": -7.508256247102421,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0312",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.04008744457728207,
+      "student_episode_return": -4.44173329051236,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0334",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.040585715253655376,
+      "student_episode_return": -11.79500533331285,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0334",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.13232922290211446,
+      "student_episode_return": -68.53910296867866,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0334",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.43486553955762447,
+      "student_episode_return": -1327.6303786015592,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0334",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.040585715253655376,
+      "student_episode_return": -11.79500533331285,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0334",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.13232922290211446,
+      "student_episode_return": -68.53910296867866,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0334",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.43486553955762447,
+      "student_episode_return": -1327.6303786015592,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0334",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.04286692720160849,
+      "student_episode_return": -0.794127673496325,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0334",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.04286692720160849,
+      "student_episode_return": -0.794127673496325,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0334",
+      "command_id": "train-sine-0.50hz",
+      "split": "validation",
+      "visited_action_rmse": 0.1688880756140272,
+      "student_episode_return": -26.26151876489746,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0334",
+      "command_id": "train-sine-1.00hz",
+      "split": "validation",
+      "visited_action_rmse": 0.03733313373369316,
+      "student_episode_return": -1.3027685332190777,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0334",
+      "command_id": "train-multisine",
+      "split": "validation",
+      "visited_action_rmse": 0.04711438868892506,
+      "student_episode_return": -1.5468554278846338,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0760",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.22451478122497537,
+      "student_episode_return": -161.7152049961403,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0760",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.2549844032484148,
+      "student_episode_return": -213.6841767136005,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0760",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.20651539835718025,
+      "student_episode_return": -144.27582436178892,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0760",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.22451478122497537,
+      "student_episode_return": -161.7152049961403,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0760",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.2549844032484148,
+      "student_episode_return": -213.6841767136005,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0760",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.20651539835718025,
+      "student_episode_return": -144.27582436178892,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0760",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.13377984874224821,
+      "student_episode_return": -41.478089634583334,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0760",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.13377984874224821,
+      "student_episode_return": -41.478089634583334,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0760",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.22181985148571934,
+      "student_episode_return": -134.4781141899737,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0760",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.045725812914999865,
+      "student_episode_return": -5.703098462431385,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0760",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.23670689556193308,
+      "student_episode_return": -141.51210812918208,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-1187",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.11107457608808895,
+      "student_episode_return": -12.631040606468186,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-1187",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1545643642542678,
+      "student_episode_return": -36.280173278628894,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-1187",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.15888072208918066,
+      "student_episode_return": -50.83406901648834,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-1187",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.11107457608808895,
+      "student_episode_return": -12.631040606468186,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-1187",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1545643642542678,
+      "student_episode_return": -36.280173278628894,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-1187",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.15888072208918066,
+      "student_episode_return": -50.83406901648834,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-1187",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.10586973580939929,
+      "student_episode_return": -9.172580791081609,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-1187",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.10586973580939929,
+      "student_episode_return": -9.172580791081609,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-1187",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.0527343426496676,
+      "student_episode_return": -4.22580752696932,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-1187",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.08997722112949091,
+      "student_episode_return": -7.512886999341218,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-1187",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.2566995576923997,
+      "student_episode_return": -131.396711562704,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0330",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.12079083730110336,
+      "student_episode_return": -34.51903212155054,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0330",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14041366064619884,
+      "student_episode_return": -29.638374495214393,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0330",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14340422365349606,
+      "student_episode_return": -41.683139458437815,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0330",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.12079083730110336,
+      "student_episode_return": -34.51903212155054,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0330",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14041366064619884,
+      "student_episode_return": -29.638374495214393,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0330",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14340422365349606,
+      "student_episode_return": -41.683139458437815,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0330",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14320417499847846,
+      "student_episode_return": -96.85493695684978,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0330",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14320417499847846,
+      "student_episode_return": -96.85493695684978,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0330",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.081072264224417,
+      "student_episode_return": -28.512209005535524,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0330",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.13105214273423577,
+      "student_episode_return": -76.97804824259362,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0330",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.12904753740952885,
+      "student_episode_return": -79.93564183947854,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1228",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.17752067405462238,
+      "student_episode_return": -26.394487761657498,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1228",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.36807948664645834,
+      "student_episode_return": -222.19508173895287,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1228",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.6433612618332096,
+      "student_episode_return": -1442.2071828892947,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1228",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.17752067405462238,
+      "student_episode_return": -26.394487761657498,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1228",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.36807948664645834,
+      "student_episode_return": -222.19508173895287,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1228",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.6433612618332096,
+      "student_episode_return": -1442.2071828892947,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1228",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.01674144176678776,
+      "student_episode_return": -0.4496014519232735,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1228",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.01674144176678776,
+      "student_episode_return": -0.4496014519232735,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1228",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.10260041733360539,
+      "student_episode_return": -8.331006299507237,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1228",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.05478954971706766,
+      "student_episode_return": -1.5098496953090068,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1228",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.09118637233427115,
+      "student_episode_return": -8.033655117520574,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.16252151684019409,
+      "student_episode_return": -214.61770950251568,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.2083794142239114,
+      "student_episode_return": -164.65132106803938,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.18469350178044133,
+      "student_episode_return": -107.62551196781996,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.16252151684019409,
+      "student_episode_return": -214.61770950251568,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.2083794142239114,
+      "student_episode_return": -164.65132106803938,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.18469350178044133,
+      "student_episode_return": -107.62551196781996,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.142999186362397,
+      "student_episode_return": -255.17996876324779,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.142999186362397,
+      "student_episode_return": -255.17996876324779,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "command_id": "train-sine-0.50hz",
+      "split": "validation",
+      "visited_action_rmse": 0.15127088666569632,
+      "student_episode_return": -286.03504250433286,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "command_id": "train-sine-1.00hz",
+      "split": "validation",
+      "visited_action_rmse": 0.14251172712730603,
+      "student_episode_return": -253.22090315776083,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "command_id": "train-multisine",
+      "split": "validation",
+      "visited_action_rmse": 0.14706729672557828,
+      "student_episode_return": -272.03509736517094,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0750",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.007984653801900426,
+      "student_episode_return": -0.5469409405569008,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0750",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.05200871069009248,
+      "student_episode_return": -5.97544123521149,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0750",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.08859957714765491,
+      "student_episode_return": -16.358644041757856,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0750",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.007984653801900426,
+      "student_episode_return": -0.5469409405569008,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0750",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.05200871069009248,
+      "student_episode_return": -5.97544123521149,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0750",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.08859957714765491,
+      "student_episode_return": -16.358644041757856,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0750",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.020237906705594624,
+      "student_episode_return": -0.7667793501520279,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0750",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.020237906705594624,
+      "student_episode_return": -0.7667793501520279,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0750",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.08734104282729696,
+      "student_episode_return": -13.101675979122392,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0750",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.03023971374150913,
+      "student_episode_return": -1.9810175166155921,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0750",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.03401750545430209,
+      "student_episode_return": -2.1039598839552642,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0914",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.40596546895668434,
+      "student_episode_return": -93.88788257796745,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0914",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.24515709557050755,
+      "student_episode_return": -80.89553155629731,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0914",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.628869401181299,
+      "student_episode_return": -258.7150065224685,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0914",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.40596546895668434,
+      "student_episode_return": -93.88788257796745,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0914",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.24515709557050755,
+      "student_episode_return": -80.89553155629731,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0914",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.628869401181299,
+      "student_episode_return": -258.7150065224685,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0914",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14659152756357258,
+      "student_episode_return": -33.23513460540437,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0914",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14659152756357258,
+      "student_episode_return": -33.23513460540437,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0914",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.16179151752012705,
+      "student_episode_return": -54.68253822595315,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0914",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.1432148850516143,
+      "student_episode_return": -32.80134344831027,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0914",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.17256507149474254,
+      "student_episode_return": -51.25897682165496,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1605",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.15691410676619855,
+      "student_episode_return": -73.5500725273257,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1605",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.1739079390722911,
+      "student_episode_return": -72.63022940567825,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1605",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.1596466438326939,
+      "student_episode_return": -110.0704238014846,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1605",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.15691410676619855,
+      "student_episode_return": -73.5500725273257,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1605",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.1739079390722911,
+      "student_episode_return": -72.63022940567825,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1605",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.1596466438326939,
+      "student_episode_return": -110.0704238014846,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1605",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.029636718366195424,
+      "student_episode_return": -0.699820892882841,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1605",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.029636718366195424,
+      "student_episode_return": -0.699820892882841,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1605",
+      "command_id": "train-sine-0.50hz",
+      "split": "validation",
+      "visited_action_rmse": 0.13279343863272225,
+      "student_episode_return": -40.40145021014004,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1605",
+      "command_id": "train-sine-1.00hz",
+      "split": "validation",
+      "visited_action_rmse": 0.05730679981955516,
+      "student_episode_return": -1.4078214280452714,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1605",
+      "command_id": "train-multisine",
+      "split": "validation",
+      "visited_action_rmse": 0.10809780561626765,
+      "student_episode_return": -53.468955053463006,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1584",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.11636377625806152,
+      "student_episode_return": -32.38557077635724,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1584",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14614956083803543,
+      "student_episode_return": -54.87684320439625,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1584",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.13305731089451756,
+      "student_episode_return": -41.58198056376399,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1584",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.11636377625806152,
+      "student_episode_return": -32.38557077635724,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1584",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14614956083803543,
+      "student_episode_return": -54.87684320439625,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1584",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.13305731089451756,
+      "student_episode_return": -41.58198056376399,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1584",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.05553634824438299,
+      "student_episode_return": -9.471762044837972,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1584",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.05553634824438299,
+      "student_episode_return": -9.471762044837972,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1584",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.05458624123626794,
+      "student_episode_return": -8.942389113716649,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1584",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.06480124952601488,
+      "student_episode_return": -8.435263761957692,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1584",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.06841210162142186,
+      "student_episode_return": -15.184673821391431,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0742",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.099561957795103,
+      "student_episode_return": -42.691957809917945,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0742",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.12905187354265146,
+      "student_episode_return": -156.64384259530297,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0742",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.04361483652464078,
+      "student_episode_return": -24.959345713806847,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0742",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.099561957795103,
+      "student_episode_return": -42.691957809917945,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0742",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.12905187354265146,
+      "student_episode_return": -156.64384259530297,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0742",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.04361483652464078,
+      "student_episode_return": -24.959345713806847,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0742",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.032705379201732214,
+      "student_episode_return": -1.344325009395145,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0742",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.032705379201732214,
+      "student_episode_return": -1.344325009395145,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0742",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.10743168767486735,
+      "student_episode_return": -19.35329175273951,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0742",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.08454143752401187,
+      "student_episode_return": -11.929431180022142,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0742",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.06837626628467475,
+      "student_episode_return": -6.214300642268786,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1451",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.26082016506516453,
+      "student_episode_return": -284.58542246744184,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1451",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.24247193383941565,
+      "student_episode_return": -142.84702044340688,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1451",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.31843462829134794,
+      "student_episode_return": -563.0887117522443,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1451",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.26082016506516453,
+      "student_episode_return": -284.58542246744184,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1451",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.24247193383941565,
+      "student_episode_return": -142.84702044340688,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1451",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.31843462829134794,
+      "student_episode_return": -563.0887117522443,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1451",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.16158713822118778,
+      "student_episode_return": -39.3273904513101,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1451",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.16158713822118778,
+      "student_episode_return": -39.3273904513101,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1451",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.19422575458477628,
+      "student_episode_return": -88.96341328933353,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1451",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.14020825095057726,
+      "student_episode_return": -21.611266627162593,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1451",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.1674763892753068,
+      "student_episode_return": -44.24362305039665,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0754",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.305717117889382,
+      "student_episode_return": -234.5238089299189,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0754",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.24895305564087425,
+      "student_episode_return": -131.04344256449025,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0754",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.7189464701326089,
+      "student_episode_return": -149.62227409470432,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0754",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.305717117889382,
+      "student_episode_return": -234.5238089299189,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0754",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.24895305564087425,
+      "student_episode_return": -131.04344256449025,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0754",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.7189464701326089,
+      "student_episode_return": -149.62227409470432,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0754",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.24059556481732491,
+      "student_episode_return": -155.04867305669364,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0754",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.24059556481732491,
+      "student_episode_return": -155.04867305669364,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0754",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.24930849636546865,
+      "student_episode_return": -192.60028100294804,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0754",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.22747293107042582,
+      "student_episode_return": -136.83615270009216,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0754",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.2519954231098562,
+      "student_episode_return": -185.85238238600286,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1231",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.15425250215945435,
+      "student_episode_return": -175.61731506215457,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1231",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.15095976575762335,
+      "student_episode_return": -122.80817894334979,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1231",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.17171801872147213,
+      "student_episode_return": -108.86767980893994,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1231",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.15425250215945435,
+      "student_episode_return": -175.61731506215457,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1231",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.15095976575762335,
+      "student_episode_return": -122.80817894334979,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1231",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.17171801872147213,
+      "student_episode_return": -108.86767980893994,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1231",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.2448946994332846,
+      "student_episode_return": -489.40820210889603,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1231",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.2448946994332846,
+      "student_episode_return": -489.40820210889603,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1231",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.24495593173821864,
+      "student_episode_return": -546.8725831658616,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1231",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.2420115337503183,
+      "student_episode_return": -536.9719469899795,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1231",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.24548010723859712,
+      "student_episode_return": -503.89372398060254,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1488",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14487918061244875,
+      "student_episode_return": -114.84585364114207,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1488",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1349775407016137,
+      "student_episode_return": -80.3582407265299,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1488",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.04774192684233619,
+      "student_episode_return": -33.07402674953472,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1488",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14487918061244875,
+      "student_episode_return": -114.84585364114207,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1488",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1349775407016137,
+      "student_episode_return": -80.3582407265299,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1488",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.04774192684233619,
+      "student_episode_return": -33.07402674953472,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1488",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.22506023687589952,
+      "student_episode_return": -173.576182681892,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1488",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.22506023687589952,
+      "student_episode_return": -173.576182681892,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1488",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.23945824015971467,
+      "student_episode_return": -214.5414620085308,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1488",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.24515968711393887,
+      "student_episode_return": -204.83972615182057,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1488",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.22479125371475586,
+      "student_episode_return": -205.13037521466907,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0892",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.10955577497708455,
+      "student_episode_return": -201.2910935931277,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0892",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.10317666422859677,
+      "student_episode_return": -123.50548038621177,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0892",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.12016973765610728,
+      "student_episode_return": -128.09345299360385,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0892",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.10955577497708455,
+      "student_episode_return": -201.2910935931277,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0892",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.10317666422859677,
+      "student_episode_return": -123.50548038621177,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0892",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.12016973765610728,
+      "student_episode_return": -128.09345299360385,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0892",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1264834373577507,
+      "student_episode_return": -121.44686837855807,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0892",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1264834373577507,
+      "student_episode_return": -121.44686837855807,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0892",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.10959414234772936,
+      "student_episode_return": -91.71543492747104,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0892",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.1226243833849246,
+      "student_episode_return": -115.4755799113809,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0892",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.12069922667256532,
+      "student_episode_return": -109.20809748044408,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0515",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.028587675644116788,
+      "student_episode_return": -4.758540234156102,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0515",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.030928022556344914,
+      "student_episode_return": -8.300415448205962,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0515",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.17743563400833903,
+      "student_episode_return": -45.08843765299289,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0515",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.028587675644116788,
+      "student_episode_return": -4.758540234156102,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0515",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.030928022556344914,
+      "student_episode_return": -8.300415448205962,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0515",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.17743563400833903,
+      "student_episode_return": -45.08843765299289,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0515",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.04120809533411912,
+      "student_episode_return": -2.412553649064025,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0515",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.04120809533411912,
+      "student_episode_return": -2.412553649064025,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0515",
+      "command_id": "train-sine-0.50hz",
+      "split": "validation",
+      "visited_action_rmse": 0.16506226397301826,
+      "student_episode_return": -45.71610973409931,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0515",
+      "command_id": "train-sine-1.00hz",
+      "split": "validation",
+      "visited_action_rmse": 0.07433596573207295,
+      "student_episode_return": -4.362864759490975,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0515",
+      "command_id": "train-multisine",
+      "split": "validation",
+      "visited_action_rmse": 0.11423426470325393,
+      "student_episode_return": -15.504306550156095,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1760",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.15769671253921988,
+      "student_episode_return": -32.626864485894664,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1760",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.11070605417759272,
+      "student_episode_return": -45.7626451598573,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1760",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.6108423025736981,
+      "student_episode_return": -468.56824458614705,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1760",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.15769671253921988,
+      "student_episode_return": -32.626864485894664,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1760",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.11070605417759272,
+      "student_episode_return": -45.7626451598573,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1760",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.6108423025736981,
+      "student_episode_return": -468.56824458614705,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1760",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.023616981625795796,
+      "student_episode_return": -0.527352166355471,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1760",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.023616981625795796,
+      "student_episode_return": -0.527352166355471,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1760",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.049700441652215474,
+      "student_episode_return": -9.740783909818438,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1760",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.03696945619142841,
+      "student_episode_return": -1.7926479298610496,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1760",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.07984442397148797,
+      "student_episode_return": -3.9982799093690056,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0481",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.3081952489804326,
+      "student_episode_return": -565.4177020712996,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0481",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.3383087234290231,
+      "student_episode_return": -565.3004984065553,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0481",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.40627738267635843,
+      "student_episode_return": -1116.8519550669596,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0481",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.3081952489804326,
+      "student_episode_return": -565.4177020712996,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0481",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.3383087234290231,
+      "student_episode_return": -565.3004984065553,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0481",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.40627738267635843,
+      "student_episode_return": -1116.8519550669596,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0481",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.29270281906984996,
+      "student_episode_return": -154.6980660351331,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0481",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.29270281906984996,
+      "student_episode_return": -154.6980660351331,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0481",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.29983519541714204,
+      "student_episode_return": -203.37736066891983,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0481",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.28851877880692894,
+      "student_episode_return": -152.54468268569718,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0481",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.30299162307226035,
+      "student_episode_return": -209.39259928120885,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1453",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.2035917336390997,
+      "student_episode_return": -150.55469789383926,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1453",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.2958654560245658,
+      "student_episode_return": -475.17677338106114,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1453",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.42173793805258514,
+      "student_episode_return": -847.8152334685507,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1453",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.2035917336390997,
+      "student_episode_return": -150.55469789383926,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1453",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.2958654560245658,
+      "student_episode_return": -475.17677338106114,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1453",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.42173793805258514,
+      "student_episode_return": -847.8152334685507,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1453",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.020095168997382437,
+      "student_episode_return": -0.5586967150679264,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1453",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.020095168997382437,
+      "student_episode_return": -0.5586967150679264,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1453",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.08407214875385983,
+      "student_episode_return": -5.353144570719199,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1453",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.04863809497122818,
+      "student_episode_return": -1.0172827707176024,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1453",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.23066362102317883,
+      "student_episode_return": -64.9566242335806,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0175",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.06947659027854561,
+      "student_episode_return": -6.60429743925279,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0175",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.089921519805243,
+      "student_episode_return": -11.514282464771268,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0175",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.12053595558729314,
+      "student_episode_return": -15.728711315251887,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0175",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.06947659027854561,
+      "student_episode_return": -6.60429743925279,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0175",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.089921519805243,
+      "student_episode_return": -11.514282464771268,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0175",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.12053595558729314,
+      "student_episode_return": -15.728711315251887,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0175",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.018055462165516806,
+      "student_episode_return": -0.8974572321033707,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0175",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.018055462165516806,
+      "student_episode_return": -0.8974572321033707,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0175",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.08485165884534134,
+      "student_episode_return": -15.970512008247479,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0175",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.02038205590683312,
+      "student_episode_return": -2.1977777096434705,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0175",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.06963697091325965,
+      "student_episode_return": -9.092566425258005,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1531",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.03975973402080388,
+      "student_episode_return": -2.230940035777657,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1531",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.07309865791391502,
+      "student_episode_return": -5.60899976566046,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1531",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.09217869919076664,
+      "student_episode_return": -7.94995476212705,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1531",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.03975973402080388,
+      "student_episode_return": -2.230940035777657,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1531",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.07309865791391502,
+      "student_episode_return": -5.60899976566046,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1531",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.09217869919076664,
+      "student_episode_return": -7.94995476212705,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1531",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.017210110848614166,
+      "student_episode_return": -0.589872081954602,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1531",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.017210110848614166,
+      "student_episode_return": -0.589872081954602,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1531",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.058158031791157944,
+      "student_episode_return": -7.307863720305183,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1531",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.05039309916393128,
+      "student_episode_return": -4.220862472042868,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1531",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.023230818882617674,
+      "student_episode_return": -1.1351014785770748,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1205",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.20199851920092618,
+      "student_episode_return": -47.780435635979245,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1205",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.22388116788113815,
+      "student_episode_return": -68.04386961824355,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1205",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.2746458467815718,
+      "student_episode_return": -160.14223137769724,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1205",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.20199851920092618,
+      "student_episode_return": -47.780435635979245,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1205",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.22388116788113815,
+      "student_episode_return": -68.04386961824355,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1205",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.2746458467815718,
+      "student_episode_return": -160.14223137769724,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1205",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.18462195219661848,
+      "student_episode_return": -35.17038433489219,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1205",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.18462195219661848,
+      "student_episode_return": -35.17038433489219,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1205",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.19856955656015815,
+      "student_episode_return": -58.02417702194671,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1205",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.18228899745627677,
+      "student_episode_return": -32.92773803804258,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1205",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.2183807855743078,
+      "student_episode_return": -74.09617300706432,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0906",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.15620113968960644,
+      "student_episode_return": -12.704064309365618,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0906",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1983866933456868,
+      "student_episode_return": -52.91485865148628,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0906",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14178007685104146,
+      "student_episode_return": -19.551521534457716,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0906",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.15620113968960644,
+      "student_episode_return": -12.704064309365618,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0906",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1983866933456868,
+      "student_episode_return": -52.91485865148628,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0906",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.14178007685104146,
+      "student_episode_return": -19.551521534457716,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0906",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.12275888563968836,
+      "student_episode_return": -24.133148522656178,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0906",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.12275888563968836,
+      "student_episode_return": -24.133148522656178,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0906",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.11142385143340368,
+      "student_episode_return": -23.747590563140662,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0906",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.052898409962014094,
+      "student_episode_return": -0.7872189245432921,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0906",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.10873837167201679,
+      "student_episode_return": -25.64370098983393,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0964",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.07982288113059993,
+      "student_episode_return": -6.091697290192118,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0964",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.08689816479483727,
+      "student_episode_return": -16.451969995863976,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0964",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1579633235754823,
+      "student_episode_return": -249.8060656082446,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0964",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.07982288113059993,
+      "student_episode_return": -6.091697290192118,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0964",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.08689816479483727,
+      "student_episode_return": -16.451969995863976,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0964",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1579633235754823,
+      "student_episode_return": -249.8060656082446,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0964",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.018961933937402572,
+      "student_episode_return": -0.4986153977149871,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0964",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.018961933937402572,
+      "student_episode_return": -0.4986153977149871,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0964",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.1337673070334406,
+      "student_episode_return": -139.04315638186176,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0964",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.04198423347007389,
+      "student_episode_return": -3.289994373624082,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0964",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.0253998338586543,
+      "student_episode_return": -1.5800543706145709,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0054",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.16827528521935006,
+      "student_episode_return": -82.3337700737152,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0054",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.4647075320477836,
+      "student_episode_return": -420.2142945898221,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0054",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.5426868805576476,
+      "student_episode_return": -448.48178287722493,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0054",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.16827528521935006,
+      "student_episode_return": -82.3337700737152,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0054",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.4647075320477836,
+      "student_episode_return": -420.2142945898221,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0054",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.5426868805576476,
+      "student_episode_return": -448.48178287722493,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0054",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.1679610001468454,
+      "student_episode_return": -159.93077232101376,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0054",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.1679610001468454,
+      "student_episode_return": -159.93077232101376,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0054",
+      "command_id": "train-sine-0.50hz",
+      "split": "validation",
+      "visited_action_rmse": 0.17888182147304715,
+      "student_episode_return": -197.2981408564006,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0054",
+      "command_id": "train-sine-1.00hz",
+      "split": "validation",
+      "visited_action_rmse": 0.11328150485429664,
+      "student_episode_return": -33.24366818684602,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0054",
+      "command_id": "train-multisine",
+      "split": "validation",
+      "visited_action_rmse": 0.13573541951051682,
+      "student_episode_return": -96.60730343262095,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.0223470261382592,
+      "student_episode_return": -1.053981799677122,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.06017858091454927,
+      "student_episode_return": -5.393285963145475,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.10886744229692995,
+      "student_episode_return": -18.9740850840329,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.0223470261382592,
+      "student_episode_return": -1.053981799677122,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.06017858091454927,
+      "student_episode_return": -5.393285963145475,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.10886744229692995,
+      "student_episode_return": -18.9740850840329,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.024107008101630717,
+      "student_episode_return": -3.086857358979932,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "validation",
+      "visited_action_rmse": 0.024107008101630717,
+      "student_episode_return": -3.086857358979932,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "command_id": "train-sine-0.50hz",
+      "split": "validation",
+      "visited_action_rmse": 0.09235226844980636,
+      "student_episode_return": -48.62564453779605,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "command_id": "train-sine-1.00hz",
+      "split": "validation",
+      "visited_action_rmse": 0.0582244878325788,
+      "student_episode_return": -14.328900055629875,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "command_id": "train-multisine",
+      "split": "validation",
+      "visited_action_rmse": 0.046108084679131606,
+      "student_episode_return": -5.594004134223135,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1388",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.12782181461350933,
+      "student_episode_return": -4.058207559976672,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1388",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.13577361773787722,
+      "student_episode_return": -26.265587733360032,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1388",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.30705024262900116,
+      "student_episode_return": -356.239081755195,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1388",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.12782181461350933,
+      "student_episode_return": -4.058207559976672,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1388",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.13577361773787722,
+      "student_episode_return": -26.265587733360032,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1388",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.30705024262900116,
+      "student_episode_return": -356.239081755195,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1388",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.024214890172027353,
+      "student_episode_return": -0.5614075419412131,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1388",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.024214890172027353,
+      "student_episode_return": -0.5614075419412131,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1388",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.0650691314376216,
+      "student_episode_return": -6.7927095361284175,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1388",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.02309952766226423,
+      "student_episode_return": -0.7536713252073993,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1388",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.09429955828056384,
+      "student_episode_return": -6.440582492970994,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1743",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.11535158116602562,
+      "student_episode_return": -173.28972148635887,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1743",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.11338036359197637,
+      "student_episode_return": -128.86049754872838,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1743",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.05678690564700547,
+      "student_episode_return": -18.67922410664995,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1743",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.11535158116602562,
+      "student_episode_return": -173.28972148635887,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1743",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.11338036359197637,
+      "student_episode_return": -128.86049754872838,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1743",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.05678690564700547,
+      "student_episode_return": -18.67922410664995,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1743",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.13969010759246575,
+      "student_episode_return": -241.25241210347397,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1743",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.13969010759246575,
+      "student_episode_return": -241.25241210347397,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1743",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.1328159823618311,
+      "student_episode_return": -236.6817219202712,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1743",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.129495639989362,
+      "student_episode_return": -201.23009890550878,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1743",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.13314370345974155,
+      "student_episode_return": -226.05475999267463,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1402",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.044115675069982346,
+      "student_episode_return": -9.565117268267237,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1402",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1157290230530169,
+      "student_episode_return": -14.748039145444835,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1402",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.22766181466053334,
+      "student_episode_return": -61.33940534411539,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1402",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.044115675069982346,
+      "student_episode_return": -9.565117268267237,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1402",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1157290230530169,
+      "student_episode_return": -14.748039145444835,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1402",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.22766181466053334,
+      "student_episode_return": -61.33940534411539,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1402",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.02047124643271138,
+      "student_episode_return": -0.6705029270626576,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1402",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.02047124643271138,
+      "student_episode_return": -0.6705029270626576,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1402",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.05985090767105198,
+      "student_episode_return": -15.110804069533145,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1402",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.0563665014959226,
+      "student_episode_return": -0.3492220987021915,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_boundary-1402",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.045667945732430146,
+      "student_episode_return": -4.879408156683722,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0191",
+      "command_id": "train-step-pos-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1433600612041698,
+      "student_episode_return": -69.53531866391226,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0191",
+      "command_id": "train-step-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.13514344356745847,
+      "student_episode_return": -80.8180230511438,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0191",
+      "command_id": "train-step-pos-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.3404771450847157,
+      "student_episode_return": -200.20042868396138,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0191",
+      "command_id": "train-step-neg-10deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1433600612041698,
+      "student_episode_return": -69.53531866391226,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0191",
+      "command_id": "train-step-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.13514344356745847,
+      "student_episode_return": -80.8180230511438,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0191",
+      "command_id": "train-step-neg-30deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.3404771450847157,
+      "student_episode_return": -200.20042868396138,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0191",
+      "command_id": "train-doublet-pos-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1140245821624409,
+      "student_episode_return": -49.61102806828885,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0191",
+      "command_id": "train-doublet-neg-20deg-s",
+      "split": "train",
+      "visited_action_rmse": 0.1140245821624409,
+      "student_episode_return": -49.61102806828885,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0191",
+      "command_id": "train-sine-0.50hz",
+      "split": "train",
+      "visited_action_rmse": 0.11251834470682368,
+      "student_episode_return": -69.6065211245432,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0191",
+      "command_id": "train-sine-1.00hz",
+      "split": "train",
+      "visited_action_rmse": 0.11517977124410998,
+      "student_episode_return": -54.14400763431056,
+      "student_saturation_fraction": 0.0
+    },
+    {
+      "plant_id": "train_core-0191",
+      "command_id": "train-multisine",
+      "split": "train",
+      "visited_action_rmse": 0.1274460375011031,
+      "student_episode_return": -70.42451080266461,
+      "student_saturation_fraction": 0.0
+    }
+  ]
+}

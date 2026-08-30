@@ -1,0 +1,42 @@
+{
+  "case": "train_boundary-1477",
+  "gjb_level": 2,
+  "dutch_roll_level": 2,
+  "raw": {
+    "peak_abs_p_deg_s": 14.985751088589435,
+    "oscillation_energy_integral": 0.3630919696415009,
+    "primary_energy_integral": 0.3581470792914794,
+    "high_frequency_energy_integral": 0.0049448903500215755,
+    "residual_force_rms_n": 0.0,
+    "episode_return": -73.55182384619403
+  },
+  "controlled": {
+    "peak_abs_p_deg_s": 12.1677808491694,
+    "oscillation_energy_integral": 0.2596718027794582,
+    "primary_energy_integral": 0.25648248350703556,
+    "high_frequency_energy_integral": 0.003189319272422689,
+    "residual_force_rms_n": 0.38903718879650145,
+    "episode_return": -56.21792721130764
+  },
+  "train_episodes": 40,
+  "parameters": {
+    "actor": 1908552,
+    "twin_critics": 8095700,
+    "trainable_online_total": 10004252,
+    "frozen_targets": 10004252
+  },
+  "router_training": {
+    "method": "loss_free_logit_bias_top2_simbal_z_loss",
+    "noise_std": 0.0,
+    "balance_coefficient": 0.0,
+    "simbal_coefficient": 0.1,
+    "z_coefficient": 0.001,
+    "bias_update_rate": 0.001,
+    "final_routing_bias": [
+      0.07500016689300537,
+      -0.010999973863363266,
+      0.08400002121925354,
+      -0.14800021052360535
+    ]
+  }
+}

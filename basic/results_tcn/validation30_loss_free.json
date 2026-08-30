@@ -1,0 +1,1518 @@
+{
+  "split": "validation",
+  "per_level": 10,
+  "routing_bias": [
+    -0.05049990117549896,
+    0.034499987959861755,
+    0.04149993881583214,
+    -0.02550002746284008
+  ],
+  "overall": {
+    "aircraft": 30.0,
+    "mean_energy_reduction_percent": 21.709367665673142,
+    "median_energy_reduction_percent": 17.39028536861631,
+    "energy_improved_fraction": 1.0,
+    "mean_peak_reduction_percent": 7.90743376896792,
+    "peak_improved_fraction": 0.8333333333333334,
+    "mean_residual_force_rms_n": 0.38377572629012646,
+    "router_mean_weights": [
+      0.2759354521830877,
+      0.1884458730618159,
+      0.22515554130077362,
+      0.31046315630277
+    ],
+    "router_top1_fraction": [
+      0.013866666666666668,
+      0.0,
+      0.0042,
+      0.9819333333333333
+    ],
+    "router_selected_expert_share": [
+      0.02036666666666667,
+      0.011333333333333332,
+      0.46830000000000005,
+      0.5
+    ],
+    "mean_router_top1_switch_fraction": 0.0035404141616566464,
+    "mean_router_top2_switch_fraction": 0.00841683366733467,
+    "mean_router_top1_dwell_s": 7.9905982905982915,
+    "mean_router_effective_expert_count": 2.2259155058112783
+  },
+  "by_dutch_roll_level": {
+    "1": {
+      "aircraft": 10.0,
+      "mean_energy_reduction_percent": 12.8094408679711,
+      "median_energy_reduction_percent": 12.395394753921195,
+      "energy_improved_fraction": 1.0,
+      "mean_peak_reduction_percent": 1.7550837686555076,
+      "peak_improved_fraction": 0.6,
+      "mean_residual_force_rms_n": 0.2903482056214241,
+      "router_mean_weights": [
+        0.27387782037258146,
+        0.1862618774175644,
+        0.2272901713848114,
+        0.31257013976573944
+      ],
+      "router_top1_fraction": [
+        0.0012000000000000001,
+        0.0,
+        0.0,
+        0.9987999999999999
+      ],
+      "router_selected_expert_share": [
+        0.007999999999999998,
+        0.0,
+        0.492,
+        0.5
+      ],
+      "mean_router_top1_switch_fraction": 0.0008016032064128255,
+      "mean_router_top2_switch_fraction": 0.002404809619238477,
+      "mean_router_top1_dwell_s": 9.2,
+      "mean_router_effective_expert_count": 2.075715956982169
+    },
+    "2": {
+      "aircraft": 10.0,
+      "mean_energy_reduction_percent": 13.586580468588693,
+      "median_energy_reduction_percent": 12.810665680124533,
+      "energy_improved_fraction": 1.0,
+      "mean_peak_reduction_percent": 5.766416923766005,
+      "peak_improved_fraction": 0.9,
+      "mean_residual_force_rms_n": 0.3847881957884288,
+      "router_mean_weights": [
+        0.27471083402633667,
+        0.18703067302703857,
+        0.2265567108988762,
+        0.31170176565647123
+      ],
+      "router_top1_fraction": [
+        0.0073999999999999995,
+        0.0,
+        0.0126,
+        0.9799999999999999
+      ],
+      "router_selected_expert_share": [
+        0.013699999999999999,
+        0.0,
+        0.48629999999999995,
+        0.5
+      ],
+      "mean_router_top1_switch_fraction": 0.003607214428857715,
+      "mean_router_top2_switch_fraction": 0.00440881763527054,
+      "mean_router_top1_dwell_s": 7.733333333333332,
+      "mean_router_effective_expert_count": 2.12797138045669
+    },
+    "3": {
+      "aircraft": 10.0,
+      "mean_energy_reduction_percent": 38.73208166045965,
+      "median_energy_reduction_percent": 35.62626399050709,
+      "energy_improved_fraction": 1.0,
+      "mean_peak_reduction_percent": 16.200800614482237,
+      "peak_improved_fraction": 1.0,
+      "mean_residual_force_rms_n": 0.4761907774605262,
+      "router_mean_weights": [
+        0.27921770215034486,
+        0.19204506874084473,
+        0.22161974161863326,
+        0.30711756348609925
+      ],
+      "router_top1_fraction": [
+        0.033,
+        0.0,
+        0.0,
+        0.967
+      ],
+      "router_selected_expert_share": [
+        0.039400000000000004,
+        0.033999999999999996,
+        0.4266,
+        0.5
+      ],
+      "mean_router_top1_switch_fraction": 0.006212424849699399,
+      "mean_router_top2_switch_fraction": 0.01843687374749499,
+      "mean_router_top1_dwell_s": 7.038461538461538,
+      "mean_router_effective_expert_count": 2.474059179994976
+    }
+  },
+  "cases": [
+    {
+      "plant_id": "validation-2059",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.13424025948608664,
+      "controlled_energy": 0.1200946968540449,
+      "energy_ratio": 0.8946250350960633,
+      "raw_high_frequency_energy": 0.0022738987691784535,
+      "controlled_high_frequency_energy": 0.0015284083544007197,
+      "high_frequency_energy_ratio": 0.6721532088928149,
+      "raw_peak_deg_s": 9.070334674847349,
+      "controlled_peak_deg_s": 8.878678785715948,
+      "peak_ratio": 0.9788700311507936,
+      "raw_return": -27.185737080474134,
+      "controlled_return": -25.546449894948015,
+      "residual_force_rms_n": 0.2804813444991955,
+      "residual_force_max_abs_n": 1.4899338662624357,
+      "router_mean_weights": [
+        0.27762389183044434,
+        0.19422030448913574,
+        0.21930119395256042,
+        0.30885469913482666
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.013,
+        0.0,
+        0.487,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.026,
+        0.0,
+        0.974,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.12425735263954
+    },
+    {
+      "plant_id": "validation-2044",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.15296621107084074,
+      "controlled_energy": 0.1317400871595083,
+      "energy_ratio": 0.8612365190800056,
+      "raw_high_frequency_energy": 0.001972143869534393,
+      "controlled_high_frequency_energy": 0.001325966034246121,
+      "high_frequency_energy_ratio": 0.6723475172017601,
+      "raw_peak_deg_s": 14.196161492475753,
+      "controlled_peak_deg_s": 13.393265754314871,
+      "peak_ratio": 0.9434427582000647,
+      "raw_return": -31.012271460859896,
+      "controlled_return": -28.05904298927623,
+      "residual_force_rms_n": 0.2948528681558386,
+      "residual_force_max_abs_n": 1.463547483086586,
+      "router_mean_weights": [
+        0.27473586797714233,
+        0.188850998878479,
+        0.22414438426494598,
+        0.31226879358291626
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.014,
+        0.0,
+        0.486,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.028,
+        0.0,
+        0.972,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.1318860042342127
+    },
+    {
+      "plant_id": "validation-1914",
+      "gjb_level": 1,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.22768092531251838,
+      "controlled_energy": 0.20002287868263663,
+      "energy_ratio": 0.8785227765922073,
+      "raw_high_frequency_energy": 0.0011431731012040982,
+      "controlled_high_frequency_energy": 0.0009391295780928881,
+      "high_frequency_energy_ratio": 0.8215112629082226,
+      "raw_peak_deg_s": 12.900460731017281,
+      "controlled_peak_deg_s": 12.993737968493386,
+      "peak_ratio": 1.007230535360015,
+      "raw_return": -45.83691802701923,
+      "controlled_return": -41.769872346641606,
+      "residual_force_rms_n": 0.22880368706236184,
+      "residual_force_max_abs_n": 0.6701267704367637,
+      "router_mean_weights": [
+        0.27328231930732727,
+        0.18585635721683502,
+        0.226984441280365,
+        0.31387680768966675
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.0,
+        0.0,
+        0.5,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.0,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.0
+    },
+    {
+      "plant_id": "validation-1939",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.8229056252027531,
+      "controlled_energy": 0.6261850033491777,
+      "energy_ratio": 0.7609438849016179,
+      "raw_high_frequency_energy": 0.01040983305762497,
+      "controlled_high_frequency_energy": 0.00478138674389198,
+      "high_frequency_energy_ratio": 0.45931444984986775,
+      "raw_peak_deg_s": 21.345862448652646,
+      "controlled_peak_deg_s": 21.790597001234374,
+      "peak_ratio": 1.020834695887858,
+      "raw_return": -165.85939313825924,
+      "controlled_return": -133.0382997414295,
+      "residual_force_rms_n": 0.5042237684992213,
+      "residual_force_max_abs_n": 2.1291736185550687,
+      "router_mean_weights": [
+        0.27010831236839294,
+        0.17132416367530823,
+        0.23964719474315643,
+        0.3189202845096588
+      ],
+      "router_top_expert_fraction": [
+        0.012,
+        0.0,
+        0.0,
+        0.988
+      ],
+      "router_selected_expert_share": [
+        0.017,
+        0.0,
+        0.483,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.034,
+        0.0,
+        0.966,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.008016032064128256,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 2.0,
+      "router_effective_expert_count": 2.1540258060949253
+    },
+    {
+      "plant_id": "validation-1841",
+      "gjb_level": 3,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.7323204136981982,
+      "controlled_energy": 0.5823356094359882,
+      "energy_ratio": 0.7951923755548601,
+      "raw_high_frequency_energy": 0.0025809554251321563,
+      "controlled_high_frequency_energy": 0.00204229971372803,
+      "high_frequency_energy_ratio": 0.7912960037360797,
+      "raw_peak_deg_s": 36.04731633079612,
+      "controlled_peak_deg_s": 31.96699938900205,
+      "peak_ratio": 0.8868066375773956,
+      "raw_return": -147.2523109775077,
+      "controlled_return": -122.45055041806563,
+      "residual_force_rms_n": 0.3613898048685574,
+      "residual_force_max_abs_n": 0.7559067338705062,
+      "router_mean_weights": [
+        0.2627919614315033,
+        0.16416965425014496,
+        0.2512773871421814,
+        0.3217611610889435
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.0,
+        0.0,
+        0.5,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.0,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.0
+    },
+    {
+      "plant_id": "validation-1969",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.05407407763850164,
+      "controlled_energy": 0.05264421048308989,
+      "energy_ratio": 0.9735572529785759,
+      "raw_high_frequency_energy": 0.0005588710769653192,
+      "controlled_high_frequency_energy": 0.00047577919094145016,
+      "high_frequency_energy_ratio": 0.8513219068786677,
+      "raw_peak_deg_s": 5.9992062354477875,
+      "controlled_peak_deg_s": 6.04210974591661,
+      "peak_ratio": 1.0071515311834618,
+      "raw_return": -10.910561404010274,
+      "controlled_return": -11.126130180555734,
+      "residual_force_rms_n": 0.16103444938049766,
+      "residual_force_max_abs_n": 0.6911318153142929,
+      "router_mean_weights": [
+        0.2794109880924225,
+        0.1995735615491867,
+        0.21583475172519684,
+        0.3051806688308716
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.0,
+        0.0,
+        0.5,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.0,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.0
+    },
+    {
+      "plant_id": "validation-2064",
+      "gjb_level": 1,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.18791273843462733,
+      "controlled_energy": 0.16415480469886976,
+      "energy_ratio": 0.8735693283293687,
+      "raw_high_frequency_energy": 0.00272936851885408,
+      "controlled_high_frequency_energy": 0.0018610076179901595,
+      "high_frequency_energy_ratio": 0.6818454910484202,
+      "raw_peak_deg_s": 10.479486130034456,
+      "controlled_peak_deg_s": 10.719371551063409,
+      "peak_ratio": 1.0228909526719479,
+      "raw_return": -38.11728809891631,
+      "controlled_return": -34.98279247898747,
+      "residual_force_rms_n": 0.33886545976312493,
+      "residual_force_max_abs_n": 1.795925509929657,
+      "router_mean_weights": [
+        0.275168240070343,
+        0.18876755237579346,
+        0.22370660305023193,
+        0.312357634305954
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.016,
+        0.0,
+        0.484,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.032,
+        0.0,
+        0.968,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.146762117995502
+    },
+    {
+      "plant_id": "validation-2005",
+      "gjb_level": 2,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.04345287525507692,
+      "controlled_energy": 0.039613384184710755,
+      "energy_ratio": 0.9116401147719777,
+      "raw_high_frequency_energy": 0.0019342969528457743,
+      "controlled_high_frequency_energy": 0.0015163049329521402,
+      "high_frequency_energy_ratio": 0.7839049380299771,
+      "raw_peak_deg_s": 7.103385074852135,
+      "controlled_peak_deg_s": 7.020117175080716,
+      "peak_ratio": 0.9882777156392366,
+      "raw_return": -8.881717936967066,
+      "controlled_return": -8.419342907878498,
+      "residual_force_rms_n": 0.23105208616146722,
+      "residual_force_max_abs_n": 1.4087250530719757,
+      "router_mean_weights": [
+        0.27909573912620544,
+        0.19899894297122955,
+        0.21652868390083313,
+        0.30537641048431396
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.012,
+        0.0,
+        0.488,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.024,
+        0.0,
+        0.976,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.11648867874142
+    },
+    {
+      "plant_id": "validation-1932",
+      "gjb_level": 1,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.07822937739073842,
+      "controlled_energy": 0.0751425197083728,
+      "energy_ratio": 0.9605409401771479,
+      "raw_high_frequency_energy": 0.000850063275617597,
+      "controlled_high_frequency_energy": 0.0008937729820595,
+      "high_frequency_energy_ratio": 1.0514193562945613,
+      "raw_peak_deg_s": 10.10281292208934,
+      "controlled_peak_deg_s": 9.809852395709628,
+      "peak_ratio": 0.9710020834158805,
+      "raw_return": -15.77361764206757,
+      "controlled_return": -15.572263943017138,
+      "residual_force_rms_n": 0.1727059882559954,
+      "residual_force_max_abs_n": 0.8707836896181106,
+      "router_mean_weights": [
+        0.2768281102180481,
+        0.1943860948085785,
+        0.22009535133838654,
+        0.30869048833847046
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.008,
+        0.0,
+        0.492,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.016,
+        0.0,
+        0.984,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.0837396101160865
+    },
+    {
+      "plant_id": "validation-1853",
+      "gjb_level": 3,
+      "dutch_roll_level": 1,
+      "raw_energy": 0.4796581108474521,
+      "controlled_energy": 0.388152622978422,
+      "energy_ratio": 0.8092276857210656,
+      "raw_high_frequency_energy": 0.0026894244625762964,
+      "controlled_high_frequency_energy": 0.0017730032163717742,
+      "high_frequency_energy_ratio": 0.6592500518394745,
+      "raw_peak_deg_s": 18.359765206776757,
+      "controlled_peak_deg_s": 18.322764442357286,
+      "peak_ratio": 0.9979846820477958,
+      "raw_return": -96.64471342171689,
+      "controlled_return": -81.60700230462501,
+      "residual_force_rms_n": 0.3300725995679815,
+      "residual_force_max_abs_n": 0.9584506005048752,
+      "router_mean_weights": [
+        0.2697327733039856,
+        0.17647114396095276,
+        0.23538172245025635,
+        0.31841444969177246
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.0,
+        0.0,
+        0.5,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.0,
+        0.0,
+        1.0,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.0,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.0
+    },
+    {
+      "plant_id": "validation-1819",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.11679503602560512,
+      "controlled_energy": 0.10915700363414488,
+      "energy_ratio": 0.9346031077058297,
+      "raw_high_frequency_energy": 0.001227248607962096,
+      "controlled_high_frequency_energy": 0.000972667339124555,
+      "high_frequency_energy_ratio": 0.7925593337927797,
+      "raw_peak_deg_s": 10.944724645504733,
+      "controlled_peak_deg_s": 10.844830691732051,
+      "peak_ratio": 0.9908728673394528,
+      "raw_return": -23.515807164553166,
+      "controlled_return": -22.56196609943388,
+      "residual_force_rms_n": 0.20130452943312685,
+      "residual_force_max_abs_n": 1.1514854282140732,
+      "router_mean_weights": [
+        0.27517902851104736,
+        0.19097040593624115,
+        0.22278548777103424,
+        0.3110652267932892
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.008,
+        0.0,
+        0.492,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.016,
+        0.0,
+        0.984,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.0837396101160865
+    },
+    {
+      "plant_id": "validation-2092",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.050748643558344464,
+      "controlled_energy": 0.04804393921101881,
+      "energy_ratio": 0.946703908564253,
+      "raw_high_frequency_energy": 0.0016328737040671927,
+      "controlled_high_frequency_energy": 0.0013357424371341453,
+      "high_frequency_energy_ratio": 0.8180316908815745,
+      "raw_peak_deg_s": 5.755797156341209,
+      "controlled_peak_deg_s": 5.381331647637873,
+      "peak_ratio": 0.934941156101934,
+      "raw_return": -10.286067153307147,
+      "controlled_return": -10.433825347468808,
+      "residual_force_rms_n": 0.2317437339397935,
+      "residual_force_max_abs_n": 1.2200409293174743,
+      "router_mean_weights": [
+        0.2800617516040802,
+        0.2004949301481247,
+        0.2150471955537796,
+        0.3043963611125946
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.012,
+        0.0,
+        0.488,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.024,
+        0.0,
+        0.976,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.11648867874142
+    },
+    {
+      "plant_id": "validation-2065",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.08458982894306576,
+      "controlled_energy": 0.07765742426979322,
+      "energy_ratio": 0.918046829507854,
+      "raw_high_frequency_energy": 0.0013398515583300193,
+      "controlled_high_frequency_energy": 0.0010144125413653437,
+      "high_frequency_energy_ratio": 0.7571081550479366,
+      "raw_peak_deg_s": 7.636802544832811,
+      "controlled_peak_deg_s": 7.142973775803723,
+      "peak_ratio": 0.9353356635673105,
+      "raw_return": -17.10246503738851,
+      "controlled_return": -16.87059051191925,
+      "residual_force_rms_n": 0.24677404990550364,
+      "residual_force_max_abs_n": 1.1795306414365767,
+      "router_mean_weights": [
+        0.2791871428489685,
+        0.1973065286874771,
+        0.21708501875400543,
+        0.30642130970954895
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.009,
+        0.0,
+        0.491,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.018,
+        0.0,
+        0.982,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.0922125488448127
+    },
+    {
+      "plant_id": "validation-1882",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.31326176228234914,
+      "controlled_energy": 0.257981733634246,
+      "energy_ratio": 0.823534068616143,
+      "raw_high_frequency_energy": 0.003638942889701932,
+      "controlled_high_frequency_energy": 0.0023194697824365736,
+      "high_frequency_energy_ratio": 0.6374020842702928,
+      "raw_peak_deg_s": 14.567874315561879,
+      "controlled_peak_deg_s": 13.37434864843491,
+      "peak_ratio": 0.9180713917985959,
+      "raw_return": -63.32961373002452,
+      "controlled_return": -55.389899552557566,
+      "residual_force_rms_n": 0.3822154021753047,
+      "residual_force_max_abs_n": 1.6814995765686034,
+      "router_mean_weights": [
+        0.27496424317359924,
+        0.18571487069129944,
+        0.2258743792772293,
+        0.3134463131427765
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.015,
+        0.0,
+        0.485,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.03,
+        0.0,
+        0.97,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.13938470069171
+    },
+    {
+      "plant_id": "validation-1834",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.20340275441175198,
+      "controlled_energy": 0.1750815402724527,
+      "energy_ratio": 0.8607628779600097,
+      "raw_high_frequency_energy": 0.0032270363075642535,
+      "controlled_high_frequency_energy": 0.002117402129946018,
+      "high_frequency_energy_ratio": 0.6561445016849592,
+      "raw_peak_deg_s": 11.63040788727259,
+      "controlled_peak_deg_s": 10.320484568065867,
+      "peak_ratio": 0.8873708186416918,
+      "raw_return": -41.190288240520694,
+      "controlled_return": -38.22906497552091,
+      "residual_force_rms_n": 0.36195242969158176,
+      "residual_force_max_abs_n": 1.5947518229484556,
+      "router_mean_weights": [
+        0.27937448024749756,
+        0.19454644620418549,
+        0.21863923966884613,
+        0.3074396252632141
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.015,
+        0.0,
+        0.485,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.03,
+        0.0,
+        0.97,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.13938470069171
+    },
+    {
+      "plant_id": "validation-1966",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.06712272217654588,
+      "controlled_energy": 0.059270961769025764,
+      "energy_ratio": 0.8830238084374996,
+      "raw_high_frequency_energy": 0.0013520590890102745,
+      "controlled_high_frequency_energy": 0.001204068800233166,
+      "high_frequency_energy_ratio": 0.8905445109758927,
+      "raw_peak_deg_s": 7.119195962704857,
+      "controlled_peak_deg_s": 6.310448517454482,
+      "peak_ratio": 0.8863990470992598,
+      "raw_return": -13.69381298258796,
+      "controlled_return": -13.103062304554703,
+      "residual_force_rms_n": 0.2687867771643339,
+      "residual_force_max_abs_n": 1.3933776050806044,
+      "router_mean_weights": [
+        0.2798996865749359,
+        0.19977805018424988,
+        0.21557624638080597,
+        0.30474600195884705
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.012,
+        0.0,
+        0.488,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.024,
+        0.0,
+        0.976,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.11648867874142
+    },
+    {
+      "plant_id": "validation-1816",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.6429162927506633,
+      "controlled_energy": 0.5030390506597398,
+      "energy_ratio": 0.782433197496877,
+      "raw_high_frequency_energy": 0.0025785950460912904,
+      "controlled_high_frequency_energy": 0.001985556176382307,
+      "high_frequency_energy_ratio": 0.7700147331749787,
+      "raw_peak_deg_s": 24.129355458702353,
+      "controlled_peak_deg_s": 22.43108875988575,
+      "peak_ratio": 0.9296182319613466,
+      "raw_return": -129.3674317273393,
+      "controlled_return": -105.11693178231016,
+      "residual_force_rms_n": 0.33879178214570305,
+      "residual_force_max_abs_n": 1.1621249735355377,
+      "router_mean_weights": [
+        0.2663865387439728,
+        0.1704648733139038,
+        0.24296161532402039,
+        0.3201866149902344
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.01,
+        0.0,
+        0.49,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.02,
+        0.0,
+        0.98,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.1004817794440873
+    },
+    {
+      "plant_id": "validation-1831",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 1.2448781524998151,
+      "controlled_energy": 0.9214089332271235,
+      "energy_ratio": 0.7401599356345522,
+      "raw_high_frequency_energy": 0.010967542540122575,
+      "controlled_high_frequency_energy": 0.03895311519267558,
+      "high_frequency_energy_ratio": 3.5516721316715523,
+      "raw_peak_deg_s": 30.98561411918596,
+      "controlled_peak_deg_s": 28.969835109274005,
+      "peak_ratio": 0.9349446810330021,
+      "raw_return": -251.6020041120695,
+      "controlled_return": -203.43256340306564,
+      "residual_force_rms_n": 1.0457775193265302,
+      "residual_force_max_abs_n": 3.783856737613678,
+      "router_mean_weights": [
+        0.26146066188812256,
+        0.1548207849264145,
+        0.2584049701690674,
+        0.3253134489059448
+      ],
+      "router_top_expert_fraction": [
+        0.044,
+        0.0,
+        0.126,
+        0.83
+      ],
+      "router_selected_expert_share": [
+        0.028,
+        0.0,
+        0.472,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.056,
+        0.0,
+        0.944,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.028056112224448898,
+      "router_top2_switch_fraction": 0.008016032064128256,
+      "router_top1_mean_dwell_s": 0.6666666666666666,
+      "router_effective_expert_count": 2.227891053964407
+    },
+    {
+      "plant_id": "validation-1933",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.43377560504424756,
+      "controlled_energy": 0.35945259004670344,
+      "energy_ratio": 0.8286602240115307,
+      "raw_high_frequency_energy": 0.005872749625323299,
+      "controlled_high_frequency_energy": 0.007028307072096687,
+      "high_frequency_energy_ratio": 1.1967659989778252,
+      "raw_peak_deg_s": 15.974967349246327,
+      "controlled_peak_deg_s": 16.2027712238281,
+      "peak_ratio": 1.01426005259363,
+      "raw_return": -87.82094538830869,
+      "controlled_return": -77.09841466257686,
+      "residual_force_rms_n": 0.4785913092188408,
+      "residual_force_max_abs_n": 2.99567397236824,
+      "router_mean_weights": [
+        0.2729078531265259,
+        0.1808708906173706,
+        0.2303088754415512,
+        0.31591227650642395
+      ],
+      "router_top_expert_fraction": [
+        0.018,
+        0.0,
+        0.0,
+        0.982
+      ],
+      "router_selected_expert_share": [
+        0.015,
+        0.0,
+        0.485,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.03,
+        0.0,
+        0.97,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.004008016032064128,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 3.3333333333333335,
+      "router_effective_expert_count": 2.13938470069171
+    },
+    {
+      "plant_id": "validation-2020",
+      "gjb_level": 2,
+      "dutch_roll_level": 2,
+      "raw_energy": 0.08467848501353184,
+      "controlled_energy": 0.07819329815438605,
+      "energy_ratio": 0.9234139952065813,
+      "raw_high_frequency_energy": 0.002050972821467371,
+      "controlled_high_frequency_energy": 0.0023927551465329753,
+      "high_frequency_energy_ratio": 1.1666440049756854,
+      "raw_peak_deg_s": 7.679464191901007,
+      "controlled_peak_deg_s": 7.614529695182822,
+      "peak_ratio": 0.9915443974871753,
+      "raw_return": -17.255689098701094,
+      "controlled_return": -16.84208367288353,
+      "residual_force_rms_n": 0.2919444248835694,
+      "residual_force_max_abs_n": 1.8839749932289123,
+      "router_mean_weights": [
+        0.2776869535446167,
+        0.19533894956111908,
+        0.21888408064842224,
+        0.308090478181839
+      ],
+      "router_top_expert_fraction": [
+        0.012,
+        0.0,
+        0.0,
+        0.988
+      ],
+      "router_selected_expert_share": [
+        0.013,
+        0.0,
+        0.487,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.026,
+        0.0,
+        0.974,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.004008016032064128,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 3.3333333333333335,
+      "router_effective_expert_count": 2.12425735263954
+    },
+    {
+      "plant_id": "validation-1910",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.5972357438365168,
+      "controlled_energy": 0.15491862170466575,
+      "energy_ratio": 0.25939274951881,
+      "raw_high_frequency_energy": 0.02816870240420848,
+      "controlled_high_frequency_energy": 0.010030850407025924,
+      "high_frequency_energy_ratio": 0.3560991295618675,
+      "raw_peak_deg_s": 14.145230962891546,
+      "controlled_peak_deg_s": 9.612756447240749,
+      "peak_ratio": 0.6795757858220028,
+      "raw_return": -124.89376273667783,
+      "controlled_return": -36.7972432981549,
+      "residual_force_rms_n": 0.6027569693491028,
+      "residual_force_max_abs_n": 3.5008625149726864,
+      "router_mean_weights": [
+        0.28316885232925415,
+        0.19964253902435303,
+        0.21450388431549072,
+        0.30268487334251404
+      ],
+      "router_top_expert_fraction": [
+        0.016,
+        0.0,
+        0.0,
+        0.984
+      ],
+      "router_selected_expert_share": [
+        0.013,
+        0.094,
+        0.393,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.026,
+        0.188,
+        0.786,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.004008016032064128,
+      "router_top2_switch_fraction": 0.012024048096192385,
+      "router_top1_mean_dwell_s": 3.3333333333333335,
+      "router_effective_expert_count": 2.697512362605788
+    },
+    {
+      "plant_id": "validation-1964",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.12841160195329807,
+      "controlled_energy": 0.07158775874348541,
+      "energy_ratio": 0.5574866885433072,
+      "raw_high_frequency_energy": 0.0037412109011227632,
+      "controlled_high_frequency_energy": 0.0013599207437047652,
+      "high_frequency_energy_ratio": 0.36349748240513347,
+      "raw_peak_deg_s": 9.827269238665128,
+      "controlled_peak_deg_s": 8.041414550817201,
+      "peak_ratio": 0.8182755916748948,
+      "raw_return": -26.472255594802256,
+      "controlled_return": -15.690740849925083,
+      "residual_force_rms_n": 0.2996950118527349,
+      "residual_force_max_abs_n": 1.249178883433342,
+      "router_mean_weights": [
+        0.27859771251678467,
+        0.1968967765569687,
+        0.217926025390625,
+        0.3065795600414276
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.011,
+        0.0,
+        0.489,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.022,
+        0.0,
+        0.978,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.108568169355161
+    },
+    {
+      "plant_id": "validation-2024",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.09602430329034166,
+      "controlled_energy": 0.07985281381201081,
+      "energy_ratio": 0.831589619250511,
+      "raw_high_frequency_energy": 0.0014252573990952166,
+      "controlled_high_frequency_energy": 0.0014552029906921584,
+      "high_frequency_energy_ratio": 1.0210106550690086,
+      "raw_peak_deg_s": 7.251802180401249,
+      "controlled_peak_deg_s": 6.909138039005267,
+      "peak_ratio": 0.9527477263069768,
+      "raw_return": -19.499351689152128,
+      "controlled_return": -18.003562152440473,
+      "residual_force_rms_n": 0.2972556685795551,
+      "residual_force_max_abs_n": 1.3853911846876144,
+      "router_mean_weights": [
+        0.28056102991104126,
+        0.1993297040462494,
+        0.21584555506706238,
+        0.30426380038261414
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.012,
+        0.0,
+        0.488,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.024,
+        0.0,
+        0.976,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.11648867874142
+    },
+    {
+      "plant_id": "validation-1829",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.4993827377114843,
+      "controlled_energy": 0.2461381707981858,
+      "energy_ratio": 0.49288482002033246,
+      "raw_high_frequency_energy": 0.011348119811845773,
+      "controlled_high_frequency_energy": 0.0045799823599778754,
+      "high_frequency_energy_ratio": 0.4035895316506128,
+      "raw_peak_deg_s": 13.64309876194805,
+      "controlled_peak_deg_s": 10.767290393090196,
+      "peak_ratio": 0.7892114966668153,
+      "raw_return": -101.84343488045783,
+      "controlled_return": -58.49388172956944,
+      "residual_force_rms_n": 0.6211404243564588,
+      "residual_force_max_abs_n": 1.649746263027191,
+      "router_mean_weights": [
+        0.28116458654403687,
+        0.19464272260665894,
+        0.21976244449615479,
+        0.3044305741786957
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.017,
+        0.076,
+        0.407,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.034,
+        0.152,
+        0.814,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.02004008016032064,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.657973266752248
+    },
+    {
+      "plant_id": "validation-1871",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.4872341205644528,
+      "controlled_energy": 0.22352005041006598,
+      "energy_ratio": 0.4587528684385273,
+      "raw_high_frequency_energy": 0.009429620635450834,
+      "controlled_high_frequency_energy": 0.0022388931107993966,
+      "high_frequency_energy_ratio": 0.237431938924694,
+      "raw_peak_deg_s": 16.42850304580538,
+      "controlled_peak_deg_s": 12.79370004962991,
+      "peak_ratio": 0.7787502010352959,
+      "raw_return": -99.40970078770107,
+      "controlled_return": -49.22260807056341,
+      "residual_force_rms_n": 0.4198599488423594,
+      "residual_force_max_abs_n": 1.4628545254468917,
+      "router_mean_weights": [
+        0.2776950001716614,
+        0.19035112857818604,
+        0.22184312343597412,
+        0.3101108968257904
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.013,
+        0.0,
+        0.487,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.026,
+        0.0,
+        0.974,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.12425735263954
+    },
+    {
+      "plant_id": "validation-1991",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.4867325537569209,
+      "controlled_energy": 0.3860499939955143,
+      "energy_ratio": 0.7931460326943973,
+      "raw_high_frequency_energy": 0.007251965951179963,
+      "controlled_high_frequency_energy": 0.00881790944464307,
+      "high_frequency_energy_ratio": 1.2159336521992787,
+      "raw_peak_deg_s": 15.015101005343373,
+      "controlled_peak_deg_s": 13.44611556451672,
+      "peak_ratio": 0.8955061680725089,
+      "raw_return": -98.76489528230401,
+      "controlled_return": -85.60835537696087,
+      "residual_force_rms_n": 0.5824027557208724,
+      "residual_force_max_abs_n": 3.133459049463272,
+      "router_mean_weights": [
+        0.2826744318008423,
+        0.19262270629405975,
+        0.2195644974708557,
+        0.3051382899284363
+      ],
+      "router_top_expert_fraction": [
+        0.02,
+        0.0,
+        0.0,
+        0.98
+      ],
+      "router_selected_expert_share": [
+        0.137,
+        0.019,
+        0.344,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.274,
+        0.038,
+        0.688,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.004008016032064128,
+      "router_top2_switch_fraction": 0.06613226452905811,
+      "router_top1_mean_dwell_s": 3.3333333333333335,
+      "router_effective_expert_count": 2.890093262000245
+    },
+    {
+      "plant_id": "validation-2078",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.649817864166105,
+      "controlled_energy": 0.43912760766361103,
+      "energy_ratio": 0.6757702917680364,
+      "raw_high_frequency_energy": 0.004760246153598816,
+      "controlled_high_frequency_energy": 0.0031725400758445444,
+      "high_frequency_energy_ratio": 0.6664655510400564,
+      "raw_peak_deg_s": 20.51562033825112,
+      "controlled_peak_deg_s": 18.40908907602419,
+      "peak_ratio": 0.8973206158285485,
+      "raw_return": -131.15207441419824,
+      "controlled_return": -93.86716069141141,
+      "residual_force_rms_n": 0.44782115527088867,
+      "residual_force_max_abs_n": 1.754984951019287,
+      "router_mean_weights": [
+        0.273650586605072,
+        0.17989912629127502,
+        0.23139925301074982,
+        0.3150510787963867
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.014,
+        0.0,
+        0.486,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.028,
+        0.0,
+        0.972,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.1318860042342127
+    },
+    {
+      "plant_id": "validation-1805",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.760216935410739,
+      "controlled_energy": 0.5228805269774717,
+      "energy_ratio": 0.6878043655985691,
+      "raw_high_frequency_energy": 0.004792907050674476,
+      "controlled_high_frequency_energy": 0.00235452303219398,
+      "high_frequency_energy_ratio": 0.49125155303452894,
+      "raw_peak_deg_s": 32.020661100092674,
+      "controlled_peak_deg_s": 25.240036906988795,
+      "peak_ratio": 0.7882422173637054,
+      "raw_return": -153.45095752296203,
+      "controlled_return": -112.13893809255067,
+      "residual_force_rms_n": 0.4603409849778611,
+      "residual_force_max_abs_n": 1.2414627224206924,
+      "router_mean_weights": [
+        0.2657723128795624,
+        0.16751611232757568,
+        0.24488197267055511,
+        0.32182949781417847
+      ],
+      "router_top_expert_fraction": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "router_selected_expert_share": [
+        0.011,
+        0.0,
+        0.489,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.022,
+        0.0,
+        0.978,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.0,
+      "router_top2_switch_fraction": 0.004008016032064128,
+      "router_top1_mean_dwell_s": 10.0,
+      "router_effective_expert_count": 2.108568169355161
+    },
+    {
+      "plant_id": "validation-1940",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.20848074992304744,
+      "controlled_energy": 0.1275285979686305,
+      "energy_ratio": 0.6117044284218218,
+      "raw_high_frequency_energy": 0.005699489723080393,
+      "controlled_high_frequency_energy": 0.007340135562913715,
+      "high_frequency_energy_ratio": 1.2878583732135593,
+      "raw_peak_deg_s": 9.817688498374789,
+      "controlled_peak_deg_s": 8.818111233013056,
+      "peak_ratio": 0.8981860887593651,
+      "raw_return": -42.86578708741665,
+      "controlled_return": -31.19050445110082,
+      "residual_force_rms_n": 0.5581803469541805,
+      "residual_force_max_abs_n": 2.6809449255466458,
+      "router_mean_weights": [
+        0.2817292809486389,
+        0.20027633011341095,
+        0.2153633087873459,
+        0.3026312291622162
+      ],
+      "router_top_expert_fraction": [
+        0.018,
+        0.0,
+        0.0,
+        0.982
+      ],
+      "router_selected_expert_share": [
+        0.016,
+        0.076,
+        0.408,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.032,
+        0.152,
+        0.816,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.004008016032064128,
+      "router_top2_switch_fraction": 0.01002004008016032,
+      "router_top1_mean_dwell_s": 3.3333333333333335,
+      "router_effective_expert_count": 2.6494632417434096
+    },
+    {
+      "plant_id": "validation-2054",
+      "gjb_level": 3,
+      "dutch_roll_level": 3,
+      "raw_energy": 0.5822731464090058,
+      "controlled_energy": 0.44151441835305466,
+      "energy_ratio": 0.7582599696997222,
+      "raw_high_frequency_energy": 0.004470493339094042,
+      "controlled_high_frequency_energy": 0.0028782443556661505,
+      "high_frequency_energy_ratio": 0.6438314828692788,
+      "raw_peak_deg_s": 13.415077147124006,
+      "controlled_peak_deg_s": 11.833493842585911,
+      "peak_ratio": 0.882104047021663,
+      "raw_return": -117.62295587854297,
+      "controlled_return": -96.90849402615028,
+      "residual_force_rms_n": 0.47245450870124833,
+      "residual_force_max_abs_n": 1.3186129242181777,
+      "router_mean_weights": [
+        0.28716322779655457,
+        0.19927354156970978,
+        0.21510735154151917,
+        0.2984558343887329
+      ],
+      "router_top_expert_fraction": [
+        0.276,
+        0.0,
+        0.0,
+        0.724
+      ],
+      "router_selected_expert_share": [
+        0.15,
+        0.075,
+        0.275,
+        0.5
+      ],
+      "router_expert_activation_fraction": [
+        0.3,
+        0.15,
+        0.55,
+        1.0
+      ],
+      "router_top1_switch_fraction": 0.050100200400801605,
+      "router_top2_switch_fraction": 0.056112224448897796,
+      "router_top1_mean_dwell_s": 0.38461538461538464,
+      "router_effective_expert_count": 3.2557812925225726
+    }
+  ]
+}

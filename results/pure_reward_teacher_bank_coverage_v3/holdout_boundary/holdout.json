@@ -1,0 +1,149 @@
+{
+  "schema_version": "distillation_aircraft_holdout_v1",
+  "status": "complete",
+  "source": {
+    "commit": null,
+    "tracked_dirty": null,
+    "working_tree_sha256": "8b983f7f8ef940c9ea3f76d02230bffdb08248e3d2185928e43e7a075c554d7e"
+  },
+  "teacher_bank": {
+    "path": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/merged_bank/teacher_bank.json",
+    "sha256": "579765e3d206145c0e9527f43760f83d6b5bb6c8e9777403efbdb2aaa2564d5c"
+  },
+  "method": "one_representative_preferred_split_aircraft_per_quality_region",
+  "aircraft_parameter_names": [
+    "l_fa",
+    "lambda_s",
+    "t_r",
+    "zeta_d",
+    "omega_d",
+    "r_omega",
+    "r_zeta",
+    "tau_p"
+  ],
+  "aircraft_parameter_normalization": "log_linear_bounds_v1_unclipped",
+  "preferred_split": "train_boundary",
+  "per_quality_region": 1,
+  "training_plant_ids": [
+    "train_core-0312",
+    "train_core-0334",
+    "train_core-0760",
+    "train_core-1187",
+    "train_core-0330",
+    "train_boundary-1228",
+    "train_core-0750",
+    "train_core-0914",
+    "train_boundary-1584",
+    "train_core-0742",
+    "train_boundary-1451",
+    "train_core-0754",
+    "train_boundary-1231",
+    "train_boundary-1488",
+    "train_core-0892",
+    "train_core-0515",
+    "train_boundary-1760",
+    "train_core-0481",
+    "train_boundary-1453",
+    "train_core-0175",
+    "train_boundary-1531",
+    "train_boundary-1205",
+    "train_core-0906",
+    "train_core-0964",
+    "train_core-0054",
+    "train_boundary-1388",
+    "train_boundary-1743",
+    "train_boundary-1402",
+    "train_core-0191"
+  ],
+  "validation_plant_ids": [
+    "train_boundary-1605",
+    "train_boundary-1351",
+    "train_boundary-1448"
+  ],
+  "training_distribution": {
+    "by_quality_region": {
+      "level_1": 8,
+      "level_2": 13,
+      "level_3": 8
+    },
+    "by_split": {
+      "train_core": 17,
+      "train_boundary": 12
+    }
+  },
+  "validation_distribution": {
+    "by_quality_region": {
+      "level_1": 1,
+      "level_2": 1,
+      "level_3": 1
+    },
+    "by_split": {
+      "train_boundary": 3
+    }
+  },
+  "selection": [
+    {
+      "plant_id": "train_boundary-1605",
+      "split": "train_boundary",
+      "quality_region": "level_1",
+      "selection_method": "nearest_neighbor_distance_closest_to_quality_region_median",
+      "preferred_split": "train_boundary",
+      "nearest_training_plant_id": "train_core-0054",
+      "nearest_training_distance": 1.136435627937317,
+      "inside_training_axis_aligned_envelope": false,
+      "normalized_theta": [
+        -0.7471458315849304,
+        0.1335507035255432,
+        -0.1798558235168457,
+        0.9875063896179199,
+        0.6641721725463867,
+        0.9705531597137451,
+        -0.4936233460903168,
+        0.14926326274871826
+      ]
+    },
+    {
+      "plant_id": "train_boundary-1351",
+      "split": "train_boundary",
+      "quality_region": "level_2",
+      "selection_method": "nearest_neighbor_distance_closest_to_quality_region_median",
+      "preferred_split": "train_boundary",
+      "nearest_training_plant_id": "train_boundary-1488",
+      "nearest_training_distance": 1.1388052701950073,
+      "inside_training_axis_aligned_envelope": false,
+      "normalized_theta": [
+        0.9263266324996948,
+        0.15377403795719147,
+        -0.3522028923034668,
+        0.9783775806427002,
+        -0.1644180417060852,
+        -0.5347888469696045,
+        -0.687282919883728,
+        -0.8374956250190735
+      ]
+    },
+    {
+      "plant_id": "train_boundary-1448",
+      "split": "train_boundary",
+      "quality_region": "level_3",
+      "selection_method": "nearest_neighbor_distance_closest_to_quality_region_median",
+      "preferred_split": "train_boundary",
+      "nearest_training_plant_id": "train_core-0191",
+      "nearest_training_distance": 1.4742062091827393,
+      "inside_training_axis_aligned_envelope": false,
+      "normalized_theta": [
+        0.995661199092865,
+        -0.5040090084075928,
+        -0.9946838021278381,
+        -0.4801154136657715,
+        -0.9903068542480469,
+        0.42039725184440613,
+        0.1271626353263855,
+        0.38180994987487793
+      ]
+    }
+  ],
+  "artifacts": {
+    "plot": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/holdout_boundary/holdout.png"
+  }
+}

@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from dataclasses import asdict, replace
 import hashlib
 import json
+import multiprocessing
 from pathlib import Path
 
 import numpy as np
@@ -57,9 +59,24 @@ def _write_manifest(path: Path, payload: dict[str, object]) -> None:
     temporary.replace(path)
 
 
-def _config_fingerprint(config: SpecialistTrainingConfig) -> str:
-    canonical = json.dumps(asdict(config), sort_keys=True, separators=(",", ":"))
+def _config_fingerprint(
+    config: SpecialistTrainingConfig, source: dict[str, object]
+) -> str:
+    canonical = json.dumps(
+        {"config": asdict(config), "source": source},
+        sort_keys=True,
+        separators=(",", ":"),
+    )
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:12]
+
+
+def _train_teacher_job(
+    record: PlantRecord,
+    run_dir: Path,
+    config: SpecialistTrainingConfig,
+    library: Path,
+) -> dict[str, object]:
+    return train_specialist(record, run_dir, config, library_path=library)
 
 
 def train_teacher_bank(
@@ -70,9 +87,12 @@ def train_teacher_bank(
     records: list[PlantRecord] | None = None,
     count: int = 1,
     skip_completed: bool = True,
+    workers: int = 1,
 ) -> dict[str, object]:
     """Train one independent SAC run per aircraft and maintain a bank manifest."""
 
+    if workers <= 0:
+        raise ValueError("Teacher Bank workers must be positive")
     library = Path(library_path)
     selected = records or select_specialist_records(library, count, seed=config.seed)
     if len({record.plant_id for record in selected}) != len(selected):
@@ -80,19 +100,23 @@ def train_teacher_bank(
     destination = Path(output_dir)
     destination.mkdir(parents=True, exist_ok=True)
     manifest_path = destination / "teacher_bank.json"
+    source = git_source_revision()
     manifest: dict[str, object] = {
         "schema_version": "specialist_teacher_bank_v1",
         "status": "running",
-        "source": git_source_revision(),
+        "source": source,
         "library": {"path": str(library.resolve()), "sha256": sha256_file(library)},
         "base_config": asdict(config),
         "teachers": [],
     }
     _write_manifest(manifest_path, manifest)
-    entries: list[dict[str, object]] = []
+    jobs: list[
+        tuple[int, PlantRecord, SpecialistTrainingConfig, str, Path, Path, Path]
+    ] = []
+    reports: dict[int, tuple[dict[str, object], bool]] = {}
     for index, record in enumerate(selected):
         teacher_config = replace(config, seed=config.seed + index)
-        config_fingerprint = _config_fingerprint(teacher_config)
+        config_fingerprint = _config_fingerprint(teacher_config, source)
         run_id = f"{record.plant_id}-seed-{teacher_config.seed}-cfg-{config_fingerprint}"
         run_dir = destination / run_id
         report_path = run_dir / "report.json"
@@ -100,19 +124,74 @@ def train_teacher_bank(
         skipped = False
         if skip_completed and report_path.is_file() and actor_path.is_file():
             report = json.loads(report_path.read_text(encoding="utf-8"))
-            if report.get("status") == "complete":
+            if report.get("status") == "complete" and (
+                not config.enforce_quality_gate
+                or report.get("quality_gate", {}).get("passed") is True
+            ):
                 skipped = True
-            else:
-                report = train_specialist(record, run_dir, teacher_config, library_path=library)
+        if skipped:
+            reports[index] = (report, True)
         else:
-            report = train_specialist(record, run_dir, teacher_config, library_path=library)
+            jobs.append(
+                (
+                    index,
+                    record,
+                    teacher_config,
+                    run_id,
+                    run_dir,
+                    report_path,
+                    actor_path,
+                )
+            )
+
+    if workers == 1:
+        for index, record, teacher_config, _, run_dir, _, _ in jobs:
+            reports[index] = (
+                train_specialist(record, run_dir, teacher_config, library_path=library),
+                False,
+            )
+    elif jobs:
+        context = multiprocessing.get_context("spawn")
+        with ProcessPoolExecutor(max_workers=workers, mp_context=context) as executor:
+            future_jobs = {
+                executor.submit(
+                    _train_teacher_job,
+                    record,
+                    run_dir,
+                    teacher_config,
+                    library,
+                ): index
+                for index, record, teacher_config, _, run_dir, _, _ in jobs
+            }
+            for future in as_completed(future_jobs):
+                index = future_jobs[future]
+                try:
+                    reports[index] = (future.result(), False)
+                except Exception as error:
+                    manifest["status"] = "training_failed"
+                    manifest["failed_teacher_index"] = index
+                    manifest["error"] = f"{type(error).__name__}: {error}"
+                    _write_manifest(manifest_path, manifest)
+                    raise
+
+    entries: list[dict[str, object]] = []
+    for index, record in enumerate(selected):
+        teacher_config = replace(config, seed=config.seed + index)
+        config_fingerprint = _config_fingerprint(teacher_config, source)
+        run_id = f"{record.plant_id}-seed-{teacher_config.seed}-cfg-{config_fingerprint}"
+        run_dir = destination / run_id
+        report_path = run_dir / "report.json"
+        actor_path = run_dir / "teacher_actor.pt"
+        report, skipped = reports[index]
+        accepted = bool(report.get("accepted_for_distillation", False))
         entry = {
             "run_id": run_id,
             "plant_id": record.plant_id,
             "quality_region": record.quality_region,
             "seed": teacher_config.seed,
             "config_fingerprint": config_fingerprint,
-            "status": report["status"],
+            "status": "complete" if accepted else "quality_gate_failed",
+            "quality_gate": report.get("quality_gate"),
             "skipped_completed": skipped,
             "run_dir": str(run_dir.relative_to(destination)),
             "actor_checkpoint": str(actor_path.relative_to(destination)),
@@ -121,7 +200,14 @@ def train_teacher_bank(
         entries.append(entry)
         manifest["teachers"] = entries
         _write_manifest(manifest_path, manifest)
-    manifest["status"] = "complete"
+    manifest["status"] = (
+        "complete"
+        if all(entry["status"] == "complete" for entry in entries)
+        else "quality_gate_failed"
+    )
     manifest["teacher_count"] = len(entries)
+    manifest["accepted_teacher_count"] = sum(
+        entry["status"] == "complete" for entry in entries
+    )
     _write_manifest(manifest_path, manifest)
     return manifest

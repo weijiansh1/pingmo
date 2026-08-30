@@ -1,0 +1,52 @@
+{
+  "actor": 1908552,
+  "twin_critics": 8095700,
+  "trainable_online_total": 10004252,
+  "frozen_targets": 10004252
+}
+step=5000/20000 replay=5000 episodes=10 recent_return=-201.8723
+step=10000/20000 replay=10000 episodes=20 recent_return=-234.1734 load_loss=0.9961 load_cv2=0.0161 router_h=1.3796 bias_span=0.0330
+step=15000/20000 replay=15000 episodes=30 recent_return=-51.6304 load_loss=1.0043 load_cv2=0.0034 router_h=1.3560 bias_span=0.0940
+step=20000/20000 replay=20000 episodes=40 recent_return=-42.2220 load_loss=0.9807 load_cv2=0.0269 router_h=1.3528 bias_span=0.0920
+{
+  "case": "train_boundary-1477",
+  "gjb_level": 2,
+  "dutch_roll_level": 2,
+  "raw": {
+    "peak_abs_p_deg_s": 14.985751088589435,
+    "oscillation_energy_integral": 0.3630919696415009,
+    "primary_energy_integral": 0.3581470792914794,
+    "high_frequency_energy_integral": 0.0049448903500215755,
+    "residual_force_rms_n": 0.0,
+    "episode_return": -73.55182384619403
+  },
+  "controlled": {
+    "peak_abs_p_deg_s": 12.740011329297642,
+    "oscillation_energy_integral": 0.27921142327023024,
+    "primary_energy_integral": 0.27617244189064233,
+    "high_frequency_energy_integral": 0.003038981379587907,
+    "residual_force_rms_n": 0.46110703061967034,
+    "episode_return": -61.62557620446995
+  },
+  "train_episodes": 40,
+  "parameters": {
+    "actor": 1908552,
+    "twin_critics": 8095700,
+    "trainable_online_total": 10004252,
+    "frozen_targets": 10004252
+  },
+  "router_training": {
+    "method": "loss_free_bias_top2_st_moe_z_loss",
+    "noise_std": 0.0,
+    "balance_coefficient": 0.0,
+    "z_coefficient": 0.001,
+    "bias_update_rate": 0.001,
+    "final_routing_bias": [
+      -0.05049990117549896,
+      0.034499987959861755,
+      0.04149993881583214,
+      -0.02550002746284008
+    ]
+  }
+}
+plot=basic/results_tcn/train20k_loss_free.png

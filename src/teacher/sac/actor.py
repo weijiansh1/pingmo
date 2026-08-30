@@ -16,6 +16,7 @@ class SquashedGaussianActor(nn.Module):
         width: int = 896,
         residual_blocks: int = 14,
         residual_scale: float = 0.1,
+        enforce_odd_symmetry: bool = False,
     ) -> None:
         super().__init__()
         self.body = ResidualMLPTrunk(
@@ -26,6 +27,7 @@ class SquashedGaussianActor(nn.Module):
         )
         self.mean = nn.Linear(width, action_dim)
         self.log_std = nn.Linear(width, action_dim)
+        self.enforce_odd_symmetry = enforce_odd_symmetry
         nn.init.uniform_(self.mean.weight, -3e-3, 3e-3)
         nn.init.uniform_(self.mean.bias, -3e-3, 3e-3)
         nn.init.uniform_(self.log_std.weight, -3e-3, 3e-3)
@@ -33,7 +35,13 @@ class SquashedGaussianActor(nn.Module):
 
     def sample(self, observation: torch.Tensor, deterministic: bool = False) -> tuple[torch.Tensor, torch.Tensor]:
         hidden = self.body(observation)
-        mean, log_std = self.mean(hidden), self.log_std(hidden).clamp(-5, 2)
+        mean = self.mean(hidden)
+        log_std = self.log_std(hidden)
+        if self.enforce_odd_symmetry:
+            mirrored_hidden = self.body(-observation)
+            mean = 0.5 * (mean - self.mean(mirrored_hidden))
+            log_std = 0.5 * (log_std + self.log_std(mirrored_hidden))
+        log_std = log_std.clamp(-5, 2)
         if deterministic:
             action = mean.tanh()
             return action, torch.zeros((observation.shape[0], 1), device=observation.device)

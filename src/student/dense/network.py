@@ -20,6 +20,7 @@ class DenseConditionalStudent(nn.Module):
         width: int = 512,
         residual_blocks: int = 8,
         residual_scale: float = 0.1,
+        enforce_odd_policy: bool = True,
     ) -> None:
         super().__init__()
         if min(observation_dim, aircraft_parameter_dim, action_dim, width, residual_blocks) <= 0:
@@ -27,6 +28,7 @@ class DenseConditionalStudent(nn.Module):
         self.observation_dim = observation_dim
         self.aircraft_parameter_dim = aircraft_parameter_dim
         self.action_dim = action_dim
+        self.enforce_odd_policy = enforce_odd_policy
         self.body = ResidualMLPTrunk(
             observation_dim + aircraft_parameter_dim,
             width,
@@ -43,7 +45,15 @@ class DenseConditionalStudent(nn.Module):
         if aircraft_parameters.shape[-1] != self.aircraft_parameter_dim:
             raise ValueError("student aircraft-parameter dimension mismatch")
         hidden = self.body(torch.cat((observation, aircraft_parameters), dim=-1))
-        return self.action_head(hidden).tanh()
+        action_logits = self.action_head(hidden)
+        if self.enforce_odd_policy:
+            mirrored_hidden = self.body(
+                torch.cat((-observation, aircraft_parameters), dim=-1)
+            )
+            action_logits = 0.5 * (
+                action_logits - self.action_head(mirrored_hidden)
+            )
+        return action_logits.tanh()
 
     @property
     def parameter_count(self) -> int:

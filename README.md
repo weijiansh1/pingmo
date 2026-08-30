@@ -1,44 +1,92 @@
 # Flight RL Control
 
-本仓库当前实现一条单通道、分飞机的控制学习路线：先为每个固定 P-channel 训练独立 SAC
-Teacher，再把多个 Teacher 的动作规律蒸馏为一个读取飞机参数的 Dense Student。历史全机群
-Global SAC、G0-G4 和 MoE 对照保留作实验记录，不再是默认训练入口。
+本仓库实现单通道、分飞机的控制学习路线。当前 v3 实验先为每个固定 P-channel 训练无 PID
+示范的纯奖励 TD3 Teacher，再用 Student-driven / DAgger 把 32 个 Teacher 蒸馏为一个读取飞机
+参数的 Dense Student。PID-guided TD3、theta-routed linear MoE、历史 Global SAC 和 G0-G4
+仍保留作工程对照与诊断，不与 v3 结果混写。
 
 当前控制契约见 [`docs/第一阶段_SAC控制设计.md`](docs/第一阶段_SAC控制设计.md)。GJB 阅读边界见
 [`docs/references/gjb_2874_1997_project_memory.md`](docs/references/gjb_2874_1997_project_memory.md)。
+实验目录与 manifest 规则见 [`docs/experiment_artifacts.md`](docs/experiment_artifacts.md)。
+当前代码、训练配置、时域曲线、未见飞机结果和失败门禁的完整快照见
+[`docs/current_code_and_results_20260830.md`](docs/current_code_and_results_20260830.md)。
 
-## 当前流水线
+## PID-guided / MoE 工程流水线
 
 ```text
-固定飞机 G(theta_i) -> 独立 SAC Teacher pi_i(o)
+固定飞机 G(theta_i) -> 独立 RL Teacher pi_i(o)
                                   |
                                   v
-                    (o, theta_i, pi_i(o)) 数据
+                    Teacher-driven 初始数据
                                   |
                                   v
-                    Dense Student pi(o, theta)
+              theta-routed linear MoE pi(o, theta)
+                                  |
+                                  v
+                    Student-driven / DAgger 聚合
 ```
 
 - 命令 `p_c` 是滚转角速度指令。
-- 二阶参考模型产生 `p_ref`。
-- Teacher Actor 读取 `p_c, p_ref, p, error, p_dot, previous F_as` 和 250 ms 历史；不读取 `theta`。
+- 二阶参考模型叠加该飞机同一个纯运输延迟 `tau_p` 后产生 `p_ref`。
+- Teacher Actor 读取 4 个瞬时信号 `p_c, p_ref, p, error` 和 3 个控制器状态
+  `integrated error, p_dot, previous requested F_as`；默认不读取原始序列窗口，也不读取 `theta`。
+- 训练期 Critic 才读取对象连续状态、纯时延 FIFO、执行机构状态和固定维命令上下文；这些
+  privileged 字段不进入 Teacher Actor、蒸馏 observation 或部署 Student。
+- Teacher Actor 是约 995 万可训练参数的有界残差策略；控制先验以归一化线性层嵌入 Actor，在线
+  TD3 更新学习小残差。部署 checkpoint 不实例化 PID 控制器对象，并完整记录该结构事实。
+- Teacher 和 Student 都保证零状态零动作及正负滚转镜像。
 - Teacher 动作是完整 `F_as`，不是 `F + delta_F`。
-- Student 读取同一 observation 和归一化的八维 `theta`，输出同一定义的 `F_as`。
-- plant 与策略均以 `0.001 s` 更新。
+- Student 接收同一 7 维 observation 和归一化的八维 `theta`，输出同一定义的 `F_as`。路由器
+  只读取静态 `theta`；线性专家只使用其中的 `error, integrated error, p_dot` 三个控制特征，
+  不利用 `p_c, p_ref, p` 的相关性做离线拟合捷径，路由也不会随时域响应逐步跳变。
+- `integrated error`、`p_dot`、`previous requested F_as` 是固定维控制状态；系统不输入
+  `[p_{t-k:t}, u_{t-k:t}]` 一类原始时间序列窗口，也不使用 GRU/TCN。
+- `basic/moe_td3.py` 与 `basic/results_tcn/` 是早期“无 Reference 残余阻尼”诊断实验，其
+  `TemporalObservation` 会人工缓存 256 个过去采样。它们不被当前 Teacher/Student 流水线导入，
+  也不是当前结果的历史信号来源。
+- plant 以 `0.001 s` 更新，策略每 `0.020 s` 更新一次；每个策略动作内执行 20 个对象子步。
+- 蒸馏首轮由 Teacher 驱动，后续轮次必须由当前 Student 驱动并由对应 Teacher 标注。
+- 当前正式验证让 Teacher Bank 中的全部飞机参与训练，并为每架飞机保留独立的未见命令作为
+  validation。整架飞机 holdout 作为更严格的泛化诊断单独报告；当前阶段不声称已经解决对完全
+  未见 `theta` 的零样本控制。
 
 ## 执行顺序
 
-先在 1 架飞机上验证完整链路：
+完整的带门禁入口：
 
 ```bash
-python scripts/12_train_specialists.py --count 1 --device cuda
-python scripts/30_collect_distillation_data.py --device cuda
-python scripts/31_distill_dense_student.py --device cuda
-python scripts/33_evaluate_student.py --device cuda
+python scripts/35_run_teacher_student_pipeline.py \
+  --teacher-algorithm pid-guided-td3 \
+  --plant-id <plant-1> --plant-id <plant-2> \
+  --teacher-network-width 704 --teacher-residual-blocks 10 \
+  --student-architecture theta_routed_linear_moe \
+  --distillation-split-strategy all_aircraft_command_holdout \
+  --dagger-rounds 3 --device cuda
 ```
 
-确认 `p_c / p_ref / p_raw / p_SAC` 曲线、动作限制和闭环指标定义正确后，再把 `--count`
-依次扩到 10、50/100。每架飞机有独立目录、checkpoint 和报告；Teacher Bank 只汇总完整产物。
+该命令只有在所有 Teacher 通过跟踪、峰值误差、请求动作总变差和饱和率门禁后才进入蒸馏。
+每轮保存独立 dataset、Student checkpoint、闭环评测和 Teacher/Student 同图对比；最终目录按验证
+闭环误差选择最佳轮次。单步入口仍保留用于诊断和消融。
+
+### 纯奖励 TD3 修订实验
+
+`scripts/41_train_pure_reward_td3.py` 是不使用 PID 示范、行为克隆或控制先验的独立实验入口。
+它与上面的 7 维 PID-guided 正式流水线使用不同的 Actor 输入合同：在相同 7 个当前控制量后增加
+`commanded/applied F_as` 和固定 26 步 requested-action 队列，共 34 维，在 50 Hz 下覆盖 0.52 s，
+超过当前 3000 架库中的最大 `tau_p=0.498005 s`。所有待蒸馏 Teacher 必须使用同一个队列宽度。
+
+该入口默认从连续参数分布采样 4--8 s 的 step、doublet、sine 和 multisine 指令，使用
+`gamma=0.9995`；episode time limit 只触发环境 reset，不会清除 Bellman bootstrap，且 Critic 不读取
+人工 episode progress。固定的六条 evaluation 指令仍只用于跨版本和 PID 同条件比较。
+
+```bash
+python scripts/41_train_pure_reward_td3.py \
+  --plant-id <plant-id> --output <run-dir> \
+  --steps 30000 --requested-action-history-steps 26 --device cuda
+```
+
+这是组合修订实验，不是单因素 delay ablation；若要归因，需要分别关闭动作记忆、截断修正、长
+discount 和随机指令采样。
 
 ## 验证
 

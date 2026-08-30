@@ -1,0 +1,64 @@
+{
+  "a116_boundary_status": "digitized_not_applied_to_level_quota",
+  "candidate_count": 16384,
+  "delay_definition": "pure_transport_delay_before_p_channel",
+  "gain_calibration": "S1s_deg_per_n_with_evidence_gate",
+  "gjb_label_scope": "static_appendix_A_recommended_boundaries_not_formal_compliance",
+  "inceptor_assumption": "stick_controlled_for_A31_gate",
+  "input_definition": "equivalent_roll_control_force_N",
+  "l_fa_evidence_range": [
+    0.04,
+    0.4708387494022242
+  ],
+  "level_basis": "worst_of_A18_A19_A35_and_A31_when_defined",
+  "level_counts": {
+    "L1": 900,
+    "L2": 900,
+    "L3": 900,
+    "OOD": 300
+  },
+  "model_version": "GJB_s1_corrected",
+  "profile": "IV-A",
+  "sampling_policy": "equal_L1_L2_L3_plus_held_out_OOD",
+  "schema_version": "5.0",
+  "seed": 20260827,
+  "split_counts": {
+    "id_test": 600,
+    "ood_test": 300,
+    "train_boundary": 600,
+    "train_core": 1200,
+    "validation": 300
+  },
+  "split_level_counts": {
+    "id_test": {
+      "L1": 200,
+      "L2": 200,
+      "L3": 200
+    },
+    "ood_test": {
+      "OOD": 300
+    },
+    "train_boundary": {
+      "L1": 200,
+      "L2": 200,
+      "L3": 200
+    },
+    "train_core": {
+      "L1": 400,
+      "L2": 400,
+      "L3": 400
+    },
+    "validation": {
+      "L1": 100,
+      "L2": 100,
+      "L3": 100
+    }
+  },
+  "task_subtype": "ordinary_not_CO_GA",
+  "total_plants": 3000,
+  "ungraded_parameters": [
+    "r_omega",
+    "zeta_phi",
+    "tau_p"
+  ]
+}

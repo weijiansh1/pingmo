@@ -1,0 +1,489 @@
+{
+  "status": "complete",
+  "attempted_teacher_count": 48,
+  "accepted_teacher_count": 21,
+  "rejected_teacher_count": 27,
+  "teacher_bank": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/teacher_bank.json",
+  "requests": [
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0249",
+      "plant_id": "train_core-0249",
+      "seed": 20260911,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1344",
+      "plant_id": "train_boundary-1344",
+      "seed": 20260912,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0742",
+      "plant_id": "train_core-0742",
+      "seed": 20260913,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1207",
+      "plant_id": "train_boundary-1207",
+      "seed": 20260914,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0548",
+      "plant_id": "train_core-0548",
+      "seed": 20260915,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1451",
+      "plant_id": "train_boundary-1451",
+      "seed": 20260916,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0009",
+      "plant_id": "train_core-0009",
+      "seed": 20260917,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1236",
+      "plant_id": "train_boundary-1236",
+      "seed": 20260918,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0754",
+      "plant_id": "train_core-0754",
+      "seed": 20260919,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1231",
+      "plant_id": "train_boundary-1231",
+      "seed": 20260920,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0551",
+      "plant_id": "train_core-0551",
+      "seed": 20260921,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1457",
+      "plant_id": "train_boundary-1457",
+      "seed": 20260922,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0570",
+      "plant_id": "train_core-0570",
+      "seed": 20260923,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1488",
+      "plant_id": "train_boundary-1488",
+      "seed": 20260924,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0892",
+      "plant_id": "train_core-0892",
+      "seed": 20260925,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1354",
+      "plant_id": "train_boundary-1354",
+      "seed": 20260926,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0515",
+      "plant_id": "train_core-0515",
+      "seed": 20260927,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1760",
+      "plant_id": "train_boundary-1760",
+      "seed": 20260928,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0333",
+      "plant_id": "train_core-0333",
+      "seed": 20260929,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1368",
+      "plant_id": "train_boundary-1368",
+      "seed": 20260930,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0481",
+      "plant_id": "train_core-0481",
+      "seed": 20260931,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1453",
+      "plant_id": "train_boundary-1453",
+      "seed": 20260932,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0149",
+      "plant_id": "train_core-0149",
+      "seed": 20260933,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1796",
+      "plant_id": "train_boundary-1796",
+      "seed": 20260934,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0840",
+      "plant_id": "train_core-0840",
+      "seed": 20260935,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1260",
+      "plant_id": "train_boundary-1260",
+      "seed": 20260936,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0175",
+      "plant_id": "train_core-0175",
+      "seed": 20260937,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1531",
+      "plant_id": "train_boundary-1531",
+      "seed": 20260938,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0497",
+      "plant_id": "train_core-0497",
+      "seed": 20260939,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1205",
+      "plant_id": "train_boundary-1205",
+      "seed": 20260940,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0906",
+      "plant_id": "train_core-0906",
+      "seed": 20260941,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1437",
+      "plant_id": "train_boundary-1437",
+      "seed": 20260942,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0964",
+      "plant_id": "train_core-0964",
+      "seed": 20260943,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1357",
+      "plant_id": "train_boundary-1357",
+      "seed": 20260944,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0788",
+      "plant_id": "train_core-0788",
+      "seed": 20260945,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1226",
+      "plant_id": "train_boundary-1226",
+      "seed": 20260946,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0054",
+      "plant_id": "train_core-0054",
+      "seed": 20260947,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1509",
+      "plant_id": "train_boundary-1509",
+      "seed": 20260948,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0232",
+      "plant_id": "train_core-0232",
+      "seed": 20260949,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1351",
+      "plant_id": "train_boundary-1351",
+      "seed": 20260950,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0608",
+      "plant_id": "train_core-0608",
+      "seed": 20260951,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1388",
+      "plant_id": "train_boundary-1388",
+      "seed": 20260952,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0951",
+      "plant_id": "train_core-0951",
+      "seed": 20260953,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1743",
+      "plant_id": "train_boundary-1743",
+      "seed": 20260954,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0628",
+      "plant_id": "train_core-0628",
+      "seed": 20260955,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1402",
+      "plant_id": "train_boundary-1402",
+      "seed": 20260956,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_core-0191",
+      "plant_id": "train_core-0191",
+      "seed": 20260957,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    },
+    {
+      "library": "/data/coding/pingmo/data/aircraft/generated/p_channel_library_iv_a_manual_v1/plants.jsonl",
+      "output": "/data/coding/pingmo/results/pure_reward_teacher_bank_coverage_v3/new_candidates_48/runs/train_boundary-1658",
+      "plant_id": "train_boundary-1658",
+      "seed": 20260958,
+      "steps": 80000,
+      "warmup_steps": 10000,
+      "evaluation_interval_steps": 10000,
+      "device": "cuda"
+    }
+  ]
+}

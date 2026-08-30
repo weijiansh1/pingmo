@@ -56,7 +56,7 @@
 当前项目不是直接控制偏航角，也不是直接控制方向舵/副翼舵面。它研究的是 IV 类、A 种飞行阶段下的滚转速率通道：
 
 ```text
-滚转角速度命令 p_c -> 二阶研究参考 -> p_ref
+滚转角速度命令 p_c -> 同一 tau_p -> 二阶研究参考 -> p_ref
                                       |
                                       v
                        SAC Teacher -> F_as
@@ -78,10 +78,10 @@
 e^{-\tau_p s}.
 ```
 
-当前每架固定飞机拥有独立 SAC Teacher。Teacher 读取 `p_c, p_ref, p, error, p_dot, previous
-F_as` 和响应历史，在 `+/-22 N`、`88 N/s` 权限内直接输出完整 `F_as`；飞机参数不进入
-specialist Actor。训练 reward 是参考跟踪、力能量与动作变化三项。多个 Teacher 的动作随后用于
-训练读取归一化八维参数的 Dense Student。
+当前每架固定飞机拥有独立 SAC Teacher。Teacher 默认只读取当前 `p_c, p_ref, p, error,
+integral error, p_dot, previous requested F_as`，在 `+/-22 N`、`88 N/s` 权限内直接输出完整
+`F_as`；不读取响应历史，飞机参数也不进入 specialist Actor。训练 reward 是参考跟踪、力能量与
+请求动作变化三项。多个 Teacher 的动作随后用于训练读取归一化八维参数的 Dense Student。
 
 还必须注意：上式分子含原点零点，`p/F_as` 的直流增益为零。因此二阶恒定滚转率 step 参考是
 待审计的研究目标，不能预先断言在有界力下长期可达。
@@ -162,7 +162,7 @@ GJB 的滚转讨论（印刷 224，PDF 228；印刷 287，PDF 291）也给出同
 | 名称 | 当前值/范围 | 代码中的实际含义 | 是否等于 GJB `tau_e` |
 | --- | --- | --- | --- |
 | `plant_dt_s` | `0.001 s` | 1 kHz 连续传函 ZOH 离散化与数值推进步长 | 否；它本身是离散分辨率 |
-| `policy_dt_s` | `0.001 s` | 每个对象样本观察、决策并输出一次完整 `F_as` | 否；端到端拟合时数字实现仍可能影响 `tau_e` |
+| `policy_dt_s` | `0.020 s` | Actor 每 20 个对象子步观察、决策并输出一次完整 `F_as` 请求 | 否；端到端拟合时数字实现仍可能影响 `tau_e` |
 | `tau_p` | 新采样下限 `0.001 s`，ID 研究上限 `0.20 s`，高延迟 OOD 可到约 `0.50 s` | `F_as` 进入 P-channel 前的分数 FIFO，模拟 `e^{-tau_p s}` 纯运输延迟 | 否；目前只能叫代码级运输延迟参数 |
 | `actuator_time_constant_s` | 默认 `0 s` | 当前不人为增加控制输出一阶滞后；`0.08 s` 只保留为历史敏感性设定 | 否 |
 | 动作限速 | `4 s^-1` normalized | 每 1 ms 最多改变归一化动作 `0.004`，在 `22 N` 全量权限下为 `0.088 N/step` 或 `88 N/s` | 不是延迟，但限制控制建立速率 |
@@ -174,13 +174,15 @@ GJB 的滚转讨论（印刷 224，PDF 228；印刷 287，PDF 291）也给出同
 
 每个 `SpecialistRollRateEnv.step()` 当前按以下顺序执行：
 
-1. Actor 读取此刻的 `p_c, p_ref, p, error, p_dot, previous F_as` 和 250 ms 历史。
-2. Actor 输出归一化的完整 `F_as`，先施加 `+/-22 N` 和 `88 N/s` 限制。
-3. `F_as` 经过对象内部按 `tau_p/0.001` 建立的分数 FIFO，再推进一次 P-channel。
-4. 用新响应计算 tracking、力能量和动作变化代价，写入普通一步 transition。
+1. Actor 读取此刻的 `p_c, p_ref, p, error, integral error, p_dot, previous requested F_as`，默认没有历史窗口。
+2. Actor 输出归一化的完整 `F_as` 请求，先施加 `+/-22 N` 限幅。
+3. 在随后 20 个 1 ms 对象子步中按 `88 N/s` 限速；每个子步的 `F_as` 都经过对象内部按
+   `tau_p/0.001` 建立的分数 FIFO，再推进 P-channel。
+4. 20 ms 决策区间结束后，用新响应计算 tracking、力能量和请求动作变化代价，写入普通一步
+   transition。
 
 当前没有独立传感器延迟、策略推理耗时或通信延迟。网络不读取物理 FIFO，也不把 reward
-人工迁移到过去动作；响应代价在它真实出现的 1 ms transition 上记录。
+人工迁移到过去动作；响应代价在它真实出现的 20 ms policy transition 上记录。
 
 ## 8. 已确认的历史项目语义问题
 
@@ -212,11 +214,12 @@ schema 5.0 的 `plants.jsonl` 和 manifest 均保存
 
 若 `tau_p` 原本已经意图代表包含 SAS、滤波器和舵机在内的基线 `tau_e`，再把同一物理舵机解释进 `0.08 s` 会重复计入动态。若 `0.08 s` 是新增控制器接口动态，则应明确说明它不在基线 `tau_p` 内。当前文档尚未作出这个架构决定。
 
-### 8.4 当前 reference 不含对象运输延迟
+### 8.4 当前 reference 保留对象运输延迟
 
-当前二阶 `p_ref` 不附加每架飞机的 `tau_p`，因此 tracking 误差会包含对象运输延迟造成的偏差。
-这有利于明确总响应目标，但不表示 SAC 能改变固定 `tau_p`，也不能用 tracking 成绩替代最终系统
-`tau_e` 的 LOES 拟合。若参考在有界 `F_as` 下不可达，必须单独记录并修改问题定义。
+当前二阶 `p_ref` 附加每架飞机同一个 `tau_p`，使 tracking reward 不再处罚控制器无法消除的
+对象纯运输延迟。Reference 与对象是两条独立分支，因此这不会在对象路径重复串联延迟。这个
+选择不表示 SAC 能改变固定 `tau_p`，也不能用 tracking 成绩替代最终系统 `tau_e` 的 LOES
+拟合。若延迟后的参考在有界 `F_as` 下仍不可达，必须单独记录并修改问题定义。
 
 ### 8.5 尚未实现 `tau_e` 的辨识
 

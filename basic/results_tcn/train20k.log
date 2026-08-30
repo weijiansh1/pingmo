@@ -1,0 +1,35 @@
+{
+  "actor": 1908552,
+  "twin_critics": 8095700,
+  "trainable_online_total": 10004252,
+  "frozen_targets": 10004252
+}
+step=5000/20000 replay=5000 episodes=10 recent_return=-140.1107
+step=10000/20000 replay=10000 episodes=20 recent_return=-146.4064
+step=15000/20000 replay=15000 episodes=30 recent_return=-60.6710
+step=20000/20000 replay=20000 episodes=40 recent_return=-41.1345
+{
+  "case": "train_boundary-1477",
+  "gjb_level": 2,
+  "dutch_roll_level": 2,
+  "raw": {
+    "peak_abs_p_deg_s": 14.985751088589435,
+    "oscillation_energy_integral": 0.3581470792914794,
+    "residual_force_rms_n": 0.0,
+    "episode_return": -71.7838955554754
+  },
+  "controlled": {
+    "peak_abs_p_deg_s": 12.635083557328567,
+    "oscillation_energy_integral": 0.2555002729082142,
+    "residual_force_rms_n": 0.4321708763103317,
+    "episode_return": -55.365635845091276
+  },
+  "train_episodes": 40,
+  "parameters": {
+    "actor": 1908552,
+    "twin_critics": 8095700,
+    "trainable_online_total": 10004252,
+    "frozen_targets": 10004252
+  }
+}
+plot=basic/results_tcn/train20k.png

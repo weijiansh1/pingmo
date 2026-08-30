@@ -8,12 +8,22 @@ __pycache__/
 
 # Runtime and experiment artifacts
 checkpoints/
-results/
+# Keep the frozen coverage-v3 delivery in Git; other runs remain regenerable.
+results/*
+!results/pure_reward_teacher_bank_coverage_v3/
+!results/pure_reward_teacher_bank_coverage_v3/**
 img/
 tmp/
 
-# Regenerable sampled plant banks
-data/aircraft/generated/
+# Legacy TCN checkpoints are 160 MB each and exceed GitHub's normal blob limit.
+basic/results_tcn/*.pt
+
+# Freeze the two plant libraries used by the reported experiments.
+data/aircraft/generated/*
+!data/aircraft/generated/p_channel_library_20260827_v2_stratified/
+!data/aircraft/generated/p_channel_library_20260827_v2_stratified/**
+!data/aircraft/generated/p_channel_library_iv_a_manual_v1/
+!data/aircraft/generated/p_channel_library_iv_a_manual_v1/**
 
 # Notebook and editor state
 .ipynb_checkpoints/
