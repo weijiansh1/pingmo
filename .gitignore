@@ -8,15 +8,24 @@ __pycache__/
 
 # Runtime and experiment artifacts
 checkpoints/
-# Keep the frozen coverage-v3 and stability-aware-v4 deliveries in Git; other
-# runs remain regenerable.
+# Keep the frozen coverage-v3, stability-aware-v4 and slew-limit-v5 deliveries
+# in Git; other runs remain regenerable.
 results/*
 !results/pure_reward_teacher_bank_coverage_v3/
 !results/pure_reward_teacher_bank_coverage_v3/**
 !results/pure_reward_teacher_bank_coverage_v4/
 !results/pure_reward_teacher_bank_coverage_v4/**
+!results/pure_reward_teacher_bank_coverage_v5/
+!results/pure_reward_teacher_bank_coverage_v5/**
 img/
 tmp/
+# Stray Manim cache written at the repo root; the demo keeps its own media/.
+/media/
+
+# Derived distribution copies of the curated figure pack in pic/.
+pic.zip
+pic/README.html
+pic/style.css
 
 # Legacy TCN checkpoints are 160 MB each and exceed GitHub's normal blob limit.
 basic/results_tcn/*.pt
