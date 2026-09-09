@@ -6,6 +6,10 @@
 选型。PID-guided TD3、theta-routed linear MoE、历史 Global SAC 和 G0-G4 仍保留作工程对照与
 诊断，不与当前结果混写。
 
+近期工作的统一技术主线、结果对照、研究边界和下一步思维导图见
+[`docs/recent_work_overview_20260901.md`](docs/recent_work_overview_20260901.md)，建议先阅读该总览，
+再按需进入各版本分报告。
+
 v5 先对冻结 v4 做了 requested-force 硬限速诊断，没有重新训练网络。训练飞机选出的 `11 N/s`
 把 holdout 平均动作 TV 从 `249.48 N` 降到 `67.30 N`，但在 `boundary-1605` doublet 上把最大
 峰值误差从 `4.76 deg/s` 推高到 `7.98 deg/s`，因此不能作为最终控制器。完整选择合同、时域
@@ -18,6 +22,15 @@ v5 先对冻结 v4 做了 requested-force 硬限速诊断，没有重新训练�
 v4 训练配置、时域曲线、未见飞机结果和失败门禁的完整快照见
 [`docs/stability_aware_v4_results_20260830.md`](docs/stability_aware_v4_results_20260830.md)。v3 历史
 快照保留在 [`docs/current_code_and_results_20260830.md`](docs/current_code_and_results_20260830.md)。
+
+## 仓库导览
+
+- [`docs/recent_work_overview_20260901.md`](docs/recent_work_overview_20260901.md)：近期工作总览、结果对照与下一步思维导图，建议首先阅读。
+- [`docs/ideas/p_channel_history_conditioned_rl.md`](docs/ideas/p_channel_history_conditioned_rl.md)：下一阶段“不读取 `theta`、仅依赖输入输出历史在线适应”的 Student 研究思路，尚未冻结为实验协议。
+- [`pic/README.md`](pic/README.md)：v3 / v4 / v5 的 25 张核心图表中文说明书，图片位于 `pic/images/`；`pic.zip` 与 `README.html` 是它的分发副本，不入库。
+- [`docs/figures/teacher_overview.png`](docs/figures/teacher_overview.png)：冻结 Teacher Bank 的参数覆盖与评测质量总览，由 `scripts/57_plot_teacher_bank_overview.py` 生成。
+- [`demo/manim_flight_control/`](demo/manim_flight_control/README.md)：约 2 分钟的 Manim 原理动画 `final.mp4`，附分幕规划、脚本和中文字幕；Manim 渲染缓存 `media/` 不入库。
+- `results/pure_reward_teacher_bank_coverage_v3` / `_v4` / `_v5`：冻结入库的正式实验产物；其余 run 目录可再生，不入库。
 
 ## PID-guided / MoE 工程流水线
 
