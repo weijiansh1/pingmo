@@ -17,17 +17,20 @@ from torch.utils.data import DataLoader
 
 from src.distillation.dataset import DistillationDataset, load_distillation_arrays
 from src.distillation.losses import (
+    incremental_student_losses,
     teacher_action_rate_mse,
     weighted_teacher_action_mse,
 )
 from src.distillation.validate import imitation_metrics
-from src.student.dense.network import DenseConditionalStudent
+from src.student.dense.network import DenseConditionalStudent, IncrementalDenseStudent
 from src.student.moe.network import ThetaRoutedLinearMoEStudent
 from src.utils.provenance import git_source_revision, sha256_file
 
 
-StudentModel = DenseConditionalStudent | ThetaRoutedLinearMoEStudent
-SUPPORTED_STUDENT_ARCHITECTURES = ("dense", "theta_routed_linear_moe")
+StudentModel = (
+    DenseConditionalStudent | ThetaRoutedLinearMoEStudent | IncrementalDenseStudent
+)
+SUPPORTED_STUDENT_ARCHITECTURES = ("dense", "theta_routed_linear_moe", "incremental")
 
 
 @dataclass(frozen=True, slots=True)
@@ -43,6 +46,12 @@ class DenseStudentTrainingConfig:
     gradient_norm_limit: float = 10.0
     patience_epochs: int = 15
     action_delta_weight: float = 1.0
+    delta_scale: float = 1.0
+    incremental_delta_weight: float = 1.0
+    excess_weight: float = 1.0
+    excess_margin: float = 0.0
+    advantage_weight: float = 0.0
+    advantage_clip: float = 1.0
     hard_case_weight_boost: float = 7.0
     hard_tracking_error_scale: float = 0.2
     hard_teacher_mismatch_scale: float = 0.1
@@ -83,6 +92,15 @@ class DenseStudentTrainingConfig:
             raise ValueError("hard-case scales must be positive")
         if self.architecture not in SUPPORTED_STUDENT_ARCHITECTURES:
             raise ValueError(f"unsupported Student architecture: {self.architecture}")
+        if self.delta_scale <= 0:
+            raise ValueError("delta_scale must be positive")
+        if (
+            min(self.incremental_delta_weight, self.excess_weight) < 0
+            or self.excess_margin < 0
+        ):
+            raise ValueError("incremental loss weights and margin cannot be negative")
+        if self.advantage_weight < 0 or self.advantage_clip <= 0:
+            raise ValueError("advantage weighting must be non-negative with a positive clip")
         if self.moe_expert_count < 0:
             raise ValueError("MoE expert count cannot be negative")
         if self.moe_router_temperature <= 0 or self.moe_prototype_movement_limit < 0:
@@ -249,6 +267,20 @@ def _build_student_model(
                 residual_blocks=config.residual_blocks,
                 residual_scale=config.residual_scale,
                 enforce_odd_policy=config.enforce_odd_policy,
+            ),
+            None,
+        )
+    if config.architecture == "incremental":
+        return (
+            IncrementalDenseStudent(
+                observation_dim,
+                theta_dim,
+                action_dim,
+                width=config.network_width,
+                residual_blocks=config.residual_blocks,
+                residual_scale=config.residual_scale,
+                enforce_odd_policy=config.enforce_odd_policy,
+                delta_scale=config.delta_scale,
             ),
             None,
         )
@@ -440,6 +472,25 @@ def _checkpoint_payload(
         "best_validation": validation,
         "source": git_source_revision(),
     }
+    if isinstance(model, IncrementalDenseStudent):
+        temporal_contract = {
+            **common["temporal_contract"],
+            "action_delta_definition": (
+                "residual_action_increment_from_previous_driver_action"
+            ),
+            "incremental_delta_weight": config.incremental_delta_weight,
+            "excess_weight": config.excess_weight,
+            "excess_margin": config.excess_margin,
+        }
+        return {
+            "schema_version": "incremental_dense_student_v1",
+            **common,
+            "temporal_contract": temporal_contract,
+            "network_width": config.network_width,
+            "residual_blocks": config.residual_blocks,
+            "residual_scale": config.residual_scale,
+            "delta_scale": config.delta_scale,
+        }
     if isinstance(model, DenseConditionalStudent):
         return {
             "schema_version": "dense_conditional_student_v1",
@@ -498,6 +549,8 @@ def train_dense_student(
         arrays,
         "train",
         hard_case_weight_boost=config.hard_case_weight_boost,
+        advantage_weight=config.advantage_weight,
+        advantage_clip=config.advantage_clip,
         **dataset_weighting,
     )
     validation_dataset = DistillationDataset(
@@ -536,6 +589,14 @@ def train_dense_student(
                 {
                     "network_width": config.network_width,
                     "residual_blocks": config.residual_blocks,
+                }
+            )
+        elif isinstance(model, IncrementalDenseStudent):
+            expected.update(
+                {
+                    "network_width": config.network_width,
+                    "residual_blocks": config.residual_blocks,
+                    "delta_scale": config.delta_scale,
                 }
             )
         else:
@@ -589,6 +650,7 @@ def train_dense_student(
         loss_sum = 0.0
         imitation_loss_sum = 0.0
         action_delta_loss_sum = 0.0
+        excess_loss_sum = 0.0
         balance_loss_sum = 0.0
         z_loss_sum = 0.0
         anchor_loss_sum = 0.0
@@ -597,26 +659,47 @@ def train_dense_student(
             observation = batch["observation"].to(device)
             theta = batch["aircraft_parameters"].to(device)
             target = batch["teacher_action"].to(device)
-            prediction = model(observation, theta)
             sample_weight = batch["sample_weight"].to(device)
-            imitation_loss = weighted_teacher_action_mse(
-                prediction,
-                target,
-                sample_weight,
-            )
-            previous_prediction = model(
-                batch["previous_observation"].to(device), theta
-            )
-            action_delta_loss = teacher_action_rate_mse(
-                prediction,
-                previous_prediction,
-                target,
-                batch["previous_teacher_action"].to(device),
-                batch["policy_step_delta"].to(device),
-                batch["temporal_mask"].to(device),
-                sample_weight,
-            )
-            loss = imitation_loss + config.action_delta_weight * action_delta_loss
+            excess_loss: torch.Tensor | None = None
+            if isinstance(model, IncrementalDenseStudent):
+                previous_driver_action = batch["previous_driver_action"].to(device)
+                prediction, delta = model(observation, theta, previous_driver_action)
+                incremental_losses = incremental_student_losses(
+                    prediction,
+                    delta,
+                    target,
+                    batch["residual_delta_label"].to(device),
+                    sample_weight,
+                    config.excess_margin,
+                )
+                imitation_loss = incremental_losses["action_mse"]
+                action_delta_loss = incremental_losses["delta_mse"]
+                excess_loss = incremental_losses["excess"]
+                loss = (
+                    imitation_loss
+                    + config.incremental_delta_weight * action_delta_loss
+                    + config.excess_weight * excess_loss
+                )
+            else:
+                prediction = model(observation, theta)
+                imitation_loss = weighted_teacher_action_mse(
+                    prediction,
+                    target,
+                    sample_weight,
+                )
+                previous_prediction = model(
+                    batch["previous_observation"].to(device), theta
+                )
+                action_delta_loss = teacher_action_rate_mse(
+                    prediction,
+                    previous_prediction,
+                    target,
+                    batch["previous_teacher_action"].to(device),
+                    batch["policy_step_delta"].to(device),
+                    batch["temporal_mask"].to(device),
+                    sample_weight,
+                )
+                loss = imitation_loss + config.action_delta_weight * action_delta_loss
             if isinstance(model, ThetaRoutedLinearMoEStudent):
                 router = model.router_regularization(theta)
                 loss = (
@@ -636,6 +719,8 @@ def train_dense_student(
             action_delta_loss_sum += float(action_delta_loss.detach()) * len(
                 observation
             )
+            if excess_loss is not None:
+                excess_loss_sum += float(excess_loss.detach()) * len(observation)
             if isinstance(model, ThetaRoutedLinearMoEStudent):
                 balance_loss_sum += float(router["router_balance_loss"].detach()) * len(
                     observation
@@ -647,10 +732,18 @@ def train_dense_student(
             sample_count += len(observation)
 
         validation = imitation_metrics(model, validation_loader, device)
-        validation_objective = float(validation["action_mse"]) + (
-            config.action_delta_weight
-            * float(validation["action_delta_mse_per_policy_step"])
-        )
+        if isinstance(model, IncrementalDenseStudent):
+            validation_objective = (
+                float(validation["action_mse"])
+                + config.incremental_delta_weight
+                * float(validation["action_delta_mse_per_policy_step"])
+                + config.excess_weight * float(validation.get("excess", 0.0))
+            )
+        else:
+            validation_objective = float(validation["action_mse"]) + (
+                config.action_delta_weight
+                * float(validation["action_delta_mse_per_policy_step"])
+            )
         epoch_row: dict[str, float | int] = {
             "epoch": epoch,
             "train_total_loss": loss_sum / sample_count,
@@ -658,6 +751,7 @@ def train_dense_student(
             "train_action_delta_mse_per_policy_step": (
                 action_delta_loss_sum / sample_count
             ),
+            "train_excess_loss": excess_loss_sum / sample_count,
             "validation_objective": validation_objective,
             **validation,
         }
@@ -679,6 +773,7 @@ def train_dense_student(
                     "train_action_delta_mse_per_policy_step": epoch_row[
                         "train_action_delta_mse_per_policy_step"
                     ],
+                    "train_excess_loss": epoch_row["train_excess_loss"],
                     "validation_action_mse": validation["action_mse"],
                     "validation_action_delta_mse_per_policy_step": validation[
                         "action_delta_mse_per_policy_step"
@@ -744,6 +839,14 @@ def train_dense_student(
             "train_max_sample_weight": float(train_dataset.sample_weights.max()),
             "validation_mean_hardness": float(
                 validation_dataset.hardness_scores.mean()
+            ),
+            "train_mean_advantage": float(train_dataset.advantages.mean()),
+            "train_max_abs_advantage": float(train_dataset.advantages.abs().max()),
+            "train_mean_advantage_factor": float(
+                train_dataset.advantage_factors.mean()
+            ),
+            "train_max_advantage_factor": float(
+                train_dataset.advantage_factors.max()
             ),
         },
         "checkpoint_selection_metric": (

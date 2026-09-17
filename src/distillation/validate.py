@@ -14,7 +14,12 @@ import numpy as np
 import torch
 
 from src.envs.roll_rate_commands import specialist_evaluation_commands
-from src.student.dense.policy import DenseStudentPolicy, load_dense_student
+from src.student.dense.network import IncrementalDenseStudent
+from src.student.dense.policy import (
+    DenseStudentPolicy,
+    IncrementalDenseStudentPolicy,
+    load_dense_student,
+)
 from src.teacher.specialist.trainer import (
     build_specialist_env,
     evaluate_specialist,
@@ -37,20 +42,43 @@ def imitation_metrics(
     delta_squared_error = 0.0
     delta_absolute_error = 0.0
     delta_maximum_error = 0.0
+    excess_squared_error = 0.0
     temporal_count = 0
+    incremental = isinstance(model, IncrementalDenseStudent)
     model.eval()
     with torch.no_grad():
         for batch in batches:
             observation = batch["observation"].to(target_device)
             theta = batch["aircraft_parameters"].to(target_device)
             target = batch["teacher_action"].to(target_device)
-            prediction = model(observation, theta)
+            if incremental:
+                previous_driver_action = batch["previous_driver_action"].to(
+                    target_device
+                )
+                residual_delta_label = batch["residual_delta_label"].to(target_device)
+                prediction, delta = model(
+                    observation, theta, previous_driver_action
+                )
+            else:
+                prediction = model(observation, theta)
             error = prediction - target
             squared_error += float(error.square().sum())
             absolute_error += float(error.abs().sum())
             maximum_error = max(maximum_error, float(error.abs().max()))
             sample_count += error.numel()
-            if "previous_observation" in batch:
+            if incremental:
+                delta_error = delta - residual_delta_label
+                delta_squared_error += float(delta_error.square().sum())
+                delta_absolute_error += float(delta_error.abs().sum())
+                delta_maximum_error = max(
+                    delta_maximum_error, float(delta_error.abs().max())
+                )
+                excess = torch.clamp(
+                    delta.abs() - residual_delta_label.abs(), min=0.0
+                )
+                excess_squared_error += float(excess.square().sum())
+                temporal_count += delta_error.numel()
+            elif "previous_observation" in batch:
                 previous_observation = batch["previous_observation"].to(target_device)
                 previous_target = batch["previous_teacher_action"].to(target_device)
                 temporal_mask = batch["temporal_mask"].to(target_device).bool()
@@ -82,6 +110,7 @@ def imitation_metrics(
         "action_delta_mae_per_policy_step": delta_absolute_error
         / max(temporal_count, 1),
         "action_delta_max_abs_error_per_policy_step": delta_maximum_error,
+        "excess": excess_squared_error / max(temporal_count, 1),
         "temporal_action_elements": temporal_count,
     }
 
@@ -320,7 +349,11 @@ def evaluate_dense_student_bank(
         if int(teacher_payload["actor_observation_dim"]) != model.observation_dim:
             raise ValueError("Student and specialist observation contracts differ")
         distillation_split = split_for_plant(record.plant_id)
-        student_policy = DenseStudentPolicy(model, record.parameters, device=device)
+        student_policy = (
+            IncrementalDenseStudentPolicy(model, record.parameters, device=device)
+            if isinstance(model, IncrementalDenseStudent)
+            else DenseStudentPolicy(model, record.parameters, device=device)
+        )
         plant_dir = destination / record.plant_id
         teacher_result = evaluate_specialist(
             teacher_policy,

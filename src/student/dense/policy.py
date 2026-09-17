@@ -10,7 +10,10 @@ from torch import nn
 
 from src.aircraft.parameters import PChannelParameters
 from src.context.aircraft_parameters import normalize_aircraft_parameters
-from src.student.dense.network import DenseConditionalStudent
+from src.student.dense.network import (
+    DenseConditionalStudent,
+    IncrementalDenseStudent,
+)
 from src.student.moe.network import ThetaRoutedLinearMoEStudent
 
 
@@ -48,6 +51,56 @@ class DenseStudentPolicy:
         return result[0] if single else result
 
 
+class IncrementalDenseStudentPolicy:
+    """Deployment wrapper that maintains the incremental recurrence ``u_t``.
+
+    The previous requested action is stored across ``predict`` calls and reset to
+    zero on ``reset()`` (mirroring the dataset's episode-start convention), so
+    each episode starts from rest exactly like the recorded distillation data.
+    """
+
+    def __init__(
+        self,
+        model: IncrementalDenseStudent,
+        aircraft_parameters: PChannelParameters | np.ndarray,
+        *,
+        device: str | torch.device = "cpu",
+    ) -> None:
+        self.device = torch.device(device)
+        self.model = model.to(self.device).eval()
+        theta = (
+            normalize_aircraft_parameters(aircraft_parameters)
+            if isinstance(aircraft_parameters, PChannelParameters)
+            else np.asarray(aircraft_parameters, dtype=np.float32)
+        )
+        if theta.shape != (model.aircraft_parameter_dim,) or not np.isfinite(theta).all():
+            raise ValueError("student policy requires one finite normalized theta vector")
+        self.theta = torch.as_tensor(theta, dtype=torch.float32, device=self.device)
+        self._previous_action = torch.zeros(
+            model.action_dim, dtype=torch.float32, device=self.device
+        )
+
+    def reset(self) -> None:
+        self._previous_action.zero_()
+
+    def predict(self, observation: np.ndarray, deterministic: bool = True) -> np.ndarray:
+        values = torch.as_tensor(observation, dtype=torch.float32, device=self.device)
+        single = values.ndim == 1
+        if single:
+            values = values.unsqueeze(0)
+        theta = self.theta.unsqueeze(0).expand(values.shape[0], -1)
+        previous = self._previous_action.unsqueeze(0).expand(values.shape[0], -1)
+        with torch.no_grad():
+            actions, _ = self.model(values, theta, previous)
+        result = actions.cpu().numpy()
+        self._previous_action = torch.as_tensor(
+            result[-1] if not single else result[0],
+            dtype=torch.float32,
+            device=self.device,
+        )
+        return result[0] if single else result
+
+
 def load_dense_student(
     checkpoint_path: str | Path,
     *,
@@ -55,7 +108,18 @@ def load_dense_student(
 ) -> tuple[ConditionalStudent, dict[str, object]]:
     payload = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
     schema_version = payload.get("schema_version")
-    if schema_version == "dense_conditional_student_v1":
+    if schema_version == "incremental_dense_student_v1":
+        model: nn.Module = IncrementalDenseStudent(
+            int(payload["observation_dim"]),
+            int(payload["aircraft_parameter_dim"]),
+            int(payload["action_dim"]),
+            width=int(payload["network_width"]),
+            residual_blocks=int(payload["residual_blocks"]),
+            residual_scale=float(payload["residual_scale"]),
+            enforce_odd_policy=bool(payload.get("enforce_odd_policy", False)),
+            delta_scale=float(payload.get("delta_scale", 1.0)),
+        )
+    elif schema_version == "dense_conditional_student_v1":
         model: nn.Module = DenseConditionalStudent(
             int(payload["observation_dim"]),
             int(payload["aircraft_parameter_dim"]),

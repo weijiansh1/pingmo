@@ -33,6 +33,7 @@ from src.distillation.dataset import (
     VALIDATION_SPLIT,
     save_distillation_shard,
 )
+from src.distillation.critic import load_specialist_critic
 from src.distillation.distill import DenseStudentTrainingConfig, train_dense_student
 from src.distillation.validate import evaluate_dense_student_bank
 from src.envs.roll_rate_commands import (
@@ -41,7 +42,12 @@ from src.envs.roll_rate_commands import (
     specialist_extended_commands,
     specialist_step_commands,
 )
-from src.student.dense.policy import DenseStudentPolicy, load_dense_student
+from src.student.dense.network import IncrementalDenseStudent
+from src.student.dense.policy import (
+    DenseStudentPolicy,
+    IncrementalDenseStudentPolicy,
+    load_dense_student,
+)
 from src.teacher.specialist.trainer import build_specialist_env, load_specialist_actor
 from src.utils.provenance import git_source_revision, sha256_file
 
@@ -233,12 +239,18 @@ def _collect_student_driven_profile(
     *,
     sample_stride: int,
     seed: int,
-) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, dict[str, float]]:
+    critic_policy: object | None = None,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, dict[str, float]]:
     environment = build_specialist_env(record, training_config, (profile,))
-    observation, _ = environment.reset(seed=seed)
+    observation, reset_info = environment.reset(seed=seed)
+    critic_state = np.asarray(reset_info.get("critic_state"), dtype=np.float32)
+    reset = getattr(student_policy, "reset", None)
+    if callable(reset):
+        reset()
     observations: list[np.ndarray] = []
     teacher_actions: list[np.ndarray] = []
     student_actions: list[np.ndarray] = []
+    advantages: list[float] = []
     policy_steps: list[int] = []
     squared_action_error = 0.0
     action_elements = 0
@@ -258,6 +270,12 @@ def _collect_student_driven_profile(
             teacher_actions.append(teacher_action.copy())
             student_actions.append(student_action.copy())
             policy_steps.append(step)
+            advantage = 0.0
+            if critic_policy is not None:
+                advantage = float(
+                    critic_policy.advantage(critic_state, teacher_action, student_action)
+                )
+            advantages.append(advantage)
             squared_action_error += float(
                 np.square(student_action - teacher_action).sum()
             )
@@ -265,6 +283,7 @@ def _collect_student_driven_profile(
         observation, reward, terminated, truncated, last_info = environment.step(
             student_action
         )
+        critic_state = np.asarray(last_info.get("critic_state"), dtype=np.float32)
         episode_return += reward
         step += 1
         if terminated or truncated:
@@ -272,6 +291,7 @@ def _collect_student_driven_profile(
     observations_array = np.asarray(observations, dtype=np.float32)
     teacher_action_array = np.asarray(teacher_actions, dtype=np.float32)
     student_action_array = np.asarray(student_actions, dtype=np.float32)
+    advantages_array = np.asarray(advantages, dtype=np.float32).reshape(-1, 1)
     policy_step_array = np.asarray(policy_steps, dtype=np.int32)
     if len(student_action_array) > 1:
         step_delta = np.diff(policy_step_array).astype(np.float32)[:, None]
@@ -286,6 +306,7 @@ def _collect_student_driven_profile(
         observations_array,
         teacher_action_array,
         student_action_array,
+        advantages_array,
         policy_step_array,
         {
             "visited_action_rmse": float(
@@ -305,6 +326,7 @@ def _collect_student_driven_profile(
             "hard_tracking_state_fraction": float(
                 np.mean(np.abs(observations_array[:, 3]) >= 0.2)
             ),
+            "mean_abs_advantage": float(np.abs(advantages_array).mean()),
         },
     )
 
@@ -344,6 +366,7 @@ def collect_student_driven_round(
     sample_stride: int,
     seed: int,
     device: str,
+    advantage_weight: float = 0.0,
 ) -> dict[str, object]:
     """Roll out the Student, label visited states with the matching Teacher."""
 
@@ -382,7 +405,16 @@ def collect_student_driven_round(
         if int(teacher_payload["actor_observation_dim"]) != model.observation_dim:
             raise ValueError("Student and Teacher observation contracts differ")
         observation_dim = model.observation_dim
-        student_policy = DenseStudentPolicy(model, record.parameters, device=device)
+        student_policy = (
+            IncrementalDenseStudentPolicy(model, record.parameters, device=device)
+            if isinstance(model, IncrementalDenseStudent)
+            else DenseStudentPolicy(model, record.parameters, device=device)
+        )
+        critic_policy = (
+            load_specialist_critic(actor_path, device=device)[0]
+            if advantage_weight > 0
+            else None
+        )
         profile_splits = _profile_splits(
             len(teachers),
             record.plant_id,
@@ -398,6 +430,7 @@ def collect_student_driven_round(
         episode_parts: list[np.ndarray] = []
         policy_step_parts: list[np.ndarray] = []
         driver_action_parts: list[np.ndarray] = []
+        advantage_parts: list[np.ndarray] = []
         for profile_index, (profile, split_code) in enumerate(profile_splits):
             if profile.command_id not in command_lookup:
                 command_lookup[profile.command_id] = len(command_ids)
@@ -406,6 +439,7 @@ def collect_student_driven_round(
                 observations,
                 actions,
                 driver_actions,
+                advantages,
                 policy_steps,
                 profile_diagnostics,
             ) = _collect_student_driven_profile(
@@ -419,6 +453,7 @@ def collect_student_driven_round(
                 + round_index * 100_000
                 + teacher_index * 1000
                 + profile_index,
+                critic_policy=critic_policy,
             )
             row_count = len(observations)
             observation_parts.append(observations)
@@ -430,6 +465,7 @@ def collect_student_driven_round(
             episode_parts.append(np.full(row_count, profile_index, dtype=np.int64))
             policy_step_parts.append(policy_steps)
             driver_action_parts.append(driver_actions)
+            advantage_parts.append(advantages)
             diagnostics.append(
                 {
                     "plant_id": record.plant_id,
@@ -454,6 +490,7 @@ def collect_student_driven_round(
             episode_indices=np.concatenate(episode_parts),
             policy_step_indices=np.concatenate(policy_step_parts),
             driver_actions=np.concatenate(driver_action_parts),
+            advantages=np.concatenate(advantage_parts),
         )
         shard_path = save_distillation_shard(
             shard_dir / f"{teacher_index:04d}-{record.plant_id}.npz", arrays
@@ -1010,6 +1047,7 @@ def run_student_driven_distillation(
                 sample_stride=config.student_sample_stride,
                 seed=config.seed,
                 device=config.device,
+                advantage_weight=config.student_training.advantage_weight,
             )
         dataset_path = round_dir / "dataset/dataset.json"
         student_training = (

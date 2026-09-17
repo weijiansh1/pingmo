@@ -36,6 +36,7 @@ class DistillationArrays:
     episode_indices: np.ndarray | None = None
     policy_step_indices: np.ndarray | None = None
     driver_actions: np.ndarray | None = None
+    advantages: np.ndarray | None = None
 
     def __post_init__(self) -> None:
         row_count = len(self.observations)
@@ -55,6 +56,10 @@ class DistillationArrays:
             object.__setattr__(self, "policy_step_indices", policy_steps)
         if self.driver_actions is None:
             object.__setattr__(self, "driver_actions", self.teacher_actions)
+        if self.advantages is None:
+            object.__setattr__(
+                self, "advantages", np.zeros((row_count, 1), dtype=np.float32)
+            )
 
         arrays = (
             self.aircraft_parameters,
@@ -65,6 +70,7 @@ class DistillationArrays:
             self.episode_indices,
             self.policy_step_indices,
             self.driver_actions,
+            self.advantages,
         )
         if row_count <= 0 or any(len(array) != row_count for array in arrays):
             raise ValueError("distillation arrays must be non-empty and row aligned")
@@ -74,6 +80,10 @@ class DistillationArrays:
             raise ValueError("teacher actions must have shape [N, 1]")
         if self.driver_actions.ndim != 2 or self.driver_actions.shape != self.teacher_actions.shape:
             raise ValueError("driver actions must match the teacher-action matrix")
+        if self.advantages.shape != (row_count, 1) and self.advantages.shape != (row_count,):
+            raise ValueError("advantages must have shape [N, 1] or [N]")
+        if not np.isfinite(self.advantages).all():
+            raise ValueError("advantages must be finite")
         if self.episode_indices.ndim != 1 or self.policy_step_indices.ndim != 1:
             raise ValueError("episode and policy-step indices must be vectors")
         if np.min(self.episode_indices) < 0 or np.min(self.policy_step_indices) < 0:
@@ -110,6 +120,8 @@ class DistillationDataset(Dataset[dict[str, torch.Tensor]]):
         hard_teacher_mismatch_scale: float = 0.1,
         hard_action_rate_scale: float = 0.05,
         tracking_error_index: int = 3,
+        advantage_weight: float = 0.0,
+        advantage_clip: float = 1.0,
     ) -> None:
         if hard_case_weight_boost < 0 or min(
             hard_tracking_error_scale,
@@ -117,6 +129,8 @@ class DistillationDataset(Dataset[dict[str, torch.Tensor]]):
             hard_action_rate_scale,
         ) <= 0:
             raise ValueError("invalid hard-case weighting configuration")
+        if advantage_weight < 0 or advantage_clip <= 0:
+            raise ValueError("advantage weighting must be non-negative with a positive clip")
         if not 0 <= tracking_error_index < arrays.observations.shape[1]:
             raise ValueError("tracking-error observation index is out of range")
         split_code = TRAIN_SPLIT if split == "train" else VALIDATION_SPLIT
@@ -193,6 +207,27 @@ class DistillationDataset(Dataset[dict[str, torch.Tensor]]):
         self.hardness_scores = torch.from_numpy(hardness)
         self.sample_weights = 1.0 + hard_case_weight_boost * self.hardness_scores
 
+        advantages = np.asarray(arrays.advantages[indices], dtype=np.float32).reshape(
+            len(indices)
+        )
+        self.advantages = torch.from_numpy(advantages)
+        advantage_factors = np.exp(
+            advantage_weight * np.clip(advantages, -advantage_clip, advantage_clip)
+        ).astype(np.float32)
+        self.advantage_factors = torch.from_numpy(advantage_factors)
+        self.sample_weights = self.sample_weights * self.advantage_factors
+
+        # Incremental-action (V6) inputs. The previous action defaults to zero at
+        # episode starts (temporal_mask == 0), matching the deployed policy's
+        # reset state, so every row has a valid ``u_{t-1}`` and residual delta
+        # label. This differs from ``self.previous_driver_actions``, which
+        # self-references at episode boundaries and is only used by the legacy
+        # own-delta rate loss.
+        incremental_previous = self.previous_driver_actions.clone()
+        incremental_previous[~self.temporal_mask.bool()] = 0.0
+        self.incremental_previous_actions = incremental_previous
+        self.residual_delta_labels = self.teacher_actions - incremental_previous
+
     def __len__(self) -> int:
         return len(self.observations)
 
@@ -204,10 +239,13 @@ class DistillationDataset(Dataset[dict[str, torch.Tensor]]):
             "driver_action": self.driver_actions[index],
             "previous_observation": self.previous_observations[index],
             "previous_teacher_action": self.previous_teacher_actions[index],
+            "previous_driver_action": self.incremental_previous_actions[index],
+            "residual_delta_label": self.residual_delta_labels[index],
             "temporal_mask": self.temporal_mask[index],
             "policy_step_delta": self.policy_step_delta[index],
             "hardness_score": self.hardness_scores[index],
             "sample_weight": self.sample_weights[index],
+            "advantage": self.advantages[index],
             "plant_index": self.plant_indices[index],
         }
 
@@ -228,6 +266,7 @@ def save_distillation_shard(path: str | Path, arrays: DistillationArrays) -> Pat
             episode_indices=np.asarray(arrays.episode_indices, dtype=np.int64),
             policy_step_indices=np.asarray(arrays.policy_step_indices, dtype=np.int32),
             driver_actions=np.asarray(arrays.driver_actions, dtype=np.float32),
+            advantages=np.asarray(arrays.advantages, dtype=np.float32),
         )
     temporary.replace(destination)
     return destination
@@ -253,6 +292,9 @@ def load_distillation_shard(path: str | Path) -> DistillationArrays:
             ),
             driver_actions=(
                 payload["driver_actions"] if "driver_actions" in optional else None
+            ),
+            advantages=(
+                payload["advantages"] if "advantages" in optional else None
             ),
         )
 
@@ -293,6 +335,7 @@ def load_distillation_arrays(manifest_path: str | Path) -> tuple[DistillationArr
             [item.policy_step_indices for item in loaded]
         ),
         driver_actions=np.concatenate([item.driver_actions for item in loaded]),
+        advantages=np.concatenate([item.advantages for item in loaded]),
     )
     if len(arrays.observations) != int(manifest["row_count"]):
         raise ValueError("distillation shard rows do not match the manifest")

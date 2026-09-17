@@ -85,7 +85,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--epochs", type=int, default=student_defaults.epochs)
     parser.add_argument(
         "--student-architecture",
-        choices=("dense", "theta_routed_linear_moe"),
+        choices=("dense", "theta_routed_linear_moe", "incremental"),
         default=student_defaults.architecture,
     )
     parser.add_argument("--batch-size", type=int, default=student_defaults.batch_size)
@@ -98,6 +98,42 @@ def parse_args() -> argparse.Namespace:
         "--action-delta-weight",
         type=float,
         default=student_defaults.action_delta_weight,
+    )
+    parser.add_argument(
+        "--delta-scale",
+        type=float,
+        default=student_defaults.delta_scale,
+        help="Scale on the incremental Student's emitted delta (incremental only).",
+    )
+    parser.add_argument(
+        "--incremental-delta-weight",
+        type=float,
+        default=student_defaults.incremental_delta_weight,
+        help="Weight on the residual delta MSE (incremental only).",
+    )
+    parser.add_argument(
+        "--excess-weight",
+        type=float,
+        default=student_defaults.excess_weight,
+        help="Weight on the excess-delta penalty (incremental only).",
+    )
+    parser.add_argument(
+        "--excess-margin",
+        type=float,
+        default=student_defaults.excess_margin,
+        help="Slack margin below which Student delta overshoot is not penalized.",
+    )
+    parser.add_argument(
+        "--advantage-weight",
+        type=float,
+        default=student_defaults.advantage_weight,
+        help="Exponential weighting on the Teacher advantage Q(u^T)-Q(u^S) (P1).",
+    )
+    parser.add_argument(
+        "--advantage-clip",
+        type=float,
+        default=student_defaults.advantage_clip,
+        help="Symmetric clip on the advantage before weighting (P1).",
     )
     parser.add_argument(
         "--hard-case-weight-boost",
@@ -201,6 +237,12 @@ if __name__ == "__main__":
         residual_blocks=args.residual_blocks,
         patience_epochs=args.patience_epochs,
         action_delta_weight=args.action_delta_weight,
+        delta_scale=args.delta_scale,
+        incremental_delta_weight=args.incremental_delta_weight,
+        excess_weight=args.excess_weight,
+        excess_margin=args.excess_margin,
+        advantage_weight=args.advantage_weight,
+        advantage_clip=args.advantage_clip,
         hard_case_weight_boost=args.hard_case_weight_boost,
         hard_tracking_error_scale=args.hard_tracking_error_scale,
         hard_teacher_mismatch_scale=args.hard_teacher_mismatch_scale,
