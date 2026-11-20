@@ -29,93 +29,81 @@
 \captionsetup{font=small,labelsep=quad,justification=justified,singlelinecheck=false}
 \captionsetup[table]{position=top,skip=6pt}
 \ctexset{section={format=\Large\heiti,beforeskip=18pt,afterskip=8pt},subsection={format=\large\heiti,beforeskip=13pt,afterskip=6pt},subsubsection={format=\normalsize\heiti,beforeskip=10pt,afterskip=5pt}}
-\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small 基于飞行品质的六自由度对象族构建}\fancyfoot[C]{\thepage}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small 基于飞行品质的飞控大模型构建与六通道扩展}\fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.3pt}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \setlist{itemsep=2pt,topsep=3pt,parsep=0pt}
-% chart palette (validated reference palette; ordinal ramp steps 250/450/650)
+% chart palette (validated reference palette)
 \definecolor{sA}{HTML}{2A78D6}
 \definecolor{sB}{HTML}{EB6834}
 \definecolor{sC}{HTML}{1BAF7A}
 \definecolor{ink}{HTML}{0B0B0B}
 \definecolor{inkB}{HTML}{52514E}
 \definecolor{gridc}{HTML}{E4E3DE}
-\definecolor{ordA}{HTML}{86B6EF}
-\definecolor{ordB}{HTML}{2A78D6}
-\definecolor{ordC}{HTML}{104281}
-\definecolor{ordN}{HTML}{52514E}
 \pgfplotsset{
   paper/.style={
     scale only axis, axis line style={inkB!70}, tick style={inkB!70},
     tick label style={font=\scriptsize, color=inkB}, label style={font=\scriptsize, color=inkB},
     title style={font=\small, color=ink, at={(0,1)}, anchor=south west, inner xsep=0pt, yshift=-2pt},
     ymajorgrids, major grid style={gridc}, axis background/.style={fill=white},
-    every axis plot/.append style={line join=round},
   },
+  lvA/.style={only marks, mark=*, mark size=0.5pt, sA, opacity=0.55},
+  lvB/.style={only marks, mark=triangle*, mark size=0.7pt, sB, opacity=0.6},
+  lvC/.style={only marks, mark=square*, mark size=0.5pt, sC, opacity=0.6},
+  lvO/.style={only marks, mark=x, mark size=0.8pt, inkB, opacity=0.7},
 }
 \tikzset{
-  bound/.style={inkB!55, dashed, line width=0.5pt},
-  boundlabel/.style={font=\tiny, color=inkB, inner sep=1pt},
+  bndA/.style={ink!75, densely dashed, line width=0.55pt},
+  bndB/.style={ink!75, densely dotted, line width=0.7pt},
+  bndC/.style={ink!75, dash dot, line width=0.55pt},
 }
 \newcommand{\legline}[2]{\tikz[baseline=-0.6ex]\draw[#1, line width=1.1pt] (0,0) -- (0.55,0);~#2}
-\newcommand{\legbox}[2]{\tikz[baseline=-0.6ex]\fill[#1] (0,-0.12) rectangle (0.3,0.12);~#2}
+\newcommand{\legdot}[2]{\tikz[baseline=-0.6ex]\fill[#1] (0,0) circle (1.8pt);~#2}
 
 \begin{document}
-{\centering\LARGE\heiti 基于飞行品质的六自由度对象族构建\par}
-\vspace{4pt}
-{\centering\large\heiti ——模态分级采样、真实导数约束与综合品质定级\par}
+{\centering\LARGE\heiti 基于飞行品质的飞控大模型构建与六通道扩展\par}
 \vspace{6pt}
-{\centering\small 研究论文 · 版本日期：2026-11-19\par}
+{\centering\small 研究论文（阶段稿）· 版本日期：2026-11-19\par}
 \vspace{8pt}
-\begin{abstract}\noindent \textbf{摘要　}飞控大模型需要在覆盖不同飞行品质的对象族上积累控制经验。滚转通道验证以低阶等效参数逐项采样构造对象族；推广到六自由度时，各通道的等效系统由同一组气动导数联系，逐通道独立采样的参数难以同时满足全部通道的品质要求，也难以对应真实飞机。本文提出模态按品质等级采样、耦合形状取自真实飞机、导数由模态精确反解、全部判据综合定级的对象族构建方法。横航向四个极点按 GJB 2874—1997 的等级给定，侧力导数与两个形状比取自 NASA CR-2144 中 10 架飞机的 94 个飞行状态，全部横航向导数由一个四次方程解出；纵向在保持短周期等效参数的条件下解出长周期；全量动力学包含风轴重力、完整惯性耦合与 Dryden 湍流；每个对象按 14 项品质判据的最差项定级。对照实验表明，原 5,000 个滚转对象补齐其余通道后，仅 47\% 能对应真实飞机的导数范围，原 1 级对象中仅 9\% 在全部通道上仍为 1 级。本文方法在 65,536 个候选中得到 49,539 个导数真实的候选（75.6\%），由此构成 1、2、3 级各 1,500 个、分布外 500 个的对象族，1 级对象的 14 项判据全部为 1 级。推导得到的滚转零点比 \(\omega_\phi/\omega_d\) 的 5–95 百分位为 0.73–1.10，与真实飞机的 0.64–1.13 一致；从 1 级到 3 级，侧滑偏离 95 百分位由 5.5° 增至 38.7°，荷兰滚频率中位数由 4.3 rad/s 降至 2.7 rad/s，滚转等效延迟 95 百分位由 0.095 s 增至 0.23 s。该对象族为六自由度飞控大模型的教师训练与跨对象评价提供了按品质组织的对象空间。\end{abstract}
-\noindent \textbf{关键词}　飞行品质；低阶等效系统；六自由度；横航向耦合；对象族；飞控大模型
+\begin{abstract}\noindent \textbf{摘要　}将飞行品质的统一动态描述转化为可跨对象复用的控制知识，是飞控大模型的关键任务。滚转通道验证已形成从品质对象族、特权强化学习教师到统一控制策略的构建链。本文将这一路线扩展到六自由度：以 GJB 2874—1997 的俯仰、滚转与航向等效系统构造六通道品质对象，按俯仰杆、横向杆与脚蹬三条控制回路组织教师训练与多教师蒸馏。六通道对象族以模态按品质等级采样、耦合形状取自 NASA CR-2144 真实飞机数据、导数由模态精确反解的方式构造，按 14 项判据的最差项定级，共 5,000 个对象：1、2、3 级各 1,500 个，分布外 500 个。65,536 个候选中 75.6\% 的导数落在真实飞机范围内；推导得到的滚转零点比 \(\omega_\phi/\omega_d\) 的 5–95 百分位为 0.73–1.10，与真实飞机的 0.64–1.13 一致；1 级对象的全部判据均为 1 级，而滚转对象库逐通道补齐后仅 9\% 的 1 级对象保持 1 级。本文同时给出三回路控制任务、特权教师、统一学生与跨对象评价的设计，后续在该对象族上开展。\end{abstract}
+\noindent \textbf{关键词}　飞行品质；飞控大模型；六自由度；低阶等效系统；特权强化学习；多教师蒸馏
 \vspace{10pt}
 
 \section{引言}
 \label{sec:intro}
-飞控大模型的构建路线是在覆盖不同飞行品质的对象族上训练专用教师，再经多教师蒸馏形成可跨对象复用的统一控制策略 [1]。在这条路线中，对象族承担两项职责：它决定控制经验覆盖哪些动态特性，也为教师训练、蒸馏和跨对象评价提供按品质分层的组织方式。滚转通道验证以 GJB 2874—1997 [2] 的滚转模态参数逐项采样，构成 5,000 个对象，完成了从专用教师到统一学生的验证。
+不同对象的操纵效能、模态阻尼和输入时延决定了不同的反馈控制需求。滚转通道验证以飞行品质组织这些动态差异：按 GJB 2874—1997 [1] 的滚转模态参数构造 5,000 个对象，逐对象训练特权教师，再经多轮 DAgger 将控制经验汇聚为统一学生 [2]。六自由度飞行还包括俯仰与航向运动，三个轴之间存在副翼偏航、上反效应与惯性耦合，控制策略需要同时处理多个回路及其相互作用。
 
-推广到六自由度，对象族需要满足两项新的要求。其一，每个对象的品质等级应在全部通道上同时成立：一个标为 1 级的对象，其俯仰、滚转、荷兰滚、侧滑偏离和长周期都应满足 1 级要求。其二，对象的动力学应能对应真实飞机，使在对象族上积累的控制经验具有物理依据。飞行品质规范按通道给出低阶等效系统（LOES）及其等级边界 [2,3]，各通道的等效参数却并不独立：横航向的滚转、侧滑与偏航响应共享同一组模态，滚转零点、上反效应与副翼偏航相互决定 [4]；侧滑偏离、滚转振荡、定常侧滑方向等交叉轴品质和长周期特性，都由各通道之间的耦合决定。逐通道独立采样等效参数，会在补齐耦合之后改变对象原有的等级。本文第~\ref{sec:exp-baseline} 节的对照实验给出了这一影响的量级：原 5,000 个滚转对象补齐其余通道后，仅 47\% 能对应真实飞机的导数范围，原 1 级对象中仅 9\% 在全部通道上仍为 1 级。
+将这条路线扩展到六自由度，首先需要一个按品质组织、且各通道等级同时成立的对象族。飞行品质规范按通道给出低阶等效系统及其等级边界 [1,3]，而各通道的等效参数由同一组气动导数联系：滚转、侧滑与偏航响应共享横航向模态，滚转零点、上反效应与副翼偏航相互决定 [4]。逐通道独立采样等效参数会破坏这种联系。本文从模态与导数的对应关系出发构造对象族，使各通道等级同时成立并能对应真实飞机，再沿用滚转通道的教师—蒸馏路线组织俯仰、滚转、航向三条控制回路。
 
-本文的思路是让品质等级与真实飞机数据分别决定各自擅长描述的部分。品质等级决定模态：滚转与荷兰滚的极点、螺旋根、等效延迟、滚转灵敏度和俯仰短周期按 GJB 2874 的等级区域采样。真实飞机数据决定这些模态由导数实现的方式：侧力导数与两个导数形状比取自 NASA CR-2144 [5] 的 94 个飞行状态。两者给定后，全部横航向导数由一个关于滚转阻尼导数的四次方程精确解出，滚转零点和交叉通道都是推导结果；纵向在保持短周期等效参数的条件下解出长周期。每个候选对象按 14 项品质判据取最差项定级，再按等级配额与定级来源分层选取。
-
-本文的主要结果如下：
-\begin{itemize}[leftmargin=1.5em]
-\item 建立了从各通道 LOES 到稳定轴导数模型、再到含风轴重力、惯性耦合与湍流的全量动力学和运动学的六自由度品质模型。小幅响应与各通道等效系统一致，全量模型满足角动量守恒与湍流谱方差等检验。
-\item 给出模态按等级采样、导数精确反解的对象族构建方法。65,536 个候选中 75.6\% 的导数落在真实飞机范围内；推导得到的滚转零点分布与真实飞机一致。
-\item 构成 1、2、3 级各 1,500 个、分布外 500 个的六自由度对象族。1 级对象全部判据均为 1 级；侧滑偏离、荷兰滚频率、滚转与俯仰延迟、长周期阻尼随等级呈现一致的梯度。
-\end{itemize}
-
-第~\ref{sec:model} 节给出六自由度品质模型，第~\ref{sec:family} 节给出对象族的构建方法，第~\ref{sec:exp} 节通过对照实验、真实性比较、等级梯度分析和模型检验评估对象族，第~\ref{sec:discussion} 节讨论等效导数的含义与对象族的覆盖，第~\ref{sec:conclusion} 节总结全文。
+本文给出六通道品质对象与三回路控制任务的定义，提出六通道对象族的构建方法并报告其动态覆盖与真实性，同时给出三回路教师、统一学生和跨对象评价的设计与协议。
 
 \subsection{相关工作}
-\label{sec:related}
-\textbf{飞行品质与低阶等效系统。}GJB 2874—1997 与 MIL-STD-1797A 以低阶等效系统描述飞机对驾驶员操纵力的响应，并在等效参数上规定分级要求 [2,3,6]。电传操纵飞机的增稳与控制律使实际响应阶次很高，等效系统用少量参数概括其主导动态。本文沿用这一描述方式组织模态，并把各通道的等效系统落到同一组稳定轴导数上。
+\textbf{飞行品质与低阶等效模型。}飞行品质规范以响应模态和等效参数描述控制对象的动态特征，并给出相应分级判据 [1,3,5]。本文依据 GJB 2874—1997 的俯仰、滚转与航向条款组织对象族，并把各通道的等效系统落到同一组稳定轴导数上 [6–8]。
 
-\textbf{横航向特征结构。}Davidson 与 Andrisani 从特征向量角度给出横航向品质指南，指出滚转零点、副翼偏航与荷兰滚中滚转—侧滑比之间的关系 [4]。Etkin、Nelson 与 Stevens 等的稳定轴小扰动方程和风轴力方程 [7–9] 是本文动力学模型的基础。本文利用这些关系构造导数反解，使交叉通道由模态与形状比共同确定。
+\textbf{横航向耦合与真实飞机数据。}Davidson 与 Andrisani 从特征向量角度给出横航向品质指南，联系滚转零点、副翼偏航与荷兰滚中的滚转—侧滑比 [4]。Heffley 与 Jewell 汇编的 NASA CR-2144 给出 10 架飞机 94 个飞行状态的导数与模态数据 [9]。本文以这些关系和数据约束对象的耦合方式。
 
-\textbf{真实飞机数据与对象参数化。}Heffley 与 Jewell 汇编的 NASA CR-2144 给出了 10 架飞机在 94 个飞行状态下的导数与模态数据 [5]。在强化学习控制中，动力学随机化通过扰动物理参数提升策略的迁移能力 [10,11]。与按物理参数均匀扰动不同，本文以飞行品质等级组织对象空间，并以真实飞机的导数比例约束每个对象的耦合方式。
+\textbf{特权学习与教师—学生蒸馏。}特权学习利用训练阶段可获得的信息辅助策略学习 [10]；非对称 actor–critic、教师—学生控制及运动自适应研究从不同角度处理训练信息与部署观测之间的差异 [11–13]。滚转通道验证采用逐对象特权 PPO 教师 [14] 与 DAgger 蒸馏 [15]；本文将其扩展为三回路教师与统一学生。
 
-\section{六自由度品质模型}
-\label{sec:model}
-\subsection{各通道的低阶等效系统}
-模型输入为俯仰杆力 \(F_s\)、横向杆力 \(F_{as}\) 与脚蹬力 \(F_{rp}\)（单位 N，拉杆、右压杆、右蹬为正），另有油门 \(\delta_T\)（推力增量与重量之比）与直接法向力 \(\delta_n\)。模型输出为动力学状态与派生状态
+\section{问题定义与控制对象}
+\label{sec:problem}
+\subsection{六通道品质对象}
+\label{sec:object}
+源域对象以各通道的低阶等效系统描述驾驶员操纵力到飞机响应的动态关系。输入为俯仰杆力 \(F_s\)、横向杆力 \(F_{as}\) 与脚蹬力 \(F_{rp}\)（单位 N，拉杆、右压杆、右蹬为正），另有油门与直接法向力；输出为六自由度状态
 \begin{equation}
 \mathbf x=[\,V,\ \alpha,\ q,\ \theta,\ \beta,\ p,\ r,\ \phi,\ \psi,\ X,\ Y,\ Z\,]^{\mathsf T}.
 \end{equation}
-表~\ref{tab:loes} 给出各通道的等效系统。俯仰通道以短周期描述，\(n/\alpha=V_0/(gT_{\theta2})\)，操纵期望参数 \(\mathrm{CAP}=\omega_{sp}^2/(n/\alpha)\)，增益 \(K_\theta=\mathrm{CAP}/(F_s/n)\)。滚转通道采用 single-\(s\) 形式，与滚转通道验证的对象定义一致 [1]。三条横航向通道共用 \(T_R,\lambda_s,\zeta_d,\omega_d\)，说明它们是同一个横航向系统的不同输出；第~\ref{sec:lat} 节由此建立统一的导数模型。
+表~\ref{tab:loes} 列出各通道的等效系统。滚转通道与滚转通道验证的对象定义相同 [2]；俯仰以短周期与长周期描述；航向两条通道在荷兰滚近似下与滚转共用模态。
 
 \begin{table}[H]
 \centering\small
-\caption{各通道的低阶等效系统}\label{tab:loes}
-\begin{tabularx}{\linewidth}{@{}l>{\centering\arraybackslash}p{0.5\linewidth}Y@{}}
+\caption{六通道对象的低阶等效系统}\label{tab:loes}
+\begin{tabularx}{\linewidth}{@{}l>{\centering\arraybackslash}p{0.52\linewidth}Y@{}}
 \toprule
 通道 & 等效系统 & 依据 \\
 \midrule
 俯仰角速度 & \(\dfrac{q}{F_s}=\dfrac{K_\theta(s+1/T_{\theta2})e^{-\tau_\theta s}}{s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2}\) & GJB A5.1.1.1 \\[9pt]
-迎角 & \(\dfrac{\alpha}{F_s}=\dfrac{K_\theta e^{-\tau_\theta s}}{s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2}\) & \(\gamma/\theta=1/(T_{\theta2}s+1)\)，\(\alpha=\theta-\gamma\) \\[9pt]
-法向过载 & \(\dfrac{n_z}{F_s}=\dfrac{K_\theta\,(n/\alpha)\,e^{-\tau_\theta s}}{s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2}\) & GJB A5.1.1.1 \\[9pt]
-俯仰姿态（含长周期） & \(\dfrac{\theta}{F_s}=\dfrac{K_\theta(s+1/T_{\theta1})(s+1/T_{\theta2})e^{-\tau_\theta s}}{(s^2+2\zeta_p\omega_ps+\omega_p^2)(s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2)}\) & MIL-STD-1797A 4.2.1.1 \\[9pt]
+迎角、法向过载 & \(\dfrac{\alpha}{F_s}=\dfrac{1}{n/\alpha}\dfrac{n_z}{F_s}=\dfrac{K_\theta e^{-\tau_\theta s}}{s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2}\) & GJB A5.1.1.1 \\[9pt]
+俯仰姿态 & \(\dfrac{\theta}{F_s}=\dfrac{K_\theta(s+1/T_{\theta1})(s+1/T_{\theta2})e^{-\tau_\theta s}}{(s^2+2\zeta_p\omega_ps+\omega_p^2)(s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2)}\) & MIL-STD-1797A 4.2.1.1 \\[9pt]
 滚转角速度 & \(\dfrac{p}{F_{as}}=\dfrac{L_{F_a}s(s^2+2\zeta_\phi\omega_\phi s+\omega_\phi^2)e^{-\tau_p s}}{(s-\lambda_s)(s+1/T_R)(s^2+2\zeta_d\omega_d s+\omega_d^2)}\) & GJB A5.4.1.1 \\[9pt]
 侧滑角 & \(\dfrac{\beta}{F_{rp}}\approx\dfrac{-k_{rp}e^{-\tau_{rp}s}}{s^2+2\zeta_d\omega_d s+\omega_d^2}\) & 荷兰滚近似 \\[9pt]
 偏航角速度 & \(\dfrac{r}{F_{rp}}\approx\dfrac{k_{rp}(s^2+2\zeta_r\omega_r s+\omega_r^2)e^{-\tau_{rp}s}}{(s-\lambda_s)(s^2+2\zeta_d\omega_d s+\omega_d^2)}\) & 滚转模态与零点近似对消 \\
@@ -123,321 +111,274 @@
 \end{tabularx}
 \end{table}
 
-\subsection{纵向导数模型}
-\label{sec:lon}
-纵向以稳定轴四状态 \([u,\alpha,q,\theta]\) 描述，输入为俯仰杆力与油门：
-\begin{equation}
-\begin{aligned}
-\dot u&=X_uu+X_\alpha\alpha-g\theta+g\,\delta_T, &\qquad \dot\alpha&=Z_uu+Z_\alpha\alpha+q,\\
-\dot q&=M_uu+M_\alpha\alpha+M_qq+K_\theta F_s(t-\tau_\theta), & \dot\theta&=q .
-\end{aligned}
-\label{eq:lon}
-\end{equation}
-速度导数按物理关系给定：升力正比于 \(V^2\)，故 \(Z_u=-2g/V_0^2\)；\(X_u\) 由有效升阻比 \(L/D\) 给出，\(X_u=-2g/(V_0\,L/D)\)；\(X_\alpha\) 由阻力斜率给出；\(M_u\) 取亚音速数据。要求式~\eqref{eq:lon} 保持短周期极点、零点 \(-1/T_{\theta2}\) 与增益 \(K_\theta\) 不变，即
-\begin{equation}
-\Delta_{\mathrm{lon}}(s)=(s^2+p_1s+p_0)(s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2).
-\end{equation}
-记 \(z_2=1/T_{\theta2}\)。由零点条件得 \(Z_\alpha=(X_\alpha Z_u-z_2^2-X_uz_2)/(z_2+X_u)\)，其余系数条件对长周期系数 \((p_0,p_1)\) 构成一个 \(2\times2\) 线性方程，解出后 \(M_\alpha\)、\(M_q\) 随之确定。长周期的 \(\omega_p,\zeta_p\) 与 \(\theta/F_s\) 的另一零点 \(1/T_{\theta1}\) 因此是物理结果，而非独立采样量。法向过载为 \(n_z=-\tfrac{V_0}{g}(Z_uu+Z_\alpha\alpha)\)。
-
-\subsection{横航向导数模型}
-\label{sec:lat}
-横航向以稳定轴四状态 \([\beta,p,r,\phi]\) 描述 [7,8]：
-\begin{equation}
-\begin{aligned}
-\dot\beta&=Y_\beta\beta-r+g'\phi+Y_{rp}F_{rp}(t-\tau_{rp}),\\
-\dot p&=L'_\beta\beta+L'_pp+L'_rr+L_aF_{as}(t-\tau_p)+L'_{rp}F_{rp}(t-\tau_{rp}),\\
-\dot r&=N'_\beta\beta+N'_pp+N'_rr+N_aF_{as}(t-\tau_p)+N'_{rp}F_{rp}(t-\tau_{rp}),\qquad \dot\phi=p,
-\end{aligned}
-\label{eq:lat}
-\end{equation}
-其中 \(g'=g/V_0\)，带撇导数计入了惯性积 \(I_{xz}\)。特征多项式 \(\Delta_{\mathrm{lat}}=s^4+a_3s^3+a_2s^2+a_1s+a_0\) 的系数由导数给出，例如 \(a_3=-(L'_p+N'_r+Y_\beta)\)，以及
-\begin{equation}
-a_0=g'\bigl(L'_\beta N'_r-L'_rN'_\beta\bigr)=-\frac{\lambda_s\,\omega_d^2}{T_R}.
-\label{eq:a0}
-\end{equation}
-滚转通道为
-\begin{equation}
-\frac{p}{F_{as}}=\frac{L_a\,s\,\bigl[s^2+(L'_r\eta-N'_r-Y_\beta)s+N'_\beta+N'_rY_\beta-\eta(L'_\beta+L'_rY_\beta)\bigr]}{\Delta_{\mathrm{lat}}(s)}\,e^{-\tau_ps},\qquad \eta=\frac{N_a}{L_a}.
-\label{eq:pfas}
-\end{equation}
-与表~\ref{tab:loes} 对照，\(2\zeta_\phi\omega_\phi=L'_r\eta-N'_r-Y_\beta\)，\(\omega_\phi^2=N'_\beta+N'_rY_\beta-\eta(L'_\beta+L'_rY_\beta)\)。同一组极点给出 \(p,\beta,r\) 对两路输入的全部六条通道，交叉通道 \(\beta/F_{as}\)、\(r/F_{as}\)、\(p/F_{rp}\) 不再需要单独设定。
-
-\subsection{全量动力学与运动学}
-\label{sec:full}
-大机动保留风轴重力分量与 \(\dot\alpha,\dot\beta\) 的运动学项 [9]，小扰动部分使用上述线性导数。记 \(\mathbf g_w=C_{wb}(\alpha,\beta)C_{bn}^{\mathsf T}[0,0,g]^{\mathsf T}\) 为风轴重力，配平时 \(\mathbf g_w=[0,0,g]^{\mathsf T}\)，重力项为零，线性化后回到式~\eqref{eq:lon}、\eqref{eq:lat}。力矩方程采用含 \(I_{xz}\) 的完整欧拉方程：
-\begin{equation}
-\begin{aligned}
-I_x\dot p-I_{xz}\dot r&=(I_y-I_z)qr+I_{xz}pq+\mathcal L,\\
-I_y\dot q&=(I_z-I_x)pr+I_{xz}(r^2-p^2)+\mathcal M,\\
-I_z\dot r-I_{xz}\dot p&=(I_x-I_y)pq-I_{xz}qr+\mathcal N .
-\end{aligned}
-\end{equation}
-稳定轴按配平迎角 \(\alpha_0\) 固连于机体，导数也定义在这组轴上，机体轴角速度为 \(p_b=p_s\cos\alpha_0-r_s\sin\alpha_0\)、\(r_b=p_s\sin\alpha_0+r_s\cos\alpha_0\)。阵风只经气动项进入，即气动力按相对气流状态 \(\mathbf x-\mathbf x_g\) 计算；湍流采用 MIL-STD-1797A 的 Dryden 谱成形滤波器，中高空与低空的强度和尺度按其规定取值 [3]。油门经 1 s 一阶滞后形成推力；直接法向力直接改变航迹而不产生俯仰力矩。
-
-姿态以机体到地面的旋转矩阵传播，每步按机体角速度做 Rodrigues 精确旋转后读出欧拉角：
-\begin{equation}
-C_{k+1}=C_k\bigl(I+\sin\vartheta\,K+(1-\cos\vartheta)K^2\bigr),\qquad \vartheta=|\bm\omega|\Delta t,\quad K=[\bm\omega/|\bm\omega|]_\times .
-\end{equation}
-线性部分按零阶保持精确离散，\(\Delta t=1\) ms；纯延迟采用线性插值的分数延迟。
-
-\section{品质一致的对象族构建}
-\label{sec:family}
-\subsection{等效模态与导数的对应关系}
-\label{sec:dof}
-式~\eqref{eq:lat} 含 \(Y_\beta,L'_\beta,L'_p,L'_r,N'_\beta,N'_p,N'_r\) 与副翼偏航比 \(\eta\) 共 8 个量，而 \(p/F_{as}\) 的四个极点和两个零点系数给出 6 个方程。若以滚转通道等效参数为准，横航向只剩两个自由度：给定 \(Y_\beta\) 与 \(L'_r\) 后，其余方程对 \(\eta\) 是一次的，全部导数有唯一闭式解。式~\eqref{eq:a0} 进一步说明，螺旋根几乎单独决定上反效应：螺旋稳定、滚转快的对象需要强上反。上反又决定荷兰滚中的滚转—侧滑比 \(|\phi/\beta|_d\)，并经 [4]
-\begin{equation}
-\frac{\omega_\phi^2}{\omega_d^2}\approx 1+\eta\,\Bigl|\frac{\phi}{\beta}\Bigr|_d
-\label{eq:zero}
-\end{equation}
-把滚转零点与副翼偏航联系起来。因此，独立采样的滚转零点比 \(\omega_\phi/\omega_d\) 实际上规定了副翼偏航，而交叉轴品质也随之确定。这一对应关系是本文构建方法的出发点：模态可以按品质等级采样，零点与交叉通道应由导数推导得到。
-
-\subsection{模态按品质等级采样}
-候选对象由 34 维加扰 Sobol 序列生成，共 \(2^{16}=65{,}536\) 个。第一维决定提出的等级：55\% 的候选全部模态取 1 级区域；20\% 为 2 级候选、15\% 为 3 级候选，各把一项“锚定”模态推到该级区域，其余保持 1 级；10\% 为分布外候选，把一项推出 3 级边界。可锚定的项包括 \(T_R\)、螺旋根 \(\lambda_s\)、荷兰滚 \((\zeta_d,\omega_d)\)、1 s 滚转灵敏度 \(S_{1s}\)、滚转等效延迟 \(\tau_p\)，以及俯仰短周期的频率、阻尼、延迟与每 g 杆力。各项的采样区域按 GJB 2874 的等级边界确定，见附录表~\ref{tab:ranges}。
-
-\subsection{耦合形状与导数反解}
-\label{sec:inverse}
-每个候选从 CR-2144 的 94 个飞行状态中取得耦合形状：\(Y_\beta\)、\(c_1=N'_p/L'_p\) 与 \(\eta\) 在真实状态的 5–95 百分位内均匀抽取，\(c_2=L'_r/N'_r\) 按真实状态的经验分位数抽取。四个横航向极点给定后，特征多项式系数 \(a_3,\dots,a_0\) 已知。记 \(S=-a_3-Y_\beta\)，全部导数都是 \(L'_p\) 的函数：
-\begin{equation}
-N'_r=S-L'_p,\quad N'_p=c_1L'_p,\quad L'_r=c_2N'_r,\quad N'_\beta=a_2-L'_pN'_r-Y_\beta S+L'_rN'_p,
-\end{equation}
-\(L'_\beta\) 由 \(a_1\) 的表达式给出。代入式~\eqref{eq:a0} 得到关于 \(L'_p\) 的四次方程，每个实根对应一组导数。一组导数被接受需要满足三项条件：7 个归一化量（上反比 \(-L'_\beta/N'_\beta\)、\(N'_\beta/\omega_d^2\)、\(L'_pT_R\)、\(N'_r/(2\zeta_d\omega_d)\)、\(N'_p/L'_p\)、\(L'_r/N'_r\)、\(\eta\)）全部落在 94 个真实状态的范围内；\(N'_r<0\)；式~\eqref{eq:pfas} 的零点为一对稳定复根，使滚转通道属于表~\ref{tab:loes} 的形式。滚转零点 \(\omega_\phi,\zeta_\phi\) 由导数与 \(\eta\) 算出，\(L_a\) 按采样的 \(S_{1s}\) 标定。
-
-脚蹬通道的 \(N'_{rp}\) 按单位脚蹬力的稳态侧滑给定。方向舵滚转比与侧力比都由垂尾决定，分别相对上反比与 \(|Y_\beta|/N'_\beta\) 按真实分位数抽取，以保持它们与上反、侧力导数之间的真实相关。
-
-\subsection{纵向、配平与惯量}
-每个对象带有飞行包线 \(V_{\min}\in[50,70]\) m/s、\(V_{\max}\in[260,400]\) m/s，配平速度 \(V_0\) 在其中按对数均匀抽取（限于 60–250 m/s）。短周期按第~\ref{sec:lon} 节构造，\(\zeta_{sp}\le1.2\)、\(\omega_{sp}\le12\) rad/s（CR-2144 实测最大值分别为 0.885 与 10.2）；有效升阻比、阻力斜率与 \(M_u\) 取 CR-2144 中 47 个亚音速状态的 5–95 百分位，并要求 \(M_q<0\)。配平迎角取 \(\alpha_0=1/(n/\alpha)+\delta\)，零升偏差 \(\delta\) 取自战斗机清洁构型的亚音速状态。惯量比取 CR-2144 战斗机子集，惯性积由主轴倾角 \(\varepsilon\) 给出：\(I_{xz}=\tfrac12(I_z-I_x)\tan2\varepsilon\)。
-
-\subsection{综合定级与分层选取}
-\label{sec:grading}
-每个候选按表~\ref{tab:criteria} 的 14 项判据定级（IV 类飞机、A 种飞行阶段、中央杆），综合等级取各项最差。标准对各级都要求的三项——定常侧滑中的上反与脚蹬方向、\(1/T_{\theta1}>0\)、长周期无非周期发散——不满足时，对象不属于任何等级，归入分布外（OOD）；超出 3 级边界的模态以及超出滚转对象研究范围的参数也归入 OOD。侧滑偏离判据中的滚转性能参考值 \(k\) 按对象的配平速度所在速度段确定。
+三条横航向通道共用 \(T_R,\lambda_s,\zeta_d,\omega_d\)，它们是同一个横航向系统的不同输出。对象因此以稳定轴导数模型实现：纵向四状态 \([u,\alpha,q,\theta]\)、横航向四状态 \([\beta,p,r,\phi]\)，导数由各通道等效参数精确反解，使小幅响应与表~\ref{tab:loes} 一致；全量动力学再加入风轴重力、完整惯性耦合与 Dryden 湍流，姿态以旋转矩阵传播。交叉通道 \(\beta/F_{as}\)、\(r/F_{as}\)、\(p/F_{rp}\) 由同一组导数给出。模型方程与反解见附录~\ref{app:model}。表~\ref{tab:params} 汇总对象参数的含义与设定方式。
 
 \begin{table}[H]
 \centering\small
-\caption{对象定级所用的品质判据（1 / 2 / 3 级）}\label{tab:criteria}
-\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}p{0.37\linewidth}Y@{}}
+\caption{六通道对象的参数说明}\label{tab:params}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.16\linewidth}>{\raggedright\arraybackslash}p{0.22\linewidth}Y>{\raggedright\arraybackslash}p{0.13\linewidth}@{}}
 \toprule
-判据 & 量 & 边界与出处 \\
+符号 & 参数名称与单位 & 含义与动态作用 & 设定方式 \\
 \midrule
-滚转模态 & \(T_R\) & \(\le\) 1.0 / 1.4 / 10 s；GJB 表 A18 \\
-螺旋模态 & 倍幅时间 \(T_2=\ln2/\lambda_s\) & \(\ge\) 12 / 8 / 4 s；GJB 表 A19 \\
-滚转灵敏度 & \(S_{1s}=|\phi(1\,\mathrm s)|/F_{as}\) & \(\le\) 3.38 / 5.62 deg/N；GJB 表 A31 \\
-滚转延迟 & \(p/F_{as}\) 的等效延迟 \(\tau_p\) & \(\le\) 0.10 / 0.20 / 0.25 s；GJB 表 A21 \\
-荷兰滚 & \(\zeta_d,\ \zeta_d\omega_d,\ \omega_d\)，含 \(\omega_d^2|\phi/\beta|_d\) 修正 & GJB 表 A35；MIL 表 XL \\
-滚转振荡 & \(p_{osc}/p_{av}\)，随 \(\psi_\beta\) & MIL 4.5.1.4；\(|\phi/\beta|_d<1.5\) 时不评 \\
-侧滑偏离 & \(\Delta\beta/k\)，随 \(\psi_\beta\) & 1 级 2°–6°，2 级 4°–15°；MIL 4.6.2 \\
-定常侧滑方向 & 上反方向与脚蹬方向 & 各级都要求；MIL 4.5.5、4.6.1.2 \\
-短周期频率 & \(\mathrm{CAP}\) 与 \(\omega_{sp}\) & 0.28–3.6 且 \(\omega_{sp}\ge1\) / 0.16–10 且 \(\omega_{sp}\ge0.6\)；GJB 图 A3(a) \\
-短周期阻尼 & \(\zeta_{sp}\) & 0.35–1.30 / 0.25–2.00；GJB 表 A6 \\
-俯仰延迟 & \(\tau_\theta\) & \(\le\) 0.10 / 0.20 / 0.30 s；GJB 表 A7 \\
-每 g 杆力 & \(F_s/n\)，\(n_L=7\) & GJB 表 A10(a) \\
-长周期 & \(\zeta_p\)；\(T_2=-0.693/(\zeta_p\omega_p)\) & \(\ge\) 0.04 / \(\ge\) 0 / \(T_2\ge55\) s 且 \(|\zeta_p|<1\)；GJB 表 A5 \\
-长周期零点 & \(1/T_{\theta1}\) & 各级都要求 \(>0\)；GJB 表 A4 \\
+\(T_R\) & 滚转模态时间常数，s & 极点 \(-1/T_R\)，决定滚转响应建立的快慢。 & 按等级采样 \\
+\(\lambda_s\) & 螺旋模态特征根，s\(^{-1}\) & 正值表示发散；与上反效应直接相关。 & 按等级采样 \\
+\(\zeta_d,\ \omega_d\) & 荷兰滚阻尼比、频率，rad/s & 航向振荡的衰减速度与时间尺度。 & 按等级采样 \\
+\(\tau_p,\ S_{1s}\) & 滚转等效延迟，s；1 s 滚转灵敏度，deg/N & 横向杆输入的滞后与操纵灵敏度；\(L_{F_a}\) 由 \(S_{1s}\) 标定。 & 按等级采样 \\
+\(\omega_\phi,\ \zeta_\phi\) & 滚转零点频率、阻尼 & 与荷兰滚极点共同决定滚转—航向耦合。 & 由导数推导 \\
+\(\omega_{sp},\ \zeta_{sp}\) & 短周期频率，rad/s；阻尼比 & 俯仰响应的速度与超调；频率按 CAP 分级。 & 按等级采样 \\
+\(n/\alpha,\ F_s/n\) & 过载迎角灵敏度，g/rad；每 g 杆力，N/g & 决定 \(T_{\theta2}\) 与俯仰操纵增益 \(K_\theta\)。 & 采样、按等级采样 \\
+\(\tau_\theta\) & 俯仰等效延迟，s & 俯仰杆输入的纯滞后。 & 按等级采样 \\
+\(\omega_p,\ \zeta_p,\ 1/T_{\theta1}\) & 长周期频率、阻尼与姿态零点 & 速度与航迹的慢变动态。 & 由纵向导数推导 \\
+\(Y_\beta\) & 侧力导数，s\(^{-1}\) & 侧滑对航迹的作用。 & 真实数据抽取 \\
+\(N'_p/L'_p,\ L'_r/N'_r\) & 交叉阻尼形状比 & 滚转与偏航阻尼导数的相对大小。 & 真实数据抽取 \\
+\(\eta=N_a/L_a\) & 副翼偏航比 & 横向杆引起的偏航；与滚转零点相互决定。 & 真实数据抽取 \\
+\(S_\beta,\ \tau_{rp}\) & 单位脚蹬力稳态侧滑，deg/N；脚蹬延迟，s & 航向操纵效能与滞后；方向舵滚转比、侧力比随垂尾特性给定。 & 采样 \\
+\(V_0,\ V_{\min},\ V_{\max}\) & 配平速度与飞行包线，m/s & 决定 \(g/V_0\) 与侧滑偏离判据所用的速度段。 & 采样 \\
+\(\alpha_0\) & 配平迎角 & 稳定轴相对机体轴的转角。 & 由 \(n/\alpha\) 与零升偏差 \\
+\(I_y/I_x,\ I_z,\ \varepsilon\) & 惯量比与惯性主轴倾角 & 决定惯性耦合与 \(I_{xz}\)。 & 真实数据抽取 \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-按综合等级形成四个候选池后，每个等级内部按“由哪一项定级”轮流选取，使各项判据都有对象代表该等级；OOD 按原因轮流选取。对象族的配额与划分沿用滚转通道对象库 [1]：1、2、3 级各 1,500 个，OOD 500 个；训练核心集、训练边界集、验证集、同分布测试集分别为 2,100、900、450、1,050 个，各集中三个等级等量，分布外测试集为 500 个 OOD 对象。图~\ref{fig:framework} 概括了构建流程。
+\subsection{三回路控制任务与接口变量}
+\label{sec:task}
+三条控制回路按操纵输入划分：俯仰杆力控制俯仰角速度 \(q\)，横向杆力控制滚转角速度 \(p\)，脚蹬力控制侧滑角 \(\beta\)。记回路 \(j\in\{s,a,r\}\) 的被控量为 \(y^{(j)}\in\{q,p,\beta\}\)，外部指令为 \(y^{(j)}_{\mathrm{cmd}}\)。与滚转通道相同，指令经平滑并按该回路的输入时延对齐，得到目标 \(y^{(j)}_{\mathrm{ref}}\)，跟踪误差 \(e^{(j)}_t=y^{(j)}_{\mathrm{ref},t}-y^{(j)}_t\)。侧滑回路的常用指令为零侧滑，用于协调转弯。图~\ref{fig:loop} 给出三回路闭环仿真的结构。
 
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-  box/.style={draw=inkB!70, rounded corners=2pt, fill=white, align=center, font=\small, inner sep=5pt, text width=#1},
-  box/.default=5.6cm,
-  src/.style={box=5.6cm, fill=gridc!45},
-  arr/.style={-{Stealth[length=5pt]}, inkB, line width=0.6pt},
-  node distance=7mm]
-\node[src] (gjb) {\textbf{飞行品质等级}\\GJB 2874—1997，IV 类 A 种};
-\node[src, right=12mm of gjb] (cr) {\textbf{真实飞机数据}\\NASA CR-2144，10 架飞机 94 个状态};
-\node[box, below=of gjb] (modes) {\textbf{模态按等级采样}\\\(T_R,\ \lambda_s,\ \zeta_d,\ \omega_d,\ \tau_p,\ S_{1s}\)，短周期};
-\node[box, below=of cr] (shape) {\textbf{耦合形状}\\\(Y_\beta,\ N'_p/L'_p,\ L'_r/N'_r,\ \eta\)，方向舵比例};
-\path (modes.south) -- (shape.south) coordinate[midway] (mid);
-\node[box=9.5cm, below=9mm of mid] (inv) {\textbf{导数精确反解}\quad 横航向：关于 \(L'_p\) 的四次方程；纵向：长周期线性方程\\真实性检查：7 个归一化量在真实范围内，\(N'_r<0\)，\(M_q<0\)};
-\node[box=9.5cm, below=of inv] (model) {\textbf{六自由度品质模型}\quad 线性导数，风轴重力，惯性耦合，湍流，运动学};
-\node[box=9.5cm, below=of model] (grade) {\textbf{综合定级}\quad 14 项判据取最差项；各级都要求的项不满足时归入 OOD};
-\node[box=9.5cm, below=of grade] (select) {\textbf{分层选取}\quad 按定级来源轮流选取；1、2、3 级各 1,500 个，OOD 500 个};
-\draw[arr] (gjb) -- (modes);
-\draw[arr] (cr) -- (shape);
-\draw[arr] (modes.south) -- (modes.south |- inv.north);
-\draw[arr] (shape.south) -- (shape.south |- inv.north);
-\draw[arr] (inv) -- (model);
-\draw[arr] (model) -- (grade);
-\draw[arr] (grade) -- (select);
+  blk/.style={draw=inkB!70, rounded corners=2pt, fill=white, align=center, font=\small, inner sep=4pt, text width=#1, minimum height=1.55cm},
+  blk/.default=2.75cm,
+  arr/.style={-{Stealth[length=5pt]}, inkB, line width=0.6pt}]
+\node[blk=2.55cm] (cmd) {\textbf{指令与目标}\\\(q_{\mathrm{cmd}},\ p_{\mathrm{cmd}},\ \beta_{\mathrm{cmd}}\)\\平滑与时延对齐};
+\node[blk, right=6mm of cmd] (pol) {\textbf{统一学生}\\三路力速率动作\\\(a^{(s)},\ a^{(a)},\ a^{(r)}\)};
+\node[blk, right=6mm of pol] (itf) {\textbf{力接口 \(\times3\)}\\速率限制、积分限幅\\一阶执行机构};
+\node[blk=3.1cm, right=6mm of itf] (obj) {\textbf{六通道品质对象}\\纵向、横航向导数模型\\重力、惯性耦合、湍流};
+\draw[arr] (cmd) -- (pol);
+\draw[arr] (pol) -- node[above, font=\scriptsize] {\(a_t\)} (itf);
+\draw[arr] (itf) -- node[above, font=\scriptsize] {\(F\)} (obj);
+\coordinate (fb) at ($(obj.south)+(0,-0.55)$);
+\draw[arr] (obj.south) -- (fb) -| node[pos=0.25, below, font=\scriptsize] {\(q,\ p,\ \beta\) 与共享量 \(\alpha,\ n_z,\ \phi,\ \theta\)，观测与历史} (pol.south);
 \end{tikzpicture}
-\caption{六自由度对象族的构建流程。品质等级决定模态，真实飞机数据决定模态由导数实现的方式，两者给定后导数由精确反解得到。}
-\label{fig:framework}
+\caption{三回路闭环仿真。品质参数确定对象动态，学生根据三回路的观测和历史输出三路力速率动作，对象响应反馈至下一控制周期。}
+\label{fig:loop}
 \end{figure}
 
-\section{实验}
-\label{sec:exp}
-\subsection{实验设置}
-实验回答四个问题：逐通道独立采样的等效参数能否保持多通道品质（第~\ref{sec:exp-baseline} 节）；本文对象族是否对应真实飞机（第~\ref{sec:exp-real} 节）；品质等级是否对应可区分的动态差异（第~\ref{sec:exp-grade} 节）；六自由度品质模型是否满足等效系统与物理守恒关系（第~\ref{sec:exp-model} 节）。
+策略每 20 ms 输出三路归一化力速率动作 \(a^{(j)}_t\in[-1,1]\)，仿真器以 1 ms 步长推进对象状态。每路动作经速率约束、积分和限幅形成请求力，再经时间常数 20 ms 的一阶执行机构生成施加力：
+\begin{equation}
+F^{(j)}_{\mathrm{req},t+1}=\operatorname{clip}\!\bigl(F^{(j)}_{\mathrm{req},t}+\dot F^{(j)}_{\max}a^{(j)}_t\Delta t,\ -F^{(j)}_{\max},\ F^{(j)}_{\max}\bigr),\qquad \Delta t=0.02\ \mathrm s .
+\end{equation}
+滚转回路沿用 \(F^{(a)}_{\max}=22\) N、\(\dot F^{(a)}_{\max}=88\) N/s；俯仰与脚蹬回路的力范围按对象的每 g 杆力与单位脚蹬力侧滑换算，使其覆盖设定的过载与侧滑范围，力速率与力范围之比沿用滚转回路的 4 s\(^{-1}\)。
 
-\textbf{对照对象族。}对照组为滚转通道验证所用的 5,000 个对象 [1]。其滚转等效参数按 GJB 2874 的 IV 类 A 种规则逐项独立采样；纵向短周期参数按 GJB 等级另行独立采样，且不超过该对象的滚转等级；脚蹬与惯量参数取研究包络。为补齐耦合，每个对象在保持其 \(p/F_{as}\) 不变的条件下，在 \(Y_\beta\times L'_r\) 的 \(9\times81\) 网格上反解横航向导数：优先选取落在真实范围内且不降低原等级的解，其次选取落在真实范围内的解，都不存在时取违背最小的解。对照对象没有飞行包线，侧滑偏离按中速段计算 \(k\)，低速段结果并列给出；长周期由与本文相同的亚音速导数模型得到。
-
-\textbf{本文对象族。}按第~\ref{sec:family} 节生成 65,536 个候选，种子固定。真实性以 CR-2144 的 94 个状态为参照；全部计算在 CPU 上完成。
-
-\subsection{逐通道独立采样的等效参数能否保持多通道品质}
-\label{sec:exp-baseline}
-表~\ref{tab:baseline} 给出对照对象族的真实性。5,000 个对象中 2,334 个（47\%）能找到落在真实范围内的导数，3 级与 OOD 对象的比例更低。越界最多的归一化量是 \(N'_p/L'_p\)（1,654 个）与 \(N'_\beta/\omega_d^2\)（1,163 个），原因是对照组逐项独立采样了极点与零点 \(\omega_\phi,\zeta_\phi\)，而真实飞机中它们由同一组导数决定。
+观测沿用滚转通道的组成并按回路扩展（表~\ref{tab:obs}）：每个回路保留 9 个当前量、32 步 5 通道历史与 7 步动作历史；四个共享量 \(\alpha,n_z,\phi,\theta\) 描述纵向与横航向之间的耦合状态，同时进入当前量与历史。
+\begin{equation}
+o_t=\operatorname{Norm}\!\bigl([\,c^{(s)}_t,c^{(a)}_t,c^{(r)}_t,\ c^{\mathrm{sh}}_t,\ h_{t-31:t},\ a_{t-7:t-1}\,]\bigr)\in\mathbb R^{660},\qquad o^{\mathrm T}_t=[o_t,z_t],\qquad o^{\mathrm S}_t=o_t .
+\end{equation}
+教师另外使用特权量 \(z_t\)，包括对象的模态与导数参数以及纵向、横航向内部状态；学生只使用常规观测，通过历史区分对象动态。
 
 \begin{table}[H]
 \centering\small
-\caption{对照对象族：导数能否落入真实飞机范围}\label{tab:baseline}
-\begin{tabular}{@{}lrrr@{}}
+\caption{三回路控制器的观测组成}\label{tab:obs}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.18\linewidth}Yr@{}}
 \toprule
-原滚转等级 & 落在真实范围内 & 其中不降低原等级 & 只能取违背最小的解 \\
+输入部分 & 信号内容 & 维数 \\
 \midrule
-1 级 & 832 / 1,500（55\%） & 151 & 668 \\
-2 级 & 829 / 1,500（55\%） & 341 & 671 \\
-3 级 & 497 / 1,500（33\%） & 497 & 1,003 \\
-OOD & 176 / 500（35\%） & 30 & 324 \\
+回路当前量 & 每回路的指令、目标、实际值、跟踪误差、误差积分、实际值与目标的导数、请求力、施加力，共 3 个回路 & \(3\times9=27\) \\
+共享当前量 & \(\alpha,\ n_z,\ \phi,\ \theta\) & 4 \\
+观测历史 & 过去 32 步的每回路指令、目标、实际值、跟踪误差和请求力（15 通道）及 4 个共享量 & \(32\times19=608\) \\
+动作历史 & 每回路最近 7 步的归一化动作 & \(3\times7=21\) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{评价指标与判定门限}
+\label{sec:metric}
+每个回路沿用滚转通道的三项指标：目标 RMSE、峰值误差与请求力总变差率，
+\begin{equation}
+\operatorname{RMSE}^{(j)}=\sqrt{\frac1M\sum_{t=1}^M\bigl(e^{(j)}_t\bigr)^2},\qquad \operatorname{Peak}^{(j)}=\max_t\bigl|e^{(j)}_t\bigr|,\qquad \operatorname{TV}^{(j)}_F=\frac1T\sum_{t=1}^M\bigl|F^{(j)}_{\mathrm{req},t}-F^{(j)}_{\mathrm{req},t-1}\bigr| .
+\end{equation}
+滚转回路沿用 1.5 deg/s、5 deg/s 与 12 N/s 的项目门限；俯仰与侧滑回路采用同样三项指标，门限按各回路的指令范围在试训后确定。三路同时达标的测试记为达标。回路之间的耦合以滚转指令下的侧滑峰值与俯仰指令下的滚转偏离评价，对应对象定级中的侧滑偏离判据。蒸馏后的相对精度按回路计算师生跟踪误差比 \(R^{(j)}_{\mathrm D}=\operatorname{median}_i\bigl(\operatorname{RMSE}^{(j),\mathrm S}_i/\operatorname{RMSE}^{(j),\mathrm T}_i\bigr)\)。
+
+\section{基于飞行品质的六通道构建方法}
+\label{sec:method}
+本文沿用滚转通道的构建路线：品质对象族组织对象空间，特权教师提供逐对象、逐回路的控制经验，多教师蒸馏将其汇聚为统一学生，冻结权重的跨对象测试与目标域更新检验共享策略。图~\ref{fig:pipeline} 给出六通道扩展的构建流程。
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  stg/.style={draw=inkB!70, rounded corners=2pt, align=center, font=\small, inner sep=4pt, text width=3.15cm, minimum height=2.5cm},
+  done/.style={stg, fill=gridc!55},
+  todo/.style={stg, densely dashed, fill=white},
+  arr/.style={-{Stealth[length=5pt]}, inkB, line width=0.6pt}]
+\node[done] (s1) {\textbf{品质参数化\\六通道对象族}\\[2pt]5,000 个对象\\1/2/3 级各 1,500\\分布外 500};
+\node[todo, right=5mm of s1] (s2) {\textbf{三回路\\特权教师}\\[2pt]每对象每回路\\一个 PPO 教师\\特权量：参数与状态};
+\node[todo, right=5mm of s2] (s3) {\textbf{多教师\\迭代蒸馏}\\[2pt]三回路统一学生\\DAgger\\常规观测与历史};
+\node[todo, right=5mm of s3] (s4) {\textbf{跨对象验证\\与目标域适配}\\[2pt]同分布 1,050\\分布外 500\\小样本更新};
+\draw[arr] (s1) -- (s2); \draw[arr] (s2) -- (s3); \draw[arr] (s3) -- (s4);
+\end{tikzpicture}
+\caption{六通道扩展的构建流程。实线框为本文完成的对象族；虚线框为按第~\ref{sec:setup} 节协议开展的环节。}
+\label{fig:pipeline}
+\end{figure}
+
+\subsection{品质参数化六通道对象族}
+\label{sec:family}
+对象族按 IV 类飞机、A 种飞行阶段组织候选。与滚转对象库相同，候选由加扰 Sobol 序列生成并先确定品质区域：55\% 的候选全部模态取 1 级区域，20\% 与 15\% 的候选分别把一项“锚定”模态推到 2 级或 3 级区域、其余保持 1 级，10\% 把一项推出 3 级边界。可锚定的项为滚转模态、螺旋、荷兰滚、1 s 滚转灵敏度、滚转延迟，以及短周期的频率、阻尼、延迟与每 g 杆力。与滚转对象库不同，六通道对象的滚转零点与交叉通道不再独立采样，而是由导数推导：
+\begin{equation}
+\theta^{(i)}\sim q(\theta\mid c_i),\qquad \kappa^{(i)}\sim q_{\mathrm{CR}}(\kappa),\qquad d^{(i)}=\mathcal D\bigl(\theta^{(i)},\kappa^{(i)}\bigr),\qquad g_i=\operatorname{Grade}_6\bigl(d^{(i)}\bigr).
+\end{equation}
+其中，\(\theta^{(i)}\) 为按品质区域 \(c_i\) 采样的模态参数，\(\kappa^{(i)}\) 为取自 CR-2144 的耦合形状（\(Y_\beta\)、\(N'_p/L'_p\)、\(L'_r/N'_r\)、\(\eta\) 与方向舵比例），\(\mathcal D\) 为导数反解，\(g_i\) 为 14 项判据给出的综合等级。
+
+反解的依据是横航向模态与导数的对应关系。式~\eqref{eq:lat} 含 \(Y_\beta,L'_\beta,L'_p,L'_r,N'_\beta,N'_p,N'_r\) 与 \(\eta\) 共 8 个量，而滚转通道的极点与零点给出 6 个方程；给定四个极点与形状 \(\kappa\) 后，全部导数是 \(L'_p\) 的函数，由一个关于 \(L'_p\) 的四次方程解出。纵向在保持短周期极点、零点与增益不变的条件下，由一个 \(2\times2\) 线性方程解出长周期。每组导数需满足：7 个归一化量落在 94 个真实飞行状态的范围内，\(N'_r<0\)，\(M_q<0\)，且滚转通道属于表~\ref{tab:loes} 的形式。
+
+通过检查的候选按表~\ref{tab:criteria} 的 14 项判据定级，综合等级取最差项；标准对各级都要求的定常侧滑方向、\(1/T_{\theta1}>0\) 与长周期无非周期发散不满足时，对象归入分布外。每个等级内部按“由哪一项定级”轮流选取，使各项判据都有对象代表相应等级。最终得到 5,000 个对象，1、2、3 级各 1,500 个，另有 500 个分布外对象，划分与滚转对象库相同。表~\ref{tab:build} 概括了构造方式，完整采样范围见附录表~\ref{tab:ranges}。
+
+\begin{table}[H]
+\centering\small
+\caption{六通道对象族的构造方式}\label{tab:build}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}Y>{\raggedright\arraybackslash}p{0.24\linewidth}@{}}
+\toprule
+参数组 & 生成方式 & 依据 \\
 \midrule
-合计 & 2,334 / 5,000（47\%） & & \\
+滚转与荷兰滚模态 & 按等级区域采样 \(T_R,\lambda_s,\zeta_d,\omega_d,\tau_p,S_{1s}\)；规则与滚转对象库相同，另加滚转延迟分级 & GJB 表 A18、A19、A21、A31、A35 \\
+俯仰短周期 & 按等级区域采样 CAP、\(\zeta_{sp}\)、\(\tau_\theta\)、\(F_s/n\)；\(\zeta_{sp}\le1.2\)，\(\omega_{sp}\le12\) rad/s & GJB 图 A3(a)，表 A6、A7、A10(a) \\
+耦合形状 & \(Y_\beta\)、\(N'_p/L'_p\)、\(\eta\) 取真实状态 5–95 百分位；\(L'_r/N'_r\) 与方向舵比例按真实分位数 & NASA CR-2144 \\
+横航向导数 & 关于 \(L'_p\) 的四次方程求实根；滚转零点、交叉通道为推导量 & 稳定轴小扰动方程 \\
+纵向导数 & 升阻比、阻力斜率、\(M_u\) 取亚音速状态；长周期为推导量 & CR-2144 亚音速 47 个状态 \\
+配平、包线与惯量 & \(V_0\)、\(V_{\min}\)、\(V_{\max}\)；\(\alpha_0=1/(n/\alpha)+\delta\)；\(I_{xz}\) 由主轴倾角给出 & IV 类速度段；CR-2144 战斗机子集 \\
+综合定级 & 14 项判据取最差项；按等级配额与定级来源分层选取 & GJB 2874、MIL-STD-1797A \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{三回路特权强化学习教师}
+\label{sec:teacher}
+教师按对象与回路解耦训练：每个对象的每条回路训练一个 PPO 教师，训练某一回路时其余两路输入保持为零。逐回路训练把三轴控制分解为独立任务，教师利用对象参数和内部状态学习相应的反馈策略；三路教师随后在同一对象上联合运行，检验回路之间的耦合，必要时以联合运行进行微调。即时奖励沿用滚转通道的三项形式：
+\begin{equation}
+r^{(j)}_t=-50\left[\left(\frac{e^{(j)}_t}{y^{(j)}_{\mathrm{scale}}}\right)^2\Delta t+0.02\left(\frac{F^{(j)}_{\mathrm{applied},t}}{F^{(j)}_{\max}}\right)^2\Delta t+0.02\bigl(a^{(j)}_t\bigr)^2\right],
+\end{equation}
+误差项驱动跟踪，施加力项约束操纵强度，动作项约束请求力的更新强度；\(y^{(j)}_{\mathrm{scale}}\) 为回路的归一化尺度，滚转回路为 30 deg/s。PPO 目标、GAE 与训练预算沿用滚转教师：\(\gamma=0.995\)、\(\lambda=0.95\)、剪切系数 0.2，每个教师 30 轮、每轮 512 个并行环境各 400 个策略步。训练采用修正后的 PPO 实现：缓存限幅前的高斯采样值，使采样与更新的概率对应同一动作；回合按 8 s 截断，在环境重置前计算末端价值。教师 Actor 沿用滚转教师的结构，每个回路约 4.26 M 参数。
+
+\subsection{多教师迭代蒸馏}
+\label{sec:student}
+统一学生同时输出三路动作，并由对应对象的三个回路教师提供标签。初始样本由教师访问闭环状态并标注；后续每轮由学生在对象上运行，再由该对象的教师在学生访问的状态上标注：
+\begin{equation}
+\begin{aligned}
+u_{\mathrm T}(o_t,z_t)&=\bigl[\mu^{(s)}_{\mathrm T}(o_t,z_t),\ \mu^{(a)}_{\mathrm T}(o_t,z_t),\ \mu^{(r)}_{\mathrm T}(o_t,z_t)\bigr],\\
+D_{k+1}&=D_k\cup\bigl\{\bigl(o^{\mathrm S,k}_t,\ u_{\mathrm T}(o^{\mathrm S,k}_t,z_t)\bigr)\bigr\},\qquad
+w^{*}_{\mathrm S}=\operatorname*{arg\,min}_w\frac{1}{|D_K|}\sum_{(o,u)\in D_K}\|\mu_{\mathrm S}(o;w)-u\|^2 .
+\end{aligned}
+\end{equation}
+学生沿用滚转学生的时序编码与残差主干，按回路数扩展输入与输出。表~\ref{tab:size} 给出不同规模的参数量，其中 tiny 同构结构仅比滚转 tiny 学生（3,856 个参数）多约 1,500 个参数。
+
+\begin{table}[H]
+\centering\small
+\caption{三回路统一学生的结构与参数量}\label{tab:size}
+\begin{tabular}{@{}lr@{}}
+\toprule
+结构（时序卷积宽度，残差主干） & 参数量 \\
+\midrule
+tiny 同构（8，\(32\times1\)） & 5,408 \\
+加宽（16，\(64\times2\)） & 25,152 \\
+small 同构（24，\(256\times4\)） & 560,416 \\
+教师同构（24，\(512\times8\)） & 4,269,856 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-图~\ref{fig:baseline} 统计了原滚转 1 级的 1,500 个对象在其余判据下的等级。荷兰滚判据基本保持 1 级，侧滑偏离则使 918 个对象降为 3 级；按低速段计算 \(k\) 时仍有 425 个为 3 级。降为 3 级的对象荷兰滚频率中位数为 1.30 rad/s，保持 1 级的为 3.93 rad/s；去掉重力项后 3 级比例基本不变，降级来自对象自身的模态组合。长周期方面，全部 5,000 个对象中有 667 个（13\%）倍幅时间短于 55 s，其中 647 个为非周期发散，并与过阻尼短周期强相关：\(\zeta_{sp}\) 最高四分位（\(>1.14\)）的发散率为 39\%，最低四分位为 2\%。定常侧滑的上反方向只有 41\% 的对象合格，而真实飞机为 84\%。综合全部判据，原 1 级对象中只有 141 个（9\%）仍为 1 级。
+\subsection{跨对象验证与目标域适配}
+蒸馏后的学生以冻结权重在同分布测试对象与分布外对象上评价，各回路按第~\ref{sec:metric} 节的指标统计，并与对应教师比较。目标域适配沿用滚转通道的小样本更新方式：以目标机型的辨识模型为对象，用少量配平状态更新学生参数，在留出状态上检验更新后的控制。
 
-\begin{figure}[H]
-\centering
-\legbox{ordA}{1 级}\qquad\legbox{ordB}{2 级}\qquad\legbox{ordC}{3 级}\qquad\legbox{ordN}{不属任何等级}\par\vspace{4pt}
-\begin{tikzpicture}
-\begin{axis}[paper, xbar stacked, width=8.6cm, height=5.0cm, bar width=9pt,
-  xmin=0, xmax=1500, ymin=0.4, ymax=6.6, ymajorgrids=false, xmajorgrids, axis y line*=left, axis x line*=bottom,
-  ytick={1,2,3,4,5,6}, yticklabels={综合（全部判据）, 长周期, 侧滑偏离（中速段 \(k\)）, 侧滑偏离（低速段 \(k\)）, 滚转振荡, 荷兰滚},
-  y tick label style={font=\small, color=ink}, xlabel={对象数（原滚转 1 级，共 1,500 个）}, clip=false,
-  every axis plot/.append style={draw=white, line width=0.6pt}]
-\addplot[fill=ordA] coordinates {(141,1) (1073,2) (224,3) (554,4) (1191,5) (1464,6)};
-\addplot[fill=ordB] coordinates {(376,1) (258,2) (358,3) (521,4) (229,5) (33,6)};
-\addplot[fill=ordC] coordinates {(902,1) (88,2) (918,3) (425,4) (80,5) (3,6)};
-\addplot[fill=ordN] coordinates {(81,1) (81,2) (0,3) (0,4) (0,5) (0,6)};
-\draw[inkB!60, line width=0.4pt] (axis cs:0,1.5) -- (axis cs:1500,1.5);
-\node[anchor=west, font=\scriptsize, color=inkB] at (axis cs:1510,1) {9\%};
-\node[anchor=west, font=\scriptsize, color=inkB] at (axis cs:1510,2) {72\%};
-\node[anchor=west, font=\scriptsize, color=inkB] at (axis cs:1510,3) {15\%};
-\node[anchor=west, font=\scriptsize, color=inkB] at (axis cs:1510,4) {37\%};
-\node[anchor=west, font=\scriptsize, color=inkB] at (axis cs:1510,5) {79\%};
-\node[anchor=west, font=\scriptsize, color=inkB] at (axis cs:1510,6) {98\%};
-\node[anchor=south west, font=\scriptsize, color=inkB] at (axis cs:1510,6.35) {1 级占比};
-\end{axis}
-\end{tikzpicture}
-\caption{对照对象族：原滚转 1 级的 1,500 个对象在各项判据及综合下的等级。右侧数字为仍为 1 级的比例。}
-\label{fig:baseline}
-\end{figure}
-
-本文对象族的候选生成从另一侧印证了这一点。在全部模态都按 1 级采样且导数真实的 29,134 个候选中，综合仍为 1 级的只有 5,864 个（20.1\%）。表~\ref{tab:pool} 对比了按模态提出的等级与综合定级后的候选池：3 级与 OOD 候选池远大于相应的提出数，多出的部分来自模态为 1 级或 2 级、而交叉轴判据或各级都要求的项不满足的候选。这说明\textbf{模态的品质等级不能代表对象的综合品质等级，交叉轴品质与长周期由耦合决定}，综合定级与分层选取是构建多通道品质对象族的必要环节。
+\section{实验设置}
+\label{sec:setup}
+表~\ref{tab:protocol} 列出各环节的对象集、训练与留出方式及评价内容。对象库已经完成；教师试训从训练核心集中每个等级抽取 16 个对象，共 48 个对象、144 个回路教师。按 GPU 4 上滚转教师的实测吞吐（每个教师 142.8 卡秒）外推，试训约需 5.7 卡时；三回路教师的实际耗时与难度以试训测量为准。
 
 \begin{table}[H]
 \centering\small
-\caption{本文候选：按模态提出的等级与综合定级后的候选池（均为导数真实的候选）}\label{tab:pool}
-\begin{tabular}{@{}lrrrrr@{}}
+\caption{对象划分与评价协议}\label{tab:protocol}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.14\linewidth}>{\raggedright\arraybackslash}p{0.21\linewidth}>{\raggedright\arraybackslash}p{0.22\linewidth}Y>{\raggedright\arraybackslash}p{0.08\linewidth}@{}}
 \toprule
- & 1 级 & 2 级 & 3 级 & OOD & 合计 \\
+环节 & 对象 / 数据 & 训练与留出 & 被评内容 & 状态 \\
 \midrule
-按模态提出的等级 & 29,134 & 10,201 & 6,550 & 3,654 & 49,539 \\
-综合定级后的候选池 & 5,864 & 12,694 & 11,564 & 19,417 & 49,539 \\
-选入对象族 & 1,500 & 1,500 & 1,500 & 500 & 5,000 \\
+对象库 & 5,000 个六通道对象 & 4,500 个训练/同分布池；500 个分布外 & 品质等级覆盖与真实性 & 已完成 \\
+教师试训 & 训练核心集每级 16 个，共 48 个 & 每对象 3 个回路教师，共 144 个 & 各回路跟踪与操纵；三路联合运行的耦合 & 待开展 \\
+学生蒸馏 & 试训对象 & 按对象留出，等级均衡 & 各回路师生误差比 \(R^{(j)}_{\mathrm D}\) & 待开展 \\
+跨对象评价 & 同分布测试 1,050 个；分布外 500 个 & 冻结权重 & 各回路通过率与 RMSE、耦合指标 & 待开展 \\
+目标域适配 & 目标机型辨识模型 & 适配与留出配平状态 & 小样本更新前后的跟踪误差 & 待开展 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
-\subsection{对象族的真实性与覆盖}
-\label{sec:exp-real}
-65,536 个候选中 49,539 个（75.6\%）通过真实性检查，入选的 5,000 个对象的 7 个归一化量全部落在真实飞机范围内，且 \(N'_r<0\)、\(M_q<0\)（全库最大值分别为 \(-0.006\) 与 \(-0.011\)）。图~\ref{fig:dist} 对比了本文对象族与对照组的横航向参数分布。
+对象库的划分与滚转对象库相同：训练核心集 2,100 个、训练边界集 900 个、验证集 450 个、同分布测试集 1,050 个，各集中三个等级等量；分布外测试集为 500 个 OOD 对象。
+
+\section{六通道品质对象族}
+\label{sec:results}
+\subsection{品质对象族的动态覆盖}
+5,000 个对象在参数空间中的分布如图~\ref{fig:scatter} 所示，各参数的边际分布见附录~\ref{app:margins}。
 
 \begin{figure}[H]
 \centering
-\legline{sB}{对照对象族（逐项独立采样）}\qquad\legline{sA, densely dashed}{本文对象族}\par\vspace{2pt}
+\legdot{sA}{1 级}\qquad\tikz[baseline=-0.6ex]\fill[sB] (0,-0.07) -- (0.16,-0.07) -- (0.08,0.08) -- cycle;~2 级\qquad\tikz[baseline=-0.6ex]\fill[sC] (0,-0.07) rectangle (0.14,0.07);~3 级\qquad\tikz[baseline=-0.6ex]\draw[inkB, line width=0.8pt] (0,-0.07) -- (0.14,0.07) (0,0.07) -- (0.14,-0.07);~分布外\qquad
+\tikz[baseline=-0.6ex]\draw[bndA] (0,0) -- (0.55,0);~1 级边界\quad\tikz[baseline=-0.6ex]\draw[bndB] (0,0) -- (0.55,0);~2 级边界\quad\tikz[baseline=-0.6ex]\draw[bndC] (0,0) -- (0.55,0);~3 级边界\par\vspace{3pt}
 \begin{tikzpicture}
-\begin{groupplot}[group style={group size=4 by 2, horizontal sep=0.95cm, vertical sep=1.25cm},
-  paper, width=2.95cm, height=2.2cm, ymin=0, ylabel style={font=\scriptsize}, yticklabel style={/pgf/number format/fixed}]
-\nextgroupplot[title={(a) \(T_R\) (s)}, xmode=log, ylabel={对象数}, log ticks with fixed point]
-\addplot[sB, line width=0.9pt, const plot mark left] table[x=x, y=orig] {data/hist_tr.dat};
-\addplot[sA, line width=0.9pt, densely dashed, const plot mark left] table[x=x, y=fam] {data/hist_tr.dat};
-\nextgroupplot[title={(b) \(\lambda_s\) (1/s)}]
-\addplot[sB, line width=0.9pt, const plot mark left] table[x=x, y=orig] {data/hist_lams.dat};
-\addplot[sA, line width=0.9pt, densely dashed, const plot mark left] table[x=x, y=fam] {data/hist_lams.dat};
-\nextgroupplot[title={(c) \(\omega_d\) (rad/s)}, xmode=log, log ticks with fixed point]
-\addplot[sB, line width=0.9pt, const plot mark left] table[x=x, y=orig] {data/hist_wd.dat};
-\addplot[sA, line width=0.9pt, densely dashed, const plot mark left] table[x=x, y=fam] {data/hist_wd.dat};
-\nextgroupplot[title={(d) \(\zeta_d\)}]
-\addplot[sB, line width=0.9pt, const plot mark left] table[x=x, y=orig] {data/hist_zd.dat};
-\addplot[sA, line width=0.9pt, densely dashed, const plot mark left] table[x=x, y=fam] {data/hist_zd.dat};
-\nextgroupplot[title={(e) \(\omega_\phi/\omega_d\)}, ylabel={对象数}]
-\addplot[sB, line width=0.9pt, const plot mark left] table[x=x, y=orig] {data/hist_rw.dat};
-\addplot[sA, line width=0.9pt, densely dashed, const plot mark left] table[x=x, y=fam] {data/hist_rw.dat};
-\nextgroupplot[title={(f) \(\zeta_\phi\)}]
-\addplot[sB, line width=0.9pt, const plot mark left] table[x=x, y=orig] {data/hist_zphi.dat};
-\addplot[sA, line width=0.9pt, densely dashed, const plot mark left] table[x=x, y=fam] {data/hist_zphi.dat};
-\nextgroupplot[title={(g) \(\tau_p\) (s)}]
-\addplot[sB, line width=0.9pt, const plot mark left] table[x=x, y=orig] {data/hist_taup.dat};
-\addplot[sA, line width=0.9pt, densely dashed, const plot mark left] table[x=x, y=fam] {data/hist_taup.dat};
-\nextgroupplot[title={(h) \(\eta=N_a/L_a\)}]
-\addplot[sA, line width=0.9pt, densely dashed, const plot mark left] table[x=x, y=fam] {data/hist_eta.dat};
+\begin{groupplot}[group style={group size=3 by 2, horizontal sep=1.45cm, vertical sep=1.35cm},
+  paper, width=3.85cm, height=3.0cm, ymajorgrids=false]
+\nextgroupplot[title={(a) 滚转与荷兰滚频率}, xmode=log, ymode=log, log ticks with fixed point, xmin=0.15, xmax=16, ymin=0.18, ymax=7, xlabel={\(T_R\) (s)}, ylabel={\(\omega_d\) (rad/s)}]
+\addplot graphics[xmin=0.15, xmax=16, ymin=0.18, ymax=7] {data/cloud_a.pdf};
+\draw[bndA] (axis cs:1.0,0.18) -- (axis cs:1.0,7);
+\draw[bndB] (axis cs:1.4,0.18) -- (axis cs:1.4,7);
+\draw[bndC] (axis cs:10,0.18) -- (axis cs:10,7);
+\draw[bndA] (axis cs:0.15,1.0) -- (axis cs:16,1.0);
+\draw[bndB] (axis cs:0.15,0.4) -- (axis cs:16,0.4);
+\nextgroupplot[title={(b) 荷兰滚阻尼与频率}, xmode=log, log ticks with fixed point, xmin=0.18, xmax=7, ymin=0, ymax=0.75, xlabel={\(\omega_d\) (rad/s)}, ylabel={\(\zeta_d\)}]
+\addplot graphics[xmin=0.18, xmax=7, ymin=0, ymax=0.75] {data/cloud_b.pdf};
+\draw[bndA] (axis cs:0.18,0.19) -- (axis cs:7,0.19);
+\draw[bndB] (axis cs:0.18,0.02) -- (axis cs:7,0.02);
+\addplot[bndA, domain=0.47:7, samples=60] {0.35/x};
+\addplot[bndB, domain=0.18:7, samples=60] {0.05/x};
+\draw[bndA] (axis cs:1.0,0) -- (axis cs:1.0,0.75);
+\draw[bndB] (axis cs:0.4,0) -- (axis cs:0.4,0.75);
+\nextgroupplot[title={(c) 短周期（GJB 图 A3 坐标）}, xmode=log, ymode=log, log ticks with fixed point, xmin=2, xmax=70, ymin=0.4, ymax=15, xlabel={\(n/\alpha\) (g/rad)}, ylabel={\(\omega_{sp}\) (rad/s)}]
+\addplot graphics[xmin=2, xmax=70, ymin=0.4, ymax=15] {data/cloud_c.pdf};
+\addplot[bndA, domain=2:70, samples=40] {sqrt(0.28*x)};
+\addplot[bndA, domain=2:62.5, samples=40] {sqrt(3.6*x)};
+\addplot[bndB, domain=2:70, samples=40] {sqrt(0.16*x)};
+\addplot[bndB, domain=2:22.5, samples=40] {sqrt(10*x)};
+\draw[bndA] (axis cs:2,1.0) -- (axis cs:70,1.0);
+\draw[bndB] (axis cs:2,0.6) -- (axis cs:70,0.6);
+\nextgroupplot[title={(d) 短周期阻尼与俯仰延迟}, xmin=0.05, xmax=1.3, ymin=0, ymax=0.33, xlabel={\(\zeta_{sp}\)}, ylabel={\(\tau_\theta\) (s)}]
+\addplot graphics[xmin=0.05, xmax=1.3, ymin=0, ymax=0.33] {data/cloud_d.pdf};
+\draw[bndA] (axis cs:0.35,0) -- (axis cs:0.35,0.33);
+\draw[bndB] (axis cs:0.25,0) -- (axis cs:0.25,0.33);
+\draw[bndA] (axis cs:0.05,0.10) -- (axis cs:1.3,0.10);
+\draw[bndB] (axis cs:0.05,0.20) -- (axis cs:1.3,0.20);
+\draw[bndC] (axis cs:0.05,0.30) -- (axis cs:1.3,0.30);
+\nextgroupplot[title={(e) 侧滑偏离}, ymode=log, log ticks with fixed point, xmin=-360, xmax=0, xtick={-360,-270,-180,-90,0}, ymin=0.3, ymax=2000, xlabel={\(\psi_\beta\) (°)}, ylabel={\(\Delta\beta/k\) (°)}]
+\addplot graphics[xmin=-360, xmax=0, ymin=0.3, ymax=2000] {data/cloud_e.pdf};
+\addplot[bndA] coordinates {(-360,2) (-340,2) (-270,6) (-205,6) (-130,2) (0,2)};
+\addplot[bndB] coordinates {(-360,4) (-272,15) (-205,15) (-110,4) (0,4)};
+\nextgroupplot[title={(f) 长周期}, xmode=log, log ticks with fixed point, xmin=0.004, xmax=0.25, ymin=-0.12, ymax=0.6, xlabel={\(\omega_p\) (rad/s)}, ylabel={\(\zeta_p\)}]
+\addplot graphics[xmin=0.004, xmax=0.25, ymin=-0.12, ymax=0.6] {data/cloud_f.pdf};
+\draw[bndA] (axis cs:0.004,0.04) -- (axis cs:0.25,0.04);
+\draw[bndB] (axis cs:0.004,0) -- (axis cs:0.25,0);
 \end{groupplot}
 \end{tikzpicture}
-\caption{横航向参数分布。(a)–(d) 为滚转、螺旋与荷兰滚模态，(e)–(f) 为滚转零点，(g) 为滚转等效延迟，(h) 为本文对象族推导得到的副翼偏航比（对照组的 \(\eta\) 不是独立参数）。}
-\label{fig:dist}
+\caption{5,000 个对象的参数空间投影。颜色与标记区分三个品质等级与分布外对象，线型标出 GJB 2874 的分级边界：(a) \(T_R\) 上限与荷兰滚频率下限；(b) \(\zeta_d\)、\(\zeta_d\omega_d\) 与 \(\omega_d\) 的下限；(c) CAP 上下限与 \(\omega_{sp}\) 下限；(d) \(\zeta_{sp}\) 下限与 \(\tau_\theta\) 上限；(e) 随 \(\psi_\beta\) 变化的侧滑偏离上限；(f) \(\zeta_p\) 下限。(f) 只含长周期为振荡形式的对象，纵轴截取 \(-0.12\)–0.6。}
+\label{fig:scatter}
 \end{figure}
 
-滚转零点是检验真实性的关键量，因为它在本文对象族中是推导结果。本文对象族的 \(\omega_\phi/\omega_d\) 的 5–95 百分位为 0.73–1.10，集中在 1 附近，与 CR-2144 真实飞机的 0.64–1.13 一致；对照组在 0.67–1.31 之间近似均匀分布。按式~\eqref{eq:zero}，\(\omega_\phi<\omega_d\) 对应不利偏航，本文对象族的 \(\eta\) 中位数为 \(-0.073\)，5–95 百分位为 \(-0.22\)–0.05，以不利偏航为主，符合常规飞机的特点。
+滚转时间常数—荷兰滚频率平面覆盖了快、慢滚转与不同频率的航向振荡，阻尼—频率平面显示了不同的振荡衰减条件；短周期在 GJB 图 A3 的坐标下，1 级对象位于 CAP 0.28–3.6 与 \(\omega_{sp}\ge1\) rad/s 的区域内，2、3 级对象沿 CAP 边界向外延伸。侧滑偏离平面直接显示了交叉轴品质的分级：1 级对象位于随 \(\psi_\beta\) 变化的 1 级边界以下，3 级对象大量位于 2 级边界以上。各等级在单一投影中仍有重叠，因为综合等级取全部 14 项判据的最差项，越界可能发生在其他参数或参数组合上。
 
-荷兰滚参数的变化反映了交叉轴判据的作用。\(\zeta_d\) 的 5 百分位由对照组的 0.01 升至 0.22，本文对象族中 \(\zeta_d<0.15\) 的对象只有 10 个，均为由荷兰滚定级的 3 级对象；\(\omega_d\) 中位数由 1.96 rad/s 升至 3.47 rad/s，原因是低频荷兰滚难以满足侧滑偏离判据。滚转等效延迟按 GJB 表 A21 定级后，\(\tau_p\) 中位数由对照组的 0.102 s 降至 0.054 s。\(T_R\) 的中位数保持在 0.53 s，1.0 s 以上的 \(T_R\) 只出现在由 \(T_R\) 定级的对象中。
+2、3 级对象按“一两项退化、其余保持 1 级”构成：2 级对象中 727 个只有 1 项判据为 2 级，678 个有 2 项；3 级对象中 1,106 个只有 1 项为 3 级。侧滑偏离常与锚定项同时达到该级，涉及 788 个 2 级对象和 545 个 3 级对象；长周期涉及 316 个 2 级对象和 186 个 3 级对象。从 1 级到 3 级，侧滑偏离 \(\Delta\beta/k\) 的 95 百分位由 5.5° 增至 38.7°，荷兰滚频率中位数由 4.3 rad/s 降至 2.7 rad/s，滚转与俯仰等效延迟的 95 百分位分别由 0.095 s 增至 0.23 s 和 0.25 s；各等级的统计见附录表~\ref{tab:grade}。
 
-纵向与配平参数同样落在真实飞机所在区域：配平速度的 5–95 百分位为 71–234 m/s，配平迎角中位数为 4.2°（5–95 百分位 \(-1.1^\circ\)–12.6°），\(I_{xz}/I_y\) 不超过 0.05。速度段分布为中速 3,613 个、低速 859 个、高速 446 个、极低速 82 个。
+\subsection{与真实飞机的一致性}
+65,536 个候选中 49,539 个（75.6\%）的导数通过真实性检查，入选的 5,000 个对象全部满足 7 个归一化量的真实范围以及 \(N'_r<0\)、\(M_q<0\)。滚转零点是检验一致性的关键量，因为它在六通道对象中是推导结果：\(\omega_\phi/\omega_d\) 的 5–95 百分位为 0.73–1.10，集中在 1 附近，与 CR-2144 真实飞机的 0.64–1.13 一致；副翼偏航比 \(\eta\) 的中位数为 \(-0.073\)，以不利偏航为主。滚转对象库中 \(\omega_\phi/\omega_d\) 在 0.67–1.31 之间近似均匀分布。
 
-\subsection{品质等级对应的动态差异}
-\label{sec:exp-grade}
-2、3 级对象按“一两项退化、其余保持 1 级”的方式构成：2 级对象中 727 个只有 1 项判据为 2 级，678 个有 2 项；3 级对象中 1,106 个只有 1 项为 3 级。每个降级对象都可以归因到具体的判据。各项判据都有对象代表相应等级：单项锚定的对象在 2 级中约 130 个、在 3 级中约 163 个；侧滑偏离常与锚定项同时达到该级，涉及 788 个 2 级对象和 545 个 3 级对象；长周期涉及 316 个 2 级对象和 186 个 3 级对象。OOD 对象的 11 类原因各约 45–90 个，其中定常侧滑方向不满足的有 128 个（一个对象可同时有多项原因）。
+模态的品质等级不能代表对象的综合等级。全部模态都按 1 级采样的 29,134 个真实候选中，综合仍为 1 级的只有 5,864 个（20.1\%），其余因侧滑偏离、滚转振荡、长周期或定常侧滑方向而降级。若沿用滚转对象库、逐通道补齐导数，5,000 个对象中仅 47\% 能对应真实飞机的导数范围，原 1 级对象中仅 9\% 在全部通道上仍为 1 级（附录~\ref{app:baseline}）。综合定级与分层选取因此是六通道对象族保持等级一致的必要环节。
 
-由于降级集中在少数判据上，各级参数的中位数相近，差别主要体现在分布的尾部。图~\ref{fig:grade} 给出六项定级量在各等级中的 5–95 百分位区间与中位数，附录表~\ref{tab:grade} 列出对应数值。侧滑偏离 \(\Delta\beta/k\) 的 95 百分位从 1 级的 5.5° 增至 2 级的 12.4° 和 3 级的 38.7°；荷兰滚频率中位数从 4.3 rad/s 降至 3.5 rad/s 和 2.7 rad/s；滚转等效延迟与俯仰延迟的 95 百分位分别从 0.095 s 增至 0.14 s、0.23 s 和从 0.095 s 增至 0.15 s、0.25 s；\(T_R\) 与 CAP 的上尾在 3 级显著延伸；长周期阻尼 \(\zeta_p\) 的 5 百分位从 0.044 降至 0.020 和 \(-0.022\)。各量的变化方向都与 GJB 2874 的等级边界一致，1 级对象全部落在 1 级边界以内。
-
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}
-\begin{groupplot}[group style={group size=3 by 2, horizontal sep=1.55cm, vertical sep=1.35cm},
-  paper, width=3.95cm, height=2.6cm, xmin=0.5, xmax=4.5, xtick={1,2,3,4}, xticklabels={1 级,2 级,3 级,OOD},
-  xmajorgrids=false, clip=false]
-\nextgroupplot[title={(a) 侧滑偏离 \(\Delta\beta/k\) (°)}, ymode=log, ymin=0.8, ymax=400, log ticks with fixed point]
-\draw[bound] (axis cs:0.5,6) -- (axis cs:4.5,6) node[boundlabel, anchor=south west, pos=0] {1 级最宽边界 6°};
-\draw[bound] (axis cs:0.5,15) -- (axis cs:4.5,15) node[boundlabel, anchor=south west, pos=0] {2 级最宽边界 15°};
-\addplot[ink, line width=1.6pt, unbounded coords=jump] table {data/grad_dbk.dat};
-\addplot[only marks, mark=*, mark size=1.9pt, sA, mark options={draw=white, line width=0.5pt}] table[x=lv, y=dbk50] {data/gradient.dat};
-\nextgroupplot[title={(b) 荷兰滚频率 \(\omega_d\) (rad/s)}, ymin=0, ymax=6.5]
-\draw[bound] (axis cs:0.5,1.0) -- (axis cs:4.5,1.0) node[boundlabel, anchor=south west, pos=0] {1 级下限};
-\draw[bound] (axis cs:0.5,0.4) -- (axis cs:4.5,0.4) node[boundlabel, anchor=south west, pos=0] {2、3 级下限};
-\addplot[ink, line width=1.6pt, unbounded coords=jump] table {data/grad_wd.dat};
-\addplot[only marks, mark=*, mark size=1.9pt, sA, mark options={draw=white, line width=0.5pt}] table[x=lv, y=wd50] {data/gradient.dat};
-\nextgroupplot[title={(c) 滚转模态 \(T_R\) (s)}, ymode=log, ymin=0.15, ymax=20, log ticks with fixed point]
-\draw[bound] (axis cs:0.5,1.0) -- (axis cs:4.5,1.0) node[boundlabel, anchor=north east, pos=1] {1 级};
-\draw[bound] (axis cs:0.5,1.4) -- (axis cs:4.5,1.4) node[boundlabel, anchor=south east, pos=1] {2 级};
-\draw[bound] (axis cs:0.5,10) -- (axis cs:4.5,10) node[boundlabel, anchor=south east, pos=1] {3 级};
-\addplot[ink, line width=1.6pt, unbounded coords=jump] table {data/grad_tr.dat};
-\addplot[only marks, mark=*, mark size=1.9pt, sA, mark options={draw=white, line width=0.5pt}] table[x=lv, y=tr50] {data/gradient.dat};
-\nextgroupplot[title={(d) 滚转等效延迟 \(\tau_p\) (s)}, ymin=0, ymax=0.4]
-\draw[bound] (axis cs:0.5,0.10) -- (axis cs:4.5,0.10) node[boundlabel, anchor=south east, pos=1] {1 级};
-\draw[bound] (axis cs:0.5,0.20) -- (axis cs:4.5,0.20) node[boundlabel, anchor=south east, pos=1] {2 级};
-\draw[bound] (axis cs:0.5,0.25) -- (axis cs:4.5,0.25) node[boundlabel, anchor=south east, pos=1] {3 级};
-\addplot[ink, line width=1.6pt, unbounded coords=jump] table {data/grad_taup.dat};
-\addplot[only marks, mark=*, mark size=1.9pt, sA, mark options={draw=white, line width=0.5pt}] table[x=lv, y=taup50] {data/gradient.dat};
-\nextgroupplot[title={(e) CAP (\(\mathrm{s^{-2}\,g^{-1}}\))}, ymode=log, ymin=0.2, ymax=20, log ticks with fixed point]
-\draw[bound] (axis cs:0.5,3.6) -- (axis cs:4.5,3.6) node[boundlabel, anchor=south west, pos=0] {1 级上限};
-\draw[bound] (axis cs:0.5,10) -- (axis cs:4.5,10) node[boundlabel, anchor=south west, pos=0] {2 级上限};
-\addplot[ink, line width=1.6pt, unbounded coords=jump] table {data/grad_cap.dat};
-\addplot[only marks, mark=*, mark size=1.9pt, sA, mark options={draw=white, line width=0.5pt}] table[x=lv, y=cap50] {data/gradient.dat};
-\nextgroupplot[title={(f) 长周期阻尼 \(\zeta_p\)}, ymin=-0.06, ymax=0.32]
-\draw[bound] (axis cs:0.5,0.04) -- (axis cs:4.5,0.04) node[boundlabel, anchor=north west, pos=0] {1 级下限};
-\draw[bound] (axis cs:0.5,0) -- (axis cs:4.5,0) node[boundlabel, anchor=north west, pos=0] {2 级下限};
-\addplot[ink, line width=1.6pt, unbounded coords=jump] table {data/grad_zp.dat};
-\addplot[only marks, mark=*, mark size=1.9pt, sA, mark options={draw=white, line width=0.5pt}] table[x=lv, y=zp50] {data/gradient.dat};
-\end{groupplot}
-\end{tikzpicture}
-\caption{六项定级量在各等级中的分布。竖线为 5–95 百分位区间，圆点为中位数，虚线为 GJB 2874 的等级边界。侧滑偏离的边界随 \(\psi_\beta\) 变化，图中给出各级最宽的边界。3 级的 \(\zeta_p\) 可为负，此时要求倍幅时间不短于 55 s。}
-\label{fig:grade}
-\end{figure}
-
-图~\ref{fig:resp} 给出训练核心集中三个代表对象的响应。对象 1 为 1 级，位于中速段；对象 2 为 2 级，由长周期定级（\(\zeta_p=0.039\)，略低于 1 级下限 0.04）；对象 3 为 3 级，位于极低速段，螺旋根接近中性，长周期轻微发散（\(\zeta_p=-0.004\)），同样由长周期定级。俯仰杆力按 0.5 g 稳态过载给定时，对象 1 的法向过载在 6 s 时保持在 0.48 g，对象 2 由峰值 0.56 g 降至 0.42 g，对象 3 由峰值 0.60 g 降至 0.16 g，等级差异直接体现在过载保持能力上。横航向上，横向杆下对象 1、3 的滚转角速度平稳建立，对象 2 达到 0.35 deg/s 的峰值后缓慢回落；脚蹬引起的滚转差别更明显：对象 1 与对象 3 的上反效应使滚转角速度持续增长并稳定在 3.0–4.5 deg/s，对象 2 的滚转—侧滑比小，脚蹬几乎不引起滚转。
+\subsection{各等级对象的响应}
+图~\ref{fig:resp} 给出训练核心集中三个代表对象的响应。对象 1 为 1 级，位于中速段；对象 2 为 2 级，由长周期定级（\(\zeta_p=0.039\)，略低于 1 级下限 0.04）；对象 3 为 3 级，位于极低速段，螺旋根接近中性，长周期轻微发散（\(\zeta_p=-0.004\)）。俯仰杆力按 0.5 g 稳态过载给定时，对象 1 的法向过载在 6 s 时保持在 0.48 g，对象 2 由峰值 0.56 g 降至 0.42 g，对象 3 由峰值 0.60 g 降至 0.16 g，等级差异直接体现在过载保持上。横向杆下对象 1、3 的滚转角速度平稳建立，对象 2 达到 0.35 deg/s 的峰值后缓慢回落；脚蹬输入下，对象 1、3 的上反效应使滚转角速度增至 3.0–4.5 deg/s，对象 2 的滚转—侧滑比小，脚蹬几乎不引起滚转。三路响应之间的这些差别，正是三回路控制器需要通过反馈历史识别并补偿的对象动态。
 
 \begin{figure}[H]
 \centering
@@ -475,99 +416,233 @@ OOD & 176 / 500（35\%） & 30 & 324 \\
 \label{fig:resp}
 \end{figure}
 
-\subsection{动力学模型检验}
-\label{sec:exp-model}
-表~\ref{tab:checks} 汇总了六自由度品质模型的检验。各通道的小幅响应与表~\ref{tab:loes} 的连续传递函数一致；全量模型在无力矩翻滚中保持角动量，湍流的线速度分量方差与 Dryden 谱的解析值一致。项目代码的 45 项自动测试全部通过，其中逐对象检查对象族的配额与划分、滚转通道与短周期的精确性、由存储参数重新计算的等级，以及从配平点出发的仿真。
+\section{讨论}
+\label{sec:discussion}
+六通道对象族把飞行品质对对象空间的组织从单一通道推广到三个轴。侧滑偏离与长周期是 2、3 级对象最常见的退化来源，它们分别对应横向杆与脚蹬之间的协调、俯仰与速度之间的慢变耦合，也是三回路教师和统一学生需要重点处理的动态。第~\ref{sec:metric} 节的耦合指标与对象定级中的侧滑偏离判据相对应，可以把对象的开环品质与控制器的闭环协调联系起来。
 
+GJB 2874 针对电传操纵飞机，其等效参数描述含增稳与控制律的闭环飞机。对象族的导数相应是增稳后的等效导数，真实性约束作用在 7 个与量纲无关的比值上，量纲导数可以大于裸机数据（\(N'_r\) 中位数约为 CR-2144 裸机的 10 倍）。以导数构造对象后，低频、极弱阻尼的荷兰滚对象减少，荷兰滚频率整体高于滚转对象库；若后续训练需要覆盖这类动态，可在分布外部分定向补充。
+
+三回路教师按回路解耦训练，与滚转通道的逐对象教师一致；三路教师联合运行时的耦合影响，以及俯仰、侧滑回路门限的取值，将由试训确定。新对象族与已训练的滚转教师不一一对应，滚转通道验证作为构建路线的可行性证据保持不变。
+
+\section{结论}
+\label{sec:conclusion}
+本文将基于飞行品质的飞控大模型构建路线扩展到六自由度。六通道对象族由品质等级决定模态、由真实飞机数据决定耦合形状，通过导数精确反解与 14 项判据综合定级，得到 1、2、3 级各 1,500 个、分布外 500 个的对象。75.6\% 的候选导数对应真实飞机，推导的滚转零点分布与真实飞机一致，1 级对象全部判据均为 1 级，各项定级量随等级呈现一致的梯度。
+
+本文同时定义了俯仰、滚转、航向三回路的控制任务、观测与评价，并给出逐回路特权教师、三回路统一学生与跨对象评价的设计。下一步按第~\ref{sec:setup} 节的协议开展教师试训，以三回路的闭环结果检验六通道扩展的构建链。
+
+\begin{thebibliography}{99}
+\small
+\bibitem{gjb} GJB 2874—1997. 电传操纵系统飞机的飞行品质[S]. 1997.
+\bibitem{own} 基于飞行品质的飞控大模型构建与滚转通道验证[R]. 研究论文, 2026.
+\bibitem{mil} MIL-STD-1797A (Notice 3). Flying qualities of piloted aircraft[S]. Washington: Department of Defense, 2004.
+\bibitem{davidson} J. B. Davidson, D. Andrisani. Lateral-directional eigenvector flying qualities guidelines for high performance aircraft[R]. NASA TM-110306, 1996.
+\bibitem{gjb185} GJB 185-1986. 有人驾驶飞机（固定翼）飞行品质[S]. 北京: 国防科学技术工业委员会, 1986.
+\bibitem{etkin} B. Etkin, L. D. Reid. Dynamics of flight: stability and control[M]. 3rd ed. New York: Wiley, 1996.
+\bibitem{nelson} R. C. Nelson. Flight stability and automatic control[M]. 2nd ed. New York: McGraw-Hill, 1998.
+\bibitem{stevens} B. L. Stevens, F. L. Lewis, E. N. Johnson. Aircraft control and simulation[M]. 3rd ed. Hoboken: Wiley, 2016.
+\bibitem{cr2144} R. K. Heffley, W. F. Jewell. Aircraft handling qualities data[R]. NASA CR-2144, 1972.
+\bibitem{vapnik} V. Vapnik, A. Vashist. A new learning paradigm: learning using privileged information[J]. Neural Networks, 2009, 22(5-6): 544-557.
+\bibitem{pinto} L. Pinto, M. Andrychowicz, P. Welinder, et al. Asymmetric actor critic for image-based robot learning[C]. Robotics: Science and Systems, 2018.
+\bibitem{lee} J. Lee, J. Hwangbo, L. Wellhausen, et al. Learning quadrupedal locomotion over challenging terrain[J]. Science Robotics, 2020, 5(47).
+\bibitem{rma} A. Kumar, Z. Fu, D. Pathak, et al. RMA: Rapid motor adaptation for legged robots[C]. Robotics: Science and Systems, 2021.
+\bibitem{ppo} J. Schulman, F. Wolski, P. Dhariwal, et al. Proximal policy optimization algorithms[J]. arXiv:1707.06347, 2017.
+\bibitem{dagger} S. Ross, G. Gordon, D. Bagnell. A reduction of imitation learning and structured prediction to no-regret online learning[C]. AISTATS, 2011.
+\end{thebibliography}
+
+\appendix
+\ctexset{section/name={附录~,},section/number=\Alph{section}}
+\section{六通道动力学与导数反解}
+\label{app:model}
+\textbf{纵向。}纵向以稳定轴四状态 \([u,\alpha,q,\theta]\) 描述：
+\begin{equation}
+\begin{aligned}
+\dot u&=X_uu+X_\alpha\alpha-g\theta+g\,\delta_T, &\qquad \dot\alpha&=Z_uu+Z_\alpha\alpha+q,\\
+\dot q&=M_uu+M_\alpha\alpha+M_qq+K_\theta F_s(t-\tau_\theta), & \dot\theta&=q .
+\end{aligned}
+\label{eq:lon}
+\end{equation}
+升力正比于 \(V^2\)，故 \(Z_u=-2g/V_0^2\)；\(X_u=-2g/(V_0\,L/D)\) 由有效升阻比给出，\(X_\alpha\) 由阻力斜率给出，\(M_u\) 取亚音速数据。要求特征多项式保持短周期因子，即 \(\Delta_{\mathrm{lon}}=(s^2+p_1s+p_0)(s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2)\)，且 \(\theta/F_s\) 保留零点 \(-1/T_{\theta2}\)。记 \(z_2=1/T_{\theta2}\)，由零点条件得 \(Z_\alpha=(X_\alpha Z_u-z_2^2-X_uz_2)/(z_2+X_u)\)，其余系数条件对 \((p_0,p_1)\) 构成 \(2\times2\) 线性方程，解出后 \(M_\alpha\)、\(M_q\) 随之确定。法向过载为 \(n_z=-\tfrac{V_0}{g}(Z_uu+Z_\alpha\alpha)\)。
+
+\textbf{横航向。}横航向以稳定轴四状态 \([\beta,p,r,\phi]\) 描述，\(g'=g/V_0\)，带撇导数计入 \(I_{xz}\)：
+\begin{equation}
+\begin{aligned}
+\dot\beta&=Y_\beta\beta-r+g'\phi+Y_{rp}F_{rp}(t-\tau_{rp}),\\
+\dot p&=L'_\beta\beta+L'_pp+L'_rr+L_aF_{as}(t-\tau_p)+L'_{rp}F_{rp}(t-\tau_{rp}),\\
+\dot r&=N'_\beta\beta+N'_pp+N'_rr+N_aF_{as}(t-\tau_p)+N'_{rp}F_{rp}(t-\tau_{rp}),\qquad \dot\phi=p .
+\end{aligned}
+\label{eq:lat}
+\end{equation}
+特征多项式 \(\Delta_{\mathrm{lat}}=s^4+a_3s^3+a_2s^2+a_1s+a_0\) 满足 \(a_3=-(L'_p+N'_r+Y_\beta)\) 与
+\begin{equation}
+a_0=g'\bigl(L'_\beta N'_r-L'_rN'_\beta\bigr)=-\frac{\lambda_s\,\omega_d^2}{T_R},
+\label{eq:a0}
+\end{equation}
+即螺旋根几乎单独决定上反效应。滚转通道为
+\begin{equation}
+\frac{p}{F_{as}}=\frac{L_a\,s\,\bigl[s^2+(L'_r\eta-N'_r-Y_\beta)s+N'_\beta+N'_rY_\beta-\eta(L'_\beta+L'_rY_\beta)\bigr]}{\Delta_{\mathrm{lat}}(s)}\,e^{-\tau_ps},\qquad \eta=\frac{N_a}{L_a},
+\end{equation}
+零点满足 \(\omega_\phi^2/\omega_d^2\approx1+\eta\,|\phi/\beta|_d\) [4]，滚转零点与副翼偏航因此相互决定。
+
+\textbf{导数反解。}给定四个横航向极点，\(a_3,\dots,a_0\) 已知。记 \(S=-a_3-Y_\beta\)、\(c_1=N'_p/L'_p\)、\(c_2=L'_r/N'_r\)，全部导数都是 \(L'_p\) 的函数：
+\begin{equation}
+N'_r=S-L'_p,\quad N'_p=c_1L'_p,\quad L'_r=c_2N'_r,\quad N'_\beta=a_2-L'_pN'_r-Y_\beta S+L'_rN'_p,
+\end{equation}
+\(L'_\beta\) 由 \(a_1\) 的表达式给出，代入式~\eqref{eq:a0} 得到关于 \(L'_p\) 的四次方程。每个实根对应一组导数，再由 \(\eta\) 算出滚转零点，\(L_a\) 按 \(S_{1s}\) 标定。
+
+\textbf{全量动力学与运动学。}大机动保留风轴重力分量与 \(\dot\alpha,\dot\beta\) 的运动学项 [8]，力矩方程采用含 \(I_{xz}\) 的完整欧拉方程：
+\begin{equation}
+\begin{aligned}
+I_x\dot p-I_{xz}\dot r&=(I_y-I_z)qr+I_{xz}pq+\mathcal L,\qquad I_y\dot q=(I_z-I_x)pr+I_{xz}(r^2-p^2)+\mathcal M,\\
+I_z\dot r-I_{xz}\dot p&=(I_x-I_y)pq-I_{xz}qr+\mathcal N .
+\end{aligned}
+\end{equation}
+稳定轴按配平迎角固连于机体；阵风只经气动项进入，湍流采用 MIL-STD-1797A 的 Dryden 谱成形滤波器 [3]。姿态以旋转矩阵传播，每步按机体角速度做 Rodrigues 精确旋转后读出欧拉角；线性部分按零阶保持精确离散，\(\Delta t=1\) ms，纯延迟采用线性插值的分数延迟。
+
+\section{判据与采样范围}
+\label{app:criteria}
 \begin{table}[H]
 \centering\small
-\caption{六自由度品质模型的检验}\label{tab:checks}
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.3\linewidth}Y>{\raggedright\arraybackslash}p{0.25\linewidth}@{}}
+\caption{对象定级所用的品质判据（1 / 2 / 3 级）}\label{tab:criteria}
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}p{0.37\linewidth}Y@{}}
 \toprule
-检验项 & 方法 & 结果 \\
+判据 & 量 & 边界与出处 \\
 \midrule
-等效系统一致性 & 延迟取整到 1 ms 网格，六个输出与连续传递函数的阶跃响应比较 & 相对误差 \(<10^{-6}\) \\
-分数延迟 & 与精确连续纯延迟比较，40 个对象 & 误差中位数 \(10^{-7}\)–\(4\times10^{-6}\) \\
-短周期关系 & 初始俯仰角加速度与稳态 \(n_z\) 之比、稳态 \(n_z\cdot(F_s/n)\) & 与 CAP、1 的偏差 \(<0.5\%\) \\
-导数反解 & sympy 复推特征多项式与零点；逐对象核对 \(p/F_{as}\) 的极点、零点与短周期因子 & 相对误差 \(<10^{-8}\) \\
-运动学 & 旋转矩阵读出的欧拉角与欧拉角方程逐步比较 & 误差 \(10^{-6}\) \\
-小幅响应 & 全量模型与线性导数模型比较 & 相对偏差 \(\le2\times10^{-3}\) \\
-角动量守恒 & 无气动力矩翻滚 2 s & 相对误差 \(<5\times10^{-3}\) \\
-Dryden 湍流 & 线速度分量方差与解析值 \(\sigma^2\) 比较 & 相差 2–3\% \\
+滚转模态 & \(T_R\) & \(\le\) 1.0 / 1.4 / 10 s；GJB 表 A18 \\
+螺旋模态 & 倍幅时间 \(T_2=\ln2/\lambda_s\) & \(\ge\) 12 / 8 / 4 s；GJB 表 A19 \\
+滚转灵敏度 & \(S_{1s}=|\phi(1\,\mathrm s)|/F_{as}\) & \(\le\) 3.38 / 5.62 deg/N；GJB 表 A31 \\
+滚转延迟 & \(p/F_{as}\) 的等效延迟 \(\tau_p\) & \(\le\) 0.10 / 0.20 / 0.25 s；GJB 表 A21 \\
+荷兰滚 & \(\zeta_d,\ \zeta_d\omega_d,\ \omega_d\)，含 \(\omega_d^2|\phi/\beta|_d\) 修正 & GJB 表 A35；MIL 表 XL \\
+滚转振荡 & \(p_{osc}/p_{av}\)，随 \(\psi_\beta\) & MIL 4.5.1.4；\(|\phi/\beta|_d<1.5\) 时不评 \\
+侧滑偏离 & \(\Delta\beta/k\)，随 \(\psi_\beta\)，\(k\) 按速度段 & 1 级 2°–6°，2 级 4°–15°；MIL 4.6.2 \\
+定常侧滑方向 & 上反方向与脚蹬方向 & 各级都要求；MIL 4.5.5、4.6.1.2 \\
+短周期频率 & CAP 与 \(\omega_{sp}\) & 0.28–3.6 且 \(\omega_{sp}\ge1\) / 0.16–10 且 \(\omega_{sp}\ge0.6\)；GJB 图 A3(a) \\
+短周期阻尼 & \(\zeta_{sp}\) & 0.35–1.30 / 0.25–2.00；GJB 表 A6 \\
+俯仰延迟 & \(\tau_\theta\) & \(\le\) 0.10 / 0.20 / 0.30 s；GJB 表 A7 \\
+每 g 杆力 & \(F_s/n\)，\(n_L=7\) & GJB 表 A10(a) \\
+长周期 & \(\zeta_p\)；\(T_2=-0.693/(\zeta_p\omega_p)\) & \(\ge\) 0.04 / \(\ge\) 0 / \(T_2\ge55\) s 且 \(|\zeta_p|<1\)；GJB 表 A5 \\
+长周期零点 & \(1/T_{\theta1}\) & 各级都要求 \(>0\)；GJB 表 A4 \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-大机动检验考察重力、运动学与惯性耦合项。以对照对象族中的一个 1 级对象为例，压坡度 60° 不拉杆时 15 s 掉高 558 m，拉 1 g 后掉高 204 m；约 205°/s 的 360° 滚转中，有惯性耦合时迎角最大偏离 1.6°；推力增加 5\% 重量后 120 s 内爬升约 700 m，速度按约 70 s 周期振荡；中高空中度湍流（\(\sigma=3.05\) m/s）下 \(n_z\) 均方根为 0.23 g。在本文对象族中每 50 个对象抽取 1 个，按各自速度段的 1 级滚转性能做 360° 滚转，迎角偏离中位数为 3.1°；以迎角变化或侧滑超过 15° 作为线性气动的适用范围，100 个抽样对象中有 10 个在惯性耦合作用下超出该范围，去掉惯性耦合时为 4 个，超出者多为大 \(I_{xz}/I_y\) 与低 \(\omega_{sp}\) 的组合，与 Phillips 惯性耦合分析的结论一致 [12]。
-
-\section{讨论}
-\label{sec:discussion}
-\textbf{品质等级由耦合共同决定。}对照实验与候选统计从两个方向说明，等效模态的等级不能代表对象的综合等级。侧滑偏离是最主要的交叉轴限制：它同时依赖荷兰滚频率、滚转—侧滑比与副翼偏航，而这些量在真实飞机中由同一组导数联系。对象族因此需要在导数层面构造、在全部判据上定级。对后续训练而言，侧滑偏离与长周期是 2、3 级对象最常见的退化来源，可作为教师训练与评价中重点考察的动态特性。
-
-\textbf{等效导数的含义。}GJB 2874 针对电传操纵飞机，其等效参数描述的是含增稳与控制律的闭环飞机。本文对象族的导数相应地是增稳后的等效导数，真实性约束作用在 7 个与量纲无关的归一化比值上。量纲导数因此可以大于裸机数据：\(N'_r\) 的中位数为 \(-2.59\)，约为 CR-2144 裸机的 10 倍；\(L'_r\) 中位数为 3.6，22\% 超出裸机的量纲范围。这与等效系统描述增稳飞机的定位一致。
-
-\textbf{对象族的覆盖。}以导数构造对象后，低频、极弱阻尼的荷兰滚对象明显减少，荷兰滚频率整体高于对照组。若后续训练需要覆盖这类动态，可在 OOD 部分或专门的补充集中定向生成。本文判据覆盖了 GJB 2874 中可由对象模型直接计算的项目；滚转性能、驾驶员位置侧向加速度、正上反所需杆力上限与 \(\omega_{sp}T_{\theta2}\) 替代判据需要杆力限制和座舱位置等信息，可在补充这些参数后加入定级。全量动力学使用线性气动，适用于迎角变化与侧滑在 15° 以内的机动。
-
-\section{结论}
-\label{sec:conclusion}
-本文面向飞控大模型的六自由度扩展，提出了基于飞行品质的对象族构建方法。方法由品质等级决定模态、由真实飞机数据决定耦合形状，通过精确反解得到全部导数，并在 14 项判据上综合定级与分层选取。对照实验表明，逐通道独立采样的等效参数在补齐耦合后，仅 47\% 对应真实飞机、原 1 级对象仅 9\% 保持 1 级；本文方法得到 75.6\% 的真实候选，构成 1、2、3 级各 1,500 个、分布外 500 个的对象族，1 级对象全部判据均为 1 级，推导的滚转零点分布与真实飞机一致，各项定级量随等级呈现一致的梯度。六自由度品质模型满足等效系统、角动量守恒与湍流谱等检验。
-
-该对象族为六自由度飞控大模型提供了按品质组织的对象空间。下一步将在其上建立俯仰、滚转、脚蹬三回路的教师训练环境，设计指令与奖励，并沿用滚转通道验证的教师—蒸馏—跨对象评价流程。
-
-\textbf{数据与代码。}对象族数据、生成与检验代码位于项目仓库的 \texttt{six\_channel\_model\_2026-10-29} 目录，本文图表数据由 \texttt{report/paper/scripts/make\_data.py} 生成。
-
-\begin{thebibliography}{12}
-\small
-\bibitem{own} 基于飞行品质的飞控大模型构建与滚转通道验证[R]. 研究论文, 2026.
-\bibitem{gjb} GJB 2874—1997. 电传操纵系统飞机的飞行品质[S]. 1997.
-\bibitem{mil} MIL-STD-1797A (Notice 3). Flying Qualities of Piloted Aircraft[S]. U.S. Department of Defense, 2004.
-\bibitem{davidson} Davidson J B, Andrisani D. Lateral-Directional Eigenvector Flying Qualities Guidelines for High Performance Aircraft[R]. NASA TM-110306, 1996.
-\bibitem{cr2144} Heffley R K, Jewell W F. Aircraft Handling Qualities Data[R]. NASA CR-2144, 1972.
-\bibitem{hodgkinson} Hodgkinson J. Aircraft Handling Qualities[M]. Oxford: Blackwell Science, 1999.
-\bibitem{etkin} Etkin B, Reid L D. Dynamics of Flight: Stability and Control[M]. 3rd ed. New York: Wiley, 1996.
-\bibitem{nelson} Nelson R C. Flight Stability and Automatic Control[M]. 2nd ed. New York: McGraw-Hill, 1998.
-\bibitem{stevens} Stevens B L, Lewis F L, Johnson E N. Aircraft Control and Simulation[M]. 3rd ed. Hoboken: Wiley, 2016.
-\bibitem{tobin} Tobin J, Fong R, Ray A, et al. Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World[C]//IEEE/RSJ International Conference on Intelligent Robots and Systems. 2017: 23–30.
-\bibitem{peng} Peng X B, Andrychowicz M, Zaremba W, et al. Sim-to-Real Transfer of Robotic Control with Dynamics Randomization[C]//IEEE International Conference on Robotics and Automation. 2018: 3803–3810.
-\bibitem{phillips} Phillips W H. Effect of Steady Rolling on Longitudinal and Directional Stability[R]. NACA TN-1627, 1948.
-\end{thebibliography}
-
-\appendix
-\section{采样范围}
-\label{app:ranges}
 \begin{table}[H]
 \centering\small
-\caption{候选对象的采样范围（1 级区域；锚定项推到相应等级区域）}\label{tab:ranges}
-\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}p{0.42\linewidth}Y@{}}
+\caption{候选对象的采样范围（锚定项推到相应等级区域）}\label{tab:ranges}
+\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}p{0.44\linewidth}Y@{}}
 \toprule
 参数 & 范围 & 说明 \\
 \midrule
 \(T_R\) & 1 级 0.18–1.0 s；2 级 1.0–1.4 s；3 级 1.4–10 s & 对数均匀 \\
 \(\lambda_s\) & 1 级 \(-0.15\)–\(\ln2/12\)；2 级至 \(\ln2/8\)；3 级至 \(\ln2/4\) (1/s) & 均匀 \\
-\(S_{1s}\) & 1 级 0.85–3.38；2 级 3.38–5.62 deg/N & 对数均匀，\(L_a\) 按其标定 \\
+\(S_{1s}\) & 1 级 0.85–3.38；2 级 3.38–5.62 deg/N & 对数均匀 \\
 \(\tau_p\) & 1 级 0.001–0.10 s；2 级 0.10–0.20 s；3 级 0.20–0.25 s & 均匀 \\
-\((\zeta_d,\omega_d)\) & 按 GJB 表 A35 各级区域 & 与滚转对象库规则相同 \\
+\((\zeta_d,\omega_d)\) & 按 GJB 表 A35 各级区域 & 与滚转对象库相同 \\
 \(1/T_{\theta2}\) & 0.4–2.5 1/s & 对数均匀 \\
-CAP、\(\zeta_{sp}\)、\(\tau_\theta\)、\(F_s/n\) & 按 GJB 图 A3(a)、表 A6、A7、A10(a) 各级区域；\(\zeta_{sp}\le1.2\)，\(\omega_{sp}\le12\) rad/s & — \\
-\(V_{\min}\)，\(V_{\max}\) & 50–70 m/s，260–400 m/s & IV 类速度段 \\
-\(V_0\) & \([\max(60,1.15V_{\min}),\ \min(250,V_{\max})]\) m/s & 对数均匀 \\
-\(Y_\beta\) & \(-0.37\)–\(-0.050\) 1/s & CR-2144 的 5–95 百分位 \\
-\(N'_p/L'_p\)，\(\eta\) & \(-0.166\)–0.072，\(-0.24\)–0.069 & CR-2144 的 5–95 百分位 \\
-\(L'_r/N'_r\) & \(-5.78\)–0.50 & CR-2144 的 2.5–97.5 百分位，按分位数 \\
+CAP、\(\zeta_{sp}\)、\(\tau_\theta\)、\(F_s/n\) & 按 GJB 各级区域；\(\zeta_{sp}\le1.2\)，\(\omega_{sp}\le12\) rad/s & — \\
+\(V_{\min}\)，\(V_{\max}\)，\(V_0\) & 50–70，260–400 m/s；\(V_0\in[\max(60,1.15V_{\min}),\min(250,V_{\max})]\) & \(V_0\) 对数均匀 \\
+\(Y_\beta\)，\(N'_p/L'_p\)，\(\eta\) & \(-0.37\)–\(-0.050\) 1/s，\(-0.166\)–0.072，\(-0.24\)–0.069 & CR-2144 的 5–95 百分位 \\
+\(L'_r/N'_r\) & \(-5.78\)–0.50 & CR-2144 的 2.5–97.5 百分位分位数 \\
 方向舵滚转比、侧力比 & 0.047–2.70，0.146–1.51（相对上反比与 \(|Y_\beta|/N'_\beta\)） & CR-2144 分位数 \\
-单位脚蹬力稳态侧滑 & 0.02–0.2 deg/N & 对数均匀 \\
-\(\tau_{rp}\) & 0.001–0.20 s & 均匀 \\
-有效 \(L/D\)，阻力斜率/升力 & 2.75–17.65，0.246–1.740 & 47 个亚音速状态的 5–95 百分位 \\
-\(M_u\) & \(-0.00256\)–0.00054 1/(m·s) & 同上 \\
-\(I_y/I_x\)，\(I_z/(I_x+I_y)\) & 0.887–15.93，0.93–1.0 & CR-2144 战斗机子集 \\
-主轴倾角 \(\varepsilon\)，零升迎角偏差 \(\delta\) & 0.82°–2.86°，\(-4.3^\circ\)–3.0° & 战斗机子集，清洁构型亚音速 \\
+\(S_\beta\)，\(\tau_{rp}\) & 0.02–0.2 deg/N，0.001–0.20 s & 对数均匀，均匀 \\
+有效 \(L/D\)，阻力斜率/升力，\(M_u\) & 2.75–17.65，0.246–1.740，\(-0.00256\)–0.00054 1/(m·s) & 47 个亚音速状态 5–95 百分位 \\
+\(I_y/I_x\)，\(I_z/(I_x+I_y)\)，\(\varepsilon\)，\(\delta\) & 0.887–15.93，0.93–1.0，0.82°–2.86°，\(-4.3^\circ\)–3.0° & CR-2144 战斗机子集 \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-真实性检查的 7 个归一化量取 94 个真实状态的完整范围：上反比 \(-9.21\)–7.78，\(N'_\beta/\omega_d^2\) 0.50–1.24，\(L'_pT_R\) \(-1.84\)–\(-0.35\)，\(N'_r/(2\zeta_d\omega_d)\) \(-10.2\)–1.40，\(N'_p/L'_p\) \(-0.239\)–0.157，\(L'_r/N'_r\) \(-6.16\)–1.78，\(\eta\) \(-0.286\)–0.389。
+真实性检查的 7 个归一化量取 94 个真实状态的完整范围：上反比 \(-L'_\beta/N'_\beta\) 为 \(-9.21\)–7.78，\(N'_\beta/\omega_d^2\) 为 0.50–1.24，\(L'_pT_R\) 为 \(-1.84\)–\(-0.35\)，\(N'_r/(2\zeta_d\omega_d)\) 为 \(-10.2\)–1.40，\(N'_p/L'_p\) 为 \(-0.239\)–0.157，\(L'_r/N'_r\) 为 \(-6.16\)–1.78，\(\eta\) 为 \(-0.286\)–0.389。
 
-\section{各等级定级量的统计}
+\section{对象族补充结果}
+\label{app:extra}
+\subsection{参数边际分布}
+\label{app:margins}
+\begin{figure}[H]
+\centering
+\legdot{sA}{1 级}\qquad\legdot{sB}{2 级}\qquad\legdot{sC}{3 级}\qquad\legdot{inkB}{分布外}\qquad\tikz[baseline=-0.6ex]\draw[bndA] (0,-0.1) -- (0,0.15);~1 级\quad\tikz[baseline=-0.6ex]\draw[bndB] (0,-0.1) -- (0,0.15);~2 级\quad\tikz[baseline=-0.6ex]\draw[bndC] (0,-0.1) -- (0,0.15);~3 级边界\par\vspace{3pt}
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=4 by 2, horizontal sep=0.95cm, vertical sep=1.25cm},
+  paper, width=2.95cm, height=2.2cm, ymin=0, ybar stacked, /pgf/bar width=2.1pt,
+  every axis plot/.append style={draw=none}, ymajorgrids]
+\nextgroupplot[title={(a) \(T_R\) (s)}, xmode=log, log ticks with fixed point, xmin=0.15, xmax=15, ylabel={对象数}]
+\addplot[fill=sA] table[x=x, y=L1] {data/margin_tr.dat};
+\addplot[fill=sB] table[x=x, y=L2] {data/margin_tr.dat};
+\addplot[fill=sC] table[x=x, y=L3] {data/margin_tr.dat};
+\addplot[fill=inkB] table[x=x, y=OOD] {data/margin_tr.dat};
+\draw[bndA] (axis cs:1.0,0) -- (axis cs:1.0,600); \draw[bndB] (axis cs:1.4,0) -- (axis cs:1.4,600); \draw[bndC] (axis cs:10,0) -- (axis cs:10,600);
+\nextgroupplot[title={(b) \(\lambda_s\) (1/s)}, xmin=-0.16, xmax=0.30]
+\addplot[fill=sA] table[x=x, y=L1] {data/margin_lams.dat};
+\addplot[fill=sB] table[x=x, y=L2] {data/margin_lams.dat};
+\addplot[fill=sC] table[x=x, y=L3] {data/margin_lams.dat};
+\addplot[fill=inkB] table[x=x, y=OOD] {data/margin_lams.dat};
+\draw[bndA] (axis cs:0.0578,0) -- (axis cs:0.0578,450); \draw[bndB] (axis cs:0.0866,0) -- (axis cs:0.0866,450); \draw[bndC] (axis cs:0.1733,0) -- (axis cs:0.1733,450);
+\nextgroupplot[title={(c) \(\omega_d\) (rad/s)}, xmode=log, log ticks with fixed point, xmin=0.2, xmax=7]
+\addplot[fill=sA] table[x=x, y=L1] {data/margin_wd.dat};
+\addplot[fill=sB] table[x=x, y=L2] {data/margin_wd.dat};
+\addplot[fill=sC] table[x=x, y=L3] {data/margin_wd.dat};
+\addplot[fill=inkB] table[x=x, y=OOD] {data/margin_wd.dat};
+\draw[bndA] (axis cs:1.0,0) -- (axis cs:1.0,650); \draw[bndB] (axis cs:0.4,0) -- (axis cs:0.4,650);
+\nextgroupplot[title={(d) \(\zeta_d\)}, xmin=0, xmax=0.72]
+\addplot[fill=sA] table[x=x, y=L1] {data/margin_zd.dat};
+\addplot[fill=sB] table[x=x, y=L2] {data/margin_zd.dat};
+\addplot[fill=sC] table[x=x, y=L3] {data/margin_zd.dat};
+\addplot[fill=inkB] table[x=x, y=OOD] {data/margin_zd.dat};
+\draw[bndA] (axis cs:0.19,0) -- (axis cs:0.19,300); \draw[bndB] (axis cs:0.02,0) -- (axis cs:0.02,300);
+\nextgroupplot[title={(e) \(\tau_p\) (s)}, xmin=0, xmax=0.5, ylabel={对象数}]
+\addplot[fill=sA] table[x=x, y=L1] {data/margin_taup.dat};
+\addplot[fill=sB] table[x=x, y=L2] {data/margin_taup.dat};
+\addplot[fill=sC] table[x=x, y=L3] {data/margin_taup.dat};
+\addplot[fill=inkB] table[x=x, y=OOD] {data/margin_taup.dat};
+\draw[bndA] (axis cs:0.10,0) -- (axis cs:0.10,850); \draw[bndB] (axis cs:0.20,0) -- (axis cs:0.20,850); \draw[bndC] (axis cs:0.25,0) -- (axis cs:0.25,850);
+\nextgroupplot[title={(f) CAP}, xmode=log, log ticks with fixed point, xmin=0.1, xmax=60]
+\addplot[fill=sA] table[x=x, y=L1] {data/margin_cap.dat};
+\addplot[fill=sB] table[x=x, y=L2] {data/margin_cap.dat};
+\addplot[fill=sC] table[x=x, y=L3] {data/margin_cap.dat};
+\addplot[fill=inkB] table[x=x, y=OOD] {data/margin_cap.dat};
+\draw[bndA] (axis cs:0.28,0) -- (axis cs:0.28,450); \draw[bndA] (axis cs:3.6,0) -- (axis cs:3.6,450); \draw[bndB] (axis cs:0.16,0) -- (axis cs:0.16,450); \draw[bndB] (axis cs:10,0) -- (axis cs:10,450);
+\nextgroupplot[title={(g) \(\zeta_{sp}\)}, xmin=0.1, xmax=1.25]
+\addplot[fill=sA] table[x=x, y=L1] {data/margin_zsp.dat};
+\addplot[fill=sB] table[x=x, y=L2] {data/margin_zsp.dat};
+\addplot[fill=sC] table[x=x, y=L3] {data/margin_zsp.dat};
+\addplot[fill=inkB] table[x=x, y=OOD] {data/margin_zsp.dat};
+\draw[bndA] (axis cs:0.35,0) -- (axis cs:0.35,250); \draw[bndB] (axis cs:0.25,0) -- (axis cs:0.25,250);
+\nextgroupplot[title={(h) \(\zeta_p\)}, xmin=-0.1, xmax=0.5]
+\addplot[fill=sA] table[x=x, y=L1] {data/margin_zp.dat};
+\addplot[fill=sB] table[x=x, y=L2] {data/margin_zp.dat};
+\addplot[fill=sC] table[x=x, y=L3] {data/margin_zp.dat};
+\addplot[fill=inkB] table[x=x, y=OOD] {data/margin_zp.dat};
+\draw[bndA] (axis cs:0.04,0) -- (axis cs:0.04,1100); \draw[bndB] (axis cs:0,0) -- (axis cs:0,1100);
+\end{groupplot}
+\end{tikzpicture}
+\caption{5,000 个对象的参数边际分布。颜色表示选入等级，竖线标出相应分级边界。横轴范围外的对象：CAP 21 个，\(\zeta_p\) 41 个；\(\zeta_p\) 只统计长周期为振荡形式的对象。}
+\label{fig:margins}
+\end{figure}
+
+超过 1.0 s 的 \(T_R\) 只出现在由 \(T_R\) 定级的对象中；滚转延迟按等级分层，1 级对象全部不超过 0.10 s。\(\zeta_d\) 低于 0.15 的对象只有 10 个，均为由荷兰滚定级的 3 级对象。CAP 与 \(\zeta_{sp}\) 的分布受 GJB 图 A3(a) 与表 A6 的分级区域约束，\(\zeta_{sp}\) 上限取 1.2。
+
+\subsection{逐通道独立采样的对照}
+\label{app:baseline}
+对照组为滚转对象库的 5,000 个对象：滚转等效参数逐项独立采样，纵向短周期另行独立采样且不超过滚转等级。每个对象在保持其 \(p/F_{as}\) 不变的条件下，在 \(Y_\beta\times L'_r\) 的 \(9\times81\) 网格上反解横航向导数，优先选取落在真实范围内且不降低原等级的解。对照对象没有飞行包线，侧滑偏离按中速段计算 \(k\)。
+
+\begin{table}[H]
+\centering\small
+\caption{对照对象族：导数能否落入真实飞机范围}\label{tab:baseline}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+原滚转等级 & 落在真实范围内 & 其中不降低原等级 & 只能取违背最小的解 \\
+\midrule
+1 级 & 832 / 1,500（55\%） & 151 & 668 \\
+2 级 & 829 / 1,500（55\%） & 341 & 671 \\
+3 级 & 497 / 1,500（33\%） & 497 & 1,003 \\
+OOD & 176 / 500（35\%） & 30 & 324 \\
+\midrule
+合计 & 2,334 / 5,000（47\%） & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+原滚转 1 级的 1,500 个对象中，荷兰滚判据下 1,464 个仍为 1 级，侧滑偏离判据下只有 224 个（中速段 \(k\)）或 554 个（低速段 \(k\)）为 1 级；长周期中 81 个非周期发散。综合全部判据，仍为 1 级的只有 141 个（9\%）。定常侧滑的上反方向只有 41\% 的对象合格，而真实飞机为 84\%。
+
+\subsection{各等级定级量与模型检验}
 \label{app:grade}
 \begin{table}[H]
 \centering\small
@@ -586,5 +661,22 @@ CAP & 0.34 / 1.08 / 3.18 & 0.32 / 1.17 / 4.40 & 0.29 / 1.08 / 11.2 & 0.30 / 0.98
 \bottomrule
 \end{tabular}
 \end{table}
-\(\zeta_p\) 只统计长周期为振荡形式的对象。
+
+\begin{table}[H]
+\centering\small
+\caption{六通道对象模型的检验}\label{tab:checks}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.24\linewidth}Y>{\raggedright\arraybackslash}p{0.25\linewidth}@{}}
+\toprule
+检验项 & 方法 & 结果 \\
+\midrule
+等效系统一致性 & 延迟取整到 1 ms 网格，六个输出与连续传递函数的阶跃响应比较 & 相对误差 \(<10^{-6}\) \\
+导数反解 & sympy 复推特征多项式与零点；逐对象核对 \(p/F_{as}\) 的极点、零点与短周期因子 & 相对误差 \(<10^{-8}\) \\
+短周期关系 & 初始俯仰角加速度与稳态 \(n_z\) 之比、稳态 \(n_z\cdot(F_s/n)\) & 与 CAP、1 的偏差 \(<0.5\%\) \\
+小幅响应 & 全量模型与线性导数模型比较 & 相对偏差 \(\le2\times10^{-3}\) \\
+角动量守恒 & 无气动力矩翻滚 2 s & 相对误差 \(<5\times10^{-3}\) \\
+Dryden 湍流 & 线速度分量方差与解析值 \(\sigma^2\) 比较 & 相差 2–3\% \\
+大机动 & 每 50 个对象抽 1 个，按 1 级滚转性能做 360° 滚转 & 迎角偏离中位数 3.1° \\
+\bottomrule
+\end{tabularx}
+\end{table}
 \end{document}

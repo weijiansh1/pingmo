@@ -238,3 +238,76 @@ for key, _ in GRADED:
         for i, lvl in enumerate(LEVELS, start=1):
             lo, _mid, hi, _n = summary["gradient"][key][lvl]
             f.write(f"{i} {lo:.6g}\n{i} {hi:.6g}\n{i} nan\n")
+
+# ---------------------------------------------------------------- parameter-space scatter, one file per level
+def nanf(x):
+    return "nan" if x is None else f"{x:.6g}"
+
+
+SCATTER = [
+    ("tr", lambda r: r["roll"]["t_r"]),
+    ("wd", lambda r: r["roll"]["omega_d"]),
+    ("zd", lambda r: r["roll"]["zeta_d"]),
+    ("nalpha", lambda r: r["longitudinal_loes"]["n_alpha"]),
+    ("wsp", lambda r: r["longitudinal_loes"]["omega_sp"]),
+    ("zsp", lambda r: r["longitudinal_loes"]["zeta_sp"]),
+    ("taut", lambda r: r["longitudinal_loes"]["tau_theta"]),
+    ("psib", lambda r: r["criteria"].get("psi_beta_deg")),
+    ("dbk", lambda r: r["criteria"]["sideslip_excursion"].get("delta_beta_over_k_deg")),
+    ("wp", lambda r: (r["longitudinal"].get("phugoid") or {}).get("omega_p")),
+    ("zp", lambda r: (r["longitudinal"].get("phugoid") or {}).get("zeta_p")),
+]
+scatter_ranges = {}
+for lvl in LEVELS:
+    with open(OUT / f"scatter_{lvl}.dat", "w") as f:
+        f.write(" ".join(k for k, _ in SCATTER) + "\n")
+        for r in family:
+            if level(r) != lvl:
+                continue
+            vals = [get(r) for _, get in SCATTER]
+            f.write(" ".join(nanf(v) for v in vals) + "\n")
+            for (k, _), v in zip(SCATTER, vals):
+                if v is not None:
+                    lo, hi = scatter_ranges.get(k, (v, v))
+                    scatter_ranges[k] = (min(lo, v), max(hi, v))
+summary["scatter_ranges"] = scatter_ranges
+
+# ---------------------------------------------------------------- marginals stacked by level
+MARGINALS = [
+    ("tr", lambda r: r["roll"]["t_r"], True, (0.15, 15.0)),
+    ("lams", lambda r: r["roll"]["lambda_s"], False, (-0.16, 0.30)),
+    ("wd", lambda r: r["roll"]["omega_d"], True, (0.2, 7.0)),
+    ("zd", lambda r: r["roll"]["zeta_d"], False, (0.0, 0.72)),
+    ("taup", lambda r: r["roll"]["tau_p"], False, (0.0, 0.5)),
+    ("cap", lambda r: r["longitudinal_loes"]["omega_sp"] ** 2 / r["longitudinal_loes"]["n_alpha"], True, (0.1, 60.0)),
+    ("zsp", lambda r: r["longitudinal_loes"]["zeta_sp"], False, (0.1, 1.25)),
+    ("zp", lambda r: (r["longitudinal"].get("phugoid") or {}).get("zeta_p"), False, (-0.1, 0.5)),
+]
+summary["marginals"] = {}
+for name, get, log, (lo, hi) in MARGINALS:
+    n = 30
+    if log:
+        edges = [math.exp(math.log(lo) + (math.log(hi) - math.log(lo)) * i / n) for i in range(n + 1)]
+        centers = [math.sqrt(edges[i] * edges[i + 1]) for i in range(n)]
+    else:
+        edges = [lo + (hi - lo) * i / n for i in range(n + 1)]
+        centers = [(edges[i] + edges[i + 1]) / 2 for i in range(n)]
+    counts = {lvl: [0] * n for lvl in LEVELS}
+    outside = 0
+    for r in family:
+        x = get(r)
+        if x is None:
+            continue
+        if not lo <= x < hi:
+            outside += 1
+            continue
+        pos = (math.log(x / lo) / math.log(hi / lo)) if log else (x - lo) / (hi - lo)
+        counts[level(r)][min(int(pos * n), n - 1)] += 1
+    with open(OUT / f"margin_{name}.dat", "w") as f:
+        f.write("x " + " ".join(LEVELS) + "\n")
+        for i in range(n):
+            f.write(f"{centers[i]:.6g} " + " ".join(str(counts[l][i]) for l in LEVELS) + "\n")
+    summary["marginals"][name] = {"outside_range": outside,
+                                  "ymax": max(sum(counts[l][i] for l in LEVELS) for i in range(n))}
+
+(OUT / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
