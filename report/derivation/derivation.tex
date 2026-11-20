@@ -1,0 +1,413 @@
+\documentclass[UTF8,a4paper,11pt,fontset=fandol,scheme=plain]{ctexart}
+\usepackage[margin=23mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,bm,booktabs,tabularx,array,caption,float,enumitem,fancyhdr,xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage[unicode,colorlinks=true,linkcolor=black,urlcolor=blue!45!black]{hyperref}
+\setmainfont{texgyretermes-regular.otf}[BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\linespread{1.18}
+\setlength{\emergencystretch}{2em}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+\captionsetup{font=small,labelsep=quad,justification=justified,singlelinecheck=false}
+\captionsetup[table]{position=top,skip=6pt}
+\ctexset{section={format=\Large\heiti,beforeskip=16pt,afterskip=8pt},subsection={format=\large\heiti,beforeskip=12pt,afterskip=6pt}}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small 六通道品模：推导与后续路线（讨论稿）}\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\setlist{itemsep=2pt,topsep=3pt,parsep=0pt}
+\definecolor{inkB}{HTML}{52514E}
+\definecolor{gridc}{HTML}{E4E3DE}
+\newcommand{\kicker}[1]{\par\textbf{#1}\quad}
+
+\begin{document}
+{\centering\LARGE\heiti 六通道品模：从操纵输入到刚体运动学\par}
+\vspace{4pt}
+{\centering\large\heiti 推导整理与后续路线\par}
+\vspace{6pt}
+{\centering\small 讨论稿 · 2026-11-19\par}
+\vspace{10pt}
+
+本文分两部分。第一部分（第 1–8 节）按计算顺序整理六通道品模的推导：驾驶员的三个操纵输入，经各通道的低阶等效系统（品模）确定动态特性，落到稳定轴导数模型，再加入重力、惯性耦合等全量项，最后经刚体运动学得到姿态、速度分量与位置。第二部分（第 9–13 节）整理按方案 A 组织文章、三回路控制与教师 mask 对比的后续路线。推导与项目代码、公式页一致，并经 sympy 复推。
+
+\section*{第一部分\quad 推导}
+\addcontentsline{toc}{section}{第一部分 推导}
+
+\section{总览：一条链路}
+\label{sec:overview}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw=inkB!70, rounded corners=2pt, fill=white, align=left, font=\small, inner sep=5pt, text width=9.4cm},
+  tag/.style={font=\small\heiti, align=right, text width=3.2cm, anchor=east},
+  arr/.style={-{Stealth[length=5pt]}, inkB, line width=0.6pt}, node distance=5mm]
+\node[box, fill=gridc!45] (in) {俯仰杆力 \(F_s\)、横向杆力 \(F_{as}\)、脚蹬力 \(F_{rp}\)；另有油门 \(\delta_T\)、直接法向力 \(\delta_n\)};
+\node[box, below=of in] (loes) {各通道的低阶等效系统：\(q,\alpha,n_z/F_s\)；\(\theta/F_s\)（含长周期）；\(p/F_{as}\)；\(\beta,r/F_{rp}\)\\参数按飞行品质等级采样（第 2 节）};
+\node[box, below=of loes] (deriv) {稳定轴导数模型：纵向 \([u,\alpha,q,\theta]\)、横航向 \([\beta,p,r,\phi]\)\\导数由等效参数精确反解；\(V=V_0+u\)（第 3、4 节）};
+\node[box, below=of deriv] (full) {全量动力学：风轴力方程（重力、运动学项）、含 \(I_{xz}\) 的力矩方程、阵风\\动力学状态 \(V,\alpha,q,\beta,p,r\)（第 5 节）};
+\node[box, below=of full, fill=gridc!45] (kin) {刚体运动学：旋转矩阵 \(C_{bn}\) → 欧拉角 \(\phi,\theta,\psi\)；\(V,\alpha,\beta\) → 机体速度 \(u,v,w\) → 位置 \(X,Y,Z\)（第 6 节）};
+\foreach \a/\b in {in/loes, loes/deriv, deriv/full, full/kin}{\draw[arr] (\a) -- (\b);}
+\node[tag] at ([xshift=-4mm]in.west) {操纵输入};
+\node[tag] at ([xshift=-4mm]loes.west) {品模};
+\node[tag] at ([xshift=-4mm]deriv.west) {线性动力学};
+\node[tag] at ([xshift=-4mm]full.west) {全量动力学};
+\node[tag] at ([xshift=-4mm]kin.west) {派生输出};
+\end{tikzpicture}
+\caption{六通道品模的计算链路。}
+\label{fig:chain}
+\end{figure}
+
+最终输出为思维导图中的状态向量
+\begin{equation}
+\mathbf x=[\,V,\ \alpha,\ q,\ \theta,\ \beta,\ p,\ r,\ \phi,\ \psi,\ X,\ Y,\ Z\,]^{\mathsf T}.
+\end{equation}
+坐标约定：机体轴 \(x\) 向前、\(y\) 向右、\(z\) 向下；地面系为北—东—地。稳定轴是绕机体 \(y\) 轴转过配平迎角 \(\alpha_0\) 的机体轴，横航向导数 \(L'_{(\cdot)},N'_{(\cdot)}\) 为稳定轴下计入 \(I_{xz}\) 的带撇导数，记 \(g'=g/V_0\)。拉杆、右压杆、右蹬为正。
+
+表~\ref{tab:roles} 区分了链路中哪些量是采样的、哪些是推导的。按品质等级采样的只有模态、延迟与灵敏度；导数、零点、长周期、速度与全部运动学量都是推导结果。
+
+\begin{table}[H]
+\centering\small
+\caption{各量的来源}\label{tab:roles}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}Y@{}}
+\toprule
+来源 & 量 \\
+\midrule
+按品质等级采样 & 滚转：\(T_R,\ \lambda_s,\ \zeta_d,\ \omega_d,\ \tau_p,\ S_{1s}\)；俯仰：\(\omega_{sp}\)（经 CAP）、\(\zeta_{sp},\ F_s/n,\ \tau_\theta\) \\
+取自真实飞机数据 & \(Y_\beta,\ N'_p/L'_p,\ L'_r/N'_r,\ \eta=N_a/L_a\)，方向舵滚转比与侧力比；升阻比、阻力斜率、\(M_u\)；惯量比、主轴倾角、零升迎角偏差 \\
+研究包络采样 & \(V_0,\ V_{\min},\ V_{\max}\)，\(1/T_{\theta2}\)，单位脚蹬力侧滑 \(S_\beta\)，脚蹬延迟 \(\tau_{rp}\) \\
+由等效参数推导 & \(T_{\theta2}\)、CAP、\(K_\theta\)、\(K_{n_z}\)；全部横航向导数与 \(L_a,N_a\)；滚转零点 \(\omega_\phi,\zeta_\phi\)；纵向导数 \(X_u,X_\alpha,Z_u,Z_\alpha,M_\alpha,M_q\)；长周期 \(\omega_p,\zeta_p,1/T_{\theta1}\)；\(I_{xz}\)、\(\alpha_0\) \\
+由动力学积分 & \(V=V_0+u\)，\(\alpha,\ q,\ \beta,\ p,\ r\) \\
+由运动学派生 & \(\phi,\theta,\psi\)，机体速度 \(u_b,v_b,w_b\)，位置 \(X,Y,Z\)，航迹角 \(\gamma\) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{六个通道的低阶等效系统（品模）}
+\label{sec:loes}
+GJB 2874—1997 用低阶等效系统描述各通道对驾驶员操纵力的响应，并把品质要求写在等效参数上。思维导图的六个通道是纵向 \(V,\alpha,q\) 与横航向 \(p,\beta,r\)。
+
+\subsection{\texorpdfstring{俯仰：\(q\)、\(\alpha\)、\(n_z\)}{俯仰：q、α、nz}}
+\begin{equation}
+\frac{q}{F_s}=\frac{K_\theta(s+1/T_{\theta2})e^{-\tau_\theta s}}{s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2},\qquad
+\frac{n_z}{F_s}=\frac{K_{n_z}e^{-\tau_\theta s}}{s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2}.
+\end{equation}
+依据 GJB A5.1.1.1（扫描页写作 \(\dot\theta/F_s\)，正文为俯仰速率）。翼平小扰动时 \(\dot\theta=q\cos\phi-r\sin\phi=q\)，故 \(\theta=q/s\)。航迹对姿态是一阶滞后，迎角是两者之差：
+\begin{equation}
+\frac{\gamma}{\theta}=\frac{1}{T_{\theta2}s+1},\qquad \alpha=\theta-\gamma\ \Rightarrow\ \frac{\alpha}{F_s}=\frac{\theta}{F_s}\cdot\frac{T_{\theta2}s}{T_{\theta2}s+1}=\frac{K_\theta e^{-\tau_\theta s}}{s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2}.
+\end{equation}
+法向过载 \(n_z=(V_0/g)\dot\gamma\)，于是增益之间不独立：
+\begin{equation}
+\frac{n}{\alpha}=\frac{V_0}{g\,T_{\theta2}},\qquad K_{n_z}=K_\theta\frac{n}{\alpha},\qquad \mathrm{CAP}=\frac{\omega_{sp}^2}{n/\alpha},\qquad \left.\frac{n_z}{F_s}\right|_{s\to0}=\frac{1}{F_s/n}\ \Rightarrow\ K_\theta=\frac{\mathrm{CAP}}{F_s/n}.
+\end{equation}
+
+\subsection{\texorpdfstring{速度 \(V\)：没有直接的传递函数}{速度 V：没有直接的传递函数}}
+GJB 和思维导图都没有给出 \(V\) 的传递函数。短周期近似假设速度不变（\(\Delta V=0\)），速度的变化来自长周期。MIL-STD-1797A 4.2.1.1 的三自由度等效式在姿态通道中给出长周期：
+\begin{equation}
+\frac{\theta}{F_s}=\frac{K_\theta(s+1/T_{\theta1})(s+1/T_{\theta2})e^{-\tau_\theta s}}{(s^2+2\zeta_p\omega_ps+\omega_p^2)(s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2)}.
+\end{equation}
+本项目不采样 \(\omega_p,\zeta_p,1/T_{\theta1}\)，也不设定 \(V\) 的传递函数，而是在第 3.2 节由纵向速度方程求出速度增量 \(u\)，再得到 \(V=V_0+u\)。
+
+\subsection{\texorpdfstring{滚转：\(p\)}{滚转：p}}
+\begin{equation}
+\frac{p}{F_{as}}=\frac{L_{F_a}\,s\,(s^2+2\zeta_\phi\omega_\phi s+\omega_\phi^2)e^{-\tau_p s}}{(s-\lambda_s)(s+1/T_R)(s^2+2\zeta_d\omega_d s+\omega_d^2)},\qquad \lambda_s=-\frac{1}{T_s}.
+\end{equation}
+依据 GJB A5.4.1.1 与 MIL-STD-1797A 的 \(p/F_{as}\) 形式，与滚转对象库相同。\(L_{F_a}\) 由 1 s 滚转灵敏度 \(S_{1s}=|\phi(1\,\mathrm s)|/F\) 标定。
+
+\subsection{\texorpdfstring{脚蹬：\(\beta\)、\(r\)（思维导图的解耦写法）}{脚蹬：β、r（思维导图的解耦写法）}}
+\begin{equation}
+\frac{\beta}{F_{rp}}=\frac{K_\beta e^{-\tau_\beta s}}{s^2+2\zeta_d\omega_d s+\omega_d^2},\qquad
+\frac{r}{\delta_r}=\frac{A_r(s^2+2\zeta_r\omega_r s+\omega_r^2)}{(s+1/T_s)(s^2+2\zeta_d\omega_d s+\omega_d^2)},\qquad
+\frac{r}{F_{rp}}=\frac{r}{\delta_r}\cdot\frac{\delta_r}{F_{rp}}.
+\end{equation}
+三条横航向通道共用 \(T_R,\lambda_s,\zeta_d,\omega_d\)。它们不是相互独立的传递函数，而是同一个横航向系统的不同输出；第 4 节由此建立统一的导数模型，交叉通道 \(\beta/F_{as}\)、\(r/F_{as}\)、\(p/F_{rp}\) 随之确定，上式是其中的近似。
+
+\section{纵向：从传递函数到动力学}
+\label{sec:lon}
+\subsection{短周期：两状态与等效系统一一对应}
+\begin{equation}
+\dot\alpha=Z_\alpha\alpha+q,\qquad \dot q=M_\alpha\alpha+M_qq+K_\theta F_s(t-\tau_\theta).
+\end{equation}
+特征多项式 \((s-Z_\alpha)(s-M_q)-M_\alpha\) 与短周期分母逐项相等，零点 \(s=Z_\alpha\) 与 \(-1/T_{\theta2}\) 相等，解得
+\begin{equation}
+Z_\alpha=-\frac{1}{T_{\theta2}},\qquad M_q=\frac{1}{T_{\theta2}}-2\zeta_{sp}\omega_{sp},\qquad M_\alpha=-\omega_{sp}^2-\frac{M_q}{T_{\theta2}},\qquad n_z=-\frac{V_0}{g}Z_\alpha\alpha=\frac{n}{\alpha}\,\alpha .
+\end{equation}
+此时 \(q/F_s\)、\(\alpha/F_s\)、\(n_z/F_s\) 与 GJB 三式完全相同，而 \(q\) 成为显式状态，惯性耦合项可以直接加在 \(\dot q\) 上（思维导图“组合轴”）。
+
+\subsection{\texorpdfstring{加入速度与油门：四状态，\(V\) 由此得到}{加入速度与油门：四状态，V 由此得到}}
+\begin{equation}
+\begin{aligned}
+\dot u&=X_uu+X_\alpha\alpha-g\theta+g\,\delta_T, &\qquad \dot\alpha&=Z_uu+Z_\alpha\alpha+q,\\
+\dot q&=M_uu+M_\alpha\alpha+M_qq+K_\theta F_s(t-\tau_\theta), & \dot\theta&=q .
+\end{aligned}
+\label{eq:lon4}
+\end{equation}
+这里的 \(u\) 是沿速度方向的速度增量。第一式就是速度方程：速度变化由阻力（\(X_u u\)、\(X_\alpha\alpha\)）、重力沿航迹的分量 \(-g\theta\) 与推力 \(g\delta_T\) 决定，\(u\) 正是通过 \(-g\theta\) 与姿态耦合。速度导数按物理关系给定：升力正比于 \(V^2\)，故 \(Z_u=-2g/V_0^2\)；推力不随速度变化时 \(X_u=-2g/(V_0\,L/D)\)；稳定轴下 \(X_\alpha=g-(\partial D/\partial\alpha)/m\)；\(M_u\) 取亚音速数据。
+
+特征多项式为
+\begin{equation}
+\Delta_{\mathrm{lon}}=s^4+b_3s^3+b_2s^2+b_1s+b_0,\qquad
+\begin{aligned}
+b_3&=-(M_q+X_u+Z_\alpha),\\
+b_2&=-M_\alpha+M_qX_u+M_qZ_\alpha-X_\alpha Z_u+X_uZ_\alpha,\\
+b_1&=M_\alpha X_u+M_qX_\alpha Z_u-M_qX_uZ_\alpha-M_uX_\alpha+M_ug,\\
+b_0&=g(M_\alpha Z_u-M_uZ_\alpha).
+\end{aligned}
+\end{equation}
+要求四状态保持 GJB 短周期不变，即 \(\Delta_{\mathrm{lon}}=(s^2+p_1s+p_0)(s^2+2\zeta_{sp}\omega_{sp}s+\omega_{sp}^2)\)，且 \(\theta/F_s\) 仍有零点 \(-1/T_{\theta2}\)。记 \(z_2=1/T_{\theta2}\)：
+\begin{equation}
+Z_\alpha=\frac{X_\alpha Z_u-z_2^2-X_uz_2}{z_2+X_u},\qquad M_q=-p_1-2\zeta_{sp}\omega_{sp}-X_u-Z_\alpha,\qquad M_\alpha=\frac{p_0\,\omega_{sp}^2/g+M_uZ_\alpha}{Z_u}.
+\end{equation}
+代入 \(b_2\)、\(b_1\) 两式得到关于 \((p_0,p_1)\) 的 \(2\times2\) 线性方程，唯一解出长周期。\(\omega_p,\zeta_p\)（或两个实根）与 \(1/T_{\theta1}\) 因此是物理结果，可用经典近似 \(\omega_p\approx\sqrt2\,g/V_0\)、\(\zeta_p\approx\tfrac{1}{\sqrt2}D/L\) 校核。
+
+\subsection{纵向传递函数与速度通道}
+\begin{equation}
+\begin{aligned}
+\frac{\theta}{F_s}&=\frac{K_\theta\bigl(s^2-(X_u+Z_\alpha)s+X_uZ_\alpha-X_\alpha Z_u\bigr)}{\Delta_{\mathrm{lon}}}e^{-\tau_\theta s}, &\qquad \frac{q}{F_s}&=s\,\frac{\theta}{F_s},\\
+\frac{\alpha}{F_s}&=\frac{K_\theta(s^2-X_us-gZ_u)}{\Delta_{\mathrm{lon}}}e^{-\tau_\theta s}, & \frac{u}{F_s}&=\frac{K_\theta\bigl((X_\alpha-g)s+gZ_\alpha\bigr)}{\Delta_{\mathrm{lon}}}e^{-\tau_\theta s},\\
+\frac{u}{\delta_T}&=\frac{g\,s\bigl(s^2-(Z_\alpha+M_q)s+M_qZ_\alpha-M_\alpha\bigr)}{\Delta_{\mathrm{lon}}(\tau_es+1)}.
+\end{aligned}
+\end{equation}
+\(\theta/F_s\) 的分子二次式恰为 \((s+1/T_{\theta1})(s+1/T_{\theta2})\)，即第 2.2 节的三自由度等效式。\(V\) 通道就是
+\begin{equation}
+V=V_0+u,
+\end{equation}
+\(u/F_s\) 与 \(u/\delta_T\) 是推导得到的速度传递函数：杆力经迎角与姿态间接影响速度，油门直接控制速度（发动机按 \(\tau_e=1\) s 一阶滞后）。法向过载为 \(n_z=-\tfrac{V_0}{g}(Z_uu+Z_\alpha\alpha)\)。
+
+\section{横航向：从传递函数到动力学}
+\label{sec:lat}
+\subsection{稳定轴四状态}
+\begin{equation}
+\begin{aligned}
+\dot\beta&=Y_\beta\beta-r+g'\phi+Y_{rp}F_{rp}(t-\tau_{rp}),\\
+\dot p&=L'_\beta\beta+L'_pp+L'_rr+L_aF_{as}(t-\tau_p)+L'_{rp}F_{rp}(t-\tau_{rp}),\\
+\dot r&=N'_\beta\beta+N'_pp+N'_rr+N_aF_{as}(t-\tau_p)+N'_{rp}F_{rp}(t-\tau_{rp}),\qquad \dot\phi=p .
+\end{aligned}
+\label{eq:lat}
+\end{equation}
+依据 Etkin、Nelson 的稳定轴小扰动方程，取 \(Y_p=Y_r=0\)。
+
+\subsection{特征多项式与滚转零点}
+\begin{equation}
+\Delta_{\mathrm{lat}}=s^4+a_3s^3+a_2s^2+a_1s+a_0,\qquad
+\begin{aligned}
+a_3&=-(L'_p+N'_r+Y_\beta),\\
+a_2&=L'_pN'_r-L'_rN'_p+N'_\beta+Y_\beta(L'_p+N'_r),\\
+a_1&=L'_\beta N'_p-g'L'_\beta-L'_pN'_\beta-Y_\beta(L'_pN'_r-L'_rN'_p),\\
+a_0&=g'(L'_\beta N'_r-L'_rN'_\beta).
+\end{aligned}
+\end{equation}
+\begin{equation}
+\frac{p}{F_{as}}=\frac{L_a\,s\bigl[s^2+(L'_r\eta-N'_r-Y_\beta)s+N'_\beta+N'_rY_\beta-\eta(L'_\beta+L'_rY_\beta)\bigr]}{\Delta_{\mathrm{lat}}}e^{-\tau_ps},\qquad \eta=\frac{N_a}{L_a}.
+\end{equation}
+与第 2.3 节对照：\(2\zeta_\phi\omega_\phi=L'_r\eta-N'_r-Y_\beta\)，\(\omega_\phi^2=N'_\beta+N'_rY_\beta-\eta(L'_\beta+L'_rY_\beta)\)，\(\Delta_{\mathrm{lat}}=(s-\lambda_s)(s+1/T_R)(s^2+2\zeta_d\omega_d s+\omega_d^2)\)。
+
+\subsection{由品质模态解出导数}
+四个极点按 GJB 等级采样，\(a_3,\dots,a_0\) 随之已知。形状量 \(Y_\beta\)、\(c_1=N'_p/L'_p\)、\(c_2=L'_r/N'_r\) 取自真实飞机。记 \(S=-a_3-Y_\beta\)，全部导数都是 \(L'_p\) 的函数：
+\begin{equation}
+\begin{gathered}
+N'_r=S-L'_p,\qquad N'_p=c_1L'_p,\qquad L'_r=c_2N'_r,\\
+N'_\beta=a_2-L'_pN'_r-Y_\beta S+L'_rN'_p,\qquad L'_\beta=\frac{a_1+L'_pN'_\beta+Y_\beta(L'_pN'_r-L'_rN'_p)}{N'_p-g'} .
+\end{gathered}
+\end{equation}
+代入 \(a_0\) 的表达式：
+\begin{equation}
+g'\bigl(L'_\beta N'_r-L'_rN'_\beta\bigr)=a_0\ \Longrightarrow\ \text{关于 } L'_p \text{ 的四次方程}.
+\end{equation}
+取落在真实飞机范围内的实根；再取副翼偏航 \(\eta\)，滚转零点由第 4.2 节两式算出，\(L_a\) 按 \(S_{1s}\) 标定。滚转零点因此是推导量。
+
+\subsection{交叉通道}
+同一组极点给出全部六条横航向通道，\(y/u=N^u_y/\Delta_{\mathrm{lat}}\) 再乘对应输入的延迟。例如横向杆引起的侧滑与脚蹬引起的滚转：
+\begin{equation}
+\begin{aligned}
+N^{F_{as}}_\beta&=-N_as^2+\bigl(L_ag'-L_aN'_p+L'_pN_a\bigr)s+g'(L'_rN_a-L_aN'_r),\\
+N^{F_{rp}}_p&=s\Bigl[L'_{rp}s^2+\bigl(L'_\beta Y_{rp}-L'_{rp}N'_r-L'_{rp}Y_\beta+L'_rN'_{rp}\bigr)s\\
+&\qquad+L'_{rp}N'_\beta-L'_\beta N'_{rp}+Y_\beta(L'_{rp}N'_r-L'_rN'_{rp})+Y_{rp}(L'_rN'_\beta-L'_\beta N'_r)\Bigr].
+\end{aligned}
+\end{equation}
+全部分子由 sympy 从式~\eqref{eq:lat} 逐项推出，代码中按状态空间直接计算。
+
+\subsection{物理关系}
+\begin{itemize}[leftmargin=1.5em]
+\item 螺旋根决定上反效应：\(a_0=g'(L'_\beta N'_r-L'_rN'_\beta)=-\lambda_s\omega_d^2/T_R\)。螺旋稳定要求 \(L'_\beta N'_r>L'_rN'_\beta\)，滚转越快需要的上反越强；螺旋发散只说明上反相对不足。
+\item 滚转零点与副翼偏航：\(\omega_\phi^2/\omega_d^2\approx1+\eta\,|\phi/\beta|_d\)（Davidson 与 Andrisani 式 3.22）。正上反时 \(\omega_\phi<\omega_d\) 对应不利偏航。
+\item 脚蹬：\(N'_{rp}\) 由单位脚蹬力稳态侧滑给定（荷兰滚近似下 \(\beta_{ss}/F_{rp}=-N'_{rp}/\omega_d^2\)）；方向舵滚转比与侧力比按真实飞机分位数、相对上反比与侧力导数抽取，保持垂尾同时决定二者的相关性。
+\item 思维导图的解耦式是耦合模型的近似：\(Y_{rp}\approx0\) 且实零点与滚转、螺旋极点近似对消时，\(\beta/F_{rp}\approx-N'_{rp}/(s^2+2\zeta_d\omega_d s+\omega_d^2)\)。
+\end{itemize}
+
+\section{全量动力学}
+\label{sec:full}
+\subsection{风轴力方程}
+小扰动部分用第 3、4 节的线性导数，重力与运动学项保留非线性形式。风轴下的重力记为 \(\mathbf g_w=C_{wb}(\alpha,\beta)\,C_{bn}^{\mathsf T}[0,0,g]^{\mathsf T}\)，力方程为
+\begin{equation}
+\begin{aligned}
+\dot V&=X_u\Delta u+(X_\alpha-g)\Delta\alpha+g_{w,x}+g\,T,\\
+\dot\alpha&=q-\tan\beta\,p_w+Z_u\Delta u+Z_\alpha\Delta\alpha+\frac{g_{w,z}-g}{V\cos\beta}-\frac{g}{V}\delta_n,\\
+\dot\beta&=-r_w+Y_\beta\beta+Y_{rp}F_{rp}+\frac{g_{w,y}}{V},
+\end{aligned}
+\qquad
+\begin{aligned}
+p_w&=p_s\cos\Delta\alpha+r_s\sin\Delta\alpha,\\
+r_w&=-p_s\sin\Delta\alpha+r_s\cos\Delta\alpha .
+\end{aligned}
+\end{equation}
+\(p_w,r_w\) 是绕当前速度方向的角速度。配平时 \(\mathbf g_w=[0,0,g]^{\mathsf T}\)，重力项为零；线性化后 \(g_{w,x}\approx-g\gamma\)、\(g_{w,y}/V\approx g'\phi\)，回到第 3、4 节。压坡度时升力的垂直分量减小，飞机掉高并向坡度一侧转弯。
+
+\subsection{力矩方程与惯性耦合}
+\begin{equation}
+\begin{aligned}
+I_x\dot p-I_{xz}\dot r&=(I_y-I_z)qr+I_{xz}pq+\mathcal L,\\
+I_y\dot q&=(I_z-I_x)pr+I_{xz}(r^2-p^2)+\mathcal M,\\
+I_z\dot r-I_{xz}\dot p&=(I_x-I_y)pq-I_{xz}qr+\mathcal N .
+\end{aligned}
+\end{equation}
+中间一式即思维导图“组合轴：滚转中的惯性耦合”。气动力矩 \(\mathcal L,\mathcal M,\mathcal N\) 由导数模型给出；惯量比取 CR-2144 战斗机子集，\(I_{xz}=\tfrac12(I_z-I_x)\tan2\varepsilon\) 由主轴倾角给出。
+
+\subsection{稳定轴与机体轴}
+\begin{equation}
+p_b=p_s\cos\alpha_0-r_s\sin\alpha_0,\qquad r_b=p_s\sin\alpha_0+r_s\cos\alpha_0 .
+\end{equation}
+稳定轴按配平迎角 \(\alpha_0\) 固连于机体，导数也定义在这组轴上，因此换算没有附加转动项。迎角偏离配平时，绕稳定轴滚转会把迎角换成侧滑：\(\dot\beta\) 中的 \(-r_w\) 就是这一运动学耦合。配平迎角 \(\alpha_0=1/(n/\alpha)+\delta\)，\(\delta\) 为机身基准线与零升线的偏差。
+
+\subsection{阵风、油门与直接法向力}
+阵风只经气动项进入，即气动力按相对气流状态 \(\mathbf x-\mathbf x_g\) 计算（\(\alpha_g=w_g/V\)、\(\beta_g=v_g/V\)，转动分量由冻结湍流假设得到）；湍流采用 MIL-STD-1797A 的 Dryden 谱成形滤波器。油门与直接法向力为
+\begin{equation}
+\dot T=\frac{\delta_T-T}{\tau_e},\qquad \dot V\mathrel{+}=g\,T;\qquad \dot\alpha\mathrel{-}=\frac{g}{V}\delta_n,\qquad n_z\mathrel{+}=\delta_n .
+\end{equation}
+
+\section{运动学：从动力学输出到派生输出}
+\label{sec:kin}
+思维导图：“动力学输出经过运动学变换得到派生输出”。
+
+\subsection{姿态}
+姿态以机体到地面的旋转矩阵 \(C_{bn}\) 传播，每步按机体角速度 \(\bm\omega=[p_b,q,r_b]^{\mathsf T}\) 做 Rodrigues 精确旋转，再读出欧拉角：
+\begin{equation}
+\dot C_{bn}=C_{bn}[\bm\omega]_\times,\qquad C_{k+1}=C_k\bigl(I+\sin\vartheta\,K+(1-\cos\vartheta)K^2\bigr),\quad \vartheta=|\bm\omega|\Delta t,\ K=[\bm\omega/|\bm\omega|]_\times ,
+\end{equation}
+\begin{equation}
+\phi=\operatorname{atan2}(C_{32},C_{33}),\qquad \theta=-\arcsin C_{31},\qquad \psi=\operatorname{atan2}(C_{21},C_{11}).
+\end{equation}
+它与思维导图的欧拉角方程等价，而旋转矩阵的传播本身没有 \(\theta=\pm90^\circ\) 的奇异：
+\begin{equation}
+\dot\phi=p+(q\sin\phi+r\cos\phi)\tan\theta,\qquad \dot\theta=q\cos\phi-r\sin\phi,\qquad \dot\psi=\frac{q\sin\phi+r\cos\phi}{\cos\theta}.
+\end{equation}
+
+\subsection{速度分量与位置}
+由 \(V,\alpha,\beta\) 得到机体轴速度分量，再经旋转矩阵转到地面系积分位置：
+\begin{equation}
+\begin{bmatrix}u_b\\ v_b\\ w_b\end{bmatrix}=V\begin{bmatrix}\cos\alpha\cos\beta\\ \sin\beta\\ \sin\alpha\cos\beta\end{bmatrix},\qquad
+\begin{bmatrix}\dot X\\ \dot Y\\ \dot Z\end{bmatrix}=C_{bn}\begin{bmatrix}u_b\\ v_b\\ w_b\end{bmatrix},\qquad \gamma=-\arcsin\frac{\dot Z}{V}.
+\end{equation}
+第一式就是思维导图中的 \(u=V\cos\alpha\cos\beta\)。模型里它反过来使用：\(V\) 由第 3.2 节的速度方程得到，再算出 \(u_b,v_b,w_b\)。注意两个 \(u\) 的区别：式~\eqref{eq:lon4} 中的 \(u\) 是速度增量，\(u_b\) 是机体轴速度分量。
+
+\subsection{状态向量}
+把动力学状态与运动学输出合起来，即得 \(\mathbf x=[V,\alpha,q,\theta,\beta,p,r,\phi,\psi,X,Y,Z]^{\mathsf T}\)：\(V,\alpha,q,\beta,p,r\) 来自动力学（\(p,r\) 取稳定轴量），\(\phi,\theta,\psi\) 来自旋转矩阵，\(X,Y,Z\) 来自位置积分。
+
+\section{离散实现}
+\begin{equation}
+\mathbf x_{k+1}=\Phi\mathbf x_k+\Gamma_u\mathbf u_k+\Gamma_a\mathbf a_k,\qquad \Phi=e^{A\Delta t},\qquad [\Gamma_u\ \Gamma_a]=\int_0^{\Delta t}e^{A\tau}d\tau\,[B\ \ I].
+\end{equation}
+线性部分按零阶保持精确离散，\(\Delta t=1\) ms；\(\mathbf a_k\) 为该步开始时算出的非线性加速度（重力、运动学、惯性、阵风、油门），在步内保持。纯延迟用线性插值的分数延迟，沿用滚转通道。输出约定与滚转通道相同：先给出当前采样的状态，再用当前输入推进一步。
+
+\section{验证}
+\begin{table}[H]
+\centering\small
+\caption{推导与实现的验证}\label{tab:check}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.28\linewidth}Y@{}}
+\toprule
+检验 & 结果 \\
+\midrule
+公式推导 & 全部传递函数、特征多项式系数与反解式经 sympy 逐项复推 \\
+导数模型与等效系统 & \(p/F_{as}\) 与滚转通道系数相对误差中位数 \(4\times10^{-14}\)、最大 \(3\times10^{-11}\)；纵向特征多项式除以短周期因子的余项最大 \(5\times10^{-13}\)（500 个对象） \\
+离散仿真与传递函数 & 延迟取整到 1 ms 网格时，六个输出的阶跃响应相对误差 \(<10^{-6}\) \\
+全量与线性 & 小幅仿真相差 \(\le2\times10^{-3}\)；\(p\) 通道与滚转对象库实现相差 \(6\times10^{-5}\) \\
+运动学 & 旋转矩阵读出的欧拉角与欧拉角方程逐步核对，误差 \(10^{-6}\) \\
+角动量 & 无力矩翻滚 2 s，相对误差 \(<5\times10^{-3}\) \\
+湍流 & 线速度分量方差与解析值 \(\sigma^2\) 相差 2–3\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section*{第二部分\quad 后续路线}
+\addcontentsline{toc}{section}{第二部分 后续路线}
+
+\section{文章组织：方案 A}
+\label{sec:plan}
+一篇文章，把基于飞行品质的飞控大模型做完整：滚转通道作为通路验证，六通道作为耦合扩展。对应思维导图的结构“飞行品模 → P 通道通路验证 → 六自由度耦合”。
+
+\begin{table}[H]
+\centering\small
+\caption{方案 A 的章节与论证职责}\label{tab:outline}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.25\linewidth}Y>{\raggedright\arraybackslash}p{0.12\linewidth}@{}}
+\toprule
+章节 & 内容与论证职责 & 状态 \\
+\midrule
+1 引言 & 问题、缺口、思路与关键结果 & 待写 \\
+2 飞行品质模型 & 本文第一部分的推导：六通道等效系统 → 导数模型 → 全量动力学 → 运动学；滚转是其中的 \(p\) 通道 & 已有推导 \\
+3 构建方法 & 品质对象族 → 特权教师 → 多教师蒸馏 → 目标域适配，写成通用形式，回路数作为参数 & 已有滚转版本 \\
+4 P 通道通路验证 & 滚转论文的全部结果压缩于此：教师、学生、跨对象、分布外、DHC-6；证明构建链走得通 & 已有结果 \\
+5.1 六通道对象族 & 横纵向统一采样；散点分布；与真实飞机的一致性 & 已完成 \\
+5.2 三回路教师 & 联合教师与解耦教师（mask 对比） & 待开展 \\
+5.3 三回路统一学生 & 多对象、多回路蒸馏；跨对象与分布外 & 待开展 \\
+5.4 耦合机动验证 & 协调转弯、带侧滑约束的滚转、俯仰滚转组合 & 待开展 \\
+6 讨论、7 结论 & — & 待写 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{三回路控制任务}
+\label{sec:loops}
+品模有六个动力学通道，但驾驶员只有三个操纵输入。三个输入最多只能各自独立指定三个量，所以控制器需要为每路输入选一个跟踪目标：
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{横向杆 → \(p\)}：与滚转通道验证一致。
+\item \textbf{俯仰杆 → \(q\)}：俯仰角速度指令，与“跟踪角速度”的写法一致；也可改为 \(n_z\) 或 C\(^*\)。
+\item \textbf{脚蹬 → \(\beta\)}：常用指令为零侧滑，用于协调转弯；也可改为 \(r\)。
+\end{itemize}
+其余量（\(V,\alpha,r,n_z\) 与运动学量 \(\phi,\theta\)）作为观测。\(V\) 只能由油门直接控制，留作以后的第四路；高度、航向等外回路以后建立在运动学输出上。
+
+接口与观测沿用滚转通道：每路动作为归一化力速率，经速率限制、积分限幅与 20 ms 一阶执行机构形成施加力；每个回路保留 9 个当前量、32 步 5 通道历史与 7 步动作历史，另加 \(\alpha,n_z,\phi,\theta\) 四个共享量，合计 660 维。评价沿用 RMSE、峰值误差与请求力总变差率；耦合以滚转指令下的侧滑峰值、协调转弯中的掉高评价。
+
+\section{教师：联合与解耦的 mask 对比}
+\label{sec:mask}
+六个通道各训练一个教师不可行：\(V,\alpha,q\) 由同一根俯仰杆驱动，各自的教师会争用同一个输入。教师因此按操纵输入划分，并用 mask 对比两种训练方式：同一环境、同一三输出网络、同一训练预算，唯一区别是 mask。
+
+\begin{table}[H]
+\centering\small
+\caption{联合教师与解耦教师}\label{tab:mask}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.18\linewidth}YY@{}}
+\toprule
+ & 联合教师（主线） & 解耦教师（对照） \\
+\midrule
+每架飞机 & 1 个教师 & 3 个教师，每次只开放一路 \\
+动作 mask & 无，三路都输出 & 另外两路动作强制为 0 \\
+奖励 & 三路奖励之和 & 只计开放的一路 \\
+观测 & 全部 660 维与特权量 & 同左，不做 mask \\
+蒸馏标签 & 教师的三维输出 & 三个教师各自那一路的输出拼成三维 \\
+5,000 架的规模 & 5,000 个教师 & 15,000 个教师 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+观测不做 mask，使两者的差别只在于谁动作、优化谁的奖励。对比回答一个问题：耦合控制知识是否需要联合训练才能获得。比较三方面：单回路跟踪（各路 RMSE、峰值、操纵总变差）；耦合机动（滚转时的侧滑峰值、协调转弯中的掉高）；两种教师分别蒸馏出的学生的跨对象表现。思维导图中“各通道教师再蒸馏”的设想就是解耦一侧。
+
+\section{实验安排与资源}
+\label{sec:schedule}
+\begin{enumerate}[leftmargin=1.8em]
+\item \textbf{环境实现}：在六通道模型上建立三回路批量 GPU 环境（指令生成、力接口、观测、奖励、mask），先在 CPU 上做单元测试。
+\item \textbf{教师试训}：训练核心集每级 16 架，共 48 架。联合教师 48 个，解耦教师 144 个。按 GPU 4 上滚转教师的实测吞吐（每教师 142.8 卡秒）外推约 7.6 卡时；实际耗时以试训测量为准。训练使用修正后的 PPO 实现，按 GPU 4 的约 90\% 显存要求安排并发。
+\item \textbf{门限标定}：根据试训结果确定俯仰与侧滑回路的门限。
+\item \textbf{蒸馏与评价}：两种教师分别蒸馏三回路学生，在同分布测试集 1,050 架与分布外 500 架上评价，并做耦合机动。
+\item \textbf{扩大规模}：根据试训的通过率与耗时，决定教师库规模。
+\end{enumerate}
+当前运行条件：这台机器未挂载 \texttt{/data}，没有 numpy/torch 环境；GPU 4 当前显存占用约 130.9 GB / 143.8 GB。开训前需要恢复训练环境并确认 GPU 4 可用。
+
+\section{待确认事项}
+\begin{enumerate}[leftmargin=1.8em]
+\item 三回路的被控量：\(q/p/\beta\)，还是改用 \(n_z\)（或 C\(^*\)）、\(r\)。
+\item 教师以联合为主线、解耦为 mask 对照。
+\item 试训规模：每级 16 架，共 48 架。
+\item 俯仰与脚蹬的力范围：按每 g 杆力与单位脚蹬力侧滑换算，力速率与力范围之比沿用滚转的 4 s\(^{-1}\)。
+\item 油门回路（\(V\)）是否纳入本轮。
+\end{enumerate}
+\end{document}
