@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>六通道品模：从传递函数到动力学</title>
+<link rel="stylesheet" href="vendor/katex/katex.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="model.css">
+</head>
+<body>
+<div class="viz-root">
+<nav class="topbar">
+  <div class="topbar-inner">
+    <b>六通道品模</b>
+    <a class="current" href="./">模型与公式</a>
+    <a href="library">对象库浏览</a>
+    <span class="spacer"></span>
+    <label>代入对象 <input type="search" id="object-input" list="object-ids" size="18" placeholder="如 train_core-0001"></label>
+    <datalist id="object-ids"></datalist>
+    <span id="object-chip"></span>
+  </div>
+</nav>
+<main class="doc">
+  <header>
+    <h1>六通道品模：从传递函数到动力学</h1>
+    <p class="lede">本页按“六个通道的低阶等效系统 → 稳定轴小扰动动力学 → 全量动力学 → 运动学 → 离散实现 → 品质判据 → 对象库”的顺序给出全部公式与推导。灰框中的“代入当前对象”部分，用顶栏选中对象的实际参数现场计算：传递函数、状态矩阵、模态、零极点与频率响应，均由服务器从对象库读取后按本页公式算出。</p>
+    <p class="note">依据：GJB 2874-97（扫描件，页码为 PDF 页）、MIL-STD-1797A Notice 3、NASA CR-2144、NASA TM-110306、Etkin &amp; Reid / Nelson / Stevens &amp; Lewis 的标准方程。项目代码 <code>pinmo6/</code>，设计说明见 <a href="docs/design" target="_blank">交叉通道与其余限制_设计说明</a>。</p>
+  </header>
+  <nav class="toc card" id="toc"></nav>
+  <div id="content"></div>
+</main>
+<div class="tooltip" id="tooltip"></div>
+</div>
+<script src="vendor/katex/katex.min.js"></script>
+<script src="common.js"></script>
+<script src="model.js"></script>
+</body>
+</html>

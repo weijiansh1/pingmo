@@ -1,0 +1,25 @@
+### Result
+{"desktop":{"viewport":1400,"pageWidth":1400,"mathErrors":0,"images":23,"missingImages":0,"toc":["摘要","1 引言","1.1 相关工作","2 问题定义与控制对象","2.1 参数化滚转对象","2.2 控制任务与接口变量","2.3 评价指标与判定门限","3 基于飞行品质的飞控大模型构建方法","3.1 品质参数化对象族","3.2 特权强化学习教师","3.3 多教师迭代蒸馏","3.3.1 历史表征与稀疏编码对照","3.4 目标域小样本适配","4 实验设置","4.1 对象划分与评价协议","5 滚转通道验证","5.1 品质对象族的动态覆盖","5.2 专用教师的控制能力","5.3 统一策略的知识汇聚与跨对象控制","5.3.1 代表性闭环响应","5.3.2 跨对象闭环控制性能评估","5.3.3 对象覆盖与分布外控制性能","5.3.4 历史表征对照","5.4 DHC-6 目标域适配","6 讨论","7 结论","参考文献","附录 A　历史表征对照与闭环动态诊断","附录 B　对象覆盖、教师学习与目标域补充结果"]},"mobile":{"viewport":390,"pageWidth":390}}
+### Ran Playwright code
+```js
+await (async (page) => {
+ await page.setViewportSize({width:1400,height:1000});
+ await page.goto('http://127.0.0.1:8320/webpage/dhc6_report.html',{waitUntil:'domcontentloaded',timeout:20000});
+ await page.evaluate(() => document.fonts.ready);
+ await page.waitForFunction(() => [...document.images].every(i=>i.complete&&i.naturalWidth),{timeout:20000});
+ const desktop=await page.evaluate(() => ({viewport:innerWidth,pageWidth:document.documentElement.scrollWidth,mathErrors:document.querySelectorAll('.katex-error').length,images:document.images.length,missingImages:[...document.images].filter(i=>!i.complete||!i.naturalWidth).length,toc:[...document.querySelectorAll('.toc a')].map(a=>a.textContent)}));
+ await page.locator('#s532').scrollIntoViewIfNeeded();
+ await page.screenshot({path:'/home/swj/pingmo/paper_web_proxy_2026-10-25/output/playwright/results-cross-object.png'});
+ await page.locator('#s533').scrollIntoViewIfNeeded();
+ await page.screenshot({path:'/home/swj/pingmo/paper_web_proxy_2026-10-25/output/playwright/results-coverage-pid.png'});
+ await page.setViewportSize({width:390,height:844});
+ await page.locator('#s53').scrollIntoViewIfNeeded();
+ await page.screenshot({path:'/home/swj/pingmo/paper_web_proxy_2026-10-25/output/playwright/results-mobile.png'});
+ const mobile=await page.evaluate(() => ({viewport:innerWidth,pageWidth:document.documentElement.scrollWidth}));
+ if(desktop.mathErrors||desktop.missingImages||desktop.pageWidth>desktop.viewport||mobile.pageWidth>mobile.viewport) throw Error(JSON.stringify({desktop,mobile}));
+ return {desktop,mobile};
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:8320/webpage/dhc6_report.html
+- Page Title: 基于飞行品质的飞控大模型构建与滚转通道验证

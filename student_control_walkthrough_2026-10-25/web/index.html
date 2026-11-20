@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>看一次学生怎样控制滚转</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header>
+    <span class="eyebrow">一次真实的冻结学生仿真回放</span>
+    <h1>看一次学生怎样控制滚转</h1>
+    <p class="lead">对象 1 在 1.00 秒收到 <strong>+15 deg/s</strong> 指令。沿着一个 20 ms 控制周期，依次看输入、动作、控制力和飞机响应。</p>
+    <p class="notice">示例使用原始 3,856 参数学生，权重保持固定，仍保留原实验的参考目标。此前的无参考试训只有教师，尚未蒸馏新学生。</p>
+  </header>
+
+  <section class="setup panel" aria-label="固定的测试设置">
+    <div><span class="muted">固定学生</span><strong>3,856 个参数</strong><small>本次回放不更新权重</small></div>
+    <div><span class="muted">固定对象</span><strong>对象 1 · 品质 2 级</strong><small>8 个对象参数全程保持不变</small></div>
+    <div><span class="muted">控制周期</span><strong>20 ms / 50 Hz</strong><small>每个周期获得反馈，再算一个动作</small></div>
+    <div><span class="muted">对象运输时延</span><strong id="delay">约 43 ms</strong><small>控制力改变后，响应需要时间</small></div>
+  </section>
+
+  <section class="panel controller" aria-labelledby="replay-title">
+    <div class="section-title"><h2 id="replay-title">沿时间看一个周期</h2><span class="clock" id="clock">正在载入</span></div>
+    <label class="slider-label" for="timeline">选择本周期开始的时刻</label>
+    <input type="range" id="timeline" min="0" max="398" step="1" value="50" aria-label="控制周期时间">
+    <div class="time-ends"><span>0 s</span><span>1 s：指令到达</span><span>7.96 s</span></div>
+    <div class="buttons">
+      <button id="previous" type="button">← 前一周期</button>
+      <button id="play" type="button" class="primary">播放</button>
+      <button id="next" type="button">后一周期 →</button>
+      <span class="muted speed">播放速度为真实时间的 1/6</span>
+    </div>
+    <div class="presets" aria-label="跳到关键时刻">
+      <button type="button" data-step="50">1.00 s · 指令到达</button>
+      <button type="button" data-step="55">1.10 s</button>
+      <button type="button" data-step="100">2.00 s</button>
+      <button type="button" data-step="150">3.00 s</button>
+      <button type="button" data-step="300">6.00 s</button>
+    </div>
+    <p class="explanation" id="explanation" aria-live="polite"></p>
+  </section>
+
+  <section class="steps" aria-label="这个控制周期中的四个步骤">
+    <article class="panel step">
+      <div class="step-label"><span>1</span><h2>学生先看当前输入</h2></div>
+      <p class="subtime" id="input-time"></p>
+      <dl>
+        <div><dt>外部角速度指令</dt><dd id="command"></dd></div>
+        <div><dt>旧实验的跟踪目标</dt><dd id="target"></dd></div>
+        <div><dt>当前实际角速度</dt><dd id="p-before"></dd></div>
+        <div><dt>目标 − 当前响应</dt><dd id="error"></dd></div>
+      </dl>
+      <p class="small">学生同时读取误差积分、角速度变化、力反馈、过去 32 步历史和最近 7 个动作。</p>
+    </article>
+    <article class="panel step">
+      <div class="step-label"><span>2</span><h2>冻结网络算出动作</h2></div>
+      <p class="subtime">输入这一步的 176 维观测</p>
+      <div class="big-value" id="action"></div>
+      <div class="action-scale"><span>−1 · 减力</span><div class="action-track"><i id="action-marker"></i></div><span>+1 · 加力</span></div>
+      <p id="action-explanation" class="small"></p>
+      <p class="small">传递函数和 8 维参数向量没有作为显式输入传给这个学生。网络权重在测试中不变。</p>
+    </article>
+    <article class="panel step">
+      <div class="step-label"><span>3</span><h2>动作转换成控制力</h2></div>
+      <p class="subtime">本周期内经过积分、限幅和执行机构</p>
+      <dl>
+        <div><dt>原请求力</dt><dd id="force-before"></dd></div>
+        <div><dt>本步请求力变化</dt><dd id="force-change"></dd></div>
+        <div><dt>新请求力</dt><dd id="force-after"></dd></div>
+        <div><dt>周期末执行机构输出</dt><dd id="applied"></dd></div>
+      </dl>
+      <p class="small">每周期请求力最多改变 1.76 N，限幅为 ±22 N。执行机构输出再经过对象的运输时延。</p>
+    </article>
+    <article class="panel step plane">
+      <div class="step-label"><span>4</span><h2>仿真飞机产生新响应</h2></div>
+      <p class="subtime" id="output-time"></p>
+      <div class="big-value" id="p-after"></div>
+      <p class="change" id="p-change"></p>
+      <p class="small">这里由固定的对象传递函数推进飞机状态。新角速度与历史记录，进入下一周期的学生输入。</p>
+      <div class="feedback">↩ 新反馈 → 下一周期重新算动作</div>
+    </article>
+  </section>
+
+  <section class="panel traces" aria-labelledby="trace-title">
+    <h2 id="trace-title">把这个周期放回完整响应里</h2>
+    <div class="legend"><span><i class="command-line"></i>外部指令</span><span><i class="target-line"></i>旧参考目标</span><span><i class="response-line"></i>实际角速度</span></div>
+    <canvas id="rate-chart" aria-label="外部指令、旧参考目标和实际角速度随时间变化"></canvas>
+    <div class="legend"><span><i class="request-line"></i>请求力</span><span><i class="applied-line"></i>执行机构输出</span></div>
+    <canvas id="force-chart" aria-label="请求力和执行机构输出随时间变化"></canvas>
+    <p class="small">直线标记当前周期。响应取自一次真实的冻结权重仿真；移动滑块只是回看记录。</p>
+  </section>
+
+  <details class="panel details">
+    <summary>查看本周期学生实际收到的输入</summary>
+    <p>输入共 176 维：9 个当前量 + 32 × 5 个历史量 + 最近 7 个动作。下表列出当前量的实际数值及送入网络前的归一化值。</p>
+    <div class="table-scroll"><table><thead><tr><th>当前量</th><th>实际值</th><th>归一化值</th></tr></thead><tbody id="input-table"></tbody></table></div>
+    <p class="small">旧版本的参考生成使用了对象真实时延。这是原始实现的输入生成设置，本回放保留这一设置；不能将它称为完全不依赖对象参数的测试。</p>
+  </details>
+  <details class="panel details">
+    <summary>查看这架虚拟飞机的 8 个参数</summary>
+    <p>这组参数决定仿真飞机的动力学，在整条回放中保持不变。</p>
+    <div class="table-scroll"><table><thead><tr><th>参数</th><th>数值</th><th>主要作用</th></tr></thead><tbody id="parameter-table"></tbody></table></div>
+  </details>
+  <footer>只回放原始学生，未训练或改变模型。<a href="cycles.csv" download>下载逐周期记录</a> · <a href="run.json" download>下载完整输入与轨迹</a></footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "pages": [
+    {
+      "file": "dhc6_report.html",
+      "figures": 23,
+      "first_figure": "closed-loop-simulation",
+      "existing_image_sources_preserved": true,
+      "tables_preserved": true,
+      "math_preserved": true,
+      "served_matches": true
+    },
+    {
+      "file": "dhc6_paper.html",
+      "figures": 23,
+      "first_figure": "closed-loop-simulation",
+      "existing_image_sources_preserved": true,
+      "tables_preserved": true,
+      "math_preserved": true,
+      "served_matches": true
+    }
+  ],
+  "snapshot": "/home/swj/pingmo/paper_web_display_2026-10-25/revision/before_closed_loop_diagram_20261025T165606689519Z",
+  "existing_prose_preserved_except_figure_numbers": true,
+  "desktop": {
+    "viewport": 1440,
+    "page_width": 1440,
+    "image_loaded": true,
+    "katex_errors": 0
+  },
+  "mobile": {
+    "viewport": 390,
+    "page_width": 390
+  },
+  "pdf_visually_checked": true
+}

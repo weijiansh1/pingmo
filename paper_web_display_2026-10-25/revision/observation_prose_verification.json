@@ -1,0 +1,34 @@
+{
+  "checks": [
+    {
+      "file": "dhc6_report.html",
+      "tables": 16,
+      "new_table": 2,
+      "figures": 23,
+      "dimensions": [
+        9,
+        160,
+        7
+      ],
+      "existing_experiment_table_values_preserved": true,
+      "display_equations_preserved": true,
+      "served_matches": true
+    },
+    {
+      "file": "dhc6_paper.html",
+      "tables": 16,
+      "new_table": 2,
+      "figures": 23,
+      "dimensions": [
+        9,
+        160,
+        7
+      ],
+      "existing_experiment_table_values_preserved": true,
+      "display_equations_preserved": true,
+      "served_matches": true
+    }
+  ],
+  "snapshot": "/home/swj/pingmo/paper_web_display_2026-10-25/revision/before_observation_prose_20261025T170931657240Z",
+  "revised_paragraph": "学生根据任务指令、角速度反馈和控制历史生成动作。输入信号经归一化后组成 176 维观测向量，见表 2。"
+}

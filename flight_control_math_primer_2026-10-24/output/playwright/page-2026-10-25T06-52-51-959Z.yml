@@ -1,0 +1,248 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]: 飞控控制器路线 · 数学入门
+    - heading "把一个滚转动作， 翻译成你能读懂的公式。" [level=1] [ref=e5]: 把一个滚转动作，翻译成你能读懂的公式。
+    - paragraph [ref=e6]: 希望飞机以每秒 10 度滚转，实际测得每秒 7 度。于是误差是 3 度/秒。下面从这一点开始，看对象怎样运动、控制怎样计分，以及学生怎样学教师。
+    - generic "控制闭环" [ref=e7]:
+      - generic [ref=e8]: 期望响应与测量
+      - generic [ref=e9]: →
+      - generic [ref=e10]: 控制器算动作
+      - generic [ref=e11]: →
+      - generic [ref=e12]: 对象产生响应
+      - generic [ref=e13]: →
+      - generic [ref=e14]: 新测量再反馈
+    - paragraph [ref=e15]: 先看三个交互例子；每段的“展开解释”补充符号含义。模态与误差传播曲线是教学例子，奖励计算采用当前代码的实际系数。本页没有运行策略训练。
+    - navigation "页面导航" [ref=e16]:
+      - link "① 对象怎样动" [ref=e17] [cursor=pointer]:
+        - /url: "#objects"
+      - link "② 怎样给控制打分" [ref=e18] [cursor=pointer]:
+        - /url: "#reward"
+      - link "③ 模仿与多轮蒸馏" [ref=e19] [cursor=pointer]:
+        - /url: "#distill"
+  - generic [ref=e20]:
+    - generic [ref=e21]: 教学例子 · 分别看两个模态
+    - heading "同样一次偏差，为什么有的很快消退，有的一直摆？" [level=2] [ref=e22]
+    - paragraph [ref=e23]:
+      - text: 时间常数 T
+      - subscript [ref=e24]: R
+      - text: 描述一项滚转模态衰减的快慢。阻尼比 ζ 和固有角频率 ω 则共同决定一项振荡模态怎样衰减、摆动多快。先把 ζ 从 0.10 改到 0.50，看看紫色曲线。
+    - generic [ref=e25]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - text: 时间常数 T
+            - subscript [ref=e29]: R
+            - status [ref=e30]: 1.0 s
+          - slider "时间常数 TR" [ref=e31] [cursor=pointer]: "1"
+          - text: 单独滚转模态；越大，衰减越慢。
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - text: 阻尼比 ζ
+            - status [ref=e34]: "0.10"
+          - slider "阻尼比 ζ" [ref=e35] [cursor=pointer]: "0.1"
+          - text: 无单位；本例仅覆盖欠阻尼范围。
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - text: 固有角频率 ω
+            - status [ref=e38]: 2.0 rad/s
+          - slider "固有角频率 ω" [ref=e39] [cursor=pointer]: "2"
+          - text: rad/s；不等于每秒振荡次数。
+        - generic [ref=e40]:
+          - button "ζ = 0.10" [ref=e41] [cursor=pointer]
+          - button "ζ = 0.50" [ref=e42] [cursor=pointer]
+          - button "恢复默认" [ref=e43] [cursor=pointer]
+      - generic [ref=e44]:
+        - heading [level=3] [ref=e45]:
+          - text: 滚转模态：p(t) = 10 × exp(−t / T
+          - subscript [ref=e46]: R
+          - text: )
+        - img "一个滚转模态的自由衰减 初始速率10度每秒，时间常数1秒。8秒后为0.003度每秒。" [ref=e47]:
+          - generic [ref=e48]: "0"
+          - generic [ref=e49]: "2"
+          - generic [ref=e50]: "4"
+          - generic [ref=e51]: "6"
+          - generic [ref=e52]: "8"
+          - generic [ref=e53]: "0.00"
+          - generic [ref=e54]: "5.0"
+          - generic [ref=e55]: "10"
+          - generic [ref=e56]: 模态速率（deg/s）
+          - generic [ref=e57]: 时间 t（s）
+        - paragraph [ref=e59]: 经过一个 T_R（1.0 秒）后剩 36.8%；8 秒后剩 0.03%。
+        - heading "振荡模态：包络缩小，同时来回摆动" [level=3] [ref=e60]
+        - img "一个欠阻尼模态的自由振荡 阻尼比0.1，固有角频率2弧度每秒。4秒后的包络为初始的44.9%。实线是模态响应，虚线是包络。" [ref=e61]:
+          - generic [ref=e62]: "0"
+          - generic [ref=e63]: "2"
+          - generic [ref=e64]: "4"
+          - generic [ref=e65]: "6"
+          - generic [ref=e66]: "8"
+          - generic [ref=e67]: "-10"
+          - generic [ref=e68]: "0.00"
+          - generic [ref=e69]: "10"
+          - generic [ref=e70]: 模态速率（deg/s）
+          - generic [ref=e71]: 时间 t（s）
+        - generic [ref=e75]:
+          - generic [ref=e76]: 模态响应
+          - generic [ref=e78]: 正负包络
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - text: 振荡周期
+            - generic [ref=e82]: 3.16 s
+          - generic [ref=e83]:
+            - text: 4 秒后的包络 / 初始包络
+            - generic [ref=e84]: 44.93%
+    - group [ref=e85]:
+      - generic "展开解释：指数、阻尼和“对象库”分别是什么？" [ref=e86] [cursor=pointer]
+  - generic [ref=e87]:
+    - generic [ref=e88]: 当前实现 · 20 ms 一步的实际奖励
+    - heading "“误差小、用力少、动作别太大”怎样变成一个数？" [level=2] [ref=e89]
+    - generic [ref=e90]: r = −[(误差 / 30)² + 0.02 × (施加力 / 22)² + 动作²]
+    - paragraph [ref=e91]: 速率用度/秒，力用 N，动作 a 在 −1 到 1 之间。平方后，正负偏差都会扣分；负号让“代价越小”对应“奖励越大”。
+    - generic [ref=e92]:
+      - generic [ref=e93]:
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - text: 参考速率 p
+            - subscript [ref=e96]: ref
+            - status [ref=e97]: 10 deg/s
+          - slider "参考速率 pref" [ref=e98] [cursor=pointer]: "10"
+        - generic [ref=e99]:
+          - generic [ref=e100]:
+            - text: 测得速率 p
+            - status [ref=e101]: 7 deg/s
+          - slider "测得速率 p" [ref=e102] [cursor=pointer]: "7"
+        - generic [ref=e103]:
+          - generic [ref=e104]:
+            - text: 施加力 F
+            - status [ref=e105]: 11.0 N
+          - slider "施加力 F" [ref=e106] [cursor=pointer]: "11"
+        - generic [ref=e107]:
+          - generic [ref=e108]:
+            - text: 归一化动作 a
+            - status [ref=e109]: "0.10"
+          - slider "归一化动作 a" [ref=e110] [cursor=pointer]: "0.1"
+        - button "恢复默认例子" [ref=e112] [cursor=pointer]
+      - generic [ref=e113]:
+        - generic [ref=e114]:
+          - text: 误差 = 参考 − 实测 =
+          - strong [ref=e115]: 3 deg/s
+        - generic [ref=e116]:
+          - generic [ref=e117]:
+            - generic [ref=e118]: 跟踪代价
+            - status [ref=e121]: "0.01000"
+          - generic [ref=e122]:
+            - generic [ref=e123]: 用力代价
+            - status [ref=e126]: "0.00500"
+          - generic [ref=e127]:
+            - generic [ref=e128]: 动作代价
+            - status [ref=e131]: "0.01000"
+        - paragraph [ref=e132]: 条长表示各项占当前总代价的比例，右侧是数值。全为零时条长为零。
+        - generic [ref=e133]:
+          - text: 这一步的奖励 r =
+          - strong [ref=e134]: "-0.02500"
+        - paragraph [ref=e135]: 代入：−[(3/30)² + 0.02×(11/22)² + (0.10)²] = -0.02500。
+        - generic [ref=e136]: 这里只给一组已知数据打分。把动作调小，可以减少当步动作代价；它对之后误差的影响，还需要对象仿真才能知道。
+        - paragraph [ref=e137]: 单独看动作含义：若原请求力是 5 N，a=0.10 会把新请求力改为 5.1760 N。实际施加力还受执行机构和延迟影响。
+    - group [ref=e138]:
+      - generic "展开解释：为什么要看未来回报？" [ref=e139] [cursor=pointer]
+    - group [ref=e140]:
+      - generic "展开解释：Critic、优势和 PPO 在做什么？" [ref=e141] [cursor=pointer]
+  - generic [ref=e142]:
+    - generic [ref=e143]: 教学例子 · 动作误差如何在闭环中累积
+    - heading "学生每一步都只差一点，最后一定也只差一点吗？" [level=2] [ref=e144]
+    - paragraph [ref=e145]: 学生用“自己动作与教师动作之差的平方”学习。但动作会影响下一步状态。下面用一个无量纲递推，单独展示误差传播。
+    - generic [ref=e146]:
+      - text: 下一步状态差值 d
+      - subscript [ref=e147]: k+1
+      - text: = g × 当前差值 d
+      - subscript [ref=e148]: k
+      - text: + ε
+    - paragraph [ref=e149]: g 描述已有差值会怎样传到下一步；ε 是每步固定的动作偏差，本例输入增益设为 1。初始差值 d₀=0。
+    - generic [ref=e150]:
+      - generic [ref=e151]:
+        - generic [ref=e152]:
+          - generic [ref=e153]:
+            - text: 误差传播系数 g
+            - status [ref=e154]: "0.90"
+          - slider "误差传播系数 g" [ref=e155] [cursor=pointer]: "0.9"
+          - text: 分别尝试 0.90、1.00 和 1.05。
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - text: 每步动作偏差 ε
+            - status [ref=e158]: "0.010"
+          - slider "每步动作偏差 ε" [ref=e159] [cursor=pointer]: "0.01"
+        - generic [ref=e160]:
+          - button "g = 0.90" [ref=e161] [cursor=pointer]
+          - button "g = 1.05" [ref=e162] [cursor=pointer]
+          - button "恢复默认" [ref=e163] [cursor=pointer]
+        - paragraph [ref=e164]: 这里的 g 没有从你们的网络估计。该图解释累积机制，不构成实际控制器稳定性结论。
+      - generic [ref=e165]:
+        - img "动作偏差引起的状态差值累积 教学递推d下一步等于0.9乘当前差值再加0.01。40步后差值0.0985，纵轴按当前范围调整。" [ref=e166]:
+          - generic [ref=e167]: "0"
+          - generic [ref=e168]: "10"
+          - generic [ref=e169]: "20"
+          - generic [ref=e170]: "30"
+          - generic [ref=e171]: "40"
+          - generic [ref=e172]: "0.00"
+          - generic [ref=e173]: "0.06"
+          - generic [ref=e174]: "0.11"
+          - generic [ref=e175]: 状态差值 d（无量纲）
+          - generic [ref=e176]: 步数 k
+        - paragraph [ref=e178]: 横轴是步数；纵轴为无量纲状态差值，按当前数据范围调整。改变参数时请结合下方数值比较。
+        - generic [ref=e179]:
+          - generic [ref=e180]:
+            - text: 每步动作平方误差 ε²
+            - generic [ref=e181]: "0.000100"
+          - generic [ref=e182]:
+            - text: 40 步后的状态差值 d₄₀
+            - generic [ref=e183]: "0.0985"
+        - paragraph [ref=e184]: g 小于 1，会缩小已有差值，但每步又加上偏差。这个例子的长期差值趋于 ε/(1−g) = 0.1000。
+    - group [ref=e185]:
+      - generic "展开解释：特权信息与多轮蒸馏怎样对应？" [ref=e186] [cursor=pointer]
+  - generic [ref=e187]:
+    - heading "回到你们的路线，每种数学各管一件事。" [level=2] [ref=e188]
+    - table [ref=e189]:
+      - rowgroup [ref=e190]:
+        - row [ref=e191]:
+          - columnheader "数学对象" [ref=e192]
+          - columnheader "回答的问题" [ref=e193]
+          - columnheader "在项目中的用途" [ref=e194]
+      - rowgroup [ref=e195]:
+        - row [ref=e196]:
+          - cell [ref=e197]:
+            - text: 动力学 G
+            - subscript [ref=e198]: θ
+          - cell "施加控制后，对象怎样响应？" [ref=e199]
+          - cell "构造训练对象与仿真环境" [ref=e200]
+        - row [ref=e201]:
+          - cell [ref=e202]:
+            - text: 控制规则 π
+            - subscript [ref=e203]: w
+          - cell "看到这些信号，输出什么动作？" [ref=e204]
+          - cell "教师或拟部署学生控制器" [ref=e205]
+        - row [ref=e206]:
+          - cell "奖励 r 与累计回报 G" [ref=e207]
+          - cell "怎样比较一段控制操作？" [ref=e208]
+          - cell "训练教师时的优化目标" [ref=e209]
+        - row [ref=e210]:
+          - cell "优势与 PPO 损失" [ref=e211]
+          - cell "如何利用经验调整网络？" [ref=e212]
+          - cell "更新教师权重" [ref=e213]
+        - row [ref=e214]:
+          - cell "蒸馏损失与数据聚合" [ref=e215]
+          - cell "学生如何学习教师的行为？" [ref=e216]
+          - cell "训练轻量学生" [ref=e217]
+        - row [ref=e218]:
+          - cell "跟踪、恢复、稳定性与品质指标" [ref=e219]
+          - cell "控制结果是否达到要求？" [ref=e220]
+          - cell "独立验证与最终验收" [ref=e221]
+    - paragraph [ref=e222]: 同一个字母在不同论文可能有不同含义。这里对象参数用 θ，网络权重用 w；滚转速率用 p，倾斜角用 φ。先确认符号、单位和它作用于哪一环，再看公式怎样计算。
+    - paragraph [ref=e223]:
+      - link "继续阅读：从导数、积分、传递函数到 PPO 和蒸馏的逐步说明" [ref=e224] [cursor=pointer]:
+        - /url: 从滚转例子读懂数学.md
+  - generic [ref=e225]:
+    - paragraph [ref=e226]:
+      - text: 实际奖励依据：controller-route-v1 的 batched_p_channel.py；蒸馏均方误差依据：distill_students.py。当前实现、原始代码链接及结果边界见
+      - link "强化学习逐步说明" [ref=e227] [cursor=pointer]:
+        - /url: ../gjb_object_library_audit_2026-10-24/强化学习逐步说明.md
+      - text: 。
+    - paragraph [ref=e228]: 2026-10-24 · 本页离线可用；不上传数据，不修改现有对象库或训练结果。

@@ -1,0 +1,227 @@
+Policies for complex visual tasks have been successfully learned with
+deep reinforcement learning, using an approach called deep Q-networks
+(DQN), but relatively large (task-specific) networks and extensive
+training are needed to achieve good performance. In this work, we
+present a novel method called policy distillation that can be
+used to extract the policy of a reinforcement learning agent and train
+a new network that performs at the expert level while being
+dramatically smaller and more efficient. Furthermore, the same method
+can be used to consolidate multiple task-specific policies into a
+single policy. We
+demonstrate these claims using the Atari domain and show that the
+multi-task distilled agent outperforms the single-task teachers as well
+as a jointly-trained DQN agent.
+
+Recently, advances in deep reinforcement learning have shown that policies can
+be encoded through end-to-end learning from reward signals, and that these
+pixel-to-action policies can deliver superhuman performance on many
+challenging tasks ( Mnih et al., 2015 ) . The deep Q-network (DQN) algorithm
+interacts with an environment, receiving pixel observations and rewards. At each step, an agent chooses the action that
+maximizes its predicted cumulative reward, and a convolutional network is
+trained to approximate the optimal action-value function. The DQN algorithm requires long training
+times to train on a single
+task.
+
+In this paper, we introduce policy distillation for transferring one or
+more action policies from Q-networks to an untrained network. The method has
+multiple advantages: network size can be compressed by up to 15 15 times
+without degradation in performance; multiple expert policies can be combined
+into a single multi-task policy that can outperform
+the original experts; and finally it can be applied as a real-time,
+online learning process by continually distilling the best policy
+to a target network, thus efficiently tracking the
+evolving Q-learning policy. The contribution of this work is to describe and
+discuss the policy distillation approach and to demonstrate results on
+(a) single game distillation, (b) single game distillation with highly
+compressed models, (c) multi-game distillation, and (d) online distillation.
+
+Distillation was first presented as an efficient means for supervised model
+compression ( Bucila et al., 2006 ) , and it has since been extended to the problem
+of creating a single network from an ensemble model ( Hinton et al., 2014 ) . It also shows merit as an optimization method
+that acts to stabilize learning over large datasets or in dynamic domains ( Shalev-Shwartz, 2014 ) . It uses supervised regression to train a target network to
+produce the same output distribution as the original network, often using a less
+peaked, or ‘softened’ target distribution. We show that distillation can also be used in the
+context of reinforcement learning (RL), a significant discovery that belies the
+commonly held belief that supervised learning cannot generalize to sequential
+prediction tasks ( Barto and Dietterich, 2004 ) .
+
+This work is related to four different research areas: model compression
+using distillation, deep reinforcement learning, multi-task learning and
+imitation learning. The
+concept of model compression through training a student network using the
+outputs of a teacher network was first suggested by Bucila et al. (2006) , who
+proposed it as a means of compressing a large ensemble model into a single
+network. In an extension of this work, Ba and Caruana (2014) used
+compression to transfer knowledge from a deep network to a shallow network.
+Other authors applied the same concept in somewhat different ways: Liang et al. (2008) proposed an approach for training a fast
+logistic regression model using data labeled by a slower structured-output CRF
+model; Menke and Martinez (2009) used model transfer as a regularization
+technique. Hinton et al. (2014) introduced the term distillation and suggested raising the temperature of the softmax
+distribution in order to transfer more knowledge from
+teacher to student network. Distillation has since been applied in various ways ( Li et al., 2014 ; Romero et al., 2014 ; Chan et al., 2015 ; Wang et al., 2015 ; Tang et al., 2015 ) , however it has not been applied to
+sequential prediction or reinforcement learning problems.
+
+In reinforcement learning, several approaches have been proposed to learn a
+policy by regression to a teacher’s signal, which is often referred to as
+imitation learning. Often, the teacher signal
+comes from a model-based algorithm, for example in regret-based approximate policy
+iteration ( Lazaric et al., 2010 ) or by using Monte Carlo tree search as an oracle Guo et al. (2014) . In the latter case it was shown that superhuman Atari
+scores could be achieved by regressing to the policy suggested by a UCT ( Kocsis and Szepesvári, 2006 ) algorithm. This work is related to ours, but it
+requires a model of the game which has access to the true state,
+rather than learning directly from observations.
+The classification-based policy iteration (CAPI) framework ( Farahmand et al., 2012 ) is another approach to imitation learning which does not require a model-based
+teacher. It is possbile to view a single iteration of CAPI as
+policy distillation using a particular loss function (i.e. weighing classification
+of actions by the action gap). Another algorithm to tackle imitation learning is
+DAGGER Ross et al. (2010) . In DAGGER the student policy generates some of the training
+trajectories, whereas in this work the trajectories are entirely produced by the teacher
+policy.
+
+Multi-task learning ( Caruana, 1997 ) is often
+described as a method for improving generalization performance by leveraging a
+fairly limited number of similar tasks as a shared source of inductive
+bias. Typically, such tasks need to be defined on the same input distribution.
+Although Atari games
+share a common input modality, their images are very diverse and do not share
+a common statistical basis (as opposed to natural images), making multi-task
+learning much more difficult. We show that model compression and distillation
+can alleviate
+such issues.
+
+Before describing policy distillation , we will first give a brief review of deep Q-learning,
+since DQN serves as both the baseline for performance comparisons as well as
+the teacher for the policy distillation. Note that the proposed method is
+not tied to DQN and can be applied to models trained using other RL
+algorithms. After the DQN summary, we will describe policy distillation for
+single and multiple tasks.
+
+DQN is a state-of-the-art model-free approach to reinforcement
+learning using deep networks, in environments with discrete action
+choices, which has achieved super-human performance on a
+large collection of diverse Atari 2600 games ( Mnih et al., 2015 ) . In
+deep Q-learning, a neural network is optimized to predict the average
+discounted future return of each possible action given a small number
+of consecutive observations. The action with the highest predicted
+return is chosen by the agent. Thus, given an environment ℰ \mathcal{E} whose interface at timestep i i comprises actions a i ∈ 𝒜 = { 1 , … , K } a_{i}\in\mathcal{A}=\{1,...,K\} , observations x i ∈ ℛ d x_{i}\in\mathcal{R}^{d} , and rewards r i ∈ ℛ r_{i}\in\mathcal{R} , we define a
+sequence s t = x 1 , a 1 , x 2 , a 2 , … , a t − 1 , x t s_{t}=x_{1},a_{1},x_{2},a_{2},...,a_{t-1},x_{t} and a future
+return at time t t with discount γ \gamma : R t = ∑ t ′ = t T γ t ′ − t ​ r t R_{t}=\sum^{T}_{t^{\prime}=t}\gamma^{t^{\prime}-t}r_{t} .
+The Q Q function gives the maximum expected return after seeing sequence s s and choosing action a a : Q ∗ ( s , a ) = max π 𝔼 [ R t | s t = s , a t = a , π ] Q^{*}(s,a)=\max_{\pi}\mathbb{E}[R_{t}|s_{t}=s,a_{t}=a,\pi] ,
+where π \pi is an action policy, a mapping from sequences to actions. In order
+to train a convolutional neural net to approximate Q ∗ ​ ( s , a ) Q^{*}(s,a) , DQN minimizes the
+following loss, using samples ( s , a , r , s ′ ) (s,a,r,s^{\prime}) drawn from a replay memory:
+
+To test this intuition we consider three methods of policy distillation from T T to S S . In all cases we assume that the teacher T T has been used to
+generate a dataset 𝒟 T = { ( s i , 𝐪 i ) } i = 0 N \mathcal{D}^{T}=\{(s_{i},\mathbf{q}_{i})\}_{i=0}^{N} , where
+each sample consists of a short observation sequence s i s_{i} and a vector 𝐪 i \mathbf{q}_{i} of unnormalized Q-values with one value per action. The first
+method uses only the highest valued action from the teacher, a i , b ​ e ​ s ​ t = argmax ⁡ ( 𝐪 i ) a_{i,best}=\mathrm{argmax}(\mathbf{q}_{i}) , and the student model is trained with a negative log
+likelihood loss (NLL) to predict the same action:
+
+In the third case, we adopt the distillation setup of Hinton et al. (2014) and use the Kullback-Leibler divergence (KL)
+with temperature τ \tau :
+
+In the traditional classification setting, the output distribution of 𝐪 T \mathbf{q}^{T} is very peaked, so softening the distribution by raising the
+temperature of the softmax allows more of the secondary knowledge to be
+transferred to the student. In the case of policy distillation, however, the
+outputs of the teacher are not a distribution, rather they are the expected
+future discounted reward of each possible action. Rather than soften these
+targets, we expect that we may need to make them sharper.
+
+The approach for multi-task policy distillation, illustrated in Figure 2 (b), is straightforward. We use n n DQN single-game experts,
+each trained separately. These agents produce inputs and targets, just as with
+single-game distillation, and the data is stored in separate memory buffers. The
+distillation agent then learns from the n n data stores sequentially, switching
+to a different one every episode. Since different tasks often have different action sets, a
+separate output layer (called the controller layer) is trained for each task
+and the id of the task is used to switch to the correct output during both
+training and evaluation. We also experiment with both the KL and NLL
+distillation loss functions for multi-task learning.
+
+An important contribution of this work is to compare the performance of multi-task DQN agents with multi-task distillation agents. For multi-task DQN,
+the approach is similar to single-game learning: the network is
+optimized to predict the average discounted return of each possible action
+given a small number of consecutive observations. Like in multi-task distillation, the game is switched every episode, separate replay memory
+buffers are maintained for each task, and training is evenly interleaved
+between all tasks. The game label is used to switch between
+different output layers as in multi-task DQN, thus enabling a different output
+layer, or controller, for each game. With this architecture in place, the multi-task DQN
+loss function remains identical to single-task learning.
+
+Even with the separate controllers, multi-game DQN learning is extremely
+challenging for Atari games and DQN generally fails to reach full single-game
+performance on the games. We believe this is due to interference between the
+different policies, different reward scaling, and the inherent instability of
+learning value functions.
+
+Policy distillation may offer a means of combining multiple policies into a
+single network without the damaging interference and scaling problems. Since
+policies are compressed and refined during the distillation process, we
+surmise that they may also be more effectively combined into a single network.
+Also, policies are inherently lower variance than value functions, which
+should help performance and stability ( Greensmith et al., 2004 ) .
+
+Single task policy distillation is a process of data generation by
+the teacher network (a trained DQN agent) and supervised training by the student network, as illustrated in Figure 2 (a). For
+each game we trained a separate DQN agent, as reported in Mnih et al. (2015) .
+Each agent was subsequently fixed (no Q-learning) and used as a teacher for a
+single student policy network. The DQN teacher’s outputs (Q-values
+for all actions) alongside the inputs (images) were held in a buffer.
+We employed a similar training procedure for multi-task policy distillation, as
+shown in Figure 2 (b).
+
+Ten popular Atari games were selected and fixed before starting this research. These particular games were chosen in order to sample the diverse levels of DQN performance seen on the full collection, from super-human play (e.g. Breakout, Space Invaders) to below human level (Q*bert, Ms.Pacman).
+
+In this section we show that the Kullback-Leibler (KL) cost function
+leads to the best-performing student agents, and that these distilled
+agents outperform their DQN teachers on most games. Table 1 compares the effectiveness of different policy
+distillation cost functions in terms of generalization performance on
+four Atari games, while keeping the same network architecture as
+DQN. Only four games were used for this experiment in order to
+establish parameters for the loss functions which are then fixed
+across other experiments (which use ten games).
+Note that the evaluation uses human starting points to robustly
+test generalization (see Section 4.1 ).
+
+Passing Q-values through a softmax function with a temperature
+parameter and minimizing the KL divergence cost strikes a convenient
+balance between these two extremes. We determine empirically that a low
+temperature τ = 0.01 \tau=0.01 is best suited for distillation in this domain. Given the performance of the KL loss, we
+did not experiment with other possibilities, such as combining the NLL
+and MSE criteria.
+
+These results suggest that DQN could benefit from a reduced capacity model or
+regularization. However, it has been found that training a smaller DQN agent
+results in considerably lower performance across games ( Mnih et al., 2013 ) . We
+speculate that training a larger network accelerates the policy iteration cycle ( Sutton and Barto, 1998 ) of DQN. Intuitively, once DQN performs actions
+resulting in a high empirical return, it is essential that the values of the
+novel trajectory are quickly estimated. A learner with limited capacity can be
+very inefficient at exploiting such potential, because high returns are often
+present in a minor fraction of its interactions with the environment. Hence,
+strong regularization could hinder the
+discovery of better policies with DQN.
+
+The multi-task DQN agent learns the three tasks to 83.5% of single-task DQN
+performance (see Figure 4 ). In contrast, both distilled agents
+perform better than their DQN teachers, with mean scores of 105.1% for Multi-
+Dist-NLL and 116.9% for Multi-Dist-KL. There is a ceiling effect on Freeway and
+Pong, since the single-task DQN teachers are virtually optimal, but we do see a
+considerable improvement on Q*bert, with as much as 50% higher scores for
+Multi-Dist-KL.
+
+We use the same approach to distill 10 Atari games into a single student network
+that is four times larger than a single DQN. As can be seen from Table 2 , this is quite successful, with three of the games achieving
+much higher scores than the teacher and an overall relative performance of
+89.3%. We don’t offer a comparison to a jointly trained, 10 game DQN agent, as
+was done for the three game set, because in our preliminary experiments DQN
+failed to reach higher-than-chance performance on most of the games. This
+highlights the challenges of multi-task reinforcement learning and supports our
+findings on the three game set (Figure 4 ).
+
+As a final contribution, we investigated online policy distillation, where the student must track the DQN teacher during Q-learning. It was not obvious whether this effort would be successful, since it has been observed that the DQN policy changes dramatically throughout training as different parts of the game are explored and mastered. To test this, DQN was trained normally and the network was periodically saved if it attained a new high score. This network was then used by the distillation learner until updated by a higher DQN score. The results of this experiment are shown in Figure 5 . The learning curves show the high-variance DQN score, the best-so-far score, and the score reached by two distillation agents initialized with different seeds. The distilled agent is much more stable than the DQN teacher and achieves similar or equal performance on all games (see Appendix C for additional examples of online distillation).
+
+Policy Distillation Training Procedure Online data collection during policy distillation was performed under similar conditions to agent evaluation in Mnih et al. [2015] . The DQN agent plays a random number of null-ops (up to 30) to initialize the episode, then acts greedily with respect to its Q-function, except for 5% of actions, which are chosen uniformly at random. Episodes can last up to 30 minutes of real-time play, or 108,000 frames. The small percentage of random actions leads to diverse game trajectories, which improves coverage of a game’s state space.
+
+We recorded the DQN teacher’s outputs (Q-values for all valid actions) and inputs (emulator frames) into a replay memory with a capacity of 10 hours of real-time gameplay (540,000 control steps at 15Hz). At the end of each new hour of teacher gameplay added to the replay memory we performed 10,000 minibatch updates on the student network. We used the RmsProp [ Tieleman and Hinton, 2012 ] variation of minibatch stochastic gradient descent to train student networks. Results were robust for primary learning rates between 1.0 ​ e − 4 1.0e^{-4} and 1.0 ​ e − 3 1.0e^{-3} , with maximum learning rates between 1.0 ​ e − 3 1.0e^{-3} and 1.0 ​ e − 1 1.0e^{-1} . We chose hyper-parameters using preliminary experiments on 4 games. The reported results consumed 500 hours of teacher gameplay to train each student, less than 50% of the amount that was used to train each DQN teacher. Using modern GPUs we can refresh the replay memory and train the students much faster than real-time, with typical convergence in a few days. With multi-task students we used separate replay memories for each game, with the same capacity of 10 hours, and the respective DQN teachers took turns adding data. After one hour of gameplay the student is trained with 10,000 minibatch updates (each minibatch is drawn from a randomly chosen single game memory). The same 500 hour budget of gameplay was used for all but the largest network, which used 34,000 hours of experience over 10 games.
+
+Evaluating the performance of a multi-task agent is not trivial.
+Since each game has a different reward structure and somewhat arbitrary choice of reward scale, it is meaningless to compute an arithmetic mean of scores across games. Therefore, DQN generalization scores (published previously [ van Hasselt et al., , Nair et al., 2015 ] ) are taken as a reference point and student scores are reported as a relative percentage.
+This way, performance on multiple games can be measured using the geometric mean [ Fleming and Wallace, 1986 ] .

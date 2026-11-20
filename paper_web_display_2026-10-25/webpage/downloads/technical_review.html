@@ -1,0 +1,107 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>当前稿技术合理性核查</title><link rel="stylesheet" href="../vendor/paper-fonts.css"><style>
+body {margin:0;background:white;color:#16233a;font-family:PaperChinese,Georgia,serif;
+      font-size:10.5pt;line-height:1.75;}
+main {max-width:100%;}
+h1 {font-size:19pt;margin:0 0 16pt;line-height:1.5;}
+h2 {font-size:13pt;margin:20pt 0 8pt;border-bottom:1px solid #c9d3e2;padding-bottom:5pt;}
+h3 {font-size:11.5pt;margin:15pt 0 7pt;}
+h1,h2,h3 {break-after:avoid;}
+p {margin:0 0 9pt;orphans:3;widows:3;text-align:justify;}
+code {font-family:PaperChinese,monospace;font-size:8.5pt;overflow-wrap:anywhere;}
+a {color:#245a9e;text-decoration:none;}
+table {width:100%;border-collapse:collapse;font-size:8.2pt;line-height:1.65;}
+thead {display:table-header-group;}
+th,td {padding:5pt;border-bottom:1px solid #d8dfe9;text-align:left;vertical-align:top;}
+th {border-top:1.5px solid #16233a;border-bottom:1px solid #16233a;}
+tr {break-inside:avoid;}
+tbody tr:last-child td {border-bottom:1.5px solid #16233a;}
+@font-face{font-family:PaperChinese;src:url("review-extra-dcf0b2ecc1c4.ttf") format("truetype");font-display:swap;unicode-range:U+4EA4,U+4ED8,U+4FEE,U+5220,U+5339,U+53E5,U+54C8,U+5B57,U+5C24,U+5E0C,U+6237,U+6599,U+65AF,U+6750,U+6DC6,U+6DF7,U+7A3F,U+7ED1,U+7ED8,U+7EE9;}</style></head><body><main><h1>当前稿技术合理性核查</h1>
+<p>核查对象：当前网页、原交付包所附实现、冻结对象库与现有实验记录。主线保持“基于飞行品质的飞控大模型构建—滚转通道验证”。本次没有训练或重新仿真，原包、原始目录与权重保持原状。</p>
+<h2>优先处理的技术问题</h2>
+<h3>1. PPO 的新旧概率没有始终针对同一个动作</h3>
+<p>交付包的 Actor 先从高斯分布采样，再把动作截断到 −1 至 1。采样时保存的是<strong>截断前采样值</strong>的对数概率；训练缓存保存的是<strong>截断后的动作</strong>，更新时又计算这个截断后动作的对数概率。发生饱和时，PPO 的概率比对应了两个不同的值。</p>
+<p>一个直接的代数例子：均值 0.99、标准差 exp(−2)，采样值 1.10，被截为 1.00。即使网络参数完全没有更新，当前实现得到的新旧概率比也约为 <strong>1.388</strong>，正确的同策略、同采样值概率比应为 1。PPO 的代理目标要求新旧策略评价相同采样动作，见 <a href="https://arxiv.org/pdf/1707.06347">PPO 原论文</a>。</p>
+<p>修法：保存原始高斯采样值用于两次概率计算，将其截断值交给环境；或者采用带正确概率变换的 tanh 策略。下一版训练记录需要保存动作饱和比例及首次更新前的概率比，以确认实现一致。</p>
+<p>位置：<a href="/home/swj/pingmo/flight_control_original_restored_2026-10-25/pingmo_src/src/teacher/ppo/networks.py:125">networks.py</a>、<a href="/home/swj/pingmo/flight_control_original_restored_2026-10-25/pingmo_src/src/teacher/ppo/trainer.py:169">trainer.py</a>。这是所附实现中可直接定位的问题；既有教师的受影响程度还需对应原训练版本和饱和记录。</p>
+<h3>2. 轨迹末端的价值估计读到了重置后的状态</h3>
+<p>环境在第 400 个策略步后立即 reset；训练器随后调用环境的当前观测计算 bootstrap，读到的是下一条轨迹的初始状态。GAE 因而把下一条轨迹的初始价值接到了上一条轨迹的末端。</p>
+<p>修法：明确 8 s 是任务终止还是采样截断。任务终止使用终止标记和零后续价值；采样截断则保存重置前的末端观测与特权状态，以该状态的价值接续回报。两种定义的区别见 <a href="https://proceedings.mlr.press/v80/pardo18a.html">Time Limits in Reinforcement Learning</a>。</p>
+<p>位置：<a href="/home/swj/pingmo/flight_control_original_restored_2026-10-25/pingmo_src/src/envs/batched_p_channel.py:301">batched_p_channel.py</a>、<a href="/home/swj/pingmo/flight_control_original_restored_2026-10-25/pingmo_src/src/teacher/ppo/trainer.py:186">trainer.py</a>。本轮没有改动归档训练器或用新结果替换旧成绩。</p>
+<h3>3. 学生输入的目标信号依赖对象时延</h3>
+<p>主试验先平滑外部指令，再按当前对象的运输时延生成目标信号。学生同时读取外部指令、目标、误差及其历史。因此，时延相关先验仍存在于目标信号的生成环节。</p>
+<p>这一点影响“撤去特权信息后，学生如何获得对象动态线索”的解释，尤其影响把时延探针成绩归因为对象辨识的论证。当前实验回答的是<strong>给定该目标构造时的共享策略控制</strong>。若研究未知时延下的历史辨识，需要统一目标生成规则，再比较各历史表征；若采用预先标定的时延，则将该标定作为控制接口条件。</p>
+<p>位置：<a href="/home/swj/pingmo/flight_control_original_restored_2026-10-25/pingmo_src/src/envs/batched_p_channel.py:116">目标生成</a>、<a href="/home/swj/pingmo/flight_control_original_restored_2026-10-25/pingmo_src/src/envs/batched_p_channel.py:139">对象时延的传入</a>。本轮第 2.2 节明确了实际目标来源，没有重新加入用户要求删除的固定参考模型公式和固定取值。</p>
+<h3>4. 对象库的联合覆盖不足</h3>
+<p>冻结库有 5,000 个不同对象，多个连续参数随对象变化。但按当前实现的滚转、螺旋、荷兰滚与灵敏度四项分级判据，<strong>同时有两项及以上退化的对象为 0</strong>。同分布库只有 8 种分量等级组合，构造主要沿单项品质梯度展开。参数散点的跨度与复合品质条件的覆盖需要分别描述。</p>
+<p>另外，荷兰滚二级且频率不低于 1 rad/s 的样本为 0，运输时延在 (0.20, 0.25] s 的样本也为 0。下一版对象库应补联合品质条件和这些具体空区，再考察统一控制器的覆盖变化。</p>
+<p>依据：<a href="/home/swj/pingmo/gjb_object_library_audit_2026-10-24/coverage.json">coverage.json</a>。本次核对该统计绑定的对象库与原始还原目录文件 SHA-256 完全相同：<code>1daaccbef44b36274d2ce53612a3f46e54bd5c691d7f7bc8d498f1b903273fde</code>。原库和冻结实验保留，本轮只把生成机制写清。</p>
+<h3>5. 跟踪证据与抑振目标需要进一步对应</h3>
+<p>正文的整体统计以跟踪 RMSE 为主；初始偏差恢复和扰动抑制目前主要由 30 s 时域图展示。针对用户关心的两类振荡，更直接的统计是扰动撤除后的残余 RMS、末段 RMS、恢复时间及其对象间分布。</p>
+<p>配对评估已有 <code>post_release_rms_deg_s</code>、<code>tail_rms_deg_s</code>、<code>settling_s</code> 等记录，可以先整理这些现存字段。第 5.3.2 节已明确区分 8 s 指令测试和 30 s 恢复测试，后续应把恢复统计与相应时域图放在一起。</p>
+<p>依据：<a href="/home/swj/pingmo/cross_object_control_2026-10-25/results">配对实验结果目录</a>。本轮没有计算或补写未经汇总的恢复成绩。</p>
+<h3>6. 执行机构变化尚未进入对象覆盖</h3>
+<p>源域各对象统一使用 ±22 N、88 N/s 和 20 ms 一阶执行机构。对象参数中的运输时延变化与执行机构时间常数变化是两类条件。现有跨对象结果对应的是这一公共执行机构配置。</p>
+<p>22 N 可以作为控制器内部坐标；连接实际飞机时，需标定该坐标到副翼的方向、增益、位置与速率范围，并匹配执行机构动态。当前 −(10°/22 N) 映射属于 DHC-6 辨识模型实验设置。已把源域接口与目标域映射分开写入第 3.2、3.4 节。</p>
+<h3>7. 主试验角色已经写清，逐产物对应仍需补齐</h3>
+<p>当前口径为 50 个逐对象教师，学生使用 44 个蒸馏源对象，另有 4 个学生对象级留出。12 对象、三次训练重复是另一组配对评估，所有对象均参与相应学生蒸馏。</p>
+<p>还需要完整对应主试验的对象清单、教师权重、验证记录、学生训练清单与蒸馏轮次。现有材料不足以逐项还原全部 50 个主试验教师；本轮保留用户指定的规模和原有数值，各实验组继续按原协议展示。</p>
+<h2>已直接修正的图文问题</h2>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>原问题</th>
+<th>本次处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第 3 节开头</td>
+<td>模型主体与教师、学生的关系容易混淆</td>
+<td>明确共享飞控策略为主体，教师提供逐对象经验，学生承载部署策略</td>
+</tr>
+<tr>
+<td>图 3、图 4</td>
+<td>学生图误用了教师的 512 宽、8 块结构；输出与特权符号也有混用</td>
+<td>按附带网络定义重绘两图；tiny 为卷积宽 8、历史特征 16、拼接 32、主干宽 32、1 个残差块、3,856 参数；教师 Actor 为卷积宽 24、拼接 76、主干宽 512、8 块、4,255,537 参数</td>
+</tr>
+<tr>
+<td>第 3.2、3.4 节</td>
+<td>源域力接口与目标域副翼映射混写</td>
+<td>分开给出各自的输入、限幅与动态条件</td>
+</tr>
+<tr>
+<td>第 3.2.2 节及式 (8)、(10)</td>
+<td>价值回归目标与正在更新的价值网络使用同一参数记号，容易读成随更新共同变化</td>
+<td>明确优势与回报使用采样时的旧价值网络，并在优化中固定；这项记号修正与上面的实现边界问题分别记录</td>
+</tr>
+<tr>
+<td>第 3.3、5.3 节</td>
+<td>把第 0 轮行为克隆与后续聚合轮数混计</td>
+<td>统一为行为克隆 + 5 轮 DAgger，图中为第 0–5 轮</td>
+</tr>
+<tr>
+<td>对象库定义及式 (5)</td>
+<td>源域四项分层标签容易被读成完整规范评级</td>
+<td>写明所用分量判据，将符号改为 Grade_src，并补 GJB 2874—1997 引用</td>
+</tr>
+<tr>
+<td>参数范围表</td>
+<td>零点频率比分布外范围写成了完整名义区间</td>
+<td>改为现有分支映射实际形成的约 [0.30, 0.424] 或 [2.121, 3.0]</td>
+</tr>
+<tr>
+<td>参考文献</td>
+<td>Asymmetric Actor Critic 与 Neural-Fly 的出版信息错误</td>
+<td>按正式出版信息改为 RSS 2018、Science Robotics 2022, 7(66): eabm6597</td>
+</tr>
+<tr>
+<td>部分结果解释</td>
+<td>重复用“虽然”“精度损失”等句子收束</td>
+<td>用具体数值、各组实验职责及共享权重的控制表现直接解释</td>
+</tr>
+</tbody>
+</table>
+<p>出版信息依据：<a href="https://www.roboticsproceedings.org/rss14/p08.html">RSS 正式论文页</a>、<a href="https://authors.library.caltech.edu/records/q3grb-3vz72">Caltech 的 Neural-Fly 正式记录</a>。Learning to Fly in Seconds 的 RA-L 2024 记录保留。</p>
+<p>当前稿为 22 幅图、16 张表、13 个独立公式。所有既有实验表格单元格保留；三处公式调整分别为源域分层符号及旧价值网络记号。幅值统计图保持撤下，PID 保持在附录 B.4。两张网络图的配置、来源与生成文件哈希见 <a href="/home/swj/pingmo/paper_web_display_2026-10-25/revision/network_consistency_manifest.json">网络一致性记录</a>。</p>
+<p>处理优先顺序：PPO 采样与边界实现 → 目标信号的参数依赖 → 联合对象覆盖 → 既有抑振记录汇总 → 目标执行机构覆盖与主试验产物映射。</p></main></body></html>

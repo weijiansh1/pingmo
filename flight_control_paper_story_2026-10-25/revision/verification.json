@@ -1,0 +1,85 @@
+{
+  "checks_passed": 37,
+  "checks": [
+    "Protocol checksum matches frozen summary",
+    "Three declared seeds",
+    "All 36 teachers retained",
+    "Teacher parameters and transition budgets",
+    "Each student has 3856 parameters and six collections",
+    "Transfer table 20261031/frozen_source_student/adaptation_condition",
+    "Transfer table 20261031/frozen_source_student/heldout_condition",
+    "Transfer table 20261031/adapted_source_student/adaptation_condition",
+    "Transfer table 20261031/adapted_source_student/heldout_condition",
+    "Transfer table 20261031/scratch_student_same_budget/adaptation_condition",
+    "Transfer table 20261031/scratch_student_same_budget/heldout_condition",
+    "Source table 20261031/teacher/source",
+    "Source table 20261031/student/source",
+    "Source table 20261031/student/id_test",
+    "Source table 20261031/student/ood_test",
+    "Transfer table 20261101/frozen_source_student/adaptation_condition",
+    "Transfer table 20261101/frozen_source_student/heldout_condition",
+    "Transfer table 20261101/adapted_source_student/adaptation_condition",
+    "Transfer table 20261101/adapted_source_student/heldout_condition",
+    "Transfer table 20261101/scratch_student_same_budget/adaptation_condition",
+    "Transfer table 20261101/scratch_student_same_budget/heldout_condition",
+    "Source table 20261101/teacher/source",
+    "Source table 20261101/student/source",
+    "Source table 20261101/student/id_test",
+    "Source table 20261101/student/ood_test",
+    "Transfer table 20261102/frozen_source_student/adaptation_condition",
+    "Transfer table 20261102/frozen_source_student/heldout_condition",
+    "Transfer table 20261102/adapted_source_student/adaptation_condition",
+    "Transfer table 20261102/adapted_source_student/heldout_condition",
+    "Transfer table 20261102/scratch_student_same_budget/adaptation_condition",
+    "Transfer table 20261102/scratch_student_same_budget/heldout_condition",
+    "Source table 20261102/teacher/source",
+    "Source table 20261102/student/source",
+    "Source table 20261102/student/id_test",
+    "Source table 20261102/student/ood_test",
+    "15 equations render",
+    "All local document links exist"
+  ],
+  "new_training": false,
+  "evidence_protocol": "controller-route-v1",
+  "pdf": {
+    "pages": 16,
+    "bytes": 1544213,
+    "sha256": "b7b1a4d43fa1c612a2232372b0606a565fcdf1cb62ea01f7ae0daad0533838a3",
+    "section_pages": {
+      "1引言": [
+        1
+      ],
+      "5.1预训练改善": [
+        7
+      ],
+      "7结论": [
+        11
+      ],
+      "附录A强化学习": [
+        11
+      ],
+      "附录B品质判据": [
+        14
+      ],
+      "参考文献": [
+        15
+      ]
+    }
+  },
+  "browser": {
+    "desktop_width": 1280,
+    "desktop_scroll_width": 1280,
+    "mobile_width": 390,
+    "mobile_scroll_width": 390,
+    "images_loaded": 3,
+    "equations_rendered": 15,
+    "print_math_overflow": 0,
+    "title_font": "PaperChinese",
+    "visual_inspection": [
+      "title",
+      "route diagram",
+      "all three seeds in both new figures"
+    ]
+  },
+  "manuscript_sha256": "2d956662e1594850fdbdc25f4a20a877e62c89f428c4b192ee03d293b9b759cc"
+}

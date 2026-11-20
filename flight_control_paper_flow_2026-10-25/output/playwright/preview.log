@@ -1,0 +1,77 @@
+127.0.0.1 - - [25/Oct/2026 03:24:26] "GET /dhc6_report.html HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 51070)
+Traceback (most recent call last):
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/http/server.py", line 1304, in finish_request
+    self.RequestHandlerClass(request, client_address, self,
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/http/server.py", line 668, in __init__
+    super().__init__(*args, **kwargs)
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/socketserver.py", line 747, in __init__
+    self.handle()
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/http/server.py", line 433, in handle
+    self.handle_one_request()
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/http/server.py", line 421, in handle_one_request
+    method()
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/http/server.py", line 675, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/http/server.py", line 875, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/shutil.py", line 198, in copyfileobj
+    fdst_write(buf)
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/socketserver.py", line 826, in write
+    self._sock.sendall(b)
+ConnectionResetError: [Errno 104] Connection reset by peer
+----------------------------------------
+127.0.0.1 - - [25/Oct/2026 03:24:38] "GET /dhc6_report.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:24:38] "GET /vendor/katex/katex.min.css HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:24:38] "GET /vendor/fonts/noto-sc-subset-00.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:24:38] "GET /vendor/katex/fonts/KaTeX_Math-Italic.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:24:38] "GET /vendor/katex/fonts/KaTeX_AMS-Regular.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:24:38] "GET /vendor/fonts/noto-sc-subset-01.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:24:38] "GET /vendor/katex/fonts/KaTeX_Main-Regular.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:24:38] "GET /vendor/katex/fonts/KaTeX_Size2-Regular.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:24:38] "GET /vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:24:38] "GET /vendor/katex/fonts/KaTeX_Size3-Regular.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:24:38] "GET /vendor/katex/fonts/KaTeX_Size1-Regular.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:24:38] "GET /vendor/katex/fonts/KaTeX_Size4-Regular.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:26:07] "GET /paper/distillation_rounds.svg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:26:07] "GET /paper/05_failure_trace.svg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:26:07] "GET /paper/transfer_budget.svg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:26:07] "GET /paper/01_teacher_learning.svg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:29:39] "GET /dhc6_report.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 03:29:39] "GET /vendor/fonts/noto-sc-subset-01.ttf HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 03:29:39] "GET /vendor/fonts/noto-sc-subset-00.ttf HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:10:08] "GET /dhc6_report.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:10:08] "GET /vendor/katex/katex.min.css HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:10:08] "GET /paper/distillation_rounds.svg HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:10:08] "GET /paper/transfer_budget.svg HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:10:08] "GET /vendor/fonts/noto-sc-subset-00.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:10:08] "GET /vendor/fonts/noto-sc-subset-01.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:10:08] "GET /paper/teacher_time_domain.svg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:10:08] "GET /paper/teacher_student_time_domain.svg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:10:08] "GET /paper/student_unseen_time_domain.svg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:10:08] "GET /paper/recovery_time_domain.svg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:10:08] "GET /paper/target_time_domain.svg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:15:59] "GET /dhc6_report.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:16:00] "GET /paper/teacher_time_domain.svg HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:16:00] "GET /paper/teacher_student_time_domain.svg HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:16:00] "GET /paper/student_unseen_time_domain.svg HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:16:00] "GET /paper/recovery_time_domain.svg HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:16:00] "GET /paper/target_time_domain.svg HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:16:00] "GET /vendor/fonts/noto-sc-subset-00-49367910f096.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:16:00] "GET /vendor/fonts/noto-sc-subset-01-d850de37de29.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:23:06] "GET /time_domain_gallery.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:23:06] "GET /vendor/paper-fonts.css HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:23:06] "GET /vendor/fonts/noto-sc-subset-00-f704e0d3ce7d.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:23:06] "GET /vendor/fonts/noto-sc-subset-01-1947e9c31aba.ttf HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:23:06] code 404, message File not found
+127.0.0.1 - - [25/Oct/2026 04:23:06] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [25/Oct/2026 04:23:07] "GET /paper/time_domain_atlas/train_core-0148.svg HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:23:07] "GET /dhc6_report.html HTTP/1.1" 200 -
+127.0.0.1 - - [25/Oct/2026 04:23:07] "GET /paper/student_unseen_time_domain.svg HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:23:07] "GET /paper/recovery_time_domain.svg HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:23:07] "GET /paper/teacher_time_domain.svg HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:23:07] "GET /paper/teacher_student_time_domain.svg HTTP/1.1" 304 -
+127.0.0.1 - - [25/Oct/2026 04:23:07] "GET /paper/target_time_domain.svg HTTP/1.1" 304 -

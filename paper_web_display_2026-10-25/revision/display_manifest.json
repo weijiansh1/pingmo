@@ -1,0 +1,151 @@
+{
+  "files": [
+    {
+      "file": "dhc6_report.html",
+      "original_sha256": "e69184997dfccc13bdbe5641b90bbb321b8ba63d1884dede11574b418d486b8c",
+      "display_sha256": "57d0b673573a9d392c0d86839a5c4fa4e3c7927384665b6ad711c89bf3df7b46",
+      "display_formulas": 13,
+      "inline_formulas": 74,
+      "paragraphs_tables_headers_match_authorized_reference_edit": true,
+      "image_count": 22,
+      "closed_loop_explanation_added": true,
+      "repaired_table6_values_preserved": true,
+      "parameter_table_rows": 10,
+      "tables_numbered_in_reading_order": 16,
+      "equation_source_order": [
+        3,
+        2,
+        4,
+        14,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "sae_story_rewritten": true,
+      "cross_object_comparison_added": true,
+      "supplement_inline_formulas": 29,
+      "sampling_protocol_added": true,
+      "figure_analysis_paragraphs": 22
+    },
+    {
+      "file": "dhc6_paper.html",
+      "original_sha256": "e69184997dfccc13bdbe5641b90bbb321b8ba63d1884dede11574b418d486b8c",
+      "display_sha256": "57d0b673573a9d392c0d86839a5c4fa4e3c7927384665b6ad711c89bf3df7b46",
+      "display_formulas": 13,
+      "inline_formulas": 74,
+      "paragraphs_tables_headers_match_authorized_reference_edit": true,
+      "image_count": 22,
+      "closed_loop_explanation_added": true,
+      "repaired_table6_values_preserved": true,
+      "parameter_table_rows": 10,
+      "tables_numbered_in_reading_order": 16,
+      "equation_source_order": [
+        3,
+        2,
+        4,
+        14,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "sae_story_rewritten": true,
+      "cross_object_comparison_added": true,
+      "supplement_inline_formulas": 29,
+      "sampling_protocol_added": true,
+      "figure_analysis_paragraphs": 22
+    }
+  ],
+  "formulas": [
+    "\\begin{gathered}o_t=\\operatorname{Norm}\\!\\bigl([p_{\\mathrm{cmd}},p_{\\mathrm{ref}},p,e,\\int e\\,dt,\\dot p,\\dot p_{\\mathrm{ref}},F_{\\mathrm{req}},F_{\\mathrm{applied}},h_{t-31:t},a_{t-7:t-1}]\\bigr)\\in\\mathbb R^{176},\\\\[0.4em]o_t^{\\mathrm T}=[o_t,z_t]\\in\\mathbb R^{188},\\qquad o_t^{\\mathrm S}=o_t.\\end{gathered}",
+    "G_\\theta(s)=L_{F_a}\\,\\frac{s(s^2+2\\zeta_\\phi\\omega_\\phi s+\\omega_\\phi^2)}{(s-\\lambda_s)(s+1/T_R)(s^2+2\\zeta_d\\omega_ds+\\omega_d^2)}\\,e^{-\\tau_ps}.",
+    "\\begin{aligned}\\operatorname{RMSE}_p&=\\sqrt{\\frac1M\\sum_{t=1}^M(p_{\\mathrm{ref},t}-p_t)^2},\\\\\\operatorname{Peak}&=\\max_t|p_{\\mathrm{ref},t}-p_t|,\\\\\\operatorname{TV}_F&=\\frac1T\\sum_{t=1}^M|F_{\\mathrm{req},t}-F_{\\mathrm{req},t-1}|.\\end{aligned}",
+    "\\theta^{(i)}\\sim q(\\theta\\mid c_i),\\qquad g_i=\\operatorname{Grade}_{\\mathrm{src}}(\\theta^{(i)},c_i).",
+    "\\begin{gathered}F_{\\mathrm{req},t+1}=\\operatorname{clip}\\!\\left(F_{\\mathrm{req},t}+(88\\,\\mathrm{N/s})a_t\\Delta t,-22\\,\\mathrm N,22\\,\\mathrm N\\right),\\\\\\Delta t=0.02\\,\\mathrm s.\\end{gathered}",
+    "r_t=-50\\left[\\left(\\frac{e_t}{p_{\\mathrm{scale}}}\\right)^2\\Delta t+0.02\\left(\\frac{F_{\\mathrm{applied},t}}{22\\,\\mathrm N}\\right)^2\\Delta t+0.02a_t^2\\right].",
+    "\\begin{aligned}\\delta_t&=r_t+\\gamma V_{v_{\\mathrm{old}}}(s_{t+1})-V_{v_{\\mathrm{old}}}(s_t),\\\\\\widehat A_t&=\\delta_t+\\gamma\\lambda\\widehat A_{t+1},\\qquad\\gamma=0.995,\\quad\\lambda=0.95.\\end{aligned}",
+    "\\begin{gathered}\\mathcal L_{\\mathrm{clip}}(w)=-\\mathbb E_t\\!\\left[\\min\\!\\left(\\rho_t\\widehat A_t,\\operatorname{clip}(\\rho_t,1-\\epsilon,1+\\epsilon)\\widehat A_t\\right)\\right],\\\\\\epsilon=0.2.\\end{gathered}",
+    "\\begin{aligned}\\mathcal L_{\\mathrm{total}}&=\\mathcal L_{\\mathrm{clip}}+0.5\\,\\mathbb E[(V_v(s_t)-\\widehat R_t)^2]-0.001\\,\\mathcal H(\\pi_w),\\\\\\widehat R_t&=\\widehat A_t+V_{v_{\\mathrm{old}}}(s_t).\\end{aligned}",
+    "\\begin{aligned}D_0&=\\{(o_t,\\mu_{\\mathrm T}(o_t,z_t))\\},\\\\D_{k+1}&=D_k\\cup\\{(o_t^{\\mathrm S,k},\\mu_{\\mathrm T}(o_t^{\\mathrm S,k},z_t))\\}.\\end{aligned}",
+    "w_{\\mathrm S}^{*}=\\operatorname*{arg\\,min}_w\\frac1{|D_K|}\\sum_{(o,u_{\\mathrm T})\\in D_K}\\|\\mu_{\\mathrm S}(o;w)-u_{\\mathrm T}\\|^2.",
+    "\\begin{aligned}e_t(W)&=p_{\\mathrm{ref},t}-p_t(W;\\widehat G_{\\mathrm{ARX}}),\\\\\\mathcal L_{\\mathrm{DHC6}}(W)&=\\frac1{N_{t\\ge2\\,\\mathrm s}}\\sum_{t\\ge2\\,\\mathrm s}e_t(W)^2,\\\\W_{k+1}&=\\operatorname{AdamUpdate}(W_k,\\nabla_W\\mathcal L_{\\mathrm{DHC6}};\\eta=3\\times10^{-5}).\\end{aligned}",
+    "R_{\\mathrm D}=\\operatorname*{median}_{i\\in I}\\left(\\frac{\\operatorname{RMSE}_{p,i}^{\\mathrm S}}{\\operatorname{RMSE}_{p,i}^{\\mathrm T}}\\right)."
+  ],
+  "table6": {
+    "caption": "表 6　固定增益 PID 与统一学生在同一批对象上的对照",
+    "headers": [
+      "指令",
+      "PID·同分布",
+      "学生·同分布",
+      "PID·分布外",
+      "学生·分布外"
+    ],
+    "rows": [
+      [
+        "±1 deg/s",
+        "80.0% (0.06)",
+        "99.7% (0.11)",
+        "46.6% (8.78)",
+        "86.8% (0.21)"
+      ],
+      [
+        "±5 deg/s",
+        "76.7% (0.30)",
+        "99.3% (0.32)",
+        "43.4% (13.41)",
+        "73.4% (0.69)"
+      ],
+      [
+        "±10 deg/s",
+        "74.7% (0.61)",
+        "99.3% (0.36)",
+        "40.2% (14.11)",
+        "66.0% (0.95)"
+      ],
+      [
+        "±21 deg/s",
+        "58.3% (1.28)",
+        "86.0% (0.69)",
+        "28.6% (15.67)",
+        "42.0% (2.03)"
+      ],
+      [
+        "±31 deg/s",
+        "35.7% (1.90)",
+        "60.3% (1.13)",
+        "16.2% (18.53)",
+        "27.6% (2.93)"
+      ],
+      [
+        "双脉冲 / 多正弦",
+        "72.3% / 78.3%",
+        "99.0% / 99.7%",
+        "36.8% / 43.2%",
+        "76.8% / 84.4%"
+      ]
+    ],
+    "original_generator_text": "SECTIONS.append(tab(\"表 6　固定增益 PID 与统一学生在同一批对象上的对照\",\r\n                    [\"指令\", \"PID·同分布\", \"学生·同分布\", \"PID·分布外\", \"学生·分布外\"],\r\n                    [[\"±1 deg/s\", \"80.0% (0.06)\", \"99.7% (0.11)\", \"46.6% (8.78)\", \"86.8% (0.21)\"],\r\n                     [\"±5 deg/s\", \"76.7% (0.30)\", \"99.3% (0.32)\", \"43.4% (13.41)\", \"73.4% (0.69)\"],\r\n                     [\"±10 deg/s\", \"74.7% (0.61)\", \"99.3% (0.36)\", \"40.2% (14.11)\", \"66.0% (0.95)\"],\r\n                     [\"±21 deg/s\", \"58.3% (1.28)\", \"86.0% (0.69)\", \"28.6% (15.67)\", \"42.0% (2.03)\"],\r\n                     [\"±31 deg/s\", \"35.7% (1.90)\", \"60.3% (1.13)\", \"16.2% (18.53)\", \"27.6% (2.93)\"],\r\n                     [\"双脉冲 / 多正弦\", \"72.3% / 78.3%\", \"99.0% / 99.7%\", \"36.8% / 43.2%\", \"76.8% / 84.4%\"]]))"
+  },
+  "changes": [
+    "Student closed-loop mechanism and source of time-domain curves; figure captions and references renumbered",
+    "HTML math typography",
+    "local fonts",
+    "Figure 1 layout and tiny/small labels",
+    "Table 6 generator text rendered as table; cell values unchanged",
+    "Sampled object model defined first; fixed reference-model equation, values and added explanatory section removed from the paper",
+    "Section 2 parameter table: eight sampled and two derived parameters; table captions and references numbered in reading order"
+  ],
+  "historical_metrics": "Reported values retain their recorded target signals; they have not been relabeled as newly measured raw-command tracking results.",
+  "original_root_untouched": "/home/swj/pingmo/flight_control_original_restored_2026-10-25"
+}

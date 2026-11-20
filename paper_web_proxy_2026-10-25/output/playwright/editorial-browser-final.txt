@@ -1,0 +1,16 @@
+### Result
+{
+  "title": "基于飞行品质的飞控大模型构建与滚转通道验证",
+  "viewport": 390,
+  "pageWidth": 390,
+  "mathErrors": 0,
+  "missingImages": 0,
+  "figures": 23,
+  "tables": 15,
+  "method": "3 基于飞行品质的飞控大模型构建方法",
+  "results": "5 滚转通道验证"
+}
+### Ran Playwright code
+```js
+await page.evaluate('() => ({title:document.title, viewport:innerWidth, pageWidth:document.documentElement.scrollWidth, mathErrors:document.querySelectorAll(\'.katex-error\').length, missingImages:[...document.images].filter(i=>!i.complete||!i.naturalWidth).length, figures:document.querySelectorAll(\'figure\').length, tables:document.querySelectorAll(\'table\').length, method:document.getElementById(\'s3\').textContent, results:document.getElementById(\'s5\').textContent})');
+```

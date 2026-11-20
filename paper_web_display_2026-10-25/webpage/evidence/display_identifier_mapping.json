@@ -1,0 +1,188 @@
+{
+  "numbering_scope": "Each experiment group starts at 1; labels are consistent in prose and figures.",
+  "main_objects": [
+    {
+      "number": 1,
+      "source_id": "train_core-0174",
+      "label": "主试验对象 1"
+    },
+    {
+      "number": 2,
+      "source_id": "train_core-0236",
+      "label": "主试验对象 2"
+    },
+    {
+      "number": 3,
+      "source_id": "train_core-0467",
+      "label": "主试验对象 3"
+    },
+    {
+      "number": 4,
+      "source_id": "train_boundary-1488",
+      "label": "主试验对象 4"
+    },
+    {
+      "number": 5,
+      "source_id": "train_core-0175",
+      "label": "主试验对象 5"
+    },
+    {
+      "number": 6,
+      "source_id": "train_boundary-1388",
+      "label": "主试验对象 6"
+    },
+    {
+      "number": 7,
+      "source_id": "train_core-0421",
+      "label": "主试验对象 7"
+    }
+  ],
+  "paired_objects_and_teachers": [
+    {
+      "number": 1,
+      "source_id": "train_core-1875",
+      "object_label": "对象 1",
+      "teacher_label": "教师 1"
+    },
+    {
+      "number": 2,
+      "source_id": "train_core-0750",
+      "object_label": "对象 2",
+      "teacher_label": "教师 2"
+    },
+    {
+      "number": 3,
+      "source_id": "train_core-1998",
+      "object_label": "对象 3",
+      "teacher_label": "教师 3"
+    },
+    {
+      "number": 4,
+      "source_id": "train_core-1197",
+      "object_label": "对象 4",
+      "teacher_label": "教师 4"
+    },
+    {
+      "number": 5,
+      "source_id": "train_core-0553",
+      "object_label": "对象 5",
+      "teacher_label": "教师 5"
+    },
+    {
+      "number": 6,
+      "source_id": "train_core-0262",
+      "object_label": "对象 6",
+      "teacher_label": "教师 6"
+    },
+    {
+      "number": 7,
+      "source_id": "train_core-0148",
+      "object_label": "对象 7",
+      "teacher_label": "教师 7"
+    },
+    {
+      "number": 8,
+      "source_id": "train_core-1450",
+      "object_label": "对象 8",
+      "teacher_label": "教师 8"
+    },
+    {
+      "number": 9,
+      "source_id": "train_core-0401",
+      "object_label": "对象 9",
+      "teacher_label": "教师 9"
+    },
+    {
+      "number": 10,
+      "source_id": "train_core-1871",
+      "object_label": "对象 10",
+      "teacher_label": "教师 10"
+    },
+    {
+      "number": 11,
+      "source_id": "train_core-1187",
+      "object_label": "对象 11",
+      "teacher_label": "教师 11"
+    },
+    {
+      "number": 12,
+      "source_id": "train_core-1442",
+      "object_label": "对象 12",
+      "teacher_label": "教师 12"
+    }
+  ],
+  "delay_objects": [
+    {
+      "number": 1,
+      "source_id": "id_test-3941",
+      "label": "时延对象 1"
+    },
+    {
+      "number": 2,
+      "source_id": "id_test-3458",
+      "label": "时延对象 2"
+    }
+  ],
+  "dhc6_states": [
+    {
+      "number": 1,
+      "source_id": "V060_H2500",
+      "label": "状态 1"
+    },
+    {
+      "number": 2,
+      "source_id": "V060_H3000",
+      "label": "状态 2"
+    },
+    {
+      "number": 3,
+      "source_id": "V060_H3500",
+      "label": "状态 3"
+    },
+    {
+      "number": 4,
+      "source_id": "V070_H2500",
+      "label": "状态 4"
+    },
+    {
+      "number": 5,
+      "source_id": "V070_H3000",
+      "label": "状态 5"
+    },
+    {
+      "number": 6,
+      "source_id": "V070_H3500",
+      "label": "状态 6"
+    },
+    {
+      "number": 7,
+      "source_id": "V080_H2500",
+      "label": "状态 7"
+    },
+    {
+      "number": 8,
+      "source_id": "V080_H3000",
+      "label": "状态 8"
+    },
+    {
+      "number": 9,
+      "source_id": "V050_H2500",
+      "label": "状态 9"
+    },
+    {
+      "number": 10,
+      "source_id": "V050_H3000",
+      "label": "状态 10"
+    },
+    {
+      "number": 11,
+      "source_id": "V050_H3500",
+      "label": "状态 11"
+    },
+    {
+      "number": 12,
+      "source_id": "V080_H3500",
+      "label": "状态 12"
+    }
+  ]
+}

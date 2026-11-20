@@ -1,0 +1,183 @@
+{
+  "created_utc": "2026-10-17T04:19:07Z",
+  "script": "dhc6_blog_assets\\make_teacher_figures.py",
+  "bank": {
+    "path": "pingmo\\results\\pure_reward_teacher_bank_coverage_v3\\merged_bank\\teacher_bank.json",
+    "sha256": "579765e3d206145c0e9527f43760f83d6b5bb6c8e9777403efbdb2aaa2564d5c"
+  },
+  "counts": {
+    "accepted": 32,
+    "rejected": 36,
+    "accepted_local": 21,
+    "rejected_local": 27,
+    "training_curves": 21
+  },
+  "levels_accepted": {
+    "level_1": 9,
+    "level_2": 14,
+    "level_3": 9
+  },
+  "levels_accepted_local": {
+    "level_2": 11,
+    "level_3": 6,
+    "level_1": 4
+  },
+  "thresholds": {
+    "minimum_tracking_improvement_rate": 1.0,
+    "maximum_mean_tracking_rmse_deg_s": 1.5,
+    "maximum_peak_error_deg_s": 5.0,
+    "maximum_mean_requested_force_total_variation_rate_n_s": 12.0,
+    "maximum_saturation_fraction": 0.01
+  },
+  "thresholds_uniform": true,
+  "selection_rule": "local accepted teachers; per level, minimum |fixed-validation mean RMSE - level median|, tie-break by plant_id; actor = merged_bank actor (sha256 recorded)",
+  "representatives": [
+    {
+      "level": "level_1",
+      "plant_id": "train_boundary-1488",
+      "selected_step": 50000,
+      "validation_rmse_deg_s": 0.6578369843883607,
+      "median_pool_rmse_deg_s": 0.6347404193867918,
+      "pool_size": 4,
+      "actor_sha256": "57ebe09e6da3ce2bbfbb903ebbf6de4d9974e3ebf220bb766e22b2e93d16dc82"
+    },
+    {
+      "level": "level_2",
+      "plant_id": "train_core-0175",
+      "selected_step": 60000,
+      "validation_rmse_deg_s": 0.5159467774992926,
+      "median_pool_rmse_deg_s": 0.5159467774992926,
+      "pool_size": 11,
+      "actor_sha256": "7909f8eb8ee00c9c41dff8f3315d2032cc71528ffd63a2c310a8bbf9d2cd8788"
+    },
+    {
+      "level": "level_3",
+      "plant_id": "train_boundary-1388",
+      "selected_step": 60000,
+      "validation_rmse_deg_s": 0.8727642402260248,
+      "median_pool_rmse_deg_s": 0.8657273390883803,
+      "pool_size": 6,
+      "actor_sha256": "894cf04b0c02b4e33b325fca3b86f1bd0b48fd6c49a9f0c0c2c0a16ec0789729"
+    }
+  ],
+  "commands": [
+    {
+      "id": "eval-step-pos-15deg-s",
+      "label": "阶跃 +15 deg/s",
+      "window_s": 6.0
+    },
+    {
+      "id": "eval-multisine",
+      "label": "多正弦（0.30/0.85/1.40 Hz）",
+      "window_s": 10.0
+    }
+  ],
+  "tv_axis": {
+    "data_min": 3.2327642811772725,
+    "data_max": 2297.425545677077,
+    "ylim": [
+      2.586211424941818,
+      2986.6532093802
+    ],
+    "zeros": 0
+  },
+  "traces": {
+    "train_boundary-1488_eval-step-pos-15deg-s": {
+      "rows": 1501,
+      "dt_s": 0.02
+    },
+    "train_boundary-1488_eval-multisine": {
+      "rows": 1501,
+      "dt_s": 0.02
+    },
+    "train_core-0175_eval-step-pos-15deg-s": {
+      "rows": 1501,
+      "dt_s": 0.02
+    },
+    "train_core-0175_eval-multisine": {
+      "rows": 1501,
+      "dt_s": 0.02
+    },
+    "train_boundary-1388_eval-step-pos-15deg-s": {
+      "rows": 1501,
+      "dt_s": 0.02
+    },
+    "train_boundary-1388_eval-multisine": {
+      "rows": 1501,
+      "dt_s": 0.02
+    }
+  },
+  "figures": {
+    "teacher_training_curves.png": "deea867d85cbacfd6bd04fa88bdfe9b225e21c97ab2b7542cfe81342db18dbec",
+    "teacher_closed_loop.png": "6aa650161cec249fdd79bb4035c8ac04ba1934812ac145ef5a0442d81c9717b1",
+    "teacher_bank_overview.png": "8d49c2ef327b024cc7eff17855f00c6387e383b3aec3808ee4cd69186dc28cba"
+  },
+  "inputs": {
+    "train_boundary-1488": {
+      "report_sha256": "8fc142b98950b285640ee99805684509b5d2341ccbaa73da1466537b08473fd0",
+      "learning_curve_sha256": "7a663aa6c10150d1f78591238159d34274c5d9da238bf0eae4ddfb8c938c2add",
+      "actor_sha256": "57ebe09e6da3ce2bbfbb903ebbf6de4d9974e3ebf220bb766e22b2e93d16dc82",
+      "selected_step": 50000,
+      "command_metrics": {
+        "eval-step-pos-15deg-s": {
+          "tracking_rmse_deg_s": 0.39266140519374787,
+          "tracking_peak_error_deg_s": 1.312528862193922,
+          "force_rms_n": 5.830835078352534,
+          "requested_force_total_variation_n": 15.586234152317047,
+          "force_saturation_fraction": 0.0
+        },
+        "eval-multisine": {
+          "tracking_rmse_deg_s": 1.0221622227979752,
+          "tracking_peak_error_deg_s": 1.6032507998046328,
+          "force_rms_n": 1.8609751352348387,
+          "requested_force_total_variation_n": 103.28341341763735,
+          "force_saturation_fraction": 0.0
+        }
+      }
+    },
+    "train_core-0175": {
+      "report_sha256": "9f8c9b737105dc45304b50fe01e3e08a8699fba6b761768e20fc6b41f07347b0",
+      "learning_curve_sha256": "3336f58edefab32ebf1d6595f442aff42f444054066175c5d3a4cb388f355828",
+      "actor_sha256": "7909f8eb8ee00c9c41dff8f3315d2032cc71528ffd63a2c310a8bbf9d2cd8788",
+      "selected_step": 60000,
+      "command_metrics": {
+        "eval-step-pos-15deg-s": {
+          "tracking_rmse_deg_s": 0.40012652274856403,
+          "tracking_peak_error_deg_s": 1.3550883561768488,
+          "force_rms_n": 3.354548110752148,
+          "requested_force_total_variation_n": 506.82112734764814,
+          "force_saturation_fraction": 0.0
+        },
+        "eval-multisine": {
+          "tracking_rmse_deg_s": 0.5998208026726339,
+          "tracking_peak_error_deg_s": 1.2903521020228768,
+          "force_rms_n": 0.6241827650285721,
+          "requested_force_total_variation_n": 35.99077036604285,
+          "force_saturation_fraction": 0.0
+        }
+      }
+    },
+    "train_boundary-1388": {
+      "report_sha256": "5e46b67c03475c315099fbe4b3e72daaa889d2a0c130aadb6397134be6a2211b",
+      "learning_curve_sha256": "98e3402ceed2691fe9892ff378588240575d70e3306a9ebe69f2f5772227a284",
+      "actor_sha256": "894cf04b0c02b4e33b325fca3b86f1bd0b48fd6c49a9f0c0c2c0a16ec0789729",
+      "selected_step": 60000,
+      "command_metrics": {
+        "eval-step-pos-15deg-s": {
+          "tracking_rmse_deg_s": 0.7625922119053274,
+          "tracking_peak_error_deg_s": 1.4536729878562489,
+          "force_rms_n": 1.6761864863084162,
+          "requested_force_total_variation_n": 12.242324739694595,
+          "force_saturation_fraction": 0.0
+        },
+        "eval-multisine": {
+          "tracking_rmse_deg_s": 0.679682395534497,
+          "tracking_peak_error_deg_s": 1.5785932057888226,
+          "force_rms_n": 1.392907383655818,
+          "requested_force_total_variation_n": 77.46065619587898,
+          "force_saturation_fraction": 0.0
+        }
+      }
+    }
+  }
+}

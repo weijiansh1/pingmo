@@ -1,0 +1,680 @@
+{
+  "counts": {
+    "display": 15,
+    "inline": 153
+  },
+  "expressions": [
+    {
+      "tex": "\\theta",
+      "display": false
+    },
+    {
+      "tex": "w",
+      "display": false
+    },
+    {
+      "tex": "\\theta",
+      "display": false
+    },
+    {
+      "tex": "w",
+      "display": false
+    },
+    {
+      "tex": "\\theta",
+      "display": false
+    },
+    {
+      "tex": "w",
+      "display": false
+    },
+    {
+      "tex": "p_{\\mathrm{cmd}}",
+      "display": false
+    },
+    {
+      "tex": "p",
+      "display": false
+    },
+    {
+      "tex": "p_{\\mathrm{ref}}",
+      "display": false
+    },
+    {
+      "tex": "P_{\\mathrm{ref}}(s)=\\frac{\\omega_n^2}{s^2+2\\zeta_n\\omega_ns+\\omega_n^2}P_{\\mathrm{cmd}}(s),\\quad \\omega_n=2\\,\\mathrm{rad/s},\\quad\\zeta_n=0.7. \\tag{1}",
+      "display": true
+    },
+    {
+      "tex": "a",
+      "display": false
+    },
+    {
+      "tex": "G_\\theta(s)=\\frac{L_{F_a}s(s^2+2\\zeta_\\phi\\omega_\\phi s+\\omega_\\phi^2)}{(s-\\lambda_s)(s+1/T_R)(s^2+2\\zeta_d\\omega_ds+\\omega_d^2)}e^{-\\tau_ps}. \\tag{2}",
+      "display": true
+    },
+    {
+      "tex": "\\theta",
+      "display": false
+    },
+    {
+      "tex": "L_{F_a}",
+      "display": false
+    },
+    {
+      "tex": "\\lambda_s",
+      "display": false
+    },
+    {
+      "tex": "T_R",
+      "display": false
+    },
+    {
+      "tex": "\\zeta_d",
+      "display": false
+    },
+    {
+      "tex": "\\omega_d",
+      "display": false
+    },
+    {
+      "tex": "R_\\omega",
+      "display": false
+    },
+    {
+      "tex": "R_\\zeta",
+      "display": false
+    },
+    {
+      "tex": "\\tau_p",
+      "display": false
+    },
+    {
+      "tex": "\\omega_\\phi=R_\\omega\\omega_d",
+      "display": false
+    },
+    {
+      "tex": "\\zeta_\\phi=R_\\zeta\\zeta_d",
+      "display": false
+    },
+    {
+      "tex": "T_R",
+      "display": false
+    },
+    {
+      "tex": "\\lambda_s",
+      "display": false
+    },
+    {
+      "tex": "\\zeta_d",
+      "display": false
+    },
+    {
+      "tex": "\\omega_d",
+      "display": false
+    },
+    {
+      "tex": "L_{F_a}",
+      "display": false
+    },
+    {
+      "tex": "\\tau_p",
+      "display": false
+    },
+    {
+      "tex": "x",
+      "display": false
+    },
+    {
+      "tex": "p",
+      "display": false
+    },
+    {
+      "tex": "r",
+      "display": false
+    },
+    {
+      "tex": "\\beta",
+      "display": false
+    },
+    {
+      "tex": "\\phi",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\theta",
+      "display": false
+    },
+    {
+      "tex": "\\begin{gathered}o_k=\\operatorname{Norm}([o_k^{\\mathrm{cur}},h_k,a_{k-7:k-1}])\\in\\mathbb R^{176},\\\\o_k^{\\mathrm{cur}}=[p_{\\mathrm{cmd}},p_{\\mathrm{ref}},p,e,\\int e\\,dt,\\dot p,\\dot p_{\\mathrm{ref}},F_{\\mathrm{req}},F_{\\mathrm{applied}}],\\\\o_k^{\\mathrm T}=[o_k,\\theta,x_k],\\qquad o_k^{\\mathrm S}=o_k,\\qquad e=p_{\\mathrm{ref}}-p.\\end{gathered} \\tag{3}",
+      "display": true
+    },
+    {
+      "tex": "p_{\\mathrm{cmd}}",
+      "display": false
+    },
+    {
+      "tex": "p_{\\mathrm{ref}}",
+      "display": false
+    },
+    {
+      "tex": "p",
+      "display": false
+    },
+    {
+      "tex": "e",
+      "display": false
+    },
+    {
+      "tex": "F_{\\mathrm{req}}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{rad/s^2}",
+      "display": false
+    },
+    {
+      "tex": "\\theta",
+      "display": false
+    },
+    {
+      "tex": "x",
+      "display": false
+    },
+    {
+      "tex": "F_{\\mathrm{applied}}",
+      "display": false
+    },
+    {
+      "tex": "u",
+      "display": false
+    },
+    {
+      "tex": "a",
+      "display": false
+    },
+    {
+      "tex": "u",
+      "display": false
+    },
+    {
+      "tex": "\\begin{gathered}u_k\\sim\\mathcal N(\\mu_w(o_k^{\\mathrm T}),\\sigma_w^2),\\qquad a_k=\\operatorname{clip}(u_k,-1,1),\\\\F_{\\mathrm{req},k+1}=\\operatorname{clip}(F_{\\mathrm{req},k}+1.76a_k,-22,22)\\ \\mathrm N,\\\\r_k=-\\left[\\left(\\frac{e_{k+1}}{30\\,\\mathrm{deg/s}}\\right)^2+0.02\\left(\\frac{F_{\\mathrm{applied},k+1}}{22\\,\\mathrm N}\\right)^2+a_k^2\\right].\\end{gathered} \\tag{4}",
+      "display": true
+    },
+    {
+      "tex": "\\mathrm{N/s}",
+      "display": false
+    },
+    {
+      "tex": "e_{k+1}=p_{\\mathrm{ref},k+1}-p_{k+1}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "r",
+      "display": false
+    },
+    {
+      "tex": "o",
+      "display": false
+    },
+    {
+      "tex": "z",
+      "display": false
+    },
+    {
+      "tex": "a^{\\mathrm T}",
+      "display": false
+    },
+    {
+      "tex": "\\begin{gathered}D_{r+1}=D_r\\cup\\{(o,a^{\\mathrm T}(o,z)):\\ (o,z)\\sim d_{\\pi_r}\\},\\\\w_{r+1}=\\arg\\min_w\\frac{1}{|D_{r+1}|}\\sum_{(o,a^{\\mathrm T})\\in D_{r+1}}\\|a^{\\mathrm S}_w(o)-a^{\\mathrm T}\\|^2.\\end{gathered} \\tag{5}",
+      "display": true
+    },
+    {
+      "tex": "d_{\\pi_r}",
+      "display": false
+    },
+    {
+      "tex": "r",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\begin{gathered}\\mathcal L_{\\mathrm{target}}(w)=\\frac{1}{M}\\sum_{k=1}^{M}\\left[\\left(\\frac{e_k(w)}{30\\,\\mathrm{deg/s}}\\right)^2+0.02\\left(\\frac{F_{\\mathrm{applied},k}(w)}{22\\,\\mathrm N}\\right)^2+a_{k-1}(w)^2\\right],\\\\w_0=w_{\\mathrm{source}}\\ \\text{or}\\ w_{\\mathrm{random}},\\qquad\nw_{b+1}=\\operatorname{Adam}(w_b,\\nabla_w\\mathcal L_{\\mathrm{target}};3\\times10^{-4}).\\end{gathered} \\tag{6}",
+      "display": true
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\begin{gathered}\\mathrm{RMSE}=\\sqrt{\\frac1M\\sum_{k=1}^{M}e_k^2}\\le1.5\\,\\mathrm{deg/s},\\qquad\n\\mathrm{Peak}=\\max_k|e_k|\\le5\\,\\mathrm{deg/s},\\\\\n\\mathrm{TV}_F=\\frac1T\\sum_{k=1}^{M}|F_{\\mathrm{req},k}-F_{\\mathrm{req},k-1}|\\le12\\,\\mathrm{N/s}.\\end{gathered} \\tag{7}",
+      "display": true
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "|p|>300\\,\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "K_p=45,\\quad K_i=24,\\quad K_d=1",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\lambda_s\\ne0",
+      "display": false
+    },
+    {
+      "tex": "G(0)=0",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\dot{x}=Ax+BF",
+      "display": false
+    },
+    {
+      "tex": "p=Cx",
+      "display": false
+    },
+    {
+      "tex": "x_{j+1}=A_dx_j+B_dF^{\\mathrm{delayed}}_j,\\qquad p_j=Cx_j,\\qquad\\Delta t_{\\mathrm{plant}}=0.001\\,\\mathrm s. \\tag{A1}",
+      "display": true
+    },
+    {
+      "tex": "j",
+      "display": false
+    },
+    {
+      "tex": "k",
+      "display": false
+    },
+    {
+      "tex": "\\theta",
+      "display": false
+    },
+    {
+      "tex": "w",
+      "display": false
+    },
+    {
+      "tex": "w",
+      "display": false
+    },
+    {
+      "tex": "Cx=p_0",
+      "display": false
+    },
+    {
+      "tex": "p=7\\,\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "T_R=0.5\\,\\mathrm{s}",
+      "display": false
+    },
+    {
+      "tex": "b=8\\,\\mathrm{deg/(s^2\\!\\cdot N)}",
+      "display": false
+    },
+    {
+      "tex": "F=2\\,\\mathrm{N}",
+      "display": false
+    },
+    {
+      "tex": "\\dot{p}=-p/T_R+bF=2\\,\\mathrm{deg/s^2}",
+      "display": false
+    },
+    {
+      "tex": "p\\approx7.04\\,\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "s",
+      "display": false
+    },
+    {
+      "tex": "b/(s+1/T_R)",
+      "display": false
+    },
+    {
+      "tex": "s",
+      "display": false
+    },
+    {
+      "tex": "q(t)=A\\exp(-\\zeta_d\\omega_dt)\\cos\\!\\left(\\omega_d\\sqrt{1-\\zeta_d^2}\\,t\\right). \\tag{A2}",
+      "display": true
+    },
+    {
+      "tex": "\\omega_d=2\\,\\mathrm{rad/s}",
+      "display": false
+    },
+    {
+      "tex": "\\zeta_d=0.1",
+      "display": false
+    },
+    {
+      "tex": "\\zeta_d=0.5",
+      "display": false
+    },
+    {
+      "tex": "p",
+      "display": false
+    },
+    {
+      "tex": "\\phi",
+      "display": false
+    },
+    {
+      "tex": "\\dot{\\phi}\\approx p",
+      "display": false
+    },
+    {
+      "tex": "a=0.1",
+      "display": false
+    },
+    {
+      "tex": "a=0",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{deg/s}",
+      "display": false
+    },
+    {
+      "tex": "r=-\\left[(3/30)^2+0.02(11/22)^2+0.1^2\\right]=-0.025. \\tag{A3}",
+      "display": true
+    },
+    {
+      "tex": "G_k=\\sum_{\\ell=0}^{H-1-k}\\gamma^\\ell r_{k+\\ell},\\qquad J(w)=\\mathbb E_{\\tau\\sim\\pi_w}[G_0],\\qquad H=400,\\quad\\gamma=0.995. \\tag{A4}",
+      "display": true
+    },
+    {
+      "tex": "\\gamma",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\xi",
+      "display": false
+    },
+    {
+      "tex": "V_v(\\xi)",
+      "display": false
+    },
+    {
+      "tex": "\\delta",
+      "display": false
+    },
+    {
+      "tex": "\\widehat{A}",
+      "display": false
+    },
+    {
+      "tex": "\\begin{gathered}\\delta_k=r_k+\\gamma(1-d_k)V_v(\\xi_{k+1})-V_v(\\xi_k),\\\\\\widehat A_k=\\delta_k+\\gamma\\lambda(1-d_k)\\widehat A_{k+1},\\qquad\\lambda=0.95.\\end{gathered} \\tag{A5}",
+      "display": true
+    },
+    {
+      "tex": "d=1",
+      "display": false
+    },
+    {
+      "tex": "d=0",
+      "display": false
+    },
+    {
+      "tex": "\\lambda",
+      "display": false
+    },
+    {
+      "tex": "\\lambda_s",
+      "display": false
+    },
+    {
+      "tex": "r=-0.1",
+      "display": false
+    },
+    {
+      "tex": "\\delta=-0.1+0.995\\times(-4)-(-5)=0.92",
+      "display": false
+    },
+    {
+      "tex": "u",
+      "display": false
+    },
+    {
+      "tex": "\\begin{gathered}\\rho_k(w)=\\frac{\\pi_w(u_k\\mid o_k^{\\mathrm T})}{\\pi_{\\mathrm{old}}(u_k\\mid o_k^{\\mathrm T})},\\\\L_{\\mathrm{clip}}=-\\mathbb E_k\\!\\left[\\min\\!\\left(\\rho_k\\widehat A_k,\\operatorname{clip}(\\rho_k,1-\\varepsilon,1+\\varepsilon)\\widehat A_k\\right)\\right],\\quad\\varepsilon=0.2.\\end{gathered} \\tag{A6}",
+      "display": true
+    },
+    {
+      "tex": "\\begin{gathered}L_{\\mathrm{total}}=L_{\\mathrm{clip}}+0.5\\mathbb E[(V_v(\\xi_k)-R_k)^2]-0.001\\mathcal H(\\pi_w),\\\\R_k=\\widehat A_k+V_{\\mathrm{old}}(\\xi_k).\\end{gathered} \\tag{A7}",
+      "display": true
+    },
+    {
+      "tex": "R",
+      "display": false
+    },
+    {
+      "tex": "3\\times10^{-4}",
+      "display": false
+    },
+    {
+      "tex": "\\log\\sigma=-2",
+      "display": false
+    },
+    {
+      "tex": "3\\times10^{-4}",
+      "display": false
+    },
+    {
+      "tex": "d_{k+1}=g\\,d_k+\\epsilon,\\qquad d_0=0,\\qquad d_n=\\epsilon\\sum_{i=0}^{n-1}g^i. \\tag{A8}",
+      "display": true
+    },
+    {
+      "tex": "g=0.9,\\quad\\epsilon=0.01",
+      "display": false
+    },
+    {
+      "tex": "g=1",
+      "display": false
+    },
+    {
+      "tex": "g=1.05",
+      "display": false
+    },
+    {
+      "tex": "g",
+      "display": false
+    },
+    {
+      "tex": "a^2+0.25",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\ln(2)/\\lambda_s",
+      "display": false
+    },
+    {
+      "tex": "\\zeta_d",
+      "display": false
+    },
+    {
+      "tex": "\\zeta_d\\omega_d",
+      "display": false
+    },
+    {
+      "tex": "\\omega_d",
+      "display": false
+    },
+    {
+      "tex": "\\zeta_d\\ge0,\\quad\\omega_d\\ge0.4",
+      "display": false
+    },
+    {
+      "tex": "\\omega_d^2|\\phi/\\beta|_d>20",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\tau_p",
+      "display": false
+    },
+    {
+      "tex": "s^2",
+      "display": false
+    },
+    {
+      "tex": "s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm{rad/s}",
+      "display": false
+    },
+    {
+      "tex": "0.20<\\tau_p\\le0.25\\,\\mathrm{s}",
+      "display": false
+    },
+    {
+      "tex": "R_\\omega",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    },
+    {
+      "tex": "\\mathrm s",
+      "display": false
+    }
+  ]
+}

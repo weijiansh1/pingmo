@@ -1,0 +1,23 @@
+### Result
+{"gallery":{"objects":60,"fontFamily":"PaperChinese, sans-serif","firstImageLoaded":true,"scrollWidth":1200,"width":1200},"mathErrors":0}
+### Ran Playwright code
+```js
+await (async(page)=>{
+ await page.emulateMedia({media:'screen'});await page.setViewportSize({width:1200,height:1000});
+ await page.goto('http://127.0.0.1:8321/time_domain_gallery.html');
+ await page.locator('details').first().locator('summary').click();
+ await page.evaluate(async()=>{await document.fonts.ready;const im=document.querySelector('details[open] img');await im.decode();});
+ await page.screenshot({path:'output/playwright/time-domain-gallery.png'});
+ const gallery=await page.evaluate(()=>({objects:document.querySelectorAll('details').length,fontFamily:getComputedStyle(document.body).fontFamily,firstImageLoaded:document.querySelector('details[open] img').naturalWidth>0,scrollWidth:document.documentElement.scrollWidth,width:innerWidth}));
+ await page.goto('http://127.0.0.1:8321/dhc6_report.html');
+ await page.evaluate(async()=>{await document.fonts.ready;await Promise.all(Array.from(document.images,im=>{im.loading='eager';return im.decode();}));});
+ await page.emulateMedia({media:'print'});await page.setViewportSize({width:673,height:950});
+ await page.pdf({path:'论文_全文统稿_2026-10-25.pdf',format:'A4',preferCSSPageSize:true,printBackground:true,tagged:true,outline:true,displayHeaderFooter:true,headerTemplate:'<span></span>',footerTemplate:'<div style="font-size:9px;text-align:center;width:100%;"><span class="pageNumber"></span> / <span class="totalPages"></span></div>'});
+ return {gallery,mathErrors:await page.locator('.katex-error').count()};
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:8321/dhc6_report.html
+- Page Title: 基于飞行品质模型的飞控控制器构建：特权教师与多轮蒸馏
+### Events
+- New console entries: output/playwright/console-2026-10-25T10-24-38-283Z.log#L1

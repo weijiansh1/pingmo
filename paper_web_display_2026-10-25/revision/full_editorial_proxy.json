@@ -1,0 +1,130 @@
+{
+  "actual_proxy_matches_current_html": true,
+  "title": "基于飞行品质的飞控大模型构建与滚转通道验证",
+  "html_sha256": "450e774b18796d173ebfb82d8d680fa0c660d51c078aa3c8236aba104936eecb",
+  "resource_count": 24,
+  "all_http_200": true,
+  "resources": [
+    {
+      "path": "webpage/evidence/display_identifier_mapping.json",
+      "status": 200,
+      "bytes": 3921
+    },
+    {
+      "path": "webpage/paper/closed_loop_simulation.svg?v=e349078107bd",
+      "status": 200,
+      "bytes": 165278
+    },
+    {
+      "path": "webpage/paper/cross_object_matrix.svg?v=labels-5135639fad5f",
+      "status": 200,
+      "bytes": 301687
+    },
+    {
+      "path": "webpage/paper/cross_object_responses.svg?v=labels-526d23b743ea",
+      "status": 200,
+      "bytes": 562254
+    },
+    {
+      "path": "webpage/paper/delay_closed_loop.svg?v=labels-03c15e6e1cf8",
+      "status": 200,
+      "bytes": 159986
+    },
+    {
+      "path": "webpage/paper/delay_network.svg?v=115348",
+      "status": 200,
+      "bytes": 134586
+    },
+    {
+      "path": "webpage/paper/delay_probe.svg?v=115348",
+      "status": 200,
+      "bytes": 189709
+    },
+    {
+      "path": "webpage/paper/dhc6_states.svg?v=labels-3090e8b83c66",
+      "status": 200,
+      "bytes": 119738
+    },
+    {
+      "path": "webpage/paper/dhc6_transfer.svg?v=labels-720a47a39555",
+      "status": 200,
+      "bytes": 158968
+    },
+    {
+      "path": "webpage/paper/pipeline_framework.svg?v=teacher50-20261025",
+      "status": 200,
+      "bytes": 191747
+    },
+    {
+      "path": "webpage/paper/sampling_marginals.svg?v=115348",
+      "status": 200,
+      "bytes": 231355
+    },
+    {
+      "path": "webpage/paper/sampling_scatter.svg?v=115348",
+      "status": 200,
+      "bytes": 400749
+    },
+    {
+      "path": "webpage/paper/student_amplitude.svg?v=115348",
+      "status": 200,
+      "bytes": 78741
+    },
+    {
+      "path": "webpage/paper/student_dagger.svg?v=115348",
+      "status": 200,
+      "bytes": 58271
+    },
+    {
+      "path": "webpage/paper/student_network_tensor.svg?v=115348",
+      "status": 200,
+      "bytes": 87540
+    },
+    {
+      "path": "webpage/paper/tau_e_amplitude.svg?v=115348",
+      "status": 200,
+      "bytes": 129906
+    },
+    {
+      "path": "webpage/paper/tau_e_eval.svg?v=labels-917d1f4b4d39",
+      "status": 200,
+      "bytes": 171658
+    },
+    {
+      "path": "webpage/paper/tau_e_seed.svg?v=115348",
+      "status": 200,
+      "bytes": 136377
+    },
+    {
+      "path": "webpage/paper/teacher_closed_loop.svg?v=labels-d40221358482",
+      "status": 200,
+      "bytes": 489769
+    },
+    {
+      "path": "webpage/paper/teacher_difficulty.svg?v=115348",
+      "status": 200,
+      "bytes": 54973
+    },
+    {
+      "path": "webpage/paper/teacher_network_tensor.svg?v=115348",
+      "status": 200,
+      "bytes": 95059
+    },
+    {
+      "path": "webpage/paper/teacher_student_compare.svg?v=labels-8b6fb02c17f6",
+      "status": 200,
+      "bytes": 285518
+    },
+    {
+      "path": "webpage/paper/teacher_training_curves.svg?v=title-trim-20261025",
+      "status": 200,
+      "bytes": 150020
+    },
+    {
+      "path": "webpage/paper/topk4_diagnostic.svg?v=labels-e1a9874e054f",
+      "status": 200,
+      "bytes": 198298
+    }
+  ],
+  "current_heading_revision_and_new_font_verified": true
+}

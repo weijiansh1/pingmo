@@ -1,0 +1,131 @@
+{
+  "background": "#FFFFFF",
+  "contrast_screen": {
+    "basis": "WCAG 2.2 contrast mathematics. Applicability depends on use; for example, SC 1.4.11 covers graphical objects required to understand web content.",
+    "review_count": 0,
+    "role": "graphical",
+    "threshold": 3.0
+  },
+  "grayscale_screen": {
+    "basis": "Heuristic CIE L* separation after removing hue. It does not predict all viewing, printing, or color-vision conditions.",
+    "minimum_delta_lstar": 10.0,
+    "pair_count": 6,
+    "review_count": 3
+  },
+  "notice": "No palette can establish accessibility by itself. Preserve labels and add redundant encodings such as markers, line styles, direct labels, or patterns; evaluate the rendered figure in context.",
+  "pairs": [
+    {
+      "contrast_ratio": 2.647,
+      "first_hex": "#111827",
+      "first_index": 0,
+      "grayscale_delta_lstar": 30.718,
+      "grayscale_screen": "pass",
+      "second_hex": "#1D4ED8",
+      "second_index": 1
+    },
+    {
+      "contrast_ratio": 3.728,
+      "first_hex": "#111827",
+      "first_index": 0,
+      "grayscale_delta_lstar": 40.044,
+      "grayscale_screen": "pass",
+      "second_hex": "#64748B",
+      "second_index": 2
+    },
+    {
+      "contrast_ratio": 3.533,
+      "first_hex": "#111827",
+      "first_index": 0,
+      "grayscale_delta_lstar": 38.559,
+      "grayscale_screen": "pass",
+      "second_hex": "#B45309",
+      "second_index": 3
+    },
+    {
+      "contrast_ratio": 1.408,
+      "first_hex": "#1D4ED8",
+      "first_index": 1,
+      "grayscale_delta_lstar": 9.325,
+      "grayscale_screen": "review",
+      "second_hex": "#64748B",
+      "second_index": 2
+    },
+    {
+      "contrast_ratio": 1.335,
+      "first_hex": "#1D4ED8",
+      "first_index": 1,
+      "grayscale_delta_lstar": 7.84,
+      "grayscale_screen": "review",
+      "second_hex": "#B45309",
+      "second_index": 3
+    },
+    {
+      "contrast_ratio": 1.055,
+      "first_hex": "#64748B",
+      "first_index": 2,
+      "grayscale_delta_lstar": 1.485,
+      "grayscale_screen": "review",
+      "second_hex": "#B45309",
+      "second_index": 3
+    }
+  ],
+  "palette": {
+    "color_count": 4,
+    "colors": [
+      {
+        "background_screen": "pass",
+        "cie_lstar": 8.297,
+        "contrast_against_background": 17.74,
+        "hex": "#111827",
+        "index": 0,
+        "relative_luminance": 0.009189,
+        "rgb": [
+          17,
+          24,
+          39
+        ]
+      },
+      {
+        "background_screen": "pass",
+        "cie_lstar": 39.015,
+        "contrast_against_background": 6.702,
+        "hex": "#1D4ED8",
+        "index": 1,
+        "relative_luminance": 0.106679,
+        "rgb": [
+          29,
+          78,
+          216
+        ]
+      },
+      {
+        "background_screen": "pass",
+        "cie_lstar": 48.341,
+        "contrast_against_background": 4.759,
+        "hex": "#64748B",
+        "index": 2,
+        "relative_luminance": 0.170642,
+        "rgb": [
+          100,
+          116,
+          139
+        ]
+      },
+      {
+        "background_screen": "pass",
+        "cie_lstar": 46.856,
+        "contrast_against_background": 5.022,
+        "hex": "#B45309",
+        "index": 3,
+        "relative_luminance": 0.159095,
+        "rgb": [
+          180,
+          83,
+          9
+        ]
+      }
+    ],
+    "name": "custom"
+  },
+  "schema_version": "1.0"
+}

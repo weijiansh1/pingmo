@@ -1,0 +1,128 @@
+{
+  "schema_version": "pingmo_roll_periphery_v1",
+  "generated_utc": "2026-10-18T17:29:51.036526+00:00",
+  "training": "none; all central networks and theta frozen",
+  "inputs_sha256": {
+    "C:\\Users\\24307\\Documents\\ChatGPT\\品模\\pingmo\\results\\pure_reward_teacher_bank_coverage_v4\\student_driven_dense_stability\\final\\dense_student.pt": "3c7e545fe7273363c65185355b5ab63f2fd29f7eedb02f5fc91c0b913520e432",
+    "C:\\Users\\24307\\Documents\\ChatGPT\\品模\\dhc6_finetune\\unified\\b30\\weights\\full.pt": "f49be7aea43900d90a35781a08c73e44863c38cd38bb894da2bdf11228baef29",
+    "C:\\Users\\24307\\Documents\\ChatGPT\\品模\\dhc6_finetune\\unified\\b30\\theta.json": "d931d4086b59d3ddcc5e2f9f24674eef15533d8ff5013f60f42eb6994ef022e1",
+    "C:\\Users\\24307\\Documents\\ChatGPT\\品模\\dhc6_finetune\\unified\\shared\\eval_models.json": "dcb435c8302e40a9e14d78b18623d7bfb69a7abd7a6cbaebe79b645a7f8b3d8b",
+    "C:\\Users\\24307\\Documents\\ChatGPT\\品模\\dhc6_finetune\\unified\\b15\\manifest.json": "ff7cb2d4caa4346ea9999d131efe75b3ef9fefb3ddd25dc309107a25ab89ba95",
+    "C:\\Users\\24307\\Documents\\ChatGPT\\品模\\dhc6_finetune\\unified\\b30\\manifest.json": "834a71cfb07790ab7d9c99414dce16788d64108b7deace6b96dac2f242947290",
+    "C:\\Users\\24307\\Documents\\ChatGPT\\品模\\dhc6_finetune\\unified\\b60\\manifest.json": "a30299479d47f5944a0d3e441af05e7e0fbfbc35d70975ea13fd73c87f50fce2"
+  },
+  "archived_inputs_unchanged": true,
+  "implementation_sha256": {
+    "scripts\\43_evaluate_roll_autopilot.py": "a2287b234db172b68f6eee5f89c0e28623737e4d51cf89af33b42ac3794df5a4",
+    "src\\controllers\\roll_autopilot.py": "9e9eb693e76401ca16ce25b1e66afa8e1fddbadab00f0d5f349774f9185ae756",
+    "src\\aircraft\\actuator.py": "5dca13aa24b4dff25113f40f3d29954aa088dc20e41c0c39f97c55a02facb656",
+    "src\\student\\dense\\policy.py": "7b0649a03106da08d57e10f8a7c574bd30ae21d5707b7a87220ba3fa9e80ef65"
+  },
+  "protocol": {
+    "dt_s": 0.02,
+    "duration_s": 20,
+    "outer_time_constant_s": 2.0,
+    "bank_command_limit_deg": 30,
+    "body_rate_command_limit_deg_s": 30,
+    "aileron_limit_deg": 10,
+    "aileron_rate_limit_deg_s": 40,
+    "limits_source": "experiment assumptions, derived from historical mapping; not DHC-6 hardware specs",
+    "aileron_action_polarity": -1,
+    "theta_budget_s_per_state": 30,
+    "state_feedback": "simulated p; trapezoid phi integration with pitch=q=r=0; no IMU/EKF",
+    "plant": "fixed independent 50 Hz da_act->p ARX; no additional fitted servo lag",
+    "metric_time": "post-step state t[k+1] against ZOH command over [t[k],t[k+1])",
+    "bank_commands": {
+      "step": "+20 deg at 1s",
+      "reversal": "+15 at 1s, -15 at 8s, 0 at 15s",
+      "sine": "10 deg, 0.08 Hz, onset 1s"
+    },
+    "rate_regression_commands": [
+      "eval-step-pos-15deg-s",
+      "eval-step-neg-15deg-s",
+      "eval-step-pos-25deg-s",
+      "eval-doublet-15deg-s",
+      "eval-sine-0.75hz",
+      "eval-multisine",
+      "held-step-pos-22deg-s",
+      "held-step-neg-22deg-s",
+      "held-doublet-22deg-s",
+      "held-sine-0.62hz",
+      "held-sine-1.35hz",
+      "held-multisine-b"
+    ],
+    "outer_gains_tuned_on_results": false,
+    "quality_scope": "integration evidence only; not GJB handling-quality certification"
+  },
+  "n_attitude_cases": 72,
+  "rate_parity": {
+    "n_cases": 288,
+    "tolerance_deg_s": 0.001,
+    "max_p_difference_deg_s": 1.5902773407317584e-14,
+    "max_surface_difference_deg": 1.7763568394002505e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "passed": true
+  },
+  "summary": {
+    "frozen": {
+      "adaptation": {
+        "n_cases": 24,
+        "n_finite": 24,
+        "n_within_30deg_bank": 24,
+        "mean_bank_rmse_deg": 8.211948936537018,
+        "max_abs_bank_deg": 21.752627798536473,
+        "mean_aileron_tv_deg_s": 0.6808871860727473
+      },
+      "heldout": {
+        "n_cases": 12,
+        "n_finite": 12,
+        "n_within_30deg_bank": 12,
+        "mean_bank_rmse_deg": 8.073928314075118,
+        "max_abs_bank_deg": 21.4745395436829,
+        "mean_aileron_tv_deg_s": 0.5252562128395463
+      },
+      "all": {
+        "n_cases": 36,
+        "n_finite": 36,
+        "n_within_30deg_bank": 36,
+        "mean_bank_rmse_deg": 8.165942062383051,
+        "max_abs_bank_deg": 21.752627798536473,
+        "mean_aileron_tv_deg_s": 0.6290101949950136
+      }
+    },
+    "full_b30": {
+      "adaptation": {
+        "n_cases": 24,
+        "n_finite": 24,
+        "n_within_30deg_bank": 24,
+        "mean_bank_rmse_deg": 7.03030607653649,
+        "max_abs_bank_deg": 20.491132905415327,
+        "mean_aileron_tv_deg_s": 0.9474502385395075
+      },
+      "heldout": {
+        "n_cases": 12,
+        "n_finite": 12,
+        "n_within_30deg_bank": 12,
+        "mean_bank_rmse_deg": 7.027037453605952,
+        "max_abs_bank_deg": 20.0818202398876,
+        "mean_aileron_tv_deg_s": 0.6644743499879647
+      },
+      "all": {
+        "n_cases": 36,
+        "n_finite": 36,
+        "n_within_30deg_bank": 36,
+        "mean_bank_rmse_deg": 7.0292165355596445,
+        "max_abs_bank_deg": 20.491132905415327,
+        "mean_aileron_tv_deg_s": 0.8531249423556599
+      }
+    }
+  },
+  "failures": [],
+  "elapsed_s": 268.29963259998476,
+  "runtime": {
+    "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "2.4.4",
+    "torch": "2.12.0+cpu",
+    "torch_threads": 1
+  }
+}

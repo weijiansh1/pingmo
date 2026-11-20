@@ -1,0 +1,85 @@
+{
+  "source_protocol_sha256": "a81a47909fcefb57af6b8ccc1d842af5546a5a279efee6b33c8dedd94c0bc46d",
+  "summary_sha256": "45b0e6a9c3144e38d007e40579fdb81b0b33214bd8a7b152b8b7179c992f34fb",
+  "versions": {
+    "numpy": "1.26.4",
+    "matplotlib": "3.10.3"
+  },
+  "matrix": "Each cell: mean of three paired-seed pass fractions, all 18 command cases. Individual repetitions shown as points and separate matrices.",
+  "traces": "Illustration v2: first originally validation-qualified teacher in each level, in frozen object order; selection uses training validation records, not test results. First seed; full 8 s / 30 s samples; no smoothing or interpolation. Original failed examples archived as cross_object_diagnostic.",
+  "illustration_protocol_sha256": "ddc65346bff327dc6c3f1947c8b405d82cc6a11cec73a89eb251092f02ad6e78",
+  "exports": [
+    {
+      "file": "figures/cross_object_diagnostic.pdf",
+      "sha256": "8317add1d09b0e3aa39d25b71def7dd8c04a57411ade94fb5c3f67daf085e022"
+    },
+    {
+      "file": "figures/cross_object_diagnostic.png",
+      "sha256": "1b87c15f5b5d16815330858b5d32f8fd2439cb694804b2ae081102ade7786948"
+    },
+    {
+      "file": "figures/cross_object_diagnostic.svg",
+      "sha256": "aa9c7c11b9676da17e10095d820107bd22ebc99dbf87d219db6c6c8b6f73a9a2"
+    },
+    {
+      "file": "figures/cross_object_matrix.pdf",
+      "sha256": "2acea62e99d321c904bb7e6a5aa0748c325775018aa09d6dbd5596d14b26258e"
+    },
+    {
+      "file": "figures/cross_object_matrix.png",
+      "sha256": "0aca7b0fd0f92c7bd670e687364a63d48af22ada563e3bfcf25a9dbf408c0f8e"
+    },
+    {
+      "file": "figures/cross_object_matrix.svg",
+      "sha256": "e4067df94fd369ce8106ebfe1ae13d8dcc51d4a7bf4c7d879ca3a0237ba3360d"
+    },
+    {
+      "file": "figures/cross_object_matrix_seed_20261031.pdf",
+      "sha256": "2ec6dcf2d5e52d8945dbea79e9981b3c4812ed2376223b21e99b55161e802846"
+    },
+    {
+      "file": "figures/cross_object_matrix_seed_20261031.png",
+      "sha256": "a1b76d96a4ec5cc2ff02fed1f47f99ab4476e81b98ba81ab19ca90a62aef8a20"
+    },
+    {
+      "file": "figures/cross_object_matrix_seed_20261031.svg",
+      "sha256": "e2fdd2777329b99d40fe689988adbb31477c68d8275d2c0459807ca8c56e05c0"
+    },
+    {
+      "file": "figures/cross_object_matrix_seed_20261101.pdf",
+      "sha256": "193bb351e580968a8f1ce8b4cecbc43350652a50bdc0d3f0d945489f86ac7ef4"
+    },
+    {
+      "file": "figures/cross_object_matrix_seed_20261101.png",
+      "sha256": "4a1f74137275a45a378d889fa305027b0e9a9f19a90a1ca51dc8baa250ab7f89"
+    },
+    {
+      "file": "figures/cross_object_matrix_seed_20261101.svg",
+      "sha256": "82acee7e9e57630a578c7bc449290afa4a783c3769eadce189742d02c52ed333"
+    },
+    {
+      "file": "figures/cross_object_matrix_seed_20261102.pdf",
+      "sha256": "f72ac9190bb4d18d4bdf0eb1bd15bfc0632e959311983c7aeae2c7686dd5b929"
+    },
+    {
+      "file": "figures/cross_object_matrix_seed_20261102.png",
+      "sha256": "77e31d994eceba6e17aac44743a5561a27049ae241af6a36c768bd7b543c9419"
+    },
+    {
+      "file": "figures/cross_object_matrix_seed_20261102.svg",
+      "sha256": "f5167d8729ca7de824ede345f51d0ad2cdaa3409ad61f5b79507d18ea6fec453"
+    },
+    {
+      "file": "figures/cross_object_responses.pdf",
+      "sha256": "bd532bb842d3c3beceb2dab5d7fb534d8947256fe53de5c184497ec2557522bf"
+    },
+    {
+      "file": "figures/cross_object_responses.png",
+      "sha256": "4eb202931b8df9bdab6884a5e1ad51cdc4e9a4cb32c874e62e7d5567f13adf10"
+    },
+    {
+      "file": "figures/cross_object_responses.svg",
+      "sha256": "e0be15e0be505ba170c8d9f9d45afa7c7a168f1065c841ab58c6d4b3be3d3908"
+    }
+  ]
+}

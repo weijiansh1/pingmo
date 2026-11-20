@@ -1,0 +1,20 @@
+### Result
+{"desktop":{"viewport":1440,"scrollWidth":1440,"displayMath":15,"inlineMath":106,"mathErrors":0,"images":[{"src":"paper/distillation_rounds.svg","loaded":true},{"src":"paper/05_failure_trace.svg","loaded":true},{"src":"paper/transfer_budget.svg","loaded":true},{"src":"paper/01_teacher_learning.svg","loaded":true}],"overflowingEquations":[]},"mobile":{"width":390,"scrollWidth":390,"titleTop":846,"contentsHeight":796}}
+### Ran Playwright code
+```js
+await (async (page) => {
+  const desktop=await page.evaluate(() => ({
+    viewport:innerWidth, scrollWidth:document.documentElement.scrollWidth,
+    displayMath:document.querySelectorAll('.eq .katex').length,
+    inlineMath:document.querySelectorAll('.math-inline .katex').length,
+    mathErrors:document.querySelectorAll('.katex-error').length,
+    images:Array.from(document.images,im=>({src:im.getAttribute('src'),loaded:im.complete&&im.naturalWidth>0})),
+    overflowingEquations:Array.from(document.querySelectorAll('.eq')).map((e,i)=>({index:i+1,width:e.clientWidth,scroll:e.scrollWidth})).filter(x=>x.scroll>x.width+2)
+  }));
+  await page.setViewportSize({width:390,height:844});
+  await page.evaluate(() => window.scrollTo({top:0,behavior:'instant'}));
+  await page.screenshot({path:'output/playwright/mobile-before-navigation.png'});
+  const mobile=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,titleTop:document.querySelector('h1.title').getBoundingClientRect().top,contentsHeight:document.querySelector('aside.toc').getBoundingClientRect().height}));
+  return {desktop,mobile};
+})(page);
+```

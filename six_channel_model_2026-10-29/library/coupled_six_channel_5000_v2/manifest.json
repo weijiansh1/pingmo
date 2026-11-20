@@ -1,0 +1,91 @@
+{
+  "schema_version": "six-channel-coupled-v2",
+  "seed": 20261030,
+  "v1_library": "/home/swj/pingmo/six_channel_model_2026-10-29/library/joint_six_channel_5000_v1/plants.jsonl",
+  "v1_sha256": "57ba2f4f54aa3714296c06c77034d4fae954bf727008b03802e52e88a2e4ad6b",
+  "envelopes": {
+    "_source": "NASA CR-2144 (Heffley & Jewell 1972): 94 flight conditions of 10 aircraft, read from page images into cr2144_lateral.csv / cr2144_longitudinal.csv; lateral derivatives rotated to stability axes by alpha0. Acceptance envelopes (y_b, l_r, lateral_ratios) are the full observed range, which every real condition satisfies jointly (5th-95th percentiles would reject 44% of the real conditions). Sampling ranges for pedal, L/D, drag slope and M_u are the 5th-95th percentiles.",
+    "_conventions": "Ratios are sign-convention invariant between CR-2144 (delta_r+ nose left) and this model (F_rp+ nose right). Dimensional derivatives are normalized by the object's own modes where they scale with them.",
+    "y_b": [
+      -0.791,
+      -0.0352
+    ],
+    "l_r": [
+      -0.6935,
+      7.274
+    ],
+    "lateral_ratios": {
+      "dihedral_ratio": [
+        -9.21,
+        7.78
+      ],
+      "n_b_over_omega_d2": [
+        0.5,
+        1.244
+      ],
+      "l_p_times_t_r": [
+        -1.843,
+        -0.347
+      ],
+      "n_r_over_2_zeta_omega": [
+        -10.15,
+        1.398
+      ],
+      "n_p_over_l_p": [
+        -0.2385,
+        0.1566
+      ],
+      "l_r_over_n_r": [
+        -6.159,
+        1.778
+      ],
+      "eta": [
+        -0.2859,
+        0.389
+      ]
+    },
+    "l_rp_over_n_rp": [
+      -4.222,
+      -0.031
+    ],
+    "y_rp_over_n_rp": [
+      -0.0593,
+      -0.0035
+    ],
+    "lift_to_drag": [
+      2.74704,
+      17.65021
+    ],
+    "_lift_to_drag_note": "effective L/D = -2 g / (X_u V); X_u includes thrust and Mach effects",
+    "drag_slope_over_lift": [
+      0.24592,
+      1.74044
+    ],
+    "_drag_slope_note": "-(X_alpha - g)/g in stability axes, i.e. (dD/dalpha)/W with the trim-lift tilt removed",
+    "m_u": [
+      -0.00256,
+      0.00054
+    ],
+    "_m_u_note": "1/(m s), stability axes, converted from 1/(ft s); M_u < 0 is the speed-unstable (tuck) sense",
+    "iy_over_ix": [
+      0.887,
+      15.93
+    ],
+    "iz_fraction_of_ix_plus_iy": [
+      0.93,
+      1.0
+    ],
+    "ixz_over_ix": [
+      0.02,
+      0.734
+    ],
+    "_inertia_note": "body axes, fighter subset (NT-33A, F-104A, F-4C) min-max; I_z drawn as a fraction of I_x + I_y (distinct-aircraft values 0.93-0.96, and a rigid body cannot exceed 1)",
+    "span_m": [
+      6.0,
+      14.0
+    ],
+    "_span_note": "class IV fighters, F-104 (6.7 m) to F-4 / T-33 (about 11.7-11.9 m), widened; not read from CR-2144 tables; only used by the rotary gust filters",
+    "_longitudinal_sampling_note": "L/D, drag slope and M_u are 5th-95th percentiles of the 47 subsonic (Mach < 0.8) CR-2144 conditions, matching the subsonic V0 range of the library; transonic/supersonic conditions have |M_u| about three times larger (tuck)."
+  },
+  "envelopes_sha256": "bc1126c356f9ab0b99fab19242f02f9b00a052782aaf8a0692c9f5de21678050"
+}

@@ -1,0 +1,629 @@
+{
+  "checked_utc": "2026-10-25T11:49:30.517183+00:00",
+  "scope": "Current project teacher training records and supplied historical delivery; excludes development/smoke checks, student weights, intermediate checkpoints and duplicated packaging. Historical weight availability is only established for searched project/archive paths.",
+  "verified_current_runs": 53,
+  "verified_current_distinct_objects": 16,
+  "current_formal_runs": 36,
+  "current_timing_runs": 17,
+  "old_mainline_reported_teachers": 49,
+  "old_mainline_reported_gate_passes": 46,
+  "old_mainline_source": "delivery_review_2026-10-24/package/webpage/dhc6_report.md",
+  "old_mainline_source_sha256": "f0ca0f091ebea9f79b1ef2aa90207faffff75b5eaf5b487787c863db3e2df136",
+  "old_mainline_full_weights_found_in_original_delivery": false,
+  "sum_of_old_mainline_reported_and_current_verified_runs": 102,
+  "sum_status": "Reported historical count plus verified current training runs; not 102 verified locally available teachers and not 102 distinct objects.",
+  "older_bank_entries": 68,
+  "older_bank_accepted": 32,
+  "older_bank_rejected": 36,
+  "older_bank_unique_object_ids": 68,
+  "older_bank_actor_hashes_recorded": 32,
+  "older_bank_distinct_actor_hashes_recorded": 32,
+  "older_bank_source": "delivery_review_2026-10-24/package/webpage/evidence/teacher_admission_reconciliation.csv",
+  "older_bank_source_sha256": "5150704a458786b643f332d41ebfa31b08377648f6fe2692e07f3bbb43619dd1",
+  "older_bank_overlap_with_49": "Unresolved: the 49-object source results_summary.json and weight manifest are not included. Do not add 68 again to 102.",
+  "historical_source_paths_checked_absent": [
+    "/data/coding/pingmo",
+    "/home/swj/data/coding/pingmo"
+  ],
+  "current_runs": [
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0148",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0148/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0148/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26242114
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0262",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0262/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0262/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26170434
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0401",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0401/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0401/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25961538
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0553",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0553/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0553/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25906242
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0750",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0750/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0750/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26006594
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1187",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1187/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1187/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26229826
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1197",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1197/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1197/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25957442
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1442",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1442/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1442/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26014786
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1450",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1450/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1450/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26102850
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1871",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1871/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1871/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26147906
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1875",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1875/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1875/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25975874
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1998",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1998/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1998/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26209346
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0148",
+      "seed": 20261101,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0148/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0148/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26242114
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0262",
+      "seed": 20261101,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0262/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0262/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26170434
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0401",
+      "seed": 20261101,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0401/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0401/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25961538
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0553",
+      "seed": 20261101,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0553/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0553/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25906242
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0750",
+      "seed": 20261101,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0750/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0750/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26006594
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1187",
+      "seed": 20261101,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1187/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1187/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26229826
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1197",
+      "seed": 20261101,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1197/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1197/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25957442
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1442",
+      "seed": 20261101,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1442/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1442/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26014786
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1450",
+      "seed": 20261101,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1450/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1450/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26102850
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1871",
+      "seed": 20261101,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1871/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1871/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26147906
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1875",
+      "seed": 20261101,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1875/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1875/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25975874
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1998",
+      "seed": 20261101,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1998/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1998/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26209346
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0148",
+      "seed": 20261102,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0148/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0148/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26242114
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0262",
+      "seed": 20261102,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0262/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0262/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26170434
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0401",
+      "seed": 20261102,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0401/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0401/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25961538
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0553",
+      "seed": 20261102,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0553/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0553/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25906242
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-0750",
+      "seed": 20261102,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0750/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0750/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26006594
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1187",
+      "seed": 20261102,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1187/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1187/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26229826
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1197",
+      "seed": 20261102,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1197/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1197/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25957442
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1442",
+      "seed": 20261102,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1442/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1442/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26014786
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1450",
+      "seed": 20261102,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1450/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1450/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26102850
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1871",
+      "seed": 20261102,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1871/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1871/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26147906
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1875",
+      "seed": 20261102,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1875/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1875/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25975874
+    },
+    {
+      "batch": "controller-route-v1",
+      "plant_id": "train_core-1998",
+      "seed": 20261102,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1998/summary.json",
+      "selected_checkpoint": "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1998/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26209346
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-0000",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0000/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0000/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26272834
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-0001",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0001/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0001/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26078274
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-0002",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0002/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0002/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26174530
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-0003",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0003/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0003/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26111042
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-0148",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0148/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0148/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26242114
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-0262",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0262/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0262/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26170434
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-0401",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0401/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0401/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25961538
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-0553",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0553/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0553/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25906242
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-0750",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0750/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-0750/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26006594
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-1187",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1187/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1187/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26229826
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-1197",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1197/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1197/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25957442
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-1442",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1442/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1442/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26014786
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-1450",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1450/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1450/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26102850
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-1871",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1871/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1871/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26147906
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-1875",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1875/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1875/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 25975874
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-1998",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1998/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/concurrent/train_core-1998/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26209346
+    },
+    {
+      "batch": "gpu4-timing",
+      "plant_id": "train_core-0148",
+      "seed": 20261031,
+      "rollouts": 30,
+      "transitions": 6144000,
+      "summary": "teacher_gpu4_benchmark_2026-10-25/runs/single/train_core-0148/summary.json",
+      "selected_checkpoint": "teacher_gpu4_benchmark_2026-10-25/runs/single/train_core-0148/best_validation_checkpoint.pt",
+      "checkpoint_bytes": 26242114
+    }
+  ],
+  "archive_inventory": [
+    {
+      "archive": "对象库_GJB核查与强化学习说明_2026-10-24.zip",
+      "weight_entries": 0,
+      "teacher_weight_entries_identified_by_path": 0,
+      "teacher_paths": []
+    },
+    {
+      "archive": "飞控大模型研究_交付_2026-10-24.zip",
+      "weight_entries": 19,
+      "teacher_weight_entries_identified_by_path": 0,
+      "teacher_paths": []
+    },
+    {
+      "archive": "飞控大模型研究_修订_2026-10-24.zip",
+      "weight_entries": 37,
+      "teacher_weight_entries_identified_by_path": 0,
+      "teacher_paths": []
+    },
+    {
+      "archive": "飞控大模型研究_修订_v2_2026-10-24.zip",
+      "weight_entries": 41,
+      "teacher_weight_entries_identified_by_path": 0,
+      "teacher_paths": []
+    },
+    {
+      "archive": "飞控大模型研究_修订_v3_最佳实践_2026-10-24.zip",
+      "weight_entries": 150,
+      "teacher_weight_entries_identified_by_path": 36,
+      "teacher_paths": [
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0148/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0262/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0401/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0553/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-0750/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1187/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1197/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1442/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1450/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1871/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1875/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261031/train_core-1998/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0148/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0262/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0401/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0553/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-0750/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1187/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1197/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1442/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1450/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1871/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1875/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261101/train_core-1998/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0148/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0262/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0401/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0553/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-0750/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1187/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1197/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1442/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1450/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1871/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1875/best_validation_checkpoint.pt",
+        "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/teachers/seed_20261102/train_core-1998/best_validation_checkpoint.pt"
+      ]
+    }
+  ]
+}

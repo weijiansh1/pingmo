@@ -1,0 +1,76 @@
+{
+  "destination": "Provisional research manuscript/web; no journal specified",
+  "width_mm": 178,
+  "source": "/home/swj/pingmo/flight_control_paper_story_2026-10-25/webpage/evidence/controller_route_report_summary.json",
+  "source_sha256": "2fcb241e6b1f90576f5b30edbd63dfa926f33d47e59677cc6bb63587a1a55b88",
+  "generator_sha256": "eed37c32db91269ae9dc5170fefe5362166ddd65cd7633b923db5357ec95a3e3",
+  "uncertainty": "All three policy seeds shown; no CI or episode-independence assumption",
+  "transformations": "pass percentages = passed / all declared episodes * 100; no filtering or smoothing",
+  "missing": "No missing plotted observations; failed cases stay in pass-rate denominators",
+  "contrast_to_white": {
+    "#0072B2": 5.185446345779855,
+    "#A44D00": 5.769145976279422,
+    "#006B53": 6.505607069177414
+  },
+  "figures": [
+    {
+      "name": "transfer_budget",
+      "files": {
+        "svg": {
+          "bytes": 47756,
+          "sha256": "70336c317bae3042448cee2a901e3a1597e12a9225a4b6ea07d3ddbc7a0da20b"
+        },
+        "pdf": {
+          "bytes": 14274,
+          "sha256": "68809063dafc0b308faae510e163baa5cdba8ea40aa1887d0268f200c7e35c42"
+        },
+        "png": {
+          "bytes": 125360,
+          "sha256": "607db78b43207cd831b383b09e1f186e55d9560a5878f7c544bea42899dfd336"
+        }
+      },
+      "png_pixels": [
+        2102,
+        1051
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "pdf_points": [
+        504.5669291339,
+        252.2834645669
+      ]
+    },
+    {
+      "name": "distillation_rounds",
+      "files": {
+        "svg": {
+          "bytes": 39259,
+          "sha256": "0d0549e9290fb4e7fd330d8ec89c4740877e5e978de4f3f4c961486494b0faf1"
+        },
+        "pdf": {
+          "bytes": 14883,
+          "sha256": "c89c4cf808c4f9418eebd9d38e12fd90da8a0115da964bc14239b312d58b9d89"
+        },
+        "png": {
+          "bytes": 130050,
+          "sha256": "85b4db5290a2ac86ee4e5bf6324f2cba9db619bd3104a962ec4a40b8cd4d9ce8"
+        }
+      },
+      "png_pixels": [
+        2102,
+        1003
+      ],
+      "png_dpi": [
+        299.9994,
+        299.9994
+      ],
+      "pdf_points": [
+        504.5669291339,
+        240.9448818898
+      ]
+    }
+  ],
+  "matplotlib_version": "3.10.3"
+}

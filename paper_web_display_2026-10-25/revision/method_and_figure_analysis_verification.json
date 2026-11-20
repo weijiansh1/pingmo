@@ -1,0 +1,92 @@
+{
+  "snapshot": "/home/swj/pingmo/paper_web_display_2026-10-25/revision/before_method_and_figure_analysis_20261026T023225474299Z",
+  "sha256": {
+    "paper_source/build_display.py": "2bd4bcd6595b043efd6a60ba069ad2d630a48d199bb0f16bfd4d12d5c4223216",
+    "paper_source/results_revision.py": "a02674f5cbafe9266d4c38dfe848644e250e77dbc70412935ea5a512e6cc0bc0",
+    "paper_source/editorial_revision.py": "576ad871b0699e5bd633e21579f3376557f6a6e9b29744ea9de72581fa6e870d",
+    "paper_source/distillation_metric.py": "df27e049a0f566e66e572fc6a912dbe8b1961e215f6bc8ddffde0dd6266282d0",
+    "webpage/dhc6_report.html": "dc8811f04c5564ec6ec84ca441a67c0958d653f6c7eec2e1646cfb4561757bd3",
+    "webpage/dhc6_paper.html": "dc8811f04c5564ec6ec84ca441a67c0958d653f6c7eec2e1646cfb4561757bd3",
+    "revision/display_manifest.json": "e2b2b322a05d6e9e4c37205c16ba150de1f90d58f5e99b84c91809fbfc72f72d",
+    "README.md": "efb12221c7516c31f1dc8ad77866f4ad7e0eaa9b7f9e71a3c8c2e52489ae31e0"
+  },
+  "checks": [
+    {
+      "file": "dhc6_report.html",
+      "display_sha256": "35644b6a695b154ede3208e7d703b4647491d8cde6327657b8713ef263dfd66d",
+      "served_matches": true,
+      "previous_nonparameter_table_cells_preserved": 14,
+      "existing_equations_preserved": 13,
+      "existing_figure_sources_preserved": 22,
+      "figure_analyses_immediately_after_figures": 22,
+      "new_sampling_table": 3,
+      "student_results_table": 6,
+      "tables": 16,
+      "new_inline_formulas_rendered": 29,
+      "missing_internal_links": []
+    },
+    {
+      "file": "dhc6_paper.html",
+      "display_sha256": "35644b6a695b154ede3208e7d703b4647491d8cde6327657b8713ef263dfd66d",
+      "served_matches": true,
+      "previous_nonparameter_table_cells_preserved": 14,
+      "existing_equations_preserved": 13,
+      "existing_figure_sources_preserved": 22,
+      "figure_analyses_immediately_after_figures": 22,
+      "new_sampling_table": 3,
+      "student_results_table": 6,
+      "tables": 16,
+      "new_inline_formulas_rendered": 29,
+      "missing_internal_links": []
+    }
+  ],
+  "font_coverage": {
+    "chinese_characters_used": 690,
+    "missing": [],
+    "font_subset_record": "method_analysis_font_subset.json"
+  },
+  "browser": {
+    "desktop_viewport": [
+      1440,
+      1050
+    ],
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "mobile_page_width": 390,
+    "analyses": 22,
+    "images": 22,
+    "broken_images": [],
+    "katex_errors": 0,
+    "fonts_ready": true,
+    "all_tables_have_horizontal_scroll": true,
+    "query": "v=method-analysis-db53ed76",
+    "screenshots": [
+      "method-analysis-sampling-desktop.png",
+      "method-analysis-results-desktop.png",
+      "method-analysis-sampling-mobile.png",
+      "method-analysis-appendix-mobile.png"
+    ]
+  },
+  "pdf": [
+    {
+      "file": "paper_web_proxy_2026-10-25/output/playwright/method-analysis-methods.pdf",
+      "pages": 3,
+      "rendered_previews": [
+        "paper_web_display_2026-10-25/revision/method_analysis_methods_pdf_check.png",
+        "paper_web_display_2026-10-25/revision/method_analysis_sampling_pdf_check.png"
+      ],
+      "font_count": 19
+    },
+    {
+      "file": "paper_web_proxy_2026-10-25/output/playwright/method-analysis-results.pdf",
+      "pages": 2,
+      "rendered_previews": [
+        "paper_web_display_2026-10-25/revision/method_analysis_results_pdf_check.png"
+      ],
+      "font_count": 6,
+      "analysis_and_figure_caption_on_same_page": true
+    }
+  ]
+}

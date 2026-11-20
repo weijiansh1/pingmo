@@ -1,0 +1,71 @@
+{
+  "snapshot": "/home/swj/pingmo/paper_web_display_2026-10-25/revision/before_distillation_metric_20261025T172125521407Z",
+  "sha256": {
+    "paper_source/build_display.py": "2621325c635c37fa090f925b86eb2e550dca396450fd8929112cc4bee32c9181",
+    "paper_source/editorial_revision.py": "51ba9ae40d2cb16d9acbee42680a6228ee5f5869e527f9099af7abf9c5c1087d",
+    "webpage/dhc6_report.html": "0466f146f2b601f233dcb4aa650bd4fcafbd8d484b0d1976ab2dabc99493cdf3",
+    "webpage/dhc6_paper.html": "0466f146f2b601f233dcb4aa650bd4fcafbd8d484b0d1976ab2dabc99493cdf3",
+    "revision/display_manifest.json": "41b6b9cec972b4e8546aefd0a6efdbb430ac5cbe387c2ad45723eebaa6f9973c",
+    "README.md": "e10f5ad2e24a549cbae571bd6e71da1fed1d6be6185e55f4932b0285b023222d"
+  },
+  "checks": [
+    {
+      "file": "dhc6_report.html",
+      "served_matches": true,
+      "existing_experiment_table_values_preserved": true,
+      "existing_equations_preserved": true,
+      "existing_figures_preserved": true,
+      "equations_numbered_in_reading_order": 13,
+      "new_equation_number": 4,
+      "new_metric": "R_{\\mathrm D}=\\operatorname*{median}_{i\\in I}\\left(\\frac{\\operatorname{RMSE}_{p,i}^{\\mathrm S}}{\\operatorname{RMSE}_{p,i}^{\\mathrm T}}\\right).",
+      "table_headers": [
+        "学生",
+        "参数量",
+        "源对象通过",
+        "留出对象通过",
+        "源对象蒸馏性能比",
+        "留出对象蒸馏性能比"
+      ]
+    },
+    {
+      "file": "dhc6_paper.html",
+      "served_matches": true,
+      "existing_experiment_table_values_preserved": true,
+      "existing_equations_preserved": true,
+      "existing_figures_preserved": true,
+      "equations_numbered_in_reading_order": 13,
+      "new_equation_number": 4,
+      "new_metric": "R_{\\mathrm D}=\\operatorname*{median}_{i\\in I}\\left(\\frac{\\operatorname{RMSE}_{p,i}^{\\mathrm S}}{\\operatorname{RMSE}_{p,i}^{\\mathrm T}}\\right).",
+      "table_headers": [
+        "学生",
+        "参数量",
+        "源对象通过",
+        "留出对象通过",
+        "源对象蒸馏性能比",
+        "留出对象蒸馏性能比"
+      ]
+    }
+  ],
+  "browser": {
+    "desktop_viewport": [
+      1440,
+      1000
+    ],
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "mobile_page_width": 390,
+    "katex_errors": 0,
+    "new_equation_number": "(4)",
+    "desktop_screenshot": "paper_web_proxy_2026-10-25/output/playwright/distillation-metric-desktop.png",
+    "mobile_screenshot": "paper_web_proxy_2026-10-25/output/playwright/distillation-metric-mobile.png",
+    "cache_busting_query": "v=distillation-metric-e699f0ab"
+  },
+  "pdf": {
+    "file": "paper_web_proxy_2026-10-25/output/playwright/distillation-metric.pdf",
+    "pages": 1,
+    "metric_text_present": true,
+    "rendered_preview": "paper_web_display_2026-10-25/revision/distillation_metric_pdf_check.png"
+  }
+}

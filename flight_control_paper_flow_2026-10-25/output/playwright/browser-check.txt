@@ -1,0 +1,41 @@
+### Result
+{"mobile":{"viewport":390,"scrollWidth":390,"contentsOpen":false,"titleTop":97.890625},"mobileJump":{"contentsOpen":false,"hash":"#33","rootOverflow":false},"desktop":{"viewport":1440,"scrollWidth":1440,"contentsOpen":true,"displayMath":15,"inlineMath":106,"mathErrors":0,"allImagesLoaded":true},"print":{"overflowEquations":[],"oversizedTables":[],"inlineOverflow":[],"ungroupedImages":0,"groupedFigures":4,"captionedTables":7}}
+### Ran Playwright code
+```js
+await (async (page) => {
+  await page.reload();
+  await page.evaluate(async()=>{
+    document.documentElement.style.scrollBehavior='auto';
+    await document.fonts.ready;
+    await Promise.all(Array.from(document.images,im=>{im.loading='eager';return im.decode();}));
+    window.scrollTo({top:0,behavior:'instant'});
+  });
+  const mobile=await page.evaluate(()=>({viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,contentsOpen:document.querySelector('.toc-panel').open,titleTop:document.querySelector('h1.title').getBoundingClientRect().top}));
+  await page.screenshot({path:'output/playwright/mobile-opening.png'});
+  await page.locator('.toc-panel > summary').click();
+  await page.locator('.toc-panel').getByRole('link',{name:'3.3 特权强化学习教师',exact:true}).click();
+  const mobileJump=await page.evaluate(()=>({contentsOpen:document.querySelector('.toc-panel').open,hash:location.hash,rootOverflow:document.documentElement.scrollWidth>innerWidth}));
+  await page.screenshot({path:'output/playwright/mobile-math.png'});
+  await page.setViewportSize({width:1440,height:1000});
+  await page.evaluate(()=>document.querySelector('h3[id="52"]').scrollIntoView({block:'start'}));
+  await page.screenshot({path:'output/playwright/results-reading.png'});
+  const desktop=await page.evaluate(()=>({viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,contentsOpen:document.querySelector('.toc-panel').open,displayMath:document.querySelectorAll('.eq .katex').length,inlineMath:document.querySelectorAll('.math-inline .katex').length,mathErrors:document.querySelectorAll('.katex-error').length,allImagesLoaded:Array.from(document.images).every(x=>x.complete&&x.naturalWidth>0)}));
+  await page.emulateMedia({media:'print'});
+  await page.setViewportSize({width:673,height:950});
+  const print=await page.evaluate(()=>({
+    overflowEquations:Array.from(document.querySelectorAll('.eq')).map((e,i)=>({index:i+1,width:e.clientWidth,scroll:e.scrollWidth})).filter(x=>x.scroll>x.width+2),
+    oversizedTables:Array.from(document.querySelectorAll('table')).map((e,i)=>({index:i+1,width:e.getBoundingClientRect().width})).filter(x=>x.width>document.querySelector('main').clientWidth+2),
+    inlineOverflow:Array.from(document.querySelectorAll('.math-inline')).filter(e=>e.getBoundingClientRect().width>document.querySelector('main').clientWidth).map(e=>e.textContent),
+    ungroupedImages:document.querySelectorAll('main > p > img').length,
+    groupedFigures:document.querySelectorAll('figure.result-figure').length,
+    captionedTables:document.querySelectorAll('table caption').length
+  }));
+  await page.evaluate(()=>document.querySelector('h3[id="33"]').scrollIntoView({block:'start'}));
+  await page.screenshot({path:'output/playwright/print-math.png'});
+  await page.pdf({path:'论文_全文统稿_2026-10-25.pdf',format:'A4',preferCSSPageSize:true,printBackground:true,tagged:true,outline:true,displayHeaderFooter:true,headerTemplate:'<span></span>',footerTemplate:'<div style="font-size:9px;text-align:center;width:100%;"><span class="pageNumber"></span> / <span class="totalPages"></span></div>'});
+  return {mobile,mobileJump,desktop,print};
+})(page);
+```
+### Page
+- Page URL: http://127.0.0.1:8321/dhc6_report.html#33
+- Page Title: 基于飞行品质模型的飞控控制器构建：特权教师与多轮蒸馏

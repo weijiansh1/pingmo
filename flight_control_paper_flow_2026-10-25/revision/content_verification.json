@@ -1,0 +1,40 @@
+{
+  "main_command_table_matches_frozen_summary": true,
+  "recovery_table_matches_frozen_summary": true,
+  "all_target_counts_preserved": true,
+  "long_horizon_student_failures": 6,
+  "seed_pairing": [
+    {
+      "seed": "20261031",
+      "paired_cases": 216,
+      "rmse_ratio_pairs": 214
+    },
+    {
+      "seed": "20261101",
+      "paired_cases": 216,
+      "rmse_ratio_pairs": 214
+    },
+    {
+      "seed": "20261102",
+      "paired_cases": 216,
+      "rmse_ratio_pairs": 214
+    }
+  ],
+  "lengths": {
+    "previous": {
+      "main_characters": 16265,
+      "main_chinese_characters": 8658,
+      "main_subsections": 16,
+      "manuscript_characters": 25838
+    },
+    "current": {
+      "main_characters": 14025,
+      "main_chinese_characters": 7593,
+      "main_subsections": 15,
+      "manuscript_characters": 26646
+    }
+  },
+  "new_training_for_manuscript": false,
+  "time_series_metrics_checked_against_original_rows": 48,
+  "main_figures": 10
+}

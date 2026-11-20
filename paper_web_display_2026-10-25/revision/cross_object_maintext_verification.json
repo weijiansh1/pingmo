@@ -1,0 +1,95 @@
+{
+  "snapshot": "/home/swj/pingmo/paper_web_display_2026-10-25/revision/before_cross_object_maintext_20261026T032024432817Z",
+  "sha256": {
+    "paper_source/build_display.py": "336819542a64fd2e54b5215813e880425ee791b51a42664bbe52bc13f400b754",
+    "paper_source/results_revision.py": "37601f6aa541ec40b2319e10333e9d32d7f080031325f151cfae4b213c71546f",
+    "paper_source/content_supplement.py": "15d2c81cc79c4119093ed71c4d5d54a6aafb7be222f617b128ae390837f4d5ed",
+    "webpage/dhc6_report.html": "d9238d1ce4a23438b8b9f29846df3d0f170deb80df5c50fc152be9ddeddf506e",
+    "webpage/dhc6_paper.html": "d9238d1ce4a23438b8b9f29846df3d0f170deb80df5c50fc152be9ddeddf506e",
+    "revision/display_manifest.json": "88f896dc994b97e82bf595c9d934baf4ea1cfbc95cdc300f6648d3e58c5ccae4",
+    "README.md": "1fa1a8b278fa2fcb40fe66a50b6597267971e0a7b901bf3178eeb3a87d0ebb71"
+  },
+  "checks": [
+    {
+      "file": "dhc6_report.html",
+      "sha256": "57d0b673573a9d392c0d86839a5c4fa4e3c7927384665b6ad711c89bf3df7b46",
+      "all_table_cell_values_preserved": true,
+      "all_figure_filenames_preserved": true,
+      "scope_preservation": "results_revision asserts unchanged formula nodes before/after reordering; concurrent source edits were retained",
+      "concurrent_upstream_equation_updates": [
+        {
+          "number": 8,
+          "before": "\\begin{aligned}\\delta_t&=r_t+\\gamma V(s_{t+1})-V(s_t),\\\\\\widehat A_t&=\\delta_t+\\gamma\\lambda\\widehat A_{t+1},\\qquad\\gamma=0.995,\\quad\\lambda=0.95.\\end{aligned}",
+          "after": "\\begin{aligned}\\delta_t&=r_t+\\gamma V_{v_{\\mathrm{old}}}(s_{t+1})-V_{v_{\\mathrm{old}}}(s_t),\\\\\\widehat A_t&=\\delta_t+\\gamma\\lambda\\widehat A_{t+1},\\qquad\\gamma=0.995,\\quad\\lambda=0.95.\\end{aligned}"
+        },
+        {
+          "number": 10,
+          "before": "\\begin{aligned}\\mathcal L_{\\mathrm{total}}&=\\mathcal L_{\\mathrm{clip}}+0.5\\,\\mathbb E[(V_v(s_t)-R_t)^2]-0.001\\,\\mathcal H(\\pi_w),\\\\R_t&=\\widehat A_t+V_v(s_t).\\end{aligned}",
+          "after": "\\begin{aligned}\\mathcal L_{\\mathrm{total}}&=\\mathcal L_{\\mathrm{clip}}+0.5\\,\\mathbb E[(V_v(s_t)-\\widehat R_t)^2]-0.001\\,\\mathcal H(\\pi_w),\\\\\\widehat R_t&=\\widehat A_t+V_{v_{\\mathrm{old}}}(s_t).\\end{aligned}"
+        }
+      ],
+      "concurrent_upstream_asset_versions": [
+        "paper/teacher_network_tensor.svg?v=686b027091c1",
+        "paper/student_network_tensor.svg?v=dcd596d46b6f"
+      ],
+      "matrix_and_summary_section": "5.3.2",
+      "additional_120_objects_section": "5.3.3",
+      "matrix_caption": "图 10　专用教师跨对象控制与统一学生的对象覆盖。对角线为自身教师，非对角线为跨对象教师，末行为学生；每格汇总三次训练重复。右侧点为各次重复，横线为平均值。",
+      "summary_caption": "表 7　配对教师—学生的闭环测试汇总。通过率按全部测试组合统计，RMSE 中位数按有限轨迹统计。",
+      "figures": 22,
+      "tables": 16,
+      "figure_analyses": 22,
+      "missing_internal_links": []
+    },
+    {
+      "file": "dhc6_paper.html",
+      "sha256": "57d0b673573a9d392c0d86839a5c4fa4e3c7927384665b6ad711c89bf3df7b46",
+      "all_table_cell_values_preserved": true,
+      "all_figure_filenames_preserved": true,
+      "scope_preservation": "results_revision asserts unchanged formula nodes before/after reordering; concurrent source edits were retained",
+      "concurrent_upstream_equation_updates": [
+        {
+          "number": 8,
+          "before": "\\begin{aligned}\\delta_t&=r_t+\\gamma V(s_{t+1})-V(s_t),\\\\\\widehat A_t&=\\delta_t+\\gamma\\lambda\\widehat A_{t+1},\\qquad\\gamma=0.995,\\quad\\lambda=0.95.\\end{aligned}",
+          "after": "\\begin{aligned}\\delta_t&=r_t+\\gamma V_{v_{\\mathrm{old}}}(s_{t+1})-V_{v_{\\mathrm{old}}}(s_t),\\\\\\widehat A_t&=\\delta_t+\\gamma\\lambda\\widehat A_{t+1},\\qquad\\gamma=0.995,\\quad\\lambda=0.95.\\end{aligned}"
+        },
+        {
+          "number": 10,
+          "before": "\\begin{aligned}\\mathcal L_{\\mathrm{total}}&=\\mathcal L_{\\mathrm{clip}}+0.5\\,\\mathbb E[(V_v(s_t)-R_t)^2]-0.001\\,\\mathcal H(\\pi_w),\\\\R_t&=\\widehat A_t+V_v(s_t).\\end{aligned}",
+          "after": "\\begin{aligned}\\mathcal L_{\\mathrm{total}}&=\\mathcal L_{\\mathrm{clip}}+0.5\\,\\mathbb E[(V_v(s_t)-\\widehat R_t)^2]-0.001\\,\\mathcal H(\\pi_w),\\\\\\widehat R_t&=\\widehat A_t+V_{v_{\\mathrm{old}}}(s_t).\\end{aligned}"
+        }
+      ],
+      "concurrent_upstream_asset_versions": [
+        "paper/teacher_network_tensor.svg?v=686b027091c1",
+        "paper/student_network_tensor.svg?v=dcd596d46b6f"
+      ],
+      "matrix_and_summary_section": "5.3.2",
+      "additional_120_objects_section": "5.3.3",
+      "matrix_caption": "图 10　专用教师跨对象控制与统一学生的对象覆盖。对角线为自身教师，非对角线为跨对象教师，末行为学生；每格汇总三次训练重复。右侧点为各次重复，横线为平均值。",
+      "summary_caption": "表 7　配对教师—学生的闭环测试汇总。通过率按全部测试组合统计，RMSE 中位数按有限轨迹统计。",
+      "figures": 22,
+      "tables": 16,
+      "figure_analyses": 22,
+      "missing_internal_links": []
+    }
+  ],
+  "browser": {
+    "desktop_viewport": [
+      1440,
+      1050
+    ],
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "mobile_page_width": 390,
+    "matrix_figure_number": 10,
+    "paired_summary_table_number": 7,
+    "katex_errors": 0,
+    "figure_analyses": 22,
+    "screenshots": [
+      "cross-object-main-desktop.png",
+      "cross-object-main-mobile.png"
+    ]
+  }
+}

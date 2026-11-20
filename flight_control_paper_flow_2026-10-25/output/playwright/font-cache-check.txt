@@ -1,0 +1,11 @@
+### Result
+{"fonts":[{"family":"KaTeX_AMS","status":"loaded"},{"family":"KaTeX_Caligraphic","status":"unloaded"},{"family":"KaTeX_Caligraphic","status":"loaded"},{"family":"KaTeX_Fraktur","status":"unloaded"},{"family":"KaTeX_Fraktur","status":"unloaded"},{"family":"KaTeX_Main","status":"unloaded"},{"family":"KaTeX_Main","status":"unloaded"},{"family":"KaTeX_Main","status":"unloaded"},{"family":"KaTeX_Main","status":"loaded"},{"family":"KaTeX_Math","status":"unloaded"},{"family":"KaTeX_Math","status":"loaded"},{"family":"KaTeX_SansSerif","status":"unloaded"},{"family":"KaTeX_SansSerif","status":"unloaded"},{"family":"KaTeX_SansSerif","status":"unloaded"},{"family":"KaTeX_Script","status":"unloaded"},{"family":"KaTeX_Size1","status":"loaded"},{"family":"KaTeX_Size2","status":"loaded"},{"family":"KaTeX_Size3","status":"loaded"},{"family":"KaTeX_Size4","status":"loaded"},{"family":"KaTeX_Typewriter","status":"unloaded"},{"family":"PaperChinese","status":"loaded"},{"family":"PaperChinese","status":"loaded"}],"mathErrors":0,"imagesLoaded":true}
+### Ran Playwright code
+```js
+await (async (page) => {
+ await page.reload();
+ await page.evaluate(async()=>{await document.fonts.ready;await Promise.all(Array.from(document.images,im=>{im.loading='eager';return im.decode();}));});
+ await page.pdf({path:'论文_全文统稿_2026-10-25.pdf',format:'A4',preferCSSPageSize:true,printBackground:true,tagged:true,outline:true,displayHeaderFooter:true,headerTemplate:'<span></span>',footerTemplate:'<div style="font-size:9px;text-align:center;width:100%;"><span class="pageNumber"></span> / <span class="totalPages"></span></div>'});
+ return await page.evaluate(()=>({fonts:Array.from(document.fonts,f=>({family:f.family,status:f.status})),mathErrors:document.querySelectorAll('.katex-error').length,imagesLoaded:Array.from(document.images).every(im=>im.complete&&im.naturalWidth>0)}));
+})(page);
+```

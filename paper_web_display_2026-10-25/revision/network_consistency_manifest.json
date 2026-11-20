@@ -1,0 +1,76 @@
+{
+  "original_drawing_source": "/home/swj/pingmo/flight_control_original_restored_2026-10-25/paper_source/dhc6_blog_assets/make_network_tensor.py",
+  "original_drawing_source_sha256": "8a1970d13928637ae371a82405737b6a675a32c2ae2c65e7cf3f3cf8a6fd69f6",
+  "font_source": "https://fonts.gstatic.com/l/font?kit=k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxViPXz3VJq1BJKCGLDfu99DUE6im0C5FsnOZCxYKJ750lvvVJemN5t8hqbpmzMYmJPqbkvzKTKiuBACIkYPkeZ4dQSW2vmhrQ-XDilbWCdoTRXd4UBVt_2QGv9my6xh848sT6BohRdMPK_k0pjukC6O3sjunKUfwGoNaiB7EnKAFD4vZk5wMBSpfhMzBvMraCgtdxiNDHVYFsN79Vyq7LzTPuzngADbeLTS6jyxWOb2TWbkVTyoP2vzNh0J63T6UMTl-fHK-izoxh1DkeOX3MabJcXh9P7bEZEvsYo_O9U6jW02g&skey=cf0bb10b5602fdc3&v=v41",
+  "font_sha256": "aa4b05c07f295071a793aad468f2c7f24268116610d2c451bcdaeb1bb234a559",
+  "tiny": {
+    "conv_width": 8,
+    "history_features": 16,
+    "current_features": 9,
+    "action_history": 7,
+    "concat": 32,
+    "trunk_width": 32,
+    "residual_blocks": 1,
+    "parameter_count": 3856
+  },
+  "teacher_actor": {
+    "conv_width": 24,
+    "history_features": 48,
+    "concat": 76,
+    "trunk_width": 512,
+    "residual_blocks": 8,
+    "parameter_count": 4255537
+  },
+  "model_definition_sources": [
+    "experiments/sae_delay_20261023/common.py:TinyStudent",
+    "pingmo_src/src/teacher/ppo/networks.py:PPOTeacherActor"
+  ],
+  "changes": [
+    "Correct tiny dimensions and the number of drawn residual blocks",
+    "Match the concat segments to feature dimensions",
+    "Label privileged input z and the normalized force-rate action a_t",
+    "Label the feedback object as object rather than controller"
+  ],
+  "training_or_simulation_run": false,
+  "outputs": {
+    "teacher_network_tensor.svg": {
+      "sha256": "686b027091c16b0afddb6173d122e96833d8889378b9b2220b0190b8d7279711",
+      "bytes": 133347
+    },
+    "teacher_network_tensor.png": {
+      "sha256": "6e4550966f4859b324fff8b7b2d439f877fdd02c0b7278e896198d28f42c770a",
+      "bytes": 54970,
+      "pixels": [
+        1410,
+        540
+      ]
+    },
+    "teacher_network_tensor.pdf": {
+      "sha256": "c8614546542ba2ab143fa0f3e9018a677ff70447718a8bf8c04f556bf79b3e4f",
+      "bytes": 31563
+    },
+    "student_network_tensor.svg": {
+      "sha256": "dcd596d46b6f5b93b571711130418c5f9b2eebe6c0b0b9c427b1a11d046ffbac",
+      "bytes": 105822
+    },
+    "student_network_tensor.png": {
+      "sha256": "e3d44a7b2ab8bf2636893649632f87f7b8cd449061f511f5a78629885ffa336a",
+      "bytes": 46778,
+      "pixels": [
+        1410,
+        540
+      ]
+    },
+    "student_network_tensor.pdf": {
+      "sha256": "03fb8f786ea916a9da4c1c9bd35f4f57acc97cbf14d4085ab368c932dfafc8bf",
+      "bytes": 28285
+    }
+  },
+  "visual_review": "Both generated PNG diagrams inspected; dimensions and labels match the stated teacher and tiny configurations.",
+  "additional_web_font": {
+    "file": "noto-sc-ea18f9d3a880.ttf",
+    "sha256": "ea18f9d3a8805f398ee8c9db926a883566935e9efd6ab6daeace5374e348ffcf",
+    "source": "https://fonts.gstatic.com/l/font?kit=k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxVZxFQc5X2ddHOgK1-4S3EvA&skey=cf0bb10b5602fdc3&v=v41",
+    "characters": "像必梯电镜"
+  }
+}

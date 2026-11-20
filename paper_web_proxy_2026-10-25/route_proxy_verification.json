@@ -1,0 +1,228 @@
+{
+  "revision": "route-2026-10-25",
+  "entry_status": 200,
+  "title": "基于飞行品质模型的飞控控制器构建：特权教师与多轮蒸馏",
+  "resolved_path": "/proxy/8320/webpage/dhc6_report.html",
+  "resources": [
+    {
+      "path": "/proxy/8320/",
+      "status": 200,
+      "bytes": 389055
+    },
+    {
+      "path": "/proxy/8320/math/",
+      "status": 200,
+      "bytes": 209285
+    },
+    {
+      "path": "/proxy/8320/paper.pdf",
+      "status": 200,
+      "bytes": 1575310
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/controller_route_protocol.json",
+      "status": 200,
+      "bytes": 125566
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/controller_route_report_summary.json",
+      "status": 200,
+      "bytes": 876510
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/gjb_audit/coverage.json",
+      "status": 200,
+      "bytes": 8315
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/gjb_audit/pages/formula_215.png",
+      "status": 200,
+      "bytes": 22447
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/gjb_audit/pages/formula_240.png",
+      "status": 200,
+      "bytes": 88510
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/gjb_audit/pages/pdf_215.png",
+      "status": 200,
+      "bytes": 96316
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/gjb_audit/pages/pdf_229.png",
+      "status": 200,
+      "bytes": 91266
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/gjb_audit/pages/pdf_276.png",
+      "status": 200,
+      "bytes": 91564
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/gjb_audit/pages/pdf_302.png",
+      "status": 200,
+      "bytes": 104938
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/gjb_audit/pilot_joint_v1/manifest.json",
+      "status": 200,
+      "bytes": 2249
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/gjb_audit/source.json",
+      "status": 200,
+      "bytes": 9677
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/gjb_audit/verification.json",
+      "status": 200,
+      "bytes": 13082
+    },
+    {
+      "path": "/proxy/8320/webpage/evidence/story_figure_data.json",
+      "status": 200,
+      "bytes": 8021
+    },
+    {
+      "path": "/proxy/8320/webpage/paper/01_teacher_learning.svg",
+      "status": 200,
+      "bytes": 69078
+    },
+    {
+      "path": "/proxy/8320/webpage/paper/05_failure_trace.svg",
+      "status": 200,
+      "bytes": 27136
+    },
+    {
+      "path": "/proxy/8320/webpage/paper/distillation_rounds.svg",
+      "status": 200,
+      "bytes": 39259
+    },
+    {
+      "path": "/proxy/8320/webpage/paper/transfer_budget.svg",
+      "status": 200,
+      "bytes": 47756
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/fonts/noto-sc-subset-00.ttf",
+      "status": 200,
+      "bytes": 109568
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/fonts/noto-sc-subset-01.ttf",
+      "status": 200,
+      "bytes": 94520
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_AMS-Regular.woff2",
+      "status": 200,
+      "bytes": 28076
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2",
+      "status": 200,
+      "bytes": 6912
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2",
+      "status": 200,
+      "bytes": 6908
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2",
+      "status": 200,
+      "bytes": 11348
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2",
+      "status": 200,
+      "bytes": 11316
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Main-Bold.woff2",
+      "status": 200,
+      "bytes": 25324
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2",
+      "status": 200,
+      "bytes": 16780
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Main-Italic.woff2",
+      "status": 200,
+      "bytes": 16988
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Main-Regular.woff2",
+      "status": 200,
+      "bytes": 26272
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2",
+      "status": 200,
+      "bytes": 16400
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Math-Italic.woff2",
+      "status": 200,
+      "bytes": 16440
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2",
+      "status": 200,
+      "bytes": 12216
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2",
+      "status": 200,
+      "bytes": 12028
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2",
+      "status": 200,
+      "bytes": 10344
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Script-Regular.woff2",
+      "status": 200,
+      "bytes": 9644
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Size1-Regular.woff2",
+      "status": 200,
+      "bytes": 5468
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Size2-Regular.woff2",
+      "status": 200,
+      "bytes": 5208
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Size3-Regular.woff2",
+      "status": 200,
+      "bytes": 3624
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Size4-Regular.woff2",
+      "status": 200,
+      "bytes": 4928
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2",
+      "status": 200,
+      "bytes": 13568
+    },
+    {
+      "path": "/proxy/8320/webpage/vendor/katex/katex.min.css",
+      "status": 200,
+      "bytes": 23335
+    }
+  ],
+  "inline_math": 153,
+  "display_math": 15,
+  "pdf_sha256": "775c26d0db569a8584df7ba9d3e248223157c9eafebd0c2bd5078c4bdd51468e",
+  "authenticated_jupyter_proxy": true,
+  "token_stored": false
+}

@@ -1,0 +1,1 @@
+"""Aircraft sample library placeholder."""

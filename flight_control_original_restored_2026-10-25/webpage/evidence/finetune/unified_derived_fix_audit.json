@@ -1,0 +1,74 @@
+{
+  "field": "fraction_demand_above_authority",
+  "formula": "mean(abs(degrees(command_rad)) > authority_deg_s); strict '>', same deg/s units",
+  "reason": "previous expression compared requested force to a deg/s authority and multiplied by 0.0, forcing 0 in all 1728 rows",
+  "retrained": false,
+  "budgets": {
+    "15": {
+      "rows": 576,
+      "rows_changed": 108,
+      "rows_nonzero_after": 108,
+      "metrics_sha256_before": "1b96b5599aec8d2e48f8cc5d590bfde6708a3c8ad93598e5e9ff8e11ff535aad",
+      "metrics_sha256_after": "6bda99da2b6b77d978e0ab0cb9f42e5d0674f1069a4032405a08df6e12513a14",
+      "only_derived_field_changed": true,
+      "protected_hashes_unchanged": true,
+      "protected": {
+        "weights\\frozen.pt": "1a9a688b51969b31d291ce53997544bbb338a7c894e9b6816910f55f22ed8249",
+        "weights\\full.pt": "49cfb6ac5b29e5d0b9f05377c5c062d2ac82cf01808cec08a2032ddcd370bd54",
+        "weights\\head_only.pt": "7f319dd2a179d23e7a7e1c7124c65b07210a03bdb6e85feb6125a654b0c1bf7c",
+        "weights\\scratch.pt": "5cb873f20bca3cf435002c6b45f8f50b1566e4f6a26f3e9b2322f9092f7f7f97",
+        "manifest.json": "ff7cb2d4caa4346ea9999d131efe75b3ef9fefb3ddd25dc309107a25ab89ba95",
+        "curve_frozen.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "curve_full.json": "06e913257cd161c0d1a06c389d8ee63a18fb33d5294b320f448790e9c78fdfe0",
+        "curve_head_only.json": "e6125fa12b904321bf505c2dfe04bf42cd28de9db54cb39d805cc66a041164c8",
+        "curve_scratch.json": "86eb9cf3bc8fe1e9d8087774d44389fe2a07241d78da993cf63ae9577702d69e",
+        "theta.json": "09729818b54b0b66a7ef8aee1cc9f625177118ff806d357d253837ae25c7bddf",
+        "summary.json": "61c58db7be0f5055b4757cccf1b9ae774e3ed3720d57c45a13eef69cf8022ae8"
+      }
+    },
+    "30": {
+      "rows": 576,
+      "rows_changed": 108,
+      "rows_nonzero_after": 108,
+      "metrics_sha256_before": "0c9dfd9d2bcbf5f7c7453f8da7f536d26fa902118508b7c29f34e54ae40e97e8",
+      "metrics_sha256_after": "30dacdec3c534d6b0347bfcf71aa1efe3faabdb2ba4a476f8d62be2c368c44ef",
+      "only_derived_field_changed": true,
+      "protected_hashes_unchanged": true,
+      "protected": {
+        "weights\\frozen.pt": "98c4b3070ba83445e3e0880d38d31934212ff2e920c549b52c90f9596f4f7927",
+        "weights\\full.pt": "f49be7aea43900d90a35781a08c73e44863c38cd38bb894da2bdf11228baef29",
+        "weights\\head_only.pt": "ac411db3066223c0745ddbfca51d6125bc3fb26e55a02c25e1d551048ceed945",
+        "weights\\scratch.pt": "924d755a28d99ea7370cc7a1bcf1a3c00c8e196cb59ffe3d5feb623cdd24eb99",
+        "manifest.json": "834a71cfb07790ab7d9c99414dce16788d64108b7deace6b96dac2f242947290",
+        "curve_frozen.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "curve_full.json": "7faeaf0e0fdd6f91e7b4630c5fa3d134bc7029e2103385edf43afc080a935df7",
+        "curve_head_only.json": "b9afbabea935ab254742ccc5c152e1e71215b1540e432f6c4d5319dc55a3bd99",
+        "curve_scratch.json": "3a2320b7c9e79b90072c4b136d261c3ec68aa234fbe699a079c0485dd40d9c51",
+        "theta.json": "d931d4086b59d3ddcc5e2f9f24674eef15533d8ff5013f60f42eb6994ef022e1",
+        "summary.json": "191dfe1395bd2384d07e064708f71472aca3fe493b2257ade0d3bef0faf7473c"
+      }
+    },
+    "60": {
+      "rows": 576,
+      "rows_changed": 108,
+      "rows_nonzero_after": 108,
+      "metrics_sha256_before": "a10fd335b8d2c33fcd94a66f7577f20de433a18164b4a2348eb61bc01033f18d",
+      "metrics_sha256_after": "32f5963c69d0cdda49e0785001e9d097589520faccc8608fde2128ae5f341fe2",
+      "only_derived_field_changed": true,
+      "protected_hashes_unchanged": true,
+      "protected": {
+        "weights\\frozen.pt": "5e989ed79dd6ee316869623c7f8a4c51a50b8eb4d21e32398e42759f7157c862",
+        "weights\\full.pt": "07ea4dc4ffedaa5bd8c1a152a0faad0a75fe944cd94633026d040b2a19b40601",
+        "weights\\head_only.pt": "30d2d19190a6b20bfe2101b6758f3d41f5302dbc4cbed24430d3535810fabb19",
+        "weights\\scratch.pt": "cf234f1dc5fefdcd5c299959c6d01719ab102a7acd559f0cffc788bc960c01da",
+        "manifest.json": "a30299479d47f5944a0d3e441af05e7e0fbfbc35d70975ea13fd73c87f50fce2",
+        "curve_frozen.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "curve_full.json": "644ce70f6c4b9c2f51db64d16ed7e2f92db47bac2d78084eeb63fc8be471ade1",
+        "curve_head_only.json": "c946b8dcf9a1799fea422d8b7c39dedbbf677ebc490763fec066454bc930e553",
+        "curve_scratch.json": "18a353b636506bd5d4054f57b09ba5664e957ab10e0e71838264a8fe889ae10b",
+        "theta.json": "8c7df54dd16f0675563e532728d408b525a6ef12fe21f3ea1d348c6f4d610887",
+        "summary.json": "48a710cc0efa40e6ba64b89a783e38e90e325c20816265848194cc9e25400859"
+      }
+    }
+  }
+}

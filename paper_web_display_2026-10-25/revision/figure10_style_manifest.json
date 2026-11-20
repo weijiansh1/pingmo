@@ -1,0 +1,322 @@
+{
+  "source_svg": "/home/swj/pingmo/flight_control_original_restored_2026-10-25/webpage/paper/teacher_student_compare.svg",
+  "source_sha256": "d79018a6f175b3172784a752b72a06d0ecdefda3f2ac268f680fffe8762047cf",
+  "style_reference": "/home/swj/pingmo/flight_control_original_restored_2026-10-25/webpage/paper/teacher_closed_loop.svg",
+  "reference_sha256": "c106d187e66278a727901b00a6de5b58aeb39ead12c7e1bd7caf4c36be2c281b",
+  "output_sha256": "38a2883b4c1b64a1d387c170829eff5805e2b3347fd7aa72b90e3786ff1296d2",
+  "original_panels": 8,
+  "display_layout": [
+    4,
+    2
+  ],
+  "curves_retained": 24,
+  "all_curve_path_coordinates_unchanged": true,
+  "metrics": "Copied original SVG annotations verbatim; no recomputation.",
+  "data_method": "Original plotted path coordinates retained and affine-mapped to new axes; not a recovery of missing raw samples.",
+  "style": [
+    "Two columns",
+    "Black full axis frames",
+    "Light gray grid",
+    "Left-aligned two-line titles",
+    "Shared top legend",
+    "Bottom protocol note"
+  ],
+  "panels": [
+    {
+      "source_panel": 1,
+      "display_panel": 1,
+      "title": "阶跃 +10.5 deg/s",
+      "teacher_annotation": "教师 0.08",
+      "student_annotation": "学生 0.18 (2.3×)",
+      "xlim": [
+        0,
+        8
+      ],
+      "source_clip_rect": {
+        "x": 28.98,
+        "y": 35.36,
+        "width": 140.5975,
+        "height": 93.35
+      },
+      "display_clip_rect": {
+        "x": 84.24,
+        "y": 124.2,
+        "width": 453.3094170403587,
+        "height": 134.5846153846154
+      },
+      "curves": [
+        {
+          "role": "reference",
+          "path_sha256": "7a2a29780cefa2546caf39e6f8d94e7a0944f6ee0410e26fde96739e20c2f1af"
+        },
+        {
+          "role": "teacher",
+          "path_sha256": "a8aa246ac64657e90cca6fe4e7a59f6835259fcb3b56c0325a9e7fb7c8c3daf0"
+        },
+        {
+          "role": "student",
+          "path_sha256": "71e59e8c909b4f826fb7cc1a79526fa1cf77d929835a0b825cc114eb5f95b588"
+        }
+      ]
+    },
+    {
+      "source_panel": 4,
+      "display_panel": 2,
+      "title": "阶跃 −10.5 deg/s",
+      "teacher_annotation": "教师 0.08",
+      "student_annotation": "学生 0.18 (2.3×)",
+      "xlim": [
+        0,
+        8
+      ],
+      "source_clip_rect": {
+        "x": 514.7325,
+        "y": 35.36,
+        "width": 140.5975,
+        "height": 93.35
+      },
+      "display_clip_rect": {
+        "x": 641.8105829596412,
+        "y": 124.2,
+        "width": 453.30941704035865,
+        "height": 134.5846153846154
+      },
+      "curves": [
+        {
+          "role": "reference",
+          "path_sha256": "20c4fda99386f5e7d76d7ccf1f233c9ae1a5c115a04c9e05d56e49fde867b102"
+        },
+        {
+          "role": "teacher",
+          "path_sha256": "ce025c41be7c2702479f868eb388160df10d8d6d8a6f29feaea2826eb84b183f"
+        },
+        {
+          "role": "student",
+          "path_sha256": "511de2f7bc46ecc79c7ba3822333e2881c4e394526fac0662a19eb77691bb5ab"
+        }
+      ]
+    },
+    {
+      "source_panel": 2,
+      "display_panel": 3,
+      "title": "阶跃 +20.9 deg/s",
+      "teacher_annotation": "教师 0.11",
+      "student_annotation": "学生 0.36 (3.3×)",
+      "xlim": [
+        0,
+        8
+      ],
+      "source_clip_rect": {
+        "x": 190.8975,
+        "y": 35.36,
+        "width": 140.5975,
+        "height": 93.35
+      },
+      "display_clip_rect": {
+        "x": 84.24,
+        "y": 347.6104615384615,
+        "width": 453.3094170403587,
+        "height": 134.5846153846154
+      },
+      "curves": [
+        {
+          "role": "reference",
+          "path_sha256": "7de9fd7f3f3c2e477b5fdda0763fb0ae5204b521a0955c7557de2774c07784c0"
+        },
+        {
+          "role": "teacher",
+          "path_sha256": "2ee3b163e5ec277b8f582b8021003341d1c382e0b1ac1d2f3ccb5859e888c8de"
+        },
+        {
+          "role": "student",
+          "path_sha256": "028bc1a34d6dad31fb12b2faa1e3b5ad9621f8b67de2681f20b01b0d10802d04"
+        }
+      ]
+    },
+    {
+      "source_panel": 5,
+      "display_panel": 4,
+      "title": "阶跃 −20.9 deg/s",
+      "teacher_annotation": "教师 0.11",
+      "student_annotation": "学生 0.36 (3.3×)",
+      "xlim": [
+        0,
+        8
+      ],
+      "source_clip_rect": {
+        "x": 28.98,
+        "y": 159.73,
+        "width": 140.5975,
+        "height": 93.35
+      },
+      "display_clip_rect": {
+        "x": 641.8105829596412,
+        "y": 347.6104615384615,
+        "width": 453.30941704035865,
+        "height": 134.5846153846154
+      },
+      "curves": [
+        {
+          "role": "reference",
+          "path_sha256": "001b426b39dafbc4191cfd86839a14abbb0be1c5da5650bbc0edaee55a7b83d3"
+        },
+        {
+          "role": "teacher",
+          "path_sha256": "fe602d5c33c286513fad3ca8089945d9d129022a5efcb2e3df23244c9d2b9183"
+        },
+        {
+          "role": "student",
+          "path_sha256": "20873f6ba1e3d4189a4401e3937598a5730dc484ca9610d6fcbe2242e653468a"
+        }
+      ]
+    },
+    {
+      "source_panel": 3,
+      "display_panel": 5,
+      "title": "阶跃 +31.4 deg/s",
+      "teacher_annotation": "教师 0.19",
+      "student_annotation": "学生 0.60 (3.2×)",
+      "xlim": [
+        0,
+        8
+      ],
+      "source_clip_rect": {
+        "x": 352.815,
+        "y": 35.36,
+        "width": 140.5975,
+        "height": 93.35
+      },
+      "display_clip_rect": {
+        "x": 84.24,
+        "y": 571.020923076923,
+        "width": 453.3094170403587,
+        "height": 134.5846153846154
+      },
+      "curves": [
+        {
+          "role": "reference",
+          "path_sha256": "e04ee759d805f9ce56b8a61fa8435fe0cbd95019da8ea6fee871c897279bc7d4"
+        },
+        {
+          "role": "teacher",
+          "path_sha256": "591b97e1524c68ff67267de84c07f9836f1ece60c60c1608b61f0d68841d5d23"
+        },
+        {
+          "role": "student",
+          "path_sha256": "b2186b6d8b6b980d02fe8dd8f0db63e22842c313e21ef4219940f47375f0c5ce"
+        }
+      ]
+    },
+    {
+      "source_panel": 6,
+      "display_panel": 6,
+      "title": "阶跃 −31.4 deg/s",
+      "teacher_annotation": "教师 0.19",
+      "student_annotation": "学生 0.60 (3.2×)",
+      "xlim": [
+        0,
+        8
+      ],
+      "source_clip_rect": {
+        "x": 190.8975,
+        "y": 159.73,
+        "width": 140.5975,
+        "height": 93.35
+      },
+      "display_clip_rect": {
+        "x": 641.8105829596412,
+        "y": 571.020923076923,
+        "width": 453.30941704035865,
+        "height": 134.5846153846154
+      },
+      "curves": [
+        {
+          "role": "reference",
+          "path_sha256": "275588095dd39f999d5d898dbb2d49fc058a0064a9e65aac2bcd7f01bdff62be"
+        },
+        {
+          "role": "teacher",
+          "path_sha256": "617261769d4adc945bf66ed5f0498f97452a2631c4a4e708fe798dc2ed4e3bde"
+        },
+        {
+          "role": "student",
+          "path_sha256": "16fda8b84fe9b779442f044ceadc8138adf8434b691561656fe83cf7038f0c1e"
+        }
+      ]
+    },
+    {
+      "source_panel": 7,
+      "display_panel": 7,
+      "title": "双脉冲",
+      "teacher_annotation": "教师 0.38",
+      "student_annotation": "学生 0.71 (1.9×)",
+      "xlim": [
+        0,
+        8
+      ],
+      "source_clip_rect": {
+        "x": 352.815,
+        "y": 159.73,
+        "width": 140.5975,
+        "height": 93.35
+      },
+      "display_clip_rect": {
+        "x": 84.24,
+        "y": 794.4313846153847,
+        "width": 453.3094170403587,
+        "height": 134.5846153846154
+      },
+      "curves": [
+        {
+          "role": "reference",
+          "path_sha256": "217df2a5c8f68af0b317ff8411e3c55d5923b661697593f396030f247a37a687"
+        },
+        {
+          "role": "teacher",
+          "path_sha256": "2752f38ec4564443e32895dffca5668f437961c7e3805cd2b90c6a13e7e8df58"
+        },
+        {
+          "role": "student",
+          "path_sha256": "9bc3982cc54a7064e7bf6b9bed316e36b96be8a5ce059eaab843ede3b9619a96"
+        }
+      ]
+    },
+    {
+      "source_panel": 8,
+      "display_panel": 8,
+      "title": "多正弦",
+      "teacher_annotation": "教师 0.71",
+      "student_annotation": "学生 1.05 (1.5×)",
+      "xlim": [
+        0,
+        8
+      ],
+      "source_clip_rect": {
+        "x": 514.7325,
+        "y": 159.73,
+        "width": 140.5975,
+        "height": 93.35
+      },
+      "display_clip_rect": {
+        "x": 641.8105829596412,
+        "y": 794.4313846153847,
+        "width": 453.30941704035865,
+        "height": 134.5846153846154
+      },
+      "curves": [
+        {
+          "role": "reference",
+          "path_sha256": "1eb308e654cb45a719874cd9fc67ab259c03c4991f0ef608a93f8d3c19332c0d"
+        },
+        {
+          "role": "teacher",
+          "path_sha256": "b3ea6bb9fc09be330b7459a4f73da320cd43327f4451382ddf500ea52528b9e8"
+        },
+        {
+          "role": "student",
+          "path_sha256": "ee06918c2fab2ce213110403dc814c61abf4fae526fd71b7d6515578693a6d52"
+        }
+      ]
+    }
+  ]
+}

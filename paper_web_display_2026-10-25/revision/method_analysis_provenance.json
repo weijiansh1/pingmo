@@ -1,0 +1,34 @@
+{
+  "sources": {
+    "flight_control_original_restored_2026-10-25/pingmo_src/data/aircraft/generated/p_channel_library_iv_a_5000_v1/plants.jsonl": "1daaccbef44b36274d2ce53612a3f46e54bd5c691d7f7bc8d498f1b903273fde",
+    "flight_control_original_restored_2026-10-25/pingmo_src/src/aircraft/sampler.py": "1027cc6bed4a5a1a06b5f9f2bf1de9bac1349321d4b26de27cfc7113708bde2f",
+    "flight_control_original_restored_2026-10-25/pingmo_src/src/aircraft/gain_calibration.py": "42cb4f7c26feaced5bf123ddd6df2a9a7f072b1aaf580e93cfeb90c4e3545f2a",
+    "flight_control_original_restored_2026-10-25/pingmo_src/src/envs/batched_p_channel.py": "2d8a73e24e2ccdee693245aaebfbf21d769aec270436498b61141f0fd2d42fd7"
+  },
+  "sampler": "scrambled 9D Sobol; joint quality constraints and response calibration",
+  "actual_bucket_counts": {
+    "L1": 1500,
+    "L2": 1500,
+    "L3": 1500,
+    "OOD": 500
+  },
+  "actual_split_counts": {
+    "train_core": 2100,
+    "train_boundary": 900,
+    "validation": 450,
+    "id_test": 1050,
+    "ood_test": 500
+  },
+  "ood_reasons_not_mutually_exclusive": {
+    "dutch_roll_beyond_level_3": 57,
+    "t_r_beyond_level_3": 58,
+    "l_fa_outside_iv_force_input_evidence": 228,
+    "r_omega_outside_evidence_envelope": 58,
+    "transport_delay_above_research_envelope": 56,
+    "spiral_beyond_level_3": 55,
+    "sensitivity_1s_above_level_2_ungraded": 56
+  },
+  "reference_signal": "Original main experiment smooths command and aligns target by sampled transport delay; recorded target is retained for historical errors.",
+  "round_number_basis": "Archived figure has round 0 behavior cloning and rounds 1–5 after aggregation.",
+  "new_training_or_simulation": false
+}

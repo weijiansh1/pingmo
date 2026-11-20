@@ -1,0 +1,42 @@
+{
+  "renderer_cases": [
+    {
+      "example": 0,
+      "formulas": 3,
+      "tags": {
+        "msub": 1,
+        "msup": 0,
+        "msubsup": 1,
+        "mover": 1
+      }
+    },
+    {
+      "example": 1,
+      "formulas": 2,
+      "tags": {
+        "msub": 2,
+        "msup": 1,
+        "msubsup": 0,
+        "mover": 0
+      }
+    },
+    {
+      "example": 2,
+      "formulas": 2,
+      "tags": {
+        "msub": 3,
+        "msup": 0,
+        "msubsup": 1,
+        "mover": 0
+      }
+    }
+  ],
+  "manuscript_counts": {
+    "display": 15,
+    "inline": 153
+  },
+  "unrendered_notation": [],
+  "tables_preserve_inline_absolute_values": true,
+  "bold_inline_math": true,
+  "code_spans_preserved": true
+}

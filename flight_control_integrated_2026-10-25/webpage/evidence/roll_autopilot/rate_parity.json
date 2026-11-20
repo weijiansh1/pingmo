@@ -1,0 +1,2306 @@
+[
+  {
+    "arm": "frozen",
+    "condition": "V050_H2500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H2500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H2500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H2500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H2500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H2500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H2500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H2500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H2500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H2500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 5.963540027744094e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H2500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 4.969616689786745e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H2500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3000",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3000",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3000",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3000",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3000",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 4.969616689786745e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3000",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3000",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3000",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3000",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3000",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3000",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 4.969616689786745e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3000",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 5.963540027744094e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 9.93923337957349e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "frozen",
+    "condition": "V050_H3500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H2500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H2500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H2500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H2500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H2500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H2500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H2500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H2500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H2500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H2500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H2500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 9.93923337957349e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H2500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3000",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3000",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3000",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3000",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3000",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3000",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3000",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3000",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3000",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3000",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3000",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 4.969616689786745e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3000",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 2.3854160110976376e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 5.963540027744094e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 2.4848083448933725e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "frozen",
+    "condition": "V060_H3500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H2500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H2500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H2500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H2500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H2500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 2.981770013872047e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H2500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H2500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H2500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H2500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H2500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 2.981770013872047e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H2500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 2.4848083448933725e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.7755575615628914e-17
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H2500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3000",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3000",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3000",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3000",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3000",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3000",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3000",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3000",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3000",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3000",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3000",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 4.969616689786745e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3000",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 9.93923337957349e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 5.963540027744094e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 4.969616689786745e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "frozen",
+    "condition": "V070_H3500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H2500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H2500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H2500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 1.2722218725854067e-14,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H2500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H2500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H2500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 5.963540027744094e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H2500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H2500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H2500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H2500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H2500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 7.454425034680117e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H2500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3000",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3000",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3000",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3000",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3000",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3000",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 5.963540027744094e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3000",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3000",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3000",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3000",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3000",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 9.93923337957349e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3000",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 9.93923337957349e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "frozen",
+    "condition": "V080_H3500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H2500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H2500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H2500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H2500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H2500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H2500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H2500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H2500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H2500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 4.770832022195275e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H2500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H2500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H2500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 2.3854160110976376e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3000",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3000",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3000",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3000",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3000",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3000",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3000",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3000",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3000",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3000",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3000",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3000",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V050_H3500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H2500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H2500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H2500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H2500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 2.3854160110976376e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H2500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H2500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H2500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H2500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H2500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H2500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H2500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H2500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3000",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3000",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3000",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3000",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3000",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3000",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3000",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3000",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3000",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3000",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3000",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 1.987846675914698e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3000",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 2.3854160110976376e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 0.0,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 0.0,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 7.454425034680117e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V060_H3500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 2.3854160110976376e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H2500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H2500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H2500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H2500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H2500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H2500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H2500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H2500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H2500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H2500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H2500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 1.4908850069360235e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H2500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3000",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3000",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3000",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3000",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3000",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3000",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3000",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 1.2722218725854067e-14,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3000",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 1.2722218725854067e-14,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3000",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3000",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3000",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 9.93923337957349e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3000",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 2.3854160110976376e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 2.3854160110976376e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 9.54166404439055e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 1.1927080055488188e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 9.93923337957349e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 5.551115123125783e-17
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V070_H3500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H2500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H2500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H2500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-14,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H2500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H2500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H2500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 2.3854160110976376e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H2500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 1.2722218725854067e-14,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H2500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 1.2722218725854067e-14,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H2500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H2500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H2500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 4.969616689786745e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H2500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3000",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3000",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3000",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3000",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 2.3854160110976376e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3000",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3000",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 2.3854160110976376e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3000",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3000",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3000",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 3.975693351829396e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3000",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3000",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 1.4908850069360235e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3000",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3500",
+    "command_id": "eval-step-pos-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3500",
+    "command_id": "eval-step-neg-15deg-s",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 8.881784197001252e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3500",
+    "command_id": "eval-step-pos-25deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3500",
+    "command_id": "eval-doublet-15deg-s",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3500",
+    "command_id": "eval-sine-0.75hz",
+    "max_p_difference_deg_s": 7.951386703658792e-16,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 2.220446049250313e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3500",
+    "command_id": "eval-multisine",
+    "max_p_difference_deg_s": 2.3854160110976376e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3500",
+    "command_id": "held-step-pos-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3500",
+    "command_id": "held-step-neg-22deg-s",
+    "max_p_difference_deg_s": 6.3611093629270335e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.7763568394002505e-15
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3500",
+    "command_id": "held-doublet-22deg-s",
+    "max_p_difference_deg_s": 1.5902773407317584e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3500",
+    "command_id": "held-sine-0.62hz",
+    "max_p_difference_deg_s": 2.3854160110976376e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3500",
+    "command_id": "held-sine-1.35hz",
+    "max_p_difference_deg_s": 7.454425034680117e-17,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 1.1102230246251565e-16
+  },
+  {
+    "arm": "full_b30",
+    "condition": "V080_H3500",
+    "command_id": "held-multisine-b",
+    "max_p_difference_deg_s": 3.1805546814635168e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "max_surface_difference_deg": 4.440892098500626e-16
+  }
+]

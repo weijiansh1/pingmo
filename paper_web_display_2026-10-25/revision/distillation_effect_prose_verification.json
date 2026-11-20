@@ -1,0 +1,89 @@
+{
+  "snapshot": "/home/swj/pingmo/paper_web_display_2026-10-25/revision/before_distillation_effect_prose_20261025T173829451746Z",
+  "sha256": {
+    "paper_source/distillation_metric.py": "b5107fecbbad1f6d927352e46d3f367cecba08b074204a6c33595bf6caf7bf4d",
+    "paper_source/build_display.py": "30b363205e69b18fb9ce613c257ca92be5da6dcb5e647c13ec64cc56a3054ba4",
+    "paper_source/editorial_revision.py": "46d2ee6a566d8c618e16e7b275d70b180270b9a24e5595f1bcc61b13f8c4cc7a",
+    "webpage/dhc6_report.html": "3e6943e8de76ac5ce6c66105673bdaa9183ef93b404ba2349bcb4e51850e4e31",
+    "webpage/dhc6_paper.html": "3e6943e8de76ac5ce6c66105673bdaa9183ef93b404ba2349bcb4e51850e4e31",
+    "revision/display_manifest.json": "eb55de17dd34d6e2e189b0100e46ee5b5a48ca60bb614b4c08055d36ba69b53e",
+    "README.md": "f3c2fd96cf6aa22cc499d7dd73ef67fbf30c4ff4eb999fde9c69831022bc048b"
+  },
+  "checks": [
+    {
+      "file": "dhc6_report.html",
+      "served_matches": true,
+      "existing_experiment_table_values_preserved": true,
+      "existing_equations_preserved": true,
+      "existing_figures_preserved": true,
+      "tables": 15,
+      "formulas": 13,
+      "figures": 23,
+      "metric_name": "师生闭环跟踪误差比",
+      "student_table": [
+        "tiny",
+        "3,856",
+        "37/44",
+        "3/4",
+        "1.28×",
+        "1.68×",
+        "small",
+        "75,040",
+        "38/44",
+        "3/4",
+        "1.34×",
+        "1.41×"
+      ],
+      "response_analysis": "图 11 在同一源对象、相同指令下比较教师与学生的闭环响应。六档阶跃的上升过程接近，学生在 2 s 后的跟踪 RMSE 为教师的 2.3–3.3 倍；双脉冲与多正弦对应的比值为 1.5–1.9。学生保留了主要响应形态，跟踪精度仍低于教师。图中比较单个对象的不同指令，表 5 则汇总对象级误差比的中位数。"
+    },
+    {
+      "file": "dhc6_paper.html",
+      "served_matches": true,
+      "existing_experiment_table_values_preserved": true,
+      "existing_equations_preserved": true,
+      "existing_figures_preserved": true,
+      "tables": 15,
+      "formulas": 13,
+      "figures": 23,
+      "metric_name": "师生闭环跟踪误差比",
+      "student_table": [
+        "tiny",
+        "3,856",
+        "37/44",
+        "3/4",
+        "1.28×",
+        "1.68×",
+        "small",
+        "75,040",
+        "38/44",
+        "3/4",
+        "1.34×",
+        "1.41×"
+      ],
+      "response_analysis": "图 11 在同一源对象、相同指令下比较教师与学生的闭环响应。六档阶跃的上升过程接近，学生在 2 s 后的跟踪 RMSE 为教师的 2.3–3.3 倍；双脉冲与多正弦对应的比值为 1.5–1.9。学生保留了主要响应形态，跟踪精度仍低于教师。图中比较单个对象的不同指令，表 5 则汇总对象级误差比的中位数。"
+    }
+  ],
+  "browser": {
+    "desktop_viewport": [
+      1440,
+      1100
+    ],
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "mobile_page_width": 390,
+    "katex_errors": 0,
+    "desktop_screenshot": "paper_web_proxy_2026-10-25/output/playwright/distillation-effect-desktop.png",
+    "mobile_screenshot": "paper_web_proxy_2026-10-25/output/playwright/distillation-effect-mobile.png",
+    "cache_busting_query": "v=distillation-prose-2e67e754",
+    "student_table_uses_local_horizontal_scroll": true
+  },
+  "pdf": {
+    "file": "paper_web_proxy_2026-10-25/output/playwright/distillation-effect-metrics.pdf",
+    "pages": 1,
+    "metric_text_present": true,
+    "rendered_preview": "paper_web_display_2026-10-25/revision/distillation_effect_pdf_check.png"
+  },
+  "display_sha256": "2e67e7546e2cbb6dfb09247af39aa62a2cefcf6bae82abd0963fc22921587189"
+}

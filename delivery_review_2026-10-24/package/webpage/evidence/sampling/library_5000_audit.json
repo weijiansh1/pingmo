@@ -1,0 +1,276 @@
+{
+ "library": "data/aircraft/generated/p_channel_library_iv_a_5000_v1",
+ "generator": "src/aircraft/sampler.py::build_iv_a_library",
+ "manifest": {
+  "schema_version": "6.0",
+  "seed": 20261022,
+  "candidate_count": 16384,
+  "total_plants": 5000,
+  "sampling_policy": "equal_L1_L2_L3_plus_held_out_OOD",
+  "level_basis": "worst_of_A18_A19_A35_and_A31_when_defined",
+  "gjb_label_scope": "static_appendix_A_recommended_boundaries_not_formal_compliance"
+ },
+ "counts": {
+  "total": 5000,
+  "split": {
+   "train_core": 2100,
+   "train_boundary": 900,
+   "validation": 450,
+   "id_test": 1050,
+   "ood_test": 500
+  },
+  "final_level": {
+   "1": 1644,
+   "2": 1599,
+   "3": 1531,
+   "None": 226
+  },
+  "selection_bucket": {
+   "L1": 1500,
+   "L2": 1500,
+   "L3": 1500,
+   "OOD": 500
+  },
+  "split_bucket": {
+   "train_core": {
+    "L1": 700,
+    "L2": 700,
+    "L3": 700
+   },
+   "train_boundary": {
+    "L1": 300,
+    "L2": 300,
+    "L3": 300
+   },
+   "validation": {
+    "L1": 150,
+    "L2": 150,
+    "L3": 150
+   },
+   "id_test": {
+    "L1": 350,
+    "L2": 350,
+    "L3": 350
+   },
+   "ood_test": {
+    "OOD": 500
+   }
+  },
+  "split_level": {
+   "train_core": {
+    "1": 700,
+    "2": 700,
+    "3": 700
+   },
+   "train_boundary": {
+    "1": 300,
+    "2": 300,
+    "3": 300
+   },
+   "validation": {
+    "1": 150,
+    "2": 150,
+    "3": 150
+   },
+   "id_test": {
+    "1": 350,
+    "2": 350,
+    "3": 350
+   },
+   "ood_test": {
+    "None": 226,
+    "1": 144,
+    "2": 99,
+    "3": 31
+   }
+  },
+  "proposal_bucket": {
+   "L1": 1530,
+   "L2": 1599,
+   "L3": 1531,
+   "OOD": 340
+  },
+  "component_level": {
+   "t_r": {
+    "1": 4021,
+    "3": 508,
+    "2": 413,
+    "None": 58
+   },
+   "spiral": {
+    "1": 4023,
+    "2": 410,
+    "3": 512,
+    "None": 55
+   },
+   "dutch_roll": {
+    "1": 4016,
+    "3": 511,
+    "2": 416,
+    "None": 57
+   },
+   "sensitivity_1s": {
+    "1": 4584,
+    "2": 360,
+    "None": 56
+   }
+  }
+ },
+ "proposal_bucket_x_final_level": {
+  "L1": {
+   "1": 1530
+  },
+  "L2": {
+   "2": 1599
+  },
+  "L3": {
+   "3": 1531
+  },
+  "OOD": {
+   "None": 226,
+   "1": 114
+  }
+ },
+ "graded_objects": 4774,
+ "parameter_ranges": {
+  "l_fa": [
+   0.010891274160730768,
+   1.5360810828945834
+  ],
+  "lambda_s": [
+   -0.14997468851024512,
+   0.29688069731642464
+  ],
+  "t_r": [
+   0.18001361028057664,
+   14.98180859167619
+  ],
+  "zeta_d": [
+   0.00501100197649215,
+   0.6998854404222221
+  ],
+  "omega_d": [
+   0.20386868974898315,
+   5.998019406025572
+  ],
+  "r_omega": [
+   0.3040407816353831,
+   2.9953592521724466
+  ],
+  "r_zeta": [
+   0.14938349471329512,
+   135.29286094671957
+  ],
+  "tau_p": [
+   0.0010379677284508943,
+   0.4954632893204689
+  ],
+  "sensitivity_1s": [
+   0.8500141960829761,
+   8.317990023211175
+  ]
+ },
+ "ood_reason_counts": {
+  "dutch_roll_beyond_level_3": 57,
+  "t_r_beyond_level_3": 58,
+  "l_fa_outside_iv_force_input_evidence": 228,
+  "r_omega_outside_evidence_envelope": 58,
+  "transport_delay_above_research_envelope": 56,
+  "spiral_beyond_level_3": 55,
+  "sensitivity_1s_above_level_2_ungraded": 56
+ },
+ "checks": [
+  {
+   "name": "total objects",
+   "passed": true,
+   "evidence": 5000
+  },
+  {
+   "name": "split counts match manifest",
+   "passed": true,
+   "evidence": {
+    "train_core": 2100,
+    "train_boundary": 900,
+    "validation": 450,
+    "id_test": 1050,
+    "ood_test": 500
+   }
+  },
+  {
+   "name": "split quotas by selection bucket match manifest",
+   "passed": true,
+   "evidence": {
+    "train_core": {
+     "L1": 700,
+     "L2": 700,
+     "L3": 700
+    },
+    "train_boundary": {
+     "L1": 300,
+     "L2": 300,
+     "L3": 300
+    },
+    "validation": {
+     "L1": 150,
+     "L2": 150,
+     "L3": 150
+    },
+    "id_test": {
+     "L1": 350,
+     "L2": 350,
+     "L3": 350
+    },
+    "ood_test": {
+     "OOD": 500
+    }
+   }
+  },
+  {
+   "name": "selection bucket counts match manifest",
+   "passed": true,
+   "evidence": {
+    "L1": 1500,
+    "L2": 1500,
+    "L3": 1500,
+    "OOD": 500
+   }
+  },
+  {
+   "name": "parameter invariants (l_fa,t_r,omega_d>0; 0<zeta_d<1; tau_p>=0)",
+   "passed": true,
+   "evidence": {
+    "violations": 0
+   }
+  },
+  {
+   "name": "all parameter values finite",
+   "passed": true,
+   "evidence": {
+    "nonfinite": 0
+   }
+  },
+  {
+   "name": "derived quantities consistent (omega_phi, zeta_phi)",
+   "passed": true,
+   "evidence": 0.0
+  },
+  {
+   "name": "plant_id unique",
+   "passed": true,
+   "evidence": 5000
+  },
+  {
+   "name": "candidate_id unique",
+   "passed": true,
+   "evidence": 5000
+  },
+  {
+   "name": "every ungraded object carries an OOD reason",
+   "passed": true,
+   "evidence": {
+    "unexplained": 0
+   }
+  }
+ ],
+ "all_passed": true
+}

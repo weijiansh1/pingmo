@@ -1,0 +1,91 @@
+[
+  {
+    "archive": "飞控大模型研究_交付_2026-10-24.zip",
+    "file_count": 2076,
+    "review_record_matches": [],
+    "pid_record_files": [
+      "pingmo_src/src/controllers/pid.py"
+    ],
+    "paper_sources": [
+      {
+        "file": "paper_source/dhc6_paper.py",
+        "sha256": "22325fe704564ce27852fb2e2fd93156dc02dfebb6ef94da86092f0b8419ba5b",
+        "old_pid_table_present": true,
+        "old_fixed_gains_text_present": true,
+        "pid_mentions": [
+          "<h3 id=\"s54\">5.3.4 与固定增益 PID 的对照</h3>",
+          "运行一个经典基线：二阶自由度 PID，含参考前馈、抗积分饱和，输入为力请求（±22 N），再折算成同一",
+          "分布外差距更大，±1 为 86.8% 对 46.6%，±31 为 27.6% 对 16.2%。PID 的零样本失效集中在分布外对象：",
+          "中位 RMSE 随对象变化跨 8.8–18.5 deg/s，学生在同一批对象上为 0.21–2.93 deg/s。小幅值段 PID 的中位误差更低",
+          "SECTIONS.append(tab(\"表 6　固定增益 PID 与统一学生在同一批对象上的对照\","
+        ]
+      }
+    ]
+  },
+  {
+    "archive": "飞控大模型研究_修订_2026-10-24.zip",
+    "file_count": 2132,
+    "review_record_matches": [],
+    "pid_record_files": [
+      "flight_control_corrected_2026-10-24/pingmo_src/src/controllers/pid.py"
+    ],
+    "paper_sources": [
+      {
+        "file": "flight_control_corrected_2026-10-24/paper_source/dhc6_paper.py",
+        "sha256": "60bbe7df03f3aacd9f80192a0ee8fda9898f5cbbece29d3da54d15eee29b6271",
+        "old_pid_table_present": false,
+        "old_fixed_gains_text_present": false,
+        "pid_mentions": []
+      }
+    ]
+  },
+  {
+    "archive": "飞控大模型研究_修订_v2_2026-10-24.zip",
+    "file_count": 2155,
+    "review_record_matches": [],
+    "pid_record_files": [
+      "flight_control_corrected_2026-10-24/pingmo_src/src/controllers/pid.py"
+    ],
+    "paper_sources": [
+      {
+        "file": "flight_control_corrected_2026-10-24/paper_source/dhc6_paper.py",
+        "sha256": "60bbe7df03f3aacd9f80192a0ee8fda9898f5cbbece29d3da54d15eee29b6271",
+        "old_pid_table_present": false,
+        "old_fixed_gains_text_present": false,
+        "pid_mentions": []
+      }
+    ]
+  },
+  {
+    "archive": "飞控大模型研究_修订_v3_最佳实践_2026-10-24.zip",
+    "file_count": 4163,
+    "review_record_matches": [],
+    "pid_record_files": [
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/baseline_tuning.json",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/baseline_tuning_refined.json",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/development/teacher128/executed_source/pingmo_src/src/controllers/pid.py",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/development/teacher128_gpu/executed_source/pingmo_src/src/controllers/pid.py",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/development/teacher512/executed_source/pingmo_src/src/controllers/pid.py",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/baselines/executed_source/experiments/controller_route_20261024/tune_pid.py",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/executed_source/experiments/controller_route_20261024/tune_pid.py",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/executed_source/experiments/controller_route_20261024/tune_pid.py",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/executed_source/experiments/controller_route_20261024/tune_pid.py",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/executed_source/experiments/controller_route_20261024/tune_pid.py",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/executed_source/experiments/controller_route_20261024/tune_pid.py",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/executed_source/experiments/controller_route_20261024/tune_pid.py",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/frozen_source/pingmo_src/src/controllers/pid.py",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/refine_pid.py",
+      "flight_control_corrected_2026-10-24/experiments/controller_route_20261024/tune_pid.py",
+      "flight_control_corrected_2026-10-24/pingmo_src/src/controllers/pid.py"
+    ],
+    "paper_sources": [
+      {
+        "file": "flight_control_corrected_2026-10-24/paper_source/dhc6_paper.py",
+        "sha256": "60bbe7df03f3aacd9f80192a0ee8fda9898f5cbbece29d3da54d15eee29b6271",
+        "old_pid_table_present": false,
+        "old_fixed_gains_text_present": false,
+        "pid_mentions": []
+      }
+    ]
+  }
+]

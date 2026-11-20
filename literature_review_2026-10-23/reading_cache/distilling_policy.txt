@@ -1,0 +1,839 @@
+
+[PDF PAGE 1]
+Distilling Policy Distillation
+Wojciech M. Czarnecki Razvan Pascanu Simon Osindero
+DeepMind DeepMind DeepMind
+Siddhant M. Jayakumar Grzegorz ´Swirszcz Max Jaderberg
+DeepMind DeepMind DeepMind
+Abstract
+The transfer of knowledge from one policy to
+another is an important tool in Deep Rein-
+forcement Learning. This process, referred
+to as distillation, has been used to great suc-
+cess, for example, by enhancing the optimi-
+sation of agents, leading to stronger perfor-
+mance faster, on harder domains [26, 32, 5, 8].
+Despite the widespread use and conceptual
+simplicity of distillation, many diﬀerent for-
+mulations are used in practice, and the subtle
+variations between them can often drastically
+change the performance and the resulting ob-
+jective that is being optimised. In this work,
+we rigorously explore the entire landscape
+of policy distillation, comparing the motiva-
+tions and strengths of each variant through
+theoretical and empirical analysis. Our re-
+sults point to three distillation techniques,
+that are preferred depending on speciﬁcs of
+the task. Speciﬁcally a newly proposed ex-
+pected entropy regularised distillation allows
+for quicker learning in a wide range of situa-
+tions, while still guaranteeing convergence.
+1 Introduction
+Reinforcement Learning (RL) and in particular Deep
+Reinforcement Learning (DRL) has shown great suc-
+cess in recent years, from agents playing Atari games
+from raw-pixel inputs [16, 7], to beating professional
+players in GO [30] or learning dexterous robotic ma-
+nipulation [19]. However, obtaining these levels of
+Proceedings of the 22 nd International Conference on Ar-
+tiﬁcial Intelligence and Statistics (AISTATS) 2019, Naha,
+Okinawa, Japan. PMLR: Volume 89. Copyright 2019 by
+the author(s).
+performance can often require an almost prohibitively
+large amount of experience to be acquired by the agent
+in order to learn [25]. Consequently, there is great in-
+terest in techniques that can allow for knowledge trans-
+fer; that is enabling the training of agents based on al-
+ready trained policies [24] or human examples [1]. One
+of the most successful techniques for knowledge trans-
+fer is that of distillation [10, 24, 23], where an agent is
+trained to match the state-dependent probability dis-
+tribution over actions provided by a teacher. Exam-
+ples include allowing us to: train otherwise untrainable
+agent architectures [5]; speed up learning [26]; build
+stronger policies [23]; drive multi-task learning [2, 24].
+Analogous techniques are widely used in supervised
+learning to achieve model compression [10, 11, 22],
+reparametrisation for inference speedup [18], and joint
+co-training of multiple networks [34].
+Although the high-level formulation of distillation in
+RL is simple, one can ﬁnd dozens of diﬀerent math-
+ematical formulations used in practice. For example:
+sometimes trajectories are sampled from a teacher [24],
+sometimes from the student [13] or a mixture [23];
+some authors use a KL divergence between teacher and
+student distribution [9] while others look at KL be-
+tween entire trajectory probabilities [32]. A primary
+goal of this paper is to provide a roadmap of these
+diﬀerent ideas and approaches, and then to perform
+a step-by-step comparison of them, both mathemati-
+cally and empirically. This allows us to construct a
+set of guidelines for deciding which speciﬁc distillation
+approach might best ﬁt a particular problem.
+The main contributions of this paper can be sum-
+marised as follows: In Section 3.1 we provide a proof
+that commonly used distillation with trajectories sam-
+pled from the student policy does not form a gradient
+vector ﬁeld, and while it has convergence guarantees
+in simple tabular cases, it can oscillate as soon as one
+introduces rewards to the system. We show simple
+methods of recovering the gradient vector ﬁeld prop-
+
+[PDF PAGE 2]
+Distilling Policy Distillation
+Figure 1: A distillation method selection diagram, based on the results from this paper. Note, that in practise
+there might be many other factors aﬀecting such decisions, but this serves as a good initial rule of thumb. Method
+references: Teacher distill: [24, 23, 9]; On-policy distill: [23, 20, 13]; On-policy distill+R: [26, 5]; Entropy
+regularised: [32, 27]; N-distill: Section 3.1; Exp. entropy regularised : Section 3.3; Teacher V reward:
+Section 4.2. See Table 1 for methods equations and properties.
+erty. In Section 3.2 we perform empirical evaluation
+of diﬀerent control policies, showing when and why it
+is beneﬁcial to use student-driven distillation. In Sec-
+tion 4 we analyse the actor-critic setup, in which one
+has access to a teacher’s value function, V , in addi-
+tion to its policy, and discuss how V may also be used
+for distillation. We empirically evaluate all the above
+techniques in thousands of random MDPs. Finally,
+based on all the results combined from our mathemat-
+ical analyses and empirical evaluation, we propose ef-
+fective new distillation variants and provide a rule of
+thumb decision tree, Fig. 1.
+2 Preliminaries
+Throughout the paper we assume that we are working
+with Markov Decision Processes, and will now out-
+line our notation. We have a ﬁnite set of states, S,
+a ﬁnite set of possible actions, A, an agent policy
+π :S→ ∆|A| which outputs distribution over actions
+in each state. Agents interact with an environment at
+time t by sampling actions at∼ π(τt), and the envi-
+ronment transitions to a new state according to un-
+known transition dynamics τt+1∼ T (τt,at) and pro-
+duces rewards rt∼ r(τt,at). Each τt∈S is the state
+encountered at time t in the trajectory τ. We use Eπ
+to denote an expectation over the distribution of tra-
+jectories, τ, generated by agent when interacting with
+the environment using policy π. Under this notation
+the typical goal of reinforcement learning is to ﬁnd
+π∗ = arg maxπ
+[
+Eπ[∑|τ|t=1γt−1rt]], where γ∈ [0, 1] is
+discount factor. For simplicity we use γ = 1 in most
+of our theoretical results, though the proofs can triv-
+ially be extended to arbitrary γ ≤ 1. For the em-
+pirical results we generally use γ = .99, see the Ap-
+pendix A. We consider the general problem of extract-
+ing knowledge from a teacher policy, π, and transfer-
+ring it to a diﬀerent student policy, πθ, using trajec-
+tories,τ ={τ1,a 1,r 1,...,τ |τ|,a|τ|,r|τ|}, sampled from
+interactions between a control policy, qθ, and the un-
+known environment.
+All proofs are provided in the Appendices C and D.
+3 Policy distillations
+Through the rest of this paper we consider update rules
+for θ (parameters of the student policy πθ) which are
+proportional to:
+Eqθ
+
+
+|τ|∑
+t=1
+−∇θ logπθ(at|τt)ˆRt +∇θ𝓁(πθ,Vπθ,τt)
+
+,
+(1)
+forˆRt =∑|τ|i=tˆri =∑|τ|i=tˆr(πθ,Vπθ,τi,ai,τi+1,ai+1,ri)
+and a choice of q,𝓁 and ˆr that deﬁne a speciﬁc in-
+stance of a distillation technique (see Table 1 for a
+list of examples). In this equation, 𝓁 can be seen as a
+form of auxiliary loss [12] responsible for policy align-
+ment at the current step, while ˆ r can be viewed as
+a reward term that combines extrinsic and intrinsic
+components [21] and thus is responsible for long-term
+alignment. Note, we assume undiscounted objectives
+and episodic RL, but analogous analysis can be per-
+formed for the discounted case.
+Focusing on update rules rather than simply losses
+may seem to add unnecessary complexity, however one
+of the crucial outcomes of our work is to show that
+the update rules involved in certain distillation meth-
+ods do not have corresponding loss functions. Conse-
+quently we must make an explicit distinction between
+
+[PDF PAGE 3]
+W ojciech Marian Czarnecki et al.
+Table 1: A comparison of various ways of deﬁning distillation between the teacher ( π) and student (πθ) policies.
+qθ is the sampling (control) policy.∇ column denotes whether the update rule prescribed is a valid gradient vector
+ﬁeld. H×(p(s)‖q(s)) denotes Shannon’s cross entropy between two distributions over actions−Ea∼p(s) [logq(a|s)].
+* For proof see Theorem 1. ** For proof see Theorem 2. Methods below the mid line are introduced in this
+paper – usually as modiﬁcations of known techniques to address speciﬁc issues identiﬁed. Each of the techniques
+but Teacher distill and Teacher V reward has a corresponding +R version whereˆri is replaced with ˆri +ri.
+name qθ 𝓁(πθ,Vπθ,τt) ˆri is∇? Loss
+Teacher distill π H×(π(τt)‖πθ(τt)) 0 yes [1] Eπ[∑t H×(π(τt)‖πθ(τt))]
+On-policy distill πθ H×(π(τt)‖πθ(τt)) 0 no ∗ does not exist∗
+Entropy regularised πθ 0 log π(ai|τi) yes [4] Eπθ [∑t− logπ(at|τt)]
+N-distill πθ H×(π(τt)‖πθ(τt)) -H ×(π(τi+1)‖πθ(τi+1)) yes ∗∗ Eπθ [∑t H×(π(τt)‖πθ(τt))]
+Exp. entropy regularised πθ H×(πθ(τt)‖π(τt)) log π(ai+1|τi+1) yes ∗∗ Eπθ [∑t− logπ(at|τt)]
+Teacher V reward πθ 0 ri +Vπ(τi+1)−Vπθ(τi) yes ∗∗ Eπθ [∑trt]
+update rules, and losses which may be used to derive
+update rules.
+3.1 Control policy
+Many RL distillation frameworks set up knowledge
+transfer as a supervised learning problem [23, 24,
+9, 33], by following updates in the direction of:
+Eπ
+[∑|τ|
+t=1∇θH×(π(τt)‖πθ(τt))], with Monte Carlo es-
+timates for the expectation based on trajectories de-
+rived from the teacher policy, π. However, since then,
+several publications [20, 5, 26] have reported better
+empirical results when trajectories are sampled from
+the student instead, i.e. by following updates in the
+direction of: Eπθ
+[∑|τ|
+t=1∇θH×(π(τt)‖πθ(τt))]. Note
+that in this form of update the gradient operator is
+under an expectation wrt. the same set of variables
+that it operates upon. Consequently it is not clear if
+this process will even converge, and thus the beneﬁts
+of using such updates are also unclear.
+In this section we analyse and prove the following prop-
+erties: (i) For tabular policies, provided qθ guarantees
+a non-zero probability of sampling each state visited
+by the teacher, the dynamics will converge. In par-
+ticular qθ = πθ with a softmax policy satisﬁes this
+property; (ii) In general, updates like this do not form
+gradient vector ﬁelds; (iii) If one adds reward opti-
+misation to the system, the dynamics can cycle and
+never converge; (iv) A reward-based correction term
+can be added to ensure convergence (and with such a
+correction, the updates do correspond to proper gradi-
+ent vector ﬁeld); (v) There is a trade-oﬀ between the
+speed of convergence and the ﬁdelity of the behaviour
+replication, which can be controlled by qθ.
+We begin by proving a general theorem about on-
+policy non-gradients. In principle, it is very similar
+to the notion of compatibility of a value function and
+the policy [31], or can be seen as a generalisation of
+incompatibility towards other possible trajectory level
+losses 𝓁(τ|θ) (e.g. 𝓁(τ|θ) =∑|τ|t=1𝓁(π(τt)‖πθ(τt))).
+Theorem 1. Let us assume that g(θ) = Eπθ[∇θ𝓁(τ|θ)]
+is diﬀerentiable and there does not exist ατ∈ R such
+that∇θ𝓁(τ|θ) = ατ∇πθ(τ) almost everywhere. Then
+g(θ) is not a gradient vector ﬁeld of any function.
+The assumption about the existence of ατ is equiv-
+alent to the compatibility criterion [31], and thus it
+shows that incompatible value functions do not cre-
+ate valid gradient vector ﬁelds. This is complemen-
+tary to the result that compatible value functions pro-
+vide convergence to the optimal policy. If we choose
+𝓁(τ|θ) = ∑|τ|t=1 H×(π(τt)‖πθ(τt)) we recover the on-
+policy distillation updates used in techniques such as
+kickstarting [26] and Mix&Match [5]. In this setting
+there is no corresponding ατ that simply rescales pol-
+icy logits, and thus as a consequence of Theorem 1
+we see that naive distillation with student-generated
+trajectories does not form a gradient vector ﬁeld. We
+also note that exactly the same proof shows that the
+entropy penalty [15] 𝓁(τ|θ) = −∑|τ|t=1 H(π(τt)), com-
+monly used in actor critic algorithms, also results in
+updates that do not correspond to a valid gradient
+vector ﬁeld.
+Having seen that these commonly used updates do not
+correspond to a valid gradient vector ﬁeld, a natural
+question to ask is whether this is necessarily problem-
+atic. For example – the updates used in Q-learning are
+not gradient steps either, but Q-learning still provides
+a convergent iterative scheme. We address the ques-
+tion of what can be said about the dynamical system
+emerging from this sort of distillation, and for a simple
+tabular setup we can show that indeed this is not an
+issue:
+Proposition 1. Using an update rule of the form
+Eπθ[∑|τ|t=1∇θ𝓁(π(τt),πθ(τt))] for a strongly stochas-
+
+[PDF PAGE 4]
+Distilling Policy Distillation
+Figure 2: Left: An MDP providing an example of non-convergence of on-policy distillation, when distilling
+from a teacher which prefers to go right (blue arrow) when in sR over going left (red arrow) by putting a loss
+𝓁(θ|sR) =−4πθ(R|sR). For simplicity it does not provide any learning signal in the remaining states. The initial
+state is coloured blue, L and R are actions, and green states are terminal states with rewards inside. Center
+and Right: Evolution of the policy is shown, with clear oscillation for on-policy distill and convergence for
+n-distill. The student policy is parameterised with sigmoids, shares parameter for sL and sR, and trained with
+true expected returns. Detailed proof of oscillations is provided in the Appendix C.
+tic1 student policy, with episodic ﬁnite state-space
+MDPs and tabular policies, provides convergence to
+the teacher policy over all reachable states for the loss
+function 𝓁, provided the optimiser used can minimise
+𝓁(a,b ) wrt. b, for any a in the domain of 𝓁, and 𝓁(a,b )
+reaches minimum at 𝓁(a,a ).
+However, despite this positive result, we can also show
+that even in the episodic MDP case one can break
+convergence if we introduce rewards. The counterex-
+ample, visualised in Fig. 2 and described in detail in
+the Appendix C, relies on a teacher that can discrim-
+inate between some states that the student cannot. It
+leads to an oscillation – the student policy will never
+converge even after inﬁnitely many steps.
+There are multiple possible ways to construct on-
+student-policy distillation learning methods similar to
+the ones used in practice, but which do provide update
+rules that are gradient vector ﬁelds 2. One such way is
+to start from the objective suggested by the update
+rule component, namely: Eπθ
+[∑|τ|
+t=1𝓁(π(τt)‖πθ(τt))
+]
+.
+Then we compute its gradient using the log-derivative
+trick, analogously to how the KL-regularised RL ob-
+jective is derived [27] or how Stochastic Computation
+Graphs are obtained [28]; doing so gives the update
+direction:
+Eπθ [∇θ𝓁(τ|θ)] + Eπθ [∇θ logπθ(τ)𝓁(τ|θ)].
+As we can see, the gradient vector ﬁeld is composed
+of two expectation terms. The ﬁrst term corresponds
+1Meaning that each for each actiona, parametersθ and
+state s, πθ(s)[a]> 0.
+2It is worth noting that the typical trick of importance
+sampling is not viable here. First, it is unclear what sam-
+pling distribution to correct with respect to – one can
+choose any distribution that is independent of θ, thus it
+could be teacher policy, but also say – a uniform one. Sec-
+ond, mathematically this simply leads to degeneration to
+optimisation of the corresponding loss, such as teacher dis-
+till rather than on-policy method.
+to the 1-step on-policy distillation setup discussed so
+far. The second term corresponds to the standard RL
+objective if −𝓁 plays the role of the reward function.
+This simple derivation allows us to prove the following:
+Theorem 2. In order to recover the gradient vector
+ﬁeld property for 1-step on-policy distillation updates
+with any loss 𝓁(π(τt)‖πθ(τt)), one can add an extra re-
+ward term ˆrt =−𝓁(π(τt+1)‖πθ(τt+1)). Analogously if
+the loss is of the form Ea∼πθ ˆ𝓁(π(τt)) then the correc-
+tion is of form −ˆ𝓁(π(τt+1)).
+Since this is a gradient vector ﬁeld, it can be safely
+composed with reward based updates without losing
+any convergence properties. As one can see on the
+right of Fig. 2 applying this correction to On-policy
+distill+R (and thus creating the N-distill+R), leads to
+convergence and minimisation of the loss, as expected.
+Given the potential convergence issues with the naive
+updates from Equation 1, particularly when also con-
+sidering reward from the environment as highlighted
+by our counterexample, it begs the question: Why
+does following the student’s policy when performing
+distillation typically lead to better empirical results?
+Our main hypothesis is that, if convergent3, it provides
+more robust policies wrt. trajectories sampled from the
+student.
+This follows the general machine learning principle of
+training in the same regime as that which we expect to
+encounter during test time. In particular, after distil-
+lation, the goal is usually to either evaluate a student
+agent when it is generating its own actions, or to al-
+low the student agent to continue training on its own.
+Therefore what matters is an expectation wrt. πθ,
+and not wrt. π. Consequently performing distillation
+“on-policy” wrt. student trajectories leads to less of a
+distribution-shift between training and testing phases.
+3In practise researchers often force convergence by
+learning rate annealing, early stopping etc. so the issues
+highlighted here may often be masked.
+
+[PDF PAGE 5]
+W ojciech Marian Czarnecki et al.
+Figure 3: Left: Learning curves averaged over 1k grid worlds when distilling Q-Learning teacher with various
+control policies (colors) and temperatures (rows). We report KL over various sampling distributionszθ (columns)
+and returns when following teacher policy. Shaded region represents 0.95 conﬁdence intervals, estimated as 1.96
+· standard error of the mean. Right: Relation between student-driven distillation speed-up (measured as ratio
+of areas under reward/KL curves) and teacher determinism.
+Another motivating argument is that if the teacher is
+almost deterministic, then it visits a relatively small
+fraction of the state space, even though during train-
+ing it might have built a policy to deal with other
+situations too. When using π during distillation, the
+student will not have the opportunity to replicate the
+teacher’s behaviour in these states, since it will not
+visit them. In general, after distillation, π⁄= πθ and
+they diverge quickly in complex environments or over
+long trajectories. Again, on-student-policy distillation
+avoids these issues, especially initially – many states
+will be visited that are not normally encountered un-
+der the teacher policy. Consequently one can expect
+better replication of the teacher, when measured in the
+entire state space.
+The main observations of this section are: (i) on-
+policy 1-step distillation updates do not form gradi-
+ent ﬁelds, and when mixed with environment rewards
+can lead to non-convergent behaviour; (ii) distilla-
+tion using student-generated trajectories replicates the
+teacher policy in more states that are relevant under
+the student’s behaviour distribution. The following
+empirical section highlights the eﬀects that diﬀerent
+choices for the control-policy have in practice.
+3.2 Empirical evaluation of the control policy
+We consider teacher driven [24], student driven [20]
+and ﬁxed (uniform) control policies. We deﬁne a distri-
+bution over grid world tasks, where we randomly place
+walls, terminating and rewarding states in 20 ×20 2D
+grid worlds (see Appendix A.2 for a detailed descrip-
+tion of the MDP generating procedure), and agents
+are capable of moving in 4 directions. There is a ﬁxed
+probability of terminating each episode, such that we
+end up with bounded (undiscounted) returns. We sam-
+ple 1k MDPs like this, and distill for 30k optimisation
+steps using various control policies qθ. Since we have
+proven that in the tabular case we can use distillation
+based on per-step cross-entropy, H ×, this is the loss
+we are minimising, using a gradient based update to
+the underlying logits.
+We use teachers trained with Q-Learning andϵ-greedy
+policies (ϵ set to 0.1, full details provided in the Ap-
+pendix A.4) and observe how diﬀerent types of con-
+trol policy aﬀect the distillation loss. We measure
+Ezθ
+[∑|τ|
+t=1 H×(π(τt)‖πθ(τt))] for various choices ofzθ,
+which can be diﬀerent from qθ used for distillation.
+As predicted by our theoretical analysis, student-
+driven distillation brings beneﬁts wrt. the loss com-
+puted over student trajectories. In other words, if
+one cares about how closely the student behaviour
+matches the teacher behaviour when the student agent
+is allowed to generate experience on its own, student-
+driven distillation optimises this quantity well, with
+the gap disappearing as the teacher is more and more
+uniform (entropic), see Fig. 3. Similarly, matching of
+the teacher policy outside of typically visited states
+(measured by zθ being uniform) is also much better
+when following a student-driven policy. The best re-
+sult, in terms of whole state space, is achieved when
+using uniform distribution for qθ, but this is a control
+setting which does not scale to larger state or action
+spaces. And when we compare this control setting to
+the student-based setting we see that it converges ex-
+
+[PDF PAGE 6]
+Distilling Policy Distillation
+Figure 4: Learning curves averaged over 1k random MDPs with|A| actions, out of which 4 are movement actions
+and the remaining ones do not aﬀect the movement of the agent, but simply make exploration hard. Plots show
+the failure mode of the intrinsic reward only based distillation, and how their expected version ﬁxes it.
+tremely slowly even in these scenarios.
+Similarly, in terms of the returns obtained by the
+agent, student driven distillation sees the fastest learn-
+ing progress, and needs on average 3× less steps than
+teacher driven distillation (and around 10× less than
+uniform driven) to recover full teacher performance.
+This is of crucial importance, since distillation in RL
+is typically a ﬁrst step in a larger training procedure
+in which the rewards obtained by the student policy
+are to be maximised with potentially further train-
+ing. In order to be useful for these applications, one
+typically seeks to obtain highly rewarding policies as
+rapidly as possible. The only criterion under which
+teacher driven distillation works more eﬀectively is,
+somewhat obviously, the expected KL under trajecto-
+ries generated from teacher distribution. However this
+is an artiﬁcial scenario which is rarely true in practice.
+To summarise, student-driven distillation provides sig-
+niﬁcant improvements in terms of empirical results
+over teacher-driven distillation. While one could
+heuristically drive the switch between the two [23],
+the pure student-driven method seems to be strong
+enough to use solely, as long as a proper loss is being
+used, which we discuss in the next section. Therefore,
+in the remainder of this paper we focus on student
+driven distillation qθ =πθ.
+3.3 Empirical evaluation of various updates
+An important choice is the selection of which method
+we use to update the student policy given the tra-
+jectory and actions suggested by the teacher policy.
+There are two popular approaches here: one is to try
+to maximise the probability of the trajectory gener-
+ated by the student under the teacher policy [32, 27],
+and the other is to frame the learning as a per-timestep
+supervised learning problem, deﬁning the loss at each
+timestep to be the cross entropy between the teacher’s
+and student’s distributions over actions [2, 26, 5]
+There are two aspects worth discussing. Firstly, in
+the entropy regularised setup, where we use H×(πθ‖π)
+the student would be considered a prior, while the
+teacher a posterior, however in the distillation setup
+with H ×(π‖πθ) the teacher is the prior and the
+student the posterior. Secondly, the cross entropy
+regularised approach (which tries to minimise the
+cross entropy between whole trajectories distributions
+Eπθ[∑t− logπ(at|τt)]) can be absorbed in the reward
+channel, without any 𝓁 being used. Using only the re-
+ward signal can suﬀer from very high variance in the
+gradient estimator, for example when the action space
+is large. As one can see from Fig. 4, as we increase the
+size of the action space from four actions up to 4k ac-
+tions (by adding actions that do not move the agent)
+the speed of entropy regularised distillation drastically
+collapses, while traditional distillation still works.
+One can reduce the variance by splitting the entropy
+term into a 1-step update expressed by𝓁, and incorpo-
+rate the remaining updates through ˆr. This technique,
+denoted as expected entropy regularised, indeed recov-
+ers performance of traditional distillation. While this
+is not a new objective as such, but rather a diﬀerent
+estimator, it is, to our best knowledge a novel method,
+which strictly dominates popular alternatives.
+The direction chosen for the cross entropy has a very
+simple intuitive explanation. If one uses H ×(π‖πθ)
+then one tries to replicate π, however if one uses
+H×(πθ‖π) then one tries to ﬁnd a deterministic policy,
+which puts all probability mass on the most probable
+action of π (see the Appendix C for a proof). If the
+cost is changed to be the KL divergence instead, this
+issue is eliminated for ﬁnite action spaces, however for
+continuous control it is a matter of mean vs median
+seeking techniques [14] (see the Appendix C for more
+detail). Depending on the MDP, both methods can
+be beneﬁcial, and of course for almost deterministic
+teachers – they actually are equivalent.
+To summarise, these experiments demonstrate that
+across the space of possible student-driven distillation
+approaches the most reliable method, both mathemat-
+ically and empirically, is our proposedexpected entropy
+regularised distillation. It has three key beneﬁts: (i)
+
+[PDF PAGE 7]
+W ojciech Marian Czarnecki et al.
+Figure 5: Learning curves obtained from averaging 1k training runs on randomly generated MDP grid worlds.
+The gradual decrease in reward when distilling from a sub-optimal Q-Learning teacher with distillation methods
+that enforce full policy cloning comes from the fact that the teacher is purely deterministic – while being closer
+to it initially helps, once the student replicates all the wrong state decisions perfectly its reward start to decrease.
+it creates a valid gradient vector ﬁeld; (ii) it does not
+suﬀer from high-variance of the estimate typically used
+in similar methods [32]; and (iii) it directly maximises
+the probability of the student produced trajectories
+under the teacher policy, as opposed to the n-distill
+method, which looks at maximising the probability of
+being in states where the student and teacher agree.
+Consequently, it combines the best elements of various
+similar techniques, while avoiding their drawbacks.
+4 Policy distillation from Actor-Critic
+In practice, while pure policy based methods remain
+useful [23] in RL, the Actor-Critic framework [15, 29, 7]
+has risen to prominence in recent years. Consequently
+we now shift our attention towards distillation strate-
+gies that make use of value critics, denoted byVπ(s) =
+Eπ[∑trt|τ1 = s]. The availability of this additional
+knowledge, in the form of Vπ(s), allows us to better
+leverage imperfect teachers, as we can begin to esti-
+mate how much to trust them.
+For example, let’s assume that we have ground-truth
+access to Vπθ and Vπ, and consider a loss of the
+form: 𝓁(θ,s ) = H ×(π(s)‖πθ(s))[Vπ(s)− Vπθ(s)]>0,
+where [x]>0 = 1 iﬀ x > 0. This can be seen as an
+action-independent version of the Generalised Policy
+Improvement technique [4]. As a result we can easily
+prove that after converging, our agent will be at least
+as strong as its teacher, independent of the initial re-
+turns of πθ.
+Proposition 2. ForS1 being a distribution over ini-
+tial states, if we have ∀s∈S 𝓁(θ∗,s )≤ H(π(s)) then
+Es∼S1[Vπθ∗ (s)]≥ Es∼S1[Vπ(s)].
+With techniques like this we can use teachers which
+do make mistakes. One such experiment, where we
+randomly ﬂip the most probable action of the teacher
+policy in a given percentage of states it visits, is il-
+lustrated in Fig. 5. As before we generate 1k random
+MDPs, and empirically estimate Vπ by sampling 100
+trajectories after a given fraction of state-action pairs
+have been modiﬁed. As one can see, methods that fully
+replicate the teacher (in this case a Q-Learning based
+one, with 25% noise) end up saturating in sub-optimal
+solutions – around 2-4 points (Fig. 5 blue and cyan
+curves). If we add true rewards to the learning sys-
+tem, we improve, but still saturate around 6.5 points
+(Fig. 5 dark green curve). With the value function
+based gating described in Proposition 2 we recover the
+full performance of the teacher with approximately 7
+points (Fig. 5 lime curve). As expected, the usefulness
+of this approach depends on the quality of the teacher
+and the accuracy of the value function estimators.
+4.1 Using the teacher’s critic to bootstrap
+Yet another way of using the teacher’s knowledge is
+to use its value functions, Vπ, instead of the student’s,
+Vπθ, for bootstrapping – so that the usual actor-critic
+TD(1) update direction: ∇ logπθ(at|τt)[r(at,τt) +
+Vπθ(τt+1)] instead becomes ∇ logπθ(at|τt)[r(at,τt) +
+Vπ(τt+1)], which we will refer to as TD + Vπ. Note,
+that it is no longer optimising for the true return since
+the teacher’s value function is not with respect to the
+student’s policy. Consequently, it is not obvious if the
+resulting update is a gradient vector ﬁeld, nor whether
+the result of the updates has meaningful ﬁxed points.
+We can show that for simple cases it is a valid update
+rule:
+Proposition 3. Assume that we are given the
+true value Vπ of the teacher policy π, for a
+ﬁnite state size MDP, then optimising using
+Eπθ[∑t∇ logπθ(at|τt)[r(at,τt) + Vπ(τt+1)]]. con-
+verges to a policy with Es∼S1Vπθ(s)≥ Es∼S1Vπ(s) for
+S1 being the distribution of initial states.
+As the previous experiments show (Fig. 5), bootstrap-
+ping from the teacher leads to a better performance
+than just replicating it (which empirically conﬁrms the
+theoretical claim of an improvement), but at the same
+time it is not solving the original problem, and so the
+method will still saturate early on, if the teacher is not
+strong enough (e.g.: see the poor results of TD + V0
+
+[PDF PAGE 8]
+Distilling Policy Distillation
+where the teacher just predicts 0 value everywhere).
+4.2 Using the critic as an intrinsic reward
+Another possible way to use the teacher’s critic is to
+deﬁne an intrinsic- (or shaping-) reward based on its
+value ˆrVt :=Vπ(τt+1)−Vπ(τt) +rt, which will provide
+reward proportional to the increase in value over the
+last action. Note, that now we have to add true re-
+ward, as value can decrease when the rewarding state
+is encountered and we do not want to penalise our
+agent for actually obtaining the reward.
+It is easy to conclude, that such an update rule is going
+to guarantee convergence to the policy which has the
+maximal value4 while at the same time it is not forcing
+complete policy cloning even if π is the optimal policy
+(which is the property of any potential based intrinsic
+reward [17, 3, 6]).
+Although the presence of such a value-function based
+shaping reward does not aﬀect the optimal solutions
+achieved, the learning dynamics are aﬀected. If the
+teacher is strong (close to optimal) then it is going
+to help convergence speed; if it is weak (obtains low
+returns), it can slow down training. We can formalise
+it with the following proposition
+Proposition 4. Let us assume the teacher is an opti-
+mal policy for the given MDP, then for each action
+at that would lead to a deviation from the optimal
+path, it will get an immediate penalty, meaning that
+rVt <r t, while following any of the optimal paths leads
+to rVt =rt.
+In a symmetric counterpoint to Proposition 4, if our
+teacher is the worst possible policy (minimising returns
+rather than maximising) we get the opposite proposi-
+tion – where one receives immediate penalties for do-
+ing anything but the worst possible actions. While
+this still does not aﬀect the solution of learning, it will
+slow down training signiﬁcantly.
+As a concrete example of these concepts, we can use
+a simple grid world where one can only go left or
+right, while starting in the middle of a corridor of
+length 2T + 1, and rewards +1 and -1 are placed at
+the right and left ends of the corridor respectively.
+We deﬁne an optimal teacher πopt(R|si) = 1 .0 and
+an adversarial teacher πbad(L|si) = 1 .0 (but we set
+Vπbad(a|s) := Vπgood(a|s), thus creating adversarial
+value function). When distilling from an optimal pol-
+icy, distillation techniques based on policy cloning re-
+cover optimal scores very quickly (Fig. 6). Knowledge
+transfer using shaping rewards from the teacher’s value
+4Eπθ[∑|τ |t=1 ˆrVt ] = Eπθ[∑|τ |t=1Vπ(τt+1) −Vπ(τt) +rt] =
+Eπθ[−Vπ(τ1) + ∑|τ |t=1rt] = Eπθ[∑|τ |t=1rt] + const.
+Figure 6: Results of distilling an optimal teacher and
+an adversarial (minimising reward) teacher from the
+chain-structured MDP described in Section 4.2 with
+T = 5. See results for other T in Appendix Fig. 9.
+function leads to much slower progress, but it still out-
+performs our baseline training without any distillation.
+However, once we switch to the adversarial teacher, all
+the policy cloning approaches fail, while the Teacher V
+reward still learns. It is also worth noting that boot-
+strapping from the teacher’s value function fails, as it
+is only guaranteed to improve upon the teacher (which
+it does), not to solve the original task.
+5 Conclusions
+In this paper we sought to highlight some of the
+strengths, weaknesses, and potential mathematical in-
+consistencies in diﬀerent variants of distillation used
+for policy knowledge transfer in reinforcement learn-
+ing. In particular, we suggest a unifying view of many
+diﬀerent techniques which allows them to be compared
+and understood side-by-side. We provide both theo-
+retical analyses, as well as large scale empirical studies
+on synthetic MDPs, which allows us to provide a pre-
+scriptive suggestion of best-practices for distillation in
+diﬀerent settings. The synthesis of these ﬁndings is
+summarised in the ﬂowchart in Figure 1.
+A key contribution of our work is to demonstrate that
+many widely used methods do not correspond to valid
+gradient vector ﬁelds, and thus may be susceptible to
+non-convergent learning dynamics. However, armed
+with our insights, we are able to suggest modiﬁcations
+to these approaches which address some of these dy-
+namical issues. In particular we found that expected
+entropy regularised distillation to be the most reli-
+able formulation, both theoretically and based on our
+empirical results. Also, if available, the critic of the
+teacher can be used to deal with imperfect teachers.
+While the synthetic MDPs used in this work were
+crucial for exploring eﬀectively diﬀerent hypothesis,
+as future work, an open question is how these ap-
+proaches behave empirically on large-scale, real-world
+problems, using function approximators like deep neu-
+ral networks. Mathematically understanding the role
+of the function approximator is also left as future work.
+
+[PDF PAGE 9]
+W ojciech Marian Czarnecki et al.
+Acknowledgements
+We would like to thank Jane Wang, Yee Whye Teh
+and Nicolas Heess for many insightful discussions and
+feedback on this work as well as the whole DeepMind
+team for their support.
+References
+[1] Abbeel, P. and Ng, A. Y. (2004). Apprenticeship
+learning via inverse reinforcement learning. In Pro-
+ceedings of the twenty-ﬁrst international conference
+on Machine learning , page 1. ACM.
+[2] Arora, H., Kumar, R., Krone, J., and Li, C. (2018).
+Multi-task learning for continuous control. arXiv
+preprint arXiv:1802.01034.
+[3] Asmuth, J., Littman, M. L., and Zinkov, R. (2008).
+Potential-based shaping in model-based reinforce-
+ment learning. In AAAI, pages 604–609.
+[4] Barreto, A., Dabney, W., Munos, R., Hunt, J. J.,
+Schaul, T., van Hasselt, H. P., and Silver, D.
+(2017). Successor features for transfer in reinforce-
+ment learning. In Advances in neural information
+processing systems, pages 4055–4065.
+[5] Czarnecki, W. M., Jayakumar, S. M., Jaderberg,
+M., Hasenclever, L., Teh, Y. W., Osindero, S.,
+Heess, N., and Pascanu, R. (2018). Mix&match-
+agent curricula for reinforcement learning. Interna-
+tional Conference on Machine Learning .
+[6] Devlin, S. and Kudenko, D. (2012). Dynamic
+potential-based reward shaping. In Proceedings of
+the 11th International Conference on Autonomous
+Agents and Multiagent Systems-Volume 1 , pages
+433–440. International Foundation for Autonomous
+Agents and Multiagent Systems.
+[7] Espeholt, L., Soyer, H., Munos, R., Simonyan, K.,
+Mnih, V., Ward, T., Doron, Y., Firoiu, V., Harley,
+T., Dunning, I., Legg, S., and Kavukcuoglu, K.
+(2018). Scalable distributed deep-rl with importance
+weighted actor-learner architectures. International
+Conference on Machine Learning.
+[8] Gangwani, T. and Peng, J. (2017). Genetic policy
+optimization. arXiv preprint arXiv:1711.01012 .
+[9] Ghosh, D., Singh, A., Rajeswaran, A., Ku-
+mar, V., and Levine, S. (2017). Divide-and-
+conquer reinforcement learning. arXiv preprint
+arXiv:1711.09874.
+[10] Hinton, G., Vinyals, O., and Dean, J. (2015). Dis-
+tilling the knowledge in a neural network. arXiv
+preprint arXiv:1503.02531.
+[11] Howard, A. G., Zhu, M., Chen, B., Kalenichenko,
+D., Wang, W., Weyand, T., Andreetto, M., and
+Adam, H. (2017). Mobilenets: Eﬃcient convolu-
+tional neural networks for mobile vision applica-
+tions. arXiv preprint arXiv:1704.04861 .
+[12] Jaderberg, M., Mnih, V., Czarnecki, W. M.,
+Schaul, T., Leibo, J. Z., Silver, D., and
+Kavukcuoglu, K. (2017). Reinforcement learning
+with unsupervised auxiliary tasks. International
+Conference on Learning Representations.
+[13] Lin, K., Wang, S., and Zhou, J. (2017). Collab-
+orative deep reinforcement learning. arXiv preprint
+arXiv:1702.05796.
+[14] Minka, T. et al. (2005). Divergence measures and
+message passing. Technical report, Technical report,
+Microsoft Research.
+[15] Mnih, V., Badia, A. P., Mirza, M., Graves, A., Lil-
+licrap, T., Harley, T., Silver, D., and Kavukcuoglu,
+K. (2016). Asynchronous methods for deep rein-
+forcement learning. In International conference on
+machine learning, pages 1928–1937.
+[16] Mnih, V., Kavukcuoglu, K., Silver, D., Rusu,
+A. A., Veness, J., Bellemare, M. G., Graves, A.,
+Riedmiller, M., Fidjeland, A. K., Ostrovski, G.,
+et al. (2015). Human-level control through deep re-
+inforcement learning. Nature, 518(7540):529.
+[17] Ng, A. Y., Harada, D., and Russell, S. (1999). Pol-
+icy invariance under reward transformations: The-
+ory and application to reward shaping. In ICML,
+volume 99, pages 278–287.
+[18] Oord, A. v. d., Li, Y., Babuschkin, I., Simonyan,
+K., Vinyals, O., Kavukcuoglu, K., Driessche, G.
+v. d., Lockhart, E., Cobo, L. C., Stimberg, F., et al.
+(2017). Parallel wavenet: Fast high-ﬁdelity speech
+synthesis. arXiv preprint arXiv:1711.10433 .
+[19] OpenAI, Andrychowicz, M., Baker, B., Chociej,
+M., Jozefowicz, R., McGrew, B., Pachocki, J.,
+Petron, A., Plappert, M., Powell, G., Ray, A.,
+Schneider, J., Sidor, S., Tobin, J., Welinder, P.,
+Weng, L., and Zaremba, W. (2018). Learning dex-
+terous in-hand manipulation.
+[20] Parisotto, E., Ba, J. L., and Salakhutdinov,
+R. (2015). Actor-mimic: Deep multitask and
+transfer reinforcement learning. arXiv preprint
+arXiv:1511.06342.
+[21] Pathak, D., Agrawal, P., Efros, A. A., and Dar-
+rell, T. (2017). Curiosity-driven exploration by self-
+supervised prediction. In International Conference
+on Machine Learning (ICML) , volume 2017.
+[22] Polino, A., Pascanu, R., and Alistarh, D. (2018).
+Model compression via distillation and quantiza-
+tion. In International Conference on Learning Rep-
+resentations.
+
+[PDF PAGE 10]
+Distilling Policy Distillation
+[23] Ross, S., Gordon, G., and Bagnell, D. (2011). A
+reduction of imitation learning and structured pre-
+diction to no-regret online learning. In Proceedings
+of the fourteenth international conference on artiﬁ-
+cial intelligence and statistics , pages 627–635.
+[24] Rusu, A. A., Colmenarejo, S. G., Gulcehre, C.,
+Desjardins, G., Kirkpatrick, J., Pascanu, R., Mnih,
+V., Kavukcuoglu, K., and Hadsell, R. (2015). Policy
+distillation. arXiv preprint arXiv:1511.06295 .
+[25] Salimans, T., Ho, J., Chen, X., Sidor, S., and
+Sutskever, I. (2017). Evolution strategies as a scal-
+able alternative to reinforcement learning. arXiv
+preprint arXiv:1703.03864.
+[26] Schmitt, S., Hudson, J. J., Zidek, A., Osindero,
+S., Doersch, C., Czarnecki, W. M., Leibo, J. Z.,
+Kuttler, H., Zisserman, A., Simonyan, K., et al.
+(2018). Kickstarting deep reinforcement learning.
+arXiv preprint arXiv:1803.03835 .
+[27] Schulman, J., Chen, X., and Abbeel, P. (2017).
+Equivalence between policy gradients and soft q-
+learning. arXiv preprint arXiv:1704.06440 .
+[28] Schulman, J., Heess, N., Weber, T., and Abbeel,
+P. (2015a). Gradient estimation using stochastic
+computation graphs. In Advances in Neural Infor-
+mation Processing Systems, pages 3528–3536.
+[29] Schulman, J., Levine, S., Abbeel, P., Jordan, M.,
+and Moritz, P. (2015b). Trust region policy opti-
+mization. In International Conference on Machine
+Learning, pages 1889–1897.
+[30] Silver, D., Huang, A., Maddison, C. J., Guez,
+A., Sifre, L., Van Den Driessche, G., Schrittwieser,
+J., Antonoglou, I., Panneershelvam, V., Lanctot,
+M., et al. (2016). Mastering the game of go with
+deep neural networks and tree search. nature,
+529(7587):484.
+[31] Sutton, R. S., McAllester, D. A., Singh, S. P.,
+and Mansour, Y. (2000). Policy gradient methods
+for reinforcement learning with function approxima-
+tion. In Advances in neural information processing
+systems, pages 1057–1063.
+[32] Teh, Y., Bapst, V., Czarnecki, W. M., Quan, J.,
+Kirkpatrick, J., Hadsell, R., Heess, N., and Pascanu,
+R. (2017). Distral: Robust multitask reinforcement
+learning. In Advances in Neural Information Pro-
+cessing Systems, pages 4496–4506.
+[33] Yin, H. and Pan, S. J. (2017). Knowledge trans-
+fer for deep reinforcement learning with hierarchical
+experience replay. In AAAI, pages 1640–1646.
+[34] Zhang, Y., Xiang, T., Hospedales, T. M., and Lu,
+H. (2017). Deep mutual learning. arXiv preprint
+arXiv:1706.00384, 6.

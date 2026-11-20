@@ -1,0 +1,68 @@
+{
+  "schema": "roll_periphery_verification_v1",
+  "checks": [
+    {
+      "name": "72 distinct bank cases",
+      "passed": true
+    },
+    {
+      "name": "all archived inputs remain byte-identical",
+      "passed": true
+    },
+    {
+      "name": "evaluated implementation still matches manifest",
+      "passed": true
+    },
+    {
+      "name": "all 72 traces finite",
+      "passed": true
+    },
+    {
+      "name": "timestamps use exactly 1000 post-step samples at 50 Hz",
+      "passed": true
+    },
+    {
+      "name": "bank matches independent trapezoidal integration under q=r=pitch=0",
+      "passed": true
+    },
+    {
+      "name": "physical surface and body-rate command limits hold",
+      "passed": true
+    },
+    {
+      "name": "stored metrics reproduce from raw 72 traces",
+      "passed": true
+    },
+    {
+      "name": "six arm/group summary means reproduce",
+      "passed": true
+    },
+    {
+      "name": "288 distinct rate comparisons",
+      "passed": true
+    },
+    {
+      "name": "all rate comparisons meet preset tolerance",
+      "passed": true
+    },
+    {
+      "name": "maximum rate difference matches summary",
+      "passed": true
+    },
+    {
+      "name": "frozen overall bank RMSE appears in both report formats",
+      "passed": true
+    },
+    {
+      "name": "full_b30 overall bank RMSE appears in both report formats",
+      "passed": true
+    },
+    {
+      "name": "generated and served HTML/Markdown identical",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "page_sha256": "4e08600967fba8dd0909af9a719cf3abe67616306cc31f6cc76b51401b545683",
+  "run_manifest_sha256": "86c9a7facd54090f6e9cfa7e916e60a0349ced856dd178105adf2751aa6bffbc"
+}

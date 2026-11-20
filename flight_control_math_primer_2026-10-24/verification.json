@@ -1,0 +1,22 @@
+{
+  "scope": "Educational formulas, arithmetic, interactive controls and presentation; no policy training.",
+  "code_based_arithmetic": {
+    "reward_example": -0.025,
+    "discount_1_second": 0.7783125570686419,
+    "discount_8_second_span": 0.1346580429260134
+  },
+  "browser_checks": [
+    "default reward and damping arithmetic",
+    "damping buttons update graph and envelope",
+    "g=1.05 propagation matches geometric-series calculation",
+    "slider keyboard input",
+    "reward reset",
+    "embedded Chinese font loaded",
+    "desktop and mobile no horizontal overflow"
+  ],
+  "source_documents": [
+    "../gjb_object_library_audit_2026-10-24/强化学习逐步说明.md"
+  ],
+  "html_sha256": "7603aa871dc3f0e57d9480b070a32abdc8592a066084682e304c3350934d22f7",
+  "markdown_sha256": "3c939294473551217d1663c2ea37e43513dc425d97b30b37dcbba0980864f1f6"
+}

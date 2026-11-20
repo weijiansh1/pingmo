@@ -1,0 +1,123 @@
+{
+  "figure": "sampling_distribution.png / .svg",
+  "data_source": {
+    "plants": "pingmo\\data\\aircraft\\generated\\p_channel_library_iv_a_manual_v1\\plants.jsonl",
+    "plants_sha256": "479c16d7b5ddb363c0e2d069a7a1e2d510f0a77cf8335eb86da6bb359ca4b118",
+    "manifest": "pingmo\\data\\aircraft\\generated\\p_channel_library_iv_a_manual_v1\\manifest.json",
+    "manifest_sha256": "ad76514cdfeb3e34080b9996d9b485f4166333ec0ddce14abf66e7976fcb0482"
+  },
+  "library": {
+    "schema_version": "5.0",
+    "profile": "IV-A",
+    "seed": 20260827,
+    "candidate_count": 16384,
+    "total_plants": 3000
+  },
+  "n_lines": 3000,
+  "n_unique_plant_id": 3000,
+  "n_plotted": 3000,
+  "n_dropped": 0,
+  "group_field_used": "quality_region",
+  "group_counts": {
+    "L1": 900,
+    "L2": 900,
+    "L3": 900,
+    "OOD": 300
+  },
+  "manifest_level_counts": {
+    "L1": 900,
+    "L2": 900,
+    "L3": 900,
+    "OOD": 300
+  },
+  "group_counts_match_manifest": true,
+  "not_used": {
+    "gjb_level": {
+      "1": 983,
+      "2": 965,
+      "3": 917,
+      "None": 135
+    },
+    "proposal_bucket": {
+      "L1": 916,
+      "L2": 965,
+      "L3": 917,
+      "OOD": 202
+    },
+    "reason": "final quota reassigns the raw level/proposal; the figure uses the final quality_region"
+  },
+  "non_finite": {
+    "l_fa": 0,
+    "lambda_s": 0,
+    "t_r": 0,
+    "zeta_d": 0,
+    "omega_d": 0,
+    "r_omega": 0,
+    "r_zeta": 0,
+    "tau_p": 0
+  },
+  "non_finite_total": 0,
+  "axes": [
+    {
+      "panel": "(a) T_R vs L_Fa",
+      "x": "t_r",
+      "x_scale": "log",
+      "x_range": [
+        0.18003156992830824,
+        14.906701375607726
+      ],
+      "y": "l_fa",
+      "y_scale": "log",
+      "y_range": [
+        0.01202899013961972,
+        2.284142403127214
+      ]
+    },
+    {
+      "panel": "(b) ζ_d vs ω_d",
+      "x": "zeta_d",
+      "x_scale": "log",
+      "x_range": [
+        0.005007170200320186,
+        0.6999667688831688
+      ],
+      "y": "omega_d",
+      "y_scale": "log",
+      "y_range": [
+        0.20044264893048225,
+        5.997822853854749
+      ]
+    },
+    {
+      "panel": "(c) R_ω vs R_ζ",
+      "x": "r_omega",
+      "x_scale": "log",
+      "x_range": [
+        0.30394278097313565,
+        2.9653523591849016
+      ],
+      "y": "r_zeta",
+      "y_scale": "log",
+      "y_range": [
+        0.14903748433206523,
+        127.9400405093637
+      ]
+    },
+    {
+      "panel": "(d) λ_s vs τ_p",
+      "x": "lambda_s",
+      "x_scale": "linear",
+      "x_range": [
+        -0.14997363145422982,
+        0.29867571590631337
+      ],
+      "y": "tau_p",
+      "y_scale": "log",
+      "y_range": [
+        0.010031175455078483,
+        0.49800496944226325
+      ]
+    }
+  ],
+  "note": "2-D projections of the 8-D theta; the four panels share the same 3000 objects. Not a full joint-space coverage claim and not a real-fleet distribution."
+}

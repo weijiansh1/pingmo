@@ -1,0 +1,685 @@
+{
+  "checked_at_utc": "2026-10-25T11:26:13.249836+00:00",
+  "revision": "flow-2026-10-25",
+  "resources": [
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/dhc6_report.html",
+      "status": 200,
+      "bytes": 363898
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/healthz",
+      "status": 200,
+      "bytes": 73
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/math/",
+      "status": 200,
+      "bytes": 209285
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/paper.pdf",
+      "status": 200,
+      "bytes": 1960882
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/dhc6_report.html",
+      "status": 200,
+      "bytes": 363898
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/controller_route_protocol.json",
+      "status": 200,
+      "bytes": 125566
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/controller_route_report_summary.json",
+      "status": 200,
+      "bytes": 876510
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/gjb_audit/coverage.json",
+      "status": 200,
+      "bytes": 8315
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/gjb_audit/pages/formula_215.png",
+      "status": 200,
+      "bytes": 22447
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/gjb_audit/pages/formula_240.png",
+      "status": 200,
+      "bytes": 88510
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/gjb_audit/pages/pdf_215.png",
+      "status": 200,
+      "bytes": 96316
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/gjb_audit/pages/pdf_229.png",
+      "status": 200,
+      "bytes": 91266
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/gjb_audit/pages/pdf_276.png",
+      "status": 200,
+      "bytes": 91564
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/gjb_audit/pages/pdf_302.png",
+      "status": 200,
+      "bytes": 104938
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/gjb_audit/pilot_joint_v1/manifest.json",
+      "status": 200,
+      "bytes": 2249
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/gjb_audit/source.json",
+      "status": 200,
+      "bytes": 9677
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/gjb_audit/verification.json",
+      "status": 200,
+      "bytes": 13082
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/story_figure_data.json",
+      "status": 200,
+      "bytes": 8021
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/time_series_manifest.json",
+      "status": 200,
+      "bytes": 72968
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/evidence/time_series_selected.npz",
+      "status": 200,
+      "bytes": 364071
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/01_teacher_learning.svg",
+      "status": 200,
+      "bytes": 69078
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/05_failure_trace.svg",
+      "status": 200,
+      "bytes": 27136
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/distillation_rounds.svg",
+      "status": 200,
+      "bytes": 39259
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/recovery_time_domain.svg",
+      "status": 200,
+      "bytes": 150193
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/student_unseen_time_domain.svg",
+      "status": 200,
+      "bytes": 151173
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/target_time_domain.svg",
+      "status": 200,
+      "bytes": 73325
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/teacher_student_time_domain.svg",
+      "status": 200,
+      "bytes": 145003
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/teacher_time_domain.svg",
+      "status": 200,
+      "bytes": 88258
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas.pdf",
+      "status": 200,
+      "bytes": 1195038
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-3451.svg",
+      "status": 200,
+      "bytes": 147182
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-3464.svg",
+      "status": 200,
+      "bytes": 146742
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-3492.svg",
+      "status": 200,
+      "bytes": 142634
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-3538.svg",
+      "status": 200,
+      "bytes": 149584
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-3592.svg",
+      "status": 200,
+      "bytes": 151966
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-3601.svg",
+      "status": 200,
+      "bytes": 142783
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-3617.svg",
+      "status": 200,
+      "bytes": 147022
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-3671.svg",
+      "status": 200,
+      "bytes": 143501
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-3802.svg",
+      "status": 200,
+      "bytes": 145899
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-3897.svg",
+      "status": 200,
+      "bytes": 149193
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-3973.svg",
+      "status": 200,
+      "bytes": 144586
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-3988.svg",
+      "status": 200,
+      "bytes": 150355
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-4067.svg",
+      "status": 200,
+      "bytes": 151397
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-4076.svg",
+      "status": 200,
+      "bytes": 151223
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-4158.svg",
+      "status": 200,
+      "bytes": 152216
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-4182.svg",
+      "status": 200,
+      "bytes": 164490
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-4194.svg",
+      "status": 200,
+      "bytes": 147658
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-4205.svg",
+      "status": 200,
+      "bytes": 149283
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-4206.svg",
+      "status": 200,
+      "bytes": 161802
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-4280.svg",
+      "status": 200,
+      "bytes": 149864
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-4299.svg",
+      "status": 200,
+      "bytes": 150143
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-4325.svg",
+      "status": 200,
+      "bytes": 152983
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-4395.svg",
+      "status": 200,
+      "bytes": 142877
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/id_test-4465.svg",
+      "status": 200,
+      "bytes": 154850
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4510.svg",
+      "status": 200,
+      "bytes": 154770
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4535.svg",
+      "status": 200,
+      "bytes": 154281
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4584.svg",
+      "status": 200,
+      "bytes": 155755
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4617.svg",
+      "status": 200,
+      "bytes": 165487
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4638.svg",
+      "status": 200,
+      "bytes": 168836
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4645.svg",
+      "status": 200,
+      "bytes": 143160
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4651.svg",
+      "status": 200,
+      "bytes": 146384
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4699.svg",
+      "status": 200,
+      "bytes": 170234
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4700.svg",
+      "status": 200,
+      "bytes": 145655
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4723.svg",
+      "status": 200,
+      "bytes": 170280
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4742.svg",
+      "status": 200,
+      "bytes": 166545
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4748.svg",
+      "status": 200,
+      "bytes": 152381
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4775.svg",
+      "status": 200,
+      "bytes": 157179
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4787.svg",
+      "status": 200,
+      "bytes": 155366
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4793.svg",
+      "status": 200,
+      "bytes": 144704
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4795.svg",
+      "status": 200,
+      "bytes": 171503
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4812.svg",
+      "status": 200,
+      "bytes": 143510
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4822.svg",
+      "status": 200,
+      "bytes": 148348
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4828.svg",
+      "status": 200,
+      "bytes": 162635
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4881.svg",
+      "status": 200,
+      "bytes": 167656
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4893.svg",
+      "status": 200,
+      "bytes": 164322
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4947.svg",
+      "status": 200,
+      "bytes": 166170
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4951.svg",
+      "status": 200,
+      "bytes": 145510
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/ood_test-4985.svg",
+      "status": 200,
+      "bytes": 159028
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/train_core-0148.svg",
+      "status": 200,
+      "bytes": 148856
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/train_core-0262.svg",
+      "status": 200,
+      "bytes": 148203
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/train_core-0401.svg",
+      "status": 200,
+      "bytes": 153584
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/train_core-0553.svg",
+      "status": 200,
+      "bytes": 145528
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/train_core-0750.svg",
+      "status": 200,
+      "bytes": 144504
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/train_core-1187.svg",
+      "status": 200,
+      "bytes": 144114
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/train_core-1197.svg",
+      "status": 200,
+      "bytes": 145532
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/train_core-1442.svg",
+      "status": 200,
+      "bytes": 145184
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/train_core-1450.svg",
+      "status": 200,
+      "bytes": 155433
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/train_core-1871.svg",
+      "status": 200,
+      "bytes": 145866
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/train_core-1875.svg",
+      "status": 200,
+      "bytes": 137051
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/time_domain_atlas/train_core-1998.svg",
+      "status": 200,
+      "bytes": 146582
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/paper/transfer_budget.svg",
+      "status": 200,
+      "bytes": 47756
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/time_domain_gallery.html",
+      "status": 200,
+      "bytes": 16968
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/fonts/noto-sc-subset-00-f704e0d3ce7d.ttf",
+      "status": 200,
+      "bytes": 109044
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/fonts/noto-sc-subset-01-1947e9c31aba.ttf",
+      "status": 200,
+      "bytes": 89316
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_AMS-Regular.ttf",
+      "status": 200,
+      "bytes": 63632
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_AMS-Regular.woff2",
+      "status": 200,
+      "bytes": 28076
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Caligraphic-Bold.ttf",
+      "status": 200,
+      "bytes": 12368
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2",
+      "status": 200,
+      "bytes": 6912
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Caligraphic-Regular.ttf",
+      "status": 200,
+      "bytes": 12344
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2",
+      "status": 200,
+      "bytes": 6908
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Fraktur-Bold.ttf",
+      "status": 200,
+      "bytes": 19584
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2",
+      "status": 200,
+      "bytes": 11348
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Fraktur-Regular.ttf",
+      "status": 200,
+      "bytes": 19572
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2",
+      "status": 200,
+      "bytes": 11316
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Main-Bold.ttf",
+      "status": 200,
+      "bytes": 51336
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Main-Bold.woff2",
+      "status": 200,
+      "bytes": 25324
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Main-BoldItalic.ttf",
+      "status": 200,
+      "bytes": 32968
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2",
+      "status": 200,
+      "bytes": 16780
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Main-Italic.ttf",
+      "status": 200,
+      "bytes": 33580
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Main-Italic.woff2",
+      "status": 200,
+      "bytes": 16988
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Main-Regular.ttf",
+      "status": 200,
+      "bytes": 53580
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Main-Regular.woff2",
+      "status": 200,
+      "bytes": 26272
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Math-BoldItalic.ttf",
+      "status": 200,
+      "bytes": 31196
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2",
+      "status": 200,
+      "bytes": 16400
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Math-Italic.ttf",
+      "status": 200,
+      "bytes": 31308
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Math-Italic.woff2",
+      "status": 200,
+      "bytes": 16440
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_SansSerif-Bold.ttf",
+      "status": 200,
+      "bytes": 24504
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2",
+      "status": 200,
+      "bytes": 12216
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_SansSerif-Italic.ttf",
+      "status": 200,
+      "bytes": 22364
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2",
+      "status": 200,
+      "bytes": 12028
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_SansSerif-Regular.ttf",
+      "status": 200,
+      "bytes": 19436
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2",
+      "status": 200,
+      "bytes": 10344
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Script-Regular.ttf",
+      "status": 200,
+      "bytes": 16648
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Script-Regular.woff2",
+      "status": 200,
+      "bytes": 9644
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Size1-Regular.ttf",
+      "status": 200,
+      "bytes": 12228
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Size1-Regular.woff2",
+      "status": 200,
+      "bytes": 5468
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Size2-Regular.ttf",
+      "status": 200,
+      "bytes": 11508
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Size2-Regular.woff2",
+      "status": 200,
+      "bytes": 5208
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Size3-Regular.ttf",
+      "status": 200,
+      "bytes": 7588
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Size3-Regular.woff2",
+      "status": 200,
+      "bytes": 3624
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Size4-Regular.ttf",
+      "status": 200,
+      "bytes": 10364
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Size4-Regular.woff2",
+      "status": 200,
+      "bytes": 4928
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Typewriter-Regular.ttf",
+      "status": 200,
+      "bytes": 27556
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2",
+      "status": 200,
+      "bytes": 13568
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/katex/katex.min.css",
+      "status": 200,
+      "bytes": 23335
+    },
+    {
+      "url": "http://127.0.0.1:8888/proxy/8320/webpage/vendor/paper-fonts.css",
+      "status": 200,
+      "bytes": 5614
+    }
+  ],
+  "resources_all_200": true,
+  "pdf_identical": true,
+  "pdf_sha256": "7ff86546b1f6d2e31e8317e6eabb1cdb619fc10676de0257b9797e188c7d0c26",
+  "auth_token_recorded": false
+}

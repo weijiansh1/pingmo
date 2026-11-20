@@ -1,0 +1,39 @@
+{
+  "all_passed": true,
+  "checks": {
+    "base_manuscript_unchanged": true,
+    "all_markdown_local_links_exist": true,
+    "math_formulas_21": true,
+    "all_equation_tags_unique": true,
+    "both_html_versions_match": true,
+    "all_chinese_glyphs_covered": true,
+    "three_seed_mean_rmse_claim": true,
+    "dagger_table_20261031": true,
+    "dagger_table_20261101": true,
+    "dagger_table_20261102": true,
+    "browser_24_images_decoded": true,
+    "browser_21_formulas_no_print_overflow": true,
+    "browser_desktop_no_page_overflow": true,
+    "browser_mobile_no_page_overflow": true
+  },
+  "new_policy_training": false,
+  "pdf": {
+    "pages": 35,
+    "bytes": 4333829,
+    "sha256": "24a829af778524d40df9e5abe42aa8088e408eb61f1e8f2c6a30c32718e8676c",
+    "section_pages": {
+      "3.1.1标准边界": [
+        6
+      ],
+      "6.6完整GJB": [
+        31
+      ],
+      "附录A数学": [
+        32
+      ],
+      "A.2动作与奖励": [
+        33
+      ]
+    }
+  }
+}

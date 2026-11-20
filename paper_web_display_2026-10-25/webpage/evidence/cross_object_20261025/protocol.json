@@ -1,0 +1,625 @@
+{
+  "version": "cross-object-frozen-v1",
+  "created_utc": "2026-10-25T14:43:52.932895+00:00",
+  "source_protocol_sha256": "d386adac16b1e4169fe22a19830d61864e3c43f46fe79077eb768cd91350015e",
+  "source_objects": [
+    {
+      "aircraft_class": "IV",
+      "candidate_id": "candidate-02138",
+      "delay_definition": "pure_transport_delay_before_p_channel",
+      "flight_phase": "A",
+      "gjb_component_levels": {
+        "dutch_roll": 1,
+        "sensitivity_1s": 1,
+        "spiral": 1,
+        "t_r": 1
+      },
+      "gjb_level": 1,
+      "inceptor_assumption": "stick_controlled_for_A31_gate",
+      "input_definition": "equivalent_roll_control_force_N",
+      "ood_reasons": [],
+      "parameters": {
+        "l_fa": 0.340376841442046,
+        "lambda_s": -0.1019312764819234,
+        "omega_d": 2.621680215447082,
+        "omega_phi": 1.9382715842788625,
+        "r_omega": 0.7393241833456503,
+        "r_zeta": 0.6117489723639482,
+        "t_r": 0.22440069316344835,
+        "tau_p": 0.04687852064240724,
+        "zeta_d": 0.516225817175582,
+        "zeta_phi": 0.3158006131649017
+      },
+      "plant_id": "train_core-1875",
+      "profile": "IV-A",
+      "proposal_bucket": "L1",
+      "quality_region": "level_1",
+      "raw_metrics": {
+        "peak": 0.04215590425846746,
+        "rho_osc": 1.0,
+        "settling_time_s": 0.749,
+        "valid": true
+      },
+      "sampling_bucket": "L1",
+      "selection_reason": "uniform_static_gjb_level_quota",
+      "sensitivity_measured_deg_per_n": 1.8267532432767513,
+      "sensitivity_target_deg_per_n": 1.8267532432767513,
+      "split": "train_core",
+      "task_subtype": "ordinary_not_CO_GA"
+    },
+    {
+      "aircraft_class": "IV",
+      "candidate_id": "candidate-00861",
+      "delay_definition": "pure_transport_delay_before_p_channel",
+      "flight_phase": "A",
+      "gjb_component_levels": {
+        "dutch_roll": 1,
+        "sensitivity_1s": 1,
+        "spiral": 1,
+        "t_r": 1
+      },
+      "gjb_level": 1,
+      "inceptor_assumption": "stick_controlled_for_A31_gate",
+      "input_definition": "equivalent_roll_control_force_N",
+      "ood_reasons": [],
+      "parameters": {
+        "l_fa": 0.07361789789231495,
+        "lambda_s": -0.13887693661688896,
+        "omega_d": 4.830141399552106,
+        "omega_phi": 5.773870414227469,
+        "r_omega": 1.1953833100544164,
+        "r_zeta": 0.6005543364138157,
+        "t_r": 0.45965946844245215,
+        "tau_p": 0.0618664678009227,
+        "zeta_d": 0.19606955538503826,
+        "zeta_phi": 0.11775042172521354
+      },
+      "plant_id": "train_core-0750",
+      "profile": "IV-A",
+      "proposal_bucket": "L1",
+      "quality_region": "level_1",
+      "raw_metrics": {
+        "peak": 0.035172269227439115,
+        "rho_osc": 0.0,
+        "settling_time_s": 0.749,
+        "valid": true
+      },
+      "sampling_bucket": "L1",
+      "selection_reason": "uniform_static_gjb_level_quota",
+      "sensitivity_measured_deg_per_n": 1.3001685700855943,
+      "sensitivity_target_deg_per_n": 1.3001685700855945,
+      "split": "train_core",
+      "task_subtype": "ordinary_not_CO_GA"
+    },
+    {
+      "aircraft_class": "IV",
+      "candidate_id": "candidate-02282",
+      "delay_definition": "pure_transport_delay_before_p_channel",
+      "flight_phase": "A",
+      "gjb_component_levels": {
+        "dutch_roll": 1,
+        "sensitivity_1s": 1,
+        "spiral": 1,
+        "t_r": 1
+      },
+      "gjb_level": 1,
+      "inceptor_assumption": "stick_controlled_for_A31_gate",
+      "input_definition": "equivalent_roll_control_force_N",
+      "ood_reasons": [],
+      "parameters": {
+        "l_fa": 0.24757088223025142,
+        "lambda_s": -0.12347541511533734,
+        "omega_d": 1.3608153134534353,
+        "omega_phi": 1.5684304275182157,
+        "r_omega": 1.1525667090987544,
+        "r_zeta": 0.4740857996770374,
+        "t_r": 0.46709205652249003,
+        "tau_p": 0.16059931830316784,
+        "zeta_d": 0.47675011409258694,
+        "zeta_phi": 0.2260204590857029
+      },
+      "plant_id": "train_core-1998",
+      "profile": "IV-A",
+      "proposal_bucket": "L1",
+      "quality_region": "level_1",
+      "raw_metrics": {
+        "peak": 0.07013798824690132,
+        "rho_osc": 0.0,
+        "settling_time_s": 0.749,
+        "valid": true
+      },
+      "sampling_bucket": "L1",
+      "selection_reason": "uniform_static_gjb_level_quota",
+      "sensitivity_measured_deg_per_n": 2.576335549823376,
+      "sensitivity_target_deg_per_n": 2.576335549823376,
+      "split": "train_core",
+      "task_subtype": "ordinary_not_CO_GA"
+    },
+    {
+      "aircraft_class": "IV",
+      "candidate_id": "candidate-01377",
+      "delay_definition": "pure_transport_delay_before_p_channel",
+      "flight_phase": "A",
+      "gjb_component_levels": {
+        "dutch_roll": 1,
+        "sensitivity_1s": 1,
+        "spiral": 1,
+        "t_r": 1
+      },
+      "gjb_level": 1,
+      "inceptor_assumption": "stick_controlled_for_A31_gate",
+      "input_definition": "equivalent_roll_control_force_N",
+      "ood_reasons": [],
+      "parameters": {
+        "l_fa": 0.18303325287117245,
+        "lambda_s": -0.11752861649772264,
+        "omega_d": 4.229945366203984,
+        "omega_phi": 3.508360335486961,
+        "r_omega": 0.8294103189884496,
+        "r_zeta": 0.39836786111500927,
+        "t_r": 0.4940374766281113,
+        "tau_p": 0.03798197697009892,
+        "zeta_d": 0.3680708085652441,
+        "zeta_phi": 0.14662758074700832
+      },
+      "plant_id": "train_core-1197",
+      "profile": "IV-A",
+      "proposal_bucket": "L1",
+      "quality_region": "level_1",
+      "raw_metrics": {
+        "peak": 0.03545510092703075,
+        "rho_osc": 0.0,
+        "settling_time_s": 0.749,
+        "valid": true
+      },
+      "sampling_bucket": "L1",
+      "selection_reason": "uniform_static_gjb_level_quota",
+      "sensitivity_measured_deg_per_n": 1.6196385785131784,
+      "sensitivity_target_deg_per_n": 1.6196385785131782,
+      "split": "train_core",
+      "task_subtype": "ordinary_not_CO_GA"
+    },
+    {
+      "aircraft_class": "IV",
+      "candidate_id": "candidate-00668",
+      "delay_definition": "pure_transport_delay_before_p_channel",
+      "flight_phase": "A",
+      "gjb_component_levels": {
+        "dutch_roll": 2,
+        "sensitivity_1s": 1,
+        "spiral": 1,
+        "t_r": 1
+      },
+      "gjb_level": 2,
+      "inceptor_assumption": "stick_controlled_for_A31_gate",
+      "input_definition": "equivalent_roll_control_force_N",
+      "ood_reasons": [],
+      "parameters": {
+        "l_fa": 0.17754365442742306,
+        "lambda_s": -0.10048724257262098,
+        "omega_d": 0.691457205427824,
+        "omega_phi": 0.46282194199692217,
+        "r_omega": 0.6693428579004557,
+        "r_zeta": 5.617560289262277,
+        "t_r": 0.22284809118042478,
+        "tau_p": 0.012767408753745258,
+        "zeta_d": 0.08912715663717868,
+        "zeta_phi": 0.5006771758198738
+      },
+      "plant_id": "train_core-0553",
+      "profile": "IV-A",
+      "proposal_bucket": "L2",
+      "quality_region": "level_2",
+      "raw_metrics": {
+        "peak": 0.040956082170254385,
+        "rho_osc": 0.0,
+        "settling_time_s": 0.749,
+        "valid": true
+      },
+      "sampling_bucket": "L2",
+      "selection_reason": "uniform_static_gjb_level_quota",
+      "sensitivity_measured_deg_per_n": 1.838405176511339,
+      "sensitivity_target_deg_per_n": 1.8384051765113392,
+      "split": "train_core",
+      "task_subtype": "ordinary_not_CO_GA"
+    },
+    {
+      "aircraft_class": "IV",
+      "candidate_id": "candidate-00310",
+      "delay_definition": "pure_transport_delay_before_p_channel",
+      "flight_phase": "A",
+      "gjb_component_levels": {
+        "dutch_roll": 2,
+        "sensitivity_1s": 1,
+        "spiral": 1,
+        "t_r": 1
+      },
+      "gjb_level": 2,
+      "inceptor_assumption": "stick_controlled_for_A31_gate",
+      "input_definition": "equivalent_roll_control_force_N",
+      "ood_reasons": [],
+      "parameters": {
+        "l_fa": 0.2436767984048938,
+        "lambda_s": -0.1331266875326736,
+        "omega_d": 0.9827132900450765,
+        "omega_phi": 0.9828041982803037,
+        "r_omega": 1.0000925073835352,
+        "r_zeta": 3.2650319663485567,
+        "t_r": 0.19389471629194402,
+        "tau_p": 0.14178054684679955,
+        "zeta_d": 0.15802324362240108,
+        "zeta_phi": 0.5159509418532252
+      },
+      "plant_id": "train_core-0262",
+      "profile": "IV-A",
+      "proposal_bucket": "L2",
+      "quality_region": "level_2",
+      "raw_metrics": {
+        "peak": 0.05471169312786675,
+        "rho_osc": 0.0,
+        "settling_time_s": 0.749,
+        "valid": true
+      },
+      "sampling_bucket": "L2",
+      "selection_reason": "uniform_static_gjb_level_quota",
+      "sensitivity_measured_deg_per_n": 2.108429784143796,
+      "sensitivity_target_deg_per_n": 2.108429784143796,
+      "split": "train_core",
+      "task_subtype": "ordinary_not_CO_GA"
+    },
+    {
+      "aircraft_class": "IV",
+      "candidate_id": "candidate-00169",
+      "delay_definition": "pure_transport_delay_before_p_channel",
+      "flight_phase": "A",
+      "gjb_component_levels": {
+        "dutch_roll": 2,
+        "sensitivity_1s": 1,
+        "spiral": 1,
+        "t_r": 1
+      },
+      "gjb_level": 2,
+      "inceptor_assumption": "stick_controlled_for_A31_gate",
+      "input_definition": "equivalent_roll_control_force_N",
+      "ood_reasons": [],
+      "parameters": {
+        "l_fa": 0.18983221856884644,
+        "lambda_s": 0.04466043440403222,
+        "omega_d": 0.7884445280402974,
+        "omega_phi": 0.6080592445795303,
+        "r_omega": 0.771213728999908,
+        "r_zeta": 0.4185013349855089,
+        "t_r": 0.18197556883205582,
+        "tau_p": 0.17707602938916536,
+        "zeta_d": 0.42499265675332065,
+        "zeta_phi": 0.17785999421030285
+      },
+      "plant_id": "train_core-0148",
+      "profile": "IV-A",
+      "proposal_bucket": "L2",
+      "quality_region": "level_2",
+      "raw_metrics": {
+        "peak": 0.027818338585546214,
+        "rho_osc": 1.0,
+        "settling_time_s": 0.749,
+        "valid": true
+      },
+      "sampling_bucket": "L2",
+      "selection_reason": "uniform_static_gjb_level_quota",
+      "sensitivity_measured_deg_per_n": 1.0992702442458617,
+      "sensitivity_target_deg_per_n": 1.0992702442458617,
+      "split": "train_core",
+      "task_subtype": "ordinary_not_CO_GA"
+    },
+    {
+      "aircraft_class": "IV",
+      "candidate_id": "candidate-01795",
+      "delay_definition": "pure_transport_delay_before_p_channel",
+      "flight_phase": "A",
+      "gjb_component_levels": {
+        "dutch_roll": 1,
+        "sensitivity_1s": 2,
+        "spiral": 1,
+        "t_r": 1
+      },
+      "gjb_level": 2,
+      "inceptor_assumption": "stick_controlled_for_A31_gate",
+      "input_definition": "equivalent_roll_control_force_N",
+      "ood_reasons": [],
+      "parameters": {
+        "l_fa": 0.3005009466615717,
+        "lambda_s": -0.04318281225607301,
+        "omega_d": 1.273542110775781,
+        "omega_phi": 1.250751361620602,
+        "r_omega": 0.9821044400790988,
+        "r_zeta": 1.5135169288037638,
+        "t_r": 0.35497461643913647,
+        "tau_p": 0.10906930307857693,
+        "zeta_d": 0.4472186336843744,
+        "zeta_phi": 0.6768729729577898
+      },
+      "plant_id": "train_core-1450",
+      "profile": "IV-A",
+      "proposal_bucket": "L2",
+      "quality_region": "level_2",
+      "raw_metrics": {
+        "peak": 0.10162417507990475,
+        "rho_osc": 0.0,
+        "settling_time_s": 0.749,
+        "valid": true
+      },
+      "sampling_bucket": "L2",
+      "selection_reason": "uniform_static_gjb_level_quota",
+      "sensitivity_measured_deg_per_n": 3.8541746140694237,
+      "sensitivity_target_deg_per_n": 3.8541746140694237,
+      "split": "train_core",
+      "task_subtype": "ordinary_not_CO_GA"
+    },
+    {
+      "aircraft_class": "IV",
+      "candidate_id": "candidate-00440",
+      "delay_definition": "pure_transport_delay_before_p_channel",
+      "flight_phase": "A",
+      "gjb_component_levels": {
+        "dutch_roll": 3,
+        "sensitivity_1s": 1,
+        "spiral": 1,
+        "t_r": 1
+      },
+      "gjb_level": 3,
+      "inceptor_assumption": "stick_controlled_for_A31_gate",
+      "input_definition": "equivalent_roll_control_force_N",
+      "ood_reasons": [],
+      "parameters": {
+        "l_fa": 0.14446429517876544,
+        "lambda_s": 0.0011293843709273,
+        "omega_d": 1.6715100486262227,
+        "omega_phi": 1.4873532894612613,
+        "r_omega": 0.8898261130309592,
+        "r_zeta": 15.596529419727403,
+        "t_r": 0.33413015309323824,
+        "tau_p": 0.04047516191750765,
+        "zeta_d": 0.011540156638483352,
+        "zeta_phi": 0.1799863925203681
+      },
+      "plant_id": "train_core-0401",
+      "profile": "IV-A",
+      "proposal_bucket": "L3",
+      "quality_region": "level_3",
+      "raw_metrics": {
+        "peak": 0.04808407790374703,
+        "rho_osc": 0.0,
+        "settling_time_s": 0.749,
+        "valid": true
+      },
+      "sampling_bucket": "L3",
+      "selection_reason": "uniform_static_gjb_level_quota",
+      "sensitivity_measured_deg_per_n": 1.9706535756128356,
+      "sensitivity_target_deg_per_n": 1.9706535756128358,
+      "split": "train_core",
+      "task_subtype": "ordinary_not_CO_GA"
+    },
+    {
+      "aircraft_class": "IV",
+      "candidate_id": "candidate-02132",
+      "delay_definition": "pure_transport_delay_before_p_channel",
+      "flight_phase": "A",
+      "gjb_component_levels": {
+        "dutch_roll": 1,
+        "sensitivity_1s": 1,
+        "spiral": 3,
+        "t_r": 1
+      },
+      "gjb_level": 3,
+      "inceptor_assumption": "stick_controlled_for_A31_gate",
+      "input_definition": "equivalent_roll_control_force_N",
+      "ood_reasons": [],
+      "parameters": {
+        "l_fa": 0.2749778702509164,
+        "lambda_s": 0.14882707431143646,
+        "omega_d": 1.3145394210744905,
+        "omega_phi": 1.228084270410061,
+        "r_omega": 0.934231602888134,
+        "r_zeta": 1.271596369701971,
+        "t_r": 0.25485987284735134,
+        "tau_p": 0.13138451976049692,
+        "zeta_d": 0.5265687281249969,
+        "zeta_phi": 0.6695828830823302
+      },
+      "plant_id": "train_core-1871",
+      "profile": "IV-A",
+      "proposal_bucket": "L3",
+      "quality_region": "level_3",
+      "raw_metrics": {
+        "peak": 0.07191564054311496,
+        "rho_osc": 0.0,
+        "settling_time_s": 0.749,
+        "valid": true
+      },
+      "sampling_bucket": "L3",
+      "selection_reason": "uniform_static_gjb_level_quota",
+      "sensitivity_measured_deg_per_n": 2.7551292702215266,
+      "sensitivity_target_deg_per_n": 2.755129270221527,
+      "split": "train_core",
+      "task_subtype": "ordinary_not_CO_GA"
+    },
+    {
+      "aircraft_class": "IV",
+      "candidate_id": "candidate-01348",
+      "delay_definition": "pure_transport_delay_before_p_channel",
+      "flight_phase": "A",
+      "gjb_component_levels": {
+        "dutch_roll": 1,
+        "sensitivity_1s": 1,
+        "spiral": 1,
+        "t_r": 3
+      },
+      "gjb_level": 3,
+      "inceptor_assumption": "stick_controlled_for_A31_gate",
+      "input_definition": "equivalent_roll_control_force_N",
+      "ood_reasons": [],
+      "parameters": {
+        "l_fa": 0.2427657858076412,
+        "lambda_s": -0.03819348212914592,
+        "omega_d": 3.811679828418171,
+        "omega_phi": 3.492757653122926,
+        "r_omega": 0.9163302822767262,
+        "r_zeta": 0.7259863880321968,
+        "t_r": 1.9311137886477379,
+        "tau_p": 0.17092644443921745,
+        "zeta_d": 0.6944089344143867,
+        "zeta_phi": 0.5041314341127873
+      },
+      "plant_id": "train_core-1187",
+      "profile": "IV-A",
+      "proposal_bucket": "L3",
+      "quality_region": "level_3",
+      "raw_metrics": {
+        "peak": 0.09209562796979451,
+        "rho_osc": 0.0,
+        "settling_time_s": 0.749,
+        "valid": true
+      },
+      "sampling_bucket": "L3",
+      "selection_reason": "uniform_static_gjb_level_quota",
+      "sensitivity_measured_deg_per_n": 3.235783538342188,
+      "sensitivity_target_deg_per_n": 3.235783538342188,
+      "split": "train_core",
+      "task_subtype": "ordinary_not_CO_GA"
+    },
+    {
+      "aircraft_class": "IV",
+      "candidate_id": "candidate-01640",
+      "delay_definition": "pure_transport_delay_before_p_channel",
+      "flight_phase": "A",
+      "gjb_component_levels": {
+        "dutch_roll": 1,
+        "sensitivity_1s": 1,
+        "spiral": 3,
+        "t_r": 1
+      },
+      "gjb_level": 3,
+      "inceptor_assumption": "stick_controlled_for_A31_gate",
+      "input_definition": "equivalent_roll_control_force_N",
+      "ood_reasons": [],
+      "parameters": {
+        "l_fa": 0.12521926522172633,
+        "lambda_s": 0.11020730526805174,
+        "omega_d": 3.24969505052041,
+        "omega_phi": 2.8760052415015434,
+        "r_omega": 0.8850077305071983,
+        "r_zeta": 0.9318104039709871,
+        "t_r": 0.5911867678453218,
+        "tau_p": 0.06611147026903928,
+        "zeta_d": 0.5223064228426666,
+        "zeta_phi": 0.48669055886566637
+      },
+      "plant_id": "train_core-1442",
+      "profile": "IV-A",
+      "proposal_bucket": "L3",
+      "quality_region": "level_3",
+      "raw_metrics": {
+        "peak": 0.04313932179497333,
+        "rho_osc": 0.0,
+        "settling_time_s": 0.749,
+        "valid": true
+      },
+      "sampling_bucket": "L3",
+      "selection_reason": "uniform_static_gjb_level_quota",
+      "sensitivity_measured_deg_per_n": 1.7182224384045983,
+      "sensitivity_target_deg_per_n": 1.7182224384045983,
+      "split": "train_core",
+      "task_subtype": "ordinary_not_CO_GA"
+    }
+  ],
+  "seeds": [
+    20261031,
+    20261101,
+    20261102
+  ],
+  "verified_checkpoints": [
+    {
+      "seed": 20261031,
+      "teacher_sha256_in_plant_order": [
+        "9682d236d3a6034936ff73742f3437f946a66cc4797171dc56615e309e7214f4",
+        "64fdabc8cbf11a7521af4e1e77d7e142206ce8739c2ba91d3bd9fb2c6e3dea21",
+        "438e950603df4031a730ecbefb44b693fdfd81abe565b78597da6af928bb64e9",
+        "a112eb5776ca850a29a5315fa3082d9c80f6c0772ad2c98b31753bce5b16f4bf",
+        "4d4c3056a241792c55c7395d427dd73a84f29dd671e375ed117242bf107ebfa7",
+        "ebc6ddb1f13e3f58cd2f67c860452bb34a06659b50a17c370f7eab27a5390421",
+        "eb84b7ea590e3b310a92eb1bdd4095700975947ddcec38d88101c9f7875a83a2",
+        "b63cde0f23e4737964c13c9b8d804f49e0bfca9b3b0160f8eb3c7a10d041fd54",
+        "cb3dd6504fe157df8b6e9d53b32b93c68224b7134119464f55371ca014edca49",
+        "6e24191cd0a1146be554064cc91be3b64f3e7e272ef3e6c32558ebbb4791bc38",
+        "bfdb0d4bd073d44acda1c011ce582e689601bf91baa8e68de701995ae0e22152",
+        "c8f2cb3de6bb42a5d2f997bb9773d28710af51f0ece198263de467d40e0d976f"
+      ],
+      "student_sha256": "0b6bd58774d792adb028cf42b1f03ebdf7d054d5c0367e484eab8eed2113de1e",
+      "selected_student_round": 6
+    },
+    {
+      "seed": 20261101,
+      "teacher_sha256_in_plant_order": [
+        "005b1f5bb3e7a2765ace443aca57146cfa2653892697bf33e77946220525882b",
+        "d3e25ad382e317bba7ec029a6e4204307c9d36b08c0700b9d21a92185a5f437d",
+        "10aa4ae48a8f5896e5a1b84c69752e82658dd21cc1f3f74771e14758cd84d9c6",
+        "6df255fd9ee0b4f95411b2545cdba718de315a9d98126e883dcde64eb5333088",
+        "0f5398b012e5d4858b01a3d39d94830c143593e11fc7722256635546fcb71db2",
+        "ff8c31914d346a2d191a7ee4958f4b08542ea70a9e91c73f2915c7037c4478ce",
+        "dd9e280cd5315a308cf1884d3f7eabc4d812309ae2556ad78e947fd445488e94",
+        "97b7c07265ceefe7bcc44dd5459abb81f2c233a6db56b158dd679ec552189729",
+        "2da9b9993ad95c9300c0ea36f0839bed9829fc75c541ac8df83c0f182b9f29d5",
+        "9f219646105f837872eb3b8e87ef09278096b03b36c63387e002877b4f9f81ba",
+        "fdfd4d47da76f4f77ef00cc314dc2543ad280981f33468fde02f03770f4c5543",
+        "6c94d31c872cfc535c6b58ea8c5b570230bce1c7be7b0c0f44e9d94db4e64f71"
+      ],
+      "student_sha256": "703c6c4561dea5866f58cff706f60599e6b874f00fb047589eff64de702d87db",
+      "selected_student_round": 5
+    },
+    {
+      "seed": 20261102,
+      "teacher_sha256_in_plant_order": [
+        "0a80c9d91a8bb7aa43a16298b52a805adfd09a840be1c4c726d4e13a3ecc1edd",
+        "46ca90455c211b061c6cdaf8ddcceed8c2398fd5d2159eecc89ba00d1f7e97eb",
+        "19493c4de91fc13f3a1346fad7777f2be3585420c8c081e598d51aab1eed95e7",
+        "210014ab96103c14154ca91a2141ea5cd9526ee54857f96380bde79f71016b8d",
+        "4e8cf78149d259999ddf22cbb10f4a4b53022f49d9d8212de9ca53a865d4a1c3",
+        "75c9b99a9390e0a94186e2ddde76191ca786852d4e037132e40daa7bea1d5081",
+        "16c5fe0df5faf8c48e2002daee5c621e0c3b0af00eefce8355d3f404b245bb4e",
+        "36ab4bcf55929b963cd2c402971ff3d0072741f5ded43782dcb26bfb8b0a08df",
+        "21a82fede4fcfe97b8ea8533089b4374de8fc5962a0349e03b893cef93dd1eb9",
+        "98ed90dbb331b340cfef10483346f3a4ec206b2f2f7bd3b30671e6b66722c125",
+        "b7a20a443546cac9a906969acb75b74218678a04057a867a7f7038e8322e8f67",
+        "e6d5358ab9b689c03eaead884dc959e4919f49ac3e74722fc771ff1506e5bc39"
+      ],
+      "student_sha256": "f3c58c956bed2d9da669463bd90e555f834a9808117b6a6ea10ec29bab1ba355",
+      "selected_student_round": 4
+    }
+  ],
+  "training_steps": 0,
+  "controller_plant_pairs": 468,
+  "episodes_per_pair": 28,
+  "primary_metric": "18 command cases at 8 s, per-target pass fraction; RMSE/peak/TV thresholds 1.5/5/12",
+  "recovery": "8 s initial deviation +/-5 deg/s and external force +/-1 N; repeated at 30 s with +/-15 deg/s steps",
+  "teacher_privileged_input": "Always current target plant parameters and its current state/history; never source plant A parameters on B.",
+  "student_coverage": "All 12 evaluation plants are sources distilled into the same-seed student; evaluate multi-object control retention.",
+  "reference_protocol": "Identical to the archived frozen cohort: fixed reference_mode and same-time observation alignment.",
+  "failures": "Censor at nonfinite or |p|>300 deg/s; retain all cases in pass fraction denominator.",
+  "trace_examples_predeclared": [
+    {
+      "target": "train_core-0750",
+      "foreign_teacher": "train_core-0148"
+    },
+    {
+      "target": "train_core-0148",
+      "foreign_teacher": "train_core-0401"
+    },
+    {
+      "target": "train_core-0401",
+      "foreign_teacher": "train_core-0750"
+    }
+  ],
+  "trace_seed": 20261031,
+  "cpu_workers": 16,
+  "cohort_note": "Matched 12-object controller-route-v1 cohort; separate from the original 49-teacher delivery."
+}

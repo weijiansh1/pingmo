@@ -1,0 +1,10 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v",
+  "tests_passed": 8,
+  "duration_s": 2.629,
+  "device": "cpu",
+  "optimizer_step_in_integration_test": "mocked_no_op",
+  "research_training_started": false,
+  "patch_applies_to_base": true,
+  "base_source_files_unchanged": true
+}

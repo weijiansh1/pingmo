@@ -1,0 +1,15 @@
+### Result
+{"viewport":1400,"pageWidth":1400,"images":23,"missingImages":0,"mathErrors":0,"updatedProtocol":true,"updatedCaption":true}
+### Ran Playwright code
+```js
+await (async (page) => {
+ await page.setViewportSize({width:1400,height:1000});
+ await page.goto('http://127.0.0.1:8320/webpage/dhc6_report.html',{waitUntil:'domcontentloaded',timeout:15000});
+ await page.evaluate(() => document.fonts.ready);
+ await page.evaluate(() => document.getElementById('s532').scrollIntoView());
+ await page.screenshot({path:'/home/swj/pingmo/paper_web_proxy_2026-10-25/output/playwright/results-cross-object.png'});
+ await page.evaluate(() => document.getElementById('s533').scrollIntoView());
+ await page.screenshot({path:'/home/swj/pingmo/paper_web_proxy_2026-10-25/output/playwright/results-coverage-pid.png'});
+ return await page.evaluate(() => ({viewport:innerWidth,pageWidth:document.documentElement.scrollWidth,images:document.images.length,missingImages:[...document.images].filter(i=>!i.complete||!i.naturalWidth).length,mathErrors:document.querySelectorAll('.katex-error').length,updatedProtocol:document.body.textContent.includes('每个控制器在每个对象上测试 18 条指令'),updatedCaption:document.body.textContent.includes('阶跃行括号内为 RMSE 中位数')}));
+})(page);
+```

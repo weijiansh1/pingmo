@@ -1,0 +1,875 @@
+{
+  "source": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/dhc6_report.html",
+  "source_sha256": "57d0b673573a9d392c0d86839a5c4fa4e3c7927384665b6ad711c89bf3df7b46",
+  "figures": [
+    {
+      "number": 1,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/closed_loop_simulation.svg",
+      "sha256": "e349078107bd5196b0013da4c9d09e930185d8631f1f2818397e4536027d89e3",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig01.pdf",
+      "caption": "图 1　学生控制器的闭环仿真。品质参数确定对象动态，学生根据观测和历史输出力速率动作，对象响应反馈至下一控制周期。"
+    },
+    {
+      "number": 2,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/pipeline_framework.svg",
+      "sha256": "e1ec0e6d585c6ef05e779e275a00e38932b3efb582746d6d55d8449bf88548b7",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig02.pdf",
+      "caption": "图 2　飞控大模型的构建与验证流程：品质对象族、特权 PPO 教师、多轮蒸馏与目标域适配。tiny 与 small 学生分别含 3,856 和 75,040 个参数；40 次目标域更新及 2.91→0.59 deg/s 的结果对应 small。"
+    },
+    {
+      "number": 3,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/teacher_network_tensor.svg",
+      "sha256": "686b027091c16b0afddb6173d122e96833d8889378b9b2220b0190b8d7279711",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig03.pdf",
+      "caption": "图 3　特权教师 Actor：三层 24 通道卷积形成 48 维历史特征，与 9 维当前量、7 维动作历史和 12 维特权量拼接为 76 维；残差主干含 8 个 512 宽残差块，约 4.26 M 参数。"
+    },
+    {
+      "number": 4,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/student_network_tensor.svg",
+      "sha256": "dcd596d46b6f5b93b571711130418c5f9b2eebe6c0b0b9c427b1a11d046ffbac",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig04.pdf",
+      "caption": "图 4　tiny 学生网络：32×5 历史经时序编码得到 16 维特征，与 9 维当前量和 7 维动作历史拼接为 32 维输入，经一个 32 宽残差块输出动作，共 3,856 个参数。"
+    },
+    {
+      "number": 5,
+      "svg": "/home/swj/pingmo/flight_control_original_restored_2026-10-25/webpage/paper/sampling_scatter.svg",
+      "sha256": "959377a14ff4628a6558e8e5f44a4b5df7fd3594840df5ac23ca904907a4a863",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig05.pdf",
+      "caption": "图 5　5,000 个对象的参数空间投影。颜色区分三个品质等级与分布外对象，虚线标出所选分级边界。"
+    },
+    {
+      "number": 6,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/teacher_closed_loop.svg",
+      "sha256": "d40221358482bbb2f619d0baa3dd39f5c79c5539cfdc08fcb6b1aac97d24451c",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig06.pdf",
+      "caption": "图 6　教师训练完成后的源域闭环效果：不同品质等级的阶跃与多正弦响应。"
+    },
+    {
+      "number": 7,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/student_dagger.svg",
+      "sha256": "ace24506e9ac21c7f569660964c31fe643d698b4347806f7a62cc0faf7797929",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig07.pdf",
+      "caption": "图 7　DAgger 轮次与师生闭环跟踪误差比。第 0 轮为行为克隆，随后在学生访问状态上追加教师标签。"
+    },
+    {
+      "number": 8,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/teacher_student_compare.svg",
+      "sha256": "8b6fb02c17f6d7ae35a68ce07e6beb3c3199fe6b8673b046be3bca6a3306b5af",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig08.pdf",
+      "caption": "图 8　教师与统一学生在主试验对象 7 上的同指令时域对照。黑色点线为目标，蓝线为教师，橙线为学生；标题报告 2 s 后的跟踪 RMSE 及其比值。"
+    },
+    {
+      "number": 9,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/cross_object_responses.svg",
+      "sha256": "526d23b743eaad2325b2dcd8e0de094fc0d134b0af36343e9189646b0a35be5e",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig09.pdf",
+      "caption": "图 9　验证达标教师与统一学生的闭环对照。三行受控对象为 1、6、9，迁移教师为 6、9、1；三列依次展示指令跟踪、初始偏差恢复和外力扰动抑制。黑色实线为外部指令，灰色点线为记录目标。"
+    },
+    {
+      "number": 10,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/cross_object_matrix.svg",
+      "sha256": "5135639fad5f9db10ab72286b0e41c632bff12839a99105619916ab1d939daf3",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig10.pdf",
+      "caption": "图 10　专用教师跨对象控制与统一学生的对象覆盖。对角线为自身教师，非对角线为跨对象教师，末行为学生；每格汇总三次训练重复。右侧点为各次重复，横线为平均值。"
+    },
+    {
+      "number": 11,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/dhc6_states.svg",
+      "sha256": "3090e8b83c66a794e4aad5b6e0e0cf77277806f87b6c2bccace44fa9a7816558",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig11.pdf",
+      "caption": "图 11　代表性 DHC-6 仿真状态的微调前后闭环响应。适配状态微调后贴合参考；留出状态保持原策略的响应形态。"
+    },
+    {
+      "number": 12,
+      "svg": "/home/swj/pingmo/flight_control_original_restored_2026-10-25/webpage/paper/delay_network.svg",
+      "sha256": "e39dd2ed1b7b20ce1d6df4e764b8257557dc6b86f9f6bb761b7fd12760939e4e",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig12.pdf",
+      "caption": "图 12　延迟表征实验的两条前端：部署学生使用原始 32×5 历史（上）；实验分支将历史送入冻结 SAE，得到 16 维稀疏潜码，再分别接策略头或线性延迟探针（下）。SAE 只做表征，策略/探针在冻结潜码上训练；对照包括 PCA、稠密 AE、原始历史和互相关。"
+    },
+    {
+      "number": 13,
+      "svg": "/home/swj/pingmo/flight_control_original_restored_2026-10-25/webpage/paper/delay_probe.svg",
+      "sha256": "81cbeefb0e225b15a67a2ae9b3a9eb5d44a7209b9f814532bbd662bffb40dcc9",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig13.pdf",
+      "caption": "图 13　延迟表征的可解码性。(a) 1.2 s 与 2.0 s 因果前缀的测试 R²；(b) 对应 MAE；(c) R² 随观测时间的变化；(d) 稀疏度—延迟信息权衡。留出 120 个对象、960 个对象—指令 episode。"
+    },
+    {
+      "number": 14,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/delay_closed_loop.svg",
+      "sha256": "03c15e6e1cf81b98c0a01ffd7738bd68bcbabe8da4762f413c8a4cf40053fddf",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig14.pdf",
+      "caption": "图 14　历史表征的闭环对照。左：按输入时延分层的通过率。右：全延迟样本与短/中延迟样本再训练后的长延迟表现。留出集包含 120 个对象、960 条对象—指令轨迹。"
+    },
+    {
+      "number": 15,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/tau_e_eval.svg",
+      "sha256": "917d1f4b4d39c3bc7bfe101c9bcf43743d39fee19054d8e775b62f18bf2c4f17",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig15.pdf",
+      "caption": "图 15　不同历史表征策略的闭环等效延迟。(a) 可评对象的 τe 与 τp；(b) A21 等级分布（未过拟合门的对象单列）；(c) 一个原始历史对象的 Bode 拟合示例。Top-k SAE-16 的 120 个全部未过拟合门，因此没有 A21 等级。"
+    },
+    {
+      "number": 16,
+      "svg": "/home/swj/pingmo/flight_control_original_restored_2026-10-25/webpage/paper/tau_e_amplitude.svg",
+      "sha256": "8821005b31cb8aa7f647c6c162ea5eca6cfca6875b944bdd67bb25228b39ef52",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig16.pdf",
+      "caption": "图 16　τe 评价的激励幅值稳健性。(a) 三种幅值共同可评对象上的 τe 中位；(b) 可评对象数随幅值变化；(c) Top-k SAE 在三种幅值下的 VAF 与相位残差。"
+    },
+    {
+      "number": 17,
+      "svg": "/home/swj/pingmo/flight_control_original_restored_2026-10-25/webpage/paper/tau_e_seed.svg",
+      "sha256": "2b66215267de537bff19439bdf61255c58389cc79ceea905f5192d91893b89ac",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig17.pdf",
+      "caption": "图 17　τe 评价的策略种子稳健性。(a) 两个种子共同可评对象的逐对象 τe；(b) 两个种子的 A21 等级分布。"
+    },
+    {
+      "number": 18,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/topk4_diagnostic.svg",
+      "sha256": "e1a9874e054f1756ba399196f4e5d65ce5918c0d63e9da1afbf4684d2ebf1555",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig18.pdf",
+      "caption": "图 18　Top-k SAE 与原始历史的 180 s 闭环响应（时延对象 2，每分量 1 deg/s）。左：时域响应；右：功率谱。Top-k SAE 的低频功率较高，对应持续低频摆动与较大的 LOES 拟合残差。"
+    },
+    {
+      "number": 19,
+      "svg": "/home/swj/pingmo/flight_control_original_restored_2026-10-25/webpage/paper/sampling_marginals.svg",
+      "sha256": "60737e823ef4fd7548c7a3d14d745e0c7f67b23e1d74370c29254085fc99a71b",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig19.pdf",
+      "caption": "图 19　5,000 个对象的参数边际分布。颜色表示选入等级，竖线标出相应分级或研究包络边界。"
+    },
+    {
+      "number": 20,
+      "svg": "/home/swj/pingmo/flight_control_original_restored_2026-10-25/webpage/paper/teacher_difficulty.svg",
+      "sha256": "84d61b3e6ad68c4f500251e4ca6052813d5c4f9e34f09cf5ea9ef8d6df0a511e",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig20.pdf",
+      "caption": "图 20　教师跟踪误差与滚转操纵效能的关系（双对数）。颜色表示品质等级，红叉表示未通过对象；虚线为通过样本的拟合，相关系数 r = −0.74。"
+    },
+    {
+      "number": 21,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/teacher_training_curves.svg",
+      "sha256": "6243fcba1d0af9fa594c1e8c81df4ce7403a740790f1115f0f61b65d12521579",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig21.pdf",
+      "caption": "图 21　21 个达标教师的固定指令集验证结果：跟踪误差、操纵总变差及所选权重对应的训练步数。"
+    },
+    {
+      "number": 22,
+      "svg": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/paper/dhc6_transfer.svg",
+      "sha256": "720a47a3955583384f1a7559e9bb1797c9e0c4ec339df2e335e9b835519494f4",
+      "pdf": "/home/swj/pingmo/report_latex_2026-10-25/figures/fig22.pdf",
+      "caption": "图 22　DHC-6 仿真 ARX 对象上的微调前后对照（15 deg/s 阶跃）；虚线区分适配与留出状态。"
+    }
+  ],
+  "tables": [
+    {
+      "number": 1,
+      "caption": "表 1　参数化滚转对象的参数说明",
+      "cells": [
+        [
+          "符号",
+          "参数名称与单位",
+          "含义与动态作用",
+          "设定方式"
+        ],
+        [
+          "L F a L_{F_{a}} L F a ​ ​",
+          "滚转控制效能 rad/(N·s²)",
+          "表示输入力对滚转角加速度的作用强度，决定输入的控制效能。",
+          "响应标定"
+        ],
+        [
+          "λ s \\lambda_{s} λ s ​",
+          "螺旋模态特征根 s⁻¹",
+          "对应极点 s s s = λ s \\lambda_{s} λ s ​ ；负值表示该模态衰减，正值表示发散。",
+          "采样"
+        ],
+        [
+          "T R T_{R} T R ​",
+          "滚转模态时间常数 s",
+          "对应极点 −1/ T R T_{R} T R ​ ；取值越小，该模态衰减越快。",
+          "采样"
+        ],
+        [
+          "ζ d \\zeta_{d} ζ d ​",
+          "荷兰滚模态阻尼比 无量纲",
+          "与模态频率共同决定振荡的衰减速度。",
+          "采样"
+        ],
+        [
+          "ω d \\omega_{d} ω d ​",
+          "荷兰滚模态自然频率 rad/s",
+          "决定该振荡模态的时间尺度。",
+          "采样"
+        ],
+        [
+          "R ω R_{\\omega} R ω ​",
+          "零点频率比 无量纲",
+          "定义为 ω ϕ \\omega_{\\phi} ω ϕ ​ / ω d \\omega_{d} ω d ​ ，用于确定分子零点对的频率参数。",
+          "采样"
+        ],
+        [
+          "R ζ R_{\\zeta} R ζ ​",
+          "零点阻尼比例系数 无量纲",
+          "定义为 ζ ϕ \\zeta_{\\phi} ζ ϕ ​ / ζ d \\zeta_{d} ζ d ​ ，用于确定分子零点对的阻尼参数。",
+          "比值构造"
+        ],
+        [
+          "τ p \\tau_{p} τ p ​",
+          "输入运输时延 s",
+          "表示输入作用于对象前的纯时间滞后。",
+          "采样"
+        ],
+        [
+          "ω ϕ \\omega_{\\phi} ω ϕ ​",
+          "分子零点对的频率参数 rad/s",
+          "由 ω ϕ \\omega_{\\phi} ω ϕ ​ = R ω R_{\\omega} R ω ​ ω d \\omega_{d} ω d ​ 得到，与极点共同影响瞬态响应。",
+          "派生"
+        ],
+        [
+          "ζ ϕ \\zeta_{\\phi} ζ ϕ ​",
+          "分子零点对的阻尼参数 无量纲",
+          "由 ζ ϕ \\zeta_{\\phi} ζ ϕ ​ = R ζ R_{\\zeta} R ζ ​ ζ d \\zeta_{d} ζ d ​ 得到，用于确定分子零点对的位置。",
+          "约束选取"
+        ]
+      ]
+    },
+    {
+      "number": 2,
+      "caption": "表 2　学生控制器的观测组成",
+      "cells": [
+        [
+          "输入部分",
+          "信号内容",
+          "维数"
+        ],
+        [
+          "当前观测",
+          "指令、目标角速度、实际角速度、跟踪误差、误差积分、实际角速度与目标角速度的导数、请求力、施加力。",
+          "9"
+        ],
+        [
+          "观测历史",
+          "过去 32 步的指令、目标角速度、实际角速度、跟踪误差和请求力，共 5 个通道。",
+          "160"
+        ],
+        [
+          "动作历史",
+          "最近 7 步的归一化控制动作。",
+          "7"
+        ]
+      ]
+    },
+    {
+      "number": 3,
+      "caption": "表 3　对象族的候选范围与构造方式",
+      "cells": [
+        [
+          "参数",
+          "同分布候选的生成与筛选",
+          "分布外扩展"
+        ],
+        [
+          "L F a L_{F_a} L F a ​ ​",
+          "由 1 s 滚转角灵敏度反标；同分布筛选包络为 [ 0.04 , 0.47083875 ] [0.04,\\,0.47083875] [ 0.04 , 0.47083875 ]",
+          "将标定后效能超出该包络的候选归入分布外。"
+        ],
+        [
+          "T R T_R T R ​",
+          "按对数尺度映射；基础区间为 [ 0.18 , 1.0 ] [0.18,\\,1.0] [ 0.18 , 1.0 ] s，等级扩展上限为 1.4、10 s。",
+          "慢滚转候选扩展至 ( 10 , 15 ] (10,\\,15] ( 10 , 15 ] s。"
+        ],
+        [
+          "λ s \\lambda_s λ s ​",
+          "按线性尺度映射；基础区间为 [ − 0.15 , ln ⁡ 2 / 12 ] [-0.15,\\,\\ln 2/12] [ − 0.15 , ln 2/12 ] s − 1 \\mathrm{s}^{-1} s − 1 ，等级扩展上限为 ln ⁡ 2 / 8 \\ln 2/8 ln 2/8 、 ln ⁡ 2 / 4 \\ln 2/4 ln 2/4 。",
+          "不稳定根扩展至 ( ln ⁡ 2 / 4 , 0.30 ] (\\ln 2/4,\\,0.30] ( ln 2/4 , 0.30 ] s − 1 \\mathrm{s}^{-1} s − 1 。"
+        ],
+        [
+          "ζ d \\zeta_d ζ d ​",
+          "与模态频率联合取值，候选范围为 [ 0.005 , 0.70 ] [0.005,\\,0.70] [ 0.005 , 0.70 ] ；按阻尼比及阻尼与频率乘积的分级条件设置下限。",
+          "沿用阻尼构造，允许频率超出常规分级范围。"
+        ],
+        [
+          "ω d \\omega_d ω d ​",
+          "按对数尺度映射；基础区间为 [ 1 , 6 ] [1,\\,6] [ 1 , 6 ] rad/s；频率项决定二级时取 [ 0.4 , 0.99 ] [0.4,\\,0.99] [ 0.4 , 0.99 ] rad/s，三级低阻尼候选取 [ 0.4 , 2 ] [0.4,\\,2] [ 0.4 , 2 ] rad/s。",
+          "低频候选扩展至 [ 0.20 , 0.40 ) [0.20,\\,0.40) [ 0.20 , 0.40 ) rad/s。"
+        ],
+        [
+          "R ω R_\\omega R ω ​",
+          "按对数尺度映射到 [ 0.65 , 1.35 ] [0.65,\\,1.35] [ 0.65 , 1.35 ] 。",
+          "现有库的分支映射取值约为 [ 0.30 , 0.424 ] [0.30,\\,0.424] [ 0.30 , 0.424 ] 或 [ 2.121 , 3.0 ] [2.121,\\,3.0] [ 2.121 , 3.0 ] 。"
+        ],
+        [
+          "R ζ R_\\zeta R ζ ​",
+          "先在线性尺度上选取 ζ ϕ ∈ [ 0.1 , 0.7 ] \\zeta_\\phi\\in[0.1,\\,0.7] ζ ϕ ​ ∈ [ 0.1 , 0.7 ] ，再令 R ζ = ζ ϕ / ζ d R_\\zeta=\\zeta_\\phi/\\zeta_d R ζ ​ = ζ ϕ ​ / ζ d ​ 。",
+          "采用相同的比值构造。"
+        ],
+        [
+          "τ p \\tau_p τ p ​",
+          "按线性尺度映射到 [ 0.001 , 0.20 ] [0.001,\\,0.20] [ 0.001 , 0.20 ] s。",
+          "长时延候选扩展至 ( 0.25 , 0.50 ] (0.25,\\,0.50] ( 0.25 , 0.50 ] s。"
+        ]
+      ]
+    },
+    {
+      "number": 4,
+      "caption": "表 4　教师网络与训练设置",
+      "cells": [
+        [
+          "项",
+          "设置"
+        ],
+        [
+          "输入",
+          "本体感受 176 + 特权信息 12"
+        ],
+        [
+          "时序前端",
+          "3 层一维卷积，dilation 1/4/8，感受野 27 步"
+        ],
+        [
+          "主干",
+          "残差 MLP 512 × 8，pre-LN、SiLU、无偏置均值头、奇对称投影"
+        ],
+        [
+          "输出",
+          "归一化增量动作 ±1 → 请求力每步变化至多 ±1.76 N；请求力限幅 ±22 N"
+        ],
+        [
+          "算法",
+          "PPO，614 万步/架，γ 0.995，λ 0.95，clip 0.2"
+        ],
+        [
+          "规模",
+          "4.26 M 参数，单卡约 9.5 min/架"
+        ]
+      ]
+    },
+    {
+      "number": 5,
+      "caption": "表 5　数据划分与评估协议",
+      "cells": [
+        [
+          "阶段",
+          "对象 / 数据",
+          "训练与留出",
+          "被评内容"
+        ],
+        [
+          "对象库",
+          "5,000 个参数化滚转模型",
+          "4,500 个训练/同分布池；500 个分布外",
+          "参数与品质等级覆盖"
+        ],
+        [
+          "PPO 教师",
+          "50 个源域对象",
+          "已有 46 个通过项目门限",
+          "确定性闭环跟踪与操纵"
+        ],
+        [
+          "学生",
+          "48 个源域对象",
+          "44 个蒸馏；4 个留出，等级各 16 个",
+          "tiny / small 跨对象性能"
+        ],
+        [
+          "DHC-6 微调",
+          "12 个仿真配平状态、72 条记录",
+          "8 个适配；4 个留出",
+          "small 学生、单随机种子"
+        ],
+        [
+          "库规模抽样",
+          "4,500 个非 OOD 对象池",
+          "每级随机抽 40 个，共 120 个",
+          "tiny 学生，随机种子 20261023"
+        ],
+        [
+          "幅值 / OOD",
+          "300 个同分布对象、500 个 OOD 对象",
+          "14 条指令/对象；每指令重复 2 次",
+          "tiny 学生固定权重，11,200 个对象—指令组合"
+        ]
+      ]
+    },
+    {
+      "number": 6,
+      "caption": "表 6　两种规模学生的源域结果",
+      "cells": [
+        [
+          "学生",
+          "参数量",
+          "源对象通过",
+          "留出对象通过",
+          "源对象误差比",
+          "留出对象误差比"
+        ],
+        [
+          "tiny",
+          "3,856",
+          "37/44",
+          "3/4",
+          "1.28×",
+          "1.68×"
+        ],
+        [
+          "small",
+          "75,040",
+          "38/44",
+          "3/4",
+          "1.34×",
+          "1.41×"
+        ]
+      ]
+    },
+    {
+      "number": 7,
+      "caption": "表 7　配对教师—学生的闭环测试汇总。通过率按全部测试组合统计，RMSE 中位数按有限轨迹统计。",
+      "cells": [
+        [
+          "控制方式",
+          "通过 / 测试组合",
+          "通过率",
+          "RMSE 中位 (deg/s)",
+          "超限或非有限终止"
+        ],
+        [
+          "教师控制自身训练对象",
+          "442/648",
+          "68.2%",
+          "0.75",
+          "0"
+        ],
+        [
+          "教师控制其他对象",
+          "1970/7128",
+          "27.6%",
+          "3.28",
+          "12"
+        ],
+        [
+          "统一学生控制同组对象",
+          "430/648",
+          "66.4%",
+          "0.96",
+          "0"
+        ]
+      ]
+    },
+    {
+      "number": 8,
+      "caption": "表 8　从因果历史前缀估计 τ p 的留出结果（120 个，960 episode）",
+      "cells": [
+        [
+          "表征",
+          "维度",
+          "1.2 s R²",
+          "1.2 s MAE (ms)",
+          "2.0 s R²",
+          "2.0 s MAE (ms)"
+        ],
+        [
+          "互相关（F req —p）",
+          "36",
+          "0.995",
+          "2.9",
+          "0.968",
+          "8.4"
+        ],
+        [
+          "稠密 AE",
+          "16",
+          "0.608",
+          "32.8",
+          "0.656",
+          "29.5"
+        ],
+        [
+          "原始历史",
+          "160",
+          "0.567",
+          "34.7",
+          "0.588",
+          "33.0"
+        ],
+        [
+          "PCA",
+          "16",
+          "0.496",
+          "38.3",
+          "0.552",
+          "35.4"
+        ],
+        [
+          "通道均值",
+          "5",
+          "0.440",
+          "41.5",
+          "0.461",
+          "38.8"
+        ],
+        [
+          "L1-SAE（L0≈7）",
+          "16",
+          "0.344",
+          "43.6",
+          "0.554",
+          "35.5"
+        ],
+        [
+          "Top-k SAE（k=4）",
+          "16",
+          "0.122",
+          "53.2",
+          "0.506",
+          "37.8"
+        ],
+        [
+          "L1-SAE（L0≈3.5）",
+          "16",
+          "0.075",
+          "56.1",
+          "0.484",
+          "38.2"
+        ]
+      ]
+    },
+    {
+      "number": 9,
+      "caption": "表 9　历史表征的闭环性能与短/中延迟再训练对照",
+      "cells": [
+        [
+          "变体",
+          "短延迟",
+          "中延迟",
+          "长延迟",
+          "长延迟 RMSE (deg/s)",
+          "仅短/中延迟再训练 → 长延迟"
+        ],
+        [
+          "原始历史（tiny 微调）",
+          "93.1%",
+          "95.3%",
+          "90.0%",
+          "0.408",
+          "90.0%"
+        ],
+        [
+          "PCA-16",
+          "60.0%",
+          "60.3%",
+          "51.6%",
+          "1.406",
+          "47.5%"
+        ],
+        [
+          "稠密 AE-16",
+          "69.1%",
+          "72.5%",
+          "63.7%",
+          "0.731",
+          "—"
+        ],
+        [
+          "Top-k SAE-16",
+          "85.6%",
+          "79.7%",
+          "71.9%",
+          "0.708",
+          "46.2%"
+        ],
+        [
+          "SAE-aux（保留原始历史）",
+          "93.1%",
+          "95.6%",
+          "90.0%",
+          "0.409",
+          "90.0%"
+        ]
+      ]
+    },
+    {
+      "number": 10,
+      "caption": "表 10　对象输入时延与闭环等效延迟的定义及用途",
+      "cells": [
+        [
+          "项目",
+          "τ p （本文对象参数）",
+          "τ e （GJB A21 评价量）"
+        ],
+        [
+          "数学位置",
+          "对象输入前 e −τ p s",
+          "闭环 LOES 拟合项 e −τ e s"
+        ],
+        [
+          "已知时机",
+          "训练前采样",
+          "控制器确定后拟合"
+        ],
+        [
+          "依赖控制器",
+          "否",
+          "是"
+        ],
+        [
+          "主要用途",
+          "对象生成、训练、延迟分层",
+          "飞行品质评价"
+        ],
+        [
+          "范围 / 门限",
+          "0.001–0.20 s 常态；0.5 s OOD",
+          "1 级 ≤0.10 s；2 级 ≤0.20 s；3 级 ≤0.25 s"
+        ],
+        [
+          "A21 可评性",
+          "不可直接评",
+          "需拟合残差合格"
+        ]
+      ]
+    },
+    {
+      "number": 11,
+      "caption": "表 11　不同历史表征策略的闭环 LOES 拟合与等效延迟",
+      "cells": [
+        [
+          "策略",
+          "可评 / 120",
+          "τ e 中位 (s)",
+          "短 / 中 / 长中位 (s)",
+          "1 级",
+          "2 级",
+          "3 级",
+          ">3 级"
+        ],
+        [
+          "原始历史",
+          "73/120",
+          "0.073",
+          "0.042 / 0.127 / 0.299",
+          "43",
+          "15",
+          "4",
+          "11"
+        ],
+        [
+          "SAE-aux",
+          "102/120",
+          "0.102",
+          "0.032 / 0.125 / 0.309",
+          "51",
+          "14",
+          "7",
+          "30"
+        ],
+        [
+          "Top-k SAE-16",
+          "0/120",
+          "—",
+          "— / — / —",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      ]
+    },
+    {
+      "number": 12,
+      "caption": "表 12　激励幅值对 τ e 评价的影响（120 个 × 3 策略）",
+      "cells": [
+        [
+          "策略",
+          "可评 / 120（0.5 / 1.0 / 2.0）",
+          "τ e 中位（0.5 / 1.0 / 2.0）",
+          "共同可评 n",
+          "共同集 τ e 范围 (s)"
+        ],
+        [
+          "原始历史",
+          "41 / 73 / 91",
+          "0.065 / 0.073 / 0.094",
+          "40",
+          "0.055–0.066"
+        ],
+        [
+          "SAE-aux",
+          "78 / 102 / 111",
+          "0.111 / 0.102 / 0.127",
+          "75",
+          "0.105–0.116"
+        ],
+        [
+          "Top-k SAE-16",
+          "0 / 0 / 0",
+          "— / — / —",
+          "0",
+          "—"
+        ]
+      ]
+    },
+    {
+      "number": 13,
+      "caption": "表 13　策略种子对 τ e 评价的影响（120 个）",
+      "cells": [
+        [
+          "策略",
+          "可评（s1 / s2）",
+          "τ e 中位（s1 / s2）",
+          "共同 n",
+          "共同中位（s1 / s2）",
+          "1/2/3/>3 级（s1 → s2）"
+        ],
+        [
+          "原始历史",
+          "73 / 77",
+          "0.073 / 0.078",
+          "73",
+          "0.073 / 0.075",
+          "43/15/4/11 → 43/15/5/14"
+        ],
+        [
+          "SAE-aux",
+          "102 / 106",
+          "0.102 / 0.106",
+          "101",
+          "0.100 / 0.095",
+          "51/14/7/30 → 52/15/7/32"
+        ],
+        [
+          "Top-k SAE-16",
+          "0 / 0",
+          "— / —",
+          "0",
+          "—",
+          "0/0/0/0 → 0/0/0/0"
+        ]
+      ]
+    },
+    {
+      "number": 14,
+      "caption": "表 14　DHC-6 仿真微调前后跟踪误差（中位数）",
+      "cells": [
+        [
+          "状态组",
+          "样本数",
+          "微调前 RMSE（deg/s）",
+          "微调后 RMSE（deg/s）",
+          "相对变化"
+        ],
+        [
+          "适配",
+          "8",
+          "2.913",
+          "0.595",
+          "下降 79.6%"
+        ],
+        [
+          "留出",
+          "4",
+          "2.662",
+          "2.148",
+          "下降 19.3%"
+        ]
+      ]
+    },
+    {
+      "number": 15,
+      "caption": "表 15　两种容量学生在 DHC-6 上的微调前后（中位 RMSE，deg/s）",
+      "cells": [
+        [
+          "学生",
+          "参数量",
+          "适配前",
+          "适配后",
+          "留出前",
+          "留出后"
+        ],
+        [
+          "tiny",
+          "3,856",
+          "4.127",
+          "1.574",
+          "2.778",
+          "2.624"
+        ],
+        [
+          "small",
+          "75,040",
+          "2.913",
+          "0.595",
+          "2.662",
+          "2.148"
+        ]
+      ]
+    },
+    {
+      "number": 16,
+      "caption": "表 16　固定增益 PID 与统一学生在同一批对象上的对照。阶跃行括号内为 RMSE 中位数（deg/s）。",
+      "cells": [
+        [
+          "指令",
+          "PID·同分布",
+          "学生·同分布",
+          "PID·分布外",
+          "学生·分布外"
+        ],
+        [
+          "±1 deg/s",
+          "80.0% (0.06)",
+          "99.7% (0.11)",
+          "46.6% (8.78)",
+          "86.8% (0.21)"
+        ],
+        [
+          "±5 deg/s",
+          "76.7% (0.30)",
+          "99.3% (0.32)",
+          "43.4% (13.41)",
+          "73.4% (0.69)"
+        ],
+        [
+          "±10 deg/s",
+          "74.7% (0.61)",
+          "99.3% (0.36)",
+          "40.2% (14.11)",
+          "66.0% (0.95)"
+        ],
+        [
+          "±21 deg/s",
+          "58.3% (1.28)",
+          "86.0% (0.69)",
+          "28.6% (15.67)",
+          "42.0% (2.03)"
+        ],
+        [
+          "±31 deg/s",
+          "35.7% (1.90)",
+          "60.3% (1.13)",
+          "16.2% (18.53)",
+          "27.6% (2.93)"
+        ],
+        [
+          "双脉冲 / 多正弦",
+          "72.3% / 78.3%",
+          "99.0% / 99.7%",
+          "36.8% / 43.2%",
+          "76.8% / 84.4%"
+        ]
+      ]
+    }
+  ],
+  "equations": [
+    "G_\\theta(s)=L_{F_a}\\,\\frac{s(s^2+2\\zeta_\\phi\\omega_\\phi s+\\omega_\\phi^2)}{(s-\\lambda_s)(s+1/T_R)(s^2+2\\zeta_d\\omega_ds+\\omega_d^2)}\\,e^{-\\tau_ps}.",
+    "\\begin{gathered}o_t=\\operatorname{Norm}\\!\\bigl([p_{\\mathrm{cmd}},p_{\\mathrm{ref}},p,e,\\int e\\,dt,\\dot p,\\dot p_{\\mathrm{ref}},F_{\\mathrm{req}},F_{\\mathrm{applied}},h_{t-31:t},a_{t-7:t-1}]\\bigr)\\in\\mathbb R^{176},\\\\[0.4em]o_t^{\\mathrm T}=[o_t,z_t]\\in\\mathbb R^{188},\\qquad o_t^{\\mathrm S}=o_t.\\end{gathered}",
+    "\\begin{aligned}\\operatorname{RMSE}_p&=\\sqrt{\\frac1M\\sum_{t=1}^M(p_{\\mathrm{ref},t}-p_t)^2},\\\\\\operatorname{Peak}&=\\max_t|p_{\\mathrm{ref},t}-p_t|,\\\\\\operatorname{TV}_F&=\\frac1T\\sum_{t=1}^M|F_{\\mathrm{req},t}-F_{\\mathrm{req},t-1}|.\\end{aligned}",
+    "R_{\\mathrm D}=\\operatorname*{median}_{i\\in I}\\left(\\frac{\\operatorname{RMSE}_{p,i}^{\\mathrm S}}{\\operatorname{RMSE}_{p,i}^{\\mathrm T}}\\right).",
+    "\\theta^{(i)}\\sim q(\\theta\\mid c_i),\\qquad g_i=\\operatorname{Grade}_{\\mathrm{src}}(\\theta^{(i)},c_i).",
+    "\\begin{gathered}F_{\\mathrm{req},t+1}=\\operatorname{clip}\\!\\left(F_{\\mathrm{req},t}+(88\\,\\mathrm{N/s})a_t\\Delta t,-22\\,\\mathrm N,22\\,\\mathrm N\\right),\\\\\\Delta t=0.02\\,\\mathrm s.\\end{gathered}",
+    "r_t=-50\\left[\\left(\\frac{e_t}{p_{\\mathrm{scale}}}\\right)^2\\Delta t+0.02\\left(\\frac{F_{\\mathrm{applied},t}}{22\\,\\mathrm N}\\right)^2\\Delta t+0.02a_t^2\\right].",
+    "\\begin{aligned}\\delta_t&=r_t+\\gamma V_{v_{\\mathrm{old}}}(s_{t+1})-V_{v_{\\mathrm{old}}}(s_t),\\\\\\widehat A_t&=\\delta_t+\\gamma\\lambda\\widehat A_{t+1},\\qquad\\gamma=0.995,\\quad\\lambda=0.95.\\end{aligned}",
+    "\\begin{gathered}\\mathcal L_{\\mathrm{clip}}(w)=-\\mathbb E_t\\!\\left[\\min\\!\\left(\\rho_t\\widehat A_t,\\operatorname{clip}(\\rho_t,1-\\epsilon,1+\\epsilon)\\widehat A_t\\right)\\right],\\\\\\epsilon=0.2.\\end{gathered}",
+    "\\begin{aligned}\\mathcal L_{\\mathrm{total}}&=\\mathcal L_{\\mathrm{clip}}+0.5\\,\\mathbb E[(V_v(s_t)-\\widehat R_t)^2]-0.001\\,\\mathcal H(\\pi_w),\\\\\\widehat R_t&=\\widehat A_t+V_{v_{\\mathrm{old}}}(s_t).\\end{aligned}",
+    "\\begin{aligned}D_0&=\\{(o_t,\\mu_{\\mathrm T}(o_t,z_t))\\},\\\\D_{k+1}&=D_k\\cup\\{(o_t^{\\mathrm S,k},\\mu_{\\mathrm T}(o_t^{\\mathrm S,k},z_t))\\}.\\end{aligned}",
+    "w_{\\mathrm S}^{*}=\\operatorname*{arg\\,min}_w\\frac1{|D_K|}\\sum_{(o,u_{\\mathrm T})\\in D_K}\\|\\mu_{\\mathrm S}(o;w)-u_{\\mathrm T}\\|^2.",
+    "\\begin{aligned}e_t(W)&=p_{\\mathrm{ref},t}-p_t(W;\\widehat G_{\\mathrm{ARX}}),\\\\\\mathcal L_{\\mathrm{DHC6}}(W)&=\\frac1{N_{t\\ge2\\,\\mathrm s}}\\sum_{t\\ge2\\,\\mathrm s}e_t(W)^2,\\\\W_{k+1}&=\\operatorname{AdamUpdate}(W_k,\\nabla_W\\mathcal L_{\\mathrm{DHC6}};\\eta=3\\times10^{-5}).\\end{aligned}"
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "archive": "/home/swj/pingmo/paper_web_display_2026-10-25/revision/pdf_export_20261026T051217639123Z",
+  "source_html_sha256": "57d0b673573a9d392c0d86839a5c4fa4e3c7927384665b6ad711c89bf3df7b46",
+  "frozen_html": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/downloads/paper_print_snapshot_57d0b673573a.html",
+  "image_assets": [
+    {
+      "source": "paper/closed_loop_simulation.svg?v=e349078107bd",
+      "sha256": "e349078107bd5196b0013da4c9d09e930185d8631f1f2818397e4536027d89e3"
+    },
+    {
+      "source": "paper/pipeline_framework.svg?v=teacher50-20261025",
+      "sha256": "e1ec0e6d585c6ef05e779e275a00e38932b3efb582746d6d55d8449bf88548b7"
+    },
+    {
+      "source": "paper/teacher_network_tensor.svg?v=686b027091c1",
+      "sha256": "686b027091c16b0afddb6173d122e96833d8889378b9b2220b0190b8d7279711"
+    },
+    {
+      "source": "paper/student_network_tensor.svg?v=dcd596d46b6f",
+      "sha256": "dcd596d46b6f5b93b571711130418c5f9b2eebe6c0b0b9c427b1a11d046ffbac"
+    },
+    {
+      "source": "paper/sampling_scatter.svg?v=115348",
+      "sha256": "959377a14ff4628a6558e8e5f44a4b5df7fd3594840df5ac23ca904907a4a863"
+    },
+    {
+      "source": "paper/teacher_closed_loop.svg?v=labels-d40221358482",
+      "sha256": "d40221358482bbb2f619d0baa3dd39f5c79c5539cfdc08fcb6b1aac97d24451c"
+    },
+    {
+      "source": "paper/student_dagger.svg?v=ace24506e9ac",
+      "sha256": "ace24506e9ac21c7f569660964c31fe643d698b4347806f7a62cc0faf7797929"
+    },
+    {
+      "source": "paper/teacher_student_compare.svg?v=labels-8b6fb02c17f6",
+      "sha256": "8b6fb02c17f6d7ae35a68ce07e6beb3c3199fe6b8673b046be3bca6a3306b5af"
+    },
+    {
+      "source": "paper/cross_object_responses.svg?v=labels-526d23b743ea",
+      "sha256": "526d23b743eaad2325b2dcd8e0de094fc0d134b0af36343e9189646b0a35be5e"
+    },
+    {
+      "source": "paper/cross_object_matrix.svg?v=labels-5135639fad5f",
+      "sha256": "5135639fad5f9db10ab72286b0e41c632bff12839a99105619916ab1d939daf3"
+    },
+    {
+      "source": "paper/dhc6_states.svg?v=labels-3090e8b83c66",
+      "sha256": "3090e8b83c66a794e4aad5b6e0e0cf77277806f87b6c2bccace44fa9a7816558"
+    },
+    {
+      "source": "paper/delay_network.svg?v=115348",
+      "sha256": "e39dd2ed1b7b20ce1d6df4e764b8257557dc6b86f9f6bb761b7fd12760939e4e"
+    },
+    {
+      "source": "paper/delay_probe.svg?v=115348",
+      "sha256": "81cbeefb0e225b15a67a2ae9b3a9eb5d44a7209b9f814532bbd662bffb40dcc9"
+    },
+    {
+      "source": "paper/delay_closed_loop.svg?v=labels-03c15e6e1cf8",
+      "sha256": "03c15e6e1cf81b98c0a01ffd7738bd68bcbabe8da4762f413c8a4cf40053fddf"
+    },
+    {
+      "source": "paper/tau_e_eval.svg?v=labels-917d1f4b4d39",
+      "sha256": "917d1f4b4d39c3bc7bfe101c9bcf43743d39fee19054d8e775b62f18bf2c4f17"
+    },
+    {
+      "source": "paper/tau_e_amplitude.svg?v=115348",
+      "sha256": "8821005b31cb8aa7f647c6c162ea5eca6cfca6875b944bdd67bb25228b39ef52"
+    },
+    {
+      "source": "paper/tau_e_seed.svg?v=115348",
+      "sha256": "2b66215267de537bff19439bdf61255c58389cc79ceea905f5192d91893b89ac"
+    },
+    {
+      "source": "paper/topk4_diagnostic.svg?v=labels-e1a9874e054f",
+      "sha256": "e1a9874e054f1756ba399196f4e5d65ce5918c0d63e9da1afbf4684d2ebf1555"
+    },
+    {
+      "source": "paper/sampling_marginals.svg?v=115348",
+      "sha256": "60737e823ef4fd7548c7a3d14d745e0c7f67b23e1d74370c29254085fc99a71b"
+    },
+    {
+      "source": "paper/teacher_difficulty.svg?v=115348",
+      "sha256": "84d61b3e6ad68c4f500251e4ca6052813d5c4f9e34f09cf5ea9ef8d6df0a511e"
+    },
+    {
+      "source": "paper/teacher_training_curves.svg?v=title-trim-20261025",
+      "sha256": "6243fcba1d0af9fa594c1e8c81df4ce7403a740790f1115f0f61b65d12521579"
+    },
+    {
+      "source": "paper/dhc6_transfer.svg?v=labels-720a47a39555",
+      "sha256": "720a47a3955583384f1a7559e9bb1797c9e0c4ec339df2e335e9b835519494f4"
+    }
+  ],
+  "print_css_sha256": "438738ae68550f806072872ad007ace101f4374d483c6b0e4225a189dc421a68",
+  "browser": {
+    "title": "基于飞行品质的飞控大模型构建与滚转通道验证",
+    "tocCount": 0,
+    "figures": 22,
+    "tables": 16,
+    "equations": 13,
+    "analyses": 22,
+    "mathErrors": 0,
+    "brokenImages": [],
+    "pageWidth": 672.75,
+    "figureDimensions": [
+      {
+        "caption": "图 1　学生控制器的闭环仿真。品质参数确定对象动态，学生根据观测和历史输出力速率动作，对象响应反馈至下一控制周期。",
+        "width": 672.75,
+        "height": 410.265625
+      },
+      {
+        "caption": "图 2　飞控大模型的构建与验证流程：品质对象族、特权 PPO 教师、多轮蒸馏与目标域适配。tiny 与 small 学生分别含 3,856 和 75,040 个参数；40 次目标域更新及 2.91→0.59 deg/s 的结果对应 small。",
+        "width": 672.75,
+        "height": 368.578125
+      },
+      {
+        "caption": "图 3　特权教师 Actor：三层 24 通道卷积形成 48 维历史特征，与 9 维当前量、7 维动作历史和 12 维特权量拼接为 76 维；残差主干含 8 个 512 宽残差块，约 4.26 M 参数。",
+        "width": 672.75,
+        "height": 298.265625
+      },
+      {
+        "caption": "图 4　tiny 学生网络：32×5 历史经时序编码得到 16 维特征，与 9 维当前量和 7 维动作历史拼接为 32 维输入，经一个 32 宽残差块输出动作，共 3,856 个参数。",
+        "width": 672.75,
+        "height": 298.265625
+      },
+      {
+        "caption": "图 5　5,000 个对象的参数空间投影。颜色区分三个品质等级与分布外对象，虚线标出所选分级边界。",
+        "width": 672.75,
+        "height": 287.5625
+      },
+      {
+        "caption": "图 6　教师训练完成后的源域闭环效果：不同品质等级的阶跃与多正弦响应。",
+        "width": 672.75,
+        "height": 526.4375
+      },
+      {
+        "caption": "图 7　DAgger 轮次与师生闭环跟踪误差比。第 0 轮为行为克隆，随后在学生访问状态上追加教师标签。",
+        "width": 417.09375,
+        "height": 283.296875
+      },
+      {
+        "caption": "图 8　教师与统一学生在主试验对象 7 上的同指令时域对照。黑色点线为目标，蓝线为教师，橙线为学生；标题报告 2 s 后的跟踪 RMSE 及其比值。",
+        "width": 672.75,
+        "height": 635.75
+      },
+      {
+        "caption": "图 9　验证达标教师与统一学生的闭环对照。三行受控对象为 1、6、9，迁移教师为 6、9、1；三列依次展示指令跟踪、初始偏差恢复和外力扰动抑制。黑色实线为外部指令，灰色点线为记录目标。",
+        "width": 672.75,
+        "height": 523.625
+      },
+      {
+        "caption": "图 10　专用教师跨对象控制与统一学生的对象覆盖。对角线为自身教师，非对角线为跨对象教师，末行为学生；每格汇总三次训练重复。右侧点为各次重复，横线为平均值。",
+        "width": 672.75,
+        "height": 475.921875
+      },
+      {
+        "caption": "图 11　代表性 DHC-6 仿真状态的微调前后闭环响应。适配状态微调后贴合参考；留出状态保持原策略的响应形态。",
+        "width": 672.75,
+        "height": 191.828125
+      },
+      {
+        "caption": "图 12　延迟表征实验的两条前端：部署学生使用原始 32×5 历史（上）；实验分支将历史送入冻结 SAE，得到 16 维稀疏潜码，再分别接策略头或线性延迟探针（下）。SAE 只做表征，策略/探针在冻结潜码上训练；对照包括 PCA、稠密 AE、原始历史和互相关。",
+        "width": 672.75,
+        "height": 395.34375
+      },
+      {
+        "caption": "图 13　延迟表征的可解码性。(a) 1.2 s 与 2.0 s 因果前缀的测试 R²；(b) 对应 MAE；(c) R² 随观测时间的变化；(d) 稀疏度—延迟信息权衡。留出 120 个对象、960 个对象—指令 episode。",
+        "width": 672.75,
+        "height": 440.78125
+      },
+      {
+        "caption": "图 14　历史表征的闭环对照。左：按输入时延分层的通过率。右：全延迟样本与短/中延迟样本再训练后的长延迟表现。留出集包含 120 个对象、960 条对象—指令轨迹。",
+        "width": 672.75,
+        "height": 266.796875
+      },
+      {
+        "caption": "图 15　不同历史表征策略的闭环等效延迟。(a) 可评对象的 τe 与 τp；(b) A21 等级分布（未过拟合门的对象单列）；(c) 一个原始历史对象的 Bode 拟合示例。Top-k SAE-16 的 120 个全部未过拟合门，因此没有 A21 等级。",
+        "width": 672.75,
+        "height": 255.390625
+      },
+      {
+        "caption": "图 16　τe 评价的激励幅值稳健性。(a) 三种幅值共同可评对象上的 τe 中位；(b) 可评对象数随幅值变化；(c) Top-k SAE 在三种幅值下的 VAF 与相位残差。",
+        "width": 672.75,
+        "height": 243.078125
+      },
+      {
+        "caption": "图 17　τe 评价的策略种子稳健性。(a) 两个种子共同可评对象的逐对象 τe；(b) 两个种子的 A21 等级分布。",
+        "width": 672.75,
+        "height": 274.96875
+      },
+      {
+        "caption": "图 18　Top-k SAE 与原始历史的 180 s 闭环响应（时延对象 2，每分量 1 deg/s）。左：时域响应；右：功率谱。Top-k SAE 的低频功率较高，对应持续低频摆动与较大的 LOES 拟合残差。",
+        "width": 672.75,
+        "height": 266.609375
+      },
+      {
+        "caption": "图 19　5,000 个对象的参数边际分布。颜色表示选入等级，竖线标出相应分级或研究包络边界。",
+        "width": 672.75,
+        "height": 290.40625
+      },
+      {
+        "caption": "图 20　教师跟踪误差与滚转操纵效能的关系（双对数）。颜色表示品质等级，红叉表示未通过对象；虚线为通过样本的拟合，相关系数 r = −0.74。",
+        "width": 470.921875,
+        "height": 298.15625
+      },
+      {
+        "caption": "图 21　21 个达标教师的固定指令集验证结果：跟踪误差、操纵总变差及所选权重对应的训练步数。",
+        "width": 672.75,
+        "height": 254.96875
+      },
+      {
+        "caption": "图 22　DHC-6 仿真 ARX 对象上的微调前后对照（15 deg/s 阶跃）；虚线区分适配与留出状态。",
+        "width": 592.015625,
+        "height": 301.703125
+      }
+    ],
+    "fitted": []
+  },
+  "file": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/downloads/基于飞行品质的飞控大模型构建与滚转通道验证_无侧栏.pdf",
+  "pages": 25,
+  "bytes": 4081346,
+  "sha256": "8bec4633072120183c163549f48e25700c2f64c7b0a4e898cae28da514ab6d4f",
+  "page_text_lengths": [
+    2107,
+    1381,
+    1127,
+    1164,
+    1494,
+    1916,
+    1130,
+    1525,
+    1784,
+    772,
+    497,
+    753,
+    889,
+    1207,
+    1844,
+    2630,
+    1420,
+    1253,
+    1859,
+    1590,
+    1837,
+    1041,
+    547,
+    921,
+    1189
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "version": "joint_partial_iv_a_construction_pilot_v1",
+  "seed": 20261024,
+  "purpose": "construction_and_metric_validation_only; not yet policy-trained or evidence of efficacy",
+  "n": 190,
+  "per_cell_per_split": 1,
+  "component_order": [
+    "t_r",
+    "spiral",
+    "dutch_roll",
+    "sensitivity_1s"
+  ],
+  "joint_cells_per_split": 54,
+  "boundary_pairs": 14,
+  "candidates_consumed": 190,
+  "rejected_gain_envelope_candidates_or_pairs": 14,
+  "model": "single_s_roll_LOES_family; no claim every parameter combination is a real aircraft",
+  "input": "equivalent_N_before_added_actuator_and_transport; not identified physical surface command",
+  "standard_scope": "A18_A19_A31_and_A35_base_only_IV_A_not_CO_GA_stick_assumption",
+  "priors": "research_choices; neither GJB-prescribed sampling distributions nor fleet statistics",
+  "changes": "54 joint signatures; L2 Dutch frequency/damping/product routes; actual active-boundary pairs; transport delay 0.001..0.25s",
+  "boundary_distance_definition": "2% of the named positive numerical threshold, on each side",
+  "boundary_probe_role": "construction diagnostic only; assign a training/test role before a new frozen protocol",
+  "omitted": "A35 phi/beta correction, A116 phase grade, true-airframe embedding, OOD suite, task feasibility and policy validation",
+  "bank_sha256": "5a915312919e741d04317acccc4d4c5837b755d449bfffe1c5f5523ab8d2a46f",
+  "source_sha256": {
+    "/home/swj/pingmo/gjb_object_library_audit_2026-10-24/build_joint_library.py": "58761e70e5acca3000d16879240f74c43ae527eb0c57d919f04cee68695c52b9",
+    "/home/swj/pingmo/flight_control_corrected_2026-10-24/pingmo_src/src/aircraft/sampler.py": "48363cc9d2d1e6208b72be63d8671ee3bcb9deb9aa448264f1c9f09464500056",
+    "/home/swj/pingmo/flight_control_corrected_2026-10-24/pingmo_src/src/aircraft/gain_calibration.py": "44146c9858763eaa491091295356ffa73fc76182e8e194dcdc5fc3c4d41cb4d1",
+    "/home/swj/pingmo/flight_control_corrected_2026-10-24/pingmo_src/src/aircraft/p_channel.py": "c57ea00a176dc6cc3bf700065dbefff41fca42dd09132a42f46e2f01469d3a43",
+    "/home/swj/pingmo/flight_control_corrected_2026-10-24/pingmo_src/src/aircraft/parameters.py": "2d6e8b990370b47abb8d7169b4b597768a7d607b308b4670711059eecd103b2b"
+  }
+}

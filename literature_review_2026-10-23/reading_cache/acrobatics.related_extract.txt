@@ -1,0 +1,93 @@
+Performing acrobatic maneuvers with quadrotors is extremely challenging.
+Acrobatic flight requires high thrust and extreme angular accelerations that push the platform to its physical limits.
+Professional drone pilots often measure their level of mastery by flying such maneuvers in competitions.
+In this paper, we propose to learn a sensorimotor policy that enables an autonomous quadrotor to fly extreme acrobatic maneuvers with only onboard sensing and computation.
+We train the policy entirely in simulation by leveraging demonstrations from an optimal controller that has access to privileged information. We use appropriate abstractions of the visual input to enable transfer to a real quadrotor.
+We show that the resulting policy can be directly deployed in the physical world without any fine-tuning on real data.
+Our methodology has several favorable properties: it does not require a human expert to provide demonstrations, it cannot harm the physical system during training, and it can be used to learn maneuvers that are challenging even for the best human pilots.
+Our approach enables a physical quadrotor to fly maneuvers such as the Power Loop, the Barrel Roll, and the Matty Flip, during which it incurs accelerations of up to 3g.
+
+The difficulty of agile autonomous flight led previous work to mostly focus on specific aspects of the problem.
+One line of research focused on the control problem, assuming near-perfect state estimation from external sensors [ 1 , 2 , 5 , 3 ] .
+While these works showed impressive examples of agile flight, they focused purely on control. The issues of reliable perception and state estimation during agile maneuvers were cleverly circumvented by instrumenting the environment with sensors (such as Vicon and OptiTrack) that provide near-perfect state estimation to the platform at all times.
+Recent works addressed the control and perception aspects in an integrated way via techniques like perception-guided trajectory optimization [ 6 , 7 , 8 ] or training end-to-end visuomotor agents [ 9 ] . However, acrobatic performance of high-acceleration maneuvers with only onboard sensing and computation has not yet been achieved.
+
+In this paper, we show for the first time that a vision-based autonomous quadrotor with only onboard sensing and computation is capable of autonomously performing agile maneuvers with accelerations of up to 3g, as shown in Fig. Deep Drone Acrobatics .
+This contribution is enabled by a novel simulation-to-reality transfer strategy, which is based on abstraction of both visual and inertial measurements.
+We demonstrate both formally and empirically that the presented abstraction strategy decreases the simulation-to-reality gap with respect to a naive use of sensory inputs.
+Equipped with this strategy, we train an end-to-end sensimotor controller to fly acrobatic maneuvers exclusively in simulation.
+Learning agile maneuvers entirely in simulation has several advantages: (i) Maneuvers can be simply specified by reference trajectories in simulation and do not require expensive demonstrations by a human pilot,
+(ii) training is safe and does not pose any physical risk to the quadrotor, and
+(iii) the approach can scale to a large number of diverse maneuvers, including ones that can only be performed by the very best human pilots.
+
+Our sensorimotor policy is represented by a neural network that combines information from different input modalities to directly regress thrust and body rates. To cope with different output frequencies of the onboard sensors, we design an asynchronous network that operates independently of the sensor frequencies. This network is trained in simulation to imitate demonstrations from an optimal controller that has access to privileged state information.
+
+Our approach employs abstraction of sensory input [ 15 ] to reduce the problem’s sample complexity and enable zero-shot sim-to-real transfer .
+ While prior work has demonstrated the possibility of controlling real-world quadrotors with zero-shot sim-to-real transfer [ 16 , 17 ] , our approach is the first to learn an end-to-end sensorimotor mapping – from sensor measurements to low-level controls – that can perform high-speed and high-acceleration acrobatic maneuvers on a real physical system.
+
+In order to perform acrobatic maneuvers with a quadrotor, we train a sensorimotor controller to predict low-level actions from a history of onboard sensor measurements and a user-defined reference trajectory.
+An observation 𝒐 ⁡ [ k ] ∈ 𝕆 \bm{o}[k]\in\mathbb{O} at time k ∈ [ 0 , … , T ] k\in[0,\dots,T] consists of a camera image ℐ ⁡ [ k ] \mathcal{I}[k] and an inertial measurement ϕ ⁡ [ k ] \phi[k] .
+Since the camera and IMU typically operate at different frequencies, the visual and inertial observations are updated at different rates.
+The controller’s output is an action 𝒖 ⁡ [ k ] = [ c , 𝝎 ⊤ ] ⊤ ∈ 𝕌 {\bm{u}[k]=[c,\bm{\omega}^{\top}]^{\top}\in\mathbb{U}} that consists of continuous mass-normalized collective thrust c c and bodyrates 𝝎 = [ ω x , ω y , ω z ] ⊤ {\bm{\omega}}=[\omega_{x},\omega_{y},\omega_{z}]^{\top} that are defined in the quadrotor body frame.
+
+The controller is trained via privileged learning [ 18 ] . Specifically, the policy is trained on demonstrations that are provided by a privileged expert: an optimal controller that has access to privileged information that is not available to the sensorimotor student, such as the full ground-truth state of the platform 𝒔 ⁡ [ k ] ∈ 𝕊 {\bm{s}[k]\in\mathbb{S}} .
+The privileged expert is based on a classic optimization-based planning and control pipeline that tracks a reference trajectory from the state 𝒔 ⁡ [ k ] \bm{s}[k] using MPC [ 6 ] .
+
+The trained sensorimotor student does not rely on any privileged information and can be deployed directly on the physical platform. We deploy the trained controller to perform acrobatic maneuvers in the physical world, with no adaptation required.
+
+where 𝒑 WB \bm{p}_{\text{WB}} , 𝒗 WB \bm{v}_{\text{WB}} , 𝒒 WB \bm{q}_{\text{WB}} denote the position, linear velocity, and orientation of the platform body frame with respect to the world frame.
+The gravity vector 𝒈 W \prescript{}{{\text{W}}}{\bm{g}} is expressed in the world frame and 𝒒 WB ⊙ 𝒄 B \bm{q}_{\text{WB}}\odot\bm{c}_{\text{B}} denotes the rotation of the mass-normalized thrust vector 𝒄 B = ( 0 , 0 , c ) ⊤ \bm{c}_{\text{B}}=(0,0,c)^{\top} by quaternion 𝒒 WB \bm{q}_{\text{WB}} .
+The time derivative of a quaternion 𝒒 = ( q w , q x , q y , q z ) ⊤ \bm{q}=(q_{w},q_{x},q_{y},q_{z})^{\top} is given by 𝒒 ˙ = 1 2 ​ Λ ​ ( 𝝎 ) ⋅ 𝒒 {\dot{\bm{q}}=\frac{1}{2}\Lambda(\bm{\omega})\cdot\bm{q}} and Λ ⁡ ( 𝝎 ) \Lambda(\bm{\omega}) is a skew-symmetric matrix of the vector ( 0 , 𝝎 ⊤ ) ⊤ = ( 0 , ω x , ω y , ω z ) ⊤ (0,\bm{\omega}^{\top})^{\top}=(0,\omega_{x},\omega_{y},\omega_{z})^{\top} .
+The diagonal matrix 𝑱 = diag ​ ( J x ​ x , J y ​ y , J z ​ z ) {\bm{J}=\text{diag}(J_{xx},J_{yy},J_{zz})} denotes the quadrotor inertia, and 𝜼 ∈ ℝ 3 \bm{\eta}\in\mathbb{R}^{3} are the torques acting on the body due to the motor thrusts.
+
+The sensorimotor controller is trained by imitating demonstrations provided by the privileged expert. While the expert has access to privileged information in the form of ground-truth state estimates, the sensorimotor controller does not access any privileged information and can be directly deployed in the physical world [ 18 ] .
+
+A lemma by Pan et al. [ 22 ] formally defines an upper bound between the expert and the student performance as
+
+where D ​ W ​ ( ⋅ , ⋅ ) DW(\cdot,\cdot) is the Wasserstein metric [ 23 ] and C π ∗ C_{\pi^{*}} is a constant depending on the smoothness of expert actions.
+Finding an agent π \pi with the same performance as the privileged controller π ∗ \pi^{*} boils down to minimizing the discrepancy in actions between the two policies on the expected agent trajectories ρ ⁡ ( π ) \rho(\pi) .
+
+where 𝒖 ∗ ​ ( 𝒔 ​ [ k ] ) \bm{u}^{*}(\bm{s}[k]) is the expert action and 𝒐 ⁡ [ k ] \bm{o}[k] is the observation vector in the state 𝒔 ⁡ [ k ] \bm{s}[k] .
+Running this process for O ⁡ ( N ) O(N) iterations yields a policy π \pi with performance J ⁡ ( π ) ≤ J ⁡ ( π ∗ ) + O ⁡ ( N ) J{(\pi)\leq J(\pi^{*})+O(N)} [ 24 ] .
+
+Our approach to bridging the gap between simulation and reality is to leverage abstraction [ 15 ] . Rather than operating on raw sensory input, our sensorimotor controller operates on an intermediate representation produced by a perception module [ 19 ] . This intermediate representation is more consistent across simulation and reality than raw visual input.
+
+We now formally show that training a network on abstractions of sensory input reduces the gap between simulation and reality.
+Let M ⁡ ( 𝒛 ∣ 𝒔 ) , L ⁡ ( 𝒛 ∣ 𝒔 ) : 𝕊 → 𝕆 M(\bm{z}\mid\bm{s}),L(\bm{z}\mid\bm{s})\colon\mathbb{S}\to\mathbb{O} denote the observation models in the real world and in simulation, respectively.
+Such models describe how an on-board sensor measurement 𝒛 \bm{z} senses a state 𝒔 \bm{s} .
+We further define π r = 𝔼 𝒐 r ∼ M ⁡ ( 𝒔 ) ​ [ π ⁡ ( 𝒐 r ​ [ k ] ) ] \pi_{r}=\mathbb{E}_{\bm{o}_{r}\sim M(\bm{s})}[\pi(\bm{o}_{r}[k])] and π s = 𝔼 𝒐 s ∼ L ⁡ ( 𝒔 ) ​ [ π ⁡ ( 𝒐 s ​ [ k ] ) ] \pi_{s}=\mathbb{E}_{\bm{o}_{s}\sim L(\bm{s})}[\pi(\bm{o}_{s}[k])] as the realizations of the policy π \pi in the real world and in simulation.
+The following lemma shows that, disregarding actuation differences, the distance between the observation models upper-bounds the gap in performance in simulation and reality.
+
+The mapping f f is task-dependent and is generally designed – with domain knowledge – to contain sufficient information to solve the task while being invariant to nuisance factors.
+In our case, we use feature tracks as an abstraction of camera frames. The feature tracks are provided by a visual-inertial odometry (VIO) system.
+In contrast to camera frames, feature tracks primarily depend on scene geometry, rather than surface appearance.
+We also make inertial measurements independent of environmental conditions, such as temperature and pressure, by integration and de-biasing.
+As such, our input representations fulfill the requirements of Eq. ( 11 ).
+
+As the following lemma shows, training on such representations reduces the gap between task performance in simulation and the real world.
+
+We represent the policy as a neural network that fulfills all of the above requirements. The network consists of three input branches that process visual input, inertial measurements, and the reference trajectory, followed by a multi-layer perceptron that produces actions. The architecture is illustrated in Fig. 3 .
+Similarly to visual-inertial odometry systems [ 27 , 26 , 25 ] , we provide the network with a representation of the platform state by supplying it with a history of length L = 8 L=8 of visual and inertial information.
+
+To ensure that the learned policies are scene- and domain-independent, we provide the network with appropriate abstractions of the inputs instead of directly feeding raw inputs. We design these abstractions to contain sufficient information to solve the task while being invariant to environmental factors that are hard to simulate accurately and are thus unlikely to transfer from simulation to reality.
+
+For the visual signal, we use feature tracks , i.e. the motion of salient keypoints in the image plane, as an abstraction of the input.
+Feature tracks depend on the scene structure, ego-motion, and image gradients, but not on absolute pixel intensities.
+At the same time, the information contained in the feature tracks is sufficient to infer the ego-motion of the platform up to an unknown scale. Information about the scale can be recovered from the inertial measurements.
+We leverage the computationally efficient feature extraction and tracking frontend of VINS-Mono [ 28 ] to generate feature tracks.
+The frontend extracts Harris corners [ 30 ] and tracks them using the Lucas-Kanade method [ 31 ] .
+We perform geometric verification and exclude correspondences with a distance of more than 2 2 pixels from the epipolar line.
+We represent each feature track by a 5-dimensional vector that consists of the keypoint position, its displacement with respect to the previous keyframe (both on the rectified image plane), and the number of keyframes that the feature has been tracked (a measure of keypoint quality).
+
+We first evaluate the performance for individual maneuvers in simulation.
+The results are summarized in Table I .
+The learned sensorimotor controller that has access to both visual and inertial data ( Ours ) is consistently the best across all maneuvers.
+This policy exhibits a lower tracking error by up to 45% in comparison to the strong VIO-MPC baseline.
+The baseline can complete the simpler maneuvers with perfect success rate, but generally has higher tracking error due to drift in state estimation.
+The gap between the baseline and our controller widens for longer and more difficult sequences.
+
+Table I also highlights the relative importance of the input modalities. Policies that only receive the reference trajectories but no sensory input ( Ours (Only Ref) ) – effectively operating open-loop – perform poorly across all maneuvers. Policies that have access to visual input but not to inertial data (Ours (No IMU)) perform similarly poorly since they do not have sufficient information to determine the absolute scale of the ego-motion. On the other hand, policies that only rely on inertial data for sensing (Ours (No FT)) are able to safely fly most maneuvers. Even though such controllers only have access to inertial data, they exhibit significantly lower tracking error than the VIO-MPC baseline.
+ 
+However, the longer the maneuver, the larger the drift accumulated by purely-inertial (Ours (No FT)) controllers.
+When both inertial and visual data is incorporated (Ours) , drift is reduced and accuracy improves.
+For the longest sequence (Combo) , the abstracted visual input raises the success rate by 10 percentage points.

@@ -1,0 +1,55 @@
+{
+ "models": {
+  "pca16": {
+   "kind": "pca",
+   "dim": 16,
+   "components": "pca16_components.npy"
+  },
+  "dense16": {
+   "kind": "dense",
+   "dim": 16,
+   "model": "models\\dense16.pt",
+   "l0": 15.999994277954102,
+   "val_mse": 0.0012128215748816729
+  },
+  "l1_3e-02": {
+   "kind": "l1",
+   "dim": 16,
+   "model": "models\\l1_3e-02.pt",
+   "l0": 3.5401499271392822,
+   "val_mse": 0.01261648815125227
+  },
+  "l1_3e-03": {
+   "kind": "l1",
+   "dim": 16,
+   "model": "models\\l1_3e-03.pt",
+   "l0": 7.033811092376709,
+   "val_mse": 0.0037092575803399086
+  },
+  "l1_3e-04": {
+   "kind": "l1",
+   "dim": 16,
+   "model": "models\\l1_3e-04.pt",
+   "l0": 12.16777229309082,
+   "val_mse": 0.0020916638895869255
+  },
+  "topk4": {
+   "kind": "topk",
+   "dim": 16,
+   "model": "models\\topk4.pt",
+   "l0": 3.999061107635498,
+   "val_mse": 0.00588275957852602
+  },
+  "topk8": {
+   "kind": "topk",
+   "dim": 16,
+   "model": "models\\topk8.pt",
+   "l0": 7.978388786315918,
+   "val_mse": 0.0025567603297531605
+  }
+ },
+ "pca": {
+  "n_components": 16,
+  "explained": 0.9996191361077936
+ }
+}

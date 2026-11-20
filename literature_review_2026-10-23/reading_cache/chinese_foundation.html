@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="keywords" content="智能无人飞行器,大型基础模型,无人飞行器自主决策,具身智能,智能体高阶认知," />
+<meta name="HW.ad-path" content="https://hkxb.buaa.edu.cn/CN/abstract/abstract21209.shtml" />
+<meta name="HW.identifier" content="https://hkxb.buaa.edu.cn/CN/abstract/abstract21209.shtml" />
+<meta name="DC.Format" content="text/html" />
+<meta name="DC.Language" content="cn" />
+<meta name="DC.Title" content="大型基础模型赋能下无人飞行器智能化：进展、应用与展望" />
+<meta name="DC.Identifier" content="10.7527/S1000-6893.2026.33148" />
+<meta name="DC.Contributor" content="邵典" />
+<meta name="DC.Contributor" content="唐矗" />
+<meta name="DC.Contributor" content="昌敏" />
+<meta name="DC.Contributor" content="刘黎可" />
+<meta name="DC.Contributor" content="王雨乐" />
+<meta name="DC.Contributor" content="李浩" />
+<meta name="DC.Contributor" content="白俊强" />
+<meta name="DC.Date" content="2026-02-27" />
+<meta name="citation_journal_title" content="航空学报" />
+<meta name="citation_journal_abbrev" content="航空学报" />
+<meta name="citation_issn" content="1000-6893" />
+<meta name="citation_authors" xml:lang="cn" content="邵典, 唐矗, 昌敏, 刘黎可, 王雨乐, 李浩, 白俊强" />
+<meta name="citation_title" xml:lang="cn" content="大型基础模型赋能下无人飞行器智能化：进展、应用与展望" />
+<meta name="DC.Keywords" xml:lang="cn" content="智能无人飞行器,大型基础模型,无人飞行器自主决策,具身智能,智能体高阶认知,"/>
+<meta name="citation_date" content="2026-02-27" />
+<meta name="citation_volume" content="47" />
+<meta name="citation_issue" content="15" />
+<meta name="citation_firstpage" content="333148" />
+<meta name="citation_lastpage" content="333148" />
+<meta name="citation_id" content="47/15/333148" />
+<meta name="citation_doi" content="10.7527/S1000-6893.2026.33148" />
+<meta name="citation_authors" xml:lang="en" content="Dian SHAO, Chu TANG, Min CHANG, Like LIU, Yule WANG, Hao LI, Junqiang BAI" />
+<meta name="citation_title" xml:lang="en" content="Large foundation models empowering ummannod aerial vehicle intelligence: Progress, applications and perspectives" />
+<meta name="DC.Keywords" xml:lang="en" content="intelligent UAVs,large foundation models,UAV decision-making tasks,embodied intelligence,higher-order cognition in agents,"/>
+<meta name="citation_abstract_html_url" content="https://hkxb.buaa.edu.cn/CN/abstract/abstract21209.shtml" />
+<meta name="citation_pdf_url" content="https://hkxb.buaa.edu.cn/CN/article/downloadArticleFile.do?attachType=PDF&id=21209" />
+<meta name="citation_public_url" content="https://hkxb.buaa.edu.cn/CN/abstract/abstract21209.shtml" />
+<meta name="robots" content="noarchive" />
+ 
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>大型基础模型赋能下无人飞行器智能化：进展、应用与展望</title>
+<!--css必引 -->
+	<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/font-awesome-4.7.0/css/font-awesome.css">
+	<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/css/common.css" />
+<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/css/swiper.min.css"/>
+<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/css/style.css"/>
+<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/css/xys.css"/>
+<LINK rel=stylesheet type=text/css href="https://hkxb.buaa.edu.cn/js/manu/lrtk.css">
+<!-- jQuery必引-->
+<script src="https://hkxb.buaa.edu.cn/js/jquery/jquery.min.js"></script>
+<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/css/css.css">
+<script src="https://hkxb.buaa.edu.cn/images/1000-6893/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/fonts/font-awesome.min.css">
+
+<!--兼容性问题-->
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+	
+<!--原摘要中的js -->
+	<!--图片弹出窗口 必须放在jquery.min.js后-->
+	<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/js/colorbox/colorbox.css">
+	<script src="https://hkxb.buaa.edu.cn/js/colorbox/jquery.colorbox.js"></script>
+	<script type="text/javascript">
+	//等比缩放图片
+function DrawImage(ImgD,FitWidth,FitHeight){
+	var image=new Image();
+	image.src=ImgD.src;
+	if(image.width>0 && image.height>0){
+		if(image.width/image.height>= FitWidth/FitHeight){
+			if(image.width>FitWidth){
+				ImgD.width=FitWidth;
+				ImgD.height=(image.height*FitWidth)/image.width;
+			}else{
+				ImgD.width=image.width;
+				ImgD.height=image.height;
+			}
+		} else{
+			if(image.height>FitHeight){
+				ImgD.height=FitHeight;
+				ImgD.width=(image.width*FitHeight)/image.height;
+			}else{
+				ImgD.width=image.width;
+				ImgD.height=image.height;
+			}
+		}enm
+	}
+}
+	window.onload=function(){
+		$(".figureClass").colorbox({rel:'figureClass', inline:true, width:"80%"});
+		$(".inline").colorbox({rel:'inline',inline:true, width:"80%"});
+		
+	}
+	</script>
+	<!--图片弹出窗口结束-->
+	
+	<!--原摘要中js end -->
+<script language="javascript" src="https://hkxb.buaa.edu.cn/js/modelDialog1.js"></script>
+<script language="javascript" src="https://hkxb.buaa.edu.cn/js/layer2.1/layer.js"></script>
+<script language="javascript" src="https://hkxb.buaa.edu.cn/js/drag.js"></script>
+<script language="javascript" src="https://hkxb.buaa.edu.cn/js/store.js"></script>
+<script language="javascript" src="https://hkxb.buaa.edu.cn/js/download.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		extensions: ["tex2jax.js"],
+		jax: ["input/TeX", "output/HTML-CSS"], 
+		tex2jax: {inlineMath: [ ['$','$'], ["\\(","\\)"] ],displayMath: [ ['$$','$$'], ["\\[","\\]"] ],processEscapes: true},
+		"HTML-CSS": { availableFonts: ["TeX"] },
+		TeX: {equationNumbers: {autoNumber: ["AMS"], useLabelIds: true}},
+        "HTML-CSS": {linebreaks: {automatic: true}},
+        SVG: {linebreaks: {automatic: true}}
+		});
+</script>
+
+
+
+
+
+<script type="text/javascript">
+jQuery(function() {
+	jQuery.ajax({
+		url: "https://hkxb.buaa.edu.cn/CN/user/validateCollectArticle.do?articleId=21209",
+		success: function(res) {
+			collectCount();
+			if (res == "true") {
+				jQuery("#collectArticle").append("已收藏");
+			}
+			if (res == "false") {
+				jQuery("#collectArticle").append("<a href='javascript:;' onclick=\"collectArticle('21209')\">收藏文章</a>");
+			}
+		}
+	});
+});
+
+function collectCount() {
+	jQuery.ajax({
+		url: "https://hkxb.buaa.edu.cn/CN/user/articleCollectionTimes.do?articleId=21209",
+		success: function(res) {
+			jQuery("#collectCount").html("");
+			jQuery("#collectCount").append(res);
+		}
+	});
+}
+
+function collectArticle(id) {
+	var url = window.location.href;
+	jQuery.ajax({
+		url: "https://hkxb.buaa.edu.cn/CN/user/addCollectArticle.do",
+		data: {
+			"articleId": id,
+			"url": url
+		},
+		type: "post",
+		success: function(res) {
+			if (res == "true") {
+				document.getElementById("collectArticle").innerHTML = "已收藏";
+				collectCount();
+				alert("收藏成功！");
+			} else if (res == "false") {
+				alert("您已经收藏过该篇文章啦！");
+				window.location.reload();
+			} else if (res.length > 5) {
+				window.location.href = "https://hkxb.buaa.edu.cn/CN/user/userInfo_cn.jsp?url=" + res;
+			} else {
+				alert("收藏失败！");
+				window.location.reload();
+			}
+		},
+		error: function() {
+			alert("收藏失败！");
+		}
+	});
+}
+
+
+//可视化开始
+$(document).ready(function(){
+    jQuery.getJSON("https://hkxb.buaa.edu.cn/CN/lexeme/existsCnctstInArticle.do?articleID=21209", null, function(json){
+        if(json.result){
+            $("#knowledge_map_count").html(json.count);
+            $("#knowledge_map_div").show();
+        }
+    });
+});
+function changeKnowledgeMapImg(flag){
+    if(flag==1){
+        document.getElementById("knowledge_map_img").src="../../images/knowledge_map1.png";
+    }else{
+        document.getElementById("knowledge_map_img").src="../../images/knowledge_map2.png";
+    }
+}
+//可视化结束
+<!--
+//点赞开始
+jQuery(function() {
+    jQuery.ajax({
+        url: 'https://hkxb.buaa.edu.cn/CN/article/showArticleLikedNum.do',
+        data: {
+            articleId: 21209
+        },
+        type: 'post',
+        dataType: 'json',
+        success:function(data){  //成功的回调函数
+            $("#articleLikedNum").text(data);
+        },
+        error:function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("错误");
+            // 状态码
+            console.log(XMLHttpRequest.status);
+            // 状态
+            console.log(XMLHttpRequest.readyState);
+            // 错误信息
+            console.log(textStatus);
+        }
+    });
+});
+
+function addArticleLikedNum(id){
+    jQuery.ajax({
+        url: 'https://hkxb.buaa.edu.cn/CN/article/addArticleLikedNum.do',
+        data: {
+            articleId: id
+        },
+        type: 'post',
+        dataType: 'json',
+        success:function(data){  //成功的回调函数
+            if(data==-1){
+                alert('今日已点赞！！');
+            }else{
+                $("#articleLikedNum").text(data);
+            }
+        },
+        error:function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("错误");
+            // 状态码
+            console.log(XMLHttpRequest.status);
+            // 状态
+            console.log(XMLHttpRequest.readyState);
+            // 错误信息
+            console.log(textStatus);
+        }
+    });
+}
+//点赞结束
+ -->
+
+function lsdy2(attachType,articleId,qiKanWangZhi,nian,issn){
+	var pars = "attachType="+attachType+"&id="+articleId;
+		if(attachType == "RICH_HTML"){
+			jQuery.post(qiKanWangZhi+"/CN/article/downloadArticleFileFee.do?" + new Date(), pars, function(data){
+				window.location.href = qiKanWangZhi+"/article/"+nian+"/"+issn+"/"+articleId;
+			});			
+		}else{
+			window.location.href = qiKanWangZhi+"/CN/article/downloadArticleFile.do?attachType="+attachType+"&id="+articleId;	
+		}	
+					$('.layui-layer').hide();
+	$('.layui-layer-shade').hide();
+}
+function submitLogin(login_id, remote_password){
+	var login_id = document.getElementById(login_id).value;
+	var remote_password = document.getElementById(remote_password).value;
+	var pars = "login_id="+login_id+"&remote_password="+remote_password;
+	jQuery.post("https://hkxb.buaa.edu.cn/CN/user/login.do?" + new Date(), pars, function(data){
+		window.subwin = new SubWindow("下载文件",data,null,null,null,null,'620px','310px',null,null,"#dddddd","true",null,null,"true",null);
+		subwin.show();
+	});
+}
+
+function close(){
+		subwin.close();
+	}
+ 
+function showArticleFile(url,attachType,articleId){
+	var viewAttach = url+"/CN/article/showArticleFile.do?attachType="+attachType+"&id="+articleId;
+	window.open(viewAttach,"下载文件","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizeable=no,copyhistory=no,width=520,height=200,left=88,top=88");
+}                      
+function searchKeyword(url,id,keyword){
+	var form = document.refForm;
+	form.searchSQL.value="(("+keyword+"[Keyword]) AND "+id+"[Journal])";
+	form.action = url+"/CN/article/advancedSearchResult.do";
+	form.submit();
+}		
+function searchEnKeyword(url,id,keyword){
+	var form = document.refForm;
+	form.searchSQL.value="(("+keyword+"[Keyword]) AND "+id+"[Journal])";
+	form.action = url+"/EN/article/advancedSearchResult.do";
+	form.submit();
+}		
+	
+function searchAuthor(url,id,author){
+	var form = document.refForm;
+	form.searchSQL.value="(("+author+"[Author]) AND "+id+"[Journal])";
+	form.action = url+"/CN/article/searchArticleResult.do";
+	form.submit();
+}
+	
+function addtobookshelf(url,articleId){
+	var addbookshelf = "";
+	addbookshelf = url+"/CN/article/addBookShelf.do?id="+articleId;
+	window.open(addbookshelf,"添加到书架","");
+}	
+	
+function showTxtFile(url,articleId){
+	var showtxtfile = "";
+	showtxtfile = url+"/CN/article/showTxtFile.do?id="+articleId;
+	window.open(showtxtfile,"引用管理器","");
+}
+
+function addComment(url,articleId){
+	var addComment = "";
+	addComment = url+"/CN/comment/addComment.do?id="+articleId;
+	window.open(addComment,"文章反馈","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizeable=no,copyhistory=no,width=520,height=300,left=88,top=88");
+}
+
+
+
+function findPassword(email){
+	var emailReg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
+	var email = document.getElementById(email).value;
+	var matchemail = emailReg.test(email);
+	var pars = "email="+email;
+	if(email == '' || email == null){
+		alert("Email不能为空！");
+		return false;
+	} else {
+		if(matchemail){
+			jQuery.post("https://hkxb.buaa.edu.cn/CN/user/findPassword.do?" + new Date(), pars, function(data){
+				subwin.close();
+			});
+		}else{
+			alert("Email格式不正确");		
+		}
+	}
+}
+function chakan(shifoukaifang,id,url){
+	var url2 = "https://hkxb.buaa.edu.cn/fileup/1000-6893/SUPPL/"+url;
+	window.location.href = "https://hkxb.buaa.edu.cn/CN/suppl/validateVideo.do?url="+url2+"&id="+id+"&shifoukaifang="+shifoukaifang;
+}
+
+//编辑推荐 
+$(document).ready(function(){
+    $("#recommendedArticles-list").load("https://hkxb.buaa.edu.cn/CN/article/recommendedArticles.do?id=21209",null,function(){
+    	$("#recommendedArticlesCount").html($("#recommendedArticlesCount1").val());
+    });
+});
+
+</script>
+
+	
+	<script src="https://hkxb.buaa.edu.cn/images/1000-6893/js/bootstrap.min.js"></script>
+	<script src="https://hkxb.buaa.edu.cn/images/1000-6893/js/jquery.pin.js"></script>
+	<script src="https://hkxb.buaa.edu.cn/images/1000-6893/js/abstract.js"></script>
+	<!--[if lt IE 9]>
+	<script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	
+	<style>
+		#bsBox{
+			width:560px !important;
+			height:420px !important;
+		}
+		.bFind-wrapper-top{
+			height:25px !important;
+		}
+		#bsWXBox{
+			height: 257px !important;
+			width: 232px !important;
+		}
+	</style>
+	
+
+</head>
+<body id="goTop">
+<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/font-awesome-4.7.0/css/font-awesome.css"/>
+
+<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/css/common.css" />
+<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/css/style.css"/>
+<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/css/xys.css"/>
+<style type="text/css">
+		.index_nav_list>li{padding: 0 1.2%;}
+	</style>
+	<div>
+		<div class="hkxbnr_phone">
+			<div class="hkxbnr_phone_top">
+				<div class="phone_search clearfix">
+					<div class="phone_search_cont fl">
+						<form method="post" name="frm_ks_ph" id="frm_ks_ph" action=https://hkxb.buaa.edu.cn/CN/article/searchArticle.do>
+							<input type="text" value="标题/作者/关键词..."  name="ks_keyword_ph" id="ks_keyword_ph"/>
+							<input type="submit" name="" value="搜索"/>
+						</form>
+					</div>
+				<!--<div class="fr phone_zhuce">
+						<a href="https://hkxb.buaa.edu.cn/CN/user/registerUser.do" class="phone_zhuce_a2"></a>
+					</div>
+					<div class="fr phone_login">
+						<a href="https://hkxb.buaa.edu.cn/CN/user/userInfo_cn.jsp" class="phone_login_a1"></a>
+					</div>-->
+				</div>
+				<div class="phone_header clearfix">
+					<a href="https://hkxb.buaa.edu.cn/CN/1000-6893/home.shtml" class="phone_logo fl"><img src="https://hkxb.buaa.edu.cn/images/1000-6893/img/logo.png"/></a>
+					<a href="https://www.sciencedirect.com/journal/chinese-journal-of-aeronautics" class="fr phone_Cia_btn"><img src="https://hkxb.buaa.edu.cn/images/1000-6893/img/book_icon.png" />CJA</a>
+					<a href="https://hkxb.buaa.edu.cn/EN/1000-6893/home.shtml" class="fr phone_E_btn">ENGLISH</a>
+				</div>
+			</div>
+			<div class="hkxbnr_phone_nav clearfix">
+				<p class="fl phone_nav_txt">导航</p>
+				<a href="javascript:;" class="fr phone_nav_btn"></a>
+				<ul class="phone_nav_list">
+					<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/1000-6893/home.shtml">首页</a></li>
+					<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/column/column79.shtml">关于我们</a></li>
+					<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/column/column80.shtml">编委会</a></li>
+					<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/model/qianyan.shtml">封面文章</a></li>
+					<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/article/showTenYearOldVolumn.do">过刊一览</a></li>
+					<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/folder/folder54.shtml">学术资讯</a></li>
+					<li class="fl"><a href="http://www.aerospacefrontiers.com/MeetingMain/Index/2026AFC">空天前沿大会</a></li>
+					<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/column/column117.shtml">投稿须知</a></li>
+					<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/column/column86.shtml">下载中心</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="hkxb_header">
+			<div class="hkxb_header_top clearfix">
+				<div class="fr">
+					<a href="javascript:;" class="twos_soso"></a>
+						<div class="twos_soso_cont">
+							<form method="post" name="frm_ks" id="frm_ks" action=https://hkxb.buaa.edu.cn/CN/article/searchArticle.do>
+							<input type="text" name="ks_keyword" id="ks_keyword" placeholder="标题/作者/关键词..." />
+							<input type="submit" name="" value="搜索" />
+							</form>
+						</div>
+				</div>
+				<!--<div class="fr">
+					<a href="https://hkxb.buaa.edu.cn/CN/user/registerUser.do" class="header_a1">注册</a>
+				</div>
+				<div class="fr">
+					<a href="https://hkxb.buaa.edu.cn/CN/user/userInfo_cn.jsp" class="header_a2">登录</a>
+				</div>-->
+				<div class="fr"><a href="https://hkxb.buaa.edu.cn/CN/column/column83.shtml" class="header_a3" style="margin-right:50px">联系我们</a></div>
+				<div class="fr"><a href="../column/column371.shtml" class="header_a3">学术质量&nbsp;&nbsp;&nbsp;|</a></div>
+				<div class="fr"><a href="https://hkxb.buaa.edu.cn/CN/column/column158.shtml" class="header_a4">广告服务&nbsp;&nbsp;&nbsp;|</a></div>
+				<div class="fr"><a href="https://hkxb.buaa.edu.cn/CN/column/column82.shtml;" class="header_a5">期刊征订&nbsp;&nbsp;&nbsp;|</a></div>
+			</div>
+			<div class="index_hkxb_top clearfix">
+				<div class="index_nav_l fl"></div>
+				<div class="index_nav_r fr"></div>
+				<div class="index_nav_cont clearfix">
+					<a href="https://hkxb.buaa.edu.cn/CN/1000-6893/home.shtml" class="index_hkxb_logo fl"><img src="https://hkxb.buaa.edu.cn/images/1000-6893/img/index_logo.png"/></a>
+					<ul class="index_nav_list fl">
+						<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/1000-6893/home.shtml">首页</a></li>
+						<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/column/column79.shtml">关于我们</a></li>
+						<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/column/column80.shtml">编委会</a></li>
+						<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/model/qianyan.shtml">封面文章</a></li>
+						<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/article/showTenYearOldVolumn.do">过刊一览</a></li>
+						<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/folder/folder54.shtml">学术资讯</a></li>
+						<li class="fl"><a href="http://www.aerospacefrontiers.com/MeetingMain/Index/2026AFC">空天前沿大会</a></li>
+						<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/column/column117.shtml">投稿须知</a></li>
+						<li class="fl"><a href="https://hkxb.buaa.edu.cn/CN/column/column86.shtml">下载中心</a></li>
+						
+					</ul>
+					<div class="index_language_E fl">
+						<a href="https://hkxb.buaa.edu.cn/EN/1000-6893/home.shtml" class="language_E_btn fl">English Version</a>
+						<a href="https://www.sciencedirect.com/journal/chinese-journal-of-aeronautics" targeg="_blank" class="index_Cia_btn fl"><img src="https://hkxb.buaa.edu.cn/images/1000-6893/img/book_icon.png"/>CJA</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="zhaiyao_position">
+						<a href="https://hkxb.buaa.edu.cn">航空学报 ></a>
+						<a Href="https://hkxb.buaa.edu.cn/CN/article/showTenYearVolumnDetail.do?nian=2026">2026</a>, <a Href="https://hkxb.buaa.edu.cn/CN/article/showTenYearVolumnDetail.do?nian=2026">Vol. 47</a>
+						<a href="https://hkxb.buaa.edu.cn/CN/volumn/volumn_1649.shtml">Issue (15)</a>: 333148-333148&nbsp;&nbsp;&nbsp;doi: <a href="https://doi.org/10.7527/S1000-6893.2026.33148" target="_blank">10.7527/S1000-6893.2026.33148</a>					</div>
+
+
+<div class="twoStage_cont">
+				<div class="twos_zhaiyao_top">
+					<div class="twos_zhaiyao_title clearfix">
+						<p class="twos_zy_title fl">电子电气工程与控制</p>
+						<div class="twos_zy_ml">
+							<a href="https://hkxb.buaa.edu.cn/CN/volumn/volumn_1649.shtml">本期目录&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+							<a href="https://hkxb.buaa.edu.cn/CN/article/showTenYearOldVolumn.do">过刊浏览&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+							<a href="https://hkxb.buaa.edu.cn/CN/article/advSearchArticle.do">高级检索</a>
+						</div>
+						<div class="twos_zy_fanye fr">
+								  								<a href="https://hkxb.buaa.edu.cn/CN/abstract/abstract21182.shtml" class="twos_fanye_p">前一篇</a>
+		  									  							|
+		  													</div>
+					</div>
+				</div>
+
+<div class="container whitebg">
+<div class="abs-con">
+  <div class="row">
+  <div class="col-md-12">
+       
+    <!--中文-->
+    
+            <h3 class="abs-tit">
+         大型基础模型赋能下无人飞行器智能化：进展、应用与展望    
+       </h3>
+         <p data-toggle="collapse" data-target="#divPanel">
+        <span>
+               		邵典<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>3</sup>(<a href="mailto:shaodian@nwpu.edu.cn"><img src="https://hkxb.buaa.edu.cn/images/email.png" border="0" /></a>), 唐矗<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>3</sup>, 昌敏<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>3</sup>, 刘黎可<sup>4</sup>, 王雨乐<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>3</sup>, 李浩<sup>2</sup><sup>,</sup><sup>5</sup>, 白俊强<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>3</sup>
+                &nbsp;&nbsp;
+        <span data-placement="right"  type="button">
+        <i class="glyphicon glyphicon-menu-down" style="cursor:pointer;"></i>
+        </span>
+        </span>
+    </p>
+    <div id="divPanel" class="collapse bs-callout">
+        <address class="address">
+            <ol class="list-unstyled">
+            	                <li><sup>1.</sup>西北工业大学 无人系统技术研究院，西安 710072<br/><sup>2.</sup>无人飞行器技术全国重点实验室，西安 710072<br/><sup>3.</sup>西北工业大学 人工智能学院，西安 710072<br/><sup>4.</sup>西北工业大学 软件学院，西安 710072<br/><sup>5.</sup>航空工业成都飞机设计研究所，成都 610041</li>
+                            </ol>
+            
+        </address>
+        <ul class="list-unstyled code-style" style="overflow: hidden;">
+            <li>
+				<span>
+											<code>收稿日期:</code>2025-11-27
+									</span>
+				<span>
+											<code>修回日期:</code>2026-01-04
+									</span>
+				<span>
+											<code>接受日期:</code>2026-02-04
+									</span>
+				<span>
+											<code>出版日期:</code>2026-02-28
+									</span>
+				<span>
+											<code>发布日期:</code>2026-02-27
+									</span>
+			</li>
+            <li>				<code>通讯作者:</code>
+					邵典
+											E-mail:shaodian@nwpu.edu.cn
+												</li>
+            <li>			</li>
+            <li>            
+            					<code  class="pull-left" style="overflow: hidden;">基金资助:</code><div class="pull-left">国家自然科学基金青年基金(62306239);无人飞行器技术全国重点实验室开放基金(WRFX-202424);三秦英才引进计划</div>					
+						</li>
+           
+        </ul>
+    </div>
+    <!--中文end-->
+    <!------------------------------------英文---------------------------------------------------------------------->
+        <h3 class="abs-tit">        
+	       Large foundation models empowering ummannod aerial vehicle intelligence: Progress, applications and perspectives	   
+    </h3>
+        <p data-toggle="collapse" data-target="#divPanelEn">
+        <span>
+               		Dian SHAO<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>3</sup>(<a href="mailto:shaodian@nwpu.edu.cn"><img src="https://hkxb.buaa.edu.cn/images/email.png" border="0" /></a>), Chu TANG<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>3</sup>, Min CHANG<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>3</sup>, Like LIU<sup>4</sup>, Yule WANG<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>3</sup>, Hao LI<sup>2</sup><sup>,</sup><sup>5</sup>, Junqiang BAI<sup>1</sup><sup>,</sup><sup>2</sup><sup>,</sup><sup>3</sup>
+			&nbsp;&nbsp;
+			<span data-placement="right"  type="button">
+			<i class="glyphicon glyphicon-menu-down" style="cursor:pointer;"></i>
+			</span>
+                
+        </span>
+    </p>    
+    
+    <div id="divPanelEn" class="collapse bs-callout">
+        <address class="address">
+             <ol class="list-unstyled">
+            	                <li><sup>1.</sup>Unmanned System Research Institute，Northwestern Polytechnical University，Xi’an 710072，China<br/><sup>2.</sup>National Key Laboratory of Unmanned Aerial Vehicle Technology，Xi’an 710072，China<br/><sup>3.</sup>School of Artificial Intelligence，Northwestern Polytechnical University，Xi’an 710072，China<br/><sup>4.</sup>School of Software，Northwestern Polytechnical University，Xi’an 710072，China<br/><sup>5.</sup>AVIC Chengdu Aircraft Design &amp; Research Institute，Chengdu 610041，China</li>
+                            </ol>
+        </address>
+         <ul class="list-unstyled code-style" style="overflow: hidden;">
+            <li>
+				<span>
+											<code>Received:</code>2025-11-27
+									</span>
+				<span>
+											<code>Revised:</code>2026-01-04
+									</span>
+				<span>
+											<code>Accepted:</code>2026-02-04
+									</span>
+				<span>
+											<code>Online:</code>2026-02-28
+									</span>
+				<span>
+											<code>Published:</code>2026-02-27
+									</span>
+			</li>
+            <li>				<code>Contact:</code>
+					Dian SHAO   
+											E-mail:shaodian@nwpu.edu.cn
+												</li>
+            <li>			</li>
+            <li>            
+            					<code class="pull-left" style="overflow: hidden;">Supported by:</code><div class="pull-left">National Natural Science Foundation of China(62306239);Open Fund of the National Key Laboratory of Unmanned Aerial Vehicle Technology(WRFX-202424);Sanqin Talents Introduction Plan of Shaanxi Province</div>					
+						</li>           
+        </ul>
+    </div>
+    
+    <!--英文end-->
+    <!-------------------------6大块组----------------------------------------------->
+    <div class="group clearfix">
+        <div class="row diyihangdg">
+                      <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 margin-bottom-10">
+                            <span class="change-section">
+                                                                    <a href="#" onclick="lsdy1('RICH_HTML','21209','https://hkxb.buaa.edu.cn','2026','article/2026/1000-6893/1000-6893-2026-47-15-333148.shtml');return false;" class="black-bg btn-menu">
+                                    <i class="fa fa-file-text"></i>
+                                    <h2>RichHTML</h2>
+                                    <span class="badge">
+
+
+
+
+15</span>
+                                 </a>
+                                
+                            </span>
+            </div>
+                                    <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 margin-bottom-10">
+	            <span class="change-section">
+	                <a href="#1" onClick="lsdy1('PDF','21209','https://hkxb.buaa.edu.cn','2026','1649');return false;" class="black-bg btn-menu">
+	                    <i class="fa fa-file-pdf-o text-danger"></i>
+	                    <h2>PDF (PC)</h2>
+	                    <span class="badge">
+
+
+
+
+648
+
+</span>
+	                </a>
+	            </span>
+            </div>
+                                  <!--
+            <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 margin-bottom-10">
+                <span class="change-section">
+                    <a href="javascript:void(0);" class="black-bg btn-menu" id="likedNum" onclick="addArticleLikedNum(21209)">
+                        <i class="fa fa-thumbs-up"></i>
+                        <h2>赞</h2>
+                        <span id="articleLikedNum" class="badge"></span>
+                    </a>
+                </span>
+            </div>
+             -->
+                                    <div class="col-xs-6 col-sm-4 col-md-2 col-lg-2 margin-bottom-10" id="knowledge_map_div" style="display:none;">
+                            <span class="change-section" onmouseover="changeKnowledgeMapImg(2)" onmouseout="changeKnowledgeMapImg(1)">
+                                <a href="../lexeme/showArticleByLexeme.do?articleID=21209" class="black-bg btn-menu">
+                                    <i class="fa text-muted"><img src="../../images/knowledge_map1.png" height="40" style="margin:0px;" width="36" id="knowledge_map_img"></i>
+                                    <h2>可视化</h2>
+                                    <span class="badge" id="knowledge_map_count">0</span>
+                                </a>
+                            </span>
+            </div>
+			
+        </div>
+        
+        <!--<div class="jumbotron" id="showPdf2">
+            <ul class="list-unstyled">
+                <li><a href="">1. 探讨2016版国际胰瘘研究小组定义和分级系统对胰腺术后患者胰瘘分级的影响.PDF<span>(500KB)</span></a></li>
+            </ul>
+        </div>-->
+        
+    </div>
+    <!--6大块组------------------->
+    </div>
+    </div>
+    </div>
+    <div class="row" id="pin">
+        <div class="col-lg-10 col-md-10 col-sm-12 col-sm-12">
+            <!--折叠面板begin-->
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="zhaiyao" onClick="xianshi(this)" style="cursor: pointer;">
+                        <h4 class="panel-title">
+                            <a id="abstract">
+                               	 摘要/Abstract
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" name="#abstract" style="display:block;">
+                        <div class="panel-body line-height text-justify">
+                                                        <p><strong>摘要： </strong><p>以大语言模型、视觉语言模型与视觉基础模型为代表的大型基础模型（LFMs），正推动无人飞行器（UAVs）智能化的新一轮演进。围绕该趋势，首先对相关模型的关键特性与通用能力进行了归纳，总结其驱动的主流具身架构，并比较不同架构在无人飞行器高动态、强约束场景下的适配性。其次，阐明了各类大型基础模型如何通过开放环境理解、任务级语义规划、具身推理控制及多模态交互等方式，重塑无人飞行器感知、规划、控制与交互四大核心功能要素。进一步聚焦大型基础模型驱动的高阶认知功能，探讨了推理、记忆、反思与想象在应对无人飞行器复杂场景下的作用机制、实现途径、技术局限及评测范式。总结了大型基础模型在视觉-语言导航、主动目标搜索、语义物流配送及集群智能协同等4类典型决策任务中的赋能模式与前沿进展。最后，深入讨论了安全风险与防护机制、工程落地与端侧部署等核心挑战及应对策略，并从高效基础智能构建、感知-认知跨越及泛在智能产业融合等方面展望了未来发展方向。</p></p>
+                                                        <form name="refForm" action="showCorrelativeArticle.do" method=post target=_blank>
+							<input type="hidden" name="searchSQL" value="" />
+                            <input type=hidden name="keyword" value="" id="keyword">
+							<input type=hidden name="author" value="" id="author">
+                            
+                                                        <p><strong>关键词: </strong>
+                               																				                                       <a href="#" onClick="searchKeyword('https://hkxb.buaa.edu.cn','1','智能无人飞行器')">智能无人飞行器, </a>
+	                                                                        											                                       <a href="#" onClick="searchKeyword('https://hkxb.buaa.edu.cn','1','大型基础模型')">大型基础模型, </a>
+	                                                                        											                                       <a href="#" onClick="searchKeyword('https://hkxb.buaa.edu.cn','1','无人飞行器自主决策')">无人飞行器自主决策, </a>
+	                                                                        											                                       <a href="#" onClick="searchKeyword('https://hkxb.buaa.edu.cn','1','具身智能')">具身智能, </a>
+	                                                                        											                                       <a href="#" onClick="searchKeyword('https://hkxb.buaa.edu.cn','1','智能体高阶认知')">智能体高阶认知</a> 
+	                                                                                                    </p>
+                                                                                    <p><strong>Abstract: </strong><p>Large Foundation Models （LFMs）， represented by large language models， vision language models， and vision foundation models， are driving a new wave of intelligent evolution for Unmanned Aerial Vehicles （UAVs）. Focusing on this trend， the key characteristics and general capabilities of relevant models are first summarized， followed by a categorization of the mainstream embodied architectures driven by them. A comparison is conducted regarding the adaptability and trade-offs of different architectures within the high-dynamic and strongly constrained scenarios of UAVs. Secondly， an analysis is provided on how various LFMs reshape the four core functional elements of UAVs， including perception， planning， control， and interaction， through mechanisms such as open-world understanding， task-level semantic planning， embodied reasoning control， and multi-modal interaction. Furthermore， focusing on high-level cognitive functions driven by LFMs， the mechanisms， implementation pathways， technical limitations， and evaluation paradigms of reasoning， memory， reflection， and imagination in coping with complex UAV scenarios are discussed. The empowerment patterns and frontier progress of LFMs in four typical decision-making tasks are then summarized， including vision-language navigation， active target search， semantic delivery， and swarm intelligent coordination. Finally， core challenges regarding safety risks and protection mechanisms， engineering implementation， and edge deployment are discussed， envisioning future directions in efficient foundation intelligence， the perception-to-cognition transition， and ubiquitous industrial collaboration.</p></p>
+                                                        	                            <p><strong>Key words: </strong>
+	                            																				                                       <a href="#" onClick="searchEnKeyword('https://hkxb.buaa.edu.cn','1','intelligent UAVs')">intelligent UAVs, </a>
+	                                    	                            											                                       <a href="#" onClick="searchEnKeyword('https://hkxb.buaa.edu.cn','1','large foundation models')">large foundation models, </a>
+	                                    	                            											                                       <a href="#" onClick="searchEnKeyword('https://hkxb.buaa.edu.cn','1','UAV decision-making tasks')">UAV decision-making tasks, </a>
+	                                    	                            											                                       <a href="#" onClick="searchEnKeyword('https://hkxb.buaa.edu.cn','1','embodied intelligence')">embodied intelligence, </a>
+	                                    	                            											                                       <a href="#" onClick="searchEnKeyword('https://hkxb.buaa.edu.cn','1','higher-order cognition in agents')">higher-order cognition in agents</a> 
+	                                    	                                                            </p>
+                                                         </form>
+                            <!--分类号-->
+                            																								<p>
+								<strong>
+																中图分类号:&nbsp;
+																</strong> 
+								</p>
+								<ul class="list-unstyled pacs">
+																								<li> 
+																<p>
+								<a href="../article/showArticleBySubjectScheme.do?code=V11" target="_blank">
+								V11
+								</a>
+								</p>
+																</li>
+																																</ul>
+																                            <!--分类号end-->
+                            <div class="row hidden-xs hidden-sm">
+                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 margin-bottom-10 text-center">
+                                    <div class="text-primary btn-menu">
+                                        <h4>引用本文</h4>
+
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 margin-bottom-10">
+                                    <div class="primary-border">
+                                        															<p>邵典, 唐矗, 昌敏, 刘黎可, 王雨乐, 李浩, 白俊强. 大型基础模型赋能下无人飞行器智能化：进展、应用与展望[J]. 航空学报, 2026, 47(15): 333148.	</p>
+																																									     												                                                                                                        	                                                                                                                      <p>Dian SHAO, Chu TANG, Min CHANG, Like LIU, Yule WANG, Hao LI, Junqiang BAI. Large foundation models empowering ummannod aerial vehicle intelligence: Progress, applications and perspectives[J]. Acta Aeronautica et Astronautica Sinica, 2026, 47(15): 333148.</p>
+															                                                                                            </div>
+
+                                </div>
+                            </div>
+                            <div class="row hidden-xs hidden-sm">
+                                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 margin-bottom-10 text-center">
+
+                                    <div class="btn-menu bs-callout-warning">
+                                        <h4>使用本文</h4>
+                                    </div>
+
+                                </div>
+                                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 margin-bottom-10">
+
+                                    <div class="primary-border">
+                                        <p>
+                                            <b>
+                                                <form name=mail action="https://hkxb.buaa.edu.cn/CN/article/sendMail.jsp" method=post target=_blank> 
+												
+                                                <a href="#" id="collectArticle" class="shouc"></a> <span id="collectCount"></span> /&nbsp;&nbsp;                                              
+													<a onclick="mail.submit()" href="javascript:void(null)" class="tuij">推荐</a>
+													<input type="hidden" value='我在《航空学报》上发现了关于“大型基础模型赋能下无人飞行器智能化：进展、应用与展望”的文章，特向您推荐。请打开下面的网址：https://hkxb.buaa.edu.cn/CN/abstract/abstract21209.shtml' name="neirong">
+													<input type="hidden" name="thishref" value="https://hkxb.buaa.edu.cn/CN/abstract/abstract21209.shtml">
+													<input type="hidden" name="jname" value="航空学报">
+													<input type="hidden" name="title" value='大型基础模型赋能下无人飞行器智能化：进展、应用与展望'>
+												<form>
+                                            </b>
+                                        </p>
+                                        <p><b>导出引用管理器</b> <span class="daochu"><a href="https://hkxb.buaa.edu.cn/CN/article/getTxtFile.do?fileType=EndNote&id=21209" id="ris_export">EndNote</a>|<a href="https://hkxb.buaa.edu.cn/CN/article/getTxtFile.do?fileType=Ris&id=21209">Reference Manager</a>|<a href="https://hkxb.buaa.edu.cn/CN/article/getTxtFile.do?fileType=ProCite&id=21209">ProCite</a>|<a id="bibtex_export" href="https://hkxb.buaa.edu.cn/CN/article/getTxtFile.do?fileType=BibTeX&id=21209">BibTeX</a>|<a href="https://hkxb.buaa.edu.cn/CN/article/getTxtFile.do?fileType=RefWorks&id=21209">RefWorks</a></span>
+										</p>
+										<p><strong>链接本文:</strong>
+										<a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2026.33148" class="txt_zhaiyao1">https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2026.33148</a>
+										</p>
+										<p>
+										<strong>&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+											<a href="https://hkxb.buaa.edu.cn/CN/Y2026/V47/I15/333148" class="txt_zhaiyao1">
+										https://hkxb.buaa.edu.cn/CN/Y2026/V47/I15/333148</a>										</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                                <div class="panel panel-default" >
+                    <div class="panel-heading" role="tab" id="tubiao" onClick="xianshi(this)">
+                        <h4 class="panel-title">
+                            <a id="figure" class="collapsed" href="javascript:;">
+                                图/表 <span class="badge badge-info">7</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" style="display: none;">
+                        <div class="panel-body">
+                            <!--start-->
+                            <div class="row figureCon">
+																	<div class="col-lg-3 col-md-4 col-sm-6">
+										<div class="thumbnail">
+										
+																							<a class="figureClass" href="#figureClass44762"  data-toggle="tooltip" data-placement="bottom" data-original-title="图 1&nbsp;&nbsp;大型基础模型赋能无人飞行器智能化全景：模型基础、功能重塑（基础与高阶）、典型任务、挑战与展望" data-original-title="图 1&nbsp;&nbsp;大型基础模型赋能无人飞行器智能化全景：模型基础、功能重塑（基础与高阶）、典型任务、挑战与展望">
+													<img src="https://hkxb.buaa.edu.cn/fileup/1000-6893/FIGURE/2026-47-15/Images/1000-6893-2026-47-15-333148/thumbnail/73A4ECB8-B903-41b0-90F7-D7B169023519-F001.jpg">
+												</a>
+												<div style='display:none'>
+													<div id='figureClass44762' style='padding:10px; background:#fff;'>
+														<p style="text-align: center;"><b>图 1</b></p>
+														<p style="text-align: center;">大型基础模型赋能无人飞行器智能化全景：模型基础、功能重塑（基础与高阶）、典型任务、挑战与展望</p>
+														<img src="https://hkxb.buaa.edu.cn/fileup/1000-6893/FIGURE/2026-47-15/Images/1000-6893-2026-47-15-333148/73A4ECB8-B903-41b0-90F7-D7B169023519-F001.jpg" style="display:block;margin:0 auto;width: 80%;"/>
+													</div>
+												</div>
+																						<div class="caption text-center hidden-xs hidden-sm">
+												图 1
+											</div>
+										</div>
+									</div>
+																	<div class="col-lg-3 col-md-4 col-sm-6">
+										<div class="thumbnail">
+										
+																							<a class="figureClass" href="#figureClass44763"  data-toggle="tooltip" data-placement="bottom" data-original-title="图 2&nbsp;&nbsp;各类LFM（包括LLM， VLM， VFM）赋能UAV（感知、规划、控制与交互等）基础功能模块的智能化升级" data-original-title="图 2&nbsp;&nbsp;各类LFM（包括LLM， VLM， VFM）赋能UAV（感知、规划、控制与交互等）基础功能模块的智能化升级">
+													<img src="https://hkxb.buaa.edu.cn/fileup/1000-6893/FIGURE/2026-47-15/Images/1000-6893-2026-47-15-333148/thumbnail/73A4ECB8-B903-41b0-90F7-D7B169023519-F002.jpg">
+												</a>
+												<div style='display:none'>
+													<div id='figureClass44763' style='padding:10px; background:#fff;'>
+														<p style="text-align: center;"><b>图 2</b></p>
+														<p style="text-align: center;">各类LFM（包括LLM， VLM， VFM）赋能UAV（感知、规划、控制与交互等）基础功能模块的智能化升级</p>
+														<img src="https://hkxb.buaa.edu.cn/fileup/1000-6893/FIGURE/2026-47-15/Images/1000-6893-2026-47-15-333148/73A4ECB8-B903-41b0-90F7-D7B169023519-F002.jpg" style="display:block;margin:0 auto;width: 80%;"/>
+													</div>
+												</div>
+																						<div class="caption text-center hidden-xs hidden-sm">
+												图 2
+											</div>
+										</div>
+									</div>
+																	<div class="col-lg-3 col-md-4 col-sm-6">
+										<div class="thumbnail">
+										
+																							<a class="figureClass" href="#figureClass44764"  data-toggle="tooltip" data-placement="bottom" data-original-title="图 3&nbsp;&nbsp;大型基础模型（LFM）赋能高阶认知功能" data-original-title="图 3&nbsp;&nbsp;大型基础模型（LFM）赋能高阶认知功能">
+													<img src="https://hkxb.buaa.edu.cn/fileup/1000-6893/FIGURE/2026-47-15/Images/1000-6893-2026-47-15-333148/thumbnail/73A4ECB8-B903-41b0-90F7-D7B169023519-F003.jpg">
+												</a>
+												<div style='display:none'>
+													<div id='figureClass44764' style='padding:10px; background:#fff;'>
+														<p style="text-align: center;"><b>图 3</b></p>
+														<p style="text-align: center;">大型基础模型（LFM）赋能高阶认知功能</p>
+														<img src="https://hkxb.buaa.edu.cn/fileup/1000-6893/FIGURE/2026-47-15/Images/1000-6893-2026-47-15-333148/73A4ECB8-B903-41b0-90F7-D7B169023519-F003.jpg" style="display:block;margin:0 auto;width: 80%;"/>
+													</div>
+												</div>
+																						<div class="caption text-center hidden-xs hidden-sm">
+												图 3
+											</div>
+										</div>
+									</div>
+																	<div class="col-lg-3 col-md-4 col-sm-6">
+										<div class="thumbnail">
+										
+																							<a class="figureClass" href="#figureClass44765"  data-toggle="tooltip" data-placement="bottom" data-original-title="图 4&nbsp;&nbsp;4大UAV典型决策任务与各类LFM赋能方式" data-original-title="图 4&nbsp;&nbsp;4大UAV典型决策任务与各类LFM赋能方式">
+													<img src="https://hkxb.buaa.edu.cn/fileup/1000-6893/FIGURE/2026-47-15/Images/1000-6893-2026-47-15-333148/thumbnail/73A4ECB8-B903-41b0-90F7-D7B169023519-F004.jpg">
+												</a>
+												<div style='display:none'>
+													<div id='figureClass44765' style='padding:10px; background:#fff;'>
+														<p style="text-align: center;"><b>图 4</b></p>
+														<p style="text-align: center;">4大UAV典型决策任务与各类LFM赋能方式</p>
+														<img src="https://hkxb.buaa.edu.cn/fileup/1000-6893/FIGURE/2026-47-15/Images/1000-6893-2026-47-15-333148/73A4ECB8-B903-41b0-90F7-D7B169023519-F004.jpg" style="display:block;margin:0 auto;width: 80%;"/>
+													</div>
+												</div>
+																						<div class="caption text-center hidden-xs hidden-sm">
+												图 4
+											</div>
+										</div>
+									</div>
+																	<div class="col-lg-3 col-md-4 col-sm-6">
+										<div class="thumbnail">
+										
+																							<a class='inline' href="#inline_content44766" data-toggle="tooltip" data-placement="bottom" data-original-title="表1&nbsp;&nbsp;4类典型UAV决策任务的系统性综述：涵盖基准、评估指标、代表工作、LFM赋能范式及部署验证的对比分析">
+												<img src="https://hkxb.buaa.edu.cn/images/table-icon.gif">
+												</a>
+												<div style='display:none'>
+													<div id='inline_content44766' style='padding:10px; background:#fff;'>
+														<p style="text-align: center;"><b>表1</b></p>
+														<p style="text-align: center;">4类典型UAV决策任务的系统性综述：涵盖基准、评估指标、代表工作、LFM赋能范式及部署验证的对比分析</p>
+														<table id="Table1"><thead><tr><th align="justify" style="border-top:solid;border-bottom:solid;">任务类型</th><th align="justify" style="border-top:solid;border-bottom:solid;">代表基准和指标</th><th align="justify" style="border-top:solid;border-bottom:solid;">方法</th><th align="justify" style="border-top:solid;border-bottom:solid;">相关LFM</th><th align="justify" style="border-top:solid;border-bottom:solid;">LFM赋能范式</th><th align="justify" style="border-top:solid;border-bottom:solid;"><p>模型部署</p><p>平台</p></th><th align="justify" style="border-top:solid;border-bottom:solid;"><p>实验</p><p>类型</p></th></tr></thead><tbody><tr align="center"><td align="justify" rowspan="10"><p>视觉-语言</p><p>导航</p><p>（4.1节）</p></td><td align="justify" rowspan="10"><p>代表基准：</p><p>AerialVLN、CityNav</p><p/><p>常用指标： NE、SR、OSR、SPL、sDTW</p></td><td align="justify" rowspan="3">STMR</td><td align="justify">GPT-4o （LLM）</td><td align="justify">指令+环境表征到动作推理</td><td align="justify">云 （API）</td><td align="justify" rowspan="3"><p>仿真+</p><p>实机</p></td></tr><tr align="center"><td align="justify"><p>Grounding DINO</p><p>（VFM）</p></td><td align="justify">开放词汇目标检测</td><td align="justify" rowspan="2">机载平台</td></tr><tr align="center"><td align="justify"><p>Tokenize Anything</p><p>（VFM）</p></td><td align="justify">精细化语义分割</td></tr><tr align="center"><td align="justify" rowspan="3">CityNavAgent</td><td align="justify">GPT-4V （VLM）</td><td align="left"><p>生成场景物体描述；</p><p>多模态融合输出高层子目标</p></td><td align="justify">云 （API）</td><td align="justify" rowspan="3">仿真</td></tr><tr align="center"><td align="justify"><p>Grounding DINO</p><p>（VFM）</p></td><td align="justify">开放词汇目标检测</td><td align="justify" rowspan="2">本地服务器</td></tr><tr align="center"><td align="justify"><p>Segment Anything</p><p>（VFM）</p></td><td align="justify">精细化语义分割</td></tr><tr align="center"><td align="justify" rowspan="4">GeoNav</td><td align="justify">GPT-3.5-turbo （LLM）</td><td align="justify">指令解析提取目标属性</td><td align="justify" rowspan="2">云 （API）</td><td align="justify" rowspan="4">仿真</td></tr><tr align="center"><td align="justify">GPT-4o （VLM）</td><td align="justify">构建分层场景图并导航</td></tr><tr align="center"><td align="justify"><p>Grounding DINO</p><p>（VFM）</p></td><td align="justify">开放词汇目标检测</td><td align="justify" rowspan="2">本地服务器</td></tr><tr align="center"><td align="justify"><p>Segment Anything</p><p>（VFM）</p></td><td align="justify">精细化语义分割</td></tr><tr align="center"><td align="justify" rowspan="4"><p>主动</p><p>目标搜索</p><p>（4.2节）</p></td><td align="justify" rowspan="4"><p>代表基准：</p><p>OpenUAV、CityAVOS</p><p/><p>常用指标：NE、SR、MSS、OSR、SPL</p></td><td align="justify" rowspan="2">PRPSearcher</td><td align="justify">GPT-4o （VLM）</td><td align="justify">构建3D认知地图指导探索</td><td align="justify">云 （API）</td><td align="justify" rowspan="2">仿真</td></tr><tr align="center"><td align="justify">Grounded-SAM （VFM）</td><td align="justify">精细化语义分割</td><td align="justify">本地服务器</td></tr><tr align="center"><td align="justify" rowspan="2">UAV-VLRR</td><td align="justify">GPT-4o （LLM）</td><td align="justify">指令解析提取目标类别</td><td align="justify">云 （API）</td><td align="justify" rowspan="2"><p>仿真+</p><p>实机</p></td></tr><tr align="center"><td align="justify">Molmo-7B （VLM）</td><td align="justify">像素级目标与障碍定位</td><td align="justify">本地服务器</td></tr><tr align="center"><td align="justify" rowspan="2"><p>语义</p><p>物流配送</p><p>（4.3节）</p></td><td align="justify" rowspan="2"><p>代表基准：</p><p>VLD</p><p/><p>常用指标：</p><p>SR、SPL、</p><p>Average Steps</p></td><td align="justify" rowspan="2">LogisticsVLN</td><td align="justify">DeepSeek-R1-Distill-Qwen-14B （LLM）</td><td align="justify">CoT解析提取楼层与标志物</td><td align="justify" rowspan="2">未提及 （适用边/端侧部署）</td><td align="justify" rowspan="2">仿真</td></tr><tr align="center"><td align="justify">Qwen2-VL-7B （VLM）</td><td align="justify">楼层估计/目标检测/探索</td></tr><tr align="center"><td align="justify" rowspan="3" style="border-bottom:solid;"><p>集群</p><p>智能协同</p><p>（4.4节）</p></td><td align="justify" rowspan="3" style="border-bottom:solid;"><p>代表基准：</p><p>模拟或现实环境</p><p/><p>常用指标：NASA-TLX、编队形状识别准确率、用户问卷</p></td><td align="justify">FlockGPT</td><td align="justify">GPT-4 （LLM）</td><td align="justify">由自然语言解析编队参数</td><td align="justify">云 （API）</td><td align="justify"><p>仿真+</p><p>实机</p></td></tr><tr align="center"><td align="justify" rowspan="2" style="border-bottom:solid;">LLM-CRF</td><td align="justify">LLaVA-1.6 （VLM）</td><td align="justify">由视觉输入解析结构化语义</td><td align="justify" rowspan="2" style="border-bottom:solid;">本地服务器</td><td align="justify" rowspan="2" style="border-bottom:solid;">仿真</td></tr><tr align="center"><td align="justify" style="border-bottom:solid;">Qwen-14B-Chat （LLM）</td><td align="justify" style="border-bottom:solid;">多模态融合生成包含摘要、推理链和可执行代码的可执行任务包</td></tr></tbody></table>
+													</div>
+												</div>
+																						<div class="caption text-center hidden-xs hidden-sm">
+												表1
+											</div>
+										</div>
+									</div>
+																	<div class="col-lg-3 col-md-4 col-sm-6">
+										<div class="thumbnail">
+										
+																							<a class="figureClass" href="#figureClass44767"  data-toggle="tooltip" data-placement="bottom" data-original-title="图 5&nbsp;&nbsp;大型基础模型赋能无人飞行器智能化升级的机遇、挑战及未来展望" data-original-title="图 5&nbsp;&nbsp;大型基础模型赋能无人飞行器智能化升级的机遇、挑战及未来展望">
+													<img src="https://hkxb.buaa.edu.cn/fileup/1000-6893/FIGURE/2026-47-15/Images/1000-6893-2026-47-15-333148/thumbnail/73A4ECB8-B903-41b0-90F7-D7B169023519-F005.jpg">
+												</a>
+												<div style='display:none'>
+													<div id='figureClass44767' style='padding:10px; background:#fff;'>
+														<p style="text-align: center;"><b>图 5</b></p>
+														<p style="text-align: center;">大型基础模型赋能无人飞行器智能化升级的机遇、挑战及未来展望</p>
+														<img src="https://hkxb.buaa.edu.cn/fileup/1000-6893/FIGURE/2026-47-15/Images/1000-6893-2026-47-15-333148/73A4ECB8-B903-41b0-90F7-D7B169023519-F005.jpg" style="display:block;margin:0 auto;width: 80%;"/>
+													</div>
+												</div>
+																						<div class="caption text-center hidden-xs hidden-sm">
+												图 5
+											</div>
+										</div>
+									</div>
+																	<div class="col-lg-3 col-md-4 col-sm-6">
+										<div class="thumbnail">
+										
+																							<a class='inline' href="#inline_content44768" data-toggle="tooltip" data-placement="bottom" data-original-title="表 2&nbsp;&nbsp;主流机载计算平台算力与大模型适配能力统计［146-149］">
+												<img src="https://hkxb.buaa.edu.cn/images/table-icon.gif">
+												</a>
+												<div style='display:none'>
+													<div id='inline_content44768' style='padding:10px; background:#fff;'>
+														<p style="text-align: center;"><b>表 2</b></p>
+														<p style="text-align: center;">主流机载计算平台算力与大模型适配能力统计［146-149］</p>
+														<table id="Table2"><thead><tr><th align="justify" style="border-top:solid;border-bottom:solid;">平台厂商</th><th align="justify" style="border-top:solid;border-bottom:solid;">芯片型号</th><th align="justify" style="border-top:solid;border-bottom:solid;">算力/TOPS</th><th align="justify" style="border-top:solid;border-bottom:solid;">显存/GB</th><th align="justify" style="border-top:solid;border-bottom:solid;">功耗/W</th><th align="justify" style="border-top:solid;border-bottom:solid;">可用模型规模/B</th></tr></thead><tbody><tr align="center"><td align="justify" rowspan="3">英伟达</td><td align="justify">AGX Orin</td><td align="justify">275</td><td align="justify">32/64</td><td align="justify">15~60</td><td align="justify">≤70</td></tr><tr align="center"><td align="justify">Orin NX</td><td align="justify">157</td><td align="justify">8/16</td><td align="justify">10~40</td><td align="justify">≤14</td></tr><tr align="center"><td align="justify">Orin Nano</td><td align="justify">67</td><td align="justify">4/8</td><td align="justify">7~25</td><td align="justify">≤4</td></tr><tr align="center"><td align="justify">华为昇腾</td><td align="justify">Atlas 200I A2</td><td align="justify">20</td><td align="justify">4/8/12</td><td align="justify">25</td><td align="justify">≤7</td></tr><tr align="center"><td align="justify">瑞芯</td><td align="justify">RK3588</td><td align="justify">6</td><td align="justify">8~16</td><td align="justify">2~10</td><td align="justify">≤10</td></tr><tr align="center"><td align="justify" style="border-bottom:solid;">酷芯</td><td align="justify" style="border-bottom:solid;">AR9481</td><td align="justify" style="border-bottom:solid;">8</td><td align="left" style="border-bottom:solid;"/><td align="justify" style="border-bottom:solid;">1</td><td align="justify" style="border-bottom:solid;">≤1</td></tr></tbody></table>
+													</div>
+												</div>
+																						<div class="caption text-center hidden-xs hidden-sm">
+												表 2
+											</div>
+										</div>
+									</div>
+								                               
+                            </div>
+                            <!--end-->
+                        </div>
+                    </div>
+
+                </div>
+                                																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											                <div class="panel panel-default" >
+                    <div class="panel-heading" role="tab" id="cankaowenxian" onClick="xianshi(this)">
+						<a name="reference"></a>
+                        <h4 class="panel-title">
+                            <a id="reference" class="collapsed"  href="javascript:;">
+                                参考文献 <span class="badge badge-info">151</span>                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" style="display: none;">
+                        <div class="panel-body">
+                            <!---->
+                            <table width="98%" border="0" align="center" cellpadding="0" cellspacing="8">
+																											<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[1]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>BARNHART R K， MARSHALL D M， SHAPPEE E. <span class="sourceStyle">Introduction to unmanned aircraft systems （3rd ed</span>.）［M］. Boca Raton： CRC Press， <span class="yearStyle">2021</span>： 56-70.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[2]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHANG W， GAO C， YU S， et al. CityNavAgent： Aerial vision-and-language navigation with hierarchical semantic planning and global memory［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2505</span>.<span class="yearStyle">05622</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[3]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>RAVICHANDRAN Z， MURALI V， TZES M， et al. SPINE： Online semantic planning for missions with incomplete natural language specifications in unstructured environments［C］∥2025 IEEE International Conference on Robotics and Automation （ICRA）. Piscataway： IEEE Press， <span class="yearStyle">2025</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[4]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>WANG X， YANG D， LIAO Y， et al. UAV-flow Colosseo： A real-world benchmark for flying-on-a-word UAV imitation learning［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2505</span>.<span class="yearStyle">15725</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[5]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>WANG Z， CHEN J， ZHENG X， et al. Hi AirStar， guide me to the badminton court［C］∥Proceedings of the 33rd ACM International Conference on Multimedia. New York： ACM， <span class="yearStyle">2025</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[6]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LU P， PENG B， CHENG H， et al. Chameleon： Plug-and-play compositional reasoning with large language models［J］. <span class="sourceStyle">Advances in Neural Information Processing Systems</span>， <span class="yearStyle">2023</span>， <span class="volStyele">36</span>： 43447-43478.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[7]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>KE F， CAI Z， JAHANGARD S， et al. HYDRA： A hyper agent for dynamic compositional visual reasoning［C］∥LEONARDIS A， RICCI E， ROTH S， et al. Computer vision-ECCV 2024. Cham： Springer Nature Switzerland， <span class="yearStyle">2025</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[8]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>SHAH D J， RUSHTON P， SINGLA S， et al. Rethinking reflection in pre-training［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2504</span>.<span class="yearStyle">04022</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[9]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>YANG Z， YU X， CHEN D， et al. Machine mental imagery： Empower multimodal reasoning with latent visual tokens［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2506</span>.<span class="yearStyle">17218</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[10]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>DEVLIN J， CHANG M W， LEE K， et al. BERT： Pre-training of deep bidirectional transformers for language understanding［C］∥2019 Conference of the North American. Minneapolis： Association for Computational Linguistics， <span class="yearStyle">2019</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[11]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>RADFORD A， WU J， CHILD R， et al. Language models are unsupervised multitask learners［J］. <span class="sourceStyle">OpenAI Blog</span>， <span class="yearStyle">2019</span>， <span class="volStyele">1</span>（8）： 9.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[12]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>YANG Z， DAI Z， YANG Y， et al. XLNet： Generalized autoregressive pretraining for language understanding［J］. <span class="sourceStyle">Advances in Neural Information Processing Systems</span>， <span class="yearStyle">2019</span>， 32.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[13]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>RAFFEL C， SHAZEER N， ROBERTS A， et al. Exploring the limits of transfer learning with a unified text-to-text transformer［J］. <span class="sourceStyle">Journal of Machine Learning Research</span>， <span class="yearStyle">2020</span>， <span class="volStyele">21</span>（140）： 1-67.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[14]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>OPENAI. Introducing GPT-5［EB/OL］. （2025-09-02）［2025-11-27］. .</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[15]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>Introducing OpenAI o 3 and o4 -mini［EB/OL］. （2025-04-16） ［2025-11-27］. .</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[16]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ANTHROPIC. Introducing Claude 4［EB/OL］. （2025-05-22）［2025-11-27］. .</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[17]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>GUO D， YANG D， ZHANG H， et al. Deepseek-r1： Incentivizing reasoning capability in LLMs via reinforcement learning［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2501</span>.<span class="yearStyle">12948</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[18]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>YANG A， LI A， YANG B， et al. Qwen3 technical report［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2505</span>.<span class="yearStyle">09388</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[19]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>BROWN T， MANN B， RYDER N， et al. Language models are few-shot learners［J］. <span class="sourceStyle">Advances in Neural Information Processing Systems</span>， <span class="yearStyle">2020</span>， <span class="volStyele">33</span>： 1877-1901.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[20]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>WEI J， WANG X， SCHUURMANS D， et al. Chain-of-thought prompting elicits reasoning in large language models［J］. <span class="sourceStyle">Advances in Neural Information Processing Systems</span>， <span class="yearStyle">2022</span>， <span class="volStyele">35</span>： 24824-24837.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[21]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>SHAZEER N， MIRHOSEINI A， MAZIARZ K， et al. Outrageously large neural networks： The sparsely-gated mixture-of-experts layer［DB/OL］. <span class="sourceStyle">arXiv Preprint： 1701</span>.<span class="yearStyle">06538</span>； 2017.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[22]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>TAN H， BANSAL M. LXMERT： Learning cross-modality encoder representations from transformers［DB/OL］. <span class="sourceStyle">arXiv Preprint</span>： <span class="yearStyle">1908</span>.07490； 2019.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[23]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LI X， YIN X， LI C， et al. Oscar： Object-semantics aligned pre-training for vision-language tasks［C］∥Computer Vision-ECCV 2020. Cham： Springer International Publishing， <span class="yearStyle">2020</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[24]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>CHEN Y C， LI L， YU L， et al. UNITER： UNiversal image-TExt representation learning［C］∥Computer Vision-ECCV 2020. Cham： Springer Cham， <span class="yearStyle">2020</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[25]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>SUN C， MYERS A， VONDRICK C， et al. VideoBERT： A joint model for video and language representation learning［C］∥Proceedings of the IEEE/CVF international conference on computer vision. Piscataway： IEEE Press， <span class="yearStyle">2019</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[26]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LI L H， YATSKAR M， YIN D， et al. VisualBERT： A simple and performant baseline for vision and language［DB/OL］. <span class="sourceStyle">arXiv Preprint</span>： <span class="yearStyle">1908</span>.03557； 2019.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[27]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LIU H T， LI C Y， WU Q Y， et al. Visual instruction tuning［J］. <span class="sourceStyle">Advances in Neural Information Processing Systems</span>， <span class="yearStyle">2023</span>， <span class="volStyele">36</span>： 34892-34916.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[28]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ALAYRAC J B， DONAHUE J， LUC P， et al. Flamingo： A visual language model for few-shot learning［J］. <span class="sourceStyle">Advances in Neural Information Processing Systems</span>， <span class="yearStyle">2022</span>， <span class="volStyele">35</span>： 23716-23736.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[29]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LI J， LI D， XIONG C， et al. BLIP： Bootstrapping language-image pre-training for unified vision-language understanding and generation［C］∥International conference on machine learning. New York： PMLR， <span class="yearStyle">2022</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[30]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>RADFORD A， KIM J W， HALLACY C， et al. Learning transferable visual models from natural language supervision［C］∥International conference on machine learning. New York： PMLR， <span class="yearStyle">2021</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[31]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>DOSOVITSKIY A. An image is worth 16×16 words： Transformers for image recognition at scale［DB/OL］. <span class="sourceStyle">arXiv Preprint</span>： <span class="yearStyle">2010</span>.11929； 2020.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[32]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>OPENAI. GPT-4V（ision） system card［EB/OL］. （2025-08-25） ［2025-11-27］. .</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[33]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>HURST A， LERER A， GOUCHER A P， et al. Gpt-4o system card［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2410</span>.<span class="yearStyle">21276</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[34]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ANTHROPIC. Introducing the next generation of Claude［EB/OL］. （2025-08-27）［2025-11-27］. .</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[35]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>COMANICI G， BIEBER E， SCHAEKERMANN M， et al. Gemini 2.<span class="yearStyle">5</span>： Pushing the frontier with advanced reasoning， multimodality， long context， and next generation agentic capabilities［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2507</span>.06261； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[36]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>BAI J， BAI S， YANG S， et al. Qwen-VL： A versatile vision-language model for understanding， localization， text reading， and beyond［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2308</span>.<span class="yearStyle">12966</span>； 2023.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[37]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>CHEN Z， WU J， WANG W， et al. InternVL： Scaling up vision foundation models and aligning for generic visual-linguistic tasks［C］∥Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[38]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>WANG W， LV Q， YU W， et al. CogVLM： Visual expert for pretrained language models［J］. <span class="sourceStyle">Advances in Neural Information Processing Systems</span>， <span class="yearStyle">2024</span>， <span class="volStyele">37</span>： 121475-121499.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[39]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>CARON M， TOUVRON H， MISRA I， et al. Emerging properties in self-supervised vision transformers［C］∥Proceedings of the IEEE/CVF international conference on computer vision. Piscataway： IEEE Press， <span class="yearStyle">2021</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[40]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>CARON M， TOUVRON H， MISRA I， et al. Emerging properties in self-supervised vision transformers［C］∥Proceedings of the IEEE/CVF international conference on computer vision. Piscataway： IEEE Press， <span class="yearStyle">2021</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[41]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>OQUAB M， DARCET T， MOUTAKANNI T， et al. Dinov2： Learning robust visual features without supervision［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2304</span>.<span class="yearStyle">07193</span>； 2023.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[42]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>KIRILLOV A， MINTUN E， RAVI N， et al. Segment anything［C］∥Proceedings of the IEEE/CVF international conference on computer vision. Piscataway： IEEE Press， <span class="yearStyle">2023</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[43]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LI L H， ZHANG P， ZHANG H， et al. Grounded language-image pre-training［C］∥Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. Piscataway： IEEE Press， <span class="yearStyle">2022</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[44]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>CHENG T， SONG L， GE Y， et al. Yolo-world： Real-time open-vocabulary object detection［C］∥Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[45]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LIU S， ZENG Z， REN T， et al. Grounding DINO： Marrying DINO with grounded pre-training for open-set object detection［C］∥Computer Vision-ECCV 2024. Cham： Springer Cham， <span class="yearStyle">2025</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[46]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LÜDDECKE T， ECKER A. Image segmentation using text and image prompts［C］∥Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. Piscataway： IEEE Press， <span class="yearStyle">2022</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[47]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>YUAN H， LI X， ZHOU C， et al. Open-vocabulary SAM： Segment and recognize twenty-thousand classes interactively［C］∥Computer Vision-ECCV 2024. Cham： Springer Cham， <span class="yearStyle">2025</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[48]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>WANG X， ZHANG X， CAO Y， et al. SegGPT： towards segmenting everything in context［C］∥Proceedings of the IEEE/CVF International Conference on Computer Vision. Piscataway： IEEE Press， <span class="yearStyle">2023</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[49]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZOU X， YANG J， ZHANG H， et al. Segment everything everywhere all at once［J］. <span class="sourceStyle">Advances in Neural Information Processing Systems</span>， <span class="yearStyle">2023</span>， <span class="volStyele">36</span>： 19769-19782.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[50]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>BHAT S F， BIRKL R， WOFK D， et al. ZoeDepth： Zero-shot transfer by combining relative and metric depth［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2302</span>.<span class="yearStyle">12288</span>； 2023.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[51]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>YANG L， KANG B， HUANG Z， et al. Depth anything： Unleashing the power of large-scale unlabeled data［C］∥Proceedings of the IEEE/CVF conference on computer vision and pattern recognition. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[52]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>BOCHKOVSKII A， DELAUNOY A， GERMAIN H， et al. Depth pro： Sharp monocular metric depth in less than a second［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2410</span>.<span class="yearStyle">02073</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[53]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZITKOVICH B， YU T， XU S， et al. Rt-2： Vision-language-action models transfer web knowledge to robotic control［C］∥Conference on Robot Learning. New York： PMLR， <span class="yearStyle">2023</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[54]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>KIM M J， PERTSCH K， KARAMCHETI S， et al. Openvla： An open-source vision-language-action model［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2406</span>.<span class="yearStyle">09246</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[55]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>WEN J， ZHU Y， LI J， et al. TinyVLA： Toward fast， data-efficient vision-language-action models for robotic manipulation［J］. <span class="sourceStyle">IEEE Robotics and Automation Letters</span>， <span class="yearStyle">2025</span>， <span class="volStyele">10</span>（4）： 3988-3995.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[56]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>MEI A， ZHU G N， ZHANG H， et al. ReplanVLM： Replanning robotic tasks with visual language models［J］. <span class="sourceStyle">IEEE Robotics and Automation Letters</span>， <span class="yearStyle">2024</span>， <span class="volStyele">9</span>（11）： 10201-10208.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[57]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>SKRETA M， ZHOU Z， YUAN J L， et al. Replan： Robotic replanning with perception and language models［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2401</span>.<span class="yearStyle">04157</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[58]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>AO S， SALIM F D， KHAN S. EMAC+： Embodied multimodal agent for collaborative planning with VLM+ LLM［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2505</span>.<span class="yearStyle">19905</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[59]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHAO Q， LU Y， KIM M J， et al. Cot-vla： Visual chain-of-thought reasoning for vision-language-action models［C］∥Proceedings of the Computer Vision and Pattern Recognition Conference. Piscataway： IEEE Press， <span class="yearStyle">2025</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[60]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>SUN Q， HONG P， PALA T D， et al. Emma-X： An embodied multimodal action model with grounded chain of thought and look-ahead spatial reasoning［C］∥63rd Annual Meeting of the Association for Computational Linguistics Vienna： Association for Computational Linguistics， <span class="yearStyle">2025</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[61]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LIN F， NAI R， HU Y， et al. OneTwoVLA： A unified vision-language-action model with adaptive reasoning［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2505</span>.<span class="yearStyle">11917</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[62]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>SERPIVA V， LYKOV A， MYSHLYAEV A， et al. RaceVLA： VLA-based racing drone navigation with human-like behaviour［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2503</span>.<span class="yearStyle">02572</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[63]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>HE K， ZHANG X， REN S， et al. Deep residual learning for image recognition［C］∥Proceedings of the IEEE conference on computer vision and pattern recognition. Piscataway： IEEE Press， <span class="yearStyle">2016</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[64]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>HUSSAIN M. YOLO-v1 to YOLO-v8， the rise of YOLO and its complementary nature toward digital manufacturing and industrial defect detection［J］. <span class="sourceStyle">Machines</span>， <span class="yearStyle">2023</span>， <span class="volStyele">11</span>（7）： 677.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[65]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>REN S， HE K， GIRSHICK R， et al. Faster R-CNN： Towards real-time object detection with region proposal networks［J］. <span class="sourceStyle">IEEE Transactions on Pattern Analysis and Machine Intelligence</span>， <span class="yearStyle">2016</span>， <span class="volStyele">39</span>（6）： 1137-1149.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[66]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHANG X， TIAN Y， LIN F， et al. LogisticsVLN： Vision-language navigation for low-altitude terminal delivery based on agentic UAVs［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2505</span>.<span class="yearStyle">03460</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[67]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>HART P E， NILSSON N J， RAPHAEL B. A formal basis for the heuristic determination of minimum cost paths［J］. <span class="sourceStyle">IEEE transactions on Systems Science and Cybernetics</span>， <span class="yearStyle">1968</span>， <span class="volStyele">4</span>（2）： 100-107.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[68]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LAVALLE S. Rapidly-exploring random trees： A new tool for path planning［R］. Research Report 9811， <span class="yearStyle">1998</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[69]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>SHAH D， OSIŃSKI B， LEVINE S， et al. Lm-nav： Robotic navigation with large pre-trained models of language， vision， and action［C］∥Conference on robot learning. New York： PMLR， <span class="yearStyle">2023</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[70]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>AHN M， BROHAN A， BROWN N， et al. Do as I can， not as I say： Grounding language in robotic affordances［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2204</span>.<span class="yearStyle">01691</span>； 2022.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[71]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>XIAO J， TSAO C W， ZHANG Y， et al. FM-planner： Foundation model guided path planning for autonomous drone navigation［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2505</span>.<span class="yearStyle">20783</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[72]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>BAI J， BAI S， CHU Y， et al. Qwen technical report［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2309</span>.<span class="yearStyle">16609</span>； 2023.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[73]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>TEAM G， MESNARD T， HARDIN C， et al. Gemma： Open models based on Gemini research and technology［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2403</span>.<span class="yearStyle">08295</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[74]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>DUBEY A， JAUHRI A， PANDEY A， et al. The llama 3 herd of models［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2407</span>.<span class="yearStyle">21783</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[75]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>WATKINS C J， DAYAN P. Q-learning［J］. <span class="sourceStyle">Machine learning</span>， <span class="yearStyle">1992</span>， <span class="volStyele">8</span>（3-4）： 279-292.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[76]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>CHEN G， YU X， LING N， et al. TypeFly： Flying drones with large language model［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2312</span>.<span class="yearStyle">14950</span>； 2023.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[77]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>TAGLIABUE A， KONDO K， ZHAO T， et al. REAL： Resilience and adaptation using large language models on autonomous aerial robots［C］∥2024 IEEE 63rd Conference on Decision and Control （CDC）. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[78]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>WANG W， LI Y， JIAO L， et al. GSCE： A prompt framework with enhanced reasoning for reliable LLM-driven drone control［C］∥2025 International Conference on Unmanned Aircraft Systems （ICUAS）. Piscataway： IEEE Press， <span class="yearStyle">2025</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[79]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>YOO M， NA Y， SONG H， et al. Motion estimation and hand gesture recognition-based human-UAV interaction approach in real time［J］. <span class="sourceStyle">Sensors</span>， <span class="yearStyle">2022</span>， <span class="volStyele">22</span>（7）： 2513.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[80]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>万开方， 吴志林， 武韫晖， 等. 拒止环境下基于深度强化学习的多无人机协同定位［J］. <span class="sourceStyle">航空学报</span>， <span class="yearStyle">2025</span>， <span class="volStyele">46</span>（8）： 331024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;"></td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>WAN K F， WU Z L， WU Y H， et al. Multi-UAV cooperative localization based on deep reinforcement learning in denied environments［J］. <span class="sourceStyle">Acta Aeronautica et Astronautica Sinica</span>， <span class="yearStyle">2025</span>， <span class="volStyele">46</span>（8）： 331024 （in Chinese）.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[81]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>CLADERA F， RAVICHANDRAN Z， HUGHES J， et al. Air-ground collaboration for language-specified missions in unknown environments［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2505</span>.<span class="yearStyle">09108</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[82]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>RAVICHANDRAN Z， CLADERA F， HUGHES J， et al. Deploying foundation model-enabled air and ground robots in the field： Challenges and opportunities［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2505</span>.<span class="yearStyle">09477</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[83]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LYKOV A， KARAF S， MARTYNOV M， et al. FlockGPT： Guiding UAV flocking with linguistic orchestration［C］∥2024 IEEE International Symposium on Mixed and Augmented Reality Adjunct （ISMAR-Adjunct）. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[84]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>DHARMALINGAM B， MUKHERJEE R， PIGGOTT B， et al. Aero-LLM： A distributed framework for secure UAV communication and intelligent decision-making［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2502</span>.<span class="yearStyle">05220</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[85]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>DAI S， MA Z， LUO Z， et al. MM-UAVBench： How well do multimodal large language models see， think， and plan in low-altitude UAV scenarios？［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2512</span>.<span class="yearStyle">23219</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[86]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHU Z， XUE Y， CHEN X， et al. Large language models can learn rules［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2310</span>.<span class="yearStyle">07064</span>； 2023.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[87]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>HAO S B， GU Y， MA H D， et al. Reasoning with language model is planning with world model［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2305</span>.<span class="yearStyle">14992</span>； 2023.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[88]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>MOWER C E， WAN Y， YU H， et al. ROS-LLM： A ros framework for embodied ai with task feedback and structured reasoning［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2406</span>.<span class="yearStyle">19741</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[89]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHANG W， WANG M， LIU G， et al. Embodied-reasoner： Synergizing visual search， reasoning， and action for embodied interactive tasks［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2503</span>.<span class="yearStyle">21696</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[90]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>CAI Z， CARDENAS C R， LEO K， et al. NEUSIS： A compositional neuro-symbolic framework for autonomous perception， reasoning， and planning in complex UAV search missions［J］. <span class="sourceStyle">IEEE Robotics and Automation Letters</span>， <span class="yearStyle">2025</span>， <span class="volStyele">10</span>（9）： 9502-9509.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[91]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>GAO Y， WANG Z， JING L， et al. Aerial vision-and-language navigation via semantic-topo-metric representation guided LLM reasoning［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2410</span>.<span class="yearStyle">08500</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[92]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHAO J， LIN X. General-purpose aerial intelligent agents empowered by large language models［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2503</span>.<span class="yearStyle">08302</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[93]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHAO B， WANG Z， FANG J， et al. Embodied-R： Collaborative framework for activating embodied spatial reasoning in foundation models via reinforcement learning［C］∥Proceedings of the 33rd ACM International Conference on Multimedia. New York： ACM， <span class="yearStyle">2025</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[94]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>WANG G， XIE Y， JIANG Y， et al. Voyager： An open-ended embodied agent with large language models［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2305</span>.<span class="yearStyle">16291</span>； 2023.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[95]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>WANG Z， LI X， YANG J， et al. Gridmm： Grid memory map for vision-and-language navigation［C］∥Proceedings of the IEEE/CVF International conference on computer vision. Piscataway： IEEE Press， <span class="yearStyle">2023</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[96]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LI H， WANG Z， YANG X， et al. Memonav： Working memory model for visual navigation［C］∥Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[97]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHENG Q， LIU D， WANG C， et al. Esceme： Vision-and-language navigation with episodic scene memory［J］. <span class="sourceStyle">International Journal of Computer Vision</span>， <span class="yearStyle">2025</span>， <span class="volStyele">133</span>（1）： 254-274.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[98]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZENG Q， YANG Q， DONG S， et al. Perceive， reflect， and plan： Designing LLM agent for goal-directed city navigation without instructions［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2408</span>.<span class="yearStyle">04168</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[99]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LINGO R， ARROYO M， CHHAJER R. Enhancing LLM problem solving with reap： Reflection， explicit problem deconstruction， and advanced prompting［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2409</span>.<span class="yearStyle">09415</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[100]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>YANG Z， LIU J， CHEN P， et al. RILA： Reflective and imaginative language agent for zero-shot semantic audio-visual navigation［C］∥Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[101]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>YU Z， LONG Y， YANG Z， et al. CorrectNav： Self-correction Flywheel empowers vision-language-action navigation model［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2508</span>.<span class="yearStyle">10416</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[102]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>HUANG Y， WU M， LI R， et al. VISTA： Generative visual imagination for vision-and-language navigation［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2505</span>.<span class="yearStyle">07868</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[103]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>PERINCHERRY A， KRANTZ J， LEE S. Do visual imaginations improve vision-and-language navigation agents？［C］∥Proceedings of the Computer Vision and Pattern Recognition Conference. Piscataway： IEEE Press， <span class="yearStyle">2025</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[104]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ANDERSON P， WU Q， TENEY D， et al. Vision-and-language navigation： Interpreting visually-grounded navigation instructions in real environments［C］∥Proceedings of the IEEE conference on computer vision and pattern recognition. Piscataway： IEEE Press， <span class="yearStyle">2018</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[105]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>KU A， ANDERSON P， PATEL R， et al. Room-across-room： Multilingual vision-and-language navigation with dense spatiotemporal grounding［DB/OL］. <span class="sourceStyle">arXiv Preprint</span>： <span class="yearStyle">2010</span>.07954； 2020.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[106]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>CHEN H， SUHR A， MISRA D， et al. Touchdown： Natural language navigation and spatial reasoning in visual street environments［C］∥Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. Piscataway： IEEE Press， <span class="yearStyle">2019</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[107]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LEE J， MIYANISHI T， KURITA S， et al. CityNav： Language-goal aerial navigation dataset with geographic information［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2406</span>.<span class="yearStyle">14240</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[108]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>DORBALA V S， SIGURDSSON G， PIRAMUTHU R， et al. CLIP-Nav： Using clip for zero-shot vision-and-language navigation［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2211</span>.<span class="yearStyle">16649</span>； 2022.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[109]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>DORBALA V S， MULLEN JR J F， MANOCHA D. Can an embodied agent find your “cat-shaped mug”？ LLM-based zero-shot object navigation［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2303</span>.<span class="yearStyle">03480</span>； 2023.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[110]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHOU G， HONG Y， WU Q. NavGPT： Explicit reasoning in vision-and-language navigation with large language models［J］. <span class="sourceStyle">Proceedings of the AAAI Conference on Artificial Intelligence</span>， <span class="yearStyle">2024</span>， <span class="volStyele">38</span>（7）： 7641-7649.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[111]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LONG Y， LI X， CAI W， et al. Discuss before moving： Visual language navigation via multi-expert discussions［C］∥2024 IEEE International Conference on Robotics and Automation （ICRA）. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[112]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LONG Y， CAI W， WANG H， et al. InstructNav： Zero-shot system for generic instruction navigation in unexplored environment［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2406</span>.<span class="yearStyle">04882</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[113]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHOU G， HONG Y， WANG Z， et al. NavGPT-2： Unleashing navigational reasoning capability for large vision-language models［C］∥Computer Vision-ECCV 2024. Cham： Springer Cham， <span class="yearStyle">2025</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[114]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>SU Y， AN D， CHEN K， et al. Learning fine-grained alignment for aerial vision-dialog navigation［J］. <span class="sourceStyle">Proceedings of the AAAI Conference on Artificial Intelligence</span>， <span class="yearStyle">2025</span>， <span class="volStyele">39</span>（7）： 7060-7068.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[115]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>XU H， HU Y， GAO C， et al. GeoNav： Empowering MLLMs with explicit geospatial reasoning abilities for language-goal aerial navigation［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2504</span>.<span class="yearStyle">09587</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[116]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHAO G， LI G， PAN J， et al. Aerial vision-and-language navigation with grid-based view selection and map construction［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2503</span>.<span class="yearStyle">11091</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[117]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LIN H， YANG X， WEN G， et al. Fast UAV object-searching in large-scale and complex environments［J］. <span class="sourceStyle">IEEE Transactions on Cybernetics</span>， <span class="yearStyle">2025</span>， <span class="volStyele">55</span>（6）： 2993-3004.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[118]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>CHANGOLUISA CAIZA I D， MILAS A， MONTES GROVA M A， et al. Autonomous exploration of unknown 3D environments using a frontier-based collector strategy［C］∥2024 IEEE International Conference on Robotics and Automation （ICRA）. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[119]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>PAPAIOANNOU S， KOLIOS P， THEOCHARIDES T， et al. 3D trajectory planning for UAV-based search missions： An integrated assessment and search planning approach［C］∥2021 International Conference on Unmanned Aircraft Systems （ICUAS）. Piscataway： IEEE Press， <span class="yearStyle">2021</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[120]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>BARTOLOMEI L， TEIXEIRA L， CHLI M. Fast multi-UAV decentralized exploration of forests［J］. <span class="sourceStyle">IEEE Robotics and Automation Letters</span>， <span class="yearStyle">2023</span>， <span class="volStyele">8</span>（9）： 5576-5583.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[121]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>SANDINO J， CACCETTA P A， SANDERSON C， et al. Reducing object detection uncertainty from RGB and thermal data for UAV outdoor surveillance［C］∥2022 IEEE Aerospace Conference （AERO）. Piscataway： IEEE Press， <span class="yearStyle">2022</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[122]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>GUPTA A， BESSONOV D， LI P. A decision-theoretic approach to detection-based target search with a UAV［C］∥2017 IEEE/RSJ International Conference on Intelligent Robots and Systems （IROS）. Piscataway： IEEE Press， <span class="yearStyle">2017</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[123]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>XU K， ZHENG L， WEI M， et al. VRExplorer： An efficient view-region based autonomous exploration method in unknown environments for UAV［C］∥2024 IEEE/RSJ International Conference on Intelligent Robots and Systems （IROS）. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[124]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>YAN P， JIA T， BAI C C. Searching and tracking an unknown number of targets： A learning-based method enhanced with maps merging［J］. <span class="sourceStyle">Sensors</span>， <span class="yearStyle">2021</span>， <span class="volStyele">21</span>（4）： 1076.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[125]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>YAQOOT Y， MUSTAFA M A， SAUTENKOV O， et al. UAV-VLRR Vision-language informed nmpc for rapid response in UAV search and rescue［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2503</span>.<span class="yearStyle">02465</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[126]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>JI Y， ZHU Z， ZHAO Y， et al. Towards autonomous UAV visual object search in city space： Benchmark and agentic methodology［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2505</span>.<span class="yearStyle">08765</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[127]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>TIAN Y， LIN F， ZHANG X， et al. LogisticsVISTA： 3D terminal delivery services with UAVs， UGVs and USVs based on foundation models and scenarios engineering［C］∥2024 IEEE International Conference on Service Operations and Logistics， and Informatics （SOLI）. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[128]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>于彦鹏， 余墨多， 汤奇荣， 等. 面向城市应急物资配送的多无人机协同路径规划算法［J］. <span class="sourceStyle">控制与决策</span>， <span class="yearStyle">2025</span>， <span class="volStyele">40</span>（4）： 1098-1106.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;"></td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>YU Y P， YU M D， TANG Q R， et al. Multi-UAV cooperative path planning algorithm for urban emergency logistics distribution ［J］. <span class="sourceStyle">Control and Decision</span>， <span class="yearStyle">2025</span>， <span class="volStyele">40</span>（4）： 1098-1106 （in Chinese）.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[129]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>张启钱， 许卫卫， 张洪海， 等. 复杂低空物流无人机路径规划［J］. <span class="sourceStyle">北京航空航天大学学报</span>， <span class="yearStyle">2020</span>， <span class="volStyele">46</span>（7）： 1275-1286.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;"></td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHANG Q Q， XU W W， ZHANG H H， et al. Path planning for low-altitude logistics UAVs in complex environments ［J］. <span class="sourceStyle">Journal of Beijing University of Aeronautics and Astronautics</span>， <span class="yearStyle">2020</span>， <span class="volStyele">46</span>（7）： 1275-1286 （in Chinese）.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[130]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>YAO Y， LUO S， ZHAO H， et al. Can LLM substitute human labeling？ A case study of fine-grained chinese address entity recognition dataset for UAV delivery［C］∥Companion Proceedings of the ACM Web Conference 2024.New York： ACM， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[131]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHOU B， XU H， SHEN S. Racer： Rapid collaborative exploration with a decentralized multi-UAV system［J］. <span class="sourceStyle">IEEE Transactions on Robotics</span>， <span class="yearStyle">2023</span>， <span class="volStyele">39</span>（3）： 1816-1835.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[132]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>PAPYAN N， KULHANDJIAN M， KULHANDJIAN H， et al. AI-based drone assisted human rescue in disaster environments： Challenges and opportunities［J］. <span class="sourceStyle">Pattern Recognition and Image Analysis</span>， <span class="yearStyle">2024</span>， <span class="volStyele">34</span>（1）： 169-186.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[133]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>PUEYO P， MONTIJANO E， MURILLO A C， et al. CLIPSwarm： Generating drone shows from text prompts with vision-language models［C］∥2024 IEEE/RSJ International Conference on Intelligent Robots and Systems （IROS）. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[134]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>ZHANG T， TIAN Y， LIN F， et al. CoordField： Coordination field for agentic UAV task allocation in low-altitude urban scenarios［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2505</span>.<span class="yearStyle">00091</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[135]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LIN F， ZHANG T， NI Q， et al. Talk less， fly lighter： Autonomous semantic compression for UAV swarm communication via LLMs［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2508</span>.<span class="yearStyle">12043</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[136]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>JI K， HU X， ZHANG X， et al. An LLM-based framework for human-swarm teaming cognition in disaster search and rescue［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2511</span>.<span class="yearStyle">04042</span>； 2025.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[137]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>KRINNER M， ROMERO A， BAUERSFELD L， et al. MPCC++： Model predictive contouring control for time-optimal flight with safety constraints［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2403</span>.<span class="yearStyle">17551</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[138]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>BUI D N， KHUAT T H， PHUNG M D， et al. Model predictive control for optimal motion planning of unmanned aerial vehicles［C］∥2024 International Conference on Control， Robotics and Informatics （ICCRI）. Piscataway： IEEE Press， <span class="yearStyle">2024</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[139]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>BOUCHEKIR R， GUZMAN M， COOK A， et al. Formal verification for safe AI-based flight planning for UAVs*［C］∥2023 53rd Annual IEEE/IFIP International Conference on Dependable Systems and Networks Workshops （DSN-W）. Piscataway： IEEE Press， <span class="yearStyle">2023</span>.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[140]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>TANG Y C， CHEN P Y， HO T Y. Defining and evaluating physical safety for large language models［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2411</span>.<span class="yearStyle">02317</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[141]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>SUN Y， CHEN Y， WU P， et al. DRL： Dynamic rebalance learning for adversarial robustness of UAV with long-tailed distribution［J］. <span class="sourceStyle">Computer Communications</span>， <span class="yearStyle">2023</span>， <span class="volStyele">205</span>： 14-23.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[142]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>REN Y， ZHU F， LU G， et al. Safety-assured high-speed navigation for MAVs［J］. <span class="sourceStyle">Science Robotics</span>， <span class="yearStyle">2025</span>， <span class="volStyele">10</span>（98）： eado6187.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[143]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>BADAR A U R， MAHMOOD D， IQBAL A， et al. DeepSpoofNet： A framework for securing UAVs against GPS spoofing attacks［J］. <span class="sourceStyle">PeerJ Computer Science</span>， <span class="yearStyle">2025</span>， <span class="volStyele">11</span>： e2714.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[144]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>NVIDIA jetson AGX orin［EB/OL］. （2025-10-28）［2025-11-27］. .</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[145]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>Atlas 200I A2［EB/OL］. （2025-11-12）［2025-11-27］. .</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[146]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>RK3588［EB/OL］. （2025-08-08）［2025-11-27］. .</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[147]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>AR9481［EB/OL］. （2021-12-20）［2025-11-27］. .</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[148]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>MCENROE P， WANG S， LIYANAGE M. A survey on the convergence of edge computing and AI for UAVs： Opportunities and challenges［J］. <span class="sourceStyle">IEEE Internet of Things Journal</span>， <span class="yearStyle">2022</span>， <span class="volStyele">9</span>（17）： 15435-15459.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[149]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>XU J， LI Z， CHEN W， et al. On-device language models： A comprehensive review［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2409</span>.<span class="yearStyle">00088</span>； 2024.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[150]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>LIN J， TANG J， TANG H， et al. Awq： Activation-aware weight quantization for on-device llm compression and acceleration［J］. <span class="sourceStyle">Proceedings of Machine Learning and Systems</span>， <span class="yearStyle">2024</span>， <span class="volStyele">6</span>： 87-100.</span>
+											 											</td>
+										</tr>
+																													<tr>
+																						<td valign='top' align='right' style="padding-right:13px;">[151]</td>
+																						<td style="padding-bottom: 13px;"> 
+											 <span class='magtech_ref_source'>GU A， DAO T. Mamba： Linear-time sequence modeling with selective state spaces［DB/OL］. <span class="sourceStyle">arXiv Preprint： 2312</span>.<span class="yearStyle">00752</span>； 2023.</span>
+											 											</td>
+										</tr>
+																																		</table>
+                            <!--end--> 
+                        </div>
+                      </div>         
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="xiangguanwenzhang" onClick="xianshi(this)">
+                        <h4 class="panel-title">
+                            <a id="relatedArticles" class="collapsed"  href="javascript:;">
+                                相关文章 <span class="badge badge-info">15</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour" style="display: none;">
+                        <div class="panel-body">
+                        
+                        
+                           <table width="100%" border="0" height='25'>
+																																																																																																										<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[1]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>傅圣杰 李明磊 金晟毅 唐佳瑞 郭一凡. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2026.33761" target="_blank" class="txt_zhaiyao">面向火星采样任务的异源图像采样区高精度重建研究-“深空探测前沿技术”专刊</a>[J]. 航空学报, 0, (): 1-0.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[2]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>徐海涛 刘鹏 薛长斌 沈卫华 曹印国 张亚男 张静 檀晓萌 李娇娇 曹锴郎. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2026.33835" target="_blank" class="txt_zhaiyao">面向小行星探测的多源光轴自主标校方法-“深空探测前沿技术”专刊</a>[J]. 航空学报, 0, (): 1-0.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[3]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>周雷, 谷延锋, 刘天竹. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2025.32578" target="_blank" class="txt_zhaiyao">遥感图像飞机细粒度目标检测算法</a>[J]. 航空学报, 2026, 47(10): 632578-632578.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[4]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>刘涛 任侃 温世博 陈钱. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2026.33437" target="_blank" class="txt_zhaiyao">弱纹理下物理引导几何校验无人机视觉定位</a>[J]. 航空学报, 0, (): 1-0.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[5]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>郝振洋, 曹尚, 张凤婷, 侯兰兰. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2025.32464" target="_blank" class="txt_zhaiyao">直升机桨毂顶置主动式作动系统设计</a>[J]. 航空学报, 2026, 47(7): 432464-432464.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[6]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>赵耀, 张曦, 周荻, 李玉堂, 李思远. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2025.32509" target="_blank" class="txt_zhaiyao">考虑主动远离禁飞区的飞行器再入轨迹快速规划</a>[J]. 航空学报, 2026, 47(6): 332509-332509.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[7]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>王征, 赵守智, 李昊田, 孙征, 邵静, 侯丞. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2025.32398" target="_blank" class="txt_zhaiyao">深空探测用穿冰探测器发展现状</a>[J]. 航空学报, 2026, 47(5): 332398-332398.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[8]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>乔塨哲 杨盘隆 叶彤 姚世宸 付道勇. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2026.32929" target="_blank" class="txt_zhaiyao">面向单粒子效应的卫星网络弹性组网及重构方法-“空天地一体化智能网联”专刊</a>[J]. 航空学报, 0, (): 1-0.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[9]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>陶飞, 张贺, 刘蔚然, 张辰源, 魏宇鹏, 易黎, 邹孝付. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2025.32516" target="_blank" class="txt_zhaiyao">空天装备数字试验验证理论与关键技术</a>[J]. 航空学报, 2025, 46(24): 432516-432516.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[10]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>陈亮, 孟凡星, 王成波, 张音旋, 孟琳书. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2025.32252" target="_blank" class="txt_zhaiyao">数字孪生技术在飞行器强度设计中的发展及应用</a>[J]. 航空学报, 2025, 46(19): 532252-532252.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[11]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>刘童, 赵文祥, 吉敬华. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2025.32127" target="_blank" class="txt_zhaiyao">逆变器供电永磁电机电磁振噪计算方法综述</a>[J]. 航空学报, 2026, 47(1): 332127-332127.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[12]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>蒲钒, 陈志杰, 刘杨, 耿欣, 朱永文, 任柯锦. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2025.31331" target="_blank" class="txt_zhaiyao">数字低空融合运行空中交通管理技术</a>[J]. 航空学报, 2025, 46(11): 531331-531331.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[13]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>刘泓麟, 王冠, 安帅斌, 马少捷, 刘凯. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2025.31654" target="_blank" class="txt_zhaiyao">基于在线辨识的高速变构飞行器强适应控制</a>[J]. 航空学报, 2025, 46(17): 331654-331654.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[14]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>陈树生, 贾苜梁, 林家豪, 金世轶, 高正红, 王岳青, 马志强, 李铮, 段辰龙, 李佳伟. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2024.31194" target="_blank" class="txt_zhaiyao">生成式模型赋能飞行器技术应用研究进展与展望</a>[J]. 航空学报, 2025, 46(10): 631194-631194.</td>
+																				</tr>
+																																																																																																																																																<tr>
+																					<td width="30" valign='top' style="line-height:30px;">[15]</td>
+																					<td class="J_zhaiyao" style="line-height:30px;" valign='top'>林杰, 唐志共, 钱炜祺, 王岳青, 张鹏, 徐炜遐, 刘杰. <a href="https://hkxb.buaa.edu.cn/CN/10.7527/S1000-6893.2025.31679" target="_blank" class="txt_zhaiyao">飞行器生成式模型气动设计研究进展与展望</a>[J]. 航空学报, 2025, 46(10): 631679-631679.</td>
+																				</tr>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														</table>
+							
+							
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="tuijianwenzhang" onClick="xianshi(this)">
+                        <h4 class="panel-title">
+                            <a id="recommendedArticles" class="collapsed"  href="javascript:;">
+                                编辑推荐 <span class="badge badge-info" id="recommendedArticlesCount"></span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour" style="display: none;">
+                        <div class="panel-body" id="recommendedArticles-list">
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="panel panel-default" >
+                    <div class="panel-heading" role="tab" id="Metrics" onClick="xianshi(this)">
+                        <h4 class="panel-title">
+                            <a class="collapsed"  href="javascript:;" >
+                                Metrics 
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive" style="display: none;">
+                        <div class="panel-body">
+                           <table width="98%" border="0" cellspacing="0" cellpadding="0">
+											    	<tr>
+											        	<td width="24" height="32"></td>
+											        	<td colspan="2" bgcolor="#E0EEF7"><span class="STYLE1">阅读次数</span></td>
+											        </tr>
+													<tr>
+											        	<td width="24" height="5"></td>
+											        	<td colspan="2" bgcolor="#FFFFFF"></td>
+											        </tr>
+											      	<tr>
+												        <td height="153"></td>
+												        <td width="110" valign="top" bgcolor="#EFEFEF" style="line-height:150%">
+												        	<strong>全文</strong><br />
+												          	<span class="STYLE2"><div id="FullText"></div></span>
+												        </td>
+											        	<td valign="top">
+												        	<table width="63%" border="0" cellspacing="0" cellpadding="0">
+													          	<tr>
+														            <td><div id="HtmlPdfVersion"></div></td>
+													            </tr>
+												        	</table>
+												        	<br />
+												        	<table width="63%" border="0" cellspacing="0" cellpadding="0">
+												        		<tr>
+														            <td colspan="3"><div id="FromHtmlPdf"></div></td>
+													            </tr>
+												        	</table>
+												          	<br />
+												          	<div id="DownloadDistribution"></div>
+												          	<div id="DownloadCountryDistribution"></div>
+														</td>
+													</tr>
+													<tr>
+												        <td></td>
+												        <td colspan="2" height=5></td>
+													</tr>
+													<tr>
+												        <td height="158"></td>
+												        <td valign="top" bgcolor="#efefef" style="line-height:150%">
+												        	<strong>摘要</strong><br>
+												          	<span class="STYLE2"><div id="AbstractCount"></div></span>
+														</td>
+												        <td valign="top">
+															<table width="40%" height="52" border="0" cellpadding="0" cellspacing="0">
+													          	<tr>
+													            	<td><div id="AbstractVersion"></div></td>
+													            </tr>
+													            <tr>
+													            	<td><div id="FromAbstract"></div></td>
+													            </tr>
+												        	</table>
+															<br />
+															<div id="AbstractDistribution"></div>
+															<div id="AbstractCountryDistribution"></div>
+												        </td>
+													</tr>
+													<tr>
+												        <td></td>
+												        <td colspan="2" height=5></td>
+													</tr>
+													<!--
+													<tr>
+												        <td height="30"></td>
+												        <td bgcolor="#E0EEF7"><p><strong>Cited</strong></p></td>
+												        <td>
+												        	<div id="citations"></div>
+												        </td>
+													</tr>
+													<tr>
+												        <td height="8"></td>
+												        <td height="8"></td>
+												        <td height="8"></td>
+													</tr>
+													<tr>
+													    <td height="31">&nbsp;</td>
+													    <td bgcolor="#E0EEF7"><strong>Shared</strong></td>
+													    <td><strong>&nbsp;&nbsp;<a class="shareCount"></a></strong></td>
+												  	</tr>
+												  	-->
+												  	<tr>
+													    <td height="5"></td>
+													    <td></td>
+													    <td></td>
+											  		</tr>
+											</table>
+											
+                        </div>
+                    </div>
+                </div>
+				<div class="panel panel-default" >
+                    <div class="panel-heading" role="tab" id="benwenpingjia" onClick="xianshi(this)">
+                        <h4 class="panel-title">
+                            <a id="pingjia" class="collapsed"  href="javascript:;" >
+                                本文评价 
+                            </a>
+                        </h4>
+                    </div>
+					<div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix" style="display: none;">
+                        <div class="panel-body">
+							<div id="ArticleEstimate">
+								<div id="Estimate"></div>
+								<div id="Comment"></div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+				<!-- <div class="panel panel-default" >
+                    <div class="panel-heading" role="tab" id="tuijianyuedu" onClick="xianshi(this)">
+                        <h4 class="panel-title">
+                            <a id="relatedArticles" class="collapsed"  href="javascript:;" >
+                                推荐阅读 <span class="badge badge-info">0</span>
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven" style="display: none;">
+                        <div class="panel-body">
+							<table width="98%" border="0" align="center" cellpadding="0" cellspacing="8" valign='top' height='auto'>
+								<tr>
+									<td valign='top'>
+										<table width="100%" border="0" height='25'>
+																																													<tr>
+													<td colspan='2' align='center'><strong>No Suggested Reading articles found!</strong></td>
+												</tr>
+																					</table>
+									</td>
+								</tr>
+							</table>
+                        </div>
+                    </div>
+
+                </div> -->
+            </div>
+			
+            <!--折叠面板end-->
+        </div>
+        <div class="col-lg-2 col-md-2 hidden-print hidden-xs hidden-sm">
+            <!--右快速导航-->
+            <div id="plane" class="pinned">
+                <ul class="plane-bd list-unstyled">
+                    <li>
+                        <a href="javascript:;"  onclick="zhaiyao('#zhaiyao');">
+							<span>摘要</span>
+                            <i class="glyphicon glyphicon-text-color"></i>
+                        </a>
+                    </li>
+				                    <li>
+                        <a href="javascript:;"  onclick="zhaiyao('#tubiao');">
+                            <span>图/表</span>
+                            <i class="glyphicon glyphicon-picture"></i>
+                        </a>
+                    </li>
+				                     <li>
+                        <a href="javascript:;"  onclick="zhaiyao('#cankaowenxian');">
+                            <span>参考文献</span>
+                            <i class="glyphicon glyphicon-equalizer"></i>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="javascript:;"  onclick="zhaiyao('#xiangguanwenzhang');">
+                            <span>相关文章</span>
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="javascript:;"  onclick="zhaiyao('#tuijianwenzhang');">
+                            <span>编辑推荐</span>
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="javascript:;"  onclick="zhaiyao('#Metrics');">
+                            <span>Metrics</span>
+                            <i class="glyphicon glyphicon-stats"></i>
+                        </a>
+                    </li>
+					 <li>
+                        <a href="javascript:;" onclick="zhaiyao('#benwenpingjia');">
+                            <span>本文评价</span>
+                            <i class="glyphicon glyphicon-stats"></i>
+                        </a>
+                    </li>
+					<!-- <li style="width:100px;">
+                        <a href="javascript:;" onclick="zhaiyao('#tuijianyuedu');">
+                            <span>推荐阅读</span>
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                        </a>
+                    </li> -->
+                </ul>
+                <div class="plane-ft">
+                    <a href="#goTop" target="_self"  title="回顶部" style="color:#ff6600;" class="text-center">回顶部</a>
+                </div>
+            </div>
+            <!--右快速导航-->
+         </div> 
+    </div>
+</div>
+<div>
+	<div class="pc_footer">
+		<div class="foot_top">
+			<div class="foot_top_cont clearfix">
+				<div class="foot_top_d1 fl">
+					<p class="foot_xinxi1">地址：北京市海淀区北四环中路辅路238号柏彦大厦</p>
+					<p class="foot_xinxi2">邮政编码：100083</p>
+					<p class="foot_xinxi4">E-mail：hkxb@buaa.edu.cn</p>
+				</div>
+				<div class="foot_nav_d1 fl">
+					<p class="foot_nav_title">关于我们</p>
+					<ul class="foot_nav_list">
+						<li><a href="https://hkxb.buaa.edu.cn/CN/column/column79.shtml">期刊介绍</a></li>
+						<li><a href="https://hkxb.buaa.edu.cn/CN/folder/folder54.shtml">学报动态</a></li>
+						<li><a href="https://hkxb.buaa.edu.cn/CN/folder/folder71.shtml">会议通知</a></li>
+						<li><a href="https://hkxb.buaa.edu.cn/CN/column/column80.shtml">编委会</a></li>
+						<li><a href="https://hkxb.buaa.edu.cn/CN/folder/folder74.shtml">招聘</a></li>
+					</ul>
+				</div>
+				<div class="foot_nav_d2 fl">
+					<p class="foot_nav_title">期刊社服务</p>
+					<ul class="foot_nav_list">
+						<li><a href="https://hkxb.buaa.edu.cn/CN/model/fuwu.shtml">作者服务</a></li>
+						<li><a href="https://hkxb.buaa.edu.cn/CN/column/column158.shtml">广告服务</a></li>
+						<li><a href="https://hkxb.buaa.edu.cn/CN/model/fuwu.shtml">企业服务</a></li>
+						<li><a href="https://hkxb.buaa.edu.cn/CN/model/fuwu.shtml">合作伙伴服务</a></li>
+					</ul>
+				</div>
+				<div class="foot_nav_d3 fl">
+					<p class="foot_nav_title">专业学科</p>
+					<ul class="foot_nav_list">
+						<li><a href="https://hkxb.buaa.edu.cn/CN/article/showChannelArticle.do?id=7">流体力学与飞行力学</a></li>
+						<li><a href="https://hkxb.buaa.edu.cn/CN/article/showChannelArticle.do?id=9">固体力学与飞行器总体设计</a></li>
+						<li><a href="https://hkxb.buaa.edu.cn/CN/article/showChannelArticle.do?id=79">电子电气工程与控制</a></li>
+						<li><a href="https://hkxb.buaa.edu.cn/CN/article/showChannelArticle.do?id=84">材料工程与机械制造</a></li>
+					</ul>
+				</div>
+				<div class="foot_nav_d4 fl">
+					<p class="foot_nav_title">封面文章</p>
+					<ul class="foot_nav_list">
+						<li><a href="https://hkxb.buaa.edu.cn/CN/model/qianyan.shtml">封面文章</a></li>
+						<li><a href="https://hkxb.buaa.edu.cn/CN/article/showTenYearOldVolumn.do">过刊一览</a></li>
+					</ul>
+				</div>
+				<div class="foot_nav_d5 fl">
+					<p class="foot_nav_title">友情链接</p>
+					<ul class="foot_nav_list">
+						<li><a href="http://hkxb.buaa.edu.cn/" target="_blank">航空期刊杂志社</a></li>
+						<li><a href="http://www.buaa.edu.cn/" target="_blank">北京航空航天大学</a></li>
+						<li><a href="http://www.csaa.org.cn/" target="_blank">中国航空学会</a></li>
+						<li><a href="http://www.cast.org.cn/" target="_blank">中国科学技术协会</a></li>
+						<li><a href="http://www.sciencenet.cn/" target="_blank">科学网</a></li>
+						<li><a href="http://dict.cnki.net/" target="_blank">CNKI翻译助手</a></li>
+						<li><a href="https://www.liwenbianji.cn" target="_blank">理文编辑</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="foot_bot">
+			<div class="foot_bot_cont">
+				<p class="foot_bot_txt"><span class="hkxb_copy">版权所有 © 航空学报编辑部</span></p>
+			</div>
+		</div>
+	</div>
+	<div class="phone_footer">
+		<p>版权所有 © 2011航空学报杂志社</p>
+		<p>主管单位：中国科学技术协会   主办单位：中国航空学会 北京航空航天大学</p>
+	</div>
+</div>
+<script type="text/javascript" src="https://hkxb.buaa.edu.cn/images/1000-6893/js/jquery-1.11.1.min.js" ></script>
+<script type="text/javascript" src="https://hkxb.buaa.edu.cn/images/1000-6893/js/jquery.SuperSlide.2.1.js" ></script>
+<script type="text/javascript" src="https://hkxb.buaa.edu.cn/images/1000-6893/js/style.js" ></script>
+<iframe src="https://hkxb.buaa.edu.cn/EN/article/updateBrowseNum.jsp?articleid=21209" height=0 scrolling=no border=0 frameborder=0 allowtransparency="true"></iframe>
+
+</body>
+</html>
+
+<script type="text/javascript">
+	var hash = window.location.hash;
+	loadMetricsTabc();
+	loadArticleEstimate();
+	$(function() {
+    	$('#container').tabs(1);
+    });
+    $("#MetricsTabC").click(function(){
+		loadMetricsTabc();
+	});
+	 $("#ArticleEstimateTab").click(function(){
+		loadArticleEstimate();
+	});
+	function loadArticleEstimate(){
+		$("#Estimate").empty();
+		$("#Estimate").append("<iframe src=\"https://hkxb.buaa.edu.cn/include/showEstimate.do?articleId=21209\" width=\"1000\" height=\"85\"  scrolling=no frameborder=0 allowtransparency=\"true\" style=\"padding: 20\"></iframe>");
+		$("#Comment").empty();
+		$("#Comment").append("<iframe src=\"https://hkxb.buaa.edu.cn/CN/comment/showCommentList.do?type=article&typeId=21209\" width=\"1000\" style=\"min-height:700px; width:100%;\"   scrolling=no frameborder=0 allowtransparency=\"true\" style=\"padding: 20\" id=\"ifr-comment\"></iframe>");
+	}
+	$(function(){
+		$('.tabs-nav').children('li').eq(0).addClass('tabs-selected');
+		$('.tabs-nav').children('li').last().removeClass('tabs-selected');
+		$('#AbstractTab').removeClass('tabs-hide');
+		$('#MetricsTab').addClass('tabs-hide');
+	})
+	function loadMetricsTabc(){
+		$("#FullText").load("https://hkxb.buaa.edu.cn/CN/matrix/matrix.do?articleId=21209&type=FullText");
+		$("#HtmlPdfVersion").load("https://hkxb.buaa.edu.cn/CN/matrix/matrix.do?articleId=21209&type=HtmlPdfVersion");
+		$("#FromHtmlPdf").load("https://hkxb.buaa.edu.cn/CN/matrix/matrix.do?articleId=21209&type=FromHtmlPdf");
+		$("#AbstractVersion").load("https://hkxb.buaa.edu.cn/CN/matrix/matrix.do?articleId=21209&type=AbstractVersion");
+		$("#AbstractCount").load("https://hkxb.buaa.edu.cn/CN/matrix/matrix.do?articleId=21209&type=AbstractCount");
+		$("#FromAbstract").load("https://hkxb.buaa.edu.cn/CN/matrix/matrix.do?articleId=21209&type=FromAbstract");
+		//$("#citations").load("https://hkxb.buaa.edu.cn/CN/matrix/matrix.do?articleId=21209&type=citations");
+		$("#DownloadDistribution").empty();
+		$("#DownloadDistribution").append("<iframe src=\"https://hkxb.buaa.edu.cn/CN/matrix/matrix.do?articleId=21209&type=DownloadDistribution\" width=\"600\" height=\"300\"  scrolling=no frameborder=0 allowtransparency=\"true\" style=\"padding: 20\"></iframe>");
+		$("#DownloadCountryDistribution").empty();
+		$("#DownloadCountryDistribution").append("<iframe src=\"https://hkxb.buaa.edu.cn/CN/matrix/matrix.do?articleId=21209&type=DownloadCountryDistribution\" width=\"550\" height=\"300\"  scrolling=no frameborder=0 allowtransparency=\"true\"></iframe>");
+		$("#AbstractDistribution").empty();
+		$("#AbstractDistribution").append("<iframe src=\"https://hkxb.buaa.edu.cn/CN/matrix/matrix.do?articleId=21209&type=AbstractDistribution\" width=\"600\" height=\"300\"  scrolling=no frameborder=0 allowtransparency=\"true\" style=\"padding: 20\"></iframe>");
+		$("#AbstractCountryDistribution").empty();
+		$("#AbstractCountryDistribution").append("<iframe src=\"https://hkxb.buaa.edu.cn/CN/matrix/matrix.do?articleId=21209&type=AbstractCountryDistribution\" width=\"550\" height=\"300\"  scrolling=no frameborder=0 allowtransparency=\"true\" style=\"padding: 20\"></iframe>");
+	}
+	
+</script>
+
+    <!--css必引 -->	
+	<link rel="stylesheet" href="https://hkxb.buaa.edu.cn/images/1000-6893/css/abstract.css">

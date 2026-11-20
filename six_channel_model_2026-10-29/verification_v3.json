@@ -1,0 +1,253 @@
+{
+  "library": {
+    "joint_level_counts": {
+      "L1": 1500,
+      "L2": 1500,
+      "L3": 1500,
+      "OOD": 500
+    },
+    "speed_ranges": {
+      "L": 835,
+      "M": 3613,
+      "H": 476,
+      "VL": 76
+    },
+    "binding_components_by_level": {
+      "L2": {
+        "sideslip_excursion": 787,
+        "long_period": 313,
+        "roll_dutch_roll": 184,
+        "pitch_damping": 145,
+        "pitch_delay": 145,
+        "pitch_frequency": 145,
+        "pitch_stick_force": 145,
+        "roll_sensitivity_1s": 145,
+        "roll_spiral": 145,
+        "roll_t_r": 144,
+        "roll_oscillation": 60
+      },
+      "L3": {
+        "sideslip_excursion": 547,
+        "steady_sideslip_sense": 453,
+        "long_period": 206,
+        "pitch_damping": 156,
+        "pitch_delay": 156,
+        "pitch_frequency": 156,
+        "pitch_stick_force": 156,
+        "roll_spiral": 155,
+        "roll_t_r": 155,
+        "roll_dutch_roll": 54,
+        "roll_oscillation": 48
+      }
+    },
+    "component_levels_in_distribution": {
+      "long_period": {
+        "L1": 3751,
+        "L2": 543,
+        "L3": 206
+      },
+      "pitch_damping": {
+        "L1": 4187,
+        "L2": 157,
+        "L3": 156
+      },
+      "pitch_delay": {
+        "L1": 4180,
+        "L2": 164,
+        "L3": 156
+      },
+      "pitch_frequency": {
+        "L1": 4180,
+        "L2": 164,
+        "L3": 156
+      },
+      "pitch_stick_force": {
+        "L1": 4175,
+        "L2": 169,
+        "L3": 156
+      },
+      "roll_dutch_roll": {
+        "L1": 4228,
+        "L2": 218,
+        "L3": 54
+      },
+      "roll_oscillation": {
+        "L1": 4359,
+        "L2": 93,
+        "L3": 48
+      },
+      "roll_sensitivity_1s": {
+        "L1": 4338,
+        "L2": 162
+      },
+      "roll_spiral": {
+        "L1": 4161,
+        "L2": 184,
+        "L3": 155
+      },
+      "roll_t_r": {
+        "L1": 4181,
+        "L2": 164,
+        "L3": 155
+      },
+      "sideslip_excursion": {
+        "L1": 2716,
+        "L2": 1237,
+        "L3": 547
+      },
+      "steady_sideslip_sense": {
+        "L1": 4047,
+        "L3": 453
+      }
+    },
+    "ood_reasons": {
+      "r_omega_outside_evidence_envelope": 95,
+      "zeta_phi_outside_research_envelope": 88,
+      "sensitivity_1s_above_level_2_ungraded": 72,
+      "transport_delay_above_research_envelope": 64,
+      "long_period_beyond_level_3": 61,
+      "dutch_roll_beyond_level_3": 56,
+      "l_fa_outside_iv_force_input_evidence": 56,
+      "spiral_beyond_level_3": 56,
+      "t_r_beyond_level_3": 55
+    },
+    "long_period_forms": {
+      "oscillatory": 4696,
+      "divergent": 285,
+      "two_stable_real_roots": 19
+    }
+  },
+  "distributions": {
+    "figure": "figures/distributions_v3.png",
+    "p5_median_p95": {
+      "T_R (s)": {
+        "original roll library": [
+          0.20066824672918077,
+          0.5278124497535066,
+          4.762758649326745
+        ],
+        "v3 library": [
+          0.2112931712214127,
+          0.5265059270047363,
+          1.285335585191126
+        ]
+      },
+      "omega_d (rad/s)": {
+        "original roll library": [
+          0.5125150157081719,
+          1.956841384110453,
+          5.351013598547089
+        ],
+        "v3 library": [
+          1.1946455224927146,
+          3.4332344232769847,
+          5.709063434519898
+        ]
+      },
+      "zeta_d": {
+        "original roll library": [
+          0.009886843721524591,
+          0.4266784503305725,
+          0.6730853503732942
+        ],
+        "v3 library": [
+          0.21754980188468473,
+          0.44538726904429493,
+          0.6722944036251866
+        ]
+      },
+      "lambda_s (1/s)": {
+        "original roll library": [
+          -0.13718060240878793,
+          -0.020822878017379906,
+          0.14033663273199407
+        ],
+        "v3 library": [
+          -0.13587595245131656,
+          -0.02643828512383988,
+          0.08143994528702911
+        ]
+      },
+      "omega_phi / omega_d": {
+        "original roll library": [
+          0.6723132511250098,
+          0.93884515789155,
+          1.3061019541973082
+        ],
+        "v3 library": [
+          0.698798414559636,
+          0.9633747743859544,
+          1.1236588953121391
+        ]
+      },
+      "zeta_phi": {
+        "original roll library": [
+          0.13066961890086531,
+          0.40058862445876003,
+          0.6700758485402912
+        ],
+        "v3 library": [
+          0.19636538691861416,
+          0.4207844609661145,
+          0.6559010827942311
+        ]
+      },
+      "1 s sensitivity (deg/N)": {
+        "original roll library": [
+          0.9178964789417934,
+          1.8008764761436922,
+          4.232351892712391
+        ],
+        "v3 library": [
+          0.9103907085924099,
+          1.74781660362585,
+          3.3787951297492085
+        ]
+      },
+      "v3 aileron yaw N'a/L'a": {
+        "v3 library": [
+          -0.2103755018547177,
+          -0.06666969245206564,
+          0.05149238508855926
+        ]
+      }
+    }
+  },
+  "responses": {
+    "figure": "figures/responses_v3.png",
+    "aircraft": [
+      {
+        "plant_id": "train_core-0000",
+        "joint_level": 1,
+        "binding_components": [],
+        "speed_range": "L",
+        "eta": -0.00030871982127428366,
+        "phi_over_beta": 4.0502934441325715,
+        "delta_beta_over_k": 1.6139204459066923
+      },
+      {
+        "plant_id": "train_core-0001",
+        "joint_level": 2,
+        "binding_components": [
+          "long_period"
+        ],
+        "speed_range": "M",
+        "eta": -0.09234838482923804,
+        "phi_over_beta": 4.989144756657314,
+        "delta_beta_over_k": 4.1258451434967505
+      },
+      {
+        "plant_id": "train_core-0002",
+        "joint_level": 3,
+        "binding_components": [
+          "long_period",
+          "steady_sideslip_sense"
+        ],
+        "speed_range": "L",
+        "eta": -0.06652778965048492,
+        "phi_over_beta": 2.43816134321071,
+        "delta_beta_over_k": 0.7670173286768646
+      }
+    ]
+  }
+}

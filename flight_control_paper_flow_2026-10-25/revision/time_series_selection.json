@@ -1,0 +1,32 @@
+{
+  "protocol": "controller-route-v1",
+  "selection_timing": "Figure selection rule recorded before inspecting selected response traces; deterministic identifiers, not outcome ranks.",
+  "source_by_partial_level": {
+    "L1": "train_core-0750",
+    "L2": "train_core-0148",
+    "L3": "train_core-0401"
+  },
+  "source_for_teacher_student": "train_core-0148",
+  "id": "id_test-3451",
+  "ood": "ood_test-4510",
+  "seeds": [
+    20261031,
+    20261101,
+    20261102
+  ],
+  "commands": [
+    "test-11-step",
+    "test-17-multisine"
+  ],
+  "recovery": [
+    "initial_+5",
+    "disturbance_+1"
+  ],
+  "target_seed": 20261101,
+  "target_conditions": {
+    "adaptation_condition": "V050_H2500",
+    "heldout_condition": "V070_H3500"
+  },
+  "target_case": "test-11-step",
+  "atlas": "All 12 source objects + 24 ID + 24 OOD; both displayed commands and every seed; no outcome-based exclusion."
+}

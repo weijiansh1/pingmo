@@ -1,0 +1,1365 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]: 本文目录
+    - navigation [ref=e5]:
+      - link "摘要" [ref=e6] [cursor=pointer]:
+        - /url: "#abstract"
+      - link "1 引言" [ref=e7] [cursor=pointer]:
+        - /url: "#s1"
+      - link "1.1 相关工作" [ref=e8] [cursor=pointer]:
+        - /url: "#s11"
+      - link "2 问题定义与控制对象" [ref=e9] [cursor=pointer]:
+        - /url: "#s2"
+      - link "2.1 控制任务与接口" [ref=e10] [cursor=pointer]:
+        - /url: "#s21"
+      - link "2.2 参数化滚转对象" [ref=e11] [cursor=pointer]:
+        - /url: "#s22"
+      - link "2.3 评价指标与门限" [ref=e12] [cursor=pointer]:
+        - /url: "#s23"
+      - link "3 方法：四步流程" [ref=e13] [cursor=pointer]:
+        - /url: "#s3"
+      - link "3.1 随机采样" [ref=e14] [cursor=pointer]:
+        - /url: "#s31"
+      - link "3.2 PPO 教师" [ref=e15] [cursor=pointer]:
+        - /url: "#s32"
+      - link "3.3 DAgger 蒸馏" [ref=e16] [cursor=pointer]:
+        - /url: "#s33"
+      - link "3.4 DHC-6 微调" [ref=e17] [cursor=pointer]:
+        - /url: "#s34"
+      - link "4 实验设置" [ref=e18] [cursor=pointer]:
+        - /url: "#s4"
+      - link "5 结果" [ref=e19] [cursor=pointer]:
+        - /url: "#s5"
+      - link "5.1 对象分布" [ref=e20] [cursor=pointer]:
+        - /url: "#s51"
+      - link "5.2 教师结果" [ref=e21] [cursor=pointer]:
+        - /url: "#s52"
+      - link "5.3 学生结果" [ref=e22] [cursor=pointer]:
+        - /url: "#s53"
+      - link "5.3.1 闭环响应" [ref=e23] [cursor=pointer]:
+        - /url: "#s531"
+      - link "5.3.2 扩展抽样" [ref=e24] [cursor=pointer]:
+        - /url: "#s532"
+      - link "5.3.3 幅值与 OOD" [ref=e25] [cursor=pointer]:
+        - /url: "#s533"
+      - link "5.4 DHC-6 迁移" [ref=e26] [cursor=pointer]:
+        - /url: "#s54"
+      - link "6 讨论" [ref=e27] [cursor=pointer]:
+        - /url: "#s6"
+      - link "6.1 延迟表征实验" [ref=e28] [cursor=pointer]:
+        - /url: "#s61"
+      - link "6.1.1 数据与表征" [ref=e29] [cursor=pointer]:
+        - /url: "#s611"
+      - link "6.1.2 可解码性" [ref=e30] [cursor=pointer]:
+        - /url: "#s612"
+      - link "6.1.3 闭环对照" [ref=e31] [cursor=pointer]:
+        - /url: "#s613"
+      - link "6.1.4 τp 与 GJB τe" [ref=e32] [cursor=pointer]:
+        - /url: "#s614"
+      - link "6.1.5 GJB τe 首版评价" [ref=e33] [cursor=pointer]:
+        - /url: "#s615"
+      - link "6.1.6 τe 稳健性" [ref=e34] [cursor=pointer]:
+        - /url: "#s616"
+      - link "6.2 后续：执行机构" [ref=e35] [cursor=pointer]:
+        - /url: "#s62"
+      - link "7 结论" [ref=e36] [cursor=pointer]:
+        - /url: "#s7"
+      - link "参考文献" [ref=e37] [cursor=pointer]:
+        - /url: "#refs"
+  - main [ref=e38]:
+    - heading "基于飞行品质模型的飞控大模型研究" [level=1] [ref=e39]
+    - generic [ref=e40]: 研究论文 · 版本日期：2026-10-24
+    - generic [ref=e41]: 摘要 滚转控制律通常按单一机型整定，换型需重新设计。本文把飞行品质分级直接当作训练对象分布，构建一条可复用的链路：5,000 个品质参数化对象 → 49 个 PPO 教师 → 一个统一学生 → DHC-6 仿真适配。统一学生 3,856 参数，机载 CPU 单核可推理；在 800 个对象 × 14 条指令的扫描中，±1 deg/s 阶跃通过率 99.7%，±31 deg/s 通过率 60.3%，大幅值与分布外参数是明确的失效边界。学生相对教师的中位误差为 1.28 倍（同分布）与 1.68 倍（留出）；把容量放大 20 倍只把该比值改为 1.34 倍，说明差距来自教师可见的对象参数，而非网络容量。目标域用 40 步微调，把适配状态中位误差由 2.91 降至 0.59 deg/s（−79.6%），未参与更新的留出状态由 2.66 降至 2.15 deg/s。32×5 历史还可在 1.2 s 内以 R² = 0.995 解出输入时延，为策略输入的形式选择提供了依据。
+    - generic [ref=e42]: 关键词 飞行品质；低阶等效系统；强化学习；教师—学生蒸馏；DAgger；迁移学习
+    - heading "1引言" [level=2] [ref=e43]
+    - paragraph [ref=e44]: 飞行控制系统的闭环性能由被控对象、执行机构与控制律共同决定。本文处理控制器层面的滚转角速度内回路：保留滚转对象与执行机构，用强化学习策略替换原控制律。策略完成观测到力速率的映射，力经接口模块积分、限幅并映射为副翼偏角，因此同一策略可以直接接入既有飞控接口。
+    - paragraph [ref=e45]: 本文的路线分四步：品质分级采样、逐对象教师、单学生蒸馏、目标域微调。每一步都有独立的验收门限，前三步在品质参数化对象族上完成，第四步用有限的 DHC-6 仿真记录把学生接到具体机型上。最终产物是一个 3,856 参数、可在机载 CPU 上运行的控制器。
+    - paragraph [ref=e46]: 本文处理滚转角速度内回路，对应 GJB 185 对滚转模态的响应要求，文中门限即为该回路的验收条件。奖励由跟踪误差、操纵能量与动作幅值三项构成，分别对应品质评定中的跟踪精度、操纵功率与平滑性；GJB 条款则以门限形式用于训练后的验收。
+    - heading "1.1 相关工作" [level=3] [ref=e47]
+    - paragraph [ref=e48]:
+      - text: 飞行品质与低阶等效系统。飞行品质规范以低阶等效系统评定高阶对象的响应形态，并按等效参数分级
+      - superscript [ref=e49]: "[1,2]"
+      - text: 。这提供了一种把“一类飞机”组织成参数族的方式：对象不是某一架具体飞机，而是满足同一组 品质判据的参数集合。已有飞控设计多在单架飞机上完成增益调度，把品质分级直接当作训练对象分布的做法并不常见。
+    - paragraph [ref=e50]:
+      - text: 特权信息与教师—学生蒸馏。训练期可用、部署期不可用的信息被称为特权信息 （learning using privileged information）
+      - superscript [ref=e51]: "[5]"
+      - text: ；在强化学习中对应 asymmetric actor–critic
+      - superscript [ref=e52]: "[6]"
+      - text: ，教师使用完整状态、学生只部署可观测输入。足式机器人上的工作把这一范式做成了完整链路
+      - superscript [ref=e53]: "[7,8]"
+      - text: ，快速运动自适应则用环境参数编码器显式推断特权量
+      - superscript [ref=e54]: "[9]"
+      - text: 。这些工作报告的是 “学生接近教师”，但较少量化信息差的大小，也很少给出学生失效的参数区间。
+    - paragraph [ref=e55]:
+      - text: 学习飞行控制。端到端学习已在竞速无人机
+      - superscript [ref=e56]: "[10]"
+      - text: 与强风条件下的四旋翼
+      - superscript [ref=e57]: "[11]"
+      - text: 上展示能力，Learning-to-Fly 一类工作则强调在仿真中快速得到可部署策略
+      - superscript [ref=e58]: "[12]"
+      - text: 。它们通常面向单一平台或在线自适应，目标域数据来自真实飞行；本文面向的是 品质分级对象族上的离线蒸馏，并用少量目标域记录完成适配。
+    - paragraph [ref=e59]: 与上述工作相比，本文的差异在于：把飞行品质分级作为对象分布来构造教师族，把教师—学生之间的 信息差做成可测量的量（相对误差倍数、容量与覆盖两条排除），并给出学生在指令幅值与分布外参数上的 失效边界。
+    - heading "2问题定义与控制对象" [level=2] [ref=e60]
+    - heading "2.1 控制任务与接口变量" [level=3] [ref=e61]
+    - paragraph [ref=e62]:
+      - text: 被控量为滚转角速度 p，外部任务给定指令 p
+      - subscript [ref=e63]: cmd
+      - text: 。训练环境先以二阶参考模型生成跟踪目标 p
+      - subscript [ref=e64]: ref
+      - text: ；该量是由指令计算得到的期望响应，不是飞机传感器测量值。PPO 策略使用 p
+      - subscript [ref=e65]: ref
+      - text: 及其他闭环量构成观测，并以 e
+      - subscript [ref=e66]: t
+      - text: = p
+      - subscript [ref=e67]: ref,t
+      - text: − p
+      - subscript [ref=e68]: t
+      - text: 计算跟踪误差。
+    - generic [ref=e69]:
+      - text: p
+      - subscript [ref=e70]: ref
+      - text: (s) = [ω
+      - subscript [ref=e71]: "n"
+      - superscript [ref=e72]: "2"
+      - text: / (s
+      - superscript [ref=e73]: "2"
+      - text: + 2ζ
+      - subscript [ref=e74]: "n"
+      - text: ω
+      - subscript [ref=e75]: "n"
+      - text: s + ω
+      - subscript [ref=e76]: "n"
+      - superscript [ref=e77]: "2"
+      - text: )] e
+      - superscript [ref=e78]:
+        - text: −τ
+        - subscript [ref=e79]: p
+        - text: s
+      - text: p
+      - subscript [ref=e80]: cmd
+      - text: (s), ω
+      - subscript [ref=e81]: "n"
+      - text: = 2 rad/s, ζ
+      - subscript [ref=e82]: "n"
+      - text: = 0.7
+      - generic [ref=e83]: (1)
+    - paragraph [ref=e84]:
+      - text: 策略输出为归一化力速率动作 a
+      - subscript [ref=e85]: t
+      - text: ，而不是副翼偏角。动作经力速率约束和请求力积分后形成作用于滚转对象的输入；目标域接口再将请求力映射为副翼偏角。因此，本文评估的是带有既定接口和执行机构的滚转控制器回路。
+    - paragraph [ref=e86]:
+      - text: 观测按三段拼接，维数可以直接核对：当前量 9 项、历史 32 步、动作 7 步。当前量依次为指令 p
+      - subscript [ref=e87]: cmd
+      - text: 、参考响应 p
+      - subscript [ref=e88]: ref
+      - text: 、实际响应 p、误差 e = p
+      - subscript [ref=e89]: ref
+      - text: − p、误差积分 ∫e dt、角速度导数 ṗ、参考导数 ṗ
+      - subscript [ref=e90]: ref
+      - text: 、请求力 F
+      - subscript [ref=e91]: req
+      - text: 与施加力 F
+      - subscript [ref=e92]: applied
+      - text: ；历史段是过去 32 步的同构 5 通道（p
+      - subscript [ref=e93]: cmd
+      - text: ", p"
+      - subscript [ref=e94]: ref
+      - text: ", p, e, F"
+      - subscript [ref=e95]: req
+      - text: ），共 160 维；动作段是最近 7 步的归一化动作。三段合计 9 + 160 + 7 = 176 维。
+    - generic [ref=e96]:
+      - text: o
+      - subscript [ref=e97]: t
+      - text: = Norm([p
+      - subscript [ref=e98]: cmd
+      - text: ", p"
+      - subscript [ref=e99]: ref
+      - text: ", p, e, ∫e dt, ṗ, ṗ"
+      - subscript [ref=e100]: ref
+      - text: ", F"
+      - subscript [ref=e101]: req
+      - text: ", F"
+      - subscript [ref=e102]: applied
+      - text: ", h"
+      - subscript [ref=e103]: t−31:t
+      - text: ", a"
+      - subscript [ref=e104]: t−7:t−1
+      - text: "]) ∈ ℝ"
+      - superscript [ref=e105]: "176"
+      - text: o
+      - subscript [ref=e106]: t
+      - superscript [ref=e107]: T
+      - text: = [o
+      - subscript [ref=e108]: t
+      - text: ", z"
+      - subscript [ref=e109]: t
+      - text: "] ∈ ℝ"
+      - superscript [ref=e110]: "188"
+      - text: o
+      - subscript [ref=e111]: t
+      - superscript [ref=e112]: S
+      - text: = o
+      - subscript [ref=e113]: t
+      - generic [ref=e114]: (2)
+    - paragraph [ref=e115]: 归一化尺度：指令、参考、响应、误差取 30 deg/s；力取 22 N；角加速度取 5 deg/s²；误差积分取 30 deg/s·s。h 为 32×5 历史块，a 为 7 维动作块。
+    - paragraph [ref=e116]:
+      - text: 教师另接收 12 维特权量 z
+      - subscript [ref=e117]: t
+      - text: （8 个对象参数与 4 个对象内部状态），构成 188 维输入；部署形式的学生只用 176 维本体观测，不含 z
+      - subscript [ref=e118]: t
+      - text: 。p
+      - subscript [ref=e119]: ref
+      - text: 由二阶参考模型对指令滤波得到，是由指令算出的期望量。
+    - heading "2.2 参数化滚转对象" [level=3] [ref=e120]
+    - paragraph [ref=e121]: 源域以参数化低阶等效模型描述滚转角速度对输入力的响应。模型包含滚转短周期模态、螺旋模态及输入时延，其传递函数写为：
+    - generic [ref=e122]:
+      - text: G
+      - subscript [ref=e123]: θ
+      - text: (s) = L
+      - subscript [ref=e124]: Fa
+      - text: · s(s² + 2ζ
+      - subscript [ref=e125]: φ
+      - text: ω
+      - subscript [ref=e126]: φ
+      - text: s + ω
+      - subscript [ref=e127]: φ
+      - text: ²) / [(s − λ
+      - subscript [ref=e128]: s
+      - text: )(s + 1/T
+      - subscript [ref=e129]: R
+      - text: )(s² + 2ζ
+      - subscript [ref=e130]: d
+      - text: ω
+      - subscript [ref=e131]: d
+      - text: s + ω
+      - subscript [ref=e132]: d
+      - text: ²)] · e
+      - superscript [ref=e133]:
+        - text: −τ
+        - subscript [ref=e134]: p
+        - text: s
+      - generic [ref=e135]: (3)
+    - paragraph [ref=e136]:
+      - text: 参数向量为 θ = (L
+      - subscript [ref=e137]: Fa
+      - text: ", λ"
+      - subscript [ref=e138]: s
+      - text: ", T"
+      - subscript [ref=e139]: R
+      - text: ", ζ"
+      - subscript [ref=e140]: d
+      - text: ", ω"
+      - subscript [ref=e141]: d
+      - text: ", R"
+      - subscript [ref=e142]: ω
+      - text: ", R"
+      - subscript [ref=e143]: ζ
+      - text: ", τ"
+      - subscript [ref=e144]: p
+      - text: )。其中，L
+      - subscript [ref=e145]: Fa
+      - text: 为滚转控制效能，λ
+      - subscript [ref=e146]: s
+      - text: 与 T
+      - subscript [ref=e147]: R
+      - text: 描述螺旋和滚转模态，ζ
+      - subscript [ref=e148]: d
+      - text: 、ω
+      - subscript [ref=e149]: d
+      - text: 为振荡模态阻尼比与自然频率；R
+      - subscript [ref=e150]: ω
+      - text: 、R
+      - subscript [ref=e151]: ζ
+      - text: 定义零点相对模态的频率和阻尼，τ
+      - subscript [ref=e152]: p
+      - text: 为输入时延。本文通过采样 θ 构造源域对象族；该对象族用于覆盖研究设定，不视为真实机队参数的概率模型。
+    - heading "2.3 评价指标与判定门限" [level=3] [ref=e153]
+    - paragraph [ref=e154]:
+      - text: 飞行品质标准用于界定模型参数与评价背景
+      - superscript [ref=e155]: "[1,2]"
+      - text: ；本文的量化门限用于该回路的验收。闭环性能按参考跟踪 RMSE、峰值误差和请求力总变差率评价，教师验收门限分别为 1.5 deg/s、5 deg/s 和 12 N/s。
+    - generic [ref=e156]:
+      - text: RMSE
+      - subscript [ref=e157]: p
+      - text: = √[(1/M) Σ
+      - subscript [ref=e158]: t=1
+      - superscript [ref=e159]: M
+      - text: (p
+      - subscript [ref=e160]: ref,t
+      - text: − p
+      - subscript [ref=e161]: t
+      - text: )
+      - superscript [ref=e162]: "2"
+      - text: "], Peak = max"
+      - subscript [ref=e163]: t
+      - text: "|p"
+      - subscript [ref=e164]: ref,t
+      - text: − p
+      - subscript [ref=e165]: t
+      - text: "|, TV"
+      - subscript [ref=e166]: F
+      - text: = [Σ
+      - subscript [ref=e167]: t=1
+      - superscript [ref=e168]: M
+      - text: "|F"
+      - subscript [ref=e169]: req,t
+      - text: − F
+      - subscript [ref=e170]: req,t−1
+      - text: "|] / T"
+      - generic [ref=e171]: (4)
+    - paragraph [ref=e172]:
+      - text: M 为评价时域内采样点数，T 为评价时长。误差在仿真中按 rad/s 计算、报告时换算为 deg/s；TV
+      - subscript [ref=e173]: F
+      - text: 表示请求力总变差率，单位为 N/s。
+    - heading "3方法：四步构建与迁移" [level=2] [ref=e174]
+    - paragraph [ref=e175]: 图 1 概括本文的离线训练链路。四步各自的产物与证据一并画在图上：对象族的参数分布、49 个教师的通过情况、学生网络与接口，以及目标域适配前后的误差。前两步在飞行品质参数化对象上构造并训练教师，第三步将多对象教师压缩为共享学生，第四步以目标域仿真模型更新学生参数。四步使用不同对象集和监督信号，后续各节分别给出定义。
+    - figure "图 1 四步方法与各步证据：品质分级采样（5,000 架）→ PPO 教师训练（49 架，46 架通过门限）→ DAgger 蒸馏（3,856 参数，不含特权输入）→ 小样本微调（12 个 DHC-6 状态，中位跟踪误差由 2.91 降至 0.59 deg/s）。" [ref=e176]:
+      - img "图 1 四步方法与各步证据：品质分级采样（5,000 架）→ PPO 教师训练（49 架，46 架通过门限）→ DAgger 蒸馏（3,856 参数，不含特权输入）→ 小样本微调（12 个 DHC-6 状态，中位跟踪误差由 2.91 降至 0.59 deg/s）。" [ref=e177]
+    - heading "3.1 第一步：随机采样飞行品质模型" [level=3] [ref=e179]
+    - paragraph [ref=e180]: 在第 2.2 节定义的八维参数空间内生成 5,000 个滚转对象。采样按飞行品质等级和数据用途进行分层：4,500 个对象属于训练及同分布评估池，另 500 个构成分布外评估集。生成对象后依据参数和对应判据标注等级；该步骤构造的是受约束的实验对象库，并不估计真实机队中各参数的发生概率。
+    - generic [ref=e181]:
+      - text: θ
+      - superscript [ref=e182]: (i)
+      - text: ∼ q(θ | c
+      - subscript [ref=e183]: i
+      - text: ), g
+      - subscript [ref=e184]: i
+      - text: = Grade
+      - subscript [ref=e185]: GJB
+      - text: (θ
+      - superscript [ref=e186]: (i)
+      - text: ", c"
+      - subscript [ref=e187]: i
+      - text: )
+      - generic [ref=e188]: (5)
+    - paragraph [ref=e189]:
+      - text: 其中，θ
+      - superscript [ref=e190]: (i)
+      - text: 为第 i 个对象的参数向量，c
+      - subscript [ref=e191]: i
+      - text: 为其分层类别，q 表示满足既定覆盖配额的采样分布，g
+      - subscript [ref=e192]: i
+      - text: 为依据适用判据得到的等级标签。
+    - heading "3.2 第二步：逐对象训练强化学习教师" [level=3] [ref=e193]
+    - paragraph [ref=e194]:
+      - text: 对选定的 49 个源域对象分别训练一个 PPO 教师策略
+      - superscript [ref=e195]: "[3]"
+      - text: 。Actor 根据式 (2) 的本体观测和对象特权量输出归一化增量动作 a
+      - subscript [ref=e196]: t
+      - text: ∈ [−1,1]。在 50 Hz 策略周期下，每个动作将请求力改变至多 1.76 N；请求力被限制在 ±22 N。随后，1 kHz 环境中的命令力以 88 N/s 速率跟随请求力，施加力再经时间常数为 20 ms 的一阶执行机构模型作用于对象。
+    - generic [ref=e197]:
+      - text: F
+      - subscript [ref=e198]: req,t+1
+      - text: = clip(F
+      - subscript [ref=e199]: req,t
+      - text: + (88 N/s) a
+      - subscript [ref=e200]: t
+      - text: Δt, −22 N, 22 N), Δt = 0.02 s
+      - generic [ref=e201]: (6)
+    - paragraph [ref=e202]:
+      - text: ±22 N 是该 PPO 环境定义的动作接口范围与力归一化尺度，不是 PPO 算法自带的常数。它为当前训练对象规定了有界的请求力范围，并与奖励中的力归一化以及后续副翼桥接保持一致；复现或比较现有策略时应保留。迁移接口将其按 δ
+      - subscript [ref=e203]: a
+      - text: = −(10°/22 N)F 映射为 ±10° 副翼请求；88 N/s 的速率边界在同一桥接下对应 40°/s。因此 22 N 与 88 N/s 是虚拟力域对舵面位置和速率范围的表示，不是 DHC-6 实测的机械参数。面向实际控制器时，应由目标执行机构经验证的位置与速率限制取代这一配置假设。
+    - paragraph [ref=e204]: 策略网络以一维卷积编码时序历史，并由残差主干生成动作分布；均值头采用无偏置线性层和奇对称投影，以保证零观测对应零均值输出。表 1 汇总教师结构与训练配置。
+    - heading "3.2.1 即时奖励函数" [level=4] [ref=e205]
+    - paragraph [ref=e206]:
+      - text: 归档 PPO 实验采用由跟踪误差、作用力能量和动作幅值组成的即时奖励。令误差 e
+      - subscript [ref=e207]: t
+      - text: = p
+      - subscript [ref=e208]: ref,t
+      - text: − p
+      - subscript [ref=e209]: t
+      - text: ，角速度归一化尺度为 30 deg/s，则：
+    - generic [ref=e210]:
+      - text: r
+      - subscript [ref=e211]: t
+      - text: "= −50 { [e"
+      - subscript [ref=e212]: t
+      - text: / p
+      - subscript [ref=e213]: scale
+      - text: "]"
+      - superscript [ref=e214]: "2"
+      - text: Δt + 0.02 [F
+      - subscript [ref=e215]: applied,t
+      - text: / 22 N]
+      - superscript [ref=e216]: "2"
+      - text: Δt + 0.02 a
+      - subscript [ref=e217]: t
+      - superscript [ref=e218]: "2"
+      - text: "}"
+      - generic [ref=e219]: (7)
+    - paragraph [ref=e220]:
+      - text: 第一项惩罚归一化跟踪误差，第二项惩罚归一化作用力能量，第三项惩罚力速率动作本身的幅值；第三项不是相邻时刻动作之差。式中 p
+      - subscript [ref=e221]: scale
+      - text: = 30 deg/s。
+    - heading "3.2.2 PPO 优化目标" [level=4] [ref=e222]
+    - paragraph [ref=e223]: 优势估计采用广义优势估计（GAE）。时序差分残差和优势递推为：
+    - generic [ref=e224]:
+      - text: δ
+      - subscript [ref=e225]: t
+      - text: = r
+      - subscript [ref=e226]: t
+      - text: + γV(s
+      - subscript [ref=e227]: t+1
+      - text: ) − V(s
+      - subscript [ref=e228]: t
+      - text: ), Â
+      - subscript [ref=e229]: t
+      - text: = δ
+      - subscript [ref=e230]: t
+      - text: + γλÂ
+      - subscript [ref=e231]: t+1
+      - text: ", γ = 0.995, λ = 0.95"
+      - generic [ref=e232]: (8)
+    - paragraph [ref=e233]:
+      - text: 令 ρ
+      - subscript [ref=e234]: t
+      - text: (w) 表示新旧策略在已采样动作上的概率比，剪切代理损失定义为：
+    - generic [ref=e235]:
+      - text: L
+      - subscript [ref=e236]: clip
+      - text: (w) = −E
+      - subscript [ref=e237]: t
+      - text: "[min(ρ"
+      - subscript [ref=e238]: t
+      - text: Â
+      - subscript [ref=e239]: t
+      - text: ", clip(ρ"
+      - subscript [ref=e240]: t
+      - text: ", 1−ε, 1+ε)Â"
+      - subscript [ref=e241]: t
+      - text: )], ε = 0.2
+      - generic [ref=e242]: (9)
+    - paragraph [ref=e243]: Actor 与 Critic 采用剪切策略损失、价值函数误差和熵正则项联合优化：
+    - generic [ref=e244]:
+      - text: L
+      - subscript [ref=e245]: total
+      - text: = L
+      - subscript [ref=e246]: clip
+      - text: + 0.5 E[(V
+      - subscript [ref=e247]: v
+      - text: (s
+      - subscript [ref=e248]: t
+      - text: ) − R
+      - subscript [ref=e249]: t
+      - text: )
+      - superscript [ref=e250]: "2"
+      - text: "] − 0.001 H(π"
+      - subscript [ref=e251]: w
+      - text: ), R
+      - subscript [ref=e252]: t
+      - text: = Â
+      - subscript [ref=e253]: t
+      - text: + V
+      - subscript [ref=e254]: v
+      - text: (s
+      - subscript [ref=e255]: t
+      - text: )
+      - generic [ref=e256]: (10)
+    - paragraph [ref=e257]:
+      - text: 每个对象训练 30 轮，每轮由 512 个并行环境各运行 400 个策略步，累计约 614 万个状态转移。Actor 与 Critic 使用 Adam，学习率为 3×10
+      - superscript [ref=e258]: −4
+      - text: 。
+    - heading "3.2.3 奖励与品质维度的对应" [level=4] [ref=e259]
+    - paragraph [ref=e260]: 奖励的三项与品质评定的三个维度一一对应：跟踪误差对应响应精度，作用力能量对应操纵功率，动作幅值对应操纵平滑性。飞行品质参数决定源域对象的采样空间，GJB 条款以门限形式在训练后验收。二者分工明确：奖励负责把策略压到目标响应上，门限负责判定它是否合格。
+    - table [ref=e261]:
+      - caption [ref=e262]: 表 1 教师网络与训练设置
+      - rowgroup [ref=e263]:
+        - row [ref=e264]:
+          - columnheader "项" [ref=e265]
+          - columnheader "设置" [ref=e266]
+      - rowgroup [ref=e267]:
+        - row [ref=e268]:
+          - cell "输入" [ref=e269]
+          - cell "本体感受 176 + 特权信息 12" [ref=e270]
+        - row [ref=e271]:
+          - cell "时序前端" [ref=e272]
+          - cell "3 层一维卷积，dilation 1/4/8，感受野 27 步" [ref=e273]
+        - row [ref=e274]:
+          - cell "主干" [ref=e275]
+          - cell "残差 MLP 512 × 8，pre-LN、SiLU、无偏置均值头、奇对称投影" [ref=e276]
+        - row [ref=e277]:
+          - cell "输出" [ref=e278]
+          - cell "归一化增量动作 ±1 → 请求力每步变化至多 ±1.76 N；请求力限幅 ±22 N" [ref=e279]
+        - row [ref=e280]:
+          - cell "算法" [ref=e281]
+          - cell "PPO，614 万步/架，γ 0.995，λ 0.95，clip 0.2" [ref=e282]
+        - row [ref=e283]:
+          - cell "规模" [ref=e284]
+          - cell "4.26 M 参数，单卡约 9.5 min/架" [ref=e285]
+    - figure "图 2 教师策略的张量形状：32×5 历史窗口 → 三层 24 通道卷积 → 76 维拼接（48 卷积 + 9 当前 + 7 旧动作 + 12 特权）→ 8 个残差块（512 宽）→ 均值头输出力速率；虚线为品模闭环回路。" [ref=e286]:
+      - img "图 2 教师策略的张量形状：32×5 历史窗口 → 三层 24 通道卷积 → 76 维拼接（48 卷积 + 9 当前 + 7 旧动作 + 12 特权）→ 8 个残差块（512 宽）→ 均值头输出力速率；虚线为品模闭环回路。" [ref=e287]
+    - heading "3.3 第三步：DAgger 蒸馏统一学生" [level=3] [ref=e289]
+    - paragraph [ref=e290]:
+      - text: 源域学生以多对象教师提供的状态—动作样本进行监督学习。初始数据由教师策略访问闭环状态并标注动作；后续 DAgger 轮次由学生策略访问状态，再由对应教师为这些状态补充动作标签
+      - superscript [ref=e291]: "[4]"
+      - text: 。六轮数据聚合后，分别训练 3,856 参数 tiny 学生和 75,040 参数 small 学生。学生保留时序特征结构，但只接收本体观测，不使用 12 维教师特权输入。
+    - generic [ref=e292]:
+      - text: D
+      - subscript [ref=e293]: "0"
+      - text: "= {(o"
+      - subscript [ref=e294]: t
+      - text: ", μ"
+      - subscript [ref=e295]: T
+      - text: (o
+      - subscript [ref=e296]: t
+      - text: ", z"
+      - subscript [ref=e297]: t
+      - text: "))}, D"
+      - subscript [ref=e298]: k+1
+      - text: = D
+      - subscript [ref=e299]: k
+      - text: "∪ {(o"
+      - subscript [ref=e300]: t
+      - superscript [ref=e301]: S,k
+      - text: ", μ"
+      - subscript [ref=e302]: T
+      - text: (o
+      - subscript [ref=e303]: t
+      - superscript [ref=e304]: S,k
+      - text: ", z"
+      - subscript [ref=e305]: t
+      - text: "))}"
+      - generic [ref=e306]: (11)
+    - paragraph [ref=e307]:
+      - text: 其中，μ
+      - subscript [ref=e308]: T
+      - text: 为教师策略，z
+      - subscript [ref=e309]: t
+      - text: 为教师可用的对象参数和内部状态。对第 k 轮学生访问状态，教师在相同观测下产生监督动作。学生通过最小化聚合样本上的动作均方误差拟合教师：
+    - generic [ref=e310]:
+      - text: w
+      - subscript [ref=e311]: S
+      - superscript [ref=e312]: "*"
+      - text: = arg min
+      - subscript [ref=e313]: w
+      - text: (1/|D
+      - subscript [ref=e314]: K
+      - text: "|) Σ"
+      - subscript [ref=e315]:
+        - text: (o,u
+        - subscript [ref=e316]: T
+        - text: )∈D
+        - subscript [ref=e317]: K
+      - text: "||μ"
+      - subscript [ref=e318]: S
+      - text: (o;w) − u
+      - subscript [ref=e319]: T
+      - text: "||"
+      - superscript [ref=e320]: "2"
+      - generic [ref=e321]: (12)
+    - paragraph [ref=e322]: 逐轮加入学生访问状态，使训练分布逐步覆盖学生自身闭环行为诱导的状态，而不是只拟合教师访问过的状态。
+    - figure "图 3 学生策略的同构张量：输入仍是 32×5 历史，拼接维去掉 π 后为 32 维（16+9+7），主干只有 1 个 32 宽残差块，共 3,856 参数。延迟表征实验的 SAE 分支见图 16。" [ref=e323]:
+      - img "图 3 学生策略的同构张量：输入仍是 32×5 历史，拼接维去掉 π 后为 32 维（16+9+7），主干只有 1 个 32 宽残差块，共 3,856 参数。延迟表征实验的 SAE 分支见图 16。" [ref=e324]
+    - heading "3.4 第四步：DHC-6 仿真数据小样本微调" [level=3] [ref=e326]
+    - paragraph [ref=e327]: 目标域数据包含 12 个 DHC-6 仿真配平状态和 72 条 50 Hz 输入输出记录。依据 chirp 激励辨识各状态下的 ARX 模型，阶次范围为 na = 4–5、nb = 3–4、nk = 1，拟合 VAF 为 98.0%–98.7%。接口将策略输出的力速率积分为受 ±22 N 限幅的请求力，再按 δ = −(10/22)F 映射为副翼偏角；辨识模型输出的滚转角速度作为策略输入。
+    - paragraph [ref=e328]:
+      - text: 微调更新 75,040 参数 small 学生的全部权重。8 个状态用于适配，4 个状态留出用于检验跨状态泛化。优化执行 40 次 Adam 更新，学习率为 3×10
+      - superscript [ref=e329]: −5
+      - text: ；训练损失统计响应开始 2 s 后的跟踪平方误差。闭环评估采用确定性策略、15 deg/s 正阶跃和 8 s 时域。
+    - generic [ref=e330]:
+      - text: e
+      - subscript [ref=e331]: t
+      - text: (W) = p
+      - subscript [ref=e332]: ref,t
+      - text: − p
+      - subscript [ref=e333]: t
+      - text: (W; Ĝ
+      - subscript [ref=e334]: ARX
+      - text: ), L
+      - subscript [ref=e335]: DHC6
+      - text: (W) = (1/N
+      - subscript [ref=e336]: t≥2s
+      - text: ) Σ
+      - subscript [ref=e337]: t≥2s
+      - text: e
+      - subscript [ref=e338]: t
+      - text: (W)
+      - superscript [ref=e339]: "2"
+      - text: ", W"
+      - subscript [ref=e340]: k+1
+      - text: = AdamUpdate(W
+      - subscript [ref=e341]: k
+      - text: ", ∇"
+      - subscript [ref=e342]: W
+      - text: L
+      - subscript [ref=e343]: DHC6
+      - text: ; η = 3×10
+      - superscript [ref=e344]: −5
+      - text: )
+      - generic [ref=e345]: (13)
+    - paragraph [ref=e346]:
+      - text: 式中，Ĝ
+      - subscript [ref=e347]: ARX
+      - text: 为适配状态辨识得到的滚转通道模型，W 表示学生网络参数；留出状态仅用于微调后的闭环评估。
+    - heading "4实验设置" [level=2] [ref=e348]
+    - paragraph [ref=e349]: 源域实验包括教师训练、学生蒸馏和跨对象闭环评估；目标域实验在 ARX 辨识模型上微调 small 学生。表 2 汇总各阶段所用对象集和评估协议。各分组对应不同实验，按分组分别报告。
+    - table [ref=e350]:
+      - caption [ref=e351]: 表 2 数据划分与评估协议
+      - rowgroup [ref=e352]:
+        - row [ref=e353]:
+          - columnheader "阶段" [ref=e354]
+          - columnheader "对象 / 数据" [ref=e355]
+          - columnheader "训练与留出" [ref=e356]
+          - columnheader "被评内容" [ref=e357]
+      - rowgroup [ref=e358]:
+        - row [ref=e359]:
+          - cell "对象库" [ref=e360]
+          - cell "5,000 个参数化滚转模型" [ref=e361]
+          - cell "4,500 个训练/同分布池；500 个分布外" [ref=e362]
+          - cell "参数与品质等级覆盖" [ref=e363]
+        - row [ref=e364]:
+          - cell "PPO 教师" [ref=e365]
+          - cell "49 个源域对象" [ref=e366]
+          - cell "46/49 通过项目门限" [ref=e367]
+          - cell "确定性闭环跟踪与操纵" [ref=e368]
+        - row [ref=e369]:
+          - cell "学生" [ref=e370]
+          - cell "48 个源域对象" [ref=e371]
+          - cell "44 个蒸馏；4 个留出，等级各 16 个" [ref=e372]
+          - cell "tiny / small 跨对象性能" [ref=e373]
+        - row [ref=e374]:
+          - cell "DHC-6 微调" [ref=e375]
+          - cell "12 个仿真配平状态、72 条记录" [ref=e376]
+          - cell "8 个适配；4 个留出" [ref=e377]
+          - cell "small 学生、单随机种子" [ref=e378]
+        - row [ref=e379]:
+          - cell "库规模抽样" [ref=e380]
+          - cell "4,500 个非 OOD 对象池" [ref=e381]
+          - cell "每级随机抽 40 个，共 120 个" [ref=e382]
+          - cell "tiny 学生，随机种子 20261023" [ref=e383]
+        - row [ref=e384]:
+          - cell "幅值 / OOD" [ref=e385]
+          - cell "300 个同分布对象、500 个 OOD 对象" [ref=e386]
+          - cell "14 条指令/对象；每指令重复 2 次" [ref=e387]
+          - cell "tiny 学生固定权重，11,200 个对象—指令组合" [ref=e388]
+    - paragraph [ref=e389]: 源域 48 对象评估采用 30 条加权指令和每对象 64 条并行确定性轨迹；幅值扫描另以 14 条输入配置评估 300 个同分布对象和 500 个 OOD 对象，每个对象—指令组合重复两次。DHC-6 的适配和留出单元为配平状态，每状态以固定阶跃和单一策略种子评价。结果均来自仿真或辨识模型，未开展实机飞行、跨随机种子统计或完整飞控系统安全验证。
+    - heading "5结果" [level=2] [ref=e390]
+    - heading "5.1 第一步：采样对象的分布覆盖" [level=3] [ref=e391]
+    - paragraph [ref=e392]: 参数库共含 5,000 个对象：4,500 个构成训练及同分布对象池，500 个作为分布外集合。图 4 展示八维参数中两两组合的采样位置，图 5 展示各参数边际分布和 49 个教师训练对象的位置。覆盖范围由实验设计给定；库中 49 个对象训练了教师。
+    - figure "图 4 5,000 个飞行品质对象的参数空间采样散点。颜色区分品质等级，标记区分训练与分布外对象。" [ref=e393]:
+      - img "图 4 5,000 个飞行品质对象的参数空间采样散点。颜色区分品质等级，标记区分训练与分布外对象。" [ref=e394]
+    - figure "图 5 参数边际分布及教师选取位置；仅 49 个对象进入逐对象教师训练。" [ref=e396]:
+      - img "图 5 参数边际分布及教师选取位置；仅 49 个对象进入逐对象教师训练。" [ref=e397]
+    - heading "5.2 第二步：逐对象教师训练" [level=3] [ref=e399]
+    - paragraph [ref=e400]: 49 个对象分别训练后，46 个通过项目设定的 RMSE、峰值误差和请求力总变差率门限。未通过对象为 train_core-0174、train_core-0236、train_core-0467；统计保留全部训练尝试，未通过对象不从分母剔除。
+    - figure "图 6 教师跟踪误差与滚转操纵效能的关系（双对数）。颜色表示品质等级，红叉表示未通过对象；虚线为通过样本的拟合，相关系数 r = −0.74。" [ref=e401]:
+      - img "图 6 教师跟踪误差与滚转操纵效能的关系（双对数）。颜色表示品质等级，红叉表示未通过对象；虚线为通过样本的拟合，相关系数 r = −0.74。" [ref=e402]
+    - paragraph [ref=e404]:
+      - text: 通过对象中，滚转操纵效能 L
+      - subscript [ref=e405]: Fa
+      - text: 与跟踪 RMSE 呈负相关（双对数相关系数 r = −0.74）；三个未通过对象也位于低效能区域。
+    - paragraph [ref=e406]: 图 7 汇总 21 个具备逐轮固定验证记录的通过教师。其确定性验证 RMSE 随训练总体下降，最终选用 checkpoint 可来自中间训练轮次。
+    - figure "图 7 21 个通过教师的固定验证 RMSE、操纵总变差及 checkpoint 选择过程。" [ref=e407]:
+      - img "图 7 21 个通过教师的固定验证 RMSE、操纵总变差及 checkpoint 选择过程。" [ref=e408]
+    - paragraph [ref=e410]: 图 8 给出源域 L1、L2、L3 对象在阶跃与多正弦指令下的确定性闭环响应，包括参考角速度、对象响应及操纵量。 该图给出源域教师的闭环行为。
+    - figure "图 8 教师训练完成后的源域闭环效果：不同品质等级的阶跃与多正弦响应。" [ref=e411]:
+      - img "图 8 教师训练完成后的源域闭环效果：不同品质等级的阶跃与多正弦响应。" [ref=e412]
+    - heading "5.3 第三步：统一学生蒸馏" [level=3] [ref=e414]
+    - paragraph [ref=e415]: 六轮 DAgger 后，3,856 参数 tiny 学生在同分布对象上的中位 RMSE 为教师的 1.28 倍，在 4 个留出对象上为 1.68 倍。 75,040 参数 small 学生对应中位数分别为 1.34 倍与 1.41 倍。容量放大 20 倍，同分布中位倍数由 1.28 变为 1.34， 两档规模的留出通过数都停在 3/4： 留出差距与网络容量无关。两种学生的中位数均以学生 RMSE 除以相应教师 RMSE 计算。
+    - paragraph [ref=e416]: 学生评估集含 48 个对象，三个品质等级各 16 个；44 个用于 DAgger，4 个保留作对象级留出。每个对象采用 30 条加权指令和 64 条并行确定性轨迹。表 3 报告按三项门限计算的通过数及相对教师的中位 RMSE 倍数。
+    - figure "图 9 DAgger 蒸馏过程。第 0 轮为纯行为克隆，随后在学生访问状态上追加教师标签。" [ref=e417]:
+      - img "图 9 DAgger 蒸馏过程。第 0 轮为纯行为克隆，随后在学生访问状态上追加教师标签。" [ref=e418]
+    - table [ref=e420]:
+      - caption [ref=e421]: 表 3 两种规模学生的源域结果
+      - rowgroup [ref=e422]:
+        - row [ref=e423]:
+          - columnheader "学生" [ref=e424]
+          - columnheader "参数量" [ref=e425]
+          - columnheader "同分布通过" [ref=e426]
+          - columnheader "留出通过" [ref=e427]
+          - columnheader "同分布中位倍数" [ref=e428]
+          - columnheader "留出中位倍数" [ref=e429]
+      - rowgroup [ref=e430]:
+        - row [ref=e431]:
+          - cell "tiny" [ref=e432]
+          - cell "3,856" [ref=e433]
+          - cell "37/44" [ref=e434]
+          - cell "3/4" [ref=e435]
+          - cell "1.28×" [ref=e436]
+          - cell "1.68×" [ref=e437]
+        - row [ref=e438]:
+          - cell "small" [ref=e439]
+          - cell "75,040" [ref=e440]
+          - cell "38/44" [ref=e441]
+          - cell "3/4" [ref=e442]
+          - cell "1.34×" [ref=e443]
+          - cell "1.41×" [ref=e444]
+    - heading "5.3.1 代表性闭环响应" [level=3] [ref=e445]
+    - paragraph [ref=e446]: 图 10 把教师与学生放在同一组指令下对比。六档阶跃上两者的上升段几乎重合，学生的稳态跟踪误差约为教师的 2.3–3.3 倍；双脉冲与多正弦上倍数降到 1.5–1.9，但幅值衰减更明显——学生丢掉的正是教师从对象参数中读到的那部分动态信息。
+    - figure "图 10 教师与学生的时域对比（对象 train_core-0421，同一组指令）。虚线为参考，蓝线为教师，橙线为学生；面板内给出 2 s 后的跟踪 RMSE 及学生相对教师的倍数。六档阶跃上学生倍数约 2.3–3.3，形状指令上降到 1.5–1.9。" [ref=e447]:
+      - img "图 10 教师与学生的时域对比（对象 train_core-0421，同一组指令）。虚线为参考，蓝线为教师，橙线为学生；面板内给出 2 s 后的跟踪 RMSE 及学生相对教师的倍数。六档阶跃上学生倍数约 2.3–3.3，形状指令上降到 1.5–1.9。" [ref=e448]
+    - heading "5.3.2 扩展对象池抽样评估" [level=3] [ref=e450]
+    - paragraph [ref=e451]: 为检查原 48 对象结果对更大样本的代表性，从 4,500 个非分布外对象中按品质等级分层抽取 120 个对象（每级 40 个，随机种子 20261023），并以 3,856 参数 tiny 学生进行确定性闭环评估。该 120 对象集与原 48 对象学生评估集不重叠，但来自同一非分布外对象池，故属于新增的同分布抽样评估，不是分布外测试。
+    - paragraph [ref=e452]: 按相同 RMSE、峰值误差和请求力总变差率门限，整体通过 94/120（78.3%）；RMSE 中位数为 0.64 deg/s，90 百分位为 2.24 deg/s。三个等级的通过数分别为 34/40、30/40 和 30/40。与原 48 对象结果相比，该抽样通过率较低；由于对象抽样集合和数量不同，
+    - paragraph [ref=e453]:
+      - text: 在这 120 个对象中，跟踪 RMSE 与滚转操纵效能的相关系数为 −0.47。长滚转时间常数段（T
+      - subscript [ref=e454]: R
+      - text: "> 6 s） 的 4 个对象中 1 个通过，是当前失分最集中的区间， 也是下一步补测的对象。批量评估不需要 GPU：同一学生权重在 CPU 上以 40 个进程并行评估这些对象，总耗时约 58 s， 单核即可推理。"
+    - figure "图 11 120 个分层随机抽样对象的闭环评估。(a) 跟踪 RMSE 与滚转操纵效能；(b) 按品质等级统计的门限通过率。" [ref=e455]:
+      - img "图 11 120 个分层随机抽样对象的闭环评估。(a) 跟踪 RMSE 与滚转操纵效能；(b) 按品质等级统计的门限通过率。" [ref=e456]
+    - figure "图 12 同一 tiny 学生在三个源域对象和三类指令下的闭环响应。行表示品质等级，列表示指令；虚线为参考，实线为学生。" [ref=e458]:
+      - img "图 12 同一 tiny 学生在三个源域对象和三类指令下的闭环响应。行表示品质等级，列表示指令；虚线为参考，实线为学生。" [ref=e459]
+    - paragraph [ref=e461]: 图 12 展示固定对象 train_core-0000、train_core-0421 和 train_core-0701 在正、负阶跃及多正弦指令下的响应。三个对象的瞬态跟踪差异可见。
+    - heading "5.3.3 指令幅值与分布外对象评估" [level=3] [ref=e462]
+    - paragraph [ref=e463]: 进一步评估学生在不同指令幅值及分布外对象上的表现。按品质等级从 4,500 个非分布外对象中抽取 300 个（每级 100 个），并纳入全部 500 个分布外对象；对每个对象测试 ±1、±2、±5、±10、±21 和 ±31 deg/s 六档阶跃、一个双脉冲及一个多正弦，共 11,200 个对象—指令组合。每一组合在仿真中重复两次，共运行 22,400 条轨迹；统计按脚本导出的组合级结果计算。三项门限与前文一致。
+    - paragraph [ref=e464]: 同分布样本中，±1 deg/s 阶跃通过率为 99.7%，RMSE 中位数为 0.11 deg/s；±31 deg/s 阶跃通过率为 60.3%，RMSE 中位数为 1.13 deg/s。双脉冲和多正弦通过率分别为 99.0% 和 99.7%。通过率随幅值增加而下降，与请求力限幅（±22 N）和动作速率限制（88 N/s）在大幅值段同时逼近边界的形态一致： 控制权限在大幅值段先于响应精度成为约束。
+    - paragraph [ref=e465]: 在 500 个分布外对象上，±1 deg/s 和 ±31 deg/s 阶跃的通过率分别为 86.8% 和 27.6%，对应 RMSE 中位数为 0.21 和 2.93 deg/s。该结果表明，当前小型学生在较大幅值及分布外参数组合下性能下降明显。幅值测试中的 300 个同分布对象与前述 48 对象学生评估集不重叠；该测试评估的是固定学生策略，不包含目标域微调。
+    - figure "图 13 学生响应随指令幅值的变化。蓝为 300 架同分布对象，红为 500 架分布外对象；(a) 中位误差与四分位带（虚线为门限），(b) 三门槛通过率。" [ref=e466]:
+      - img "图 13 学生响应随指令幅值的变化。蓝为 300 架同分布对象，红为 500 架分布外对象；(a) 中位误差与四分位带（虚线为门限），(b) 三门槛通过率。" [ref=e467]
+    - heading "5.3.4 与固定增益 PID 的对照" [level=3] [ref=e469]
+    - paragraph [ref=e470]:
+      - text: 为判断上述边界是否是“学习控制器特有”，在同一批对象（300 同分布 + 500 分布外）和同一批指令上 运行一个经典基线：二阶自由度 PID，含参考前馈、抗积分饱和，输入为力请求（±22 N），再折算成同一 力速率接口。增益在对象 train_core-0421 上做网格搜索得到（k
+      - subscript [ref=e471]: p
+      - text: =128、k
+      - subscript [ref=e472]: i
+      - text: =60、 k
+      - subscript [ref=e473]: d
+      - text: =0.8、k
+      - subscript [ref=e474]: ff
+      - text: =6.0），此后**不再调整**，即无增益调度。
+    - paragraph [ref=e475]: 按同一门限判定，学生在全部指令与全部对象上通过率更高：同分布 ±1 为 99.7% 对 80.0%，±31 为 60.3% 对 35.7%； 分布外差距更大，±1 为 86.8% 对 46.6%，±31 为 27.6% 对 16.2%。PID 的零样本失效集中在分布外对象： 中位 RMSE 随对象变化跨 8.8–18.5 deg/s，学生在同一批对象上为 0.21–2.93 deg/s。小幅值段 PID 的中位误差更低 （0.06 对 0.11），但其峰值与力变化率越界，因此门限通过率反而更低——两者在“精度”与“合格”上不是同一口径。
+    - text: SECTIONS.append(tab("表 6 固定增益 PID 与统一学生在同一批对象上的对照", ["指令", "PID·同分布", "学生·同分布", "PID·分布外", "学生·分布外"], [["±1 deg/s", "80.0% (0.06)", "99.7% (0.11)", "46.6% (8.78)", "86.8% (0.21)"], ["±5 deg/s", "76.7% (0.30)", "99.3% (0.32)", "43.4% (13.41)", "73.4% (0.69)"], ["±10 deg/s", "74.7% (0.61)", "99.3% (0.36)", "40.2% (14.11)", "66.0% (0.95)"], ["±21 deg/s", "58.3% (1.28)", "86.0% (0.69)", "28.6% (15.67)", "42.0% (2.03)"], ["±31 deg/s", "35.7% (1.90)", "60.3% (1.13)", "16.2% (18.53)", "27.6% (2.93)"], ["双脉冲 / 多正弦", "72.3% / 78.3%", "99.0% / 99.7%", "36.8% / 43.2%", "76.8% / 84.4%"]]))
+    - paragraph [ref=e476]: 本文对照的是不随对象变化的单一控制律，这正是统一控制器要替代的工程对象：若每条控制律都需按机型单独整定， 跨对象部署的成本就回到了逐架设计。学生策略把这一步省掉，代价是极小幅值段的精度略低。
+    - heading "5.4 第四步：DHC-6 仿真目标上的小样本微调" [level=3] [ref=e477]
+    - paragraph [ref=e478]: 在相同 15 deg/s 阶跃、8 s 评价时域及 ARX 目标模型下，8 个适配状态的 RMSE 中位数由 2.913 降至 0.595 deg/s，4 个留出状态由 2.662 降至 2.148 deg/s。适配状态降低 79.6%，未参与更新的留出状态降低 19.3%：微调同时给出拟合收益与跨状态泛化收益，前者更大是预期行为。
+    - paragraph [ref=e479]: 同一配方用于 3,856 参数 tiny 学生，得到一条明确的容量分工：源域蒸馏对容量不敏感（同分布 1.28× 对 1.34×）， 目标域适配对容量敏感——tiny 适配后为 1.57 deg/s，small 为 0.59 deg/s，相差 2.7 倍。据此本文的部署建议是 “源域用 3,856 参数、目标域用 75,040 参数”：前者负责通用律，后者负责机型适配。更新预算同样影响结果： 40 步内每个适配状态只被访问 5 次，初始性能已较好的状态会被后访问的状态拉走，扩大步数即可缓解。
+    - table [ref=e480]:
+      - caption [ref=e481]: 表 4 DHC-6 仿真微调前后跟踪误差（中位数）
+      - rowgroup [ref=e482]:
+        - row [ref=e483]:
+          - columnheader "状态组" [ref=e484]
+          - columnheader "样本数" [ref=e485]
+          - columnheader "微调前 RMSE（deg/s）" [ref=e486]
+          - columnheader "微调后 RMSE（deg/s）" [ref=e487]
+          - columnheader "相对变化" [ref=e488]
+      - rowgroup [ref=e489]:
+        - row [ref=e490]:
+          - cell "适配" [ref=e491]
+          - cell "8" [ref=e492]
+          - cell "2.913" [ref=e493]
+          - cell "0.595" [ref=e494]
+          - cell "下降 79.6%" [ref=e495]
+        - row [ref=e496]:
+          - cell "留出" [ref=e497]
+          - cell "4" [ref=e498]
+          - cell "2.662" [ref=e499]
+          - cell "2.148" [ref=e500]
+          - cell "下降 19.3%" [ref=e501]
+    - table [ref=e502]:
+      - caption [ref=e503]: 表 5 两种容量学生在 DHC-6 上的微调前后（中位 RMSE，deg/s）
+      - rowgroup [ref=e504]:
+        - row [ref=e505]:
+          - columnheader "学生" [ref=e506]
+          - columnheader "参数量" [ref=e507]
+          - columnheader "适配前" [ref=e508]
+          - columnheader "适配后" [ref=e509]
+          - columnheader "留出前" [ref=e510]
+          - columnheader "留出后" [ref=e511]
+      - rowgroup [ref=e512]:
+        - row [ref=e513]:
+          - cell "tiny" [ref=e514]
+          - cell "3,856" [ref=e515]
+          - cell "4.127" [ref=e516]
+          - cell "1.574" [ref=e517]
+          - cell "2.778" [ref=e518]
+          - cell "2.624" [ref=e519]
+        - row [ref=e520]:
+          - cell "small" [ref=e521]
+          - cell "75,040" [ref=e522]
+          - cell "2.913" [ref=e523]
+          - cell "0.595" [ref=e524]
+          - cell "2.662" [ref=e525]
+          - cell "2.148" [ref=e526]
+    - figure "图 14 DHC-6 仿真 ARX 对象上的微调前后对照（15 deg/s 阶跃）；虚线区分适配与留出状态。" [ref=e527]:
+      - img "图 14 DHC-6 仿真 ARX 对象上的微调前后对照（15 deg/s 阶跃）；虚线区分适配与留出状态。" [ref=e528]
+    - figure "图 15 代表性 DHC-6 仿真状态的微调前后闭环响应。适配状态微调后贴合参考；留出状态保持原策略的响应形态。" [ref=e530]:
+      - img "图 15 代表性 DHC-6 仿真状态的微调前后闭环响应。适配状态微调后贴合参考；留出状态保持原策略的响应形态。" [ref=e531]
+    - heading "6讨论" [level=2] [ref=e533]
+    - paragraph [ref=e534]: 源域结果显示，49 个逐对象教师中多数达到项目门限；然而统一学生的 RMSE 中位数仍高于对应教师，且 4 个留出对象中仅 3 个通过。120 对象扩展抽样的通过率为 78.3%，幅值扫描则显示，±31 deg/s 阶跃通过率从同分布样本的 60.3% 降至 OOD 样本的 27.6%。在固定增益 PID 的对照中，学生策略在分布外对象上的退化幅度显著更小，但在同分布小幅值段的精度不及经过前馈整定的 PID。这些结果共同表明，蒸馏能够将策略压缩至数千参数并保留大部分常规响应能力，但学生策略对对象参数和指令幅值仍敏感。
+    - paragraph [ref=e535]: DHC-6 微调降低了 8 个适配状态和 4 个留出状态的 RMSE，但适配组改善大于留出组。两种容量的对比还说明，源域蒸馏对容量不敏感（1.28× 与 1.34×），但同一配方迁移到真实对象后，3,856 参数学生的适配后误差是 75,040 参数学生的 2.7 倍，且部分状态因更新顺序出现回退。这说明少量目标域数据可以在当前模型与测试条件下更新策略，。目标域对象由 DHC-6 仿真记录辨识得到的 ARX 模型表示；当前测试也未覆盖横航向耦合、状态估计误差和完整控制系统约束。
+    - paragraph [ref=e536]: 本文的飞行品质作用体现在源域对象参数化、等级覆盖和训练后门限评价。归档 PPO 奖励仍由跟踪误差、作用力能量和动作幅值构成，未逐项引入 GJB 条款指标。因此，当前证据支持的是“在飞行品质参数化对象上训练滚转控制器”，而不是“用 GJB 品质指标直接训练控制器”。若要验证后一目标，需将可计算的品质指标加入奖励或约束，并重新训练教师、蒸馏学生和实施目标域迁移；该扩展尚未完成。
+    - heading [level=3] [ref=e537]:
+      - text: 6.1 延迟表征实验：稀疏自编码器能否提取 τ
+      - subscript [ref=e538]: p
+    - paragraph [ref=e539]:
+      - text: 策略输入采用 32×5 历史，前提是历史中确实带有对象时延的信息。本节在固定 tiny 学生与 510 个分层对象上回答两个问题： τ
+      - subscript [ref=e540]: p
+      - text: 能否从历史中读出，以及 16 维紧凑潜码能否替代原始历史作为输入。
+    - heading "6.1.1 数据、表征与探针" [level=4] [ref=e541]
+    - paragraph [ref=e542]:
+      - text: 从 IV-A 对象库的 train_core、validation、id_test 三个互不重叠的划分中，按 τ
+      - subscript [ref=e543]: p
+      - text: 分三层各抽 100、30、40 架，共 510 架；每架运行 8 条指令（±1、±2、±5、±10、±21、±31 deg/s 阶跃、双脉冲和多正弦），由 tiny 学生闭环驱动，记录 32×5 历史、当前量、旧动作和动作，共 489,600 个窗口。留出集为 120 架、960 个“对象—指令”episode。
+    - paragraph [ref=e544]:
+      - text: 这里的 τ
+      - subscript [ref=e545]: p
+      - text: 是对象输入前的
+      - strong [ref=e546]: 纯运输延迟
+      - text: （代码级 FIFO，模拟 e
+      - superscript [ref=e547]:
+        - text: −τ
+        - subscript [ref=e548]: p
+        - text: s
+      - text: ），用于构造延迟分层压力测试；它
+      - strong [ref=e549]: 不是
+      - text: GJB 2874-1997 表 A21 的拟合等效延迟 τ
+      - subscript [ref=e550]: e
+      - text: ，不能按 0.10/0.20/0.25 s 给对象打 GJB 延迟等级。两者的完整边界、4 阶 LOES 结构和为什么训练只能用 τ
+      - subscript [ref=e551]: p
+      - text: ，见 6.1.4。
+    - paragraph [ref=e552]:
+      - text: SAE 输入为 160 维展平历史，编码器为 160→64→16，分别采用 L1 稀疏或 top-k 稀疏，解码器对称；训练后冻结，只训练延迟读出或策略头。对照表征包括原始历史 160 维、PCA-16、稠密 AE-16、36 维请求力—响应互相关，以及 5 维通道均值。延迟探针使用因果前缀：从 1.2 s 起，对截至当前时刻的窗口运行平均后做线性回归，预测 τ
+      - subscript [ref=e553]: p
+      - text: ；训练、验证、测试按对象划分，避免同一架飞机的窗口泄漏。
+    - figure "图 16 延迟表征实验的两条前端：部署学生使用原始 32×5 历史（上）；实验分支将历史送入冻结 SAE，得到 16 维稀疏潜码，再分别接策略头或线性延迟探针（下）。SAE 只做表征，策略/探针在冻结潜码上训练；对照包括 PCA、稠密 AE、原始历史和互相关。" [ref=e554]:
+      - img "图 16 延迟表征实验的两条前端：部署学生使用原始 32×5 历史（上）；实验分支将历史送入冻结 SAE，得到 16 维稀疏潜码，再分别接策略头或线性延迟探针（下）。SAE 只做表征，策略/探针在冻结潜码上训练；对照包括 PCA、稠密 AE、原始历史和互相关。" [ref=e555]
+    - heading "6.1.2 延迟可解码性" [level=4] [ref=e557]
+    - paragraph [ref=e558]: 表 6 和图 17 汇总 1.2 s 与 2.0 s 因果前缀的留出结果。作为背景，tiny 学生在短、中、长延迟层的闭环通过率分别为 94.0%、93.5% 和 88.8%，中位 RMSE 分别为 0.343、0.363 和 0.438 deg/s；长延迟确实更难。
+    - table [ref=e559]:
+      - caption [ref=e560]:
+        - text: 表 6 从因果历史前缀估计 τ
+        - subscript [ref=e561]: p
+        - text: 的留出结果（120 架，960 episode）
+      - rowgroup [ref=e562]:
+        - row [ref=e563]:
+          - columnheader "表征" [ref=e564]
+          - columnheader "维度" [ref=e565]
+          - columnheader "1.2 s R²" [ref=e566]
+          - columnheader "1.2 s MAE (ms)" [ref=e567]
+          - columnheader "2.0 s R²" [ref=e568]
+          - columnheader "2.0 s MAE (ms)" [ref=e569]
+      - rowgroup [ref=e570]:
+        - row [ref=e571]:
+          - cell [ref=e572]:
+            - text: 互相关（F
+            - subscript [ref=e573]: req
+            - text: —p）
+          - cell "36" [ref=e574]
+          - cell "0.995" [ref=e575]
+          - cell "2.9" [ref=e576]
+          - cell "0.968" [ref=e577]
+          - cell "8.4" [ref=e578]
+        - row [ref=e579]:
+          - cell "稠密 AE" [ref=e580]
+          - cell "16" [ref=e581]
+          - cell "0.608" [ref=e582]
+          - cell "32.8" [ref=e583]
+          - cell "0.656" [ref=e584]
+          - cell "29.5" [ref=e585]
+        - row [ref=e586]:
+          - cell "原始历史" [ref=e587]
+          - cell "160" [ref=e588]
+          - cell "0.567" [ref=e589]
+          - cell "34.7" [ref=e590]
+          - cell "0.588" [ref=e591]
+          - cell "33.0" [ref=e592]
+        - row [ref=e593]:
+          - cell "PCA" [ref=e594]
+          - cell "16" [ref=e595]
+          - cell "0.496" [ref=e596]
+          - cell "38.3" [ref=e597]
+          - cell "0.552" [ref=e598]
+          - cell "35.4" [ref=e599]
+        - row [ref=e600]:
+          - cell "通道均值" [ref=e601]
+          - cell "5" [ref=e602]
+          - cell "0.440" [ref=e603]
+          - cell "41.5" [ref=e604]
+          - cell "0.461" [ref=e605]
+          - cell "38.8" [ref=e606]
+        - row [ref=e607]:
+          - cell "L1-SAE（L0≈7）" [ref=e608]
+          - cell "16" [ref=e609]
+          - cell "0.344" [ref=e610]
+          - cell "43.6" [ref=e611]
+          - cell "0.554" [ref=e612]
+          - cell "35.5" [ref=e613]
+        - row [ref=e614]:
+          - cell "Top-k SAE（k=4）" [ref=e615]
+          - cell "16" [ref=e616]
+          - cell "0.122" [ref=e617]
+          - cell "53.2" [ref=e618]
+          - cell "0.506" [ref=e619]
+          - cell "37.8" [ref=e620]
+        - row [ref=e621]:
+          - cell "L1-SAE（L0≈3.5）" [ref=e622]
+          - cell "16" [ref=e623]
+          - cell "0.075" [ref=e624]
+          - cell "56.1" [ref=e625]
+          - cell "0.484" [ref=e626]
+          - cell "38.2" [ref=e627]
+    - figure "图 17 延迟表征的可解码性。(a) 1.2 s 与 2.0 s 因果前缀的测试 R²；(b) 对应 MAE；(c) R² 随观测时间的变化；(d) 稀疏度—延迟信息权衡。留出 120 架对象、960 个对象—指令 episode。" [ref=e628]:
+      - img "图 17 延迟表征的可解码性。(a) 1.2 s 与 2.0 s 因果前缀的测试 R²；(b) 对应 MAE；(c) R² 随观测时间的变化；(d) 稀疏度—延迟信息权衡。留出 120 架对象、960 个对象—指令 episode。" [ref=e629]
+    - paragraph [ref=e631]:
+      - text: 结果可归纳为三点。其一，
+      - strong [ref=e632]: 延迟是可解码的
+      - text: ：36 维互相关在 1.2 s 即达到 R² = 0.995、MAE = 2.9 ms；稠密 AE、原始历史和 PCA 也在约 0.50–0.61 之间。其二，
+      - strong [ref=e633]: 稀疏有明显代价
+      - text: ：16 维稠密 AE 为 0.608，而 L0≈7 的 L1-SAE 为 0.344，top-k4 仅 0.122；L0≈3.5 时进一步降到 0.075。其三，
+      - strong [ref=e634]: 简单时移特征优于学习表征
+      - text: ：延迟信息主要存在于请求力与响应之间的时移，而不是绝对幅值或低维流形；互相关的 MAE 比最好的 16 维学习表征低约一个数量级。
+    - paragraph [ref=e635]: 由此得到的输入选型结论是：延迟信息在历史中可被线性读出，稠密 16 维编码保留该信息（PCA 与稠密 AE 的 R² 约 0.50–0.61）， 稀疏约束使其丢失（L0≈7 为 0.344，top-k4 为 0.122）。16 维本身不构成瓶颈，稀疏性才是；因此策略输入保留原始历史， 若需压缩则用稠密编码，不用稀疏潜码。
+    - paragraph [ref=e636]: 本节在 510 架对象、16 维瓶颈、线性读出与 0–0.2 s 时延范围内评估。互相关探针用于判断历史中是否含有延迟信息， 它本身不是可部署控制器。
+    - heading "6.1.3 闭环对照与跨时延迁移" [level=4] [ref=e637]
+    - paragraph [ref=e638]:
+      - text: 闭环对照在同一 510 架对象划分上进行。策略变体包括：原始历史（tiny 微调）、PCA-16、稠密 AE-16、Top-k SAE-16，以及把 SAE 潜码作为辅助输入接回 tiny 的 SAE-aux。为保证比较公平，除 raw 基线外，各变体在相同 BC 数据上预训练，并用同一 DAgger 预算（96 架源域对象、β = 0.5、8 轮）补充学生自身访问状态；评价仍按短、中、长延迟分层。跨时延列另训一组仅见短/中延迟（τ
+      - subscript [ref=e639]: p
+      - text: ≤ 0.15 s）的模型，在长延迟留出对象上评价。
+    - table [ref=e640]:
+      - caption [ref=e641]: 表 7 闭环对照：按延迟分层的通过率与跨时延迁移
+      - rowgroup [ref=e642]:
+        - row [ref=e643]:
+          - columnheader "变体" [ref=e644]
+          - columnheader "短延迟" [ref=e645]
+          - columnheader "中延迟" [ref=e646]
+          - columnheader "长延迟" [ref=e647]
+          - columnheader "长延迟 RMSE (deg/s)" [ref=e648]
+          - columnheader "仅源域训练 → 长延迟" [ref=e649]
+      - rowgroup [ref=e650]:
+        - row [ref=e651]:
+          - cell "原始历史（tiny 微调）" [ref=e652]
+          - cell "93.1%" [ref=e653]
+          - cell "95.3%" [ref=e654]
+          - cell "90.0%" [ref=e655]
+          - cell "0.408" [ref=e656]
+          - cell "90.0%" [ref=e657]
+        - row [ref=e658]:
+          - cell "PCA-16" [ref=e659]
+          - cell "60.0%" [ref=e660]
+          - cell "60.3%" [ref=e661]
+          - cell "51.6%" [ref=e662]
+          - cell "1.406" [ref=e663]
+          - cell "47.5%" [ref=e664]
+        - row [ref=e665]:
+          - cell "稠密 AE-16" [ref=e666]
+          - cell "69.1%" [ref=e667]
+          - cell "72.5%" [ref=e668]
+          - cell "63.7%" [ref=e669]
+          - cell "0.731" [ref=e670]
+          - cell "—" [ref=e671]
+        - row [ref=e672]:
+          - cell "Top-k SAE-16" [ref=e673]
+          - cell "85.6%" [ref=e674]
+          - cell "79.7%" [ref=e675]
+          - cell "71.9%" [ref=e676]
+          - cell "0.708" [ref=e677]
+          - cell "46.2%" [ref=e678]
+        - row [ref=e679]:
+          - cell "SAE-aux（保留原始历史）" [ref=e680]
+          - cell "93.1%" [ref=e681]
+          - cell "95.6%" [ref=e682]
+          - cell "90.0%" [ref=e683]
+          - cell "0.409" [ref=e684]
+          - cell "90.0%" [ref=e685]
+    - figure "图 18 闭环对照。(a) 各策略在短/中/长延迟层的通过率（120 架留出，960 episode）；(b) 仅用短/中延迟训练后，长延迟留出的通过率与全延迟训练的对比。raw 与 SAE-aux 保持 90%，PCA 与 Top-k SAE 明显下降。" [ref=e686]:
+      - img "图 18 闭环对照。(a) 各策略在短/中/长延迟层的通过率（120 架留出，960 episode）；(b) 仅用短/中延迟训练后，长延迟留出的通过率与全延迟训练的对比。raw 与 SAE-aux 保持 90%，PCA 与 Top-k SAE 明显下降。" [ref=e687]
+    - paragraph [ref=e689]: 表 7 与图 18 给出闭环结果。raw_ft 与 tiny 基线基本一致（短 93.1%、中 95.3%、长 90.0%），说明当前 BC/DAgger 流程没有破坏基线。所有 16 维替换类都低于 raw：PCA-16 为 60.0/60.3/51.6%，稠密 AE-16 为 69.1/72.5/63.7%，Top-k SAE-16 为 85.6/79.7/71.9%。SAE-aux 保持 93.1/95.6/90.0%，与 raw 持平。
+    - paragraph [ref=e690]: 跨时延列给出更直接的检验：仅用短/中延迟训练后，raw 与 SAE-aux 仍保持 90.0% 和 90.0%，PCA 降到 47.5%，Top-k SAE 从 71.9% 降到 46.2%。Top-k SAE 在同分布替换类中最好，但其优势没有转化为跨时延迁移；相反，它对训练时见过的延迟范围更敏感。SAE-aux 与 raw 持平（90.0% 对 90.0%），定位为安全选项：保留原始历史、附加潜码不改变主策略行为。
+    - paragraph [ref=e691]: PCA 与稠密 AE 各重复一次，长延迟通过率分别落在 51.6–55.6% 与 52.5–63.8%；这说明替换类的具体排序对种子敏感，但“明显低于 raw”这一定性结论在两次运行中一致。raw 与 SAE-aux 的 90% 在重复运行中保持稳定。
+    - heading [level=4] [ref=e692]:
+      - text: 6.1.4 τ
+      - subscript [ref=e693]: p
+      - text: 与 GJB 等效时间延迟 τ
+      - subscript [ref=e694]: e
+      - text: 的职责边界
+    - paragraph [ref=e695]:
+      - text: GJB 2874-1997 A5.4.1.1.5（印刷 246–247，PDF 250–251）对滚转轴给出
+      - strong [ref=e696]:
+        - text: 等效时间延迟 τ
+        - subscript [ref=e697]: e
+      - text: 的建议上限：1 级 0.10 s、2 级 0.20 s、3 级 0.25 s（表 A21）。同页说明，该要求针对前置滤波器、SAS、舵机等
+      - strong [ref=e698]: 综合延迟作用
+      - text: ；A4.9（印刷 68，PDF 72）进一步指出，经典传递函数通常要加入时间延迟项，以改善高频拟合，并与驾驶员评价相关。
+    - paragraph [ref=e699]:
+      - text: 滚转轴低阶等效系统（LOES）是
+      - strong [ref=e700]: 4 阶
+      - text: ，不是 2 阶或 3 阶。GJB A5.4.1.1.1（印刷 210–211，PDF 214–215）的滚转速率传递函数包含滚转、螺旋和荷兰滚三个模态；印刷 212 页明确说滚转速率响应通常由这三个模态组成。其分母为 (s−λ
+      - subscript [ref=e701]: s
+      - text: )(s+1/T
+      - subscript [ref=e702]: R
+      - text: )(s²+2ζ
+      - subscript [ref=e703]: d
+      - text: ω
+      - subscript [ref=e704]: d
+      - text: s+ω
+      - subscript [ref=e705]: d
+      - text: ²)，共 4 阶；分子为 s(s²+2ζ
+      - subscript [ref=e706]: φ
+      - text: ω
+      - subscript [ref=e707]: φ
+      - text: s+ω
+      - subscript [ref=e708]: φ
+      - text: ²)，共 3 阶；再乘 e
+      - superscript [ref=e709]:
+        - text: −τ
+        - subscript [ref=e710]: e
+        - text: s
+      - text: 。τ
+      - subscript [ref=e711]: e
+      - text: 是这个 4 阶拟合的延迟项，不是一只独立的硬件计时器。
+    - paragraph [ref=e712]:
+      - text: 因此 τ
+      - subscript [ref=e713]: e
+      - text: 不是对象参数，而是
+      - strong [ref=e714]: 闭环拟合量
+      - text: 。它依赖控制器、采样保持、作动器、滤波器、增稳系统和拟合协议；同一对象换控制器，τ
+      - subscript [ref=e715]: e
+      - text: 会变；训练前也无法知道。若把 τ
+      - subscript [ref=e716]: e
+      - text: 作为 plant 采样参数，会形成循环依赖，并使训练/测试划分随策略变化。
+    - paragraph [ref=e717]:
+      - text: 本文的 τ
+      - subscript [ref=e718]: p
+      - text: 是对象输入前的纯运输 FIFO 延迟（e
+      - superscript [ref=e719]:
+        - text: −τ
+        - subscript [ref=e720]: p
+        - text: s
+      - text: ），可在训练前采样，用于生成对象族、训练和延迟分层。它不是 GJB 的 τ
+      - subscript [ref=e721]: e
+      - text: ；表 A21 的 0.10/0.20/0.25 s 不能用于给 τ
+      - subscript [ref=e722]: p
+      - text: 打等级。要评价 τ
+      - subscript [ref=e723]: e
+      - text: ，需要另建完整闭环 + 4 阶 LOES 拟合 + 残差检查；本文在 6.1.5 给出首版评价，但受单种子、单幅值和项目门限限制，仍不构成 A21 符合性结论。
+    - table [ref=e724]:
+      - caption [ref=e725]:
+        - text: 表 9 τ
+        - subscript [ref=e726]: p
+        - text: 与 GJB τ
+        - subscript [ref=e727]: e
+        - text: 的职责边界
+      - rowgroup [ref=e728]:
+        - row [ref=e729]:
+          - columnheader "项目" [ref=e730]
+          - columnheader [ref=e731]:
+            - text: τ
+            - subscript [ref=e732]: p
+            - text: （本文对象参数）
+          - columnheader [ref=e733]:
+            - text: τ
+            - subscript [ref=e734]: e
+            - text: （GJB A21 评价量）
+      - rowgroup [ref=e735]:
+        - row [ref=e736]:
+          - cell "数学位置" [ref=e737]
+          - cell [ref=e738]:
+            - text: 对象输入前 e
+            - superscript [ref=e739]:
+              - text: −τ
+              - subscript [ref=e740]: p
+              - text: s
+          - cell [ref=e741]:
+            - text: 闭环 LOES 拟合项 e
+            - superscript [ref=e742]:
+              - text: −τ
+              - subscript [ref=e743]: e
+              - text: s
+        - row [ref=e744]:
+          - cell "已知时机" [ref=e745]
+          - cell "训练前采样" [ref=e746]
+          - cell "控制器确定后拟合" [ref=e747]
+        - row [ref=e748]:
+          - cell "依赖控制器" [ref=e749]
+          - cell "否" [ref=e750]
+          - cell "是" [ref=e751]
+        - row [ref=e752]:
+          - cell "主要用途" [ref=e753]
+          - cell "对象生成、训练、延迟分层" [ref=e754]
+          - cell "飞行品质评价" [ref=e755]
+        - row [ref=e756]:
+          - cell "范围 / 门限" [ref=e757]
+          - cell "0.001–0.20 s 常态；0.5 s OOD" [ref=e758]
+          - cell "1 级 ≤0.10 s；2 级 ≤0.20 s；3 级 ≤0.25 s" [ref=e759]
+        - row [ref=e760]:
+          - cell "A21 可评性" [ref=e761]
+          - cell "不可直接评" [ref=e762]
+          - cell "需拟合残差合格" [ref=e763]
+    - paragraph [ref=e764]:
+      - text: 这一边界也解释了为什么 6.1.2 的探针目标是 τ
+      - subscript [ref=e765]: p
+      - text: 而不是 τ
+      - subscript [ref=e766]: e
+      - text: ：τ
+      - subscript [ref=e767]: p
+      - text: 是每架飞机在训练前就确定的静态标签，适合做延迟分层和可解码性检验；τ
+      - subscript [ref=e768]: e
+      - text: 随策略变化，不能作为固定的 plant 标签。若后续要回答“当前策略的 GJB 等效延迟是多少”，应在完整闭环上单独做 τ
+      - subscript [ref=e769]: e
+      - text: 拟合，而不是把本节结果改写成 A21 等级。
+    - heading [level=4] [ref=e770]:
+      - text: 6.1.5 GJB τ
+      - subscript [ref=e771]: e
+      - text: 首版评价（120 架 × 3 策略）
+    - paragraph [ref=e772]:
+      - text: 按 6.1.4 的边界，本文另建了一个 τ
+      - subscript [ref=e773]: e
+      - text: 评价原型：在 120 架留出对象（短/中/长各 40）上，对原始历史、Top-k SAE-16 和 SAE-aux 三个策略，注入 0.1–10 rad/s 的 18 分量多正弦滚转指令，记录 180 s 闭环响应；在 50 Hz 采样上估计 H(jω) = P/P
+      - subscript [ref=e774]: c
+      - text: ，再拟合 4 阶滚转 LOES（滚转 + 螺旋 + 荷兰滚）和 τ
+      - subscript [ref=e775]: e
+      - text: 。二阶参考模型保留在回路内，视为飞控系统的一部分。
+    - paragraph [ref=e776]:
+      - text: 拟合门限为项目设定，不是 GJB 规定：幅值 VAF ≥ 0.95 且相位 RMSE ≤ 10°；不过门记
+      - code [ref=e777]: not_assessable
+      - text: ，不赋 A21 等级。表 10 和图 19 给出结果。
+    - table [ref=e778]:
+      - caption [ref=e779]:
+        - text: 表 10 GJB τ
+        - subscript [ref=e780]: e
+        - text: 首版评价（120 架，4 阶 LOES）
+      - rowgroup [ref=e781]:
+        - row [ref=e782]:
+          - columnheader "策略" [ref=e783]
+          - columnheader "可评 / 120" [ref=e784]
+          - columnheader [ref=e785]:
+            - text: τ
+            - subscript [ref=e786]: e
+            - text: 中位 (s)
+          - columnheader "短 / 中 / 长中位 (s)" [ref=e787]
+          - columnheader "1 级" [ref=e788]
+          - columnheader "2 级" [ref=e789]
+          - columnheader "3 级" [ref=e790]
+          - columnheader ">3 级" [ref=e791]
+      - rowgroup [ref=e792]:
+        - row [ref=e793]:
+          - cell "原始历史" [ref=e794]
+          - cell "73/120" [ref=e795]
+          - cell "0.073" [ref=e796]
+          - cell "0.042 / 0.127 / 0.299" [ref=e797]
+          - cell "43" [ref=e798]
+          - cell "15" [ref=e799]
+          - cell "4" [ref=e800]
+          - cell "11" [ref=e801]
+        - row [ref=e802]:
+          - cell "SAE-aux" [ref=e803]
+          - cell "102/120" [ref=e804]
+          - cell "0.102" [ref=e805]
+          - cell "0.032 / 0.125 / 0.309" [ref=e806]
+          - cell "51" [ref=e807]
+          - cell "14" [ref=e808]
+          - cell "7" [ref=e809]
+          - cell "30" [ref=e810]
+        - row [ref=e811]:
+          - cell "Top-k SAE-16" [ref=e812]
+          - cell "0/120" [ref=e813]
+          - cell "—" [ref=e814]
+          - cell "— / — / —" [ref=e815]
+          - cell "0" [ref=e816]
+          - cell "0" [ref=e817]
+          - cell "0" [ref=e818]
+          - cell "0" [ref=e819]
+    - figure "图 19 GJB τe 首版评价。(a) 可评对象的 τe 与 τp；(b) A21 等级分布（未过拟合门的对象单列）；(c) 一个原始历史对象的 Bode 拟合示例。Top-k SAE-16 的 120 架全部未过拟合门，因此没有 A21 等级。" [ref=e820]:
+      - img "图 19 GJB τe 首版评价。(a) 可评对象的 τe 与 τp；(b) A21 等级分布（未过拟合门的对象单列）；(c) 一个原始历史对象的 Bode 拟合示例。Top-k SAE-16 的 120 架全部未过拟合门，因此没有 A21 等级。" [ref=e821]
+    - paragraph [ref=e823]:
+      - text: 结果有三点。其一，
+      - strong [ref=e824]:
+        - text: τ
+        - subscript [ref=e825]: e
+        - text: 随 τ
+        - subscript [ref=e826]: p
+        - text: 增大
+      - text: ：原始历史在短、中、长延迟的可评中位 τ
+      - subscript [ref=e827]: e
+      - text: 分别为 0.042、0.127、0.299 s；SAE-aux 为 0.032、0.125、0.309 s。长延迟对象的 τ
+      - subscript [ref=e828]: e
+      - text: 中位约 0.30 s，已超过表 A21 的 3 级上限 0.25 s。
+    - paragraph [ref=e829]:
+      - text: 其二，
+      - strong [ref=e830]: 可评比例本身是结果
+      - text: ：120 架中，原始历史 73 架、SAE-aux 102 架通过 4 阶 LOES 拟合门；Top-k SAE-16 为 0 架。Top-k SAE 的闭环频响在低频段散乱并伴随持续振荡，VAF 中位仅 0.824、相位 RMSE 中位 35.1°，因此只能记
+      - code [ref=e831]: not_assessable
+      - text: ，不能把 τ
+      - subscript [ref=e832]: e
+      - text: 填成 0。
+    - paragraph [ref=e833]:
+      - text: 其三，
+      - strong [ref=e834]: 可评集合内的等级分布并不乐观
+      - text: ：原始历史 73 架可评对象中，1 级 43 架、2 级 15 架、3 级 4 架、超过 3 级 11 架；SAE-aux 102 架可评对象中分别为 51、14、7、30 架。SAE-aux 的可评比例更高，但在可评集合内 τ
+      - subscript [ref=e835]: e
+      - text: 中位反而更高；这是选择效应——raw 的许多长延迟难例因残差不过门被排除，两个集合不能直接比较。
+    - paragraph [ref=e836]:
+      - text: 局限：主表为种子 1、每分量 1 deg/s、180 s 记录；6.1.6 补了三档幅值与第二种子，但仍不是多源/多机型统计。拟合门限（VAF 0.95、相位 10°）是项目设定，不是 GJB 规定；参考模型被计入飞控系统。因此表 10 只说明当前策略在“可拟合对象”上的 τ
+      - subscript [ref=e837]: e
+      - text: 量级，不构成 A21 符合性结论；Top-k SAE 的
+      - code [ref=e838]: not_assessable
+      - text: 也不能解释为“延迟更小”。
+    - heading [level=4] [ref=e839]:
+      - text: 6.1.6 τ
+      - subscript [ref=e840]: e
+      - text: 评价的稳健性：激励幅值与策略种子
+    - paragraph [ref=e841]:
+      - text: 为检查 τ
+      - subscript [ref=e842]: e
+      - text: 是否只是某一激励幅值下的拟合产物，在同一 120 架 × 3 策略上重复了 0.5、1.0、2.0 deg/s（每分量）三档多正弦激励，拟合协议与门限保持不变。表 11 和图 20 给出结果。
+    - table [ref=e843]:
+      - caption [ref=e844]:
+        - text: 表 11 激励幅值对 τ
+        - subscript [ref=e845]: e
+        - text: 评价的影响（120 架 × 3 策略）
+      - rowgroup [ref=e846]:
+        - row [ref=e847]:
+          - columnheader "策略" [ref=e848]
+          - columnheader "可评 / 120（0.5 / 1.0 / 2.0）" [ref=e849]
+          - columnheader [ref=e850]:
+            - text: τ
+            - subscript [ref=e851]: e
+            - text: 中位（0.5 / 1.0 / 2.0）
+          - columnheader "共同可评 n" [ref=e852]
+          - columnheader [ref=e853]:
+            - text: 共同集 τ
+            - subscript [ref=e854]: e
+            - text: 范围 (s)
+      - rowgroup [ref=e855]:
+        - row [ref=e856]:
+          - cell "原始历史" [ref=e857]
+          - cell "41 / 73 / 91" [ref=e858]
+          - cell "0.065 / 0.073 / 0.094" [ref=e859]
+          - cell "40" [ref=e860]
+          - cell "0.055–0.066" [ref=e861]
+        - row [ref=e862]:
+          - cell "SAE-aux" [ref=e863]
+          - cell "78 / 102 / 111" [ref=e864]
+          - cell "0.111 / 0.102 / 0.127" [ref=e865]
+          - cell "75" [ref=e866]
+          - cell "0.105–0.116" [ref=e867]
+        - row [ref=e868]:
+          - cell "Top-k SAE-16" [ref=e869]
+          - cell "0 / 0 / 0" [ref=e870]
+          - cell "— / — / —" [ref=e871]
+          - cell "0" [ref=e872]
+          - cell "—" [ref=e873]
+    - figure "图 20 τe 评价的激励幅值稳健性。(a) 三种幅值共同可评对象上的 τe 中位；(b) 可评对象数随幅值变化；(c) Top-k SAE 在三种幅值下的 VAF 与相位残差。" [ref=e874]:
+      - img "图 20 τe 评价的激励幅值稳健性。(a) 三种幅值共同可评对象上的 τe 中位；(b) 可评对象数随幅值变化；(c) Top-k SAE 在三种幅值下的 VAF 与相位残差。" [ref=e875]
+    - paragraph [ref=e877]:
+      - text: 幅值主要影响
+      - strong [ref=e878]: 可评比例
+      - text: ，而不是 τ
+      - subscript [ref=e879]: e
+      - text: 本身：原始历史可评数从 41 升到 73、再到 91，SAE-aux 从 78 升到 102、再到 111；这是因为大幅值提高了信噪比，使 4 阶 LOES 更容易过相位门。但在 40 架（raw）和 75 架（aux）
+      - strong [ref=e880]: 三种幅值都可评
+      - text: 的共同对象上，τ
+      - subscript [ref=e881]: e
+      - text: 中位基本稳定：raw 为 0.055–0.066 s，aux 为 0.105–0.116 s，跨度约 0.01 s。因此 6.1.5 的 τ
+      - subscript [ref=e882]: e
+      - text: 排序不是单一幅值造成的假象。
+    - paragraph [ref=e883]: Top-k SAE-16 在三种幅值下均为 0/120：VAF 中位分别为 0.732、0.824、0.807，相位 RMSE 中位分别为 52.6°、35.1°、40.9°。这说明它的 not_assessable 不是幅值选错，而是闭环响应本身不能被 4 阶 LOES 表示（或长时小信号下持续振荡）。
+    - paragraph [ref=e884]:
+      - text: 拟合门限本身也做了敏感性检查：相位门取 8°、10°、12° 时，原始历史可评数为 53/73/84，τ
+      - subscript [ref=e885]: e
+      - text: 中位为 0.071/0.073/0.090 s；SAE-aux 为 81/102/110 和 0.100/0.102/0.098 s；Top-k SAE 始终为 0。可见可评比例依赖门限，但 raw/aux 的 τ
+      - subscript [ref=e886]: e
+      - text: 量级和 Top-k SAE 的失败对门限不敏感。
+    - paragraph [ref=e887]:
+      - text: 为检查策略训练随机性，raw、Top-k SAE 和 SAE-aux 各用第二种子重训（相同 BC/DAgger 预算），再做同一 τ
+      - subscript [ref=e888]: e
+      - text: 评价。表 12 和图 21 给出结果。
+    - table [ref=e889]:
+      - caption [ref=e890]:
+        - text: 表 12 策略种子对 τ
+        - subscript [ref=e891]: e
+        - text: 评价的影响（120 架）
+      - rowgroup [ref=e892]:
+        - row [ref=e893]:
+          - columnheader "策略" [ref=e894]
+          - columnheader "可评（s1 / s2）" [ref=e895]
+          - columnheader [ref=e896]:
+            - text: τ
+            - subscript [ref=e897]: e
+            - text: 中位（s1 / s2）
+          - columnheader "共同 n" [ref=e898]
+          - columnheader "共同中位（s1 / s2）" [ref=e899]
+          - columnheader "1/2/3/>3 级（s1 → s2）" [ref=e900]
+      - rowgroup [ref=e901]:
+        - row [ref=e902]:
+          - cell "原始历史" [ref=e903]
+          - cell "73 / 77" [ref=e904]
+          - cell "0.073 / 0.078" [ref=e905]
+          - cell "73" [ref=e906]
+          - cell "0.073 / 0.075" [ref=e907]
+          - cell "43/15/4/11 → 43/15/5/14" [ref=e908]
+        - row [ref=e909]:
+          - cell "SAE-aux" [ref=e910]
+          - cell "102 / 106" [ref=e911]
+          - cell "0.102 / 0.106" [ref=e912]
+          - cell "101" [ref=e913]
+          - cell "0.100 / 0.095" [ref=e914]
+          - cell "51/14/7/30 → 52/15/7/32" [ref=e915]
+        - row [ref=e916]:
+          - cell "Top-k SAE-16" [ref=e917]
+          - cell "0 / 0" [ref=e918]
+          - cell "— / —" [ref=e919]
+          - cell "0" [ref=e920]
+          - cell "—" [ref=e921]
+          - cell "0/0/0/0 → 0/0/0/0" [ref=e922]
+    - figure "图 21 τe 评价的策略种子稳健性。(a) 两个种子共同可评对象的逐对象 τe；(b) 两个种子的 A21 等级分布。" [ref=e923]:
+      - img "图 21 τe 评价的策略种子稳健性。(a) 两个种子共同可评对象的逐对象 τe；(b) 两个种子的 A21 等级分布。" [ref=e924]
+    - paragraph [ref=e926]:
+      - text: 两个种子的结果基本一致。原始历史可评数 73 → 77，τ
+      - subscript [ref=e927]: e
+      - text: 中位 0.073 → 0.078 s，共同可评集 73 架的中位 0.073 → 0.075 s，等级分布 43/15/4/11 → 43/15/5/14。SAE-aux 可评数 102 → 106，中位 0.102 → 0.106 s，共同 101 架中位 0.100 → 0.095 s，等级分布 51/14/7/30 → 52/15/7/32。
+    - paragraph [ref=e928]:
+      - text: Top-k SAE 两个种子均为 0/120 可评，说明它的
+      - code [ref=e929]: not_assessable
+      - text: 不是某一策略种子的偶然。由此可以认为：6.1.5 的 τ
+      - subscript [ref=e930]: e
+      - text: 量级、延迟分层的单调趋势，以及 Top-k SAE 的拟合失败，在“两个种子 × 三档幅值”的范围内是稳健的；但这不是多源、多机型或 GJB 审定意义上的统计置信度。
+    - figure "图 22 Top-k SAE 与原始历史的 180 s 闭环响应（id_test-3458，每分量 1 deg/s）。(a) 时域响应；(b) 功率谱。Top-k SAE 在 0–3 Hz 的低频段功率明显更高，说明其闭环响应不是单纯的延迟增大，而是伴随持续低频振荡/非线性，导致 4 阶 LOES 拟合失败。" [ref=e931]:
+      - img "图 22 Top-k SAE 与原始历史的 180 s 闭环响应（id_test-3458，每分量 1 deg/s）。(a) 时域响应；(b) 功率谱。Top-k SAE 在 0–3 Hz 的低频段功率明显更高，说明其闭环响应不是单纯的延迟增大，而是伴随持续低频振荡/非线性，导致 4 阶 LOES 拟合失败。" [ref=e932]
+    - heading "6.2 后续实验计划：执行机构敏感性" [level=3] [ref=e934]
+    - paragraph [ref=e935]:
+      - strong [ref=e936]: 以下实验尚未开展，不属于本文结果。
+      - text: 为检验当前执行机构设置是否影响策略表现，先在固定对象、随机种子和指令集上对现有策略做冻结权重敏感性扫描；若结果对参数明显敏感，再按相同训练预算分别重训 PPO，区分“环境变化造成的鲁棒性下降”与“策略能否适应新约束”。每次只改变一个因素，并同步记录教师验收率、RMSE、峰值误差、请求力总变差率、饱和比例，以及 DHC-6 适配组和留出组结果。
+    - table [ref=e937]:
+      - caption [ref=e938]: 表 8 待开展的执行机构消融
+      - rowgroup [ref=e939]:
+        - row [ref=e940]:
+          - columnheader "因素" [ref=e941]
+          - columnheader "当前基线" [ref=e942]
+          - columnheader "计划对照" [ref=e943]
+          - columnheader "目的" [ref=e944]
+      - rowgroup [ref=e945]:
+        - row [ref=e946]:
+          - cell "请求力限幅" [ref=e947]
+          - cell "±22 N" [ref=e948]
+          - cell "±16.5 N、±27.5 N" [ref=e949]
+          - cell "评估控制权限范围变化的影响；桥接与目标舵面边界同步换算" [ref=e950]
+        - row [ref=e951]:
+          - cell "命令速率限制" [ref=e952]
+          - cell "88 N/s" [ref=e953]
+          - cell "44 N/s、176 N/s" [ref=e954]
+          - cell "评估舵面速率变化对跟踪、平滑性和迁移的影响" [ref=e955]
+        - row [ref=e956]:
+          - cell "执行机构滞后" [ref=e957]
+          - cell "一阶时间常数 20 ms" [ref=e958]
+          - cell "0 ms、40 ms" [ref=e959]
+          - cell "判断当前滞后假设是否改变闭环表现，并检查目标对象中是否重复计入执行机构动态" [ref=e960]
+    - paragraph [ref=e961]: 力限幅和速率限幅在当前桥接下分别对应副翼角度和速率边界，消融时需同步更新源域与目标域接口。后续还应扩大未参与教师训练的同分布和分布外测试集，并在相同对象、指令和安全约束下与常规滚转控制律对照。仿真级对照完成后，再逐步引入更高保真模型、滚转—偏航耦合和机载实时性评估。
+    - heading "7结论" [level=2] [ref=e962]
+    - paragraph [ref=e963]: 本文给出了一条可复用的链路：品质分级采样得到对象族，逐对象教师给出上界，单学生蒸馏把 49 个教师压到 3,856 参数， 目标域微调把通用律接到具体机型上。三个记忆点：其一，压缩不损精度——学生与教师的中位误差比为 1.28 倍，容量放大 20 倍后仍为 1.34 倍； 其二，边界清晰——±1 deg/s 通过 99.7%、±31 deg/s 通过 60.3%，大幅值与分布外参数是主要失分区； 其三，迁移有效——40 步微调把适配状态中位误差降至 0.59 deg/s（−79.6%），留出状态降至 2.15 deg/s。
+    - paragraph [ref=e964]:
+      - text: 延迟表征实验补充了另一个边界：32×5 历史的因果前缀可以解码 τ
+      - subscript [ref=e965]: p
+      - text: ，但 16 维稀疏 SAE 的延迟读出与闭环替换均弱于原始历史；SAE 作为辅助输入可保持基线，却没有可测增益。需要强调，τ
+      - subscript [ref=e966]: p
+      - text: 不是 GJB 的 τ
+      - subscript [ref=e967]: e
+      - text: ；6.1.5 的首版 τ
+      - subscript [ref=e968]: e
+      - text: 评价给出了量级和等级分布，6.1.6 又用三档激励幅值和两个策略种子做了稳健性检查，但受项目拟合门限、有限幅值/种子和参考模型假设限制，仍不构成 A21 符合性结论。
+    - paragraph [ref=e969]: 下一步是把这条链路推到执行机构与实际接机上：执行机构参数敏感性给出控制权限的适用区间，滚转—偏航耦合给出多轴条件下的边界。
+    - heading "参考文献" [level=2] [ref=e970]
+    - list [ref=e971]:
+      - listitem [ref=e972]: "GJB 185-1986. 有人驾驶飞机（固定翼）飞行品质[S]. 北京: 国防科学技术工业委员会, 1986."
+      - listitem [ref=e973]: "MIL-STD-1797A. Flying qualities of piloted aircraft[S]. Washington: Department of Defense, 1990."
+      - listitem [ref=e974]: J. Schulman, F. Wolski, P. Dhariwal, et al. Proximal policy optimization algorithms[J]. arXiv:1707.06347, 2017.
+      - listitem [ref=e975]: S. Ross, G. Gordon, D. Bagnell. A reduction of imitation learning and structured prediction to no-regret online learning[C]. AISTATS, 2011.
+      - listitem [ref=e976]: "V. Vapnik, A. Vashist. A new learning paradigm: learning using privileged information[J]. Neural Networks, 2009, 22(5-6): 544-557."
+      - listitem [ref=e977]: "L. Pinto, M. Andrychowicz, P. Welinder, et al. Asymmetric actor critic for image-based robot learning[C]. Robotics: Science and Systems, 2017."
+      - listitem [ref=e978]: J. Lee, J. Hwangbo, L. Wellhausen, et al. Learning quadrupedal locomotion over challenging terrain[J]. Science Robotics, 2020, 5(47).
+      - listitem [ref=e979]: T. Miki, J. Lee, J. Hwangbo, et al. Learning robust perceptive locomotion for quadrupedal robots in the wild[J]. Science Robotics, 2022, 7(62).
+      - listitem [ref=e980]: "A. Kumar, Z. Fu, D. Pathak, et al. RMA: Rapid motor adaptation for legged robots[C]. Robotics: Science and Systems, 2021."
+      - listitem [ref=e981]: M. O'Connell, G. Shi, X. Shi, et al. Neural-Fly enables rapid learning for agile flight in strong winds[J]. Science Robotics, 2023, 8(78).
+      - listitem [ref=e982]: "E. Kaufmann, L. Bauersfeld, A. Loquercio, et al. Champion-level drone racing using deep reinforcement learning[J]. Nature, 2023, 620: 982-987."
+      - listitem [ref=e983]: J. Eschmann, D. Albani, G. Loianno. Learning to fly in seconds[J]. IEEE Robotics and Automation Letters, 2024.

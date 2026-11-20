@@ -1,0 +1,597 @@
+{
+  "checked_unix": 1792931461.5632129,
+  "original_archive": "/home/swj/pingmo/飞控大模型研究_交付_2026-10-24.zip",
+  "preserved_directory": "/home/swj/pingmo/delivery_review_2026-10-24/package",
+  "corrected_directory": "/home/swj/pingmo/flight_control_corrected_2026-10-24",
+  "preserved_changed": [],
+  "preserved_missing": [],
+  "corrected_changed": [
+    {
+      "path": "experiments/gjb_tau_e_20261023/HANDOFF.md",
+      "original_sha256": "a0d78440e9b3d51ea66c3732cc71fa56f6c169e57fc22a845964721bcbf8d938",
+      "bytes": 3720,
+      "current_sha256": "0e31e3c6bd673da87908c41ecbf562a1af8ca5e4aa80dfbd342e6d2b3aa49a41",
+      "current_bytes": 616
+    },
+    {
+      "path": "experiments/gjb_tau_e_20261023/README.md",
+      "original_sha256": "78f1e1bf23822fa4a8375c9d0afda03582d85e63a14996c46f7b01b624eb054e",
+      "bytes": 3368,
+      "current_sha256": "928991bc90b3a2af765a640f41171f6a3a4d0e528ae6e9ead7466011eee6fdd8",
+      "current_bytes": 3098
+    },
+    {
+      "path": "experiments/gjb_tau_e_20261023/tau_e.py",
+      "original_sha256": "beaf4e6e237129836ef1c154fc63f935a580e11747ddff0373958b039759deeb",
+      "bytes": 14940,
+      "current_sha256": "0aaa7bd760b3719063bcd183281eaeb650b4c6ee786b4e38b5a902fb7b25896f",
+      "current_bytes": 17088
+    },
+    {
+      "path": "experiments/sae_delay_20261023/collect.py",
+      "original_sha256": "062edef943c0d2d4b8c2297d5a567b6e959db9bbd7810cc844a0960d760b7303",
+      "bytes": 5912,
+      "current_sha256": "b466b12b9c84f6a6a238889d31527efe25fa2e7688847ca52b84887003a3b4a8",
+      "current_bytes": 6761
+    },
+    {
+      "path": "experiments/sae_delay_20261023/common.py",
+      "original_sha256": "9a200de5e22a7039c905be941e36d48697f0950d52542f207d3e6fdc847aa1a8",
+      "bytes": 11068,
+      "current_sha256": "edc98da7f9724124786c1f7339305d4f2dbab54c93c9c9f274af38dca1c827b8",
+      "current_bytes": 11343
+    },
+    {
+      "path": "experiments/sae_delay_20261023/features.py",
+      "original_sha256": "5107e6cfab5e9333a932fcea0f841f55df618c0f11083506ef216f7a13694978",
+      "bytes": 3278,
+      "current_sha256": "37386574584f96ff235c56f1b37f3350e941b84236e7a8f5ef11d1dab58f5ddf",
+      "current_bytes": 4060
+    },
+    {
+      "path": "experiments/sae_delay_20261023/probe.py",
+      "original_sha256": "95678cf4676e462308c9e254eecf1dd5f34157530ad62ef5c975b3633f3e063a",
+      "bytes": 14893,
+      "current_sha256": "37be743a6e9dbf6e41cb7b1b7d260a7816c39d6960046bdbc27825fe9939bf3c",
+      "current_bytes": 15107
+    },
+    {
+      "path": "experiments/sae_delay_20261023/probe_episode.py",
+      "original_sha256": "790e9157da96fc7b613cea0336db9d7122562e73956631b02c6e72c3db47ac23",
+      "bytes": 5309,
+      "current_sha256": "c8afd1f36381f5dbb6d16470642d002ee4ebd8d412eb6e556b351b3ab5c89334",
+      "current_bytes": 6053
+    },
+    {
+      "path": "experiments/sae_delay_20261023/README.md",
+      "original_sha256": "edbe858e0c0551e42a21de91a7c1d82fd003f5aafa418ee0b5e9d48b69d18364",
+      "bytes": 4118,
+      "current_sha256": "4606d0f745d0d70517a8c861d14b75e06ed2382494a974f2d7170581c2f217cb",
+      "current_bytes": 4610
+    },
+    {
+      "path": "experiments/sae_delay_20261023/train_policy.py",
+      "original_sha256": "2e55d70fd6f95c3e94075641eaaf6246a1244001087965b815a3f301f5b42445",
+      "bytes": 21929,
+      "current_sha256": "c249470a71b396b2e2d462aa44bc4945c1156f00dfbc2f65b725741699350a2d",
+      "current_bytes": 27320
+    },
+    {
+      "path": "experiments/sae_delay_20261023/train_sae.py",
+      "original_sha256": "69ec60093590463935a27674378c641ad983faa239a622077b7c61a8a4268923",
+      "bytes": 7489,
+      "current_sha256": "406ddf2e72f1b975d4c9ba9cfb806cea134d3aea4b58e1be95419b598b2586a7",
+      "current_bytes": 8394
+    },
+    {
+      "path": "paper_source/dhc6_paper.py",
+      "original_sha256": "22325fe704564ce27852fb2e2fd93156dc02dfebb6ef94da86092f0b8419ba5b",
+      "bytes": 93599,
+      "current_sha256": "60bbe7df03f3aacd9f80192a0ee8fda9898f5cbbece29d3da54d15eee29b6271",
+      "current_bytes": 2082
+    },
+    {
+      "path": "pingmo_src/src/aircraft/gain_calibration.py",
+      "original_sha256": "42cb4f7c26feaced5bf123ddd6df2a9a7f072b1aaf580e93cfeb90c4e3545f2a",
+      "bytes": 1592,
+      "current_sha256": "44146c9858763eaa491091295356ffa73fc76182e8e194dcdc5fc3c4d41cb4d1",
+      "current_bytes": 1749
+    },
+    {
+      "path": "pingmo_src/src/aircraft/sampler.py",
+      "original_sha256": "1027cc6bed4a5a1a06b5f9f2bf1de9bac1349321d4b26de27cfc7113708bde2f",
+      "bytes": 21657,
+      "current_sha256": "48363cc9d2d1e6208b72be63d8671ee3bcb9deb9aa448264f1c9f09464500056",
+      "current_bytes": 22182
+    },
+    {
+      "path": "pingmo_src/src/benchmark/time_domain.py",
+      "original_sha256": "5b46e596e8cb89570aec163ab795f7c87c314325dd57b0e77af7bd02113315ce",
+      "bytes": 5281,
+      "current_sha256": "5d9004a9ecfbb24925f40e57bb037a271194114a357b16f0067d3f95a5100742",
+      "current_bytes": 5313
+    },
+    {
+      "path": "pingmo_src/src/envs/batched_p_channel.py",
+      "original_sha256": "2d8a73e24e2ccdee693245aaebfbf21d769aec270436498b61141f0fd2d42fd7",
+      "bytes": 14598,
+      "current_sha256": "9ac7f50b9372a9be202e93f95c218291a37e5c9999b95559f7604c8437d59ab9",
+      "current_bytes": 18936
+    },
+    {
+      "path": "pingmo_src/src/quality/modal_response.py",
+      "original_sha256": "66a60095cabeb4cf9db9e45c693efe4d343d74bc0ed43f0d00e7dfcc81abc494",
+      "bytes": 7844,
+      "current_sha256": "a1b0f7d472af7f7e7cd3810c867a4abae0c63f0a22125ecc7238279e0ccfb3c3",
+      "current_bytes": 7883
+    },
+    {
+      "path": "pingmo_src/src/teacher/ppo/networks.py",
+      "original_sha256": "ac9a2545b7c78d458979be3750d4ecaa14590341986512e436ee3baf1e32e3e6",
+      "bytes": 7468,
+      "current_sha256": "b5758674faf7c9296847bf8000989f3f9d578e81c3ed28d13d4f0737b7c140d1",
+      "current_bytes": 7968
+    },
+    {
+      "path": "pingmo_src/src/teacher/ppo/trainer.py",
+      "original_sha256": "082c65373c16631ee865673bff588ed4627d7a23c4d7898a778014586924f4a2",
+      "bytes": 11715,
+      "current_sha256": "f84790a75fca772daa5e48a62185c98bda0da50489312be8fb60fe62e06111e8",
+      "current_bytes": 21128
+    },
+    {
+      "path": "webpage/dhc6_paper.html",
+      "original_sha256": "e69184997dfccc13bdbe5641b90bbb321b8ba63d1884dede11574b418d486b8c",
+      "bytes": 75465,
+      "current_sha256": "82506b769e7387d780d9ff71c4297df7636e0c917284c29e66c4a96e79458dbb",
+      "current_bytes": 81725
+    },
+    {
+      "path": "webpage/dhc6_report.html",
+      "original_sha256": "e69184997dfccc13bdbe5641b90bbb321b8ba63d1884dede11574b418d486b8c",
+      "bytes": 75465,
+      "current_sha256": "82506b769e7387d780d9ff71c4297df7636e0c917284c29e66c4a96e79458dbb",
+      "current_bytes": 81725
+    },
+    {
+      "path": "webpage/dhc6_report.md",
+      "original_sha256": "f0ca0f091ebea9f79b1ef2aa90207faffff75b5eaf5b487787c863db3e2df136",
+      "bytes": 49520,
+      "current_sha256": "27bca0fb40d7b11c6f1b7598c3448860440b7d08998cc5906aa027c1a96f93f7",
+      "current_bytes": 62347
+    },
+    {
+      "path": "webpage/evidence/gjb_tau_e/HANDOFF.md",
+      "original_sha256": "a0d78440e9b3d51ea66c3732cc71fa56f6c169e57fc22a845964721bcbf8d938",
+      "bytes": 3720,
+      "current_sha256": "94267fae0c11b1889510ba3161b5472fe1f429df7857513734d015fe07830937",
+      "current_bytes": 409
+    },
+    {
+      "path": "00_交付说明.md",
+      "original_sha256": "fd41c796c6b476dabf8320c6687a3f78eaeea86d5c1aa6a8dfa8c9f5f3be3093",
+      "bytes": 3834,
+      "current_sha256": "3f76eb1dda7d01cf1fbf1873371f39d78fe8affec406ddbf6d22c2be51d26295",
+      "current_bytes": 5551
+    }
+  ],
+  "corrected_missing": [
+    {
+      "path": "experiments/gjb_tau_e_20261023/__pycache__/tau_e.cpython-314.pyc",
+      "original_sha256": "7b2ae27d7d0883660388d10d90c361a5deb33747f4eb3fe0fc58a72f86fe44c7",
+      "bytes": 30217
+    },
+    {
+      "path": "paper_source/dhc6_blog_assets/__pycache__/make_delay_network.cpython-314.pyc",
+      "original_sha256": "e0a86ff3605911a76c85a30961a254112c765aa217642a6a955190610a53517b",
+      "bytes": 12540
+    },
+    {
+      "path": "paper_source/dhc6_blog_assets/__pycache__/make_network_tensor.cpython-314.pyc",
+      "original_sha256": "56e9bafe6e4d2941373f3ab536e6c7dd0ae3a33c782338c9ba3f52b5e09d1928",
+      "bytes": 11391
+    },
+    {
+      "path": "pingmo_src/src/aircraft/__pycache__/delay.cpython-314.pyc",
+      "original_sha256": "6a8ee3815c2a94d62fbc85f0d52d4bbebc1c0e9e5c16264303a14ab259d8af92",
+      "bytes": 3801
+    },
+    {
+      "path": "pingmo_src/src/aircraft/__pycache__/gain_calibration.cpython-314.pyc",
+      "original_sha256": "28d640379b72f605edfcdc3fc83714e3c8828307032228a41b78a2f76117dfdb",
+      "bytes": 2872
+    },
+    {
+      "path": "pingmo_src/src/aircraft/__pycache__/parameters.cpython-314.pyc",
+      "original_sha256": "1f95463ace4a3012a75b5c05dadb2ec9beafe79dbbdda123eb5a3b09fa40506e",
+      "bytes": 2847
+    },
+    {
+      "path": "pingmo_src/src/aircraft/__pycache__/p_channel.cpython-314.pyc",
+      "original_sha256": "6d71128f591d00a98fe87bd9d67793b0e91618541b518a69feaf2c03bc1c3bf7",
+      "bytes": 5660
+    },
+    {
+      "path": "pingmo_src/src/aircraft/__pycache__/sampler.cpython-314.pyc",
+      "original_sha256": "a7255da707bc757746a33c453d5d1b710c9135fe36460a96ed3a8c4b014c9996",
+      "bytes": 36696
+    },
+    {
+      "path": "pingmo_src/src/aircraft/__pycache__/__init__.cpython-314.pyc",
+      "original_sha256": "a2e8510c339b38be135bb540a5f105841a45b11d2dca8864bc02b42e39225bbe",
+      "bytes": 214
+    },
+    {
+      "path": "pingmo_src/src/benchmark/__pycache__/time_domain.cpython-314.pyc",
+      "original_sha256": "321411d651e5398eb3d34c3cf18c1a4fe0c0315d184b6e1188d58bbcc52df64a",
+      "bytes": 10418
+    },
+    {
+      "path": "pingmo_src/src/context/__pycache__/aircraft_parameters.cpython-314.pyc",
+      "original_sha256": "5a36fc963b5c25270dd8a77193e435f4f94e75da2aecd362f6787473b96c0903",
+      "bytes": 3219
+    },
+    {
+      "path": "pingmo_src/src/controllers/__pycache__/pid.cpython-314.pyc",
+      "original_sha256": "7e47dcacf8f2813a77ba0ec7232a7ece416e72dda7047838a3e5ac6f3ceeede0",
+      "bytes": 8899
+    },
+    {
+      "path": "pingmo_src/src/distillation/__pycache__/collect_data.cpython-314.pyc",
+      "original_sha256": "63e0bc3106ed79fbfb9de608293d6ddae855a51f13cfabfb23409853ed20566a",
+      "bytes": 20083
+    },
+    {
+      "path": "pingmo_src/src/distillation/__pycache__/critic.cpython-314.pyc",
+      "original_sha256": "b2f8d5ef7c2fbd5a3b5dba8c16da0fd97985e136852a9965cc80bac60a783335",
+      "bytes": 8787
+    },
+    {
+      "path": "pingmo_src/src/distillation/__pycache__/dataset.cpython-314.pyc",
+      "original_sha256": "a593d2904021ba3d13601fafd3ba8b252a180619fcd8b516bbdedc1a731b4e0c",
+      "bytes": 25542
+    },
+    {
+      "path": "pingmo_src/src/distillation/__pycache__/distill.cpython-314.pyc",
+      "original_sha256": "0f10d2a79c188c73c2f7711e8b38ca3b0eca428c039749246925e743efd5f48c",
+      "bytes": 43458
+    },
+    {
+      "path": "pingmo_src/src/distillation/__pycache__/losses.cpython-314.pyc",
+      "original_sha256": "f48dd9f71125c65295fee81c1e9fd6977e6ae5239d6cdc8380348be139b5a8e8",
+      "bytes": 7512
+    },
+    {
+      "path": "pingmo_src/src/distillation/__pycache__/student_driven.cpython-314.pyc",
+      "original_sha256": "af2fc6f145b0dc066a840a84724707c9fdf704a0967d540a4bc5c435d0392df6",
+      "bytes": 58683
+    },
+    {
+      "path": "pingmo_src/src/distillation/__pycache__/validate.cpython-314.pyc",
+      "original_sha256": "098a5eb7bd218820fc73610c6b6422adc78bba182b9508c12939e34b0527d452",
+      "bytes": 24030
+    },
+    {
+      "path": "pingmo_src/src/distillation/__pycache__/__init__.cpython-314.pyc",
+      "original_sha256": "dba57fa1b7e78f4858df4ac7d6a3627145304005372b7040943fbcf558edf692",
+      "bytes": 242
+    },
+    {
+      "path": "pingmo_src/src/envs/__pycache__/batched_p_channel.cpython-314.pyc",
+      "original_sha256": "e5b14dd92c14e154abaa2a038a9ac716e77e0ac3af639991283f6ac338af5265",
+      "bytes": 27158
+    },
+    {
+      "path": "pingmo_src/src/envs/__pycache__/commands.cpython-314.pyc",
+      "original_sha256": "6bad463ee3ee8b9c147b7c0ec30cdc650aec44a4d7d505354269582410f791eb",
+      "bytes": 14637
+    },
+    {
+      "path": "pingmo_src/src/envs/__pycache__/p_channel_env.cpython-314.pyc",
+      "original_sha256": "21ab90bb873d7f12954bef8f9620c4fb4e36c7ee9e81029e3c449fa42940c786",
+      "bytes": 28836
+    },
+    {
+      "path": "pingmo_src/src/envs/__pycache__/reference_model.cpython-314.pyc",
+      "original_sha256": "d0c663befb3c35306c1b4c31057458241f651e71ccadddadbc55d22a35f1f65f",
+      "bytes": 6210
+    },
+    {
+      "path": "pingmo_src/src/envs/__pycache__/response_cost.cpython-314.pyc",
+      "original_sha256": "11092e17d214734179a0df03961191cf91aa076d657fc02258665fd48fa10e97",
+      "bytes": 11754
+    },
+    {
+      "path": "pingmo_src/src/envs/__pycache__/reward.cpython-314.pyc",
+      "original_sha256": "d7ce63ebf67727ea52900dafc7b6d5344f0c2054d5c1886124f984cef34a0fa9",
+      "bytes": 3974
+    },
+    {
+      "path": "pingmo_src/src/envs/__pycache__/roll_rate_commands.cpython-314.pyc",
+      "original_sha256": "f7cb77cb3d6fe0e7f732a914848eb1e7d7879123b251bd475547b0ca6f52dfe1",
+      "bytes": 26027
+    },
+    {
+      "path": "pingmo_src/src/envs/__pycache__/specialist_tracking_env.cpython-314.pyc",
+      "original_sha256": "29742fcc5e91f0af6ceb46ef82b9f9bcf22633e1a28de82fa8aa7ddce757ec64",
+      "bytes": 39238
+    },
+    {
+      "path": "pingmo_src/src/envs/__pycache__/__init__.cpython-314.pyc",
+      "original_sha256": "cce617e5c35e545caa62c77b51abe95c2b53ce91406216e57b298cc23eabece7",
+      "bytes": 228
+    },
+    {
+      "path": "pingmo_src/src/experiments/__pycache__/exploratory_sac.cpython-314.pyc",
+      "original_sha256": "01a766e95639e573f6ec95b5fb9863fb30cc9e34f57797eecf8fd9c181475627",
+      "bytes": 16567
+    },
+    {
+      "path": "pingmo_src/src/experiments/__pycache__/__init__.cpython-314.pyc",
+      "original_sha256": "debee2a9f893c019ea92200d5ac1963b6b88797e78f3f98f66307ce86c618a95",
+      "bytes": 262
+    },
+    {
+      "path": "pingmo_src/src/student/dense/__pycache__/network.cpython-314.pyc",
+      "original_sha256": "3caa627a74e48ff0706b65c305ae61c934c19efda3ba78ce76b5a67bbf9d9e29",
+      "bytes": 10007
+    },
+    {
+      "path": "pingmo_src/src/student/dense/__pycache__/policy.cpython-314.pyc",
+      "original_sha256": "4adabf54e2ff06e13cefa16bcac124eadcd2e5f9233e2025d1053d0d17343278",
+      "bytes": 10637
+    },
+    {
+      "path": "pingmo_src/src/student/moe/__pycache__/network.cpython-314.pyc",
+      "original_sha256": "fd68a253c947b6d1c3cf1cf2c826b1bf20f007a956245966abaffe2fddcc3afd",
+      "bytes": 10208
+    },
+    {
+      "path": "pingmo_src/src/student/moe/__pycache__/__init__.cpython-314.pyc",
+      "original_sha256": "42aca6be426cdbe5578dd51b8b59f595e0ff8ba8e0b8a7e87e834678dd4fcdd1",
+      "bytes": 351
+    },
+    {
+      "path": "pingmo_src/src/student/__pycache__/__init__.cpython-314.pyc",
+      "original_sha256": "7e3962ed5dde28e7bbbd2f1c26b1a50c641ac64f2f298b38c918d31edb4f7106",
+      "bytes": 221
+    },
+    {
+      "path": "pingmo_src/src/teacher/ppo/__pycache__/networks.cpython-314.pyc",
+      "original_sha256": "6722e041e3bfee3bb59903997d7de1e3f8aaaf606d7976048530919fe3540448",
+      "bytes": 13888
+    },
+    {
+      "path": "pingmo_src/src/teacher/sac/__pycache__/actor.cpython-314.pyc",
+      "original_sha256": "0d5dff5f78b946a0183c701e97d51471b32e2bb61e8514cfbb161f8aa6155813",
+      "bytes": 4751
+    },
+    {
+      "path": "pingmo_src/src/teacher/sac/__pycache__/critic.cpython-314.pyc",
+      "original_sha256": "bfd0a6ebf8b654695ec277abe6a8e559ee40da16c44644c1a047742d9937e51c",
+      "bytes": 4194
+    },
+    {
+      "path": "pingmo_src/src/teacher/sac/__pycache__/replay.cpython-314.pyc",
+      "original_sha256": "ff249a5363e98fc345b5eeb1201d09c50c9093ffe29f41a0f76a148813e3f98d",
+      "bytes": 8205
+    },
+    {
+      "path": "pingmo_src/src/teacher/sac/__pycache__/teacher.cpython-314.pyc",
+      "original_sha256": "a189a98e01c19997df7254769991d250d1befd65af91f5b7c225d213d56a6abe",
+      "bytes": 10931
+    },
+    {
+      "path": "pingmo_src/src/teacher/specialist/__pycache__/admission.cpython-314.pyc",
+      "original_sha256": "00db6353f9e98978504a7f9ec8793e2793bb8245031b8d22cba5a7f9a7ef23a5",
+      "bytes": 11396
+    },
+    {
+      "path": "pingmo_src/src/teacher/specialist/__pycache__/pure_td3_trainer.cpython-314.pyc",
+      "original_sha256": "ac1f1dcef75bb4a6027fdc816c6d7b3d6818c9e16618f12da3fb6768c91d8df8",
+      "bytes": 37309
+    },
+    {
+      "path": "pingmo_src/src/teacher/specialist/__pycache__/trainer.cpython-314.pyc",
+      "original_sha256": "12ea7459ec80f3d661592505b6c18af86e56be5ff2efc7c37cac22e0180d6ab9",
+      "bytes": 41738
+    },
+    {
+      "path": "pingmo_src/src/teacher/td3/__pycache__/actor.cpython-314.pyc",
+      "original_sha256": "77b94362744b160c12b874c4e725b996f2790e2a6bfb5427fb938648c5951639",
+      "bytes": 9654
+    },
+    {
+      "path": "pingmo_src/src/teacher/td3/__pycache__/teacher.cpython-314.pyc",
+      "original_sha256": "76cb78aec33b04daf82857018af32c8947e8e988aabb0678e3a7fa2892c9e6cc",
+      "bytes": 19503
+    },
+    {
+      "path": "pingmo_src/src/teacher/td3/__pycache__/__init__.cpython-314.pyc",
+      "original_sha256": "c25022a665bc2d6510eede8f39064bfd346c8261a3c9c2975df34312f10ecf9a",
+      "bytes": 242
+    },
+    {
+      "path": "pingmo_src/src/teacher/__pycache__/residual.cpython-314.pyc",
+      "original_sha256": "7aa938e5b509309d579bf923a9ce13ffa8f85ed13567afeac73c4da5818ca349",
+      "bytes": 5762
+    },
+    {
+      "path": "pingmo_src/src/teacher/__pycache__/transitions.cpython-314.pyc",
+      "original_sha256": "1e64bd3c2de2d626a6a2b678ccb482dd393542602e0d58cff99fa5bb207ee7d4",
+      "bytes": 1611
+    },
+    {
+      "path": "pingmo_src/src/teacher/__pycache__/__init__.cpython-314.pyc",
+      "original_sha256": "4b7993fe6ae5b7626e69beb3cc6f6a757d7b85cab64e11e17480d37e8cf87105",
+      "bytes": 221
+    },
+    {
+      "path": "pingmo_src/src/transfer/__pycache__/fine_tune.cpython-314.pyc",
+      "original_sha256": "4809f340489f1d510f45981e4f031c5be28ef36ca49440de2e087994a918231e",
+      "bytes": 90991
+    },
+    {
+      "path": "pingmo_src/src/utils/__pycache__/plotting.cpython-314.pyc",
+      "original_sha256": "bf7d43bedcadde0f7024bd34f0636dba5e7b5eabc19a93fa0b7430a4538d0aff",
+      "bytes": 12895
+    },
+    {
+      "path": "pingmo_src/src/utils/__pycache__/provenance.cpython-314.pyc",
+      "original_sha256": "6b6b675f2c225465cab0a9c1d4f7ab9fcb7abc655fac99547c2a0fa6cb4d81de",
+      "bytes": 5748
+    },
+    {
+      "path": "pingmo_src/src/__pycache__/__init__.cpython-314.pyc",
+      "original_sha256": "7d311ce06f84d2c5667e442d274686c941c3706a3a494c72a245fafa02df4946",
+      "bytes": 224
+    }
+  ],
+  "original_weight_checks": [
+    {
+      "path": "evidence/weights/student_tiny.pt",
+      "sha256": "ff5f5b5b1a63d9f28204f2f9693d1a4b600385aa50f935743cee95ede9fa1aea",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/models/dense16.pt",
+      "sha256": "ac85dff89fb1331a7ee647a374e8cbfe6b24a17d775937475e0f84d71eb8ce2f",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/models/l1_3e-02.pt",
+      "sha256": "bc35283258b6473a6bab1a7826811c8f0ec01daacfbf7dd14097cf20f0cc70d4",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/models/l1_3e-03.pt",
+      "sha256": "75d2b67fe9c5e152bda532e2e569f9198976a4f50bbde8956f572ecb54d8c85f",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/models/l1_3e-04.pt",
+      "sha256": "e6dc66eb38029755b8194a543fa0b10d08f678b9b4e06dcc2684287bf4bb5607",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/models/topk4.pt",
+      "sha256": "3539a3b3fb49701608f8031a577655d3aaef400d82e299c980d933d445e9feef",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/models/topk8.pt",
+      "sha256": "7326d31a9ae0c5349b9fa9fa1fb065a961888780cd9e84bbd48ffe7c53758839",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/policies_all_dagger2/aux_topk4.pt",
+      "sha256": "350491e2a8f2e529db4848f0c30310b3d435f0941aca7f6ff95280d3125ba1d8",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/policies_all_dagger2/dense16.pt",
+      "sha256": "1c3c91292565addd24f7a7617605e80f99552959939febd392530c0e2263c514",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/policies_all_dagger2/pca16.pt",
+      "sha256": "8f5b6e4596e725065ef2c219cf95b91a06a0a20b95859b53140c6fa5655f2e59",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/policies_all_dagger2/raw_ft.pt",
+      "sha256": "a7a06c51bc318275c225cb1a603284f2c325c1549e4c744910c27fe86b082d58",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/policies_all_dagger2/topk4.pt",
+      "sha256": "e0b90dce3caaee62ab17f78946975c85390868364625e5f75c6857f2b5794fac",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/policies_cross/aux_topk4.pt",
+      "sha256": "753a481833639031e6544d4a32faca4a919ba52c33eda2a80c9c20d83d8be053",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/policies_cross/pca16.pt",
+      "sha256": "751efab1178d1edf9065237f9c33d6151fdba130388fdb42e9725bcde24680ec",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/policies_cross/raw_ft.pt",
+      "sha256": "67dcf2cdc70e54012de8b8554052d921a369b6b4d9efbec85e57347a04f56fe7",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/policies_cross/topk4.pt",
+      "sha256": "88d37947bc0b2d706807d01c1cb4fecde4ea7f45d933dee9be766e4e67cac030",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/policies_seed2/aux_topk4.pt",
+      "sha256": "2c1ffa288050568f98db63b63cf1c94f0471122558f7075d856d2e82e0cb349e",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/policies_seed2/raw_ft.pt",
+      "sha256": "34c48e7820869947b50980b4884a96bb2dd5f0af7c249ac3d6f90d98195df52e",
+      "preserved_matches": true,
+      "corrected_matches": true
+    },
+    {
+      "path": "experiments/sae_delay_20261023/results_large/policies_seed2/topk4.pt",
+      "sha256": "99a8753fb1cddebff69cfe8587db8ef5ff0e2dfd1842d927cae86d7d792b9e6f",
+      "preserved_matches": true,
+      "corrected_matches": true
+    }
+  ],
+  "counts": {
+    "original_files": 2076,
+    "preserved_unchanged": 2076,
+    "corrected_unchanged": 1998
+  },
+  "changed_python_files": [
+    "experiments/gjb_tau_e_20261023/tau_e.py",
+    "experiments/sae_delay_20261023/collect.py",
+    "experiments/sae_delay_20261023/common.py",
+    "experiments/sae_delay_20261023/features.py",
+    "experiments/sae_delay_20261023/probe.py",
+    "experiments/sae_delay_20261023/probe_episode.py",
+    "experiments/sae_delay_20261023/train_policy.py",
+    "experiments/sae_delay_20261023/train_sae.py",
+    "paper_source/dhc6_paper.py",
+    "pingmo_src/src/aircraft/gain_calibration.py",
+    "pingmo_src/src/aircraft/sampler.py",
+    "pingmo_src/src/benchmark/time_domain.py",
+    "pingmo_src/src/envs/batched_p_channel.py",
+    "pingmo_src/src/quality/modal_response.py",
+    "pingmo_src/src/teacher/ppo/networks.py",
+    "pingmo_src/src/teacher/ppo/trainer.py"
+  ],
+  "changed_by_top_directory": {
+    "experiments": 11,
+    "paper_source": 1,
+    "pingmo_src": 7,
+    "webpage": 4,
+    "00_交付说明.md": 1
+  },
+  "directory_entry_note": "Six Windows directory entries were previously counted as files; normalized trailing slashes identify them as directories."
+}

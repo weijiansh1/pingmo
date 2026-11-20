@@ -1,0 +1,191 @@
+"""Apply math typography and Figure 1 presentation to the original HTML only."""
+from pathlib import Path
+from bs4 import BeautifulSoup,Tag
+import ast,base64,hashlib,json,re,subprocess
+
+ROOT=Path(__file__).resolve().parents[1]
+ORIGINAL=ROOT.parent/'flight_control_original_restored_2026-10-25/webpage'
+EQUATIONS=[
+r'\begin{gathered}p_{\mathrm{ref}}(s)=\frac{\omega_{\mathrm{ref}}^2}{s^2+2\zeta_{\mathrm{ref}}\omega_{\mathrm{ref}}s+\omega_{\mathrm{ref}}^2}\,e^{-\tau_ps}p_{\mathrm{cmd}}(s),\\\omega_{\mathrm{ref}}=2\,\mathrm{rad/s},\quad\zeta_{\mathrm{ref}}=0.7.\end{gathered}',
+r'\begin{aligned}o_t&=\operatorname{Norm}([p_{\mathrm{cmd}},p_{\mathrm{ref}},p,e,\int e\,dt,\dot p,\dot p_{\mathrm{ref}},\\&\hspace{3.5em}F_{\mathrm{req}},F_{\mathrm{applied}},h_{t-31:t},a_{t-7:t-1}])\in\mathbb R^{176},\\o_t^{\mathrm T}&=[o_t,z_t]\in\mathbb R^{188},\qquad o_t^{\mathrm S}=o_t.\end{aligned}',
+r'G_\theta(s)=L_{F_a}\,\frac{s(s^2+2\zeta_\phi\omega_\phi s+\omega_\phi^2)}{(s-\lambda_s)(s+1/T_R)(s^2+2\zeta_d\omega_ds+\omega_d^2)}\,e^{-\tau_ps}.',
+r'\begin{aligned}\operatorname{RMSE}_p&=\sqrt{\frac1M\sum_{t=1}^M(p_{\mathrm{ref},t}-p_t)^2},\\\operatorname{Peak}&=\max_t|p_{\mathrm{ref},t}-p_t|,\\\operatorname{TV}_F&=\frac1T\sum_{t=1}^M|F_{\mathrm{req},t}-F_{\mathrm{req},t-1}|.\end{aligned}',
+r'\theta^{(i)}\sim q(\theta\mid c_i),\qquad g_i=\operatorname{Grade}_{\mathrm{GJB}}(\theta^{(i)},c_i).',
+r'\begin{gathered}F_{\mathrm{req},t+1}=\operatorname{clip}\!\left(F_{\mathrm{req},t}+(88\,\mathrm{N/s})a_t\Delta t,-22\,\mathrm N,22\,\mathrm N\right),\\\Delta t=0.02\,\mathrm s.\end{gathered}',
+r'r_t=-50\left[\left(\frac{e_t}{p_{\mathrm{scale}}}\right)^2\Delta t+0.02\left(\frac{F_{\mathrm{applied},t}}{22\,\mathrm N}\right)^2\Delta t+0.02a_t^2\right].',
+r'\begin{aligned}\delta_t&=r_t+\gamma V(s_{t+1})-V(s_t),\\\widehat A_t&=\delta_t+\gamma\lambda\widehat A_{t+1},\qquad\gamma=0.995,\quad\lambda=0.95.\end{aligned}',
+r'\begin{gathered}\mathcal L_{\mathrm{clip}}(w)=-\mathbb E_t\!\left[\min\!\left(\rho_t\widehat A_t,\operatorname{clip}(\rho_t,1-\epsilon,1+\epsilon)\widehat A_t\right)\right],\\\epsilon=0.2.\end{gathered}',
+r'\begin{aligned}\mathcal L_{\mathrm{total}}&=\mathcal L_{\mathrm{clip}}+0.5\,\mathbb E[(V_v(s_t)-R_t)^2]-0.001\,\mathcal H(\pi_w),\\R_t&=\widehat A_t+V_v(s_t).\end{aligned}',
+r'\begin{aligned}D_0&=\{(o_t,\mu_{\mathrm T}(o_t,z_t))\},\\D_{k+1}&=D_k\cup\{(o_t^{\mathrm S,k},\mu_{\mathrm T}(o_t^{\mathrm S,k},z_t))\}.\end{aligned}',
+r'w_{\mathrm S}^{*}=\operatorname*{arg\,min}_w\frac1{|D_K|}\sum_{(o,u_{\mathrm T})\in D_K}\|\mu_{\mathrm S}(o;w)-u_{\mathrm T}\|^2.',
+r'\begin{aligned}e_t(W)&=p_{\mathrm{ref},t}-p_t(W;\widehat G_{\mathrm{ARX}}),\\\mathcal L_{\mathrm{DHC6}}(W)&=\frac1{N_{t\ge2\,\mathrm s}}\sum_{t\ge2\,\mathrm s}e_t(W)^2,\\W_{k+1}&=\operatorname{AdamUpdate}(W_k,\nabla_W\mathcal L_{\mathrm{DHC6}};\eta=3\times10^{-5}).\end{aligned}',
+]
+GREEK={'θ':r'\theta','τ':r'\tau','ω':r'\omega','ζ':r'\zeta','λ':r'\lambda','γ':r'\gamma','δ':r'\delta','μ':r'\mu','π':r'\pi','ε':r'\epsilon','ρ':r'\rho','η':r'\eta','φ':r'\phi','ṗ':r'\dot p','Â':r'\widehat A','−':'-','≥':r'\ge ','≤':r'\le '}
+ROMAN={'ref','cmd','req','applied','scale','clip','total','Fa','GJB','ARX','DHC6'}
+def tex_text(value):
+    for a,b in GREEK.items():value=value.replace(a,b)
+    return re.sub(r'\b(ref|cmd|req|applied|scale|clip|total|Fa|GJB|ARX|DHC6)\b',lambda m:r'\mathrm{'+m[0]+'}',value)
+def node_tex(node):
+    if not isinstance(node,Tag):return tex_text(str(node))
+    text=''.join(node_tex(c) for c in node.children)
+    if node.name=='sub':return '_{'+text+'}'
+    if node.name=='sup':return '^{'+text+'}'
+    return text
+STYLE='''
+/* Presentation overlay: local math rendering; original paper layout retained. */
+.katex,.katex *{box-sizing:content-box;}
+.eq{display:flex;align-items:center;gap:16px;position:relative;padding:18px 16px;margin:20px 0;text-align:left;max-width:100%;overflow:hidden;font-size:16px;}
+.eq .math-content{flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;padding:5px 2px;}
+.eq .katex-display{margin:0;text-align:center;}
+.eq .katex-display>.katex{display:block;max-width:100%;}
+.eq .eqno{position:static;transform:none;flex:none;align-self:center;font-size:14px;color:#526275;}
+.math-inline{white-space:nowrap;}
+.math-inline>.katex{font-size:1.02em;}
+main figure:first-of-type img{width:100%;height:auto;}
+figure a.figure-zoom{display:block;line-height:0;}
+@media(max-width:640px){.eq{padding:12px 9px;gap:8px;font-size:12.5px;}.eq .eqno{font-size:12px;}}
+@media print{.eq{break-inside:avoid;overflow:visible;}.eq .math-content{overflow:visible;}figure{break-inside:avoid;}}
+'''
+def render(expressions):
+    return json.loads(subprocess.run(['node',str(ROOT/'paper_source/render_math.cjs')],input=json.dumps(expressions),text=True,capture_output=True,check=True).stdout)
+def clarify_reference(soup):
+    """Separate sampled plant dynamics from the existing reference settings."""
+    for index,element in enumerate(soup.select('.eq'),1):
+        element['data-source-equation']=str(index)
+    task=soup.select_one('#s21');objects=soup.select_one('#s22');metrics=soup.select_one('#s23')
+    task_block=[]
+    for element in task.find_next_siblings():
+        if element==objects:break
+        task_block.append(element)
+    reference=soup.select_one('[data-source-equation="1"]')
+    reference.extract();reference['id']='reference-model-equation'
+    first=next(element for element in task_block if element.name=='p')
+    first.clear()
+    first.append(BeautifulSoup('被控量为滚转角速度 <i>p</i>，外部任务给定指令 <i>p</i><sub>cmd</sub>。控制器需要完成指令跟踪，并抑制指令响应、初始偏差和外部扰动引起的不良振荡。跟踪误差记为 <i>e</i><sub>t</sub> = <i>p</i><sub>ref,t</sub> − <i>p</i><sub>t</sub>；本实验中目标响应的具体构造见<a href="#reference-signal-settings">第 4.1 节</a>。','html.parser'))
+    last=task_block[-1]
+    assert last.name=='p'
+    for node in list(last.children):
+        if isinstance(node,str) and '由二阶参考模型' in node:
+            # Remove the final reference explanation from the observation
+            # paragraph; its corresponding italic p_ref nodes precede it.
+            previous=node.previous_sibling
+            while previous is not None and isinstance(previous,Tag) and previous.name in ('i','sub'):
+                before=previous.previous_sibling;previous.extract();previous=before
+            node.extract()
+    # Move the existing object definition first; retain IDs for existing links.
+    object_nodes=[objects]
+    for element in objects.find_next_siblings():
+        if element==metrics:break
+        object_nodes.append(element)
+    for element in object_nodes:task.insert_before(element.extract())
+    objects.string='2.1 参数化滚转对象';task.string='2.2 控制任务与接口变量'
+    sampled=soup.new_tag('p',id='sampled-modal-parameters')
+    sampled.append(BeautifulSoup('对象的振荡模态频率 <i>ω</i><sub>d</sub>、阻尼比 <i>ζ</i><sub>d</sub>及其他动力学参数随 <i>θ</i> 共同采样，构成动态特性不同的对象族。下文参考信号的预设参数单独属于实验配置，不作为对象采样的约束。','html.parser'))
+    object_nodes[-1].insert_after(sampled)
+    for node in soup.find_all(string=lambda value:value and '第 2.2 节定义' in value):
+        node.replace_with(str(node).replace('第 2.2 节定义','第 2.1 节定义'))
+    task_link=soup.select_one('.toc a[href="#s21"]');object_link=soup.select_one('.toc a[href="#s22"]')
+    if task_link and object_link:
+        task_link.string='2.2 控制任务与接口变量';object_link.string='2.1 参数化滚转对象'
+        task_link.insert_before(object_link.extract())
+    settings=soup.select_one('#s4');intro=settings.find_next_sibling('p')
+    heading=soup.new_tag('h3',id='reference-signal-settings');heading.string='4.1 参考信号与实验取值'
+    explanation=soup.new_tag('p')
+    explanation.append(BeautifulSoup('为记录本实验实际采用的指令整形方式，目标响应 <i>p</i><sub>ref</sub> 由二阶参考模型生成。这里以 <i>ω</i><sub>ref</sub>、<i>ζ</i><sub>ref</sub> 表示参考模型的响应速度和阻尼，与第 2.1 节随对象采样的模态频率、阻尼分开记号：','html.parser'))
+    note=soup.new_tag('p')
+    note.append(BeautifulSoup('既有实验采用 <i>ω</i><sub>ref</sub> = 2 rad/s、<i>ζ</i><sub>ref</sub> = 0.7；式中的运输时延 <i>τ</i><sub>p</sub> 随对象设定。上述固定取值作为已使用的实验配置记录，不表示对象具有相同的频率或阻尼，也不是由对象采样或蒸馏理论推出的必需条件。现有材料尚未给出该组合的选值依据及敏感性验证。','html.parser'))
+    current=intro
+    for element in [heading,explanation,reference,note]:
+        current.insert_after(element);current=element
+    data_heading=soup.new_tag('h3',id='experiment-data-protocol');data_heading.string='4.2 对象划分与评价协议'
+    current.insert_after(data_heading)
+    settings_link=soup.select_one('.toc a[href="#s4"]')
+    if settings_link:
+        current=settings_link
+        for target,label in [('reference-signal-settings','4.1 参考信号与实验取值'),('experiment-data-protocol','4.2 对象划分与评价协议')]:
+            link=soup.new_tag('a',href='#'+target,attrs={'class':'sub'});link.string=label
+            current.insert_after(link);current=link
+def main():
+    manifests=[]
+    for filename in ['dhc6_report.html','dhc6_paper.html']:
+        original=(ORIGINAL/filename).read_bytes();soup=BeautifulSoup(original,'html.parser')
+        clarify_reference(soup)
+        content_baseline=BeautifulSoup(str(soup),'html.parser')
+        eqs=soup.select('.eq');assert len(eqs)==len(EQUATIONS)==13
+        equation_order=[int(element['data-source-equation']) for element in eqs]
+        assert equation_order==[3,2,4,5,6,7,8,9,10,11,12,13,1]
+        formulas=[{'tex':EQUATIONS[index-1],'display':True} for index in equation_order]
+        inline=[]
+        for element in soup.find_all('i'):
+            if element.find_parent(class_='eq') or element.find_parent(['sub','sup']):continue
+            value=element.get_text()
+            if not re.fullmatch(r'[A-Za-zθτωζλγδμπερφÂṗ]',value):continue
+            nodes=[element];following=element.next_sibling
+            while isinstance(following,Tag) and following.name in ['sub','sup']:
+                nodes.append(following);following=following.next_sibling
+            tex=''.join(node_tex(n) for n in nodes)
+            inline.append((nodes,tex,''.join(str(n) for n in nodes)))
+            formulas.append({'tex':tex,'display':False})
+        rendered=render(formulas)
+        for index,(element,html) in enumerate(zip(eqs,rendered[:13]),1):
+            element.clear();element['data-equation']=str(index)
+            math=soup.new_tag('div',attrs={'class':'math-content'});math.append(BeautifulSoup(html,'html.parser'))
+            number=soup.new_tag('span',attrs={'class':'eqno'});number.string=f'({index})'
+            element.append(math);element.append(number)
+        for (nodes,tex,original_html),html in zip(inline,rendered[13:]):
+            span=soup.new_tag('span',attrs={'class':'math-inline','data-original-math':base64.b64encode(original_html.encode()).decode()})
+            span.append(BeautifulSoup(html,'html.parser'))
+            nodes[0].replace_with(span)
+            for node in nodes[1:]:node.extract()
+        repaired_tables=[]
+        for leaked in list(soup.find_all(string=lambda value:value and 'SECTIONS.append(tab(' in value)):
+            code=str(leaked).strip()
+            expression=ast.parse(code).body[0].value
+            assert isinstance(expression,ast.Call) and expression.func.attr=='append'
+            call=expression.args[0]
+            assert isinstance(call,ast.Call) and call.func.id=='tab' and len(call.args)==3
+            caption,headers,rows=[ast.literal_eval(arg) for arg in call.args]
+            assert all(len(row)==len(headers) for row in rows)
+            table=soup.new_tag('table',attrs={'class':'bt','id':'pid-student-comparison','data-repaired-table':'true'})
+            cap=soup.new_tag('caption');cap.string=caption;table.append(cap)
+            head=soup.new_tag('thead');tr=soup.new_tag('tr')
+            for value in headers:
+                th=soup.new_tag('th',scope='col');th.string=value;tr.append(th)
+            head.append(tr);table.append(head);body=soup.new_tag('tbody')
+            for row in rows:
+                tr=soup.new_tag('tr')
+                for value in row:
+                    td=soup.new_tag('td');td.string=value;tr.append(td)
+                body.append(tr)
+            table.append(body);leaked.replace_with(table)
+            assert [[c.get_text() for c in tr.find_all('td')] for tr in body.find_all('tr')]==rows
+            repaired_tables.append({'caption':caption,'headers':headers,'rows':rows,'original_generator_text':code})
+        assert len(repaired_tables)==1
+        for href in ['vendor/katex/katex.min.css','vendor/paper-fonts.css']:
+            soup.head.append(soup.new_tag('link',rel='stylesheet',href=href))
+        style=soup.new_tag('style',id='math-display-fix');style.string=STYLE;soup.head.append(style)
+        figure=soup.find('figure');image=figure.find('img');image['src']='paper/pipeline_framework.svg?v=display-20261025'
+        image['alt']='原研究四步流程：品质对象库、特权强化学习教师、多教师蒸馏，以及 DHC-6 目标适配。tiny 与 small 参数量分别标明；40 步适配对应 small。'
+        link=soup.new_tag('a',href='paper/pipeline_framework.svg?v=display-20261025',target='_blank',attrs={'class':'figure-zoom','title':'点击查看主图大图','aria-label':'查看完整主图'})
+        image.wrap(link)
+        figure.figcaption.string='图 1　原研究的四步流程：品质对象库（5,000 个对象）→ PPO 教师（49 个，46 个通过项目门限）→ 多教师蒸馏（tiny 3,856 参数、small 75,040 参数）→ DHC-6 仿真适配（12 个状态；图中 40 步及 2.91→0.59 deg/s 对应 small）。'
+        destination=ROOT/'webpage'/filename;destination.write_text(str(soup))
+        # Recover only styled inline fragments, then check every original prose
+        # paragraph/table/header outside the explicitly edited Figure 1 caption.
+        restored=BeautifulSoup(str(soup),'html.parser')
+        for span in restored.select('[data-original-math]'):
+            fragment=BeautifulSoup(base64.b64decode(span['data-original-math']).decode(),'html.parser')
+            span.replace_with(fragment)
+        for table in restored.select('[data-repaired-table]'):table.decompose()
+        before=content_baseline
+        def prose(doc):
+            return [re.sub(r'\s+',' ',e.get_text()).strip() for e in doc.select('h1,h2,h3,h4,p,td,th') if not e.find_parent(class_='eq')]
+        assert prose(before)==prose(restored),'Unexpected prose/data change'
+        old_images=[i['src'].split('?')[0] for i in before.find_all('img')]
+        new_images=[i['src'].split('?')[0] for i in soup.find_all('img')]
+        assert old_images==new_images and len(new_images)==22
+        assert 'SECTIONS.append' not in soup.get_text()
+        manifests.append({'file':filename,'original_sha256':hashlib.sha256(original).hexdigest(),'display_sha256':hashlib.sha256(destination.read_bytes()).hexdigest(),'display_formulas':13,'inline_formulas':len(inline),'paragraphs_tables_headers_match_authorized_reference_edit':True,'image_count':22,'repaired_table6_values_preserved':True,'equation_source_order':equation_order})
+    (ROOT/'revision/display_manifest.json').write_text(json.dumps({'files':manifests,'formulas':EQUATIONS,'table6':repaired_tables[0],'changes':['HTML math typography','local fonts','Figure 1 layout and tiny/small labels','Table 6 generator text rendered as table; cell values unchanged','Sampled object model defined first; reference model moved to experimental settings and renamed omega_ref/zeta_ref'],'original_root_untouched':str(ORIGINAL.parent)},ensure_ascii=False,indent=2)+'\n')
+    print(json.dumps(manifests,ensure_ascii=False,indent=2))
+if __name__=='__main__':main()

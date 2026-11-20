@@ -1,0 +1,95 @@
+{
+ "raw_ft": {
+  "by_amplitude": {
+   "0.5": {
+    "n": 120,
+    "assessable": 41,
+    "tau_e_median": 0.06518765465590808,
+    "vaf_median": 0.9878967445412976,
+    "phase_median": 11.474294823581587
+   },
+   "1.0": {
+    "n": 120,
+    "assessable": 73,
+    "tau_e_median": 0.07314658202400728,
+    "vaf_median": 0.9932110756071143,
+    "phase_median": 8.296090414674676
+   },
+   "2.0": {
+    "n": 120,
+    "assessable": 91,
+    "tau_e_median": 0.09447492052204934,
+    "vaf_median": 0.9952222387877073,
+    "phase_median": 6.942011935386118
+   }
+  },
+  "common_n": 40,
+  "common_tau_e_median": {
+   "0.5": 0.06155258067532826,
+   "1.0": 0.06567359436364559,
+   "2.0": 0.05488955263359822
+  }
+ },
+ "aux_topk4": {
+  "by_amplitude": {
+   "0.5": {
+    "n": 120,
+    "assessable": 78,
+    "tau_e_median": 0.11074521111437331,
+    "vaf_median": 0.990507952296374,
+    "phase_median": 9.176002401591877
+   },
+   "1.0": {
+    "n": 120,
+    "assessable": 102,
+    "tau_e_median": 0.10248820714112214,
+    "vaf_median": 0.9952603708888987,
+    "phase_median": 6.940655994503846
+   },
+   "2.0": {
+    "n": 120,
+    "assessable": 111,
+    "tau_e_median": 0.12691266983102273,
+    "vaf_median": 0.9964544183629445,
+    "phase_median": 5.817254540750783
+   }
+  },
+  "common_n": 75,
+  "common_tau_e_median": {
+   "0.5": 0.11220596053144945,
+   "1.0": 0.10541476072903859,
+   "2.0": 0.11550173628434443
+  }
+ },
+ "topk4": {
+  "by_amplitude": {
+   "0.5": {
+    "n": 120,
+    "assessable": 0,
+    "tau_e_median": null,
+    "vaf_median": 0.7316015419024792,
+    "phase_median": 52.618528525698984
+   },
+   "1.0": {
+    "n": 120,
+    "assessable": 0,
+    "tau_e_median": null,
+    "vaf_median": 0.8244117567022325,
+    "phase_median": 35.0865068126054
+   },
+   "2.0": {
+    "n": 120,
+    "assessable": 0,
+    "tau_e_median": null,
+    "vaf_median": 0.806819643609429,
+    "phase_median": 40.89034908971519
+   }
+  },
+  "common_n": 0,
+  "common_tau_e_median": {
+   "0.5": null,
+   "1.0": null,
+   "2.0": null
+  }
+ }
+}

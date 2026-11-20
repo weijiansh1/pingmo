@@ -1,0 +1,157 @@
+{
+  "checked_utc": "2026-10-25T12:35:48.927488+00:00",
+  "entry": "http://127.0.0.1:8888/proxy/8320/",
+  "revision": "original-delivery-restored-2026-10-25",
+  "main_html_matches_original_bytes": true,
+  "main_html_sha256": "e69184997dfccc13bdbe5641b90bbb321b8ba63d1884dede11574b418d486b8c",
+  "original_figures": 22,
+  "resources_checked": 24,
+  "all_resources_match_restored_original": true,
+  "stale_revised_pdf_not_served": true,
+  "resources": [
+    {
+      "path": "paper/pipeline_framework.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "be0a890e86a1d801d68b867e3db365a74be6481aec0cc1a5e5de861e431fa016"
+    },
+    {
+      "path": "paper/teacher_network_tensor.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "a9fa234676ca63d718a2b1da3402d2b0b47cdb50cee00b9edcdba82bfc0e978a"
+    },
+    {
+      "path": "paper/student_network_tensor.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "9f37acdab471a9f71629882131f4af91d12e0bda3aadf98b25c6a10218dbb1a6"
+    },
+    {
+      "path": "paper/sampling_scatter.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "959377a14ff4628a6558e8e5f44a4b5df7fd3594840df5ac23ca904907a4a863"
+    },
+    {
+      "path": "paper/sampling_marginals.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "60737e823ef4fd7548c7a3d14d745e0c7f67b23e1d74370c29254085fc99a71b"
+    },
+    {
+      "path": "paper/teacher_difficulty.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "84d61b3e6ad68c4f500251e4ca6052813d5c4f9e34f09cf5ea9ef8d6df0a511e"
+    },
+    {
+      "path": "paper/teacher_training_curves.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "5e3afaa4f392d5ed4393f9c9b75c32f80c19f354f0999a3f3ca4c477ae52111a"
+    },
+    {
+      "path": "paper/teacher_closed_loop.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "c106d187e66278a727901b00a6de5b58aeb39ead12c7e1bd7caf4c36be2c281b"
+    },
+    {
+      "path": "paper/student_dagger.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "be0f2ec84552a6d35efd66d062cab935f78fa299214d943349ba41eb44c2b06c"
+    },
+    {
+      "path": "paper/teacher_student_compare.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "d79018a6f175b3172784a752b72a06d0ecdefda3f2ac268f680fffe8762047cf"
+    },
+    {
+      "path": "paper/student_library_eval.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "d1addad975e0edf21e0b04d6bf4b8c205ac52bd1e27b010162096c61b9e68d9c"
+    },
+    {
+      "path": "paper/student_grid.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "9193b760929d685524786729dfc63f17e2f15cb782262256f6e5193ad72dbcfa"
+    },
+    {
+      "path": "paper/student_amplitude.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "4a2dd9560c43bac7866dc187cf58d81a8fa0cb678b2f029d33c9b5fa34d16f2d"
+    },
+    {
+      "path": "paper/dhc6_transfer.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "8f252bcfc716b9d1985155368cddf12bc7408f514404045d7d99bced1c688f11"
+    },
+    {
+      "path": "paper/dhc6_states.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "518ab0820785d40d8709700dfb693aa0c6f0c89c47760663904beab2246bef09"
+    },
+    {
+      "path": "paper/delay_network.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "e39dd2ed1b7b20ce1d6df4e764b8257557dc6b86f9f6bb761b7fd12760939e4e"
+    },
+    {
+      "path": "paper/delay_probe.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "81cbeefb0e225b15a67a2ae9b3a9eb5d44a7209b9f814532bbd662bffb40dcc9"
+    },
+    {
+      "path": "paper/delay_closed_loop.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "93e176c25dbfdce93345d2313a57bdacf2be841fd0a88415ea1a45a120be2d04"
+    },
+    {
+      "path": "paper/tau_e_eval.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "0c9a6faf52c6d7f53f5f972ee808cba0c24e7bea1ea6332e2868798237b9f347"
+    },
+    {
+      "path": "paper/tau_e_amplitude.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "8821005b31cb8aa7f647c6c162ea5eca6cfca6875b944bdd67bb25228b39ef52"
+    },
+    {
+      "path": "paper/tau_e_seed.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "2b66215267de537bff19439bdf61255c58389cc79ceea905f5192d91893b89ac"
+    },
+    {
+      "path": "paper/topk4_diagnostic.svg?v=115348",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "1b42a37899344ad11e3998d82d9a9808024ff4af10ab1693dbe4c24d7f5e7d13"
+    },
+    {
+      "path": "dhc6_report.md",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "f0ca0f091ebea9f79b1ef2aa90207faffff75b5eaf5b487787c863db3e2df136"
+    },
+    {
+      "path": "dhc6_paper.html",
+      "status": 200,
+      "matches_original": true,
+      "sha256": "e69184997dfccc13bdbe5641b90bbb321b8ba63d1884dede11574b418d486b8c"
+    }
+  ]
+}

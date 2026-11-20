@@ -1,0 +1,285 @@
+{
+  "source_bank": "/home/swj/pingmo/flight_control_corrected_2026-10-24/pingmo_src/data/aircraft/generated/p_channel_library_iv_a_5000_v1/plants.jsonl",
+  "source_bank_sha256": "1daaccbef44b36274d2ce53612a3f46e54bd5c691d7f7bc8d498f1b903273fde",
+  "statistics_basis": "frozen_historical_labels; two sensitivity corrections shown only in overlay",
+  "component_signature_order": [
+    "t_r",
+    "spiral",
+    "dutch_roll",
+    "sensitivity_1s"
+  ],
+  "total": {
+    "n": 5000,
+    "historical_partial_level_counts": {
+      "1": 1644,
+      "2": 1599,
+      "3": 1531,
+      "None": 226
+    },
+    "historical_component_signatures": {
+      "1,1,1,1": 1644,
+      "1,1,1,2": 360,
+      "1,1,1,None": 56,
+      "1,1,2,1": 416,
+      "1,1,3,1": 511,
+      "1,1,None,1": 57,
+      "1,2,1,1": 410,
+      "1,3,1,1": 512,
+      "1,None,1,1": 55,
+      "2,1,1,1": 413,
+      "3,1,1,1": 508,
+      "None,1,1,1": 58
+    },
+    "degraded_component_count_histogram": {
+      "0": 1644,
+      "1": 3356
+    },
+    "simultaneous_degradation_ge_2": 0,
+    "dutch_L2_omega_ge_1": 0,
+    "transport_delay_min_max_s": [
+      0.0010379677284508943,
+      0.4954632893204689
+    ],
+    "transport_delay_in_0p20_to_0p25_s": 0,
+    "positive_spiral_poles": 2101,
+    "roll_time_constant_gt_8s": 115,
+    "dutch_decay_time_gt_8s": 619,
+    "ood_reasons_nonexclusive": {
+      "dutch_roll_beyond_level_3": 57,
+      "l_fa_outside_iv_force_input_evidence": 228,
+      "r_omega_outside_evidence_envelope": 58,
+      "sensitivity_1s_above_level_2_ungraded": 56,
+      "spiral_beyond_level_3": 55,
+      "t_r_beyond_level_3": 58,
+      "transport_delay_above_research_envelope": 56
+    },
+    "ood_reason_combinations": {
+      "": 4500,
+      "dutch_roll_beyond_level_3": 57,
+      "l_fa_outside_iv_force_input_evidence": 160,
+      "l_fa_outside_iv_force_input_evidence;r_omega_outside_evidence_envelope": 18,
+      "l_fa_outside_iv_force_input_evidence;sensitivity_1s_above_level_2_ungraded": 39,
+      "l_fa_outside_iv_force_input_evidence;t_r_beyond_level_3": 3,
+      "l_fa_outside_iv_force_input_evidence;transport_delay_above_research_envelope": 8,
+      "r_omega_outside_evidence_envelope": 40,
+      "sensitivity_1s_above_level_2_ungraded": 17,
+      "spiral_beyond_level_3": 55,
+      "t_r_beyond_level_3": 55,
+      "transport_delay_above_research_envelope": 48
+    }
+  },
+  "splits": {
+    "id_test": {
+      "n": 1050,
+      "historical_partial_level_counts": {
+        "1": 350,
+        "2": 350,
+        "3": 350
+      },
+      "historical_component_signatures": {
+        "1,1,1,1": 350,
+        "1,1,1,2": 65,
+        "1,1,2,1": 97,
+        "1,1,3,1": 118,
+        "1,2,1,1": 93,
+        "1,3,1,1": 119,
+        "2,1,1,1": 95,
+        "3,1,1,1": 113
+      },
+      "degraded_component_count_histogram": {
+        "0": 350,
+        "1": 700
+      },
+      "simultaneous_degradation_ge_2": 0,
+      "dutch_L2_omega_ge_1": 0,
+      "transport_delay_min_max_s": [
+        0.0013706888100132346,
+        0.19981562257092447
+      ],
+      "transport_delay_in_0p20_to_0p25_s": 0,
+      "positive_spiral_poles": 450,
+      "roll_time_constant_gt_8s": 12,
+      "dutch_decay_time_gt_8s": 138,
+      "ood_reasons_nonexclusive": {},
+      "ood_reason_combinations": {
+        "": 1050
+      }
+    },
+    "ood_test": {
+      "n": 500,
+      "historical_partial_level_counts": {
+        "1": 144,
+        "2": 99,
+        "3": 31,
+        "None": 226
+      },
+      "historical_component_signatures": {
+        "1,1,1,1": 144,
+        "1,1,1,2": 85,
+        "1,1,1,None": 56,
+        "1,1,2,1": 2,
+        "1,1,3,1": 3,
+        "1,1,None,1": 57,
+        "1,2,1,1": 7,
+        "1,3,1,1": 6,
+        "1,None,1,1": 55,
+        "2,1,1,1": 5,
+        "3,1,1,1": 22,
+        "None,1,1,1": 58
+      },
+      "degraded_component_count_histogram": {
+        "0": 144,
+        "1": 356
+      },
+      "simultaneous_degradation_ge_2": 0,
+      "dutch_L2_omega_ge_1": 0,
+      "transport_delay_min_max_s": [
+        0.0014982964582741262,
+        0.4954632893204689
+      ],
+      "transport_delay_in_0p20_to_0p25_s": 0,
+      "positive_spiral_poles": 186,
+      "roll_time_constant_gt_8s": 59,
+      "dutch_decay_time_gt_8s": 29,
+      "ood_reasons_nonexclusive": {
+        "dutch_roll_beyond_level_3": 57,
+        "l_fa_outside_iv_force_input_evidence": 228,
+        "r_omega_outside_evidence_envelope": 58,
+        "sensitivity_1s_above_level_2_ungraded": 56,
+        "spiral_beyond_level_3": 55,
+        "t_r_beyond_level_3": 58,
+        "transport_delay_above_research_envelope": 56
+      },
+      "ood_reason_combinations": {
+        "dutch_roll_beyond_level_3": 57,
+        "l_fa_outside_iv_force_input_evidence": 160,
+        "l_fa_outside_iv_force_input_evidence;r_omega_outside_evidence_envelope": 18,
+        "l_fa_outside_iv_force_input_evidence;sensitivity_1s_above_level_2_ungraded": 39,
+        "l_fa_outside_iv_force_input_evidence;t_r_beyond_level_3": 3,
+        "l_fa_outside_iv_force_input_evidence;transport_delay_above_research_envelope": 8,
+        "r_omega_outside_evidence_envelope": 40,
+        "sensitivity_1s_above_level_2_ungraded": 17,
+        "spiral_beyond_level_3": 55,
+        "t_r_beyond_level_3": 55,
+        "transport_delay_above_research_envelope": 48
+      }
+    },
+    "train_boundary": {
+      "n": 900,
+      "historical_partial_level_counts": {
+        "1": 300,
+        "2": 300,
+        "3": 300
+      },
+      "historical_component_signatures": {
+        "1,1,1,1": 300,
+        "1,1,1,2": 51,
+        "1,1,2,1": 84,
+        "1,1,3,1": 101,
+        "1,2,1,1": 82,
+        "1,3,1,1": 101,
+        "2,1,1,1": 83,
+        "3,1,1,1": 98
+      },
+      "degraded_component_count_histogram": {
+        "0": 300,
+        "1": 600
+      },
+      "simultaneous_degradation_ge_2": 0,
+      "dutch_L2_omega_ge_1": 0,
+      "transport_delay_min_max_s": [
+        0.0012002028450369836,
+        0.19997792385146024
+      ],
+      "transport_delay_in_0p20_to_0p25_s": 0,
+      "positive_spiral_poles": 381,
+      "roll_time_constant_gt_8s": 10,
+      "dutch_decay_time_gt_8s": 116,
+      "ood_reasons_nonexclusive": {},
+      "ood_reason_combinations": {
+        "": 900
+      }
+    },
+    "train_core": {
+      "n": 2100,
+      "historical_partial_level_counts": {
+        "1": 700,
+        "2": 700,
+        "3": 700
+      },
+      "historical_component_signatures": {
+        "1,1,1,1": 700,
+        "1,1,1,2": 132,
+        "1,1,2,1": 191,
+        "1,1,3,1": 241,
+        "1,2,1,1": 188,
+        "1,3,1,1": 236,
+        "2,1,1,1": 189,
+        "3,1,1,1": 223
+      },
+      "degraded_component_count_histogram": {
+        "0": 700,
+        "1": 1400
+      },
+      "simultaneous_degradation_ge_2": 0,
+      "dutch_L2_omega_ge_1": 0,
+      "transport_delay_min_max_s": [
+        0.0010889365803450346,
+        0.19993149047344924
+      ],
+      "transport_delay_in_0p20_to_0p25_s": 0,
+      "positive_spiral_poles": 886,
+      "roll_time_constant_gt_8s": 26,
+      "dutch_decay_time_gt_8s": 281,
+      "ood_reasons_nonexclusive": {},
+      "ood_reason_combinations": {
+        "": 2100
+      }
+    },
+    "validation": {
+      "n": 450,
+      "historical_partial_level_counts": {
+        "1": 150,
+        "2": 150,
+        "3": 150
+      },
+      "historical_component_signatures": {
+        "1,1,1,1": 150,
+        "1,1,1,2": 27,
+        "1,1,2,1": 42,
+        "1,1,3,1": 48,
+        "1,2,1,1": 40,
+        "1,3,1,1": 50,
+        "2,1,1,1": 41,
+        "3,1,1,1": 52
+      },
+      "degraded_component_count_histogram": {
+        "0": 150,
+        "1": 300
+      },
+      "simultaneous_degradation_ge_2": 0,
+      "dutch_L2_omega_ge_1": 0,
+      "transport_delay_min_max_s": [
+        0.0010379677284508943,
+        0.1997747834753245
+      ],
+      "transport_delay_in_0p20_to_0p25_s": 0,
+      "positive_spiral_poles": 198,
+      "roll_time_constant_gt_8s": 8,
+      "dutch_decay_time_gt_8s": 55,
+      "ood_reasons_nonexclusive": {},
+      "ood_reason_combinations": {
+        "": 450
+      }
+    }
+  },
+  "unique_parameter_vectors": 5000,
+  "legacy_raw_ratio_zero": 4358,
+  "legacy_raw_ratio_one": 641,
+  "legacy_last_threshold_at_screen_end": 4999,
+  "objects_with_less_than_one_dutch_cycle_in_screen": 5000,
+  "corrected_sensitivity_boundary_objects": [
+    "train_core-0717",
+    "train_core-1081"
+  ]
+}

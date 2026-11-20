@@ -1,0 +1,3047 @@
+Unifying Distillationand Privileged Information
+Report GitHub Issue
+×
+Title:
+Content selection saved. Describe the issue below:
+Description:
+Submit without GitHub
+Submit in GitHub
+arXiv is now an independent nonprofit!
+Learn more
+×
+Back to arXiv
+License: arXiv.org perpetual non-exclusive license
+arXiv:1511.03643v3 [stat.ML] 26 Feb 2016
+Unifying Distillation
+and Privileged Information
+Thanks:
+The majority of this work was done
+while DLP was affiliated to the Max Planck Institute for Intelligent
+Systems and the University of Cambridge.
+David Lopez-Paz
+Affiliation:
+Facebook AI Research, Paris, France
+Email:
+dlp@fb.com
+Léon Bottou
+Affiliation:
+Facebook AI Research, New York, USA
+Email:
+leon@bottou.org
+Bernhard Schölkopf
+Affiliation:
+Max Planck Insitute for Intelligent Systems, Tübingen, Germany
+Email:
+bs@tuebingen.mpg.de
+Vladimir Vapnik
+Affiliation:
+Facebook AI Research and Columbia University, New York, USA
+Email:
+vladimir.vapnik@gmail.com
+Abstract
+Distillation
+(
+Hinton et al., 2015
+)
+and
+privileged information
+(
+Vapnik & Izmailov, 2015
+)
+are two techniques that enable machines to learn
+from other machines.
+This paper unifies the two into
+generalized distillation
+, a framework to learn from multiple machines
+and data representations.
+We provide theoretical and causal insight about the inner workings
+of generalized distillation, extend it to unsupervised, semisupervised and
+multitask learning scenarios, and illustrate its efficacy on a variety of
+numerical simulations on both synthetic and real-world data.
+1
+Introduction
+Humans learn much faster than machines.
+Vapnik & Izmailov (2015)
+illustrate this discrepancy with the Japanese proverb
+better than a thousand days of diligent study is one day with a great
+teacher
+.
+Motivated by this insight, the authors incorporate an
+“intelligent teacher” into machine learning. Their solution
+is to consider training data formed by a collection of triplets
+{
+(
+x
+1
+,
+x
+1
+⋆
+,
+y
+1
+)
+,
+…
+,
+(
+x
+n
+,
+x
+n
+⋆
+,
+y
+n
+)
+}
+∼
+P
+n
+​
+(
+x
+,
+x
+⋆
+,
+y
+)
+.
+\{(x_{1},x^{\star}_{1},y_{1}),\ldots,(x_{n},x^{\star}_{n},y_{n})\}\sim P^{n}(x,x^{\star},y).
+Here, each
+(
+x
+i
+,
+y
+i
+)
+(x_{i},y_{i})
+is a feature-label pair, and the novel element
+x
+i
+⋆
+x^{\star}_{i}
+is additional information about the example
+(
+x
+i
+,
+y
+i
+)
+(x_{i},y_{i})
+provided
+by an intelligent teacher, such as to support the learning process.
+Unfortunately, the learning machine will not have access to the teacher
+explanations
+x
+i
+⋆
+x^{\star}_{i}
+at test time. Thus, the framework of
+learning
+using privileged information
+(
+Vapnik & Vashist, 2009
+;
+Vapnik & Izmailov, 2015
+)
+studies how to leverage
+these explanations
+x
+i
+⋆
+x^{\star}_{i}
+at training time, to build a classifier for test
+time that outperforms those built on the regular features
+x
+i
+x_{i}
+alone. As an example,
+x
+i
+x_{i}
+could be the image of a biopsy,
+x
+i
+⋆
+x^{\star}_{i}
+the
+medical report of an oncologist when inspecting the image, and
+y
+i
+y_{i}
+a binary
+label indicating whether the tissue shown in the image is cancerous or healthy.
+The previous exposition finds a mathematical justification in VC theory
+(
+Vapnik, 1998
+)
+, which characterizes the speed at which machines learn using
+two ingredients: the capacity or flexibility of the machine, and the amount of
+data that we use to train it. Consider a binary classifier
+f
+f
+belonging to a
+function class
+ℱ
+\mathcal{F}
+with finite VC-Dimension
+|
+ℱ
+|
+VC
+|\mathcal{F}|_{\textrm{VC}}
+. Then, with probability
+1
+−
+δ
+1-\delta
+, the
+expected error
+R
+⁡
+(
+f
+)
+R(f)
+is upper bounded by
+R
+⁡
+(
+f
+)
+≤
+R
+n
+​
+(
+f
+)
++
+O
+⁡
+(
+(
+|
+ℱ
+|
+VC
+−
+log
+⁡
+δ
+n
+)
+α
+)
+,
+R(f)\leq R_{n}(f)+O\left(\left(\frac{|\mathcal{F}|_{\textrm{VC}}-\log\delta}{n}\right)^{\alpha}\right),
+(1)
+where
+R
+n
+​
+(
+f
+)
+R_{n}(f)
+is the training error over
+n
+n
+data, and
+1
+2
+≤
+α
+≤
+1
+\frac{1}{2}\leq\alpha\leq 1
+. For difficult (
+non-separable
+) problems the exponent is
+α
+=
+1
+2
+\alpha=\frac{1}{2}
+, which translates into machines learning at a
+slow
+rate of
+O
+(
+n
+−
+1
+/
+2
+)
+O(n^{-1/2})
+. On the other hand, for easy
+(
+separable
+) problems, i.e., those on which the machine
+f
+f
+makes
+no training errors, the exponent is
+α
+=
+1
+\alpha=1
+, which translates into machines
+learning at a
+fast
+rate of
+O
+⁡
+(
+n
+−
+1
+)
+O(n^{-1})
+. The difference between these
+two rates is huge: the
+O
+⁡
+(
+n
+−
+1
+)
+O(n^{-1})
+learning rate potentially only requires
+1000
+1000
+examples to achieve the accuracy for which the
+O
+(
+n
+−
+1
+/
+2
+)
+O(n^{-1/2})
+learning
+rate needs
+10
+6
+10^{6}
+examples. So, given a student who learns from a fixed amount
+of data
+n
+n
+and a function class
+ℱ
+\mathcal{F}
+, a good teacher can try to ease
+the problem at hand by accelerating the learning rate from
+O
+(
+n
+−
+1
+/
+2
+)
+O(n^{-1/2})
+to
+O
+⁡
+(
+n
+−
+1
+)
+O(n^{-1})
+.
+Vapnik’s
+learning using privileged information
+is one example of what
+we call
+machines-teaching-machines
+: the paradigm where machines learn
+from other machines, in addition to training data. Another seemingly unrelated
+example is
+distillation
+(
+Hinton et al., 2015
+)
+,
+1
+1
+1
+Distillation
+relates to
+model compression
+(
+Burges & Schölkopf, 1997
+;
+Buciluǎ et al., 2006
+;
+Ba & Caruana, 2014
+)
+. We will
+adopt the term
+distillation
+throughout this manuscript.
+where a simple
+machine learns a complex task by imitating the solution of a flexible machine.
+In a wider context, the machines-teaching-machines paradigm is one step toward
+the definition of
+machine reasoning
+of
+Bottou (2014)
+,
+“the algebraic manipulation of previously acquired knowledge to
+answer a new question”. In fact, many recent state-of-the-art systems compose
+data and supervision from multiple sources, such as object recognizers reusing
+convolutional neural network features
+(
+Oquab et al., 2014
+)
+, and natural
+language processing systems operating on vector word representations extracted
+from unsupervised text corpora
+(
+Mikolov et al., 2013
+)
+.
+In the following, we frame Hinton’s distillation and Vapnik’s privileged
+information as two instances of the same machines-teaching-machines paradigm,
+termed
+generalized distillation
+. The analysis of generalized
+distillation sheds light to applications in semi-supervised learning,
+domain adaptation, transfer learning, Universum learning
+(
+Weston et al., 2006
+)
+,
+reinforcement learning, and curriculum learning
+(
+Bengio et al., 2009
+)
+;
+some of them discussed in our numerical simulations.
+2
+Distillation
+We focus on
+c
+c
+-class classification, although the same ideas apply to
+regression. Consider the data
+{
+(
+x
+i
+,
+y
+i
+)
+}
+i
+=
+1
+n
+∼
+P
+n
+​
+(
+x
+,
+y
+)
+,
+x
+i
+∈
+ℝ
+d
+,
+y
+i
+∈
+Δ
+c
+.
+\{(x_{i},y_{i})\}_{i=1}^{n}\sim P^{n}(x,y),\,\,x_{i}\in\mathbb{R}^{d},\,\,y_{i}\in\Delta^{c}.
+(2)
+Here,
+Δ
+c
+\Delta^{c}
+is the set of
+c
+c
+-dimensional probability vectors. Using
+(
+2
+), we are interested in learning the representation
+f
+t
+=
+arg
+​
+min
+f
+∈
+ℱ
+t
+⁡
+1
+n
+​
+∑
+i
+=
+1
+n
+ℓ
+⁡
+(
+y
+i
+,
+σ
+⁡
+(
+f
+⁡
+(
+x
+i
+)
+)
+)
++
+Ω
+⁡
+(
+‖
+f
+‖
+)
+,
+f_{t}=\argmin_{f\in\mathcal{F}_{t}}\frac{1}{n}\sum_{i=1}^{n}\ell(y_{i},\sigma(f(x_{i})))+\Omega(\|f\|),
+(3)
+where
+ℱ
+t
+\mathcal{F}_{t}
+is a class of functions from
+ℝ
+d
+\mathbb{R}^{d}
+to
+ℝ
+c
+\mathbb{R}^{c}
+, the function
+σ
+:
+ℝ
+c
+→
+Δ
+c
+\sigma:\mathbb{R}^{c}\to\Delta^{c}
+is the
+softmax operation
+σ
+​
+(
+z
+)
+k
+=
+e
+z
+k
+∑
+j
+=
+1
+c
+e
+z
+j
+,
+\sigma(z)_{k}=\frac{e^{z_{k}}}{\sum_{j=1}^{c}e^{z_{j}}},
+for all
+1
+≤
+k
+≤
+c
+1\leq k\leq c
+, the function
+ℓ
+:
+Δ
+c
+×
+Δ
+c
+→
+ℝ
++
+\ell:\Delta^{c}\times\Delta^{c}\to\mathbb{R}_{+}
+is the cross-entropy loss
+ℓ
+(
+y
+,
+y
+^
+)
+=
+−
+∑
+k
+=
+1
+c
+y
+k
+log
+y
+^
+k
+,
+\ell(y,\hat{y})=-\sum_{k=1}^{c}y_{k}\log\hat{y}_{k},
+and
+Ω
+:
+ℝ
+→
+ℝ
+\Omega:\mathbb{R}\to\mathbb{R}
+is an increasing function which serves as a regularizer.
+When learning from real world data such as high-resolution images,
+f
+t
+f_{t}
+is
+often an ensemble of large deep convolutional neural networks
+(
+LeCun et al., 1998a
+)
+. The computational cost of predicting new examples at test
+time using these ensembles is often prohibitive for production systems. For
+this reason,
+Hinton et al. (2015)
+propose to
+distill
+the
+learned representation
+f
+t
+∈
+ℱ
+t
+f_{t}\in\mathcal{F}_{t}
+into
+f
+s
+=
+arg
+​
+min
+f
+∈
+ℱ
+s
+⁡
+1
+n
+​
+∑
+i
+=
+1
+n
+[
+(
+1
+−
+λ
+)
+​
+ℓ
+​
+(
+y
+i
+,
+σ
+⁡
+(
+f
+⁡
+(
+x
+i
+)
+)
+)
++
+λ
+​
+ℓ
+​
+(
+s
+i
+,
+σ
+⁡
+(
+f
+⁡
+(
+x
+i
+)
+)
+)
+]
+,
+f_{s}=\argmin_{f\in\mathcal{F}_{s}}\frac{1}{n}\sum_{i=1}^{n}\Big[(1-\lambda)\ell(y_{i},\sigma({f}(x_{i})))+\lambda\ell(s_{i},\sigma({f}(x_{i})))\Big],
+(4)
+where
+s
+i
+=
+σ
+⁡
+(
+f
+t
+​
+(
+x
+i
+)
+/
+T
+)
+∈
+Δ
+c
+s_{i}=\sigma(f_{t}(x_{i})/T)\in\Delta^{c}
+(5)
+are the
+soft predictions
+from
+f
+t
+f_{t}
+about the training data, and
+ℱ
+s
+\mathcal{F}_{s}
+is a function class simpler than
+ℱ
+t
+\mathcal{F}_{t}
+. The
+temperature parameter
+T
+>
+0
+T>0
+controls how much do we want to soften or
+smooth the class-probability predictions from
+f
+t
+f_{t}
+, and the imitation
+parameter
+λ
+∈
+[
+0
+,
+1
+]
+\lambda\in[0,1]
+balances the importance between imitating the
+soft predictions
+s
+i
+s_{i}
+and predicting the true hard labels
+y
+i
+y_{i}
+. Higher
+temperatures lead to softer class-probability predictions
+s
+i
+s_{i}
+. In turn,
+softer class-probability predictions reveal label dependencies which would be
+otherwise hidden as extremely large or small numbers. After distillation, we
+can use the simpler
+f
+s
+∈
+ℱ
+s
+{f_{s}}\in\mathcal{F}_{s}
+for faster prediction at test
+time.
+3
+Vapnik’s privileged information
+We now turn back to Vapnik’s problem of learning in the company of an
+intelligent teacher, as introduced in Section
+1
+. The question at
+hand is: How can we leverage the privileged information
+x
+i
+⋆
+x^{\star}_{i}
+to build a
+better classifier for test time? One naïve way to proceed would be to estimate the
+privileged representation
+x
+i
+⋆
+x^{\star}_{i}
+from the regular representation
+x
+i
+x_{i}
+, and then use
+the union of regular and
+estimated
+privileged representations as our
+test-time feature space. But this may be a cumbersome endeavour: in the
+example of biopsy images
+x
+i
+x_{i}
+and medical reports
+x
+i
+⋆
+x^{\star}_{i}
+, it is
+reasonable to believe that predicting reports from images is more
+complicated than classifying the images into cancerous or healthy.
+Alternatively, we propose to use distillation to extract useful knowledge from
+privileged information. The proposal is as follows. First, learn a teacher
+function
+f
+t
+∈
+ℱ
+t
+f_{t}\in\mathcal{F}_{t}
+by solving (
+3
+) using the data
+{
+(
+x
+i
+⋆
+,
+y
+i
+)
+}
+i
+=
+1
+n
+\{(x^{\star}_{i},y_{i})\}_{i=1}^{n}
+. Second, compute the teacher soft labels
+s
+i
+=
+σ
+⁡
+(
+f
+t
+​
+(
+x
+i
+⋆
+)
+/
+T
+)
+s_{i}=\sigma(f_{t}(x^{\star}_{i})/T)
+, for all
+1
+≤
+i
+≤
+n
+1\leq i\leq n
+and some temperature
+parameter
+T
+>
+0
+T>0
+. Third, distill
+f
+t
+∈
+ℱ
+t
+f_{t}\in\mathcal{F}_{t}
+into
+f
+s
+∈
+ℱ
+s
+f_{s}\in\mathcal{F}_{s}
+by solving (
+4
+) using both the hard labeled data
+{
+(
+x
+i
+,
+y
+i
+)
+}
+i
+=
+1
+n
+\{(x_{i},y_{i})\}_{i=1}^{n}
+and the softly labeled data
+{
+(
+x
+i
+,
+s
+i
+)
+}
+i
+=
+1
+n
+\{(x_{i},s_{i})\}_{i=1}^{n}
+.
+3.1
+Comparison to prior work
+Vapnik & Vashist (2009)
+;
+Vapnik & Izmailov (2015)
+offer two strategies to learn using privileged information:
+similarity control and knowledge transfer. Let us briefly compare them to
+our distillation-based proposal.
+The motivation behind
+similarity control
+is that SVM
+classification is separable after we correct for the
+slack values
+ξ
+i
+\xi_{i}
+, which measure the degree of misclassification of training data points
+x
+i
+x_{i}
+(
+Vapnik & Vashist, 2009
+)
+.
+Since separable classification admits
+O
+⁡
+(
+n
+−
+1
+)
+O(n^{-1})
+fast learning rates, it would be ideal to have a teacher that could
+supply slack values to us. Unluckily, it seems quixotic to aspire for a teacher able
+to provide with abstract floating point number slack values. Perhaps it is more
+realistic to assume instead that the teacher can provide with some rich,
+high-level representation useful to estimate the sought-after slack values. This
+reasoning crystallizes into the SVM+ objective function from
+(
+Vapnik & Vashist, 2009
+)
+:
+L
+⁡
+(
+w
+,
+w
+⋆
+,
+b
+,
+b
+⋆
+,
+α
+,
+β
+)
+=
+1
+2
+​
+‖
+w
+‖
+2
++
+∑
+i
+=
+1
+n
+α
+i
+−
+∑
+i
+=
+1
+n
+α
+i
+​
+y
+i
+​
+f
+i
+⏟
+separable SVM objective
++
+γ
+2
+​
+‖
+w
+⋆
+‖
+2
++
+∑
+i
+=
+1
+n
+(
+α
+i
++
+β
+i
+−
+C
+)
+​
+f
+i
+⋆
+⏟
+corrections from teacher
+,
+L(w,w^{\star},b,b^{\star},\alpha,\beta)=\underbrace{\frac{1}{2}\|w\|^{2}+\sum_{i=1}^{n}\alpha_{i}-\sum_{i=1}^{n}\alpha_{i}y_{i}f_{i}}_{\textrm{separable SVM objective}}+\underbrace{\frac{\gamma}{2}\|w^{\star}\|^{2}+\sum_{i=1}^{n}(\alpha_{i}+\beta_{i}-C){f^{\star}_{i}}}_{\textrm{corrections from teacher}},
+(6)
+where
+f
+i
+:=
+⟨
+w
+,
+x
+i
+⟩
++
+b
+f_{i}:=\langle w,x_{i}\rangle+b
+is the decision boundary at
+x
+i
+x_{i}
+, and
+f
+i
+⋆
+:=
+⟨
+w
+⋆
+,
+x
+i
+⋆
+⟩
++
+b
+⋆
+f^{\star}_{i}:=\langle w^{\star},x^{\star}_{i}\rangle+b^{\star}
+is the teacher
+correcting function at the same location. The SVM+ objective function matches
+the objective function of non-separable SVM when we replace the correcting
+functions
+f
+i
+⋆
+f^{\star}_{i}
+with the slacks
+ξ
+i
+\xi_{i}
+. Thus, skilled teachers provide
+with privileged information
+x
+i
+⋆
+x^{\star}_{i}
+highly informative about the slack values
+ξ
+i
+\xi_{i}
+. Such privileged information allows for simple correcting functions
+f
+i
+⋆
+f^{\star}_{i}
+, and the easy estimation of these correcting functions is a proxy
+to
+O
+⁡
+(
+n
+−
+1
+)
+O(n^{-1})
+fast learning rates. Technically, this amounts to
+saying that a teacher is helpful whenever the capacity of her correcting
+functions is much smaller than the capacity of the student decision
+boundary.
+In
+knowledge transfer
+(
+Vapnik & Izmailov, 2015
+)
+the teacher fits a function
+f
+t
+​
+(
+x
+⋆
+)
+=
+∑
+j
+=
+1
+m
+α
+j
+⋆
+​
+k
+⋆
+​
+(
+u
+j
+⋆
+,
+x
+⋆
+)
+f_{t}(x^{\star})=\sum_{j=1}^{m}\alpha^{\star}_{j}k^{\star}(u^{\star}_{j},x^{\star})
+on the
+input-output pairs
+{
+(
+x
+i
+⋆
+,
+y
+i
+)
+}
+i
+=
+1
+n
+\{(x^{\star}_{i},y_{i})\}_{i=1}^{n}
+and
+f
+t
+∈
+ℱ
+t
+f_{t}\in\mathcal{F}_{t}
+,
+to find the best reduced set of prototype or basis points
+{
+u
+j
+⋆
+}
+j
+=
+1
+m
+\{u^{\star}_{j}\}_{j=1}^{m}
+. Second, the student fits one function
+g
+j
+g_{j}
+per set
+of input-output pairs
+{
+(
+x
+i
+,
+k
+⋆
+​
+(
+u
+j
+⋆
+,
+x
+i
+⋆
+)
+)
+}
+i
+=
+1
+n
+\{(x_{i},k^{\star}(u^{\star}_{j},x^{\star}_{i}))\}_{i=1}^{n}
+, for
+all
+1
+≤
+j
+≤
+m
+1\leq j\leq m
+. Third, the student fits a new vector of coefficients
+α
+∈
+ℝ
+m
+\alpha\in\mathbb{R}^{m}
+to obtain the final student function
+f
+s
+​
+(
+x
+)
+=
+∑
+j
+=
+1
+m
+α
+j
+​
+g
+j
+​
+(
+x
+)
+f_{s}(x)=\sum_{j=1}^{m}\alpha_{j}g_{j}(x)
+, using the input-output pairs
+{
+(
+x
+i
+,
+y
+i
+)
+}
+i
+=
+1
+n
+\{(x_{i},y_{i})\}_{i=1}^{n}
+and
+f
+s
+∈
+ℱ
+s
+f_{s}\in\mathcal{F}_{s}
+. Since the representation
+x
+i
+⋆
+x^{\star}_{i}
+is intelligent, we assume that the function class
+ℱ
+t
+\mathcal{F}_{t}
+has small capacity, and thus allows for accurate estimation under small
+sample sizes.
+Distillation differs from similarity control in three ways. First, distillation
+is not restricted to SVMs. Second, while the SVM+ solution contains twice the amount
+of parameters than the original SVM, the user can choose a priori the amount of parameters in the distilled
+classifier. Third, SVM+ learns the teacher
+correcting function and the student decision boundary simultaneously,
+but distillation proceeds sequentially: first with the teacher, then with the
+student. On the other hand, knowledge transfer is closer in spirit to
+distillation, but the two techniques differ: while similarity control relies on a
+student that purely imitates the hidden representation of a low-rank kernel
+machine, distillation is a trade-off between imitating soft predictions and hard
+labels, using arbitrary learning algorithms.
+The framework of learning using privileged information enjoys theoretical
+analysis
+(
+Pechyony & Vapnik, 2010
+)
+and multiple applications, including ranking
+(
+Sharmanska et al., 2013
+)
+, computer vision
+(
+Sharmanska et al., 2014
+;
+Lopez-Paz et al., 2014
+)
+,
+clustering
+(
+Feyereisl & Aickelin, 2012
+)
+, metric learning
+(
+Fouad et al., 2013
+)
+, Gaussian
+process classification
+(
+Hernández-Lobato et al., 2014
+)
+, and finance
+(
+Ribeiro et al., 2010
+)
+.
+Lapin et al. (2014)
+show
+that learning using privileged information is a particular instance of
+importance weighting.
+4
+Generalized distillation
+We now have all the necessary background to describe
+generalized
+distillation
+. To this end, consider the data
+{
+(
+x
+i
+,
+x
+i
+⋆
+,
+y
+i
+)
+}
+i
+=
+1
+n
+\{(x_{i},x^{\star}_{i},y_{i})\}_{i=1}^{n}
+. Then, the process of generalized
+distillation is as follows:
+1.
+Learn teacher
+f
+t
+∈
+ℱ
+t
+f_{t}\in\mathcal{F}_{t}
+using the input-output pairs
+{
+(
+x
+i
+⋆
+,
+y
+i
+)
+}
+i
+=
+1
+n
+\{(x^{\star}_{i},y_{i})\}_{i=1}^{n}
+and Eq.
+3
+.
+2.
+Compute teacher soft labels
+{
+σ
+⁡
+(
+f
+t
+​
+(
+x
+i
+⋆
+)
+/
+T
+)
+}
+i
+=
+1
+n
+\{\sigma(f_{t}(x^{\star}_{i})/T)\}_{i=1}^{n}
+,
+using temperature parameter
+T
+>
+0
+T>0
+.
+3.
+Learn student
+f
+s
+∈
+ℱ
+s
+f_{s}\in\mathcal{F}_{s}
+using the input-output pairs
+{
+(
+x
+i
+,
+y
+i
+)
+}
+i
+=
+1
+n
+\{(x_{i},y_{i})\}_{i=1}^{n}
+,
+{
+(
+x
+i
+,
+s
+i
+)
+}
+i
+=
+1
+n
+\{(x_{i},s_{i})\}_{i=1}^{n}
+, Eq.
+4
+, and imitation parameter
+λ
+∈
+[
+0
+,
+1
+]
+\lambda\in[0,1]
+.
+2
+2
+2
+Note
+that these three steps could be combined into a joint end-to-end optimization
+problem. For simplicity, our numerical simulations will take each of these
+three steps sequentially.
+We say that generalized distillation reduces to
+Hinton’s distillation
+if
+x
+i
+⋆
+=
+x
+i
+x^{\star}_{i}=x_{i}
+for all
+1
+≤
+i
+≤
+n
+1\leq i\leq n
+and
+|
+ℱ
+s
+|
+C
+≪
+|
+ℱ
+t
+|
+C
+|\mathcal{F}_{s}|_{\textrm{C}}\ll|\mathcal{F}_{t}|_{\textrm{C}}
+, where
+|
+⋅
+|
+C
+|\cdot|_{C}
+is an appropriate function
+class capacity measure. Conversely, we say that generalized distillation
+reduces to
+Vapnik’s learning using privileged information
+if
+x
+i
+⋆
+x^{\star}_{i}
+is a privileged description of
+x
+i
+x_{i}
+, and
+|
+ℱ
+s
+|
+C
+≫
+|
+ℱ
+t
+|
+C
+|\mathcal{F}_{s}|_{\textrm{C}}\gg|\mathcal{F}_{t}|_{\textrm{C}}
+.
+This comparison reveals a subtle difference between Hinton’s distillation and
+Vapnik’s privileged information. In Hinton’s distillation,
+ℱ
+t
+\mathcal{F}_{t}
+is
+flexible
+, for the teacher to exploit her
+general purpose
+representation
+x
+i
+⋆
+=
+x
+i
+x^{\star}_{i}=x_{i}
+to learn intricate patterns from
+large
+amounts of labeled data. In Vapnik’s privileged information,
+ℱ
+t
+\mathcal{F}_{t}
+is
+simple
+, for the teacher to exploit her
+rich
+representation
+x
+i
+⋆
+≠
+x
+i
+x^{\star}_{i}\neq x_{i}
+to learn intricate patterns from
+small
+amounts of
+labeled data. The space of privileged information is thus a specialized space,
+one of “metaphoric language”. In our running example of biopsy images, the
+space of medical reports is much more specialized than the space of pixels,
+since the space of pixels can also describe buildings, animals, and other
+unrelated concepts. In any case, the teacher must develop a language that
+effectively communicates information to help the student come up with better
+representations. The teacher may do so by incorporating invariances, or biasing
+them towards being robust with respect to the kind of distribution shifts that
+the teacher may expect at test time. In general, having a teacher is one
+opportunity to learn characteristics about the decision boundary which are not
+contained in the training sample, in analogy to a good Bayesian prior.
+4.1
+Why does generalized distillation work?
+Recall our three actors: the student function
+f
+s
+∈
+ℱ
+s
+f_{s}\in\mathcal{F}_{s}
+, the
+teacher function
+f
+t
+∈
+ℱ
+t
+f_{t}\in\mathcal{F}_{t}
+, and the real target function of
+interest to both the student and the teacher,
+f
+∈
+ℱ
+f\in\mathcal{F}
+. For simplicity, consider
+pure
+distillation
+(set the imitation parameter to
+λ
+=
+1
+\lambda=1
+).
+Furthermore, we will place some assumptions about how the student, teacher, and
+true function interplay when learning from
+n
+n
+data. First, assume that the
+student may learn the true function at a slow rate
+R
+⁡
+(
+f
+s
+)
+−
+R
+⁡
+(
+f
+)
+≤
+O
+⁡
+(
+|
+ℱ
+s
+|
+C
+n
+)
++
+ε
+s
+,
+R(f_{s})-R(f)\leq O\left(\frac{|\mathcal{F}_{s}|_{\textrm{C}}}{\sqrt{n}}\right)+\varepsilon_{s},
+where the
+O
+⁡
+(
+⋅
+)
+O(\cdot)
+term is the estimation error, and
+ε
+s
+\varepsilon_{s}
+is the
+approximation error of the student function class
+ℱ
+s
+\mathcal{F}_{s}
+with respect
+to
+f
+∈
+ℱ
+f\in\mathcal{F}
+. Second, assume that the better representation of the
+teacher allows her to learn at the fast rate
+R
+⁡
+(
+f
+t
+)
+−
+R
+⁡
+(
+f
+)
+≤
+O
+⁡
+(
+|
+ℱ
+t
+|
+C
+n
+)
++
+ε
+t
+,
+R(f_{t})-R(f)\leq O\left(\frac{|\mathcal{F}_{t}|_{\textrm{C}}}{n}\right)+\varepsilon_{t},
+where
+ε
+t
+\varepsilon_{t}
+is the approximation error of the teacher function class
+ℱ
+t
+\mathcal{F}_{t}
+with respect to
+f
+∈
+ℱ
+f\in\mathcal{F}
+. Finally, assume that when
+the student learns from the teacher, she does so at the rate
+R
+⁡
+(
+f
+s
+)
+−
+R
+⁡
+(
+f
+t
+)
+≤
+O
+⁡
+(
+|
+ℱ
+s
+|
+C
+n
+α
+)
++
+ε
+l
+,
+R(f_{s})-R(f_{t})\leq O\left(\frac{|\mathcal{F}_{s}|_{\textrm{C}}}{n^{\alpha}}\right)+\varepsilon_{l},
+where
+ε
+l
+\varepsilon_{l}
+is the approximation error of the student function class
+ℱ
+s
+\mathcal{F}_{s}
+with respect to
+f
+t
+∈
+ℱ
+t
+f_{t}\in\mathcal{F}_{t}
+, and
+1
+2
+≤
+α
+≤
+1
+\frac{1}{2}\leq\alpha\leq 1
+. Then, the rate at which the student learns the true function
+f
+f
+admits the alternative expression
+R
+⁡
+(
+f
+s
+)
+−
+R
+⁡
+(
+f
+)
+\displaystyle R(f_{s})-R(f)
+=
+R
+⁡
+(
+f
+s
+)
+−
+R
+⁡
+(
+f
+t
+)
++
+R
+⁡
+(
+f
+t
+)
+−
+R
+⁡
+(
+f
+)
+\displaystyle=R(f_{s})-R(f_{t})+R(f_{t})-R(f)
+≤
+O
+⁡
+(
+|
+ℱ
+s
+|
+C
+n
+α
+)
++
+ε
+l
++
+O
+⁡
+(
+|
+ℱ
+t
+|
+C
+n
+)
++
+ε
+t
+\displaystyle\leq O\left(\frac{|\mathcal{F}_{s}|_{\textrm{C}}}{n^{\alpha}}\right)+\varepsilon_{l}+O\left(\frac{|\mathcal{F}_{t}|_{\textrm{C}}}{n}\right)+\varepsilon_{t}
+≤
+O
+⁡
+(
+|
+ℱ
+s
+|
+C
++
+|
+ℱ
+t
+|
+C
+n
+α
+)
++
+ε
+l
++
+ε
+t
+,
+\displaystyle\leq O\left(\frac{|\mathcal{F}_{s}|_{\textrm{C}}+|\mathcal{F}_{t}|_{\textrm{C}}}{n^{\alpha}}\right)+\varepsilon_{l}+\varepsilon_{t},
+where the last inequality follows because
+α
+≤
+1
+\alpha\leq 1
+. Thus, the question
+at hand is to argue, for a given learning problem, if the inequality
+O
+⁡
+(
+|
+ℱ
+s
+|
+C
++
+|
+ℱ
+t
+|
+C
+n
+α
+)
++
+ε
+l
++
+ε
+t
+≤
+O
+⁡
+(
+|
+ℱ
+s
+|
+C
+n
+)
++
+ε
+s
+O\left(\frac{|\mathcal{F}_{s}|_{\textrm{C}}+|\mathcal{F}_{t}|_{\textrm{C}}}{n^{\alpha}}\right)+\varepsilon_{l}+\varepsilon_{t}\leq O\left(\frac{|\mathcal{F}_{s}|_{\textrm{C}}}{\sqrt{n}}\right)+\varepsilon_{s}
+holds. The inequality highlights that the benefits of learning with a teacher
+arise due to i) the capacity of the teacher being small, ii) the approximation
+error of the teacher being smaller than the approximation error of the student,
+and iii) the coefficient
+α
+\alpha
+being greater than
+1
+2
+\frac{1}{2}
+.
+Remarkably, these factors embody the assumptions of privileged information from
+Vapnik & Izmailov (2015)
+. The inequality is also reasonable under the main assumption
+in
+(
+Hinton et al., 2015
+)
+, which is
+ε
+s
+≫
+ε
+t
++
+ε
+l
+\varepsilon_{s}\gg\varepsilon_{t}+\varepsilon_{l}
+. Moreover, the inequality highlights that the teacher is most
+helpful in low data regimes, such as small datasets, Bayesian optimization,
+reinforcement learning, domain adaptation, transfer learning, or in the initial
+stages of online and reinforcement learning.
+We believe that the “
+α
+>
+1
+2
+\alpha>\frac{1}{2}
+case” is a general situation,
+since soft labels (dense vectors with a real number of information per class)
+contain more information than hard labels (one-hot-encoding vectors with one
+bit of information per class) per example, and should allow for faster
+learning. This additional information, also understood as label uncertainty,
+relates to the acceleration in SVM+ due to the knowledge of slack values. Since a
+good teacher smoothes the decision boundary and instructs the student to fail
+on difficult examples, the student can focus on the remaining body of data.
+Although this translates into the unambitious “whatever my
+teacher could not do, I will not do”, the imitation parameter
+λ
+∈
+[
+0
+,
+1
+]
+\lambda\in[0,1]
+in (
+4
+) allows to follow this rule safely, and fall back to regular
+learning if necessary.
+4.2
+Extensions
+Semi-supervised learning
+We now extend generalized distillation to
+the situation where examples lack regular features, privileged features,
+labels, or a combination of the three. In the following, we denote missing
+elements by
+□
+\square
+. For instance, the example
+(
+x
+i
+,
+□
+,
+y
+i
+)
+(x_{i},\square,y_{i})
+has no
+privileged features, and the example
+(
+x
+i
+,
+x
+i
+⋆
+,
+□
+)
+(x_{i},x^{\star}_{i},\square)
+is missing its
+label. Using this convention, we introduce the
+clean subset
+notation
+c
+(
+S
+)
+=
+{
+v
+:
+v
+∈
+S
+,
+v
+i
+≠
+□
+∀
+i
+}
+.
+c(S)=\{v:v\in S,v_{i}\neq\square\,\,\forall i\}.
+Then, semi-supervised generalized distillation walks the same three steps as
+generalized distillation, enumerated at the beginning of
+Section
+4
+, but uses the appropriate clean subsets
+instead of the whole data. For example, the semi-supervised extension of
+distillation allows the teacher to prepare soft labels for all
+the unlabeled data
+c
+⁡
+(
+{
+(
+x
+i
+,
+x
+i
+⋆
+)
+}
+i
+=
+1
+n
+)
+c(\{(x_{i},x^{\star}_{i})\}_{i=1}^{n})
+. These additional
+soft-labels are additional information available to the student to learn the teacher
+representation
+f
+t
+f_{t}
+.
+Learning with the Universum
+The unlabeled data
+c
+⁡
+(
+{
+x
+i
+,
+x
+i
+⋆
+}
+i
+=
+1
+n
+)
+c(\{x_{i},x^{\star}_{i}\}_{i=1}^{n})
+can belong to one of the classes of interest, or be
+Universum
+data
+(
+Weston et al., 2006
+;
+Chapelle et al., 2007
+)
+. Universum data may have
+labels: in this case, one can exploit these additional labels by i) training a
+teacher that distinguishes amongst all classes (those of interest and those
+from the Universum), ii) computing soft class-probabilities only for the
+classes of interest, and iii) distilling these soft probabilities into a
+student function.
+Learning from multiple tasks
+Generalized distillation applies to
+some domain adaptation, transfer learning, or multitask learning scenarios. On
+the one hand, if the multiple tasks share the same labels
+y
+i
+y_{i}
+but differ in
+their input modalities, the input modalities from the source tasks are
+privileged information. On the other hand, if the multiple tasks share the
+same input modalities
+x
+i
+x_{i}
+but differ in their labels, the labels from the
+source tasks are privileged information. In both cases, the regular student
+representation is the input modality from the target task.
+Curriculum and reinforcement learning
+We conjecture that the
+uncertainty in the teacher soft predictions can be used as a mechanism to rank
+the difficulty of training examples, and use these ranks for curriculum
+learning
+(
+Bengio et al., 2009
+)
+. Furthermore, distillation
+resembles imitation, a technique that learning agents could exploit in
+reinforcement learning
+environments.
+4.3
+A causal perspective on generalized distillation
+The assumption of
+independence of cause and mechanisms
+states that “the
+probability distribution of a cause is often independent from the process
+mapping this cause into its effects”
+(
+Schölkopf et al., 2012
+)
+. Under this
+assumption, for instance,
+causal learning problems
+—i.e., those where
+the features cause the labels— do not benefit from semi-supervised learning,
+since by the independence assumption, the marginal distribution of the features
+contains no information about the function mapping features to labels.
+Conversely,
+anticausal learning problems
+—those where the labels cause
+the features— may benefit from semi-supervised learning.
+Causal implications also arise in generalized distillation. First, if the
+privileged features
+x
+i
+⋆
+x^{\star}_{i}
+only add information about the marginal
+distribution of the regular features
+x
+i
+x_{i}
+, the teacher should be able to help
+only in anticausal learning problems. Second, if the teacher provides
+additional information about the conditional distribution of the labels
+y
+i
+y_{i}
+given the inputs
+x
+i
+x_{i}
+, it should also help in the causal setting. We will confirm this hypothesis in the next section.
+5
+Numerical simulations
+We now present some experiments to illustrate when the
+distillation of privileged information is effective, and when it is not. The
+necessary Python code to replicate all the following experiments is available
+at
+http://github.com/lopezpaz
+.
+We start with four synthetic experiments, designed to minimize modeling
+assumptions and to illustrate different prototypical types of privileged
+information. These are simulations of logistic regression models repeated over
+100
+100
+random partitions, where we use
+n
+tr
+=
+200
+n_{\text{tr}}=200
+samples for training,
+and
+n
+te
+=
+10,000
+n_{\text{te}}=10,000
+samples for testing. The dimensionality of the
+regular features
+x
+i
+x_{i}
+is
+d
+=
+50
+d=50
+, and the involved separating hyperplanes
+α
+∈
+ℝ
+d
+\alpha\in\mathbb{R}^{d}
+follow the distribution
+𝒩
+⁡
+(
+0
+,
+I
+d
+)
+\mathcal{N}(0,I_{d})
+. For each
+experiment, we report the test accuracy when i) using the teacher explanations
+x
+i
+⋆
+x^{\star}_{i}
+at both train and test time, ii) using the regular features
+x
+i
+x_{i}
+at both train and test time, and iii) distilling the teacher explanations into
+the student classifier with
+λ
+=
+T
+=
+1
+\lambda=T=1
+.
+1. Clean labels as privileged information.
+We sample triplets
+(
+x
+i
+,
+x
+i
+⋆
+,
+y
+i
+)
+(x_{i},x^{\star}_{i},y_{i})
+from:
+x
+i
+\displaystyle x_{i}
+∼
+𝒩
+⁡
+(
+0
+,
+I
+d
+)
+\displaystyle\sim\mathcal{N}(0,I_{d})
+x
+i
+⋆
+\displaystyle x^{\star}_{i}
+←
+⟨
+α
+,
+x
+i
+⟩
+\displaystyle\leftarrow\langle\alpha,x_{i}\rangle
+ε
+i
+\displaystyle\varepsilon_{i}
+∼
+𝒩
+⁡
+(
+0
+,
+1
+)
+\displaystyle\sim\mathcal{N}(0,1)
+y
+i
+\displaystyle y_{i}
+←
+𝕀
+⁡
+(
+(
+x
+i
+⋆
++
+ε
+i
+)
+>
+0
+)
+.
+\displaystyle\leftarrow\mathbb{I}((x^{\star}_{i}+\varepsilon_{i})>0).
+Here, each teacher explanation
+x
+i
+⋆
+x^{\star}_{i}
+is the exact distance to the
+decision boundary for each
+x
+i
+x_{i}
+, but the data labels
+y
+i
+y_{i}
+are corrupt. This
+setup aligns with the assumptions about slacks in the similarity control
+framework of
+Vapnik & Vashist (2009)
+. We obtained a privileged test classification
+accuracy of
+96
+±
+0
+%
+96\pm 0\%
+, a regular test classification accuracy of
+88
+±
+1
+%
+88\pm 1\%
+, and a distilled test classification accuracy of
+95
+±
+1
+%
+95\pm 1\%
+. This illustrates that distillation of privileged information is an
+effective mean to detect outliers in label space.
+2. Clean features as privileged information
+We sample
+triplets
+(
+x
+i
+,
+x
+i
+⋆
+,
+y
+i
+)
+(x_{i},x^{\star}_{i},y_{i})
+from:
+x
+i
+⋆
+\displaystyle x^{\star}_{i}
+∼
+𝒩
+⁡
+(
+0
+,
+I
+d
+)
+\displaystyle\sim\mathcal{N}(0,I_{d})
+ε
+i
+\displaystyle\varepsilon_{i}
+∼
+𝒩
+⁡
+(
+0
+,
+I
+d
+)
+\displaystyle\sim\mathcal{N}(0,I_{d})
+x
+i
+\displaystyle x_{i}
+←
+x
+i
+⋆
++
+ε
+\displaystyle\leftarrow x^{\star}_{i}+\varepsilon
+y
+i
+\displaystyle y_{i}
+←
+𝕀
+⁡
+(
+⟨
+α
+,
+x
+i
+⋆
+⟩
+>
+0
+)
+.
+\displaystyle\leftarrow\mathbb{I}\left(\langle\alpha,x^{\star}_{i}\rangle>0\right).
+In this setup, the teacher explanations
+x
+i
+⋆
+x^{\star}_{i}
+are clean versions of the
+regular features
+x
+i
+x_{i}
+available at test time. We obtained a privileged test
+classification accuracy of
+90
+±
+1
+%
+90\pm 1\%
+, a regular test classification accuracy
+of
+68
+±
+1
+%
+68\pm 1\%
+, and a distilled test classification accuracy of
+70
+±
+1
+%
+70\pm 1\%
+. This improvement is not statistically significant. This is because
+the intelligent explanations
+x
+i
+⋆
+x^{\star}_{i}
+are independent from the noise
+ε
+i
+\varepsilon_{i}
+polluting the regular features
+x
+i
+x_{i}
+. Therefore, there exists
+no additional information transferable from the teacher to the student.
+3. Relevant features as privileged information
+We sample triplets
+(
+x
+i
+,
+x
+i
+⋆
+,
+y
+i
+)
+(x_{i},x^{\star}_{i},y_{i})
+from:
+x
+i
+\displaystyle x_{i}
+∼
+𝒩
+⁡
+(
+0
+,
+I
+d
+)
+\displaystyle\sim\mathcal{N}(0,I_{d})
+x
+i
+⋆
+\displaystyle x^{\star}_{i}
+←
+x
+i
+,
+J
+\displaystyle\leftarrow x_{i,J}
+y
+i
+\displaystyle y_{i}
+←
+𝕀
+⁡
+(
+⟨
+α
+J
+,
+x
+i
+⋆
+⟩
+>
+0
+)
+,
+\displaystyle\leftarrow\mathbb{I}(\langle\alpha_{J},x^{\star}_{i}\rangle>0),
+where the set
+J
+J
+, with
+|
+J
+|
+=
+3
+|J|=3
+, is a subset of the variable indices
+{
+1
+,
+…
+,
+d
+}
+\{1,\ldots,d\}
+chosen at random but common for all samples. In another words, the
+teacher explanations indicate the values of the variables relevant for
+classification, which translates into a reduction of the
+dimensionality of the data that we have to learn from. We obtained a
+privileged test classification accuracy of
+98
+±
+0
+%
+98\pm 0\%
+, a regular test
+classification accuracy of
+89
+±
+1
+%
+89\pm 1\%
+, and a distilled test
+classification accuracy of
+97
+±
+1
+%
+97\pm 1\%
+. This illustrates that distillation on
+privileged information is an effective tool for feature selection.
+4. Sample-dependent relevant features as privileged information
+Sample triplets
+x
+i
+\displaystyle x_{i}
+∼
+𝒩
+⁡
+(
+0
+,
+I
+d
+)
+\displaystyle\sim\mathcal{N}(0,I_{d})
+x
+i
+⋆
+\displaystyle x^{\star}_{i}
+←
+x
+i
+,
+J
+i
+\displaystyle\leftarrow x_{i,{J_{i}}}
+y
+i
+\displaystyle y_{i}
+←
+𝕀
+⁡
+(
+⟨
+α
+J
+i
+,
+x
+i
+⋆
+⟩
+>
+0
+)
+,
+\displaystyle\leftarrow\mathbb{I}(\langle\alpha_{J_{i}},x^{\star}_{i}\rangle>0),
+where the sets
+J
+i
+J_{i}
+, with
+|
+J
+i
+|
+=
+3
+|J_{i}|=3
+for all
+i
+i
+, are a subset of the
+variable indices
+{
+1
+,
+…
+,
+d
+}
+\{1,\ldots,d\}
+chosen at random for each sample
+x
+i
+⋆
+x^{\star}_{i}
+. One interpretation of such model is the one of bounding boxes in
+computer vision: each high-dimensional vector
+x
+i
+x_{i}
+would be an image, and each
+teacher explanation
+x
+i
+⋆
+x^{\star}_{i}
+would be the pixels inside a bounding box
+locating the concept of interest
+(
+Sharmanska et al., 2013
+)
+.
+We obtained a privileged test classification accuracy of
+96
+±
+2
+%
+96\pm 2\%
+, a
+regular test classification accuracy of
+55
+±
+3
+%
+55\pm 3\%
+, and a distilled
+test classification accuracy of
+0.56
+±
+4
+%
+0.56\pm 4\%
+. Note that
+although the classification is linear in
+x
+⋆
+x^{\star}
+, this is not the case in
+terms of
+x
+x
+. Therefore, although we have misspecified the function class
+ℱ
+s
+\mathcal{F}_{s}
+for this problem, the distillation approach did not deteriorate
+the final performance.
+The previous four experiments set up causal learning problems. In the second
+experiment, the privileged features
+x
+i
+⋆
+x^{\star}_{i}
+add no information about the
+target function mapping the regular features to the labels, so the causal
+hypothesis from Section
+4.3
+justifies the lack of improvement. The
+first and third experiments provide privileged information that adds
+information about the target function, and therefore is beneficial to distill
+this information. The fourth example illustrates that
+the privileged features adding information about
+the target function is not a sufficient condition for improvement.
+5. MNIST handwritten digit image classification
+The privileged
+features are the original 28x28 pixels MNIST handwritten digit images
+(
+LeCun et al., 1998b
+)
+, and the regular features are the same images downscaled to 7x7
+pixels. We use
+300
+300
+or
+500
+500
+samples to train both the teacher and the
+student, and test their accuracies at multiple levels of temperature and
+imitation on the full test set. Both student and teacher are neural networks of
+composed by two hidden layers of
+20
+20
+rectifier linear units and a softmax
+output layer (the same networks are used in the remaining experiments).
+Figure
+1
+summarizes the results of this experiment, where we see
+a significant improvement in classification accuracy when distilling the
+privileged information, with respect to using the regular features alone. As
+expected, the benefits of distillation diminished as we further increased the
+sample size.
+Figure 1:
+Results on MNIST for 300 samples (left) and 500 samples (right).
+6. Semisupervised learning
+We explore the semisupervised capabilities
+of generalized distillation on the CIFAR10 dataset
+(
+Krizhevsky, 2009
+)
+. Here, the
+privileged features are the original 32x32 pixels CIFAR10 color images, and the
+regular features are the same images when polluted with additive Gaussian
+noise. We provide labels for
+300
+300
+images, and unlabeled privileged and regular
+features for the rest of the training set. Thus, the teacher trains on
+300
+300
+images, but computes the soft labels for the whole training set of
+50,000
+50,000
+images. The student then learns by distilling the
+300
+300
+original hard labels
+and the
+50,000
+50,000
+soft predictions. As seen in Figure
+2
+, the soft
+labeling of unlabeled data results in a significant improvement with respect to
+pure student supervised classification. Distillation on the
+300
+300
+labeled
+samples did not improve the student performance. This illustrates the
+importance of semisupervised distillation in this data. We believe that the
+drops in performance for some distillation temperatures are due to the lack of
+a proper weighting between labeled and unlabeled data in (
+4
+).
+7. Multitask learning
+The SARCOS
+dataset
+(
+Vijayakumar, 2000
+)
+characterizes the 7 joint torques of a robotic arm given
+21 real-valued features. Thus, this is a multitask learning problem, formed by
+7 regression tasks. We learn a teacher on
+300
+300
+samples to predict each of the
+7 torques given the other 6, and then distill this knowledge into a student who
+uses as her regular input space the 21 real-valued features.
+Figure
+2
+illustrates the performance improvement in mean squared
+error when using generalized distillation to address the multitask learning
+problem. When distilling at the proper temperature, distillation allowed
+the student to match her teacher performance.
+Figure 2:
+Results on CIFAR 10 (left) and SARCOS (right).
+Acknowledgments
+We thank discussions with R.
+Nishihara, R. Izmailov, I. Tolstikhin, and C. J. Simon-Gabriel.
+References
+Ba & Caruana (2014)
+Ba, Jimmy and Caruana, Rich.
+Do deep nets really need to be deep?
+In
+NIPS
+, 2014.
+Bengio et al. (2009)
+Bengio, Yoshua, Louradour, Jérôme, Collobert, Ronan, and Weston, Jason.
+Curriculum learning.
+In
+ICML
+, 2009.
+Bottou (2014)
+Bottou, Léon.
+From machine learning to machine reasoning.
+Machine learning
+, 94(2):133–149, 2014.
+Buciluǎ et al. (2006)
+Buciluǎ, Cristian, Caruana, Rich, and Niculescu-Mizil, Alexandru.
+Model compression.
+In
+KDD
+, 2006.
+Burges & Schölkopf (1997)
+Burges, Christopher and Schölkopf, Bernhard.
+Improving the accuracy and speed of support vector learning machines.
+In
+NIPS
+, 1997.
+Chapelle et al. (2007)
+Chapelle, Olivier, Agarwal, Alekh, Sinz, Fabian H, and Schölkopf, Bernhard.
+An analysis of inference with the Universum.
+In
+NIPS
+, 2007.
+Feyereisl & Aickelin (2012)
+Feyereisl, Jan and Aickelin, Uwe.
+Privileged information for data clustering.
+Information Sciences
+, 194:4–23, 2012.
+Fouad et al. (2013)
+Fouad, Shereen, Tino, Peter, Raychaudhury, Somak, and Schneider, Petra.
+Incorporating privileged information through metric learning.
+Neural Networks and Learning Systems
+, 24(7):1086–1098, 2013.
+Hernández-Lobato et al. (2014)
+Hernández-Lobato, Daniel, Sharmanska, Viktoriia, Kersting, Kristian,
+Lampert, Christoph H, and Quadrianto, Novi.
+Mind the nuisance: Gaussian process classification using privileged
+noise.
+In
+NIPS
+, 2014.
+Hinton et al. (2015)
+Hinton, Geoffrey, Vinyals, Oriol, and Dean, Jeff.
+Distilling the knowledge in a neural network.
+arXiv
+, 2015.
+Krizhevsky (2009)
+Krizhevsky, Alex.
+The CIFAR-10 and CIFAR-100 datasets, 2009.
+URL
+http://www.cs.toronto.edu/~kriz/cifar.html
+.
+Lapin et al. (2014)
+Lapin, Maksim, Hein, Matthias, and Schiele, Bernt.
+Learning using privileged information: Svm+ and weighted svm.
+Neural Networks
+, 53:95–108, 2014.
+LeCun et al. (1998a)
+LeCun, Yann, Bottou, Léon, Bengio, Yoshua, and Haffner, Patrick.
+Gradient-based learning applied to document recognition.
+Proceedings of the IEEE
+, 86(11):2278–2324, 1998a.
+LeCun et al. (1998b)
+LeCun, Yann, Cortes, Corinna, and Burges, Christopher JC.
+The MNIST database of handwritten digits, 1998b.
+URL
+http://yann.lecun.com/exdb/mnist/
+.
+Lopez-Paz et al. (2014)
+Lopez-Paz, David, Sra, Suvrit, Smola, Alex, Ghahramani, Zoubin, and
+Schölkopf, Bernhard.
+Randomized nonlinear component analysis.
+In
+ICML
+, 2014.
+Mikolov et al. (2013)
+Mikolov, Tomas, Chen, Kai, Corrado, Greg, and Dean, Jeffrey.
+Efficient estimation of word representations in vector space.
+arXiv
+, 2013.
+Oquab et al. (2014)
+Oquab, Maxime, Bottou, Leon, Laptev, Ivan, and Sivic, Josef.
+Learning and transferring mid-level image representations using
+convolutional neural networks.
+In
+CVPR
+, pp.  1717–1724, 2014.
+Pechyony & Vapnik (2010)
+Pechyony, Dmitry and Vapnik, Vladimir.
+On the theory of learning with privileged information.
+In
+NIPS
+, 2010.
+Ribeiro et al. (2010)
+Ribeiro, Bernardete, Silva, Catarina, Vieira, Armando, Gaspar-Cunha,
+António, and das Neves, João C.
+Financial distress model prediction using SVM+.
+In
+IJCNN
+. IEEE, 2010.
+Schölkopf et al. (2012)
+Schölkopf, Bernhard, Janzing, Dominik, Peters, Jonas, Sgouritsa, Eleni,
+Zhang, Kun, and Mooij, Joris.
+On causal and anticausal learning.
+ICML
+, 2012.
+Sharmanska et al. (2013)
+Sharmanska, Viktoriia, Quadrianto, Novi, and Lampert, Christoph H.
+Learning to rank using privileged information.
+In
+ICCV
+, 2013.
+Sharmanska et al. (2014)
+Sharmanska, Viktoriia, Quadrianto, Novi, and Lampert, Christoph H.
+Learning to transfer privileged information.
+arXiv
+, 2014.
+Vapnik (1998)
+Vapnik, Vladimir.
+Statistical learning theory
+.
+Wiley New York, 1998.
+Vapnik & Izmailov (2015)
+Vapnik, Vladimir and Izmailov, Rauf.
+Learning using privileged information: Similarity control and
+knowledge transfer.
+JMLR
+, 16:2023–2049, 2015.
+Vapnik & Vashist (2009)
+Vapnik, Vladimir and Vashist, Akshay.
+A new learning paradigm: Learning using privileged information.
+Neural Networks
+, 22(5):544–557, 2009.
+Vijayakumar (2000)
+Vijayakumar, Sethu.
+The SARCOS dataset, 2000.
+URL
+http://www.gaussianprocess.org/gpml/data/
+.
+Weston et al. (2006)
+Weston, Jason, Collobert, Ronan, Sinz, Fabian, Bottou, Léon, and Vapnik,
+Vladimir.
+Inference with the Universum.
+In
+ICML
+, 2006.
+Experimental support, please
+view the build logs
+for errors. Generated by
+L
+A
+T
+E
+xml
+.
+Instructions for reporting errors
+We are continuing to improve HTML versions of papers, and your feedback helps enhance accessibility and mobile
+      support. To report errors in the HTML that will help us improve conversion and rendering, choose any of the
+      methods listed below:
+Click the "Report Issue"
+(
+)
+button, located in the page header.
+Tip:
+You can select the relevant text first, to include it in your report.
+Our team has already identified
+the following issues
+. We appreciate your time reviewing and reporting rendering errors we
+      may not have found yet. Your efforts will help us improve the HTML versions for all readers, because disability
+      should not be a barrier to accessing research. Thank you for your continued support in championing open access for
+      all.
+Have a free development cycle? Help support accessibility at arXiv! Our collaborators at LaTeXML maintain a
+list of packages that need conversion
+, and welcome
+developer contributions
+.
+We gratefully acknowledge support from
+        our
+major funders
+,
+member institutions
+,
+,
+        and all contributors.
+Major funding support from

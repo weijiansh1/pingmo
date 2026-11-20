@@ -1,0 +1,41 @@
+{
+  "method": "Reuse local Noto Sans SC subsets without changing font bytes",
+  "all_displayed_chinese_characters_covered": true,
+  "fonts": [
+    {
+      "file": "noto-e549d25b76d6.ttf",
+      "source_local_file": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/vendor/fonts/noto-sc-e549d25b76d6.ttf",
+      "sha256": "e549d25b76d6652e5985ecfbf71f343831378bca50aadf8bc72232bd7c29f515",
+      "characters": 152,
+      "copyright_and_license_metadata_retained": true
+    },
+    {
+      "file": "noto-fae54c70ac8d.ttf",
+      "source_local_file": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/vendor/fonts/noto-sc-fae54c70ac8d.ttf",
+      "sha256": "fae54c70ac8d895ec9c52b0928d52b27248936defd29195bcbbac925aaeeb959",
+      "characters": 133,
+      "copyright_and_license_metadata_retained": true
+    },
+    {
+      "file": "noto-ad2dedbedaf3.ttf",
+      "source_local_file": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/vendor/fonts/noto-sc-ad2dedbedaf3.ttf",
+      "sha256": "ad2dedbedaf318167c096117e77ef7988953b1de5b2308d9c54e18b6fdd64829",
+      "characters": 6,
+      "copyright_and_license_metadata_retained": true
+    },
+    {
+      "file": "noto-caa397f6ba98.ttf",
+      "source_local_file": "/tmp/demo-nar-static-smoke/web/assets/NotoSansSC-demo.ttf",
+      "sha256": "caa397f6ba986cbcb535af31676e4e89023d3a42dc5ac3b293a1169a48e296ee",
+      "characters": 5,
+      "copyright_and_license_metadata_retained": true
+    },
+    {
+      "file": "noto-0334892df946.ttf",
+      "source_local_file": "/home/swj/pingmo/paper_web_display_2026-10-25/webpage/vendor/fonts/noto-sc-0334892df946.ttf",
+      "sha256": "0334892df946c63adea1b4ef9666ec2aeeb7ebeda0be7a5f1be228645da5521d",
+      "characters": 2,
+      "copyright_and_license_metadata_retained": true
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "zip": "飞控大模型研究_交付_2026-10-24.zip",
+  "original_file_count": 2076,
+  "missing": [],
+  "changed": [],
+  "extra_files_remaining": [],
+  "generated_import_caches_relocated_to": "revision/import_cache_artifacts",
+  "generated_caches": [
+    "pingmo_src/src/context/__pycache__/aircraft_parameters.cpython-310.pyc",
+    "pingmo_src/src/envs/__pycache__/__init__.cpython-310.pyc",
+    "pingmo_src/src/envs/__pycache__/batched_p_channel.cpython-310.pyc",
+    "pingmo_src/src/envs/__pycache__/roll_rate_commands.cpython-310.pyc",
+    "pingmo_src/src/__pycache__/__init__.cpython-310.pyc",
+    "pingmo_src/src/teacher/ppo/__pycache__/networks.cpython-310.pyc",
+    "pingmo_src/src/teacher/__pycache__/residual.cpython-310.pyc",
+    "pingmo_src/src/teacher/__pycache__/__init__.cpython-310.pyc",
+    "pingmo_src/src/aircraft/__pycache__/__init__.cpython-310.pyc",
+    "pingmo_src/src/aircraft/__pycache__/parameters.cpython-310.pyc",
+    "pingmo_src/src/aircraft/__pycache__/gain_calibration.cpython-310.pyc",
+    "pingmo_src/src/aircraft/__pycache__/delay.cpython-310.pyc",
+    "pingmo_src/src/aircraft/__pycache__/p_channel.cpython-310.pyc",
+    "experiments/sae_delay_20261023/__pycache__/common.cpython-310.pyc"
+  ],
+  "original_source_and_weights_byte_identical": true
+}

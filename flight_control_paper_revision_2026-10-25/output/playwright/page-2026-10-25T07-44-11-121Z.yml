@@ -1,0 +1,3700 @@
+- generic [ref=e2]:
+  - complementary "章节导航" [ref=e3]:
+    - list [ref=e5]:
+      - listitem [ref=e6]:
+        - link "基于飞行品质模型的飞控大模型研究" [ref=e7] [cursor=pointer]:
+          - /url: "#_1"
+        - list [ref=e8]:
+          - listitem [ref=e9]:
+            - link "摘要" [ref=e10] [cursor=pointer]:
+              - /url: "#_2"
+          - listitem [ref=e11]:
+            - link "1 引言" [ref=e12] [cursor=pointer]:
+              - /url: "#1"
+            - list [ref=e13]:
+              - listitem [ref=e14]:
+                - link "1.1 相关工作" [ref=e15] [cursor=pointer]:
+                  - /url: "#11"
+          - listitem [ref=e16]:
+            - link "2 问题定义与控制对象" [ref=e17] [cursor=pointer]:
+              - /url: "#2"
+            - list [ref=e18]:
+              - listitem [ref=e19]:
+                - link "2.1 控制任务与接口变量" [ref=e20] [cursor=pointer]:
+                  - /url: "#21"
+              - listitem [ref=e21]:
+                - link "2.2 参数化滚转对象" [ref=e22] [cursor=pointer]:
+                  - /url: "#22"
+              - listitem [ref=e23]:
+                - link "2.3 评价指标与判定门限" [ref=e24] [cursor=pointer]:
+                  - /url: "#23"
+          - listitem [ref=e25]:
+            - link "3 方法：四步构建与迁移" [ref=e26] [cursor=pointer]:
+              - /url: "#3"
+            - list [ref=e27]:
+              - listitem [ref=e28]:
+                - link "3.1 第一步：随机采样飞行品质模型" [ref=e29] [cursor=pointer]:
+                  - /url: "#31"
+                - list [ref=e30]:
+                  - listitem [ref=e31]:
+                    - link "3.1.1 标准边界与部分标签" [ref=e32] [cursor=pointer]:
+                      - /url: "#311"
+                  - listitem [ref=e33]:
+                    - link "3.1.2 联合覆盖和边界的构造定义" [ref=e34] [cursor=pointer]:
+                      - /url: "#312"
+              - listitem [ref=e35]:
+                - link "3.2 第二步：逐对象训练强化学习教师" [ref=e36] [cursor=pointer]:
+                  - /url: "#32"
+                - list [ref=e37]:
+                  - listitem [ref=e38]:
+                    - link "3.2.1 即时奖励函数" [ref=e39] [cursor=pointer]:
+                      - /url: "#321"
+                  - listitem [ref=e40]:
+                    - link "3.2.2 PPO 优化目标" [ref=e41] [cursor=pointer]:
+                      - /url: "#322-ppo"
+                  - listitem [ref=e42]:
+                    - link "3.2.3 奖励与品质维度的对应" [ref=e43] [cursor=pointer]:
+                      - /url: "#323"
+              - listitem [ref=e44]:
+                - link "3.3 第三步：DAgger 蒸馏统一学生" [ref=e45] [cursor=pointer]:
+                  - /url: "#33-dagger"
+              - listitem [ref=e46]:
+                - link "3.4 第四步：DHC-6 仿真数据小样本微调" [ref=e47] [cursor=pointer]:
+                  - /url: "#34-dhc-6"
+          - listitem [ref=e48]:
+            - link "4 实验设置" [ref=e49] [cursor=pointer]:
+              - /url: "#4"
+          - listitem [ref=e50]:
+            - link "5 结果" [ref=e51] [cursor=pointer]:
+              - /url: "#5"
+            - list [ref=e52]:
+              - listitem [ref=e53]:
+                - link "5.1 第一步：采样对象的分布覆盖" [ref=e54] [cursor=pointer]:
+                  - /url: "#51"
+              - listitem [ref=e55]:
+                - link "5.2 第二步：逐对象教师训练（归档报告值）" [ref=e56] [cursor=pointer]:
+                  - /url: "#52"
+              - listitem [ref=e57]:
+                - link "5.3 第三步：统一学生蒸馏（归档报告值）" [ref=e58] [cursor=pointer]:
+                  - /url: "#53"
+              - listitem [ref=e59]:
+                - link "5.3.1 代表性闭环响应" [ref=e60] [cursor=pointer]:
+                  - /url: "#531"
+              - listitem [ref=e61]:
+                - link "5.3.2 扩展对象池抽样评估" [ref=e62] [cursor=pointer]:
+                  - /url: "#532"
+              - listitem [ref=e63]:
+                - link "5.3.3 指令幅值与分布外对象评估" [ref=e64] [cursor=pointer]:
+                  - /url: "#533"
+              - listitem [ref=e65]:
+                - link "5.3.4 与固定增益 PID 的对照" [ref=e66] [cursor=pointer]:
+                  - /url: "#534-pid"
+              - listitem [ref=e67]:
+                - link "5.4 第四步：DHC-6 仿真目标上的小样本微调（归档报告值）" [ref=e68] [cursor=pointer]:
+                  - /url: "#54-dhc-6"
+          - listitem [ref=e69]:
+            - link "6 讨论" [ref=e70] [cursor=pointer]:
+              - /url: "#6"
+            - list [ref=e71]:
+              - listitem [ref=e72]:
+                - link "6.1 延迟表征与等效延迟的核验" [ref=e73] [cursor=pointer]:
+                  - /url: "#61"
+                - list [ref=e74]:
+                  - listitem [ref=e75]:
+                    - link "6.1.1 数据与输入条件" [ref=e76] [cursor=pointer]:
+                      - /url: "#611"
+                  - listitem [ref=e77]:
+                    - link "6.1.2 严格时间截止后的延迟探针" [ref=e78] [cursor=pointer]:
+                      - /url: "#612"
+                  - listitem [ref=e79]:
+                    - link "6.1.3 归档闭环结果的正确解释" [ref=e80] [cursor=pointer]:
+                      - /url: "#613"
+                  - listitem [ref=e81]:
+                    - link "6.1.4 τp、τe 与标准适用范围" [ref=e82] [cursor=pointer]:
+                      - /url: "#614-pe"
+                  - listitem [ref=e83]:
+                    - link "6.1.5 修复时间对齐后的 LOES 评价" [ref=e84] [cursor=pointer]:
+                      - /url: "#615-loes"
+                  - listitem [ref=e85]:
+                    - link "6.1.6 幅值、种子与门限的范围" [ref=e86] [cursor=pointer]:
+                      - /url: "#616"
+              - listitem [ref=e87]:
+                - link "6.2 修订后新增对照" [ref=e88] [cursor=pointer]:
+                  - /url: "#62"
+                - list [ref=e89]:
+                  - listitem [ref=e90]:
+                    - link "6.2.1 公共参考：同一冻结权重的配对检查" [ref=e91] [cursor=pointer]:
+                      - /url: "#621"
+                  - listitem [ref=e92]:
+                    - link "6.2.2 训练范围受限、初始化与预算统一的学生对照" [ref=e93] [cursor=pointer]:
+                      - /url: "#622"
+              - listitem [ref=e94]:
+                - link "6.3 后续实验计划：执行机构敏感性" [ref=e95] [cursor=pointer]:
+                  - /url: "#63"
+              - listitem [ref=e96]:
+                - link "6.4 品模与 PPO 的进一步核验（v2 阶段记录）" [ref=e97] [cursor=pointer]:
+                  - /url: "#64-ppo-v2"
+              - listitem [ref=e98]:
+                - link "6.5 飞控控制器路线的连续证据（2026-10-24 冻结实验）" [ref=e99] [cursor=pointer]:
+                  - /url: "#65-2026-10-24"
+              - listitem [ref=e100]:
+                - link "6.6 完整 GJB 核查与对象库覆盖审计" [ref=e101] [cursor=pointer]:
+                  - /url: "#66-gjb"
+          - listitem [ref=e102]:
+            - link "7 结论" [ref=e103] [cursor=pointer]:
+              - /url: "#7"
+          - listitem [ref=e104]:
+            - link "附录 A 数学符号与计算示例" [ref=e105] [cursor=pointer]:
+              - /url: "#a"
+            - list [ref=e106]:
+              - listitem [ref=e107]:
+                - link "A.1 从变化率到传递函数" [ref=e108] [cursor=pointer]:
+                  - /url: "#a1"
+              - listitem [ref=e109]:
+                - link "A.2 动作与奖励的代入" [ref=e110] [cursor=pointer]:
+                  - /url: "#a2"
+              - listitem [ref=e111]:
+                - link "A.3 优势、裁剪和权重更新" [ref=e112] [cursor=pointer]:
+                  - /url: "#a3"
+              - listitem [ref=e113]:
+                - link "A.4 蒸馏误差、闭环累积与信息限制" [ref=e114] [cursor=pointer]:
+                  - /url: "#a4"
+          - listitem [ref=e115]:
+            - link "参考文献" [ref=e116] [cursor=pointer]:
+              - /url: "#_3"
+  - main [ref=e117]:
+    - heading "基于飞行品质模型的飞控大模型研究" [level=1] [ref=e118]
+    - blockquote [ref=e119]:
+      - paragraph [ref=e120]: 论文整合修订版 · 2026-10-25 · 纳入 GJB 原文核查、对象库覆盖审计及数学说明；本次未新增策略训练
+    - heading "摘要" [level=2] [ref=e121]
+    - paragraph [ref=e122]: 本文研究飞控控制器的构建路线：按飞行品质相关参数组织源域对象、训练专用教师、蒸馏统一学生并进行目标域适配。现阶段以滚转通道开展路线可行性验证。归档主线构造 5,000 个参数化对象，报告 49 个 PPO 教师中 46 个通过项目门限，及 tiny（3,856 参数）和 small（75,040 参数）两种学生。tiny 相对教师的 RMSE 中位倍数为同分布 1.28、四对象留出 1.68；small 为 1.34、1.41。上述结果存在精度损失，不能证明容量无关或把差距归因于特权信息。300 个同分布对象的 ±1/±31 deg/s 通过率为 99.7%/60.3%，500 个 OOD 对象为 86.8%/27.6%。DHC-6 仿真辨识对象上的 small 适配组中位误差由 2.913 降至 0.595 deg/s，留出组由 2.662 降至 2.148 deg/s；这些主线数值保留为归档报告值，完整原始证据未随包提供。
+    - paragraph [ref=e123]: 2026-10-24 的路线验证在训练前固定 12 个源对象、24 个 ID 留出对象、24 个 OOD 对象及三个策略种子，实际训练 36 个教师与三个统一学生。8 s 独立指令测试中，教师源对象通过率为 61.1%–82.4%，学生为 48.1%–87.0%；学生 ID 为 40.7%–68.1%，OOD 为 38.9%–51.4%。同源蒸馏在一个种子下降约 13 个百分点，30 s 测试出现六次学生发散，因此不能概括为可靠无损或长时稳定。等目标预算的 DHC-6 ARX 对照中，三个种子预训练后适配的留出通过率为 75.0%/75.0%/80.6%，从零为 58.3%/63.9%/61.1%，支持当前辨识仿真和配方下的预训练收益。详见第 6.5 节。
+    - paragraph [ref=e124]: 此前修订核对并重建了 510 对象的 SAE 数据，修复学生参考对真实时延的依赖、跨时延更新中的样本回流，以及探针和频响评价的时间问题。在严格 1.2 s 截止下，互相关时延探针 R²=0.984、MAE=5.6 ms。对归档频响修正 20 ms 时间偏差并重新拟合后，raw/SAE-aux 的可评对象分别为 73/101 个，中位等效延迟为 0.093/0.125 s，Top-k 为 0/120 可评。另补固定公共参考对照和两种策略种子的训练范围受限实验。结论限定于所述仿真对象、输入条件与项目门限，不等同于实飞验证或 GJB 符合性评价。
+    - paragraph [ref=e125]: 补充的对象库审计发现，4,500 个非 OOD 对象仅覆盖 8 种已实现判据的等级组合，全库不存在两项及以上已分级指标同时退化的对象。0.75 s 建库记录不足以支持旧辅助振荡比和调节时间的品质解释。本文据此限定源域覆盖与指标适用范围，并提供覆盖 54 种分量等级组合和 14 组活动阈值边界的 190 对象构造样例；该样例仅完成构造与数值验证，尚未用于控制器训练。数学方法在第 2—3 节展开，代数算例见附录 A。
+    - paragraph [ref=e126]:
+      - strong [ref=e127]: 关键词：
+      - text: 飞行品质；低阶等效系统；强化学习；教师—学生蒸馏；交互式模仿；迁移学习
+    - heading "1 引言" [level=2] [ref=e128]
+    - paragraph [ref=e129]: “品模”项目以飞控控制器为研究核心，探索跨对象共享策略的构建与适配路线。滚转角速度内回路是现阶段的可行性验证任务，DHC-6 仿真辨识对象用于检验目标域适配。指令跟踪、指令引起的振荡以及扰动或初始偏差引起的振荡属于该验证任务的评价内容。全通道、耦合和实机验证是后续扩展；当前重点是教师、蒸馏学生及新对象适配各环节的结果是否可靠。教师约 4.26 M 参数，源域 tiny 学生为 3,856 参数；文中较好的目标域适配数字属于 75,040 参数 small，不能合并成同一规模模型的成绩。
+    - paragraph [ref=e130]: 流程包括品质相关参数分层采样、逐对象教师、统一学生蒸馏和目标域微调。飞行品质标准指导对象构造及部分事后评价；RMSE、峰值误差、操纵总变差率的准入门限由项目另行定义。归档奖励由跟踪误差、作用力能量与力速率动作幅值组成，尚未直接优化全部 GJB 条款，也未证明品质分层优于相同预算的一般参数采样。
+    - paragraph [ref=e131]: 本修订版区分三类证据：第 3—5 节主线的归档报告值；第 6.1 节可由随包数据或重建数据核对的结果；第 6.2 节新增的受控对照。第 6.4 节另列品模与 PPO 实现深查，发现并修复一秒灵敏度时间偏移、动作概率不一致及回合末值语义问题；其小规模训练仅验证实现流程。归档教师、六轮蒸馏、幅值扫描及 small 迁移的完整记录缺失，不能把同名旧实验摘要当作本版原始证据。第 6.5 节列出 controller-route-v1 的独立三种子实验，第 6.6 节是 2026-10-25 并入论文的对象库审计，不包含新策略训练。版本对应关系见修订说明。
+    - heading "1.1 相关工作" [level=3] [ref=e132]
+    - paragraph [ref=e133]:
+      - text: 飞行品质与学习控制。飞行品质规范及低阶等效系统为对象参数化和响应评价提供依据
+      - superscript [ref=e134]: "[1,2,13]"
+      - text: 。Jansen 与 van Kampen 研究 SAC 飞控的纵向操纵品质评价
+      - superscript [ref=e135]: "[16]"
+      - text: ，是强化学习与航空品质评价的直接相关工作；本次仅核到其摘要、首页与部分引言，不引申未读到的实验细节。Bøhn 等在固定翼姿态控制中研究 SAC 的仿真到实飞迁移，强调延迟与动力学随机化
+      - superscript [ref=e136]: "[17]"
+      - text: 。本项目当前验证范围为滚转参数化对象和 DHC-6 仿真辨识对象。
+    - paragraph [ref=e137]:
+      - text: 特权信息与蒸馏。LUPI 与广义蒸馏允许教师、学生拥有不同信息
+      - superscript [ref=e138]: "[5,18]"
+      - text: ；这与单纯缩小网络容量是两个变量。Asymmetric actor–critic 让 critic 使用完整状态、actor 使用部署观测
+      - superscript [ref=e139]: "[6]"
+      - text: ，并不必然需要两阶段教师—学生蒸馏。足式机器人特权学习、RMA 以及航空 Extreme Adaptation 展示了利用历史或潜变量进行动力学适应的路线
+      - superscript [ref=e140]: "[7–9,15]"
+      - text: ，但“信息能够读出”仍不能替代闭环收益的验证。
+    - paragraph [ref=e141]:
+      - text: 通用飞控策略。RAPTOR 通过 1,000 个专用 RL 教师训练统一的 2,084 参数循环学生，并在多个真实四旋翼上验证
+      - superscript [ref=e142]: "[14]"
+      - text: ，与本项目多教师到小型通用策略的链路最接近。其相关工作进一步连接 Extreme Adaptation、One Net to Rule Them All、Learning by Cheating、RMA、A-NC 和 DAgger。比较时需要对齐控制层级、动力学覆盖、部署输入和实机证据。竞速飞行
+      - superscript [ref=e143]: "[11]"
+      - text: 、Neural-Fly 抗风适应
+      - superscript [ref=e144]: "[10]"
+      - text: 和 Learning to Fly in Seconds
+      - superscript [ref=e145]: "[12]"
+      - text: 分别提供不同任务和训练范式的参照，不能概括成所有工作都只面向单一平台。
+    - paragraph [ref=e146]:
+      - text: 多教师与多轮更新。Policy Distillation 研究将策略知识转移到统一学生
+      - superscript [ref=e147]: "[19]"
+      - text: ；DAgger 在学生访问状态上追加专家标签
+      - superscript [ref=e148]: "[4]"
+      - text: 。Distilling Policy Distillation 强调采样分布和更新目标的区别
+      - superscript [ref=e149]: "[20]"
+      - text: 。反复采集、网络训练 epoch、多代学生成为教师以及多教师合并是不同概念；Born Again Networks 和 Teacher Assistant KD 分别提供多代与分级蒸馏参照
+      - superscript [ref=e150]: "[21,22]"
+      - text: ，不能据此推定飞控品质随轮数单调改善。RAPTOR 的当前策略采样变体也不应直接写成原始 DAgger 的完整历史数据聚合。
+    - paragraph [ref=e151]: 本文考察“品质相关对象族→专用教师→统一学生→新对象适配”的飞控控制器构建路线，在滚转任务中检验其可行性和失效边界。当前需要核验教师学习、学生能力保留及新对象泛化与适配的连续证据。品质分层采样的独立收益和特权信息作用还需受控比较；真实固定翼跨机型部署属于后续验证范围。
+    - paragraph [ref=e152]:
+      - text: 关于对象的物理解释，Davidson 与 Andrisani 将特征向量与滚转、侧滑响应的传递函数联系起来
+      - superscript [ref=e153]: "[24]"
+      - text: ，说明仅给定模态阻尼和频率仍不足以确定输出中的振荡幅度。Morelli 的 LOES 辨识以驾驶操纵为输入、飞机响应为输出，模型包含机体与控制系统总效应
+      - superscript [ref=e154]: "[25]"
+      - text: 。因此本研究使用参数化对象时必须声明控制边界；教师与学生接入后形成的新闭环，需要按自己的输入输出重新评价。
+    - heading "2 问题定义与控制对象" [level=2] [ref=e155]
+    - heading "2.1 控制任务与接口变量" [level=3] [ref=e156]
+    - paragraph [ref=e157]: 被控量为滚转角速度 p，外部任务给定指令 p_cmd。归档训练环境以二阶参考模型和对象真实时延 τp 生成 p_ref；因此该参考不是仅由指令决定。修订代码默认采用不读取对象参数的公共参考，旧实验通过 legacy_plant 模式显式保留。PPO 策略使用 p_ref 及其他闭环量构成观测，并以 e_t = p_ref,t − p_t 计算跟踪误差。
+    - generic [ref=e160]:
+      - math [ref=e162]:
+        - generic [ref=e165]:
+          - generic [ref=e168]:
+            - generic [ref=e169]:
+              - generic [ref=e170]: P
+              - generic [ref=e171]:
+                - generic [ref=e172]: r
+                - generic [ref=e173]: e
+                - generic [ref=e174]: f
+            - generic [ref=e175]: (
+            - generic [ref=e176]: s
+            - generic [ref=e177]: )
+            - generic [ref=e178]: =
+            - generic [ref=e179]:
+              - generic [ref=e180]:
+                - generic [ref=e181]:
+                  - generic [ref=e182]: ω
+                  - generic [ref=e183]: "n"
+                  - generic [ref=e184]: "2"
+                - generic [ref=e185]:
+                  - generic [ref=e186]: e
+                  - generic [ref=e187]:
+                    - generic [ref=e188]: −
+                    - generic [ref=e189]:
+                      - generic [ref=e190]: τ
+                      - generic [ref=e191]:
+                        - generic [ref=e192]: r
+                        - generic [ref=e193]: e
+                        - generic [ref=e194]: f
+                    - generic [ref=e195]: s
+              - generic [ref=e196]:
+                - generic [ref=e197]:
+                  - generic [ref=e198]: s
+                  - generic [ref=e199]: "2"
+                - generic [ref=e200]: +
+                - generic [ref=e201]: "2"
+                - generic [ref=e202]:
+                  - generic [ref=e203]: ζ
+                  - generic [ref=e204]: "n"
+                - generic [ref=e205]:
+                  - generic [ref=e206]: ω
+                  - generic [ref=e207]: "n"
+                - generic [ref=e208]: s
+                - generic [ref=e209]: +
+                - generic [ref=e210]:
+                  - generic [ref=e211]: ω
+                  - generic [ref=e212]: "n"
+                  - generic [ref=e213]: "2"
+            - generic [ref=e214]:
+              - generic [ref=e215]: P
+              - generic [ref=e216]:
+                - generic [ref=e217]: c
+                - generic [ref=e218]: m
+                - generic [ref=e219]: d
+            - generic [ref=e220]: (
+            - generic [ref=e221]: s
+            - generic [ref=e222]: )
+            - generic [ref=e223]: ","
+            - generic [ref=e224]:
+              - generic [ref=e225]: ω
+              - generic [ref=e226]: "n"
+            - generic [ref=e227]: =
+            - generic [ref=e228]: "2"
+            - generic [ref=e229]:
+              - generic [ref=e230]: r
+              - generic [ref=e231]: a
+              - generic [ref=e232]: d
+              - generic [ref=e233]: /
+              - generic [ref=e234]: s
+            - generic [ref=e235]: ","
+            - generic [ref=e236]:
+              - generic [ref=e237]: ζ
+              - generic [ref=e238]: "n"
+            - generic [ref=e239]: =
+            - generic [ref=e240]: "0.7"
+          - generic [ref=e242]: (1)
+      - generic [aria-hidden] [ref=e244]:
+        - generic [ref=e245]:
+          - generic [ref=e246]:
+            - text: P
+            - generic [ref=e247]: ref
+          - text: (s) =
+        - generic [ref=e257]:
+          - generic [ref=e262]:
+            - generic [ref=e263]:
+              - generic [ref=e264]:
+                - text: s
+                - generic [ref=e265]: "2"
+              - text: + 2
+              - generic [ref=e270]:
+                - text: ζ
+                - generic [ref=e271]: "n"
+              - generic [ref=e279]:
+                - text: ω
+                - generic [ref=e280]: "n"
+              - text: s +
+              - generic [ref=e288]:
+                - text: ω
+                - generic [ref=e292]:
+                  - generic [ref=e293]: "n"
+                  - generic [ref=e294]: "2"
+            - generic [ref=e299]:
+              - generic [ref=e300]:
+                - text: ω
+                - generic [ref=e304]:
+                  - generic [ref=e305]: "n"
+                  - generic [ref=e306]: "2"
+              - generic [ref=e310]:
+                - text: e
+                - generic [ref=e316]:
+                  - text: −
+                  - generic [ref=e317]:
+                    - text: τ
+                    - generic [ref=e318]: ref
+                  - text: s
+          - generic [ref=e331]:
+            - text: P
+            - generic [ref=e332]: cmd
+          - text: (s),
+          - generic [ref=e342]:
+            - text: ω
+            - generic [ref=e343]: "n"
+          - text: =
+        - generic [ref=e351]:
+          - text: "2"
+          - generic [ref=e352]: rad/s
+          - text: ","
+          - generic [ref=e353]:
+            - text: ζ
+            - generic [ref=e354]: "n"
+          - text: =
+        - generic [ref=e362]: "0.7"
+        - generic [ref=e364]:
+          - text: (
+          - generic [ref=e365]: "1"
+          - text: )
+    - paragraph [ref=e366]: 归档模式取 τ_ref=τp，需要真实对象参数；修订公共参考取 τ_ref=0，并从参考模型当前状态计算导数。两种模式不是同一输入条件，归档性能不能自动重命名为公共参考结果。第 6.2.1 节对同一冻结权重作了配对检查。
+    - paragraph [ref=e367]: 策略输出为归一化力速率动作 a_t，而不是副翼偏角。动作经力速率约束和请求力积分后形成作用于滚转对象的输入；目标域接口再将请求力映射为副翼偏角。因此，本文评估的是带有既定接口和执行机构的滚转控制器回路。
+    - paragraph [ref=e368]: 观测按三段拼接，维数可以直接核对：当前量 9 项、历史 32 步、动作 7 步。当前量依次为指令 p_cmd、参考响应 p_ref、实际响应 p、误差 e = p_ref − p、误差积分 ∫e dt、角速度导数 ṗ、参考导数 ṗ_ref、请求力 F_req 与施加力 F_applied；历史段是过去 32 步的同构 5 通道（p_cmd, p_ref, p, e, F_req），共 160 维；动作段是最近 7 步的归一化动作。三段合计 9 + 160 + 7 = 176 维。
+    - generic [ref=e371]:
+      - math [ref=e373]:
+        - generic [ref=e376]:
+          - generic [ref=e379]:
+            - generic [ref=e383]:
+              - generic [ref=e384]:
+                - generic [ref=e385]: o
+                - generic [ref=e386]: k
+              - generic [ref=e387]: =
+              - generic [ref=e388]: Norm
+              - generic: ⁡
+              - generic [ref=e389]: (
+              - generic [ref=e390]: "["
+              - generic [ref=e391]:
+                - generic [ref=e392]: o
+                - generic [ref=e393]: k
+                - generic [ref=e394]:
+                  - generic [ref=e395]: c
+                  - generic [ref=e396]: u
+                  - generic [ref=e397]: r
+              - generic [ref=e398]: ","
+              - generic [ref=e399]:
+                - generic [ref=e400]: h
+                - generic [ref=e401]: k
+              - generic [ref=e402]: ","
+              - generic [ref=e403]:
+                - generic [ref=e404]: a
+                - generic [ref=e405]:
+                  - generic [ref=e406]: k
+                  - generic [ref=e407]: −
+                  - generic [ref=e408]: "7"
+                  - generic [ref=e409]: ":"
+                  - generic [ref=e410]: k
+                  - generic [ref=e411]: −
+                  - generic [ref=e412]: "1"
+              - generic [ref=e413]: "]"
+              - generic [ref=e414]: )
+              - generic [ref=e415]: ∈
+              - generic [ref=e416]:
+                - generic [ref=e417]: R
+                - generic [ref=e418]: "176"
+              - generic [ref=e419]: ","
+            - generic [ref=e423]:
+              - generic [ref=e424]:
+                - generic [ref=e425]: o
+                - generic [ref=e426]: k
+                - generic [ref=e427]:
+                  - generic [ref=e428]: c
+                  - generic [ref=e429]: u
+                  - generic [ref=e430]: r
+              - generic [ref=e431]: =
+              - generic [ref=e432]: "["
+              - generic [ref=e433]:
+                - generic [ref=e434]: p
+                - generic [ref=e435]:
+                  - generic [ref=e436]: c
+                  - generic [ref=e437]: m
+                  - generic [ref=e438]: d
+              - generic [ref=e439]: ","
+              - generic [ref=e440]:
+                - generic [ref=e441]: p
+                - generic [ref=e442]:
+                  - generic [ref=e443]: r
+                  - generic [ref=e444]: e
+                  - generic [ref=e445]: f
+              - generic [ref=e446]: ","
+              - generic [ref=e447]: p
+              - generic [ref=e448]: ","
+              - generic [ref=e449]: e
+              - generic [ref=e450]: ","
+              - generic [ref=e451]: ∫
+              - generic [ref=e452]: e
+              - generic [ref=e453]: d
+              - generic [ref=e454]: t
+              - generic [ref=e455]: ","
+              - generic [ref=e456]:
+                - generic [ref=e457]: p
+                - generic [ref=e458]: ˙
+              - generic [ref=e459]: ","
+              - generic [ref=e460]:
+                - generic [ref=e461]:
+                  - generic [ref=e462]: p
+                  - generic [ref=e463]: ˙
+                - generic [ref=e464]:
+                  - generic [ref=e465]: r
+                  - generic [ref=e466]: e
+                  - generic [ref=e467]: f
+              - generic [ref=e468]: ","
+              - generic [ref=e469]:
+                - generic [ref=e470]: F
+                - generic [ref=e471]:
+                  - generic [ref=e472]: r
+                  - generic [ref=e473]: e
+                  - generic [ref=e474]: q
+              - generic [ref=e475]: ","
+              - generic [ref=e476]:
+                - generic [ref=e477]: F
+                - generic [ref=e478]:
+                  - generic [ref=e479]: a
+                  - generic [ref=e480]: p
+                  - generic [ref=e481]: p
+                  - generic [ref=e482]: l
+                  - generic [ref=e483]: i
+                  - generic [ref=e484]: e
+                  - generic [ref=e485]: d
+              - generic [ref=e486]: "]"
+              - generic [ref=e487]: ","
+            - generic [ref=e491]:
+              - generic [ref=e492]:
+                - generic [ref=e493]: o
+                - generic [ref=e494]: k
+                - generic [ref=e495]: T
+              - generic [ref=e496]: =
+              - generic [ref=e497]: "["
+              - generic [ref=e498]:
+                - generic [ref=e499]: o
+                - generic [ref=e500]: k
+              - generic [ref=e501]: ","
+              - generic [ref=e502]:
+                - generic [ref=e503]: z
+                - generic [ref=e504]: k
+              - generic [ref=e505]: "]"
+              - generic [ref=e506]: ∈
+              - generic [ref=e507]:
+                - generic [ref=e508]: R
+                - generic [ref=e509]: "188"
+              - generic [ref=e510]: ","
+              - generic [ref=e511]:
+                - generic [ref=e512]: o
+                - generic [ref=e513]: k
+                - generic [ref=e514]: S
+              - generic [ref=e515]: =
+              - generic [ref=e516]:
+                - generic [ref=e517]: o
+                - generic [ref=e518]: k
+              - generic [ref=e519]: .
+          - generic [ref=e521]: (2)
+      - generic [aria-hidden] [ref=e523]:
+        - generic [ref=e530]:
+          - generic [ref=e531]:
+            - generic [ref=e532]:
+              - text: o
+              - generic [ref=e533]: k
+            - text: =
+            - generic [ref=e541]: Norm
+            - text: ([
+            - generic [ref=e542]:
+              - text: o
+              - generic [ref=e546]:
+                - generic [ref=e547]: k
+                - generic [ref=e548]: cur
+            - text: ","
+            - generic [ref=e554]:
+              - text: h
+              - generic [ref=e555]: k
+            - text: ","
+            - generic [ref=e563]:
+              - text: a
+              - generic [ref=e564]: k−7:k−1
+            - text: "]) ∈"
+            - generic [ref=e573]:
+              - text: R
+              - generic [ref=e574]: "176"
+            - text: ","
+          - generic [ref=e580]:
+            - generic [ref=e581]:
+              - text: o
+              - generic [ref=e585]:
+                - generic [ref=e586]: k
+                - generic [ref=e587]: cur
+            - text: = [
+            - generic [ref=e593]:
+              - text: p
+              - generic [ref=e594]: cmd
+            - text: ","
+            - generic [ref=e604]:
+              - text: p
+              - generic [ref=e605]: ref
+            - text: ", p, e, ∫ e dt,"
+            - generic [ref=e618]:
+              - generic [ref=e619]: p
+              - text: ˙
+            - text: ","
+            - generic [ref=e623]:
+              - generic [ref=e627]:
+                - generic [ref=e628]: p
+                - text: ˙
+              - generic [ref=e632]: ref
+            - text: ","
+            - generic [ref=e642]:
+              - text: F
+              - generic [ref=e643]: req
+            - text: ","
+            - generic [ref=e653]:
+              - text: F
+              - generic [ref=e654]: applied
+            - text: "],"
+          - generic [ref=e664]:
+            - generic [ref=e665]:
+              - text: o
+              - generic [ref=e669]:
+                - generic [ref=e670]: k
+                - generic [ref=e671]: T
+            - text: = [
+            - generic [ref=e675]:
+              - text: o
+              - generic [ref=e676]: k
+            - text: ","
+            - generic [ref=e684]:
+              - text: z
+              - generic [ref=e685]: k
+            - text: "] ∈"
+            - generic [ref=e693]:
+              - text: R
+              - generic [ref=e694]: "188"
+            - text: ","
+            - generic [ref=e700]:
+              - text: o
+              - generic [ref=e704]:
+                - generic [ref=e705]: k
+                - generic [ref=e706]: S
+            - text: =
+            - generic [ref=e710]:
+              - text: o
+              - generic [ref=e711]: k
+            - text: .
+        - generic [ref=e723]:
+          - text: (
+          - generic [ref=e724]: "2"
+          - text: )
+    - paragraph [ref=e725]: 归一化尺度：指令、参考、响应、误差取 30 deg/s；力取 22 N；角加速度取 5 rad/s²（约 286.5 deg/s²，与代码常数一致）；误差积分取 30 deg/s·s。h 为 32×5 历史块，a 为 7 维动作块。
+    - paragraph [ref=e726]: 教师另接收 12 维特权量 z_t（8 个对象参数与 4 个对象内部状态），构成 188 维输入；学生不直接接收 z_t，但归档 176 维输入中的参考仍依赖 τp。因此只能称去掉显式特权向量，不能称全链路无对象参数。公共参考修订消除了这条依赖；传感器估计、执行机构内部量的获得方式仍需在实际部署接口中定义。
+    - paragraph [ref=e727]: 本文区分对象参数 θ 与控制器权重 w：前者决定仿真对象的动态，后者决定根据观测采取什么动作。教师训练中，单个专用教师对应的 θ 固定，优化器更新 w；统一学生随后学习多个教师的行为。p 是机体系滚转角速度，φ 是倾斜角；仅在简化纯滚转条件下可用 φ̇≈p，不能在一般耦合运动中直接等同。
+    - table [ref=e728]:
+      - rowgroup [ref=e729]:
+        - row [ref=e730]:
+          - columnheader "符号" [ref=e731]
+          - columnheader "含义与单位" [ref=e732]
+          - columnheader "数学作用" [ref=e733]
+      - rowgroup [ref=e734]:
+        - row [ref=e735]:
+          - cell "p、p_ref、e" [ref=e736]
+          - cell "实际、参考滚转角速度及其误差；rad/s，报告时换算为 deg/s" [ref=e737]
+          - cell "e=p_ref−p" [ref=e738]
+        - row [ref=e739]:
+          - cell "F_req、F_applied" [ref=e740]
+          - cell "请求力、执行机构施加力；N" [ref=e741]
+          - cell "有限幅、限速和滞后，不能互换" [ref=e742]
+        - row [ref=e743]:
+          - cell "u、a" [ref=e744]
+          - cell "原始高斯采样、环境裁剪后的动作；无量纲" [ref=e745]
+          - cell "a=clip(u,−1,1)，PPO 密度比使用 u" [ref=e746]
+        - row [ref=e747]:
+          - cell "x" [ref=e748]
+          - cell "四维传递函数实现状态" [ref=e749]
+          - cell "不直接等于真实 p、r、β、φ" [ref=e750]
+        - row [ref=e751]:
+          - cell "o、z、ξ" [ref=e752]
+          - cell "普通观测、Actor 特权向量、Critic 输入" [ref=e753]
+          - cell "ξ 还可包含延迟队列和回合进度" [ref=e754]
+        - row [ref=e755]:
+          - cell "θ、w、v" [ref=e756]
+          - cell "对象参数、Actor/学生权重、Critic 权重" [ref=e757]
+          - cell "物理参数与可训练参数分别定义" [ref=e758]
+        - row [ref=e759]:
+          - cell "s、k、j" [ref=e760]
+          - cell "拉普拉斯变量、20 ms 控制步、1 ms 对象步" [ref=e761]
+          - cell "s 不是时刻；k、j 是离散编号" [ref=e762]
+        - row [ref=e763]:
+          - cell "γ、λ、λ_s" [ref=e764]
+          - cell "回报折扣、GAE 权重、螺旋特征根" [ref=e765]
+          - cell "前两者属于训练；λ_s 属于对象动态" [ref=e766]
+    - paragraph [ref=e767]: 上点表示时间变化率，积分表示随时间累积，平方表示该量与自身相乘，Σ 表示求和，E 表示对采样分布取期望。这些运算在附录 A 中用具体数值展开。
+    - heading "2.2 参数化滚转对象" [level=3] [ref=e768]
+    - paragraph [ref=e769]: 源域以参数化低阶等效模型描述滚转角速度对输入力的响应。模型包含滚转模态、螺旋模态、荷兰滚模态及输入时延，其传递函数写为：
+    - generic [ref=e772]:
+      - math [ref=e774]:
+        - generic [ref=e777]:
+          - generic [ref=e780]:
+            - generic [ref=e781]:
+              - generic [ref=e782]: G
+              - generic [ref=e783]: θ
+            - generic [ref=e784]: (
+            - generic [ref=e785]: s
+            - generic [ref=e786]: )
+            - generic [ref=e787]: =
+            - generic [ref=e788]:
+              - generic [ref=e789]:
+                - generic [ref=e790]:
+                  - generic [ref=e791]: L
+                  - generic [ref=e792]:
+                    - generic [ref=e793]: F
+                    - generic [ref=e794]: a
+                - generic [ref=e795]: s
+                - generic [ref=e796]: (
+                - generic [ref=e797]:
+                  - generic [ref=e798]: s
+                  - generic [ref=e799]: "2"
+                - generic [ref=e800]: +
+                - generic [ref=e801]: "2"
+                - generic [ref=e802]:
+                  - generic [ref=e803]: ζ
+                  - generic [ref=e804]: ϕ
+                - generic [ref=e805]:
+                  - generic [ref=e806]: ω
+                  - generic [ref=e807]: ϕ
+                - generic [ref=e808]: s
+                - generic [ref=e809]: +
+                - generic [ref=e810]:
+                  - generic [ref=e811]: ω
+                  - generic [ref=e812]: ϕ
+                  - generic [ref=e813]: "2"
+                - generic [ref=e814]: )
+              - generic [ref=e815]:
+                - generic [ref=e816]: (
+                - generic [ref=e817]: s
+                - generic [ref=e818]: −
+                - generic [ref=e819]:
+                  - generic [ref=e820]: λ
+                  - generic [ref=e821]: s
+                - generic [ref=e822]: )
+                - generic [ref=e823]: (
+                - generic [ref=e824]: s
+                - generic [ref=e825]: +
+                - generic [ref=e826]: "1"
+                - generic [ref=e827]: /
+                - generic [ref=e828]:
+                  - generic [ref=e829]: T
+                  - generic [ref=e830]: R
+                - generic [ref=e831]: )
+                - generic [ref=e832]: (
+                - generic [ref=e833]:
+                  - generic [ref=e834]: s
+                  - generic [ref=e835]: "2"
+                - generic [ref=e836]: +
+                - generic [ref=e837]: "2"
+                - generic [ref=e838]:
+                  - generic [ref=e839]: ζ
+                  - generic [ref=e840]: d
+                - generic [ref=e841]:
+                  - generic [ref=e842]: ω
+                  - generic [ref=e843]: d
+                - generic [ref=e844]: s
+                - generic [ref=e845]: +
+                - generic [ref=e846]:
+                  - generic [ref=e847]: ω
+                  - generic [ref=e848]: d
+                  - generic [ref=e849]: "2"
+                - generic [ref=e850]: )
+            - generic [ref=e851]:
+              - generic [ref=e852]: e
+              - generic [ref=e853]:
+                - generic [ref=e854]: −
+                - generic [ref=e855]:
+                  - generic [ref=e856]: τ
+                  - generic [ref=e857]: p
+                - generic [ref=e858]: s
+          - generic [ref=e860]: (3)
+      - generic [aria-hidden] [ref=e862]:
+        - generic [ref=e863]:
+          - generic [ref=e864]:
+            - text: G
+            - generic [ref=e865]: θ
+          - text: (s) =
+        - generic [ref=e873]:
+          - generic [ref=e878]:
+            - generic [ref=e879]:
+              - text: (s −
+              - generic [ref=e880]:
+                - text: λ
+                - generic [ref=e881]: s
+              - text: )(s + 1/
+              - generic [ref=e889]:
+                - text: T
+                - generic [ref=e890]: R
+              - text: )(
+              - generic [ref=e898]:
+                - text: s
+                - generic [ref=e899]: "2"
+              - text: + 2
+              - generic [ref=e904]:
+                - text: ζ
+                - generic [ref=e905]: d
+              - generic [ref=e913]:
+                - text: ω
+                - generic [ref=e914]: d
+              - text: s +
+              - generic [ref=e922]:
+                - text: ω
+                - generic [ref=e926]:
+                  - generic [ref=e927]: d
+                  - generic [ref=e928]: "2"
+              - text: )
+            - generic [ref=e933]:
+              - generic [ref=e934]:
+                - text: L
+                - generic [ref=e935]: Fa
+              - text: s(
+              - generic [ref=e944]:
+                - text: s
+                - generic [ref=e945]: "2"
+              - text: + 2
+              - generic [ref=e950]:
+                - text: ζ
+                - generic [ref=e951]: ϕ
+              - generic [ref=e959]:
+                - text: ω
+                - generic [ref=e960]: ϕ
+              - text: s +
+              - generic [ref=e968]:
+                - text: ω
+                - generic [ref=e972]:
+                  - generic [ref=e973]: ϕ
+                  - generic [ref=e974]: "2"
+              - text: )
+          - generic [ref=e981]:
+            - text: e
+            - generic [ref=e987]:
+              - text: −
+              - generic [ref=e988]:
+                - text: τ
+                - generic [ref=e989]: p
+              - text: s
+        - generic [ref=e998]:
+          - text: (
+          - generic [ref=e999]: "3"
+          - text: )
+    - paragraph [ref=e1000]: 参数向量为 θ = (L_Fa, λ_s, T_R, ζ_d, ω_d, R_ω, R_ζ, τ_p)。其中，L_Fa 为滚转控制效能，λ_s 与 T_R 描述螺旋和滚转模态，ζ_d、ω_d 为振荡模态阻尼比与自然频率；R_ω、R_ζ 定义零点相对模态的频率和阻尼，τ_p 为输入时延。本文通过采样 θ 构造源域对象族；该对象族用于覆盖研究设定，不视为真实机队参数的概率模型。
+    - paragraph [ref=e1001]: 代码采用 ω_φ=R_ωω_d、ζ_φ=R_ζζ_d。式 (3) 是零初始状态下输入力与输出角速度在拉普拉斯域的关系；非零初始条件还会贡献自由响应。其不含纯延迟的有理部分转换为四维状态空间，再按零阶保持离散化：
+    - generic [ref=e1004]:
+      - math [ref=e1006]:
+        - generic [ref=e1009]:
+          - generic [ref=e1012]:
+            - generic [ref=e1013]:
+              - generic [ref=e1014]: x
+              - generic [ref=e1015]:
+                - generic [ref=e1016]: j
+                - generic [ref=e1017]: +
+                - generic [ref=e1018]: "1"
+            - generic [ref=e1019]: =
+            - generic [ref=e1020]:
+              - generic [ref=e1021]: A
+              - generic [ref=e1022]: d
+            - generic [ref=e1023]:
+              - generic [ref=e1024]: x
+              - generic [ref=e1025]: j
+            - generic [ref=e1026]: +
+            - generic [ref=e1027]:
+              - generic [ref=e1028]: B
+              - generic [ref=e1029]: d
+            - generic [ref=e1030]:
+              - generic [ref=e1031]: F
+              - generic [ref=e1032]: j
+              - generic [ref=e1033]:
+                - generic [ref=e1034]: d
+                - generic [ref=e1035]: e
+                - generic [ref=e1036]: l
+                - generic [ref=e1037]: a
+                - generic [ref=e1038]: "y"
+                - generic [ref=e1039]: e
+                - generic [ref=e1040]: d
+            - generic [ref=e1041]: ","
+            - generic [ref=e1042]:
+              - generic [ref=e1043]: p
+              - generic [ref=e1044]: j
+            - generic [ref=e1045]: =
+            - generic [ref=e1046]: C
+            - generic [ref=e1047]:
+              - generic [ref=e1048]: x
+              - generic [ref=e1049]: j
+            - generic [ref=e1050]: ","
+            - generic [ref=e1051]: Δ
+            - generic [ref=e1052]:
+              - generic [ref=e1053]: t
+              - generic [ref=e1054]:
+                - generic [ref=e1055]: p
+                - generic [ref=e1056]: l
+                - generic [ref=e1057]: a
+                - generic [ref=e1058]: "n"
+                - generic [ref=e1059]: t
+            - generic [ref=e1060]: =
+            - generic [ref=e1061]: "0.001"
+            - generic [ref=e1062]: s
+            - generic [ref=e1063]: .
+          - generic [ref=e1065]: (3a)
+      - generic [aria-hidden] [ref=e1067]:
+        - generic [ref=e1068]:
+          - generic [ref=e1069]:
+            - text: x
+            - generic [ref=e1070]: j+1
+          - text: =
+        - generic [ref=e1079]:
+          - generic [ref=e1080]:
+            - text: A
+            - generic [ref=e1081]: d
+          - generic [ref=e1089]:
+            - text: x
+            - generic [ref=e1090]: j
+          - text: +
+        - generic [ref=e1098]:
+          - generic [ref=e1099]:
+            - text: B
+            - generic [ref=e1100]: d
+          - generic [ref=e1108]:
+            - text: F
+            - generic [ref=e1112]:
+              - generic [ref=e1113]: j
+              - generic [ref=e1114]: delayed
+          - text: ","
+          - generic [ref=e1120]:
+            - text: p
+            - generic [ref=e1121]: j
+          - text: =
+        - generic [ref=e1129]:
+          - text: C
+          - generic [ref=e1130]:
+            - text: x
+            - generic [ref=e1131]: j
+          - text: ", Δ"
+          - generic [ref=e1139]:
+            - text: t
+            - generic [ref=e1140]: plant
+          - text: =
+        - generic [ref=e1150]: 0.001 s.
+        - generic [ref=e1152]:
+          - text: (
+          - generic [ref=e1153]: 3a
+          - text: )
+    - paragraph [ref=e1154]: 矩阵乘法表示状态之间以及输入到状态的线性组合；延迟队列、执行机构和等效输入扰动由环境另外推进。每个控制步包含 20 个对象步。当前初始滚转偏差按 Cx=p₀ 的最小范数实现状态设置，不能解释成真实飞机其余物理状态都为零。
+    - paragraph [ref=e1155]: 单个滚转模态含 exp(−t/T_R)，欠阻尼荷兰滚模态可写为 exp(−ζ_dω_dt) 乘正弦或余弦。后者包络由 ζω 乘积决定，实际振荡角频率为 ω_d√(1−ζ_d²)。分子零点和模态系数决定这些分量在 p 上出现多强；因此“阻尼较好”与“整段滚转响应无明显振荡”并非同一个判定。全部参数组合能否嵌入真实飞机的物理模型尚未证明。
+    - paragraph [ref=e1156]:
+      - text: GJB 原文使用的驾驶杆力 F_as→p 与本实验的速率指令 p_cmd→闭环 p 是不同映射。若未来从实际驾驶操纵记录辨识对象，其 LOES 可能已包含原飞控和执行机构，新增控制环之前必须核清边界
+      - superscript [ref=e1157]: "[25]"
+      - text: 。目前等效 N 输入及另加执行机构属于研究接口约定。
+    - paragraph [ref=e1158]:
+      - text: 完整扫描件的印刷 211 页与 212 页模态响应支持式 (3) 的单个原点零点，而印刷 236 页另印出分子 s²，延迟项排印也有差异，见
+      - link "原文公式对照一" [ref=e1159] [cursor=pointer]:
+        - /url: evidence/gjb_audit/pages/formula_215.png
+      - text: 和
+      - link "对照二" [ref=e1160] [cursor=pointer]:
+        - /url: evidence/gjb_audit/pages/formula_240.png
+      - text: 。本研究保留 single-s、负指数因果延迟的建模选择，并以 NASA-TM-110306 式 (2.15) 交叉核对
+      - superscript [ref=e1161]: "[24]"
+      - text: ；不将此选择写成官方勘误，也不再声称扫描页各处公式完全一致。
+    - heading "2.3 评价指标与判定门限" [level=3] [ref=e1162]
+    - paragraph [ref=e1163]:
+      - text: 飞行品质标准用于界定模型参数与评价背景
+      - superscript [ref=e1164]: "[1,2]"
+      - text: ；本文的量化门限用于该回路的验收。闭环性能按参考跟踪 RMSE、峰值误差和请求力总变差率评价，教师验收门限分别为 1.5 deg/s、5 deg/s 和 12 N/s。
+    - generic [ref=e1167]:
+      - math [ref=e1169]:
+        - generic [ref=e1172]:
+          - generic [ref=e1175]:
+            - generic [ref=e1179]:
+              - generic [ref=e1180]:
+                - generic [ref=e1181]:
+                  - generic [ref=e1182]: R
+                  - generic [ref=e1183]: M
+                  - generic [ref=e1184]: S
+                  - generic [ref=e1185]: E
+                - generic [ref=e1186]: p
+              - generic [ref=e1187]: =
+              - generic [ref=e1189]:
+                - generic [ref=e1190]:
+                  - generic [ref=e1191]: "1"
+                  - generic [ref=e1192]: M
+                - generic [ref=e1193]:
+                  - generic [ref=e1194]: ∑
+                  - generic [ref=e1195]:
+                    - generic [ref=e1196]: k
+                    - generic [ref=e1197]: =
+                    - generic [ref=e1198]: "1"
+                  - generic [ref=e1199]: M
+                - generic [ref=e1200]: (
+                - generic [ref=e1201]:
+                  - generic [ref=e1202]: p
+                  - generic [ref=e1203]:
+                    - generic [ref=e1204]:
+                      - generic [ref=e1205]: r
+                      - generic [ref=e1206]: e
+                      - generic [ref=e1207]: f
+                    - generic [ref=e1208]: ","
+                    - generic [ref=e1209]: k
+                - generic [ref=e1210]: −
+                - generic [ref=e1211]:
+                  - generic [ref=e1212]: p
+                  - generic [ref=e1213]: k
+                - generic [ref=e1214]:
+                  - generic [ref=e1215]: )
+                  - generic [ref=e1216]: "2"
+              - generic [ref=e1217]: ","
+              - generic [ref=e1218]:
+                - generic [ref=e1219]: P
+                - generic [ref=e1220]: e
+                - generic [ref=e1221]: a
+                - generic [ref=e1222]: k
+              - generic [ref=e1223]: =
+              - generic [ref=e1224]:
+                - generic [ref=e1225]:
+                  - generic [ref=e1226]: max
+                  - generic: ⁡
+                - generic [ref=e1227]: k
+              - generic [ref=e1228]: ∣
+              - generic [ref=e1229]:
+                - generic [ref=e1230]: p
+                - generic [ref=e1231]:
+                  - generic [ref=e1232]:
+                    - generic [ref=e1233]: r
+                    - generic [ref=e1234]: e
+                    - generic [ref=e1235]: f
+                  - generic [ref=e1236]: ","
+                  - generic [ref=e1237]: k
+              - generic [ref=e1238]: −
+              - generic [ref=e1239]:
+                - generic [ref=e1240]: p
+                - generic [ref=e1241]: k
+              - generic [ref=e1242]: ∣
+              - generic [ref=e1243]: ","
+            - generic [ref=e1247]:
+              - generic [ref=e1248]:
+                - generic [ref=e1249]:
+                  - generic [ref=e1250]: T
+                  - generic [ref=e1251]: V
+                - generic [ref=e1252]: F
+              - generic [ref=e1253]: =
+              - generic [ref=e1254]:
+                - generic [ref=e1255]: "1"
+                - generic [ref=e1256]: T
+              - generic [ref=e1257]:
+                - generic [ref=e1258]: ∑
+                - generic [ref=e1259]:
+                  - generic [ref=e1260]: k
+                  - generic [ref=e1261]: =
+                  - generic [ref=e1262]: "1"
+                - generic [ref=e1263]: M
+              - generic [ref=e1264]: ∣
+              - generic [ref=e1265]:
+                - generic [ref=e1266]: F
+                - generic [ref=e1267]:
+                  - generic [ref=e1268]:
+                    - generic [ref=e1269]: r
+                    - generic [ref=e1270]: e
+                    - generic [ref=e1271]: q
+                  - generic [ref=e1272]: ","
+                  - generic [ref=e1273]: k
+              - generic [ref=e1274]: −
+              - generic [ref=e1275]:
+                - generic [ref=e1276]: F
+                - generic [ref=e1277]:
+                  - generic [ref=e1278]:
+                    - generic [ref=e1279]: r
+                    - generic [ref=e1280]: e
+                    - generic [ref=e1281]: q
+                  - generic [ref=e1282]: ","
+                  - generic [ref=e1283]: k
+                  - generic [ref=e1284]: −
+                  - generic [ref=e1285]: "1"
+              - generic [ref=e1286]: ∣
+              - generic [ref=e1287]: .
+          - generic [ref=e1289]: (4)
+      - generic [aria-hidden] [ref=e1291]:
+        - generic [ref=e1298]:
+          - generic [ref=e1299]:
+            - generic [ref=e1300]:
+              - generic [ref=e1301]: RMSE
+              - generic [ref=e1302]: p
+            - text: =
+            - generic [ref=e1314]:
+              - generic [ref=e1319]:
+                - generic [ref=e1320]: M
+                - generic [ref=e1322]: "1"
+              - generic [ref=e1329]:
+                - generic [ref=e1330]: k=1
+                - generic [ref=e1332]: ∑
+                - generic [ref=e1333]: M
+              - text: (
+              - generic [ref=e1338]:
+                - text: p
+                - generic [ref=e1344]:
+                  - generic [ref=e1345]: ref
+                  - text: ",k"
+              - text: −
+              - generic [ref=e1349]:
+                - text: p
+                - generic [ref=e1350]: k
+              - generic [ref=e1358]:
+                - text: )
+                - generic [ref=e1359]: "2"
+            - text: ","
+            - generic [ref=e1370]: Peak
+            - text: =
+            - generic [ref=e1374]:
+              - generic [ref=e1375]: k
+              - generic [ref=e1376]: max
+            - text: ∣
+            - generic [ref=e1380]:
+              - text: p
+              - generic [ref=e1386]:
+                - generic [ref=e1387]: ref
+                - text: ",k"
+            - text: −
+            - generic [ref=e1391]:
+              - text: p
+              - generic [ref=e1392]: k
+            - text: ∣,
+          - generic [ref=e1400]:
+            - generic [ref=e1401]:
+              - generic [ref=e1402]: TV
+              - generic [ref=e1403]: F
+            - text: =
+            - generic [ref=e1415]:
+              - generic [ref=e1416]: T
+              - generic [ref=e1418]: "1"
+            - generic [ref=e1425]:
+              - generic [ref=e1426]: k=1
+              - generic [ref=e1428]: ∑
+              - generic [ref=e1429]: M
+            - text: ∣
+            - generic [ref=e1434]:
+              - text: F
+              - generic [ref=e1440]:
+                - generic [ref=e1441]: req
+                - text: ",k"
+            - text: −
+            - generic [ref=e1445]:
+              - text: F
+              - generic [ref=e1451]:
+                - generic [ref=e1452]: req
+                - text: ",k−1"
+            - text: ∣.
+        - generic [ref=e1460]:
+          - text: (
+          - generic [ref=e1461]: "4"
+          - text: )
+    - paragraph [ref=e1462]: M 为评价时域内采样点数，T 为评价时长。误差在仿真中按 rad/s 计算、报告时换算为 deg/s；TV_F 表示请求力总变差率，单位为 N/s。
+    - heading "3 方法：四步构建与迁移" [level=2] [ref=e1463]
+    - paragraph [ref=e1464]: 图 1 概括本文的离线训练链路。四步各自的产物与证据一并画在图上：对象族的参数分布、49 个教师的通过情况、学生网络与接口，以及目标域适配前后的误差。前两步在飞行品质参数化对象上构造并训练教师，第三步将多对象教师压缩为共享学生，第四步以目标域仿真模型更新学生参数。四步使用不同对象集和监督信号，后续各节分别给出定义。
+    - paragraph [ref=e1465]:
+      - img "图 1，数据与限制见下方图注"
+    - paragraph [ref=e1466]:
+      - emphasis [ref=e1467]: 图 1 研究流程及证据边界。源域 tiny 与目标域 small 分别标出；49/46 教师和 small 迁移数值为原稿报告值，本包缺少其完整原始记录。
+    - heading "3.1 第一步：随机采样飞行品质模型" [level=3] [ref=e1468]
+    - paragraph [ref=e1469]: 在第 2.2 节定义的八维参数空间内生成 5,000 个滚转对象。采样按飞行品质等级和数据用途进行分层：4,500 个对象属于训练及同分布评估池，另 500 个构成分布外评估集。生成对象后依据参数和对应判据标注等级；该步骤构造的是受约束的实验对象库，并不估计真实机队中各参数的发生概率。
+    - generic [ref=e1472]:
+      - math [ref=e1474]:
+        - generic [ref=e1477]:
+          - generic [ref=e1480]:
+            - generic [ref=e1481]:
+              - generic [ref=e1482]: θ
+              - generic [ref=e1483]:
+                - generic [ref=e1484]: (
+                - generic [ref=e1485]: i
+                - generic [ref=e1486]: )
+            - generic [ref=e1487]: ∼
+            - generic [ref=e1488]: q
+            - generic [ref=e1489]: (
+            - generic [ref=e1490]: θ
+            - generic [ref=e1491]: ∣
+            - generic [ref=e1492]:
+              - generic [ref=e1493]: c
+              - generic [ref=e1494]: i
+            - generic [ref=e1495]: )
+            - generic [ref=e1496]: ","
+            - generic [ref=e1497]:
+              - generic [ref=e1498]: g
+              - generic [ref=e1499]: i
+            - generic [ref=e1500]: =
+            - generic [ref=e1501]:
+              - generic [ref=e1502]:
+                - generic [ref=e1503]: Grade
+                - generic: ⁡
+              - generic [ref=e1504]:
+                - generic [ref=e1505]: p
+                - generic [ref=e1506]: a
+                - generic [ref=e1507]: r
+                - generic [ref=e1508]: t
+                - generic [ref=e1509]: i
+                - generic [ref=e1510]: a
+                - generic [ref=e1511]: l
+                - generic [ref=e1512]: ","
+                - generic [ref=e1513]: I
+                - generic [ref=e1514]: V
+                - generic [ref=e1515]: ","
+                - generic [ref=e1516]: A
+            - generic [ref=e1517]: (
+            - generic [ref=e1518]:
+              - generic [ref=e1519]: θ
+              - generic [ref=e1520]:
+                - generic [ref=e1521]: (
+                - generic [ref=e1522]: i
+                - generic [ref=e1523]: )
+            - generic [ref=e1524]: ","
+            - generic [ref=e1525]:
+              - generic [ref=e1526]: c
+              - generic [ref=e1527]: i
+            - generic [ref=e1528]: )
+          - generic [ref=e1530]: (5)
+      - generic [aria-hidden] [ref=e1532]:
+        - generic [ref=e1533]:
+          - generic [ref=e1534]:
+            - text: θ
+            - generic [ref=e1535]: (i)
+          - text: ∼
+        - generic [ref=e1541]: q(θ ∣
+        - generic [ref=e1542]:
+          - generic [ref=e1543]:
+            - text: c
+            - generic [ref=e1544]: i
+          - text: ),
+          - generic [ref=e1552]:
+            - text: g
+            - generic [ref=e1553]: i
+          - text: =
+        - generic [ref=e1561]:
+          - generic [ref=e1562]:
+            - generic [ref=e1563]: Grade
+            - generic [ref=e1564]: partial,IV,A
+          - text: (
+          - generic [ref=e1574]:
+            - text: θ
+            - generic [ref=e1575]: (i)
+          - text: ","
+          - generic [ref=e1581]:
+            - text: c
+            - generic [ref=e1582]: i
+          - text: )
+        - generic [ref=e1591]:
+          - text: (
+          - generic [ref=e1592]: "5"
+          - text: )
+    - paragraph [ref=e1593]: "其中，θ^{(i)} 为第 i 个对象的参数向量，c_i 为其分层类别，q 表示满足既定覆盖配额的采样分布。g_i 仅表示当前 IV 类、A 阶段、非 CO/GA、杆式操纵假设下，滚转时间常数、螺旋倍幅时间、荷兰滚基础门限和一秒灵敏度四项的分层标签。A116、A35 的 φ/β 条件修正、闭环等效延迟及跨轴品质未完整纳入，不是完整飞行品质等级。"
+    - paragraph [ref=e1594]: train_boundary 与 train_core 从同一等级池依次分配，当前未按边界距离选点；OOD 还混合了品质门限、效能、零点比率和时延范围之外的对象。复算显示 5,000 个历史标签均与历史实现规则一致，但修复一秒灵敏度的 1 ms 时间偏移后，两个对象跨越标签边界。原库及训练划分保留，详见第 6.4 节。v2 的灵敏度修正版本与第 6.6 节的新联合构造样例分别标识；不得将不同版本的标签、分布或成绩混合。
+    - heading "3.1.1 标准边界与部分标签" [level=4] [ref=e1595]
+    - paragraph [ref=e1596]: GJB 2874—97 附录 A 是编制依据和建议值，提供品质边界参考，不规定随机采样分布。本研究采用 IV 类、A 阶段、非 CO/GA、杆式操纵的源域假设；不能将该分类自动套用于 DHC-6 或所有目标飞机。下表列出实际采用的单项筛选及缺失条件；页码为原文印刷页，PDF 页码需加 4。
+    - table [ref=e1597]:
+      - rowgroup [ref=e1598]:
+        - row [ref=e1599]:
+          - columnheader "单项" [ref=e1600]
+          - columnheader "一级 / 二级 / 三级基准" [ref=e1601]
+          - columnheader "原文及适用范围" [ref=e1602]
+      - rowgroup [ref=e1603]:
+        - row [ref=e1604]:
+          - cell "滚转时间常数 T_R" [ref=e1605]
+          - cell "上限 1.0 / 1.4 / 10 s" [ref=e1606]
+          - cell [ref=e1607]:
+            - link "A18，211 页" [ref=e1608] [cursor=pointer]:
+              - /url: evidence/gjb_audit/pages/pdf_215.png
+        - row [ref=e1609]:
+          - cell "螺旋倍幅时间" [ref=e1610]
+          - cell "下限 12 / 8 / 4 s；λ_s>0 时为 ln(2)/λ_s" [ref=e1611]
+          - cell [ref=e1612]:
+            - link "A19，225 页" [ref=e1613] [cursor=pointer]:
+              - /url: evidence/gjb_audit/pages/pdf_229.png
+            - text: ；允许部分慢发散螺旋模态
+        - row [ref=e1614]:
+          - cell "一秒倾斜角灵敏度" [ref=e1615]
+          - cell "上限 3.38 / 5.62 deg/N；未给三级上限" [ref=e1616]
+          - cell [ref=e1617]:
+            - link "A31，272 页" [ref=e1618] [cursor=pointer]:
+              - /url: evidence/gjb_audit/pages/pdf_276.png
+            - text: ；用一秒速率积分标定 L_Fa
+        - row [ref=e1619]:
+          - cell "荷兰滚基准 ζ_d、ζ_dω_d、ω_d" [ref=e1620]
+          - cell "一级 ≥0.19、0.35、1；二级 ≥0.02、0.05、0.4；三级 ζ_d≥0、ω_d≥0.4" [ref=e1621]
+          - cell [ref=e1622]:
+            - link "A35，298–299 页" [ref=e1623] [cursor=pointer]:
+              - /url: evidence/gjb_audit/pages/pdf_302.png
+            - text: ；
+            - link "φ/β 修正条件" [ref=e1624] [cursor=pointer]:
+              - /url: evidence/gjb_audit/pages/pdf_303.png
+            - text: 尚无法由本 SISO 检查
+    - paragraph [ref=e1625]:
+      - text: A35 在 ω_d²|φ/β|_d>20 时还调整阻尼频率乘积要求，故本文只使用基准门限。A20 的 A 阶段各等级均不允许滚转—螺旋耦合模态；旧清单曾把 B/C 数值混入 A，已在
+      - link "复核清单" [ref=e1626] [cursor=pointer]:
+        - /url: evidence/gjb_audit/quality_parameter_registry_reviewed.csv
+      - text: 中纠正。A21 的 0.10/0.20/0.25 s 是总响应的等效延迟建议值，不能直接作为运输延迟 τ_p 的同义量。滚转振荡还涉及峰谷定义、螺旋分量处理、侧滑相位及操纵条件，未被式 (5) 的四项标签完整覆盖。
+    - heading "3.1.2 联合覆盖和边界的构造定义" [level=4] [ref=e1627]
+    - paragraph [ref=e1628]: 以四个分量标签 (g_TR,g_spiral,g_Dutch,g_S) 建立 3×3×3×2=54 格诊断网格。该网格检查采样是否遗漏联合退化，既不表示真实机队应均匀分布，也不保证每格都对应可实现的飞机。已知困难对象不因原始品质较差而自动删除；应另行记录控制权限和任务可达性。
+    - paragraph [ref=e1629]: 新构造样例在每个格内随机取参数，并对正阈值 b 构造成对 θ⁻、θ⁺，令目标指标分别位于 0.98b 和 1.02b，同时检查该阈值在其余条件下确实引起分级变化。训练、验证和 ID 测试使用不同参数向量。荷兰滚二级覆盖频率不足、阻尼不足和乘积不足的分支，运输延迟研究范围覆盖至 0.25 s。真实覆盖计数与尚未完成的步骤见第 6.6 节。
+    - heading "3.2 第二步：逐对象训练强化学习教师" [level=3] [ref=e1630]
+    - paragraph [ref=e1631]:
+      - text: 归档主线报告为 49 个源域对象分别训练 PPO 教师
+      - superscript [ref=e1632]: "[3]"
+      - text: ；第 6.5 节可追溯的新协议实际训练 12 个对象×3 个种子的 36 个教师。Actor 根据式 (2) 的观测和对象特权量输出高斯分布，训练采样 u_t，物理动作取 a_t=clip(u_t,−1,1)。修订实现将未裁剪 u_t 存入 PPO buffer；确定性评价执行策略均值并经过相同环境限幅。在 50 Hz 策略周期下，每个动作将请求力改变至多 1.76 N；请求力被限制在 ±22 N。随后，1 kHz 环境中的命令力以 88 N/s 速率跟随请求力，施加力再经时间常数为 20 ms 的一阶执行机构模型作用于对象。
+    - generic [ref=e1635]:
+      - math [ref=e1637]:
+        - generic [ref=e1640]:
+          - generic [ref=e1643]:
+            - generic [ref=e1647]:
+              - generic [ref=e1648]:
+                - generic [ref=e1649]: F
+                - generic [ref=e1650]:
+                  - generic [ref=e1651]:
+                    - generic [ref=e1652]: r
+                    - generic [ref=e1653]: e
+                    - generic [ref=e1654]: q
+                  - generic [ref=e1655]: ","
+                  - generic [ref=e1656]: k
+                  - generic [ref=e1657]: +
+                  - generic [ref=e1658]: "1"
+              - generic [ref=e1659]: =
+              - generic [ref=e1660]: clip
+              - generic: ⁡
+              - generic [ref=e1661]: (
+              - generic [ref=e1662]:
+                - generic [ref=e1663]: F
+                - generic [ref=e1664]:
+                  - generic [ref=e1665]:
+                    - generic [ref=e1666]: r
+                    - generic [ref=e1667]: e
+                    - generic [ref=e1668]: q
+                  - generic [ref=e1669]: ","
+                  - generic [ref=e1670]: k
+              - generic [ref=e1671]: +
+              - generic [ref=e1672]: (
+              - generic [ref=e1673]: "88"
+              - generic [ref=e1674]:
+                - generic [ref=e1675]: "N"
+                - generic [ref=e1676]: /
+                - generic [ref=e1677]: s
+              - generic [ref=e1678]: )
+              - generic [ref=e1679]:
+                - generic [ref=e1680]: a
+                - generic [ref=e1681]: k
+              - generic [ref=e1682]: Δ
+              - generic [ref=e1683]: t
+              - generic [ref=e1684]: ","
+              - generic [ref=e1685]: −
+              - generic [ref=e1686]: "22"
+              - generic [ref=e1687]: "N"
+              - generic [ref=e1688]: ","
+              - generic [ref=e1689]: "22"
+              - generic [ref=e1690]: "N"
+              - generic [ref=e1691]: )
+              - generic [ref=e1692]: ","
+            - generic [ref=e1696]:
+              - generic [ref=e1697]: Δ
+              - generic [ref=e1698]: t
+              - generic [ref=e1699]: =
+              - generic [ref=e1700]: "0.02"
+              - generic [ref=e1701]: s
+              - generic [ref=e1702]: .
+          - generic [ref=e1704]: (6)
+      - generic [aria-hidden] [ref=e1706]:
+        - generic [ref=e1713]:
+          - generic [ref=e1714]:
+            - generic [ref=e1715]:
+              - text: F
+              - generic [ref=e1721]:
+                - generic [ref=e1722]: req
+                - text: ",k+1"
+            - text: =
+            - generic [ref=e1726]: clip
+            - text: (
+            - generic [ref=e1727]:
+              - text: F
+              - generic [ref=e1733]:
+                - generic [ref=e1734]: req
+                - text: ",k"
+            - text: + (88
+            - generic [ref=e1738]: N/s
+            - text: )
+            - generic [ref=e1739]:
+              - text: a
+              - generic [ref=e1740]: k
+            - text: Δt, −22 N, 22 N),
+          - generic [ref=e1748]: Δt = 0.02 s.
+        - generic [ref=e1753]:
+          - text: (
+          - generic [ref=e1754]: "6"
+          - text: )
+    - paragraph [ref=e1755]: ±22 N 是该 PPO 环境定义的动作接口范围与力归一化尺度，不是 PPO 算法自带的常数。它为当前训练对象规定了有界的请求力范围，并与奖励中的力归一化以及后续副翼桥接保持一致；复现或比较现有策略时应保留。迁移接口将其按 δ_a = −(10°/22 N)F 映射为 ±10° 副翼请求；88 N/s 的速率边界在同一桥接下对应 40°/s。因此 22 N 与 88 N/s 是虚拟力域对舵面位置和速率范围的表示，不是 DHC-6 实测的机械参数。面向实际控制器时，应由目标执行机构经验证的位置与速率限制取代这一配置假设。
+    - paragraph [ref=e1756]: 策略网络以一维卷积编码时序历史，并由残差主干生成动作分布；均值头采用无偏置线性层和奇对称投影；投影本身保证有符号输入全零时均值为零，无偏置头是额外结构选择。表 1 汇总教师结构与训练配置。
+    - heading "3.2.1 即时奖励函数" [level=4] [ref=e1757]
+    - paragraph [ref=e1758]: "归档 PPO 实验采用由跟踪误差、作用力能量和动作幅值组成的即时奖励。观测误差为 p_ref,t−p_t。归档代码在一个控制周期积分后，以当前区间参考与下一时刻输出计算奖励，记 e_{t+1|t}=p_ref,t−p_{t+1}；归一化尺度为 30 deg/s："
+    - generic [ref=e1761]:
+      - math [ref=e1763]:
+        - generic [ref=e1766]:
+          - generic [ref=e1769]:
+            - generic [ref=e1770]:
+              - generic [ref=e1771]: r
+              - generic [ref=e1772]: k
+            - generic [ref=e1773]: =
+            - generic [ref=e1774]: −
+            - generic [ref=e1775]: "50"
+            - generic [ref=e1776]:
+              - generic [ref=e1777]: "["
+              - generic [ref=e1778]:
+                - generic [ref=e1779]:
+                  - generic [ref=e1780]: (
+                  - generic [ref=e1781]:
+                    - generic [ref=e1782]:
+                      - generic [ref=e1783]: e
+                      - generic [ref=e1784]:
+                        - generic [ref=e1785]: k
+                        - generic [ref=e1786]: +
+                        - generic [ref=e1787]: "1"
+                        - generic [ref=e1788]: ∣
+                        - generic [ref=e1789]: k
+                    - generic [ref=e1790]:
+                      - generic [ref=e1791]: p
+                      - generic [ref=e1792]:
+                        - generic [ref=e1793]: s
+                        - generic [ref=e1794]: c
+                        - generic [ref=e1795]: a
+                        - generic [ref=e1796]: l
+                        - generic [ref=e1797]: e
+                  - generic [ref=e1798]: )
+                - generic [ref=e1799]: "2"
+              - generic [ref=e1800]: Δ
+              - generic [ref=e1801]: t
+              - generic [ref=e1802]: +
+              - generic [ref=e1803]: "0.02"
+              - generic [ref=e1804]:
+                - generic [ref=e1805]:
+                  - generic [ref=e1806]: (
+                  - generic [ref=e1807]:
+                    - generic [ref=e1808]:
+                      - generic [ref=e1809]: F
+                      - generic [ref=e1810]:
+                        - generic [ref=e1811]:
+                          - generic [ref=e1812]: a
+                          - generic [ref=e1813]: p
+                          - generic [ref=e1814]: p
+                          - generic [ref=e1815]: l
+                          - generic [ref=e1816]: i
+                          - generic [ref=e1817]: e
+                          - generic [ref=e1818]: d
+                        - generic [ref=e1819]: ","
+                        - generic [ref=e1820]: k
+                        - generic [ref=e1821]: +
+                        - generic [ref=e1822]: "1"
+                    - generic [ref=e1823]:
+                      - generic [ref=e1824]: "22"
+                      - generic [ref=e1825]: "N"
+                  - generic [ref=e1826]: )
+                - generic [ref=e1827]: "2"
+              - generic [ref=e1828]: Δ
+              - generic [ref=e1829]: t
+              - generic [ref=e1830]: +
+              - generic [ref=e1831]: "0.02"
+              - generic [ref=e1832]:
+                - generic [ref=e1833]: a
+                - generic [ref=e1834]: k
+                - generic [ref=e1835]: "2"
+              - generic [ref=e1836]: "]"
+          - generic [ref=e1838]: (7)
+      - generic [aria-hidden] [ref=e1840]:
+        - generic [ref=e1841]:
+          - generic [ref=e1842]:
+            - text: r
+            - generic [ref=e1843]: k
+          - text: =
+        - generic [ref=e1851]:
+          - text: −50
+          - generic [ref=e1852]:
+            - generic [ref=e1853]: "["
+            - generic [ref=e1854]:
+              - generic [ref=e1855]:
+                - generic [ref=e1856]: (
+                - generic [ref=e1861]:
+                  - generic [ref=e1863]:
+                    - text: p
+                    - generic [ref=e1864]: scale
+                  - generic [ref=e1876]:
+                    - text: e
+                    - generic [ref=e1877]: k+1∣k
+                - generic [ref=e1889]: )
+              - generic [ref=e1890]: "2"
+            - text: Δt + 0.02
+            - generic [ref=e1895]:
+              - generic [ref=e1896]:
+                - generic [ref=e1897]: (
+                - generic [ref=e1902]:
+                  - generic [ref=e1903]: 22 N
+                  - generic [ref=e1906]:
+                    - text: F
+                    - generic [ref=e1912]:
+                      - generic [ref=e1913]: applied
+                      - text: ",k+1"
+                - generic [ref=e1920]: )
+              - generic [ref=e1921]: "2"
+            - text: Δt + 0.02
+            - generic [ref=e1926]:
+              - text: a
+              - generic [ref=e1930]:
+                - generic [ref=e1931]: k
+                - generic [ref=e1932]: "2"
+            - generic [ref=e1936]: "]"
+        - generic [ref=e1938]:
+          - text: (
+          - generic [ref=e1939]: "7"
+          - text: )
+    - paragraph [ref=e1940]: 第一项惩罚归一化跟踪误差，第二项惩罚归一化作用力能量，第三项惩罚力速率动作本身的幅值；第三项不是相邻时刻动作之差。式中 p_scale = 30 deg/s。
+    - paragraph [ref=e1941]: "第 6.5 节使用同一时刻的参考与响应 e_{k+1}=p_ref,k+1−p_k+1，消除旧区间口径错位。代入 Δt=0.02 s 后，该协议的一步奖励化简为："
+    - generic [ref=e1944]:
+      - math [ref=e1946]:
+        - generic [ref=e1949]:
+          - generic [ref=e1952]:
+            - generic [ref=e1953]:
+              - generic [ref=e1954]: r
+              - generic [ref=e1955]: k
+            - generic [ref=e1956]: =
+            - generic [ref=e1957]: −
+            - generic [ref=e1958]:
+              - generic [ref=e1959]: "["
+              - generic [ref=e1960]:
+                - generic [ref=e1961]:
+                  - generic [ref=e1962]: (
+                  - generic [ref=e1963]:
+                    - generic [ref=e1964]:
+                      - generic [ref=e1965]: e
+                      - generic [ref=e1966]:
+                        - generic [ref=e1967]: k
+                        - generic [ref=e1968]: +
+                        - generic [ref=e1969]: "1"
+                    - generic [ref=e1970]:
+                      - generic [ref=e1971]: "30"
+                      - generic [ref=e1972]:
+                        - generic [ref=e1973]: d
+                        - generic [ref=e1974]: e
+                        - generic [ref=e1975]: g
+                        - generic [ref=e1976]: /
+                        - generic [ref=e1977]: s
+                  - generic [ref=e1978]: )
+                - generic [ref=e1979]: "2"
+              - generic [ref=e1980]: +
+              - generic [ref=e1981]: "0.02"
+              - generic [ref=e1982]:
+                - generic [ref=e1983]:
+                  - generic [ref=e1984]: (
+                  - generic [ref=e1985]:
+                    - generic [ref=e1986]:
+                      - generic [ref=e1987]: F
+                      - generic [ref=e1988]:
+                        - generic [ref=e1989]: k
+                        - generic [ref=e1990]: +
+                        - generic [ref=e1991]: "1"
+                      - generic [ref=e1992]:
+                        - generic [ref=e1993]: a
+                        - generic [ref=e1994]: p
+                        - generic [ref=e1995]: p
+                        - generic [ref=e1996]: l
+                        - generic [ref=e1997]: i
+                        - generic [ref=e1998]: e
+                        - generic [ref=e1999]: d
+                    - generic [ref=e2000]:
+                      - generic [ref=e2001]: "22"
+                      - generic [ref=e2002]: "N"
+                  - generic [ref=e2003]: )
+                - generic [ref=e2004]: "2"
+              - generic [ref=e2005]: +
+              - generic [ref=e2006]:
+                - generic [ref=e2007]: a
+                - generic [ref=e2008]: k
+                - generic [ref=e2009]: "2"
+              - generic [ref=e2010]: "]"
+            - generic [ref=e2011]: .
+          - generic [ref=e2013]: (7a)
+      - generic [aria-hidden] [ref=e2015]:
+        - generic [ref=e2016]:
+          - generic [ref=e2017]:
+            - text: r
+            - generic [ref=e2018]: k
+          - text: =
+        - generic [ref=e2026]:
+          - text: −
+          - generic [ref=e2027]:
+            - generic [ref=e2039]:
+              - generic [ref=e2040]:
+                - generic [ref=e2041]: (
+                - generic [ref=e2046]:
+                  - generic [ref=e2047]:
+                    - text: "30"
+                    - generic [ref=e2048]: deg/s
+                  - generic [ref=e2051]:
+                    - text: e
+                    - generic [ref=e2052]: k+1
+                - generic [ref=e2064]: )
+              - generic [ref=e2065]: "2"
+            - text: + 0.02
+            - generic [ref=e2070]:
+              - generic [ref=e2071]:
+                - generic [ref=e2072]: (
+                - generic [ref=e2077]:
+                  - generic [ref=e2078]: 22 N
+                  - generic [ref=e2081]:
+                    - text: F
+                    - generic [ref=e2085]:
+                      - generic [ref=e2086]: k+1
+                      - generic [ref=e2088]: applied
+                - generic [ref=e2097]: )
+              - generic [ref=e2098]: "2"
+            - text: +
+            - generic [ref=e2103]:
+              - text: a
+              - generic [ref=e2107]:
+                - generic [ref=e2108]: k
+                - generic [ref=e2109]: "2"
+          - text: .
+        - generic [ref=e2125]:
+          - text: (
+          - generic [ref=e2126]: 7a
+          - text: )
+    - paragraph [ref=e2127]: 各项归一化后无量纲。正负误差均受到惩罚，误差幅值加倍会使该项代价变为四倍。原式动作项未再乘 Δt，最终系数为 1；不能仅从某行的 0.02 判断动作惩罚很弱。a=0 表示保持请求力，施加力仍可能非零。饱和时 a 的代价也不等于实际请求力变化代价。
+    - paragraph [ref=e2128]: 教师优化的是有限轨迹上的期望折扣回报，而非逐步贪心地只减小当前代价：
+    - generic [ref=e2131]:
+      - math [ref=e2133]:
+        - generic [ref=e2136]:
+          - generic [ref=e2139]:
+            - generic [ref=e2140]:
+              - generic [ref=e2141]: G
+              - generic [ref=e2142]: k
+            - generic [ref=e2143]: =
+            - generic [ref=e2144]:
+              - generic [ref=e2145]: ∑
+              - generic [ref=e2146]:
+                - generic [ref=e2147]: ℓ
+                - generic [ref=e2148]: =
+                - generic [ref=e2149]: "0"
+              - generic [ref=e2150]:
+                - generic [ref=e2151]: H
+                - generic [ref=e2152]: −
+                - generic [ref=e2153]: "1"
+                - generic [ref=e2154]: −
+                - generic [ref=e2155]: k
+            - generic [ref=e2156]:
+              - generic [ref=e2157]: γ
+              - generic [ref=e2158]: ℓ
+            - generic [ref=e2159]:
+              - generic [ref=e2160]: r
+              - generic [ref=e2161]:
+                - generic [ref=e2162]: k
+                - generic [ref=e2163]: +
+                - generic [ref=e2164]: ℓ
+            - generic [ref=e2165]: ","
+            - generic [ref=e2166]: J
+            - generic [ref=e2167]: (
+            - generic [ref=e2168]: w
+            - generic [ref=e2169]: )
+            - generic [ref=e2170]: =
+            - generic [ref=e2171]:
+              - generic [ref=e2172]: E
+              - generic [ref=e2173]:
+                - generic [ref=e2174]: τ
+                - generic [ref=e2175]: ∼
+                - generic [ref=e2176]:
+                  - generic [ref=e2177]: π
+                  - generic [ref=e2178]: w
+            - generic [ref=e2179]: "["
+            - generic [ref=e2180]:
+              - generic [ref=e2181]: G
+              - generic [ref=e2182]: "0"
+            - generic [ref=e2183]: "]"
+            - generic [ref=e2184]: ","
+            - generic [ref=e2185]: H
+            - generic [ref=e2186]: =
+            - generic [ref=e2187]: "400."
+          - generic [ref=e2189]: (7b)
+      - generic [aria-hidden] [ref=e2191]:
+        - generic [ref=e2192]:
+          - generic [ref=e2193]:
+            - text: G
+            - generic [ref=e2194]: k
+          - text: =
+        - generic [ref=e2202]:
+          - generic [ref=e2206]:
+            - generic [ref=e2207]: ℓ=0
+            - generic [ref=e2209]: ∑
+            - generic [ref=e2210]: H−1−k
+          - generic [ref=e2215]:
+            - text: γ
+            - generic [ref=e2216]: ℓ
+          - generic [ref=e2221]:
+            - text: r
+            - generic [ref=e2222]: k+ℓ
+          - text: ", J(w) ="
+        - generic [ref=e2231]:
+          - generic [ref=e2232]:
+            - text: E
+            - generic [ref=e2238]:
+              - text: τ∼
+              - generic [ref=e2239]:
+                - text: π
+                - generic [ref=e2240]: w
+          - text: "["
+          - generic [ref=e2251]:
+            - text: G
+            - generic [ref=e2252]: "0"
+          - text: "], H ="
+        - generic [ref=e2260]: "400."
+        - generic [ref=e2262]:
+          - text: (
+          - generic [ref=e2263]: 7b
+          - text: )
+    - paragraph [ref=e2264]: E 对随机动作、指令及初始化等引起的轨迹分布取期望。γ=0.995 在 50 Hz 下对一秒跨度的权重约为 0.778，对八秒跨度约为 0.135；当前任务在 8 s 结束。误差、力和动作的权衡及折扣范围必须与恢复任务共同审查，不能仅凭奖励上升宣称抑振达标。
+    - heading "3.2.2 PPO 优化目标" [level=4] [ref=e2265]
+    - paragraph [ref=e2266]:
+      - text: 优势估计采用广义优势估计（GAE）
+      - superscript [ref=e2267]: "[23]"
+      - text: 。Critic 输入记为 ξ，以避免与拉普拉斯变量 s 或四维对象实现状态 x 混淆；其中可包含普通观测、对象状态、延迟队列及回合进度。V_v(ξ) 估计未来折扣回报，δ 衡量一步反馈相对旧预测的差异，Â 汇集多个这样的差异。时序差分残差和优势递推为：
+    - generic [ref=e2270]:
+      - math [ref=e2272]:
+        - generic [ref=e2275]:
+          - generic [ref=e2278]:
+            - generic [ref=e2282]:
+              - generic [ref=e2283]:
+                - generic [ref=e2284]: δ
+                - generic [ref=e2285]: k
+              - generic [ref=e2286]: =
+              - generic [ref=e2287]:
+                - generic [ref=e2288]: r
+                - generic [ref=e2289]: k
+              - generic [ref=e2290]: +
+              - generic [ref=e2291]: γ
+              - generic [ref=e2292]: (
+              - generic [ref=e2293]: "1"
+              - generic [ref=e2294]: −
+              - generic [ref=e2295]:
+                - generic [ref=e2296]: d
+                - generic [ref=e2297]: k
+              - generic [ref=e2298]: )
+              - generic [ref=e2299]:
+                - generic [ref=e2300]: V
+                - generic [ref=e2301]: v
+              - generic [ref=e2302]: (
+              - generic [ref=e2303]:
+                - generic [ref=e2304]: ξ
+                - generic [ref=e2305]:
+                  - generic [ref=e2306]: k
+                  - generic [ref=e2307]: +
+                  - generic [ref=e2308]: "1"
+              - generic [ref=e2309]: )
+              - generic [ref=e2310]: −
+              - generic [ref=e2311]:
+                - generic [ref=e2312]: V
+                - generic [ref=e2313]: v
+              - generic [ref=e2314]: (
+              - generic [ref=e2315]:
+                - generic [ref=e2316]: ξ
+                - generic [ref=e2317]: k
+              - generic [ref=e2318]: )
+              - generic [ref=e2319]: ","
+            - generic [ref=e2323]:
+              - generic [ref=e2324]:
+                - generic [ref=e2325]:
+                  - generic [ref=e2326]: A
+                  - generic [ref=e2327]: ^
+                - generic [ref=e2328]: k
+              - generic [ref=e2329]: =
+              - generic [ref=e2330]:
+                - generic [ref=e2331]: δ
+                - generic [ref=e2332]: k
+              - generic [ref=e2333]: +
+              - generic [ref=e2334]: γ
+              - generic [ref=e2335]: λ
+              - generic [ref=e2336]: (
+              - generic [ref=e2337]: "1"
+              - generic [ref=e2338]: −
+              - generic [ref=e2339]:
+                - generic [ref=e2340]: d
+                - generic [ref=e2341]: k
+              - generic [ref=e2342]: )
+              - generic [ref=e2343]:
+                - generic [ref=e2344]:
+                  - generic [ref=e2345]: A
+                  - generic [ref=e2346]: ^
+                - generic [ref=e2347]:
+                  - generic [ref=e2348]: k
+                  - generic [ref=e2349]: +
+                  - generic [ref=e2350]: "1"
+              - generic [ref=e2351]: ","
+              - generic [ref=e2352]: γ
+              - generic [ref=e2353]: =
+              - generic [ref=e2354]: "0.995"
+              - generic [ref=e2355]: ","
+              - generic [ref=e2356]: λ
+              - generic [ref=e2357]: =
+              - generic [ref=e2358]: 0.95.
+          - generic [ref=e2360]: (8)
+      - generic [aria-hidden] [ref=e2362]:
+        - generic [ref=e2369]:
+          - generic [ref=e2370]:
+            - generic [ref=e2371]:
+              - text: δ
+              - generic [ref=e2372]: k
+            - text: =
+            - generic [ref=e2380]:
+              - text: r
+              - generic [ref=e2381]: k
+            - text: + γ(1 −
+            - generic [ref=e2389]:
+              - text: d
+              - generic [ref=e2390]: k
+            - text: )
+            - generic [ref=e2398]:
+              - text: V
+              - generic [ref=e2399]: v
+            - text: (
+            - generic [ref=e2407]:
+              - text: ξ
+              - generic [ref=e2408]: k+1
+            - text: ) −
+            - generic [ref=e2417]:
+              - text: V
+              - generic [ref=e2418]: v
+            - text: (
+            - generic [ref=e2426]:
+              - text: ξ
+              - generic [ref=e2427]: k
+            - text: ),
+          - generic [ref=e2435]:
+            - generic [ref=e2436]:
+              - generic [ref=e2437]: A
+              - generic [ref=e2444]: k
+            - text: =
+            - generic [ref=e2452]:
+              - text: δ
+              - generic [ref=e2453]: k
+            - text: + γλ(1 −
+            - generic [ref=e2461]:
+              - text: d
+              - generic [ref=e2462]: k
+            - text: )
+            - generic [ref=e2470]:
+              - generic [ref=e2471]: A
+              - generic [ref=e2478]: k+1
+            - text: ", γ = 0.995, λ = 0.95."
+        - generic [ref=e2491]:
+          - text: (
+          - generic [ref=e2492]: "8"
+          - text: )
+    - paragraph [ref=e2493]: 当前修订默认将 8 s 定义为有限时域任务，末步 d_t=1，bootstrap=0；完整 rollout 内没有中途重置，故代码仅需处理末值。归档训练器从自动重置状态取末值，现保留为显式 legacy_reset 目标，不能称为标准时间截断处理。若采用持续任务截断，需从重置前末状态估值。GAE 与 PPO 本身不提供闭环稳定性或飞行品质保证。
+    - paragraph [ref=e2494]: λ=0.95 调节优势估计的偏差与方差，不是飞机阻尼；Critic 训练后不承担部署控制。正优势意味着该样本的后果优于估计基准，并不要求 r 本身为正。
+    - paragraph [ref=e2495]: 令 ρ_t(w)=π_w(u_t|o_t,z_t)/π_old(u_t|o_t,z_t)，分子分母必须针对同一未裁剪高斯样本。原随包实现曾混用 u_t 与 clip(u_t)，已修复；不能据此追认缺少代码版本记录的旧教师。剪切代理损失定义为：
+    - generic [ref=e2498]:
+      - math [ref=e2500]:
+        - generic [ref=e2503]:
+          - generic [ref=e2506]:
+            - generic [ref=e2507]:
+              - generic [ref=e2508]: L
+              - generic [ref=e2509]:
+                - generic [ref=e2510]: c
+                - generic [ref=e2511]: l
+                - generic [ref=e2512]: i
+                - generic [ref=e2513]: p
+            - generic [ref=e2514]: (
+            - generic [ref=e2515]: w
+            - generic [ref=e2516]: )
+            - generic [ref=e2517]: =
+            - generic [ref=e2518]: −
+            - generic [ref=e2519]:
+              - generic [ref=e2520]: E
+              - generic [ref=e2521]: k
+            - generic [ref=e2522]:
+              - generic [ref=e2523]: "["
+              - generic [ref=e2524]: min
+              - generic: ⁡
+              - generic [ref=e2525]:
+                - generic [ref=e2526]: (
+                - generic [ref=e2527]:
+                  - generic [ref=e2528]: ρ
+                  - generic [ref=e2529]: k
+                - generic [ref=e2530]:
+                  - generic [ref=e2531]:
+                    - generic [ref=e2532]: A
+                    - generic [ref=e2533]: ^
+                  - generic [ref=e2534]: k
+                - generic [ref=e2535]: ","
+                - generic [ref=e2536]: clip
+                - generic: ⁡
+                - generic [ref=e2537]: (
+                - generic [ref=e2538]:
+                  - generic [ref=e2539]: ρ
+                  - generic [ref=e2540]: k
+                - generic [ref=e2541]: ","
+                - generic [ref=e2542]: "1"
+                - generic [ref=e2543]: −
+                - generic [ref=e2544]: ε
+                - generic [ref=e2545]: ","
+                - generic [ref=e2546]: "1"
+                - generic [ref=e2547]: +
+                - generic [ref=e2548]: ε
+                - generic [ref=e2549]: )
+                - generic [ref=e2550]:
+                  - generic [ref=e2551]:
+                    - generic [ref=e2552]: A
+                    - generic [ref=e2553]: ^
+                  - generic [ref=e2554]: k
+                - generic [ref=e2555]: )
+              - generic [ref=e2556]: "]"
+            - generic [ref=e2557]: ","
+            - generic [ref=e2558]: ε
+            - generic [ref=e2559]: =
+            - generic [ref=e2560]: "0.2"
+          - generic [ref=e2562]: (9)
+      - generic [aria-hidden] [ref=e2564]:
+        - generic [ref=e2565]:
+          - generic [ref=e2566]:
+            - text: L
+            - generic [ref=e2567]: clip
+          - text: (w) =
+        - generic [ref=e2577]:
+          - text: −
+          - generic [ref=e2578]:
+            - text: E
+            - generic [ref=e2579]: k
+          - generic [ref=e2587]:
+            - generic [ref=e2588]: "["
+            - text: min
+            - generic [ref=e2589]:
+              - generic [ref=e2590]: (
+              - generic [ref=e2591]:
+                - text: ρ
+                - generic [ref=e2592]: k
+              - generic [ref=e2600]:
+                - generic [ref=e2601]: A
+                - generic [ref=e2608]: k
+              - text: ","
+              - generic [ref=e2616]: clip
+              - text: (
+              - generic [ref=e2617]:
+                - text: ρ
+                - generic [ref=e2618]: k
+              - text: ", 1 − ε, 1 + ε)"
+              - generic [ref=e2626]:
+                - generic [ref=e2627]: A
+                - generic [ref=e2634]: k
+              - generic [ref=e2642]: )
+            - generic [ref=e2643]: "]"
+          - text: ", ε ="
+        - generic [ref=e2644]: "0.2"
+        - generic [ref=e2646]:
+          - text: (
+          - generic [ref=e2647]: "9"
+          - text: )
+    - paragraph [ref=e2648]: Actor 与 Critic 采用剪切策略损失、价值函数误差和熵正则项联合优化：
+    - generic [ref=e2651]:
+      - math [ref=e2653]:
+        - generic [ref=e2656]:
+          - generic [ref=e2659]:
+            - generic [ref=e2663]:
+              - generic [ref=e2664]:
+                - generic [ref=e2665]: L
+                - generic [ref=e2666]:
+                  - generic [ref=e2667]: t
+                  - generic [ref=e2668]: o
+                  - generic [ref=e2669]: t
+                  - generic [ref=e2670]: a
+                  - generic [ref=e2671]: l
+              - generic [ref=e2672]: =
+              - generic [ref=e2673]:
+                - generic [ref=e2674]: L
+                - generic [ref=e2675]:
+                  - generic [ref=e2676]: c
+                  - generic [ref=e2677]: l
+                  - generic [ref=e2678]: i
+                  - generic [ref=e2679]: p
+              - generic [ref=e2680]: +
+              - generic [ref=e2681]: "0.5"
+              - generic [ref=e2682]: E
+              - generic [ref=e2683]: "["
+              - generic [ref=e2684]: (
+              - generic [ref=e2685]:
+                - generic [ref=e2686]: V
+                - generic [ref=e2687]: v
+              - generic [ref=e2688]: (
+              - generic [ref=e2689]:
+                - generic [ref=e2690]: ξ
+                - generic [ref=e2691]: k
+              - generic [ref=e2692]: )
+              - generic [ref=e2693]: −
+              - generic [ref=e2694]:
+                - generic [ref=e2695]: R
+                - generic [ref=e2696]: k
+              - generic [ref=e2697]:
+                - generic [ref=e2698]: )
+                - generic [ref=e2699]: "2"
+              - generic [ref=e2700]: "]"
+              - generic [ref=e2701]: −
+              - generic [ref=e2702]: "0.001"
+              - generic [ref=e2703]: H
+              - generic [ref=e2704]: (
+              - generic [ref=e2705]:
+                - generic [ref=e2706]: π
+                - generic [ref=e2707]: w
+              - generic [ref=e2708]: )
+              - generic [ref=e2709]: ","
+            - generic [ref=e2713]:
+              - generic [ref=e2714]:
+                - generic [ref=e2715]: R
+                - generic [ref=e2716]: k
+              - generic [ref=e2717]: =
+              - generic [ref=e2718]:
+                - generic [ref=e2719]:
+                  - generic [ref=e2720]: A
+                  - generic [ref=e2721]: ^
+                - generic [ref=e2722]: k
+              - generic [ref=e2723]: +
+              - generic [ref=e2724]:
+                - generic [ref=e2725]: V
+                - generic [ref=e2726]:
+                  - generic [ref=e2727]: o
+                  - generic [ref=e2728]: l
+                  - generic [ref=e2729]: d
+              - generic [ref=e2730]: (
+              - generic [ref=e2731]:
+                - generic [ref=e2732]: ξ
+                - generic [ref=e2733]: k
+              - generic [ref=e2734]: )
+              - generic [ref=e2735]: .
+          - generic [ref=e2737]: (10)
+      - generic [aria-hidden] [ref=e2739]:
+        - generic [ref=e2746]:
+          - generic [ref=e2747]:
+            - generic [ref=e2748]:
+              - text: L
+              - generic [ref=e2749]: total
+            - text: =
+            - generic [ref=e2759]:
+              - text: L
+              - generic [ref=e2760]: clip
+            - text: + 0.5E[(
+            - generic [ref=e2770]:
+              - text: V
+              - generic [ref=e2771]: v
+            - text: (
+            - generic [ref=e2779]:
+              - text: ξ
+              - generic [ref=e2780]: k
+            - text: ) −
+            - generic [ref=e2788]:
+              - text: R
+              - generic [ref=e2789]: k
+            - generic [ref=e2797]:
+              - text: )
+              - generic [ref=e2798]: "2"
+            - text: "] − 0.001H("
+            - generic [ref=e2803]:
+              - text: π
+              - generic [ref=e2804]: w
+            - text: ),
+          - generic [ref=e2812]:
+            - generic [ref=e2813]:
+              - text: R
+              - generic [ref=e2814]: k
+            - text: =
+            - generic [ref=e2822]:
+              - generic [ref=e2823]: A
+              - generic [ref=e2830]: k
+            - text: +
+            - generic [ref=e2838]:
+              - text: V
+              - generic [ref=e2839]: old
+            - text: (
+            - generic [ref=e2849]:
+              - text: ξ
+              - generic [ref=e2850]: k
+            - text: ).
+        - generic [ref=e2862]:
+          - text: (
+          - generic [ref=e2863]: "10"
+          - text: )
+    - paragraph [ref=e2864]: "原稿报告每个对象训练 30 轮，每轮由 512 个并行环境各运行 400 个策略步，累计约 614 万个状态转移；第 6.5 节另以 12 对象×3 种子执行同等单教师预算，不替代原 49 教师记录。Actor 与 Critic 使用 Adam，学习率为 3×10^{−4}。"
+    - paragraph [ref=e2865]: ρ 是同一连续动作在新旧策略下的概率密度比；clip 作用于代理目标的该比值，不是把物理动作改变限制为 20%，也不强制所有比值永远处于 [0.8,1.2]。对正优势样本，增加其密度能改善目标，但超过裁剪端后不再获得同样的收益。策略梯度与价值损失用于调整网络权重，控制周期内的动作计算只执行网络前向。第 6.5 节每批最多更新 5 遍、小批次 16,384，近似 KL 超过 0.03 时停止本批更新；梯度范数上限 0.5 与执行机构的 88 N/s 限速是不同约束。
+    - heading "3.2.3 奖励与品质维度的对应" [level=4] [ref=e2866]
+    - paragraph [ref=e2867]: 奖励三项是响应跟踪、操纵能量和力速率幅值的代理代价；没有建立它们与 GJB 条款逐项等价的关系。品质相关参数用于源域对象构造，训练后用项目定义的 RMSE、Peak、TV 门限准入。LOES 等效延迟另作事后分析，不等同于直接以 GJB 品质指标训练。
+    - paragraph [ref=e2868]: 表 1 教师网络与训练设置
+    - table [ref=e2869]:
+      - rowgroup [ref=e2870]:
+        - row [ref=e2871]:
+          - columnheader "项" [ref=e2872]
+          - columnheader "设置" [ref=e2873]
+      - rowgroup [ref=e2874]:
+        - row [ref=e2875]:
+          - cell "输入" [ref=e2876]
+          - cell "常规输入 176（归档参考含 τp）+ 显式特权信息 12" [ref=e2877]
+        - row [ref=e2878]:
+          - cell "时序前端" [ref=e2879]
+          - cell "3 层一维卷积，dilation 1/4/8，感受野 27 步" [ref=e2880]
+        - row [ref=e2881]:
+          - cell "主干" [ref=e2882]
+          - cell "残差 MLP 512 × 8，pre-LN、SiLU、无偏置均值头、奇对称投影" [ref=e2883]
+        - row [ref=e2884]:
+          - cell "输出" [ref=e2885]
+          - cell "归一化增量动作 ±1 → 请求力每步变化至多 ±1.76 N；请求力限幅 ±22 N" [ref=e2886]
+        - row [ref=e2887]:
+          - cell "算法" [ref=e2888]
+          - cell "PPO，614 万步/架，γ 0.995，λ 0.95，clip 0.2" [ref=e2889]
+        - row [ref=e2890]:
+          - cell "规模" [ref=e2891]
+          - cell "4.26 M 参数，单卡约 9.5 min/架" [ref=e2892]
+    - paragraph [ref=e2893]:
+      - img "图 2，数据与限制见下方图注"
+    - paragraph [ref=e2894]:
+      - emphasis [ref=e2895]: 图 2 教师策略的张量形状：32×5 历史窗口 → 三层 24 通道卷积 → 76 维拼接（48 卷积 + 9 当前 + 7 旧动作 + 12 特权）→ 8 个残差块（512 宽）→ 均值头输出力速率；虚线为品模闭环回路。
+    - heading "3.3 第三步：DAgger 蒸馏统一学生" [level=3] [ref=e2896]
+    - paragraph [ref=e2897]:
+      - text: 源域学生以多对象教师提供的状态—动作样本进行监督学习。初始数据由教师策略访问闭环状态并标注动作；后续 DAgger 轮次由学生策略访问状态，再由对应教师为这些状态补充动作标签
+      - superscript [ref=e2898]: "[4]"
+      - text: 。原稿记录经过六轮数据聚合后，分别训练 3,856 参数 tiny 学生和 75,040 参数 small 学生。学生保留时序特征结构，不直接使用 12 维教师特权输入；归档参考信号的参数依赖见第 2.1 节。六轮主线的逐轮数据与权重未随包完整提供，以下定义说明原稿方法，不构成本次独立复现。
+    - generic [ref=e2901]:
+      - math [ref=e2903]:
+        - generic [ref=e2906]:
+          - generic [ref=e2909]:
+            - generic [ref=e2913]:
+              - generic [ref=e2914]:
+                - generic [ref=e2915]: D
+                - generic [ref=e2916]: "0"
+              - generic [ref=e2917]: =
+              - generic [ref=e2918]: "{"
+              - generic [ref=e2919]: (
+              - generic [ref=e2920]:
+                - generic [ref=e2921]: o
+                - generic [ref=e2922]: k
+              - generic [ref=e2923]: ","
+              - generic [ref=e2924]:
+                - generic [ref=e2925]: μ
+                - generic [ref=e2926]: T
+              - generic [ref=e2927]: (
+              - generic [ref=e2928]:
+                - generic [ref=e2929]: o
+                - generic [ref=e2930]: k
+              - generic [ref=e2931]: ","
+              - generic [ref=e2932]:
+                - generic [ref=e2933]: z
+                - generic [ref=e2934]: k
+              - generic [ref=e2935]: )
+              - generic [ref=e2936]: )
+              - generic [ref=e2937]: "}"
+              - generic [ref=e2938]: ","
+            - generic [ref=e2942]:
+              - generic [ref=e2943]:
+                - generic [ref=e2944]: D
+                - generic [ref=e2945]:
+                  - generic [ref=e2946]: m
+                  - generic [ref=e2947]: +
+                  - generic [ref=e2948]: "1"
+              - generic [ref=e2949]: =
+              - generic [ref=e2950]:
+                - generic [ref=e2951]: D
+                - generic [ref=e2952]: m
+              - generic [ref=e2953]: ∪
+              - generic [ref=e2954]: "{"
+              - generic [ref=e2955]: (
+              - generic [ref=e2956]:
+                - generic [ref=e2957]: o
+                - generic [ref=e2958]: k
+                - generic [ref=e2959]:
+                  - generic [ref=e2960]: S
+                  - generic [ref=e2961]: ","
+                  - generic [ref=e2962]: m
+              - generic [ref=e2963]: ","
+              - generic [ref=e2964]:
+                - generic [ref=e2965]: μ
+                - generic [ref=e2966]: T
+              - generic [ref=e2967]: (
+              - generic [ref=e2968]:
+                - generic [ref=e2969]: o
+                - generic [ref=e2970]: k
+                - generic [ref=e2971]:
+                  - generic [ref=e2972]: S
+                  - generic [ref=e2973]: ","
+                  - generic [ref=e2974]: m
+              - generic [ref=e2975]: ","
+              - generic [ref=e2976]:
+                - generic [ref=e2977]: z
+                - generic [ref=e2978]: k
+              - generic [ref=e2979]: )
+              - generic [ref=e2980]: )
+              - generic [ref=e2981]: "}"
+              - generic [ref=e2982]: .
+          - generic [ref=e2984]: (11)
+      - generic [aria-hidden] [ref=e2986]:
+        - generic [ref=e2993]:
+          - generic [ref=e2994]:
+            - generic [ref=e2995]:
+              - text: D
+              - generic [ref=e2996]: "0"
+            - text: "= {("
+            - generic [ref=e3004]:
+              - text: o
+              - generic [ref=e3005]: k
+            - text: ","
+            - generic [ref=e3013]:
+              - text: μ
+              - generic [ref=e3014]: T
+            - text: (
+            - generic [ref=e3022]:
+              - text: o
+              - generic [ref=e3023]: k
+            - text: ","
+            - generic [ref=e3031]:
+              - text: z
+              - generic [ref=e3032]: k
+            - text: "))},"
+          - generic [ref=e3040]:
+            - generic [ref=e3041]:
+              - text: D
+              - generic [ref=e3042]: m+1
+            - text: =
+            - generic [ref=e3051]:
+              - text: D
+              - generic [ref=e3052]: m
+            - text: "∪ {("
+            - generic [ref=e3060]:
+              - text: o
+              - generic [ref=e3064]:
+                - generic [ref=e3065]: k
+                - generic [ref=e3066]: S,m
+            - text: ","
+            - generic [ref=e3071]:
+              - text: μ
+              - generic [ref=e3072]: T
+            - text: (
+            - generic [ref=e3080]:
+              - text: o
+              - generic [ref=e3084]:
+                - generic [ref=e3085]: k
+                - generic [ref=e3086]: S,m
+            - text: ","
+            - generic [ref=e3091]:
+              - text: z
+              - generic [ref=e3092]: k
+            - text: "))}."
+        - generic [ref=e3104]:
+          - text: (
+          - generic [ref=e3105]: "11"
+          - text: )
+    - paragraph [ref=e3106]: 其中，μ_T 为教师策略，z_t 为教师可用的对象参数和内部状态。对第 m 轮学生访问状态，教师在相同观测下产生监督动作。学生通过最小化聚合样本上的动作均方误差拟合教师：
+    - generic [ref=e3109]:
+      - math [ref=e3111]:
+        - generic [ref=e3114]:
+          - generic [ref=e3117]:
+            - generic [ref=e3118]:
+              - generic [ref=e3119]: w
+              - generic [ref=e3120]: S
+              - generic [ref=e3121]: ∗
+            - generic [ref=e3122]: =
+            - generic [ref=e3124]:
+              - generic [ref=e3125]: arg⁡min⁡
+              - text: w
+            - generic [ref=e3126]:
+              - generic [ref=e3127]: "1"
+              - generic [ref=e3128]:
+                - generic [ref=e3129]: ∣
+                - generic [ref=e3130]:
+                  - generic [ref=e3131]: D
+                  - generic [ref=e3132]: K
+                - generic [ref=e3133]: ∣
+            - generic [ref=e3134]:
+              - generic [ref=e3135]: ∑
+              - generic [ref=e3136]:
+                - generic [ref=e3137]: (
+                - generic [ref=e3138]: o
+                - generic [ref=e3139]: ","
+                - generic [ref=e3140]:
+                  - generic [ref=e3141]: u
+                  - generic [ref=e3142]: T
+                - generic [ref=e3143]: )
+                - generic [ref=e3144]: ∈
+                - generic [ref=e3145]:
+                  - generic [ref=e3146]: D
+                  - generic [ref=e3147]: K
+            - generic [ref=e3148]: ∥
+            - generic [ref=e3149]:
+              - generic [ref=e3150]: μ
+              - generic [ref=e3151]: S
+            - generic [ref=e3152]: (
+            - generic [ref=e3153]: o
+            - generic [ref=e3154]: ;
+            - generic [ref=e3155]: w
+            - generic [ref=e3156]: )
+            - generic [ref=e3157]: −
+            - generic [ref=e3158]:
+              - generic [ref=e3159]: u
+              - generic [ref=e3160]: T
+            - generic [ref=e3161]:
+              - generic [ref=e3162]: ∥
+              - generic [ref=e3163]: "2"
+          - generic [ref=e3165]: (12)
+      - generic [aria-hidden] [ref=e3167]:
+        - generic [ref=e3168]:
+          - generic [ref=e3169]:
+            - text: w
+            - generic [ref=e3173]:
+              - generic [ref=e3174]: S
+              - generic [ref=e3175]: ∗
+          - text: =
+        - generic [ref=e3179]:
+          - generic [ref=e3184]:
+            - generic [ref=e3185]: w
+            - generic [ref=e3188]:
+              - generic [ref=e3189]: arg
+              - text: min
+          - generic [ref=e3197]:
+            - generic [ref=e3198]:
+              - text: ∣
+              - generic [ref=e3199]:
+                - text: D
+                - generic [ref=e3200]: K
+              - text: ∣
+            - generic [ref=e3209]: "1"
+          - generic [ref=e3216]:
+            - generic [ref=e3218]:
+              - text: (o,
+              - generic [ref=e3219]:
+                - text: u
+                - generic [ref=e3220]: T
+              - text: )∈
+              - generic [ref=e3228]:
+                - text: D
+                - generic [ref=e3229]: K
+            - generic [ref=e3237]: ∑
+          - text: ∥
+          - generic [ref=e3241]:
+            - text: μ
+            - generic [ref=e3242]: S
+          - text: (o; w) −
+        - generic [ref=e3250]:
+          - generic [ref=e3251]:
+            - text: u
+            - generic [ref=e3252]: T
+          - generic [ref=e3260]:
+            - text: ∥
+            - generic [ref=e3261]: "2"
+        - generic [ref=e3267]:
+          - text: (
+          - generic [ref=e3268]: "12"
+          - text: )
+    - paragraph [ref=e3269]: 逐轮加入学生访问状态，使训练分布逐步覆盖学生自身闭环行为诱导的状态，而不是只拟合教师访问过的状态。
+    - paragraph [ref=e3270]: 第 6.5 节的实际实现先做 30 个 epoch 的 BC，再执行 6 次新的闭环采集，每次在全部聚合数据上训练 8 个 epoch。执行教师动作的概率依次为 0.5、0.25、0、0、0、0；后四轮由学生执行，仍由教师提供标签。每个种子累计七批、共 1,075,200 个状态。采集轮次改变访问分布，epoch 表示重复使用已有数据，两者不能混称。模型按源域独立验证表现选取，最终测试集不参与选轮次。
+    - paragraph [ref=e3271]: 均方动作损失也有信息条件：若相同学生观测及历史对应不同特权状态和相反教师动作，平方损失倾向于条件平均，并不保证每种隐藏状态下的动作都正确。因此压缩规模、特权信息落差、历史长度和教师质量需分别检验。附录 A 给出损失与误差传播的算例；这些算例不代替真实闭环结果。
+    - paragraph [ref=e3272]:
+      - img "图 3，数据与限制见下方图注"
+    - paragraph [ref=e3273]:
+      - emphasis [ref=e3274]: 图 3 学生策略的同构张量：输入仍是 32×5 历史，去掉显式特权量后的拼接维为 32 维（16+9+7），主干只有 1 个 32 宽残差块，共 3,856 参数。延迟表征实验的 SAE 分支见图 16。
+    - heading "3.4 第四步：DHC-6 仿真数据小样本微调" [level=3] [ref=e3275]
+    - paragraph [ref=e3276]: 目标域数据包含 12 个 DHC-6 仿真配平状态和 72 条 50 Hz 输入输出记录。依据 chirp 激励辨识各状态下的 ARX 模型，阶次范围为 na = 4–5、nb = 3–4、nk = 1，拟合 VAF 为 98.0%–98.7%。接口将策略输出的力速率积分为受 ±22 N 限幅的请求力，再按 δ = −(10/22)F 映射为副翼偏角；辨识模型输出的滚转角速度作为策略输入。
+    - paragraph [ref=e3277]: "微调更新 75,040 参数 small 学生的全部权重。8 个状态用于适配，4 个状态留出用于检验跨状态泛化。优化执行 40 次 Adam 更新，学习率为 3×10^{−5}；训练损失统计响应开始 2 s 后的跟踪平方误差。闭环评估采用确定性策略、15 deg/s 正阶跃和 8 s 时域。"
+    - generic [ref=e3280]:
+      - math [ref=e3282]:
+        - generic [ref=e3285]:
+          - generic [ref=e3288]:
+            - generic [ref=e3292]:
+              - generic [ref=e3293]:
+                - generic [ref=e3294]: e
+                - generic [ref=e3295]: k
+              - generic [ref=e3296]: (
+              - generic [ref=e3297]: W
+              - generic [ref=e3298]: )
+              - generic [ref=e3299]: =
+              - generic [ref=e3300]:
+                - generic [ref=e3301]: p
+                - generic [ref=e3302]:
+                  - generic [ref=e3303]:
+                    - generic [ref=e3304]: r
+                    - generic [ref=e3305]: e
+                    - generic [ref=e3306]: f
+                  - generic [ref=e3307]: ","
+                  - generic [ref=e3308]: k
+              - generic [ref=e3309]: −
+              - generic [ref=e3310]:
+                - generic [ref=e3311]: p
+                - generic [ref=e3312]: k
+              - generic [ref=e3313]: (
+              - generic [ref=e3314]: W
+              - generic [ref=e3315]: ;
+              - generic [ref=e3316]:
+                - generic [ref=e3317]:
+                  - generic [ref=e3318]: G
+                  - generic [ref=e3319]: ^
+                - generic [ref=e3320]:
+                  - generic [ref=e3321]: A
+                  - generic [ref=e3322]: R
+                  - generic [ref=e3323]: X
+              - generic [ref=e3324]: )
+              - generic [ref=e3325]: ","
+            - generic [ref=e3329]:
+              - generic [ref=e3330]:
+                - generic [ref=e3331]: L
+                - generic [ref=e3332]:
+                  - generic [ref=e3333]: D
+                  - generic [ref=e3334]: H
+                  - generic [ref=e3335]: C
+                  - generic [ref=e3336]: "6"
+              - generic [ref=e3337]: (
+              - generic [ref=e3338]: W
+              - generic [ref=e3339]: )
+              - generic [ref=e3340]: =
+              - generic [ref=e3341]:
+                - generic [ref=e3342]: "1"
+                - generic [ref=e3343]:
+                  - generic [ref=e3344]: "N"
+                  - generic [ref=e3345]:
+                    - generic [ref=e3346]: t
+                    - generic [ref=e3347]: ≥
+                    - generic [ref=e3348]: "2"
+                    - generic [ref=e3349]: s
+              - generic [ref=e3350]:
+                - generic [ref=e3351]: ∑
+                - generic [ref=e3352]:
+                  - generic [ref=e3353]:
+                    - generic [ref=e3354]: t
+                    - generic [ref=e3355]: k
+                  - generic [ref=e3356]: ≥
+                  - generic [ref=e3357]: "2"
+                  - generic [ref=e3358]: s
+              - generic [ref=e3359]:
+                - generic [ref=e3360]: e
+                - generic [ref=e3361]: k
+              - generic [ref=e3362]: (
+              - generic [ref=e3363]: W
+              - generic [ref=e3364]:
+                - generic [ref=e3365]: )
+                - generic [ref=e3366]: "2"
+              - generic [ref=e3367]: ","
+            - generic [ref=e3371]:
+              - generic [ref=e3372]:
+                - generic [ref=e3373]: W
+                - generic [ref=e3374]:
+                  - generic [ref=e3375]: m
+                  - generic [ref=e3376]: +
+                  - generic [ref=e3377]: "1"
+              - generic [ref=e3378]: =
+              - generic [ref=e3379]: AdamUpdate
+              - generic: ⁡
+              - generic [ref=e3380]: (
+              - generic [ref=e3381]:
+                - generic [ref=e3382]: W
+                - generic [ref=e3383]: m
+              - generic [ref=e3384]: ","
+              - generic [ref=e3385]:
+                - generic [ref=e3386]: ∇
+                - generic [ref=e3387]: W
+              - generic [ref=e3388]:
+                - generic [ref=e3389]: L
+                - generic [ref=e3390]:
+                  - generic [ref=e3391]: D
+                  - generic [ref=e3392]: H
+                  - generic [ref=e3393]: C
+                  - generic [ref=e3394]: "6"
+              - generic [ref=e3395]: ;
+              - generic [ref=e3396]: η
+              - generic [ref=e3397]: =
+              - generic [ref=e3398]: "3"
+              - generic [ref=e3399]: ×
+              - generic [ref=e3400]: "1"
+              - generic [ref=e3401]:
+                - generic [ref=e3402]: "0"
+                - generic [ref=e3403]:
+                  - generic [ref=e3404]: −
+                  - generic [ref=e3405]: "5"
+              - generic [ref=e3406]: )
+              - generic [ref=e3407]: .
+          - generic [ref=e3409]: (13)
+      - generic [aria-hidden] [ref=e3411]:
+        - generic [ref=e3418]:
+          - generic [ref=e3419]:
+            - generic [ref=e3420]:
+              - text: e
+              - generic [ref=e3421]: k
+            - text: (W) =
+            - generic [ref=e3429]:
+              - text: p
+              - generic [ref=e3435]:
+                - generic [ref=e3436]: ref
+                - text: ",k"
+            - text: −
+            - generic [ref=e3440]:
+              - text: p
+              - generic [ref=e3441]: k
+            - text: (W;
+            - generic [ref=e3449]:
+              - generic [ref=e3450]: G
+              - generic [ref=e3457]: ARX
+            - text: ),
+          - generic [ref=e3467]:
+            - generic [ref=e3468]:
+              - text: L
+              - generic [ref=e3469]: DHC6
+            - text: (W) =
+            - generic [ref=e3483]:
+              - generic [ref=e3485]:
+                - text: "N"
+                - generic [ref=e3486]: t≥2s
+              - generic [ref=e3496]: "1"
+            - generic [ref=e3503]:
+              - generic [ref=e3505]:
+                - generic [ref=e3506]:
+                  - text: t
+                  - generic [ref=e3507]: k
+                - text: ≥2s
+              - generic [ref=e3515]: ∑
+            - generic [ref=e3519]:
+              - text: e
+              - generic [ref=e3520]: k
+            - text: (W
+            - generic [ref=e3528]:
+              - text: )
+              - generic [ref=e3529]: "2"
+            - text: ","
+          - generic [ref=e3534]:
+            - generic [ref=e3535]:
+              - text: W
+              - generic [ref=e3536]: m+1
+            - text: =
+            - generic [ref=e3545]: AdamUpdate
+            - text: (
+            - generic [ref=e3546]:
+              - text: W
+              - generic [ref=e3547]: m
+            - text: ","
+            - generic [ref=e3555]:
+              - text: ∇
+              - generic [ref=e3556]: W
+            - generic [ref=e3564]:
+              - text: L
+              - generic [ref=e3565]: DHC6
+            - text: ; η = 3 × 1
+            - generic [ref=e3575]:
+              - text: "0"
+              - generic [ref=e3576]: −5
+            - text: ).
+        - generic [ref=e3586]:
+          - text: (
+          - generic [ref=e3587]: "13"
+          - text: )
+    - paragraph [ref=e3588]: 式中，Ĝ_ARX 为适配状态辨识得到的滚转通道模型，W 表示学生网络参数；留出状态仅用于微调后的闭环评估。
+    - heading "4 实验设置" [level=2] [ref=e3589]
+    - paragraph [ref=e3590]: 源域实验包括教师训练、学生蒸馏和跨对象闭环评估；目标域实验在 ARX 辨识模型上微调 small 学生。表 2 汇总各阶段所用对象集和评估协议。各分组对应不同实验，按分组分别报告。
+    - paragraph [ref=e3591]: 表 2 数据划分与评估协议
+    - table [ref=e3592]:
+      - rowgroup [ref=e3593]:
+        - row [ref=e3594]:
+          - columnheader "阶段" [ref=e3595]
+          - columnheader "对象 / 数据" [ref=e3596]
+          - columnheader "训练与留出" [ref=e3597]
+          - columnheader "被评内容" [ref=e3598]
+      - rowgroup [ref=e3599]:
+        - row [ref=e3600]:
+          - cell "对象库" [ref=e3601]
+          - cell "5,000 个参数化滚转模型" [ref=e3602]
+          - cell "4,500 个训练/同分布池；500 个分布外" [ref=e3603]
+          - cell "参数与品质等级覆盖" [ref=e3604]
+        - row [ref=e3605]:
+          - cell "PPO 教师" [ref=e3606]
+          - cell "49 个源域对象" [ref=e3607]
+          - cell "46/49 通过项目门限" [ref=e3608]
+          - cell "确定性闭环跟踪与操纵" [ref=e3609]
+        - row [ref=e3610]:
+          - cell "学生" [ref=e3611]
+          - cell "48 个源域对象" [ref=e3612]
+          - cell "44 个蒸馏；4 个留出，等级各 16 个" [ref=e3613]
+          - cell "tiny / small 跨对象性能" [ref=e3614]
+        - row [ref=e3615]:
+          - cell "DHC-6 微调" [ref=e3616]
+          - cell "12 个仿真配平状态、72 条记录" [ref=e3617]
+          - cell "8 个适配；4 个留出" [ref=e3618]
+          - cell "small 学生、单随机种子" [ref=e3619]
+        - row [ref=e3620]:
+          - cell "库规模抽样" [ref=e3621]
+          - cell "4,500 个非 OOD 对象池" [ref=e3622]
+          - cell "每级随机抽 40 个，共 120 个" [ref=e3623]
+          - cell "tiny 学生，随机种子 20261023" [ref=e3624]
+        - row [ref=e3625]:
+          - cell "幅值 / OOD" [ref=e3626]
+          - cell "300 个同分布对象、500 个 OOD 对象" [ref=e3627]
+          - cell "14 条指令/对象；每指令重复 2 次" [ref=e3628]
+          - cell "tiny 学生固定权重，11,200 个对象—指令组合" [ref=e3629]
+    - paragraph [ref=e3630]: 源域 48 对象评估采用 30 条加权指令和每对象 64 条并行确定性轨迹；幅值扫描另以 14 条输入配置评估 300 个同分布对象和 500 个 OOD 对象，每个对象—指令组合重复两次。DHC-6 的适配和留出单元为配平状态，每状态以固定阶跃和单一策略种子评价。主线结果来自仿真或辨识模型，为单策略训练种子的归档结果；第 6 节另列两种子表示对照及三种子控制器路线验证。未开展实机飞行或完整飞控系统验证。
+    - heading "5 结果" [level=2] [ref=e3631]
+    - heading "5.1 第一步：采样对象的分布覆盖" [level=3] [ref=e3632]
+    - paragraph [ref=e3633]: 参数库共含 5,000 个对象：4,500 个构成训练及同分布对象池，500 个作为分布外集合。图 4 展示八维参数中两两组合的采样位置，图 5 展示各参数边际分布和 49 个教师训练对象的位置。覆盖范围由实验设计给定；库中 49 个对象训练了教师。
+    - paragraph [ref=e3634]:
+      - img "图 4，数据与限制见下方图注"
+    - paragraph [ref=e3635]:
+      - emphasis [ref=e3636]: 图 4 5,000 个飞行品质对象的参数空间采样散点。颜色区分品质等级，标记区分训练与分布外对象。
+    - paragraph [ref=e3637]:
+      - img "图 5，数据与限制见下方图注"
+    - paragraph [ref=e3638]:
+      - emphasis [ref=e3639]: 图 5 参数边际分布及教师选取位置；仅 49 个对象进入逐对象教师训练。
+    - heading "5.2 第二步：逐对象教师训练（归档报告值）" [level=3] [ref=e3640]
+    - paragraph [ref=e3641]: 49 个对象分别训练后，46 个通过项目设定的 RMSE、峰值误差和请求力总变差率门限。未通过对象为 train_core-0174、train_core-0236、train_core-0467；统计保留全部训练尝试，未通过对象不从分母剔除。
+    - paragraph [ref=e3642]:
+      - img "图 6，数据与限制见下方图注"
+    - paragraph [ref=e3643]:
+      - emphasis [ref=e3644]: 图 6 教师跟踪误差与滚转操纵效能的关系（双对数）。颜色表示品质等级，红叉表示未通过对象；虚线为通过样本的拟合，相关系数 r = −0.74。
+    - paragraph [ref=e3645]: 通过对象中，滚转操纵效能 L_Fa 与跟踪 RMSE 呈负相关（双对数相关系数 r = −0.74）；三个未通过对象也位于低效能区域。
+    - paragraph [ref=e3646]: 图 7 汇总 21 个具备逐轮固定验证记录的通过教师。其确定性验证 RMSE 随训练总体下降，最终选用 checkpoint 可来自中间训练轮次。
+    - paragraph [ref=e3647]:
+      - img "图 7，数据与限制见下方图注"
+    - paragraph [ref=e3648]:
+      - emphasis [ref=e3649]: 图 7 21 个通过教师的固定验证 RMSE、操纵总变差及 checkpoint 选择过程。
+    - paragraph [ref=e3650]: 图 8 给出源域 L1、L2、L3 对象在阶跃与多正弦指令下的确定性闭环响应，包括参考角速度、对象响应及操纵量。 该图给出源域教师的闭环行为。
+    - paragraph [ref=e3651]:
+      - img "图 8，数据与限制见下方图注"
+    - paragraph [ref=e3652]:
+      - emphasis [ref=e3653]: 图 8 教师训练完成后的源域闭环效果：不同品质等级的阶跃与多正弦响应。
+    - heading "5.3 第三步：统一学生蒸馏（归档报告值）" [level=3] [ref=e3654]
+    - paragraph [ref=e3655]: 原稿报告六轮 DAgger 后，tiny 的同分布/留出 RMSE 中位倍数为 1.28/1.68，small 为 1.34/1.41。这里统计的是逐对象“学生 RMSE/对应教师 RMSE”的中位数，不能与两组 RMSE 中位数之比混用。
+    - table [ref=e3656]:
+      - rowgroup [ref=e3657]:
+        - row [ref=e3658]:
+          - columnheader "学生" [ref=e3659]
+          - columnheader "参数量" [ref=e3660]
+          - columnheader "同分布通过" [ref=e3661]
+          - columnheader "留出通过" [ref=e3662]
+          - columnheader "同分布中位倍数" [ref=e3663]
+          - columnheader "留出中位倍数" [ref=e3664]
+      - rowgroup [ref=e3665]:
+        - row [ref=e3666]:
+          - cell "tiny" [ref=e3667]
+          - cell "3,856" [ref=e3668]
+          - cell "37/44" [ref=e3669]
+          - cell "3/4" [ref=e3670]
+          - cell "1.28×" [ref=e3671]
+          - cell "1.68×" [ref=e3672]
+        - row [ref=e3673]:
+          - cell "small" [ref=e3674]
+          - cell "75,040" [ref=e3675]
+          - cell "38/44" [ref=e3676]
+          - cell "3/4" [ref=e3677]
+          - cell "1.34×" [ref=e3678]
+          - cell "1.41×" [ref=e3679]
+    - paragraph [ref=e3680]: 扩大容量未改善同分布误差倍数，但留出倍数下降约 16.1%，通过数仍为 3/4。四个对象的二值通过数不足以排除容量作用。现有实验未独立控制容量、额外信息、教师覆盖及优化程度，因而不能把差距完全归因于特权信息，也不能称压缩无精度损失。逐对象 PPO 教师是经验比较基准，不是已证明的最优上界。
+    - paragraph [ref=e3681]: 评估集含 48 个对象，三个等级各 16 个；44 个参与蒸馏，4 个为对象级留出。原稿规定每对象 30 条加权指令和 64 条并行确定性轨迹。完整主线逐对象与逐轮记录未随包提供，表中数字待相应原始证据补齐后才能独立复核。
+    - paragraph [ref=e3682]:
+      - img "图 9，数据与限制见下方图注"
+    - paragraph [ref=e3683]:
+      - emphasis [ref=e3684]: 图 9 原稿归档的学生蒸馏过程图；第 0 轮为行为克隆。其逐轮原始数据未随包提供，不能用 SAE 分支的新实验代替核验。
+    - heading "5.3.1 代表性闭环响应" [level=3] [ref=e3685]
+    - paragraph [ref=e3686]: 图 10 把教师与学生放在同一组指令下对比。六档阶跃上两者的上升段几乎重合，学生的稳态跟踪误差约为教师的 2.3–3.3 倍；双脉冲与多正弦上倍数降到 1.5–1.9，但幅值衰减更明显。这是该对象的行为差异，尚不能据此确定误差来自哪一类缺失信息。
+    - paragraph [ref=e3687]:
+      - img "图 10，数据与限制见下方图注"
+    - paragraph [ref=e3688]:
+      - emphasis [ref=e3689]: 图 10 教师与学生的时域对比（对象 train_core-0421，同一组指令）。虚线为参考，蓝线为教师，橙线为学生；面板内给出 2 s 后的跟踪 RMSE 及学生相对教师的倍数。六档阶跃上学生倍数约 2.3–3.3，形状指令上降到 1.5–1.9。
+    - heading "5.3.2 扩展对象池抽样评估" [level=3] [ref=e3690]
+    - paragraph [ref=e3691]: 为检查原 48 对象结果对更大样本的代表性，从 4,500 个非分布外对象中按品质等级分层抽取 120 个对象（每级 40 个，随机种子 20261023），并以 3,856 参数 tiny 学生进行确定性闭环评估。该 120 对象集与原 48 对象学生评估集不重叠，但来自同一非分布外对象池，故属于新增的同分布抽样评估，不是分布外测试。
+    - paragraph [ref=e3692]: 按相同 RMSE、峰值误差和请求力总变差率门限，整体通过 94/120（78.3%）；RMSE 中位数为 0.64 deg/s，90 百分位为 2.24 deg/s。三个等级的通过数分别为 34/40、30/40 和 30/40。与原 48 对象结果相比，该抽样通过率较低；由于对象抽样集合和数量不同，不能把通过率差异直接解释为同一总体性能的下降。
+    - paragraph [ref=e3693]: 在这 120 个对象中，跟踪 RMSE 与滚转操纵效能的相关系数为 −0.47。长滚转时间常数段（T_R > 6 s） 的 4 个对象中 1 个通过，是当前失分最集中的区间， 也是下一步补测的对象。批量评估不需要 GPU：同一学生权重在 CPU 上以 40 个进程并行评估这些对象，总耗时约 58 s， 单核即可推理。
+    - paragraph [ref=e3694]:
+      - img "图 11，数据与限制见下方图注"
+    - paragraph [ref=e3695]:
+      - emphasis [ref=e3696]: 图 11 120 个分层随机抽样对象的闭环评估。(a) 跟踪 RMSE 与滚转操纵效能；(b) 按品质等级统计的门限通过率。
+    - paragraph [ref=e3697]:
+      - img "图 12，数据与限制见下方图注"
+    - paragraph [ref=e3698]:
+      - emphasis [ref=e3699]: 图 12 同一 tiny 学生在三个源域对象和三类指令下的闭环响应。行表示品质等级，列表示指令；虚线为参考，实线为学生。
+    - paragraph [ref=e3700]: 图 12 展示固定对象 train_core-0000、train_core-0421 和 train_core-0701 在正、负阶跃及多正弦指令下的响应。三个对象的瞬态跟踪差异可见。
+    - heading "5.3.3 指令幅值与分布外对象评估" [level=3] [ref=e3701]
+    - paragraph [ref=e3702]: 进一步评估学生在不同指令幅值及分布外对象上的表现。按品质等级从 4,500 个非分布外对象中抽取 300 个（每级 100 个），并纳入全部 500 个分布外对象；对每个对象测试 ±1、±2、±5、±10、±21 和 ±31 deg/s 六档阶跃、一个双脉冲及一个多正弦，共 11,200 个对象—指令组合。每一组合在仿真中重复两次，共运行 22,400 条轨迹；统计按脚本导出的组合级结果计算。三项门限与前文一致。
+    - paragraph [ref=e3703]: 同分布样本中，±1 deg/s 阶跃通过率为 99.7%，RMSE 中位数为 0.11 deg/s；±31 deg/s 阶跃通过率为 60.3%，RMSE 中位数为 1.13 deg/s。双脉冲和多正弦通过率分别为 99.0% 和 99.7%。通过率随幅值增加而下降，大幅值段的请求力限幅（±22 N）和动作速率限制（88 N/s）可能参与约束响应。现有幅值比较未独立改变执行机构边界，尚不能确定饱和与其他误差来源各自的贡献。
+    - paragraph [ref=e3704]: 在 500 个分布外对象上，±1 deg/s 和 ±31 deg/s 阶跃的通过率分别为 86.8% 和 27.6%，对应 RMSE 中位数为 0.21 和 2.93 deg/s。该结果表明，当前小型学生在较大幅值及分布外参数组合下性能下降明显。幅值测试中的 300 个同分布对象与前述 48 对象学生评估集不重叠；该测试评估的是固定学生策略，不包含目标域微调。
+    - paragraph [ref=e3705]:
+      - img "图 13，数据与限制见下方图注"
+    - paragraph [ref=e3706]:
+      - emphasis [ref=e3707]: 图 13 学生响应随指令幅值的变化。蓝为 300 架同分布对象，红为 500 架分布外对象；(a) 中位误差与四分位带（虚线为门限），(b) 三门槛通过率。
+    - heading "5.3.4 与固定增益 PID 的对照" [level=3] [ref=e3708]
+    - paragraph [ref=e3709]: 为判断上述边界是否是“学习控制器特有”，在同一批对象（300 同分布 + 500 分布外）和同一批指令上 运行一个经典基线：二阶自由度 PID，含参考前馈、抗积分饱和，输入为力请求（±22 N），再折算成同一 力速率接口。增益在对象 train_core-0421 上做网格搜索得到（k_p=128、k_i=60、 k_d=0.8、k_ff=6.0），此后不再调整，即无增益调度。学生使用多对象训练，而该 PID 仅在一个对象整定，因此本对照只支持相对于这套固定 PID 的结果，不能代表相同对象族联合整定或增益调度方法的最优性能。
+    - paragraph [ref=e3710]: 按同一门限判定，学生在所列幅值组的汇总通过率更高：同分布 ±1 为 99.7% 对 80.0%，±31 为 60.3% 对 35.7%； 分布外差距更大，±1 为 86.8% 对 46.6%，±31 为 27.6% 对 16.2%。PID 的零样本失效集中在分布外对象： 分布外各幅值组的中位 RMSE 为 8.8–18.5 deg/s，学生在同一批对象上为 0.21–2.93 deg/s。小幅值段 PID 的中位误差更低 （0.06 对 0.11），但其峰值与力变化率越界，因此门限通过率反而更低——两者在“精度”与“合格”上不是同一口径。
+    - paragraph [ref=e3711]: 本对照说明所选固定 PID 与已训练学生在当前对象族中的差异，不能推出常规控制器必然需要逐对象整定，也未验证学生在实际跨机型部署中免于接口标定或再训练。
+    - heading "5.4 第四步：DHC-6 仿真目标上的小样本微调（归档报告值）" [level=3] [ref=e3712]
+    - paragraph [ref=e3713]: 在归档的 15 deg/s 正阶跃、8 s 时域及 ARX 目标模型下，small 的八个适配状态 RMSE 中位数由 2.913 降至 0.595 deg/s，四个留出状态由 2.662 降至 2.148 deg/s，分别降低 79.6% 与 19.3%。后者描述当前留出状态上的改善，不代表实机或其他指令条件的泛化。
+    - paragraph [ref=e3714]: tiny 适配后中位误差为 1.574 deg/s，small 为 0.595 deg/s，前者约为后者的 2.65 倍。但源域初始化性能、网络容量和优化过程未独立控制，不能由此确定“源域容量无关、目标域容量敏感”的分工，更不能直接给出不同规模模型的部署建议。每状态五次更新只是原稿 40 步循环访问八状态的预算说明；尚无增加步数的受控实验来证明其必然改善性能。
+    - paragraph [ref=e3715]: 本包缺少该 small 模型及 40 步主线的完整原始记录。表 4—5 与图 14—15 保留为归档报告，待原始证据补齐后核验；不使用同包另一模型的 64 步旧协议替代。
+    - paragraph [ref=e3716]: 表 4 DHC-6 仿真微调前后跟踪误差（中位数）
+    - table [ref=e3717]:
+      - rowgroup [ref=e3718]:
+        - row [ref=e3719]:
+          - columnheader "状态组" [ref=e3720]
+          - columnheader "样本数" [ref=e3721]
+          - columnheader "微调前 RMSE（deg/s）" [ref=e3722]
+          - columnheader "微调后 RMSE（deg/s）" [ref=e3723]
+          - columnheader "相对变化" [ref=e3724]
+      - rowgroup [ref=e3725]:
+        - row [ref=e3726]:
+          - cell "适配" [ref=e3727]
+          - cell "8" [ref=e3728]
+          - cell "2.913" [ref=e3729]
+          - cell "0.595" [ref=e3730]
+          - cell "下降 79.6%" [ref=e3731]
+        - row [ref=e3732]:
+          - cell "留出" [ref=e3733]
+          - cell "4" [ref=e3734]
+          - cell "2.662" [ref=e3735]
+          - cell "2.148" [ref=e3736]
+          - cell "下降 19.3%" [ref=e3737]
+    - paragraph [ref=e3738]: 表 5 两种容量学生在 DHC-6 上的微调前后（中位 RMSE，deg/s）
+    - table [ref=e3739]:
+      - rowgroup [ref=e3740]:
+        - row [ref=e3741]:
+          - columnheader "学生" [ref=e3742]
+          - columnheader "参数量" [ref=e3743]
+          - columnheader "适配前" [ref=e3744]
+          - columnheader "适配后" [ref=e3745]
+          - columnheader "留出前" [ref=e3746]
+          - columnheader "留出后" [ref=e3747]
+      - rowgroup [ref=e3748]:
+        - row [ref=e3749]:
+          - cell "tiny" [ref=e3750]
+          - cell "3,856" [ref=e3751]
+          - cell "4.127" [ref=e3752]
+          - cell "1.574" [ref=e3753]
+          - cell "2.778" [ref=e3754]
+          - cell "2.624" [ref=e3755]
+        - row [ref=e3756]:
+          - cell "small" [ref=e3757]
+          - cell "75,040" [ref=e3758]
+          - cell "2.913" [ref=e3759]
+          - cell "0.595" [ref=e3760]
+          - cell "2.662" [ref=e3761]
+          - cell "2.148" [ref=e3762]
+    - paragraph [ref=e3763]:
+      - img "图 14，数据与限制见下方图注"
+    - paragraph [ref=e3764]:
+      - emphasis [ref=e3765]: 图 14 DHC-6 仿真 ARX 对象上的微调前后对照（15 deg/s 阶跃）；虚线区分适配与留出状态。
+    - paragraph [ref=e3766]:
+      - img "图 15，数据与限制见下方图注"
+    - paragraph [ref=e3767]:
+      - emphasis [ref=e3768]: 图 15 代表性 DHC-6 仿真状态的微调前后闭环响应。适配状态微调后贴合参考；留出状态保持原策略的响应形态。
+    - heading "6 讨论" [level=2] [ref=e3769]
+    - paragraph [ref=e3770]: 归档源域结果报告，49 个逐对象教师中多数达到项目门限；然而统一学生的 RMSE 中位数仍高于对应教师，且 4 个留出对象中仅 3 个通过。120 对象扩展抽样的通过率为 78.3%，幅值扫描则显示，±31 deg/s 阶跃通过率从同分布样本的 60.3% 降至 OOD 样本的 27.6%。在所选固定增益 PID 的对照中，学生策略在分布外对象上的退化幅度较小，但在同分布小幅值段的精度不及经过前馈整定的 PID。这些结果共同表明，蒸馏能够将策略压缩至数千参数并保留大部分常规响应能力，但学生策略对对象参数和指令幅值仍敏感。
+    - paragraph [ref=e3771]: DHC-6 的归档适配数字来自两个不同规模的学生。small 的适配组改善大于留出组，tiny 的适配后误差也高于 small；这提示当前容量和更新配方可能影响目标域适配，但不构成容量或预训练收益的独立因果证据。目标对象来自 DHC-6 仿真记录的 ARX 辨识模型，未验证完整横航向耦合、状态估计误差或实际控制器接机。原 small 结果没有这些受控对照；第 6.5 节另对新的 3,856 参数学生补齐同预算随机初始化与冻结策略比较，不能归为旧 small 实验的复现。
+    - paragraph [ref=e3772]: 飞行品质在本工作中用于源域参数化、覆盖设计和部分事后评价。归档奖励没有逐项加入 GJB 条款，因此当前可支持“在飞行品质相关参数化对象上训练控制器”，不能支持“已用 GJB 品质指标直接优化并证明符合性”。
+    - heading "6.1 延迟表征与等效延迟的核验" [level=3] [ref=e3773]
+    - heading "6.1.1 数据与输入条件" [level=4] [ref=e3774]
+    - paragraph [ref=e3775]: 归档 SAE 分支使用 510 个对象：训练/验证/测试分别为 300/90/120 个，每组在短（τp≤0.05 s）、中（0.05<τp≤0.15 s）、长（τp>0.15 s）时延层均分。每对象运行六档正阶跃（1、2、5、10、21、31 deg/s）、双脉冲、多正弦，共八条指令，产生 489,600 个历史窗口。这里不是主线正负六档的十四指令扫描。
+    - paragraph [ref=e3776]: 本次用原 tiny 权重及 legacy_plant 参考重建全部对象，检查对象清单相同、4,080 个对象—指令的通过/失败判定没有变化。跨平台数值差异的最大 RMSE 为 0.00063 deg/s，峰值差约 0.00283 deg/s，TV 差约 0.00094 N/s。重建数据保留为独立版本，不覆盖归档数据。测试对象与训练对象分离，但其行为策略来自已有 tiny，不能将整个项目所有历史暴露等同于此处对象划分。
+    - paragraph [ref=e3777]: SAE 将 160 维展平历史编码为 16 维；PCA、稠密 AE、稀疏 AE、原始历史和互相关作为对照。互相关使用请求力、响应和指令，不直接读取参考信号，但产生轨迹的策略在归档模式下使用对象相关参考。探针成绩是当前仿真与行为策略中的可解码性，不是闭环改善或参数完全可辨识的证明。
+    - paragraph [ref=e3778]:
+      - img "图 16，数据与限制见下方图注"
+    - paragraph [ref=e3779]:
+      - emphasis [ref=e3780]: 图 16 原始历史与冻结表示的结构。编码器是否可训练、初始化以及参考构造均是实验条件，不能仅因输出同为 16 维就认为容量完全一致。
+    - heading "6.1.2 严格时间截止后的延迟探针" [level=4] [ref=e3781]
+    - paragraph [ref=e3782]: 原脚本把 1.2 s 的决策步 60 强制抬到首个后续记录步 61，实际使用了 1.22 s 的样本。因此撤回原 0.995/2.9 ms 作为“1.2 s 因果结果”的表述。修订后从 1.0 s 指令起始时刻累积历史窗口，严格要求窗口时间不超过查询时间；1.2 s 查询的最新可用记录为 1.16 s。统计窗的起点也明确为 1.0 s，不能把新旧分数之差全部解释成单独 20 ms 的作用。
+    - paragraph [ref=e3783]: 重建数据、原冻结编码器和按对象划分的训练/验证/测试用于重新拟合线性探针。结果如下，R² 与 MAE 均在 120 个测试对象、960 个对象—指令 episode 上统计。
+    - table [ref=e3784]:
+      - rowgroup [ref=e3785]:
+        - row [ref=e3786]:
+          - columnheader "表征" [ref=e3787]
+          - columnheader "1.2 s R²" [ref=e3788]
+          - columnheader "1.2 s MAE (ms)" [ref=e3789]
+          - columnheader "2.0 s R²" [ref=e3790]
+          - columnheader "2.0 s MAE (ms)" [ref=e3791]
+      - rowgroup [ref=e3792]:
+        - row [ref=e3793]:
+          - cell "互相关" [ref=e3794]
+          - cell "0.984" [ref=e3795]
+          - cell "5.6" [ref=e3796]
+          - cell "0.974" [ref=e3797]
+          - cell "8.1" [ref=e3798]
+        - row [ref=e3799]:
+          - cell "稠密 AE-16" [ref=e3800]
+          - cell "0.443" [ref=e3801]
+          - cell "41.3" [ref=e3802]
+          - cell "0.661" [ref=e3803]
+          - cell "29.2" [ref=e3804]
+        - row [ref=e3805]:
+          - cell "原始历史" [ref=e3806]
+          - cell "0.426" [ref=e3807]
+          - cell "42.4" [ref=e3808]
+          - cell "0.586" [ref=e3809]
+          - cell "33.0" [ref=e3810]
+        - row [ref=e3811]:
+          - cell "PCA-16" [ref=e3812]
+          - cell "0.388" [ref=e3813]
+          - cell "44.2" [ref=e3814]
+          - cell "0.552" [ref=e3815]
+          - cell "35.3" [ref=e3816]
+        - row [ref=e3817]:
+          - cell "L1-SAE（较弱稀疏）" [ref=e3818]
+          - cell "0.301" [ref=e3819]
+          - cell "47.7" [ref=e3820]
+          - cell "0.558" [ref=e3821]
+          - cell "35.2" [ref=e3822]
+        - row [ref=e3823]:
+          - cell "Top-k SAE-16" [ref=e3824]
+          - cell "0.150" [ref=e3825]
+          - cell "52.6" [ref=e3826]
+          - cell "0.498" [ref=e3827]
+          - cell "38.1" [ref=e3828]
+        - row [ref=e3829]:
+          - cell "L1-SAE（较强稀疏）" [ref=e3830]
+          - cell "0.018" [ref=e3831]
+          - cell "58.0" [ref=e3832]
+          - cell "0.485" [ref=e3833]
+          - cell "38.1" [ref=e3834]
+    - paragraph [ref=e3835]:
+      - img "图 17，数据与限制见下方图注"
+    - paragraph [ref=e3836]:
+      - emphasis [ref=e3837]: 图 17 严格按决策时间截止重新计算的延迟探针。柱表示指定查询时刻的结果；窗口不跨越查询时间。原 1.2 s 标注的归档结果仅作错误追溯。
+    - paragraph [ref=e3838]: 互相关在这一协议下仍优于所比较的线性读出表示。稠密与稀疏编码存在差异，但尚未隔离编码维数、损失函数和稀疏约束的全部作用。不能从这些结果推出“16 维一定足够”，也不能据此直接选择闭环控制输入。是否改善控制，应由独立闭环对照判断。
+    - heading "6.1.3 归档闭环结果的正确解释" [level=4] [ref=e3839]
+    - paragraph [ref=e3840]: 下表保留归档三档时延测试的描述性结果。每档 40 个对象×8 条指令，共 320 个 episode；通过率不是“通过对象数/40”。
+    - table [ref=e3841]:
+      - rowgroup [ref=e3842]:
+        - row [ref=e3843]:
+          - columnheader "变体" [ref=e3844]
+          - columnheader "短时延通过率" [ref=e3845]
+          - columnheader "中时延通过率" [ref=e3846]
+          - columnheader "长时延通过率" [ref=e3847]
+          - columnheader "长时延 RMSE 中位 (deg/s)" [ref=e3848]
+      - rowgroup [ref=e3849]:
+        - row [ref=e3850]:
+          - cell "raw_ft" [ref=e3851]
+          - cell "93.1%" [ref=e3852]
+          - cell "95.3%" [ref=e3853]
+          - cell "90.0%" [ref=e3854]
+          - cell "0.408" [ref=e3855]
+        - row [ref=e3856]:
+          - cell "PCA-16" [ref=e3857]
+          - cell "60.0%" [ref=e3858]
+          - cell "60.3%" [ref=e3859]
+          - cell "51.6%" [ref=e3860]
+          - cell "1.406" [ref=e3861]
+        - row [ref=e3862]:
+          - cell "稠密 AE-16" [ref=e3863]
+          - cell "69.1%" [ref=e3864]
+          - cell "72.5%" [ref=e3865]
+          - cell "63.7%" [ref=e3866]
+          - cell "0.731" [ref=e3867]
+        - row [ref=e3868]:
+          - cell "Top-k SAE-16" [ref=e3869]
+          - cell "85.6%" [ref=e3870]
+          - cell "79.7%" [ref=e3871]
+          - cell "71.9%" [ref=e3872]
+          - cell "0.708" [ref=e3873]
+        - row [ref=e3874]:
+          - cell "SAE-aux" [ref=e3875]
+          - cell "93.1%" [ref=e3876]
+          - cell "95.6%" [ref=e3877]
+          - cell "90.0%" [ref=e3878]
+          - cell "0.409" [ref=e3879]
+    - paragraph [ref=e3880]: raw_ft 与 aux 继承已有 tiny，替换分支随机初始化；raw_ft 没有本阶段追加采集，其余分支执行一次采集后训练八个 epoch。标签来自已有 tiny，并非直接查询原始逐对象 PPO 教师。实际采集动作是教师与学生动作的确定性加权混合，β=0.5 表示学生权重；这些实验不应称为八轮原始 DAgger。
+    - paragraph [ref=e3881]: 旧“仅短/中时延训练→长时延”列不再用作跨时延留出证据：其编码器接触过长时延对象，部分分支继承既有策略，且 dagger_retrain 又将所有训练对象的 BC 样本加入更新。因此该列连“策略更新全程限于短/中时延”的条件也不满足。原 JSON 保留追溯，新受限训练见第 6.2.2 节。
+    - paragraph [ref=e3882]:
+      - img "图 18，数据与限制见下方图注"
+    - paragraph [ref=e3883]:
+      - emphasis [ref=e3884]: 图 18 归档闭环通过率。初始化和追加采集条件不同，结果只描述这些具体配方；原跨时延列撤出主图。
+    - heading "6.1.4 τp、τe 与标准适用范围" [level=4] [ref=e3885]
+    - paragraph [ref=e3886]: τp 是本研究对象输入前的运输延迟参数；τe 是对指定闭环频响拟合得到的等效延迟。后者依赖控制器、执行机构、参考模型及拟合协议，不能把 τp 的标签直接替换成 τe。
+    - paragraph [ref=e3887]:
+      - text: 本研究采用所引 GJB 2874-1997 附录中的四阶滚转 LOES 形式
+      - superscript [ref=e3888]: "[13]"
+      - text: ：分母包含螺旋、滚转和荷兰滚模态，分子为三阶，再乘 exp(−τe s)。这说明本文采用的拟合结构，不表示所有对象都必然能由它充分描述。
+    - paragraph [ref=e3889]: A21 所列 0.10/0.20/0.25 s 在本文仅作为等效延迟的研究性阈值参照。当前输入为滚转角速度指令，评价对象、驾驶员回路和试验覆盖不等于标准符合性流程；RMSE/Peak/TV 与拟合残差门限均由项目设定。未通过拟合门的样本必须单列，不能赋 τe=0 或解释为延迟更好。
+    - heading "6.1.5 修复时间对齐后的 LOES 评价" [level=4] [ref=e3890]
+    - paragraph [ref=e3891]: 归档主批次为 120 对象×3 策略，短/中/长各 40，180 s 多正弦激励。频点由 0.1–10 rad/s 范围内的整数 DFT 栅格生成。原 run_case 保存 u(t_k) 与 p(t_k+0.02) 却按同一时间序号估计频响；因此输出相位含一个控制周期的超前。
+    - paragraph [ref=e3892]: 本次对全部四批、1,440 个已存频响作 H_corrected(ω)=H_archived(ω)·exp(−jω·0.02)，再按原 16 起点、相同参数边界和随机种子重新拟合。拟合器增加了优化器成功退出检查。这里修复的是现有逐频估计的时间坐标，没有重新生成这 1,440 条轨迹，也没有将新实现的联合谐波回归结果混入本表。参考仍为归档 legacy_plant。
+    - paragraph [ref=e3893]: 幅值指标实际是 R²_logmag=1−Σ(log|H_fit|−log|H|)²/Σ(log|H|−mean(log|H|))²，不是时域 VAF；项目门限为 R²_logmag≥0.95 且包裹相位 RMSE≤10°。只在过门样本中统计 τe 和阈值档位。
+    - table [ref=e3894]:
+      - rowgroup [ref=e3895]:
+        - row [ref=e3896]:
+          - columnheader "策略" [ref=e3897]
+          - columnheader "可评 / 120" [ref=e3898]
+          - columnheader "τe 中位 (s)" [ref=e3899]
+          - columnheader "短 / 中 / 长中位 (s)" [ref=e3900]
+          - columnheader "≤0.10" [ref=e3901]
+          - columnheader "(0.10,0.20]" [ref=e3902]
+          - columnheader "(0.20,0.25]" [ref=e3903]
+          - columnheader ">0.25" [ref=e3904]
+      - rowgroup [ref=e3905]:
+        - row [ref=e3906]:
+          - cell "原始历史 raw_ft" [ref=e3907]
+          - cell "73/120" [ref=e3908]
+          - cell "0.093" [ref=e3909]
+          - cell "0.062 / 0.147 / 0.319" [ref=e3910]
+          - cell "39" [ref=e3911]
+          - cell "18" [ref=e3912]
+          - cell "3" [ref=e3913]
+          - cell "13" [ref=e3914]
+        - row [ref=e3915]:
+          - cell "SAE-aux" [ref=e3916]
+          - cell "101/120" [ref=e3917]
+          - cell "0.125" [ref=e3918]
+          - cell "0.054 / 0.145 / 0.329" [ref=e3919]
+          - cell "42" [ref=e3920]
+          - cell "21" [ref=e3921]
+          - cell "6" [ref=e3922]
+          - cell "32" [ref=e3923]
+        - row [ref=e3924]:
+          - cell "Top-k SAE-16" [ref=e3925]
+          - cell "0/120" [ref=e3926]
+          - cell "—" [ref=e3927]
+          - cell "— / — / —" [ref=e3928]
+          - cell "0" [ref=e3929]
+          - cell "0" [ref=e3930]
+          - cell "0" [ref=e3931]
+          - cell "0" [ref=e3932]
+    - paragraph [ref=e3933]:
+      - img "图 19，数据与限制见下方图注"
+    - paragraph [ref=e3934]:
+      - emphasis [ref=e3935]: 图 19 对齐修复并重新拟合后的 τe。散点仅表示过门样本；右图完整保留未过门对象。档位是 A21 数值阈值参照，不是标准等级认证。
+    - paragraph [ref=e3936]: raw 的可评数仍为 73，aux 从归档 102 变为 101；因此不能简单把所有摘要数值统一加 0.02 s。Top-k 仍为 0/120 可评，表示当前模型和门限不能给出合格估计，不能据此证明每条轨迹都失稳。
+    - paragraph [ref=e3937]: 不同策略的可评集合不同。raw 与 aux 共同可评 71 个对象上的 τe 中位数分别为 0.09315/0.09480 s，配对差 aux−raw 的中位数为 -0.00447 s。两类中位数不是同一统计量；这组描述性结果不足以宣称哪种策略的飞行品质更好。长时延可评子集的中位 τe 约为 0.32–0.33 s，不能外推到所有长时延对象。
+    - heading "6.1.6 幅值、种子与门限的范围" [level=4] [ref=e3938]
+    - paragraph [ref=e3939]: 已完成的设计是种子 1 下三档幅值，以及种子 2 下基准幅值，共四种配置；不是完整的两种子×三幅值六格交叉设计。下表均由时间对齐后的重新拟合结果汇总。
+    - table [ref=e3940]:
+      - rowgroup [ref=e3941]:
+        - row [ref=e3942]:
+          - columnheader "策略" [ref=e3943]
+          - columnheader "可评数（0.5 / 1.0 / 2.0 deg/s）" [ref=e3944]
+          - columnheader "各自可评集 τe 中位 (s)" [ref=e3945]
+          - columnheader "三档共同 n" [ref=e3946]
+          - columnheader "共同集三档中位 (s)" [ref=e3947]
+      - rowgroup [ref=e3948]:
+        - row [ref=e3949]:
+          - cell "原始历史" [ref=e3950]
+          - cell "41 / 73 / 92" [ref=e3951]
+          - cell "0.085 / 0.093 / 0.112" [ref=e3952]
+          - cell "40" [ref=e3953]
+          - cell "0.082 / 0.086 / 0.075" [ref=e3954]
+        - row [ref=e3955]:
+          - cell "SAE-aux" [ref=e3956]
+          - cell "79 / 101 / 112" [ref=e3957]
+          - cell "0.129 / 0.125 / 0.144" [ref=e3958]
+          - cell "76" [ref=e3959]
+          - cell "0.131 / 0.121 / 0.132" [ref=e3960]
+        - row [ref=e3961]:
+          - cell "Top-k SAE" [ref=e3962]
+          - cell "0 / 0 / 0" [ref=e3963]
+          - cell "— / — / —" [ref=e3964]
+          - cell "0" [ref=e3965]
+          - cell "— / — / —" [ref=e3966]
+    - paragraph [ref=e3967]:
+      - img "图 20，数据与限制见下方图注"
+    - paragraph [ref=e3968]:
+      - emphasis [ref=e3969]: 图 20 时间对齐修复后的幅值检查。共同可评对象固定后比较 τe，并单独展示可评数量；未完成的种子—幅值配置不绘制。
+    - table [ref=e3970]:
+      - rowgroup [ref=e3971]:
+        - row [ref=e3972]:
+          - columnheader "策略" [ref=e3973]
+          - columnheader "可评数（种子 1 / 2）" [ref=e3974]
+          - columnheader "各自可评集 τe 中位 (s)" [ref=e3975]
+          - columnheader "两种子共同 n" [ref=e3976]
+          - columnheader "共同集两种子中位 (s)" [ref=e3977]
+      - rowgroup [ref=e3978]:
+        - row [ref=e3979]:
+          - cell "原始历史" [ref=e3980]
+          - cell "73 / 77" [ref=e3981]
+          - cell "0.093 / 0.098" [ref=e3982]
+          - cell "73" [ref=e3983]
+          - cell "0.093 / 0.095" [ref=e3984]
+        - row [ref=e3985]:
+          - cell "SAE-aux" [ref=e3986]
+          - cell "101 / 106" [ref=e3987]
+          - cell "0.125 / 0.126" [ref=e3988]
+          - cell "100" [ref=e3989]
+          - cell "0.122 / 0.119" [ref=e3990]
+        - row [ref=e3991]:
+          - cell "Top-k SAE" [ref=e3992]
+          - cell "0 / 0" [ref=e3993]
+          - cell "— / —" [ref=e3994]
+          - cell "0" [ref=e3995]
+          - cell "— / —" [ref=e3996]
+    - paragraph [ref=e3997]:
+      - img "图 21，数据与限制见下方图注"
+    - paragraph [ref=e3998]:
+      - emphasis [ref=e3999]: 图 21 基准幅值下两个策略种子的结果。仅在两种子共同可评对象上比较 τe，Top-k 的不可评结果单列。
+    - paragraph [ref=e4000]: 这些检查说明所测试配置中的表现，不提供跨训练种子总体、跨机型或标准审定的置信结论。幅值增大时可评比例变化可能与响应形态、非线性及拟合误差共同有关；没有独立噪声实验，不能把原因确定为信噪比提高。
+    - paragraph [ref=e4001]:
+      - img "图 22，数据与限制见下方图注"
+    - paragraph [ref=e4002]:
+      - emphasis [ref=e4003]: 图 22 保留的归档长时响应诊断例（id_test-3458）。该例可见 Top-k 低频振荡，但一个示例不等于全部 120 个对象的稳定性证明。时间坐标对齐不会改变该功率谱的幅值。
+    - heading "6.2 修订后新增对照" [level=3] [ref=e4004]
+    - heading "6.2.1 公共参考：同一冻结权重的配对检查" [level=4] [ref=e4005]
+    - paragraph [ref=e4006]: 固定原 tiny 权重，在原 SAE 的 120 个测试对象、每对象八条指令上，分别提供 legacy_plant 与 fixed 参考。两组均使用同一个不延迟的二阶公共目标计算指标，并将 p(t_k+1) 与该时刻参考对齐。因此这是新定义、相同评价目标下的配对敏感性实验，不能与归档各自参考下的 90% 通过率直接比较。
+    - table [ref=e4007]:
+      - rowgroup [ref=e4008]:
+        - row [ref=e4009]:
+          - columnheader "分组" [ref=e4010]
+          - columnheader "对象 / episode" [ref=e4011]
+          - columnheader "旧参考通过率" [ref=e4012]
+          - columnheader "公共参考通过率" [ref=e4013]
+          - columnheader "RMSE 中位：旧/公共 (deg/s)" [ref=e4014]
+          - columnheader "通过率配对差及对象 bootstrap 95% 区间（百分点）" [ref=e4015]
+      - rowgroup [ref=e4016]:
+        - row [ref=e4017]:
+          - cell "全部" [ref=e4018]
+          - cell "120 / 960" [ref=e4019]
+          - cell "86.15%" [ref=e4020]
+          - cell "89.58%" [ref=e4021]
+          - cell "0.534 / 0.423" [ref=e4022]
+          - cell "+3.44 [1.88, 5.10]" [ref=e4023]
+        - row [ref=e4024]:
+          - cell "短时延" [ref=e4025]
+          - cell "40 / 320" [ref=e4026]
+          - cell "91.25%" [ref=e4027]
+          - cell "92.19%" [ref=e4028]
+          - cell "0.424 / 0.363" [ref=e4029]
+          - cell "+0.94 [0.00, 2.19]" [ref=e4030]
+        - row [ref=e4031]:
+          - cell "中时延" [ref=e4032]
+          - cell "40 / 320" [ref=e4033]
+          - cell "88.12%" [ref=e4034]
+          - cell "93.12%" [ref=e4035]
+          - cell "0.533 / 0.372" [ref=e4036]
+          - cell "+5.00 [2.81, 7.19]" [ref=e4037]
+        - row [ref=e4038]:
+          - cell "长时延" [ref=e4039]
+          - cell "40 / 320" [ref=e4040]
+          - cell "79.06%" [ref=e4041]
+          - cell "83.44%" [ref=e4042]
+          - cell "0.739 / 0.545" [ref=e4043]
+          - cell "+4.38 [0.31, 8.12]" [ref=e4044]
+    - paragraph [ref=e4045]: 区间以对象为重采样单位，保留同对象八条指令的相关性，4,000 次 bootstrap，种子 20261024；不覆盖新的策略训练随机性。公共参考在该冻结策略、对象集和统一目标下提高了通过率。由于参考时延与导数计算方式共同变化，这不是某一个因素的独立效果，更不能据此宣称解决了所有未知动力学适应问题。它反驳的是“原有成绩必然全靠真实时延输入”这一未经验证的解释。
+    - paragraph [ref=e4046]:
+      - img "图 23，数据与限制见下方图注"
+    - paragraph [ref=e4047]:
+      - emphasis [ref=e4048]: 图 23 公共参考与归档参考的配对检查。固定权重、相同对象与公共目标；差值区间按对象重采样。
+    - heading "6.2.2 训练范围受限、初始化与预算统一的学生对照" [level=4] [ref=e4049]
+    - paragraph [ref=e4050]: 新增实验预先记录于 revision/fair_comparison_protocol.json。重新采集公共参考下的 510 对象数据；学生和编码器只在 200 个短/中时延 train_core 对象上更新，以 60 个短/中时延 validation 对象选取训练 checkpoint，在 40 个长时延 id_test 对象、320 个 episode 上评价。标准化、PCA、稠密 AE 和 Top-k AE 的拟合范围也只包含源时延层。
+    - paragraph [ref=e4051]: 五种学生全部随机初始化，BC 20 个 epoch，随后两轮实际重新采集并聚合的交互式模仿，每轮八个 epoch、96 个合格源对象、相同批大小和学习率。两种策略种子为 20261024/20261025，冻结编码器共用同一套源域训练结果。监督者仍是已有 tiny，其完整预训练暴露不明，因此此处只能称学生及编码器训练范围受限，不能宣称整条知识来源从未见长时延。
+    - table [ref=e4052]:
+      - rowgroup [ref=e4053]:
+        - row [ref=e4054]:
+          - columnheader "学生" [ref=e4055]
+          - columnheader "长时延通过率（种子 1 / 2）" [ref=e4056]
+          - columnheader "长时延 RMSE 中位（种子 1 / 2，deg/s）" [ref=e4057]
+          - columnheader "可训练参数数" [ref=e4058]
+      - rowgroup [ref=e4059]:
+        - row [ref=e4060]:
+          - cell "原始历史" [ref=e4061]
+          - cell "63.44% / 66.56%" [ref=e4062]
+          - cell "0.843 / 0.891" [ref=e4063]
+          - cell "3856" [ref=e4064]
+        - row [ref=e4065]:
+          - cell "PCA-16" [ref=e4066]
+          - cell "69.69% / 58.75%" [ref=e4067]
+          - cell "0.739 / 0.939" [ref=e4068]
+          - cell "3328" [ref=e4069]
+        - row [ref=e4070]:
+          - cell "稠密 AE-16" [ref=e4071]
+          - cell "65.31% / 56.88%" [ref=e4072]
+          - cell "0.663 / 1.054" [ref=e4073]
+          - cell "3328" [ref=e4074]
+        - row [ref=e4075]:
+          - cell "Top-k SAE-16" [ref=e4076]
+          - cell "57.50% / 57.81%" [ref=e4077]
+          - cell "1.039 / 0.992" [ref=e4078]
+          - cell "3328" [ref=e4079]
+        - row [ref=e4080]:
+          - cell "SAE-aux" [ref=e4081]
+          - cell "67.50% / 64.38%" [ref=e4082]
+          - cell "0.748 / 0.840" [ref=e4083]
+          - cell "4368" [ref=e4084]
+    - paragraph [ref=e4085]: 原始历史为 63.44%/66.56%，Top-k 为 57.50%/57.81%，aux 为 67.50%/64.38%。aux 在两个种子上的相对排序相反，没有显示稳定增益。这些新数值不能与旧 90% 直接相减来归因于单个漏洞，因为参考构造、初始化和训练范围均已改变。以上数字来自修订后实际重训；各模型仍存在架构和可训练参数差异，两个策略种子也不足以估计完整训练随机性。应保留每种子结果，不能用单次最好结果替代整体比较。此处没有新增品质分层采样对照、容量×信息的因子实验或真实飞机验证。
+    - paragraph [ref=e4086]:
+      - img "图 24，数据与限制见下方图注"
+    - paragraph [ref=e4087]:
+      - emphasis [ref=e4088]: 图 24 修订协议下长时延测试的逐种子结果。学生/编码器训练范围受限，监督者历史暴露未认证；不与旧混合初始化结果合并统计。
+    - heading "6.3 后续实验计划：执行机构敏感性" [level=3] [ref=e4089]
+    - paragraph [ref=e4090]: 以下实验尚未开展，不属于本文结果。为检验当前执行机构设置是否影响策略表现，先在固定对象、随机种子和指令集上对现有策略做冻结权重敏感性扫描；若结果对参数明显敏感，再按相同训练预算分别重训 PPO，区分“环境变化造成的鲁棒性下降”与“策略能否适应新约束”。每次只改变一个因素，并同步记录教师验收率、RMSE、峰值误差、请求力总变差率、饱和比例，以及 DHC-6 适配组和留出组结果。
+    - paragraph [ref=e4091]: 表 8 待开展的执行机构消融
+    - table [ref=e4092]:
+      - rowgroup [ref=e4093]:
+        - row [ref=e4094]:
+          - columnheader "因素" [ref=e4095]
+          - columnheader "当前基线" [ref=e4096]
+          - columnheader "计划对照" [ref=e4097]
+          - columnheader "目的" [ref=e4098]
+      - rowgroup [ref=e4099]:
+        - row [ref=e4100]:
+          - cell "请求力限幅" [ref=e4101]
+          - cell "±22 N" [ref=e4102]
+          - cell "±16.5 N、±27.5 N" [ref=e4103]
+          - cell "评估控制权限范围变化的影响；桥接与目标舵面边界同步换算" [ref=e4104]
+        - row [ref=e4105]:
+          - cell "命令速率限制" [ref=e4106]
+          - cell "88 N/s" [ref=e4107]
+          - cell "44 N/s、176 N/s" [ref=e4108]
+          - cell "评估舵面速率变化对跟踪、平滑性和迁移的影响" [ref=e4109]
+        - row [ref=e4110]:
+          - cell "执行机构滞后" [ref=e4111]
+          - cell "一阶时间常数 20 ms" [ref=e4112]
+          - cell "0 ms、40 ms" [ref=e4113]
+          - cell "判断当前滞后假设是否改变闭环表现，并检查目标对象中是否重复计入执行机构动态" [ref=e4114]
+    - paragraph [ref=e4115]: 力限幅和速率限幅在当前桥接下分别对应副翼角度和速率边界，消融时需同步更新源域与目标域接口。后续还应扩大未参与教师训练的同分布和分布外测试集，并在相同对象、指令和安全约束下与常规滚转控制律对照。仿真级对照完成后，再逐步引入更高保真模型、滚转—偏航耦合和机载实时性评估。
+    - heading "6.4 品模与 PPO 的进一步核验（v2 阶段记录）" [level=3] [ref=e4116]
+    - paragraph [ref=e4117]: 模型包含滚转、螺旋和荷兰滚因子；完整扫描件不同页面的公式差异及本文建模选择现于第 2.2 节明确说明。四维状态空间实现不等于完整飞机的物理状态。库中 2,101 个对象具有发散螺旋极点，这本身不必然违反所用判据；115 个滚转时间常数大于 8 s，619 个荷兰滚衰减时间常数大于 8 s。因此 0.75 s 建库筛查和 8 s 闭环跟踪都不足以证明长时稳定性。大幅值持续速率还可能超出局部小扰动模型的适用范围，需在耦合或非线性模型中另行检验。
+    - paragraph [ref=e4118]: 一秒灵敏度的旧实现将积分前输出错放在下一采样时刻。修复后，train_core-0717 的 1 kHz 灵敏度由 3.375472 变为 3.380646 deg/N，标签 L1→L2；train_core-1081 由 5.619090 变为 5.629182 deg/N，标签 L2→研究 OOD／该项未分级。原参数和划分保留，并提供标签修正附表，不把历史训练成绩重命名为新标签协议的成绩。
+    - paragraph [ref=e4119]: PPO 的旧 act() 保存裁剪动作却保留裁剪前样本的 log_prob，使权重未改变时的概率比也可能偏离 1。固定 μ=0.95、logσ=−2 的人工反例中，10,000 次采样有 3,532 个裁剪样本，比率中位数为 1.440；这是实现反例，不是历史训练异常频率。修订采用同一原始样本计算新旧概率，仅在环境中裁剪物理动作。末值默认按有限任务置零；监控默认比较同一时刻参考和响应，旧参考区间口径保留为显式选项。
+    - paragraph [ref=e4120]: 训练指令库的 30 个条目只有 9 条独立指令，阶跃/双脉冲/正弦/多正弦的条目数为 24/3/2/1，不能称为家族占比 4:3:2:1。v2 的 evaluate() 重用训练指令库，其 monitor 不代表独立测试；v3 现支持独立验证指令，已用于第 6.5 节。训练日志新增近似 KL、剪切比例、梯度范数、动作限幅比例、末值和逐指令指标，以便检查更新过程。
+    - paragraph [ref=e4121]:
+      - text: 本次 18 项回归检查通过。另在一个对象、32 个并行环境上完成两次 PPO rollout，共 25,600 次转移，确认采集、GAE、更新、评价和权重保存流程可执行；训练库 RMSE 约 20.22 deg/s，未达到控制门限。没有重训原 49 个教师，也没有建立修复前后控制性能对照。完整理论依据、复算记录和复现入口见
+      - link "品模与强化学习深查" [ref=e4122] [cursor=pointer]:
+        - /url: ../../flight_control_corrected_2026-10-24/02_品模与强化学习深查.md
+      - text: 。
+    - heading "6.5 飞控控制器路线的连续证据（2026-10-24 冻结实验）" [level=3] [ref=e4123]
+    - paragraph [ref=e4124]: 本节研究主体是飞控控制器构建路线，滚转是可行性验证任务。全部对象、种子、指令和预算在训练前冻结。12 源对象按部分品质等级各4个并覆盖不同时延；24 ID、24 OOD均不参与训练或选模。36个新教师每个训练6,144,000次转移；三个学生各完成BC30 epoch与6次真实DAgger采集、每次8 epoch，保留全部源教师，最终每种子聚合1,075,200个状态。教师有12维特权输入；学生仅有176维公共参考与测量历史输入。新PPO奖励和历史显式采用same_time，旧区间口径仍保留供归档复现。
+    - paragraph [ref=e4125]: 训练/验证/测试分别为32/16/18条互不重复的实际波形。教师以源对象独立验证指令在2.00–7.98 s窗口的平均RMSE选权重；学生以全响应源验证RMSE选轮次。正式测试从指令开始到真实末状态，二者不混报。以下门限为项目RMSE/Peak/TV联合通过条件，不是完整GJB品质评定。
+    - table [ref=e4126]:
+      - rowgroup [ref=e4127]:
+        - row [ref=e4128]:
+          - columnheader "种子" [ref=e4129]
+          - columnheader "教师源对象，8 s" [ref=e4130]
+          - columnheader "学生源对象，8 s" [ref=e4131]
+          - columnheader "学生ID，8 s" [ref=e4132]
+          - columnheader "学生OOD，8 s" [ref=e4133]
+      - rowgroup [ref=e4134]:
+        - row [ref=e4135]:
+          - cell "20261031" [ref=e4136]
+          - cell "82.4% (178/216)" [ref=e4137]
+          - cell "87.0% (188/216)" [ref=e4138]
+          - cell "68.1% (294/432)" [ref=e4139]
+          - cell "51.4% (222/432)" [ref=e4140]
+        - row [ref=e4141]:
+          - cell "20261101" [ref=e4142]
+          - cell "61.1% (132/216)" [ref=e4143]
+          - cell "63.9% (138/216)" [ref=e4144]
+          - cell "52.8% (228/432)" [ref=e4145]
+          - cell "40.7% (176/432)" [ref=e4146]
+        - row [ref=e4147]:
+          - cell "20261102" [ref=e4148]
+          - cell "61.1% (132/216)" [ref=e4149]
+          - cell "48.1% (104/216)" [ref=e4150]
+          - cell "40.7% (176/432)" [ref=e4151]
+          - cell "38.9% (168/432)" [ref=e4152]
+    - paragraph [ref=e4153]: 学生/教师逐案例RMSE中位倍数分别为1.140/1.027/1.324（只在教师RMSE≥0.05 deg/s的214/216配对上计算）。通过率变化分别为+4.63/+2.78/−12.96个百分点，不能据此宣称无损蒸馏。多轮训练中存在误差反弹；本次未做等计算量BC消融，不能将全部变化单独归因于DAgger。
+    - paragraph [ref=e4154]: 三个种子的源域平均 RMSE 均低于对应教师，但第三种子的门限通过率下降。这些统计量回答不同问题：逐案例 RMSE 的算术平均、逐案例误差比的中位数，以及多指标共同达标的比例，不能互相替代。各轮源验证结果如下，单位为 deg/s；最优轮次由验证集决定。
+    - table [ref=e4155]:
+      - rowgroup [ref=e4156]:
+        - row [ref=e4157]:
+          - columnheader "种子" [ref=e4158]
+          - columnheader "初始 BC 验证 RMSE" [ref=e4159]
+          - columnheader "选中蒸馏轮次" [ref=e4160]
+          - columnheader "选中轮次 RMSE" [ref=e4161]
+          - columnheader "第 6 轮 RMSE" [ref=e4162]
+      - rowgroup [ref=e4163]:
+        - row [ref=e4164]:
+          - cell "20261031" [ref=e4165]
+          - cell "4.668" [ref=e4166]
+          - cell "6" [ref=e4167]
+          - cell "0.960" [ref=e4168]
+          - cell "0.960" [ref=e4169]
+        - row [ref=e4170]:
+          - cell "20261101" [ref=e4171]
+          - cell "6.895" [ref=e4172]
+          - cell "5" [ref=e4173]
+          - cell "1.380" [ref=e4174]
+          - cell "1.528" [ref=e4175]
+        - row [ref=e4176]:
+          - cell "20261102" [ref=e4177]
+          - cell "10.908" [ref=e4178]
+          - cell "4" [ref=e4179]
+          - cell "2.088" [ref=e4180]
+          - cell "2.191" [ref=e4181]
+    - paragraph [ref=e4182]: 统一固定抗饱和PID以全部12源对象的独立验证指令选参，选中Kp=45、Ki=24、Kd=1；8s的ID/OOD通过率为53.7%/27.8%，OOD有18/432个episode发散。该PID仍是有限网格搜索基线，不代表最优常规控制。学生在OOD上的优势与自身失效应同时报告。
+    - paragraph [ref=e4183]: 为检验持续控制，另外运行30s的±15 deg/s阶跃和相同初始偏差/扰动恢复。对完全相同的两阶跃，教师源对象通过率从8s的75.0%/50.0%/50.0%降至30s的16.7%/25.0%/16.7%；学生变化并非各组一致，但同一个OOD对象在三个种子的正负阶跃中共出现6次长回合发散。恢复评价采用同偏差/同脉冲有控—无控配对、释放后RMS和带截尾的稳定时间；不把峰包络或有限时域未发散当作模态稳定性证明。
+    - paragraph [ref=e4184]: 测试后补充的任务可达性诊断发现，当前模型有原点零点且所选对象λs非零，长期非零恒定p0的精确跟踪力满足dF/dt→−λs p0/(L_Fa T_R R_omega²)。放宽执行机构和时延约束后，30s精确参考跟踪仍有4/12源、5/24 ID、4/24 OOD对象需要超过22N。上述发散对象ood_test-4700在约18.01s越限，30s理想需求44.17N；因此长期失效不能全部归因于RL。精确跟踪不可达不等于非零RMSE/Peak容差不可达，主测试分母保持不变。恢复负结果也保留：第三种子OOD扰动释放RMS有36/48配对高于无控。后续必须同时改进任务可达性定义与恢复控制，不能仅延长恒定速率训练。
+    - paragraph [ref=e4185]: 目标适配修复旧35维绝对力接口与新176维增量力学生不一致的问题。在8个DHC-6条件中各取30s辨识数据，两可训练组均执行64次完整轨迹梯度更新、819,200次模型内转移；网络、优化器、指令和条件顺序相同，最终步固定评价。测试使用独立记录辨识的12个ARX对象，8适配与4留出条件分列。以下为4留出条件×18指令：
+    - table [ref=e4186]:
+      - rowgroup [ref=e4187]:
+        - row [ref=e4188]:
+          - columnheader "种子" [ref=e4189]
+          - columnheader "冻结源学生" [ref=e4190]
+          - columnheader "预训练后适配" [ref=e4191]
+          - columnheader "同预算从零训练" [ref=e4192]
+      - rowgroup [ref=e4193]:
+        - row [ref=e4194]:
+          - cell "20261031" [ref=e4195]
+          - cell "44.4% (32/72)" [ref=e4196]
+          - cell "75.0% (54/72)" [ref=e4197]
+          - cell "58.3% (42/72)" [ref=e4198]
+        - row [ref=e4199]:
+          - cell "20261101" [ref=e4200]
+          - cell "63.9% (46/72)" [ref=e4201]
+          - cell "75.0% (54/72)" [ref=e4202]
+          - cell "63.9% (46/72)" [ref=e4203]
+        - row [ref=e4204]:
+          - cell "20261102" [ref=e4205]
+          - cell "30.6% (22/72)" [ref=e4206]
+          - cell "80.6% (58/72)" [ref=e4207]
+          - cell "61.1% (44/72)" [ref=e4208]
+    - paragraph [ref=e4209]: 三个种子方向一致，支持该模型辅助适配配方的有限收益。目标更新是可微模型上的梯度适配，不是目标域PPO，也不是64次实飞交互。源域预训练成本不包含在等目标预算内。品质采样、特权信息和容量的独立收益仍需要消融，不能从本节直接确认。
+    - paragraph [ref=e4210]:
+      - text: 完整逐种子表、学习曲线、失败轨迹、恢复配对、理论边界、接口和复现命令见
+      - link "控制器路线验证与最佳实践" [ref=e4211] [cursor=pointer]:
+        - /url: ../../flight_control_corrected_2026-10-24/03_控制器路线验证与最佳实践.md
+      - text: ，原始统计见
+      - link "完整新实验数据" [ref=e4212] [cursor=pointer]:
+        - /url: evidence/controller_route_report_summary.json
+      - text: 。
+    - heading "6.6 完整 GJB 核查与对象库覆盖审计" [level=3] [ref=e4213]
+    - paragraph [ref=e4214]:
+      - text: 本节属于训练后数据与方法审计，不是新控制器对照实验。对全部 5,000 个历史对象的统计按历史标签计算，已知的两条灵敏度跨界记录另列；原参数和划分未改变。依据见
+      - link "覆盖统计" [ref=e4215] [cursor=pointer]:
+        - /url: evidence/gjb_audit/coverage.json
+      - text: 及
+      - link "原 PDF 校验记录" [ref=e4216] [cursor=pointer]:
+        - /url: evidence/gjb_audit/source.json
+      - text: 。
+    - table [ref=e4217]:
+      - rowgroup [ref=e4218]:
+        - row [ref=e4219]:
+          - columnheader "检查项" [ref=e4220]
+          - columnheader "实际结果" [ref=e4221]
+          - columnheader "对结论的约束" [ref=e4222]
+      - rowgroup [ref=e4223]:
+        - row [ref=e4224]:
+          - cell "非 OOD 的分量等级组合" [ref=e4225]
+          - cell "8 种 / 54 格诊断网格" [ref=e4226]
+          - cell "总等级均衡不代表联合覆盖" [ref=e4227]
+        - row [ref=e4228]:
+          - cell "全库两项及以上已分级指标同时退化" [ref=e4229]
+          - cell "0 / 5,000" [ref=e4230]
+          - cell "未验证这些组合下的学习与泛化；零点、增益、延迟仍在变化" [ref=e4231]
+        - row [ref=e4232]:
+          - cell "荷兰滚二级且 ω_d≥1 rad/s" [ref=e4233]
+          - cell "0 / 5,000" [ref=e4234]
+          - cell "遗漏频率合格但阻尼或乘积不足的区域" [ref=e4235]
+        - row [ref=e4236]:
+          - cell "0.20<τ_p≤0.25 s" [ref=e4237]
+          - cell "0 / 5,000" [ref=e4238]
+          - cell "域内和域外设置之间存在空档" [ref=e4239]
+        - row [ref=e4240]:
+          - cell "train_boundary" [ref=e4241]
+          - cell "未按边界距离选点" [ref=e4242]
+          - cell "不能解释为专门的边界加密" [ref=e4243]
+        - row [ref=e4244]:
+          - cell "旧辅助振荡比恰为 0 / 1" [ref=e4245]
+          - cell "4,358 / 641 个" [ref=e4246]
+          - cell "0.75 s 窗口与缺峰补零使其缺乏品质解释" [ref=e4247]
+        - row [ref=e4248]:
+          - cell "旧调节时间恰为 0.749 s" [ref=e4249]
+          - cell "4,999 个" [ref=e4250]
+          - cell "返回末端超限时刻，未确认进入并保持在容差内" [ref=e4251]
+    - paragraph [ref=e4252]: 考虑延迟后，全部对象的建库窗口都不足一个完整荷兰滚周期。GJB 正文 3.6 要求有符号峰谷，并按 ζ_d≤0.2 与 ζ_d>0.2 使用不同极值公式；缺峰或未处理螺旋分量时不能补零认定无振荡。调节时间须定义目标、容差及最短保持时间，未证实时记为截断。当前可先用滚转时域超调、残余 RMS、恢复包络及饱和/发散率评价抑振，不能据此伪造含侧滑相位条件的完整等级。
+    - paragraph [ref=e4253]: 500 个 OOD 中，160 个仅因 L_Fa 超出研究范围；OOD 不自动表示品质更差。旧 R_ω 域外采样在二分支内未重新缩放随机变量，实际范围约为 [0.30,0.424] 与 [2.121,3.0]，不同于名义区间。后续 OOD 协议应明确越界原因和采样规则，不能将这一问题隐入总通过率。
+    - paragraph [ref=e4254]:
+      - text: 根据第 3.1.2 节规则，已生成
+      - link "190 对象构造样例" [ref=e4255] [cursor=pointer]:
+        - /url: evidence/gjb_audit/pilot_joint_v1/manifest.json
+      - text: ：训练、验证、ID 各 54 个联合组合，另有 14 组、28 个距活动阈值 ±2% 的边界探针；其中 138 个同时退化至少两项，44 个为高频二级荷兰滚，39 个位于 0.20–0.25 s 延迟段。
+      - link "238 项检查" [ref=e4256] [cursor=pointer]:
+        - /url: evidence/gjb_audit/verification.json
+      - text: 通过，覆盖峰谷公式、截断、真实跨级边界、1 ms 灵敏度回放、参数唯一性和旧库不变性。
+    - paragraph [ref=e4257]: 上述样例没有新的 OOD 套件，边界探针也尚未分配训练或测试角色；物理可实现性、任务可达性和策略学习效果尚未验证。等组合配额改变了总体等级比例，不能直接替换历史库后比较通过率。这里证明的是构造规则可复算，不能声称已改善控制性能。
+    - heading "7 结论" [level=2] [ref=e4258]
+    - paragraph [ref=e4259]: 本研究把品质相关参数化对象、特权教师、统一学生和目标域适配作为飞控控制器构建路线，以滚转通道检验可行性。已完成的三种子实验补齐了连续链路：教师可训练、统一学生可闭环使用，等目标预算下预训练适配优于从零训练，但教师与蒸馏的种子差异、源外退化和长时发散仍明显。结论应为“有阶段性可行性证据，可靠性尚不足”，不应概括为无损压缩或通用稳定。
+    - paragraph [ref=e4260]: 已直接修复参考读取真实时延、PPO动作概率不一致、终止后取reset价值、历史与奖励时间错位、蒸馏采样回流及目标接口不一致等问题。新结果属于明确的新协议，不能用于追认缺少源码版本的旧49/46教师与small迁移数值，也没有隔离每个代码修复的性能贡献。
+    - paragraph [ref=e4261]: 既有数据复核继续保留：严格1.2s探针R²=0.984、MAE=5.6ms；相位修正后raw/aux的τe可评子集中位数为0.093/0.125s，须同时看可评集合，Top-k不可评不等于零延迟或普遍失稳。两种子表示对照未显示稳定SAE辅助收益。
+    - paragraph [ref=e4262]: 下一阶段应先明确满足模型零点与力限制的可达机动，再提高教师与学生训练重复性和长时恢复表现，通过预先声明的对照分离品质采样、信息条件与容量的作用。其他通道、耦合模型和实机验证是此后的扩展；现阶段只做滚转本身不是路线缺陷。
+    - paragraph [ref=e4263]: 完整 GJB 核查进一步表明，当前对象库的联合覆盖不足、旧辅助振荡及调节时间量不能作为可靠品质证据。新联合构造样例修正了部分覆盖规则，但尚未开展策略训练；因此本文保留原协议的控制成绩，并将构造验证、训练优化和最终品质验收明确区分。
+    - heading "附录 A 数学符号与计算示例" [level=2] [ref=e4264]
+    - paragraph [ref=e4265]: 本附录帮助读者把公式与实际控制量对应起来。A.1、A.4 的简化动力学仅作教学推导；A.2 使用当前实际奖励系数，A.3 说明实际优化目标的计算方式，均不产生新的控制性能证据。
+    - heading "A.1 从变化率到传递函数" [level=3] [ref=e4266]
+    - paragraph [ref=e4267]: 设参考滚转速率为 10 deg/s，测得 7 deg/s，则 e=3 deg/s。ṗ 表示速率的变化率；若 0.02 s 内 p 从 7 变成 7.1 deg/s，其平均变化率为 5 deg/s²。积分将变化累积，例如误差持续为 3 deg/s、历时 2 s，其积分为 6 deg。
+    - paragraph [ref=e4268]: 用一个一阶教学模型说明对象计算：
+    - generic [ref=e4271]:
+      - math [ref=e4273]:
+        - generic [ref=e4276]:
+          - generic [ref=e4279]:
+            - generic [ref=e4280]:
+              - generic [ref=e4281]: p
+              - generic [ref=e4282]: ˙
+            - generic [ref=e4283]: =
+            - generic [ref=e4284]: −
+            - generic [ref=e4285]: p
+            - generic [ref=e4286]: /
+            - generic [ref=e4287]:
+              - generic [ref=e4288]: T
+              - generic [ref=e4289]: R
+            - generic [ref=e4290]: +
+            - generic [ref=e4291]: b
+            - generic [ref=e4292]: F
+            - generic [ref=e4293]: ","
+            - generic [ref=e4294]:
+              - generic [ref=e4295]: p
+              - generic [ref=e4296]:
+                - generic [ref=e4297]: k
+                - generic [ref=e4298]: +
+                - generic [ref=e4299]: "1"
+            - generic [ref=e4300]: ≈
+            - generic [ref=e4301]:
+              - generic [ref=e4302]: p
+              - generic [ref=e4303]: k
+            - generic [ref=e4304]: +
+            - generic [ref=e4305]: Δ
+            - generic [ref=e4306]: t
+            - generic [ref=e4307]: (
+            - generic [ref=e4308]: −
+            - generic [ref=e4309]:
+              - generic [ref=e4310]: p
+              - generic [ref=e4311]: k
+            - generic [ref=e4312]: /
+            - generic [ref=e4313]:
+              - generic [ref=e4314]: T
+              - generic [ref=e4315]: R
+            - generic [ref=e4316]: +
+            - generic [ref=e4317]: b
+            - generic [ref=e4318]:
+              - generic [ref=e4319]: F
+              - generic [ref=e4320]: k
+            - generic [ref=e4321]: )
+            - generic [ref=e4322]: .
+          - generic [ref=e4324]: (A1)
+      - generic [aria-hidden] [ref=e4326]:
+        - generic [ref=e4327]:
+          - generic [ref=e4331]:
+            - generic [ref=e4332]: p
+            - text: ˙
+          - text: =
+        - generic [ref=e4336]:
+          - text: −p/
+          - generic [ref=e4337]:
+            - text: T
+            - generic [ref=e4338]: R
+          - text: +
+        - generic [ref=e4346]:
+          - text: bF,
+          - generic [ref=e4347]:
+            - text: p
+            - generic [ref=e4348]: k+1
+          - text: ≈
+        - generic [ref=e4357]:
+          - generic [ref=e4358]:
+            - text: p
+            - generic [ref=e4359]: k
+          - text: +
+        - generic [ref=e4367]:
+          - text: Δt (−
+          - generic [ref=e4368]:
+            - text: p
+            - generic [ref=e4369]: k
+          - text: /
+          - generic [ref=e4377]:
+            - text: T
+            - generic [ref=e4378]: R
+          - text: +
+        - generic [ref=e4386]:
+          - text: b
+          - generic [ref=e4387]:
+            - text: F
+            - generic [ref=e4388]: k
+          - text: ).
+        - generic [ref=e4397]:
+          - text: (
+          - generic [ref=e4398]: A1
+          - text: )
+    - paragraph [ref=e4399]: 取 p=7 deg/s、T_R=0.5 s、b=8 deg/(s²·N)、F=2 N，得到 ṗ=−14+16=2 deg/s²，用一步近似得 20 ms 后 p≈7.04 deg/s。该近似不替代正文四阶对象的离散仿真。
+    - paragraph [ref=e4400]: 在零初始条件下，求导的拉普拉斯变换对应乘 s，故：
+    - generic [ref=e4403]:
+      - math [ref=e4405]:
+        - generic [ref=e4408]:
+          - generic [ref=e4411]:
+            - generic [ref=e4412]: s
+            - generic [ref=e4413]: P
+            - generic [ref=e4414]: (
+            - generic [ref=e4415]: s
+            - generic [ref=e4416]: )
+            - generic [ref=e4417]: =
+            - generic [ref=e4418]: −
+            - generic [ref=e4419]: P
+            - generic [ref=e4420]: (
+            - generic [ref=e4421]: s
+            - generic [ref=e4422]: )
+            - generic [ref=e4423]: /
+            - generic [ref=e4424]:
+              - generic [ref=e4425]: T
+              - generic [ref=e4426]: R
+            - generic [ref=e4427]: +
+            - generic [ref=e4428]: b
+            - generic [ref=e4429]: F
+            - generic [ref=e4430]: (
+            - generic [ref=e4431]: s
+            - generic [ref=e4432]: )
+            - generic [ref=e4433]: ⟹
+            - generic [ref=e4434]: P
+            - generic [ref=e4435]: (
+            - generic [ref=e4436]: s
+            - generic [ref=e4437]: )
+            - generic [ref=e4438]: /
+            - generic [ref=e4439]: F
+            - generic [ref=e4440]: (
+            - generic [ref=e4441]: s
+            - generic [ref=e4442]: )
+            - generic [ref=e4443]: =
+            - generic [ref=e4444]: b
+            - generic [ref=e4445]: /
+            - generic [ref=e4446]: (
+            - generic [ref=e4447]: s
+            - generic [ref=e4448]: +
+            - generic [ref=e4449]: "1"
+            - generic [ref=e4450]: /
+            - generic [ref=e4451]:
+              - generic [ref=e4452]: T
+              - generic [ref=e4453]: R
+            - generic [ref=e4454]: )
+            - generic [ref=e4455]: .
+          - generic [ref=e4457]: (A2)
+      - generic [aria-hidden] [ref=e4459]:
+        - generic [ref=e4460]: sP(s) =
+        - generic [ref=e4461]:
+          - text: −P(s)/
+          - generic [ref=e4462]:
+            - text: T
+            - generic [ref=e4463]: R
+          - text: +
+        - generic [ref=e4471]: bF(s) ⟹
+        - generic [ref=e4472]: P(s)/F(s) =
+        - generic [ref=e4473]: b/(s +
+        - generic [ref=e4474]:
+          - text: 1/
+          - generic [ref=e4475]:
+            - text: T
+            - generic [ref=e4476]: R
+          - text: ).
+        - generic [ref=e4485]:
+          - text: (
+          - generic [ref=e4486]: A2
+          - text: )
+    - paragraph [ref=e4487]: s 是变换域变量，不是时间 t；P(s) 与 F(s) 表示信号的变换。非零初始条件需另加自由响应。类似地，一项欠阻尼振荡可写为：
+    - generic [ref=e4490]:
+      - math [ref=e4492]:
+        - generic [ref=e4495]:
+          - generic [ref=e4498]:
+            - generic [ref=e4499]: q
+            - generic [ref=e4500]: (
+            - generic [ref=e4501]: t
+            - generic [ref=e4502]: )
+            - generic [ref=e4503]: =
+            - generic [ref=e4504]: A
+            - generic [ref=e4505]: exp
+            - generic: ⁡
+            - generic [ref=e4506]: (
+            - generic [ref=e4507]: −
+            - generic [ref=e4508]:
+              - generic [ref=e4509]: ζ
+              - generic [ref=e4510]: d
+            - generic [ref=e4511]:
+              - generic [ref=e4512]: ω
+              - generic [ref=e4513]: d
+            - generic [ref=e4514]: t
+            - generic [ref=e4515]: )
+            - generic [ref=e4516]: cos
+            - generic: ⁡
+            - generic: ⁣
+            - generic [ref=e4517]:
+              - generic [ref=e4518]: (
+              - generic [ref=e4519]:
+                - generic [ref=e4520]: ω
+                - generic [ref=e4521]: d
+              - generic [ref=e4523]:
+                - generic [ref=e4524]: "1"
+                - generic [ref=e4525]: −
+                - generic [ref=e4526]:
+                  - generic [ref=e4527]: ζ
+                  - generic [ref=e4528]: d
+                  - generic [ref=e4529]: "2"
+              - generic [ref=e4530]: t
+              - generic [ref=e4531]: )
+            - generic [ref=e4532]: .
+          - generic [ref=e4534]: (A3)
+      - generic [aria-hidden] [ref=e4536]:
+        - generic [ref=e4537]: q(t) =
+        - generic [ref=e4538]:
+          - text: A exp(−
+          - generic [ref=e4539]:
+            - text: ζ
+            - generic [ref=e4540]: d
+          - generic [ref=e4548]:
+            - text: ω
+            - generic [ref=e4549]: d
+          - text: t) cos
+          - generic [ref=e4557]:
+            - generic [ref=e4558]: (
+            - generic [ref=e4559]:
+              - text: ω
+              - generic [ref=e4560]: d
+            - generic [ref=e4572]:
+              - text: 1 −
+              - generic [ref=e4573]:
+                - text: ζ
+                - generic [ref=e4577]:
+                  - generic [ref=e4578]: d
+                  - generic [ref=e4579]: "2"
+            - text: t
+            - generic [ref=e4589]: )
+          - text: .
+        - generic [ref=e4591]:
+          - text: (
+          - generic [ref=e4592]: A3
+          - text: )
+    - paragraph [ref=e4593]: 固定 ω_d=2 rad/s，ζ_d=0.1 时四秒后的包络剩 exp(−0.8)≈44.9%；ζ_d=0.5 时剩 exp(−4)≈1.83%。cos 决定往复摆动，指数决定包络衰减；该例隐含特定初始相位，不是整个对象的阶跃响应。
+    - heading "A.2 动作与奖励的代入" [level=3] [ref=e4594]
+    - paragraph [ref=e4595]: 式 (6) 中若请求力为 5 N、动作 a=0.1，新请求力为 5+1.76×0.1=5.176 N；原请求力为 21.9 N 时，同一动作经过限幅后只能到 22 N。a=0 保持请求力，施加力还受执行机构和延迟影响。
+    - paragraph [ref=e4596]: 另取一条已给定的样本，其误差为 3 deg/s、施加力 11 N、动作 0.1，则式 (7a) 的奖励为：
+    - generic [ref=e4599]:
+      - math [ref=e4601]:
+        - generic [ref=e4604]:
+          - generic [ref=e4607]:
+            - generic [ref=e4608]: r
+            - generic [ref=e4609]: =
+            - generic [ref=e4610]: −
+            - generic [ref=e4611]:
+              - generic [ref=e4612]: "["
+              - generic [ref=e4613]: (
+              - generic [ref=e4614]: "3"
+              - generic [ref=e4615]: /
+              - generic [ref=e4616]: "30"
+              - generic [ref=e4617]:
+                - generic [ref=e4618]: )
+                - generic [ref=e4619]: "2"
+              - generic [ref=e4620]: +
+              - generic [ref=e4621]: "0.02"
+              - generic [ref=e4622]: (
+              - generic [ref=e4623]: "11"
+              - generic [ref=e4624]: /
+              - generic [ref=e4625]: "22"
+              - generic [ref=e4626]:
+                - generic [ref=e4627]: )
+                - generic [ref=e4628]: "2"
+              - generic [ref=e4629]: +
+              - generic [ref=e4630]: "0."
+              - generic [ref=e4631]:
+                - generic [ref=e4632]: "1"
+                - generic [ref=e4633]: "2"
+              - generic [ref=e4634]: "]"
+            - generic [ref=e4635]: =
+            - generic [ref=e4636]: −
+            - generic [ref=e4637]: 0.025.
+          - generic [ref=e4639]: (A4)
+      - generic [aria-hidden] [ref=e4641]:
+        - generic [ref=e4642]: r =
+        - generic [ref=e4643]:
+          - text: −
+          - generic [ref=e4644]:
+            - generic [ref=e4645]: "["
+            - text: (3/30
+            - generic [ref=e4646]:
+              - text: )
+              - generic [ref=e4647]: "2"
+            - text: + 0.02(11/22
+            - generic [ref=e4652]:
+              - text: )
+              - generic [ref=e4653]: "2"
+            - text: + 0.
+            - generic [ref=e4658]:
+              - text: "1"
+              - generic [ref=e4659]: "2"
+            - generic [ref=e4664]: "]"
+          - text: =
+        - generic [ref=e4665]: −0.025.
+        - generic [ref=e4667]:
+          - text: (
+          - generic [ref=e4668]: A4
+          - text: )
+    - paragraph [ref=e4669]: 三项代价为 0.01、0.005、0.01。相除统一了量纲，平方使正负偏差都计入代价；负号使较小代价对应较大奖励。这不表示动作 0.1 会立即产生 11 N。减小当前动作虽可减少动作代价，之后的误差是否增大仍需由对象演化决定，因此教师优化累计回报。
+    - heading "A.3 优势、裁剪和权重更新" [level=3] [ref=e4670]
+    - paragraph [ref=e4671]: 若 r=−0.1、γ=0.995，Critic 对当前与下一状态的预测分别为 −5 和 −4，则 δ=−0.1+0.995×(−4)−(−5)=0.92。结果比预期好时，差值可为正，而即时奖励仍为负。GAE 加权汇集这些差值来估计优势。
+    - paragraph [ref=e4672]: 对正优势 Â=2 的样本，ρ=1.1 时式 (9) 中被取负前的贡献为 2.2；ρ=1.4 时裁剪分支为 1.2×2=2.4，min 选择 2.4，而非 2.8。这限制特定方向上继续改变该样本密度的激励，并非稳定性证明。
+    - paragraph [ref=e4673]: 优化器用损失对权重的导数决定调整方向。最简单的梯度下降写成 w_new=w−η∇_wL：η 为学习率，∇_wL 表示各权重微小改变对损失的局部影响；实际程序用 Adam。调整 w 的训练过程，与每 20 ms 输入观测得到动作的部署过程不同。
+    - heading "A.4 蒸馏误差、闭环累积与信息限制" [level=3] [ref=e4674]
+    - paragraph [ref=e4675]: 教师动作 0.2、学生动作 0.1 时，一条样本的平方损失为 0.01；学生改成 0.18 时损失为 0.0004。这说明动作接近程度改善，尚不直接说明轨迹改善。
+    - paragraph [ref=e4676]: 令 d 表示两条轨迹的状态差值，以无量纲的教学递推说明误差传播，初始 d₀=0、输入增益设为 1、每步固定动作偏差 ε：
+    - generic [ref=e4679]:
+      - math [ref=e4681]:
+        - generic [ref=e4684]:
+          - generic [ref=e4687]:
+            - generic [ref=e4688]:
+              - generic [ref=e4689]: d
+              - generic [ref=e4690]:
+                - generic [ref=e4691]: k
+                - generic [ref=e4692]: +
+                - generic [ref=e4693]: "1"
+            - generic [ref=e4694]: =
+            - generic [ref=e4695]: g
+            - generic [ref=e4696]:
+              - generic [ref=e4697]: d
+              - generic [ref=e4698]: k
+            - generic [ref=e4699]: +
+            - generic [ref=e4700]: ϵ
+            - generic [ref=e4701]: ","
+            - generic [ref=e4702]:
+              - generic [ref=e4703]: d
+              - generic [ref=e4704]: "n"
+            - generic [ref=e4705]: =
+            - generic [ref=e4706]: ϵ
+            - generic [ref=e4707]:
+              - generic [ref=e4708]: ∑
+              - generic [ref=e4709]:
+                - generic [ref=e4710]: i
+                - generic [ref=e4711]: =
+                - generic [ref=e4712]: "0"
+              - generic [ref=e4713]:
+                - generic [ref=e4714]: "n"
+                - generic [ref=e4715]: −
+                - generic [ref=e4716]: "1"
+            - generic [ref=e4717]:
+              - generic [ref=e4718]: g
+              - generic [ref=e4719]: i
+            - generic [ref=e4720]: .
+          - generic [ref=e4722]: (A5)
+      - generic [aria-hidden] [ref=e4724]:
+        - generic [ref=e4725]:
+          - generic [ref=e4726]:
+            - text: d
+            - generic [ref=e4727]: k+1
+          - text: =
+        - generic [ref=e4736]:
+          - text: g
+          - generic [ref=e4737]:
+            - text: d
+            - generic [ref=e4738]: k
+          - text: +
+        - generic [ref=e4746]:
+          - text: ϵ,
+          - generic [ref=e4747]:
+            - text: d
+            - generic [ref=e4748]: "n"
+          - text: =
+        - generic [ref=e4756]:
+          - text: ϵ
+          - generic [ref=e4760]:
+            - generic [ref=e4761]: i=0
+            - generic [ref=e4763]: ∑
+            - generic [ref=e4764]: n−1
+          - generic [ref=e4769]:
+            - text: g
+            - generic [ref=e4770]: i
+          - text: .
+        - generic [ref=e4776]:
+          - text: (
+          - generic [ref=e4777]: A5
+          - text: )
+    - paragraph [ref=e4778]: 当 g=0.9、ε=0.01 时，d_n 趋近 0.1；g=1 时线性累积为 nε；g=1.05 时持续放大。g 是教学模型的误差传播系数，不是当前网络已测得的稳定性指标。DAgger 在学生实际访问的状态上追加教师标签，针对的是这种状态分布变化，不能保证每一轮改善。
+    - paragraph [ref=e4779]: 若两种隐藏情况对学生呈现相同观测和历史，等频教师标签却分别为 +0.5、−0.5，则平方损失为 [(a−0.5)²+(a+0.5)²]/2=a²+0.25，其最小值在 a=0。该例说明重复蒸馏无法凭空恢复缺失信息；项目是否实际存在此类冲突，仍需数据诊断。
+    - heading "参考文献" [level=2] [ref=e4780]
+    - list [ref=e4781]:
+      - listitem [ref=e4782]:
+        - paragraph [ref=e4783]: "GJB 185-1986. 有人驾驶飞机（固定翼）飞行品质[S]. 北京: 国防科学技术工业委员会, 1986."
+      - listitem [ref=e4784]:
+        - paragraph [ref=e4785]: "MIL-STD-1797A. Flying qualities of piloted aircraft[S]. Washington: Department of Defense, 1990."
+      - listitem [ref=e4786]:
+        - paragraph [ref=e4787]: J. Schulman, F. Wolski, P. Dhariwal, et al. Proximal policy optimization algorithms[J]. arXiv:1707.06347, 2017.
+      - listitem [ref=e4788]:
+        - paragraph [ref=e4789]: S. Ross, G. Gordon, D. Bagnell. A reduction of imitation learning and structured prediction to no-regret online learning[C]. AISTATS, 2011.
+      - listitem [ref=e4790]:
+        - paragraph [ref=e4791]: "V. Vapnik, A. Vashist. A new learning paradigm: learning using privileged information[J]. Neural Networks, 2009, 22(5-6): 544-557."
+      - listitem [ref=e4792]:
+        - paragraph [ref=e4793]: "L. Pinto, M. Andrychowicz, P. Welinder, et al. Asymmetric actor critic for image-based robot learning[C]. Robotics: Science and Systems, 2018. DOI: 10.15607/RSS.2018.XIV.008."
+      - listitem [ref=e4794]:
+        - paragraph [ref=e4795]: J. Lee, J. Hwangbo, L. Wellhausen, et al. Learning quadrupedal locomotion over challenging terrain[J]. Science Robotics, 2020, 5(47).
+      - listitem [ref=e4796]:
+        - paragraph [ref=e4797]: T. Miki, J. Lee, J. Hwangbo, et al. Learning robust perceptive locomotion for quadrupedal robots in the wild[J]. Science Robotics, 2022, 7(62).
+      - listitem [ref=e4798]:
+        - paragraph [ref=e4799]: "A. Kumar, Z. Fu, D. Pathak, et al. RMA: Rapid motor adaptation for legged robots[C]. Robotics: Science and Systems, 2021."
+      - listitem [ref=e4800]:
+        - paragraph [ref=e4801]: "M. O'Connell, G. Shi, X. Shi, et al. Neural-Fly enables rapid learning for agile flight in strong winds[J]. Science Robotics, 2022, 7(66): eabm6597. DOI: 10.1126/scirobotics.abm6597."
+      - listitem [ref=e4802]:
+        - paragraph [ref=e4803]: "E. Kaufmann, L. Bauersfeld, A. Loquercio, et al. Champion-level drone racing using deep reinforcement learning[J]. Nature, 2023, 620: 982-987."
+      - listitem [ref=e4804]:
+        - paragraph [ref=e4805]: J. Eschmann, D. Albani, G. Loianno. Learning to fly in seconds[J]. IEEE Robotics and Automation Letters, 2024.
+      - listitem [ref=e4806]:
+        - paragraph [ref=e4807]:
+          - text: GJB 2874—1997. 电传操纵系统飞机的飞行品质[S]. 本次直接核对用户提供的 414 页扫描 PDF，重点为正文 3.6、4.9、5.4，以及附录 A 的分类、LOES、A18/A19/A20/A21/A31/A35 与滚转振荡相关说明；页面和哈希见
+          - link "source.json" [ref=e4808] [cursor=pointer]:
+            - /url: evidence/gjb_audit/source.json
+          - text: 。此阅读范围不等于全部条款符合性审定。
+      - listitem [ref=e4809]:
+        - paragraph [ref=e4810]:
+          - text: "J. Eschmann, D. Albani, G. Loianno. RAPTOR: A Foundation Policy for Quadrotor Control[J]. Science Robotics, 2026, 11(114): eaec1481."
+          - link "原文" [ref=e4811] [cursor=pointer]:
+            - /url: https://arxiv.org/abs/2509.11481
+          - text: .
+      - listitem [ref=e4812]:
+        - paragraph [ref=e4813]:
+          - text: "D. Zhang, A. Loquercio, J. Tang, et al. A Learning-Based Quadcopter Controller With Extreme Adaptation[J]. IEEE Transactions on Robotics, 2025, 41: 3948–3964."
+          - link "原文" [ref=e4814] [cursor=pointer]:
+            - /url: https://arxiv.org/abs/2409.12949
+          - text: .
+      - listitem [ref=e4815]:
+        - paragraph [ref=e4816]:
+          - text: Jansen, van Kampen. Longitudinal Handling Qualities Evaluation for Soft Actor-Critic Deep Reinforcement Learning Flight Control[C]. AIAA SCITECH, 2025.
+          - link "DOI" [ref=e4817] [cursor=pointer]:
+            - /url: https://doi.org/10.2514/6.2025-2794
+          - text: . 本次阅读范围：摘要、首页及部分引言。
+      - listitem [ref=e4818]:
+        - paragraph [ref=e4819]:
+          - text: "E. Bøhn, et al. Data-Efficient Deep Reinforcement Learning for Attitude Control of Fixed-Wing UAVs: Field Experiments[J]. IEEE Transactions on Neural Networks and Learning Systems, 2024."
+          - link "原文" [ref=e4820] [cursor=pointer]:
+            - /url: https://arxiv.org/abs/2111.04153
+          - text: .
+      - listitem [ref=e4821]:
+        - paragraph [ref=e4822]:
+          - text: D. Lopez-Paz, L. Bottou, B. Schölkopf, V. Vapnik. Unifying Distillation and Privileged Information[C]. ICLR, 2016.
+          - link "原文" [ref=e4823] [cursor=pointer]:
+            - /url: https://arxiv.org/abs/1511.03643
+          - text: .
+      - listitem [ref=e4824]:
+        - paragraph [ref=e4825]:
+          - text: A. A. Rusu, et al. Policy Distillation[C]. ICLR, 2016.
+          - link "原文" [ref=e4826] [cursor=pointer]:
+            - /url: https://arxiv.org/abs/1511.06295
+          - text: .
+      - listitem [ref=e4827]:
+        - paragraph [ref=e4828]:
+          - text: W. M. Czarnecki, et al. Distilling Policy Distillation[C]. AISTATS, 2019.
+          - link "原文" [ref=e4829] [cursor=pointer]:
+            - /url: https://proceedings.mlr.press/v89/czarnecki19a.html
+          - text: .
+      - listitem [ref=e4830]:
+        - paragraph [ref=e4831]:
+          - text: T. Furlanello, et al. Born Again Neural Networks[C]. ICML, 2018.
+          - link "原文" [ref=e4832] [cursor=pointer]:
+            - /url: https://proceedings.mlr.press/v80/furlanello18a.html
+          - text: .
+      - listitem [ref=e4833]:
+        - paragraph [ref=e4834]:
+          - text: S. I. Mirzadeh, et al. Improved Knowledge Distillation via Teacher Assistant[C]. AAAI, 2020.
+          - link "原文" [ref=e4835] [cursor=pointer]:
+            - /url: https://ojs.aaai.org/index.php/AAAI/article/view/5963
+          - text: .
+      - listitem [ref=e4836]:
+        - paragraph [ref=e4837]:
+          - text: J. Schulman, P. Moritz, S. Levine, et al. High-Dimensional Continuous Control Using Generalized Advantage Estimation[C]. ICLR, 2016.
+          - link "原文" [ref=e4838] [cursor=pointer]:
+            - /url: https://arxiv.org/abs/1506.02438
+          - text: .
+      - listitem [ref=e4839]:
+        - paragraph [ref=e4840]:
+          - text: J. B. Davidson, D. Andrisani II. Lateral-Directional Eigenvector Flying Qualities Guidelines for High Performance Aircraft[R]. NASA-TM-110306, 1996.
+          - link "NASA 原文记录" [ref=e4841] [cursor=pointer]:
+            - /url: https://ntrs.nasa.gov/citations/19970008392
+          - text: .
+      - listitem [ref=e4842]:
+        - paragraph [ref=e4843]:
+          - text: E. A. Morelli. Identification of Low Order Equivalent System Models From Flight Test Data[R]. NASA/TM-2000-210117, 2000.
+          - link "NASA 原文记录" [ref=e4844] [cursor=pointer]:
+            - /url: https://ntrs.nasa.gov/citations/20000085030
+          - text: .

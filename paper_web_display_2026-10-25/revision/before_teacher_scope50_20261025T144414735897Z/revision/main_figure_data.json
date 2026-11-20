@@ -1,0 +1,46 @@
+{
+  "source": "Original delivery manuscript and Figure 1",
+  "panels": [
+    [
+      "品质模型对象库",
+      "5,000 个对象",
+      [
+        "8 维品质相关参数",
+        "L1 / L2 / L3 / OOD",
+        "响应 · 阻尼 · 时延"
+      ],
+      "$G_\\theta(s)$"
+    ],
+    [
+      "特权强化学习教师",
+      "49 个专用策略",
+      [
+        "46 个通过项目门限",
+        "普通观测 + 特权信息",
+        "Actor–Critic / PPO"
+      ],
+      "每对象 614 万步"
+    ],
+    [
+      "多教师蒸馏",
+      "统一学生控制器",
+      [
+        "BC → 6 轮 DAgger",
+        "学生运行 → 教师标注",
+        "累计数据 → 再训练"
+      ],
+      "tiny 3,856\nsmall 75,040"
+    ],
+    [
+      "目标机型适配",
+      "DHC-6 仿真 / ARX",
+      [
+        "8 个适配 + 4 个留出",
+        "small / 40 步 Adam",
+        "适配误差（deg/s）"
+      ],
+      "2.91 → 0.59"
+    ]
+  ],
+  "change": "Larger labels and simplified layout; tiny/small identities made explicit using original manuscript values. No new experimental results."
+}

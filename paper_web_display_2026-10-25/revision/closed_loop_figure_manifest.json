@@ -1,0 +1,19 @@
+{
+  "type": "mechanism schematic; no experimental response curve added",
+  "source": "Original PPO batched environment and original tiny-student implementation",
+  "control_period_s": 0.02,
+  "plant_step_s": 0.001,
+  "font_sources": [
+    {
+      "source": "webpage/vendor/fonts/noto-sc-e549d25b76d6.ttf",
+      "source_sha256": "e549d25b76d6652e5985ecfbf71f343831378bca50aadf8bc72232bd7c29f515",
+      "fallback_family": "LoopCJK0"
+    },
+    {
+      "source": "webpage/vendor/fonts/noto-sc-fae54c70ac8d.ttf",
+      "source_sha256": "fae54c70ac8d895ec9c52b0928d52b27248936defd29195bcbbac925aaeeb959",
+      "fallback_family": "LoopCJK1"
+    }
+  ],
+  "explanation": "Sampled parameters define the simulated object. Fixed student weights map observations to actions; force/actuator dynamics drive the object; recorded responses form the time-domain plot."
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": "six-channel-joint-v1",
+  "seed": 20261029,
+  "total_plants": 5000,
+  "source_library": "FQControl_Model/data/aircraft/generated/p_channel_library_iv_a_5000_v1/plants.jsonl",
+  "source_sha256": "1daaccbef44b36274d2ce53612a3f46e54bd5c691d7f7bc8d498f1b903273fde",
+  "profile": "IV-A, centre stick, n_L = 7",
+  "longitudinal_sources": {
+    "frequency": "GJB 2874-97 Fig. A3(a), PDF 78",
+    "damping": "Table A6, PDF 77",
+    "delay": "Table A7, PDF 80",
+    "stick_force": "Table A10(a), PDF 154"
+  },
+  "research_envelopes": {
+    "v0_m_s": [
+      60.0,
+      250.0
+    ],
+    "inv_t_theta2_1_s": [
+      0.4,
+      2.5
+    ],
+    "sideslip_per_force_deg_per_n": [
+      0.02,
+      0.2
+    ],
+    "r_omega_r": [
+      0.1,
+      0.5
+    ],
+    "zeta_r": [
+      0.05,
+      0.6
+    ],
+    "tau_rp_s": [
+      0.001,
+      0.2
+    ],
+    "k_zx": [
+      0.8,
+      1.0
+    ],
+    "k_xz": [
+      0.0,
+      0.05
+    ]
+  }
+}

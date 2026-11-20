@@ -1,0 +1,295 @@
+{
+  "protocol": "controller-route-v1",
+  "source_sha256": "2fcb241e6b1f90576f5b30edbd63dfa926f33d47e59677cc6bb63587a1a55b88",
+  "seeds": [
+    "20261031",
+    "20261101",
+    "20261102"
+  ],
+  "transfer": {
+    "20261031": {
+      "adaptation_condition": {
+        "frozen_source_student": {
+          "passed_episodes": 54,
+          "episodes": 144,
+          "pass_rate": 0.375
+        },
+        "adapted_source_student": {
+          "passed_episodes": 66,
+          "episodes": 144,
+          "pass_rate": 0.4583333333333333
+        },
+        "scratch_student_same_budget": {
+          "passed_episodes": 62,
+          "episodes": 144,
+          "pass_rate": 0.4305555555555556
+        }
+      },
+      "heldout_condition": {
+        "frozen_source_student": {
+          "passed_episodes": 32,
+          "episodes": 72,
+          "pass_rate": 0.4444444444444444
+        },
+        "adapted_source_student": {
+          "passed_episodes": 54,
+          "episodes": 72,
+          "pass_rate": 0.75
+        },
+        "scratch_student_same_budget": {
+          "passed_episodes": 42,
+          "episodes": 72,
+          "pass_rate": 0.5833333333333334
+        }
+      }
+    },
+    "20261101": {
+      "adaptation_condition": {
+        "frozen_source_student": {
+          "passed_episodes": 68,
+          "episodes": 144,
+          "pass_rate": 0.4722222222222222
+        },
+        "adapted_source_student": {
+          "passed_episodes": 72,
+          "episodes": 144,
+          "pass_rate": 0.5
+        },
+        "scratch_student_same_budget": {
+          "passed_episodes": 62,
+          "episodes": 144,
+          "pass_rate": 0.4305555555555556
+        }
+      },
+      "heldout_condition": {
+        "frozen_source_student": {
+          "passed_episodes": 46,
+          "episodes": 72,
+          "pass_rate": 0.6388888888888888
+        },
+        "adapted_source_student": {
+          "passed_episodes": 54,
+          "episodes": 72,
+          "pass_rate": 0.75
+        },
+        "scratch_student_same_budget": {
+          "passed_episodes": 46,
+          "episodes": 72,
+          "pass_rate": 0.6388888888888888
+        }
+      }
+    },
+    "20261102": {
+      "adaptation_condition": {
+        "frozen_source_student": {
+          "passed_episodes": 32,
+          "episodes": 144,
+          "pass_rate": 0.2222222222222222
+        },
+        "adapted_source_student": {
+          "passed_episodes": 66,
+          "episodes": 144,
+          "pass_rate": 0.4583333333333333
+        },
+        "scratch_student_same_budget": {
+          "passed_episodes": 58,
+          "episodes": 144,
+          "pass_rate": 0.4027777777777778
+        }
+      },
+      "heldout_condition": {
+        "frozen_source_student": {
+          "passed_episodes": 22,
+          "episodes": 72,
+          "pass_rate": 0.3055555555555556
+        },
+        "adapted_source_student": {
+          "passed_episodes": 58,
+          "episodes": 72,
+          "pass_rate": 0.8055555555555556
+        },
+        "scratch_student_same_budget": {
+          "passed_episodes": 44,
+          "episodes": 72,
+          "pass_rate": 0.6111111111111112
+        }
+      }
+    }
+  },
+  "distillation": {
+    "20261031": [
+      {
+        "round": 0,
+        "stage": "BC",
+        "teacher_action_probability": 1.0,
+        "new_samples": 153600,
+        "aggregate_samples": 153600,
+        "validation_score_deg_s": 4.66807473047326
+      },
+      {
+        "round": 1,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.5,
+        "new_samples": 153600,
+        "aggregate_samples": 307200,
+        "validation_score_deg_s": 4.533739371535678
+      },
+      {
+        "round": 2,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.25,
+        "new_samples": 153600,
+        "aggregate_samples": 460800,
+        "validation_score_deg_s": 3.232616384824117
+      },
+      {
+        "round": 3,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.0,
+        "new_samples": 153600,
+        "aggregate_samples": 614400,
+        "validation_score_deg_s": 2.482215247427424
+      },
+      {
+        "round": 4,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.0,
+        "new_samples": 153600,
+        "aggregate_samples": 768000,
+        "validation_score_deg_s": 1.0622541379804413
+      },
+      {
+        "round": 5,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.0,
+        "new_samples": 153600,
+        "aggregate_samples": 921600,
+        "validation_score_deg_s": 1.0333679327741265
+      },
+      {
+        "round": 6,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.0,
+        "new_samples": 153600,
+        "aggregate_samples": 1075200,
+        "validation_score_deg_s": 0.9596256498868266
+      }
+    ],
+    "20261101": [
+      {
+        "round": 0,
+        "stage": "BC",
+        "teacher_action_probability": 1.0,
+        "new_samples": 153600,
+        "aggregate_samples": 153600,
+        "validation_score_deg_s": 6.895475739613175
+      },
+      {
+        "round": 1,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.5,
+        "new_samples": 153600,
+        "aggregate_samples": 307200,
+        "validation_score_deg_s": 5.906142402129869
+      },
+      {
+        "round": 2,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.25,
+        "new_samples": 153600,
+        "aggregate_samples": 460800,
+        "validation_score_deg_s": 4.022873165396352
+      },
+      {
+        "round": 3,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.0,
+        "new_samples": 153600,
+        "aggregate_samples": 614400,
+        "validation_score_deg_s": 3.5064484973748526
+      },
+      {
+        "round": 4,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.0,
+        "new_samples": 153600,
+        "aggregate_samples": 768000,
+        "validation_score_deg_s": 1.4139469815418124
+      },
+      {
+        "round": 5,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.0,
+        "new_samples": 153600,
+        "aggregate_samples": 921600,
+        "validation_score_deg_s": 1.3801637799479067
+      },
+      {
+        "round": 6,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.0,
+        "new_samples": 153600,
+        "aggregate_samples": 1075200,
+        "validation_score_deg_s": 1.5283884533370535
+      }
+    ],
+    "20261102": [
+      {
+        "round": 0,
+        "stage": "BC",
+        "teacher_action_probability": 1.0,
+        "new_samples": 153600,
+        "aggregate_samples": 153600,
+        "validation_score_deg_s": 10.908399732783437
+      },
+      {
+        "round": 1,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.5,
+        "new_samples": 153600,
+        "aggregate_samples": 307200,
+        "validation_score_deg_s": 8.27789387355248
+      },
+      {
+        "round": 2,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.25,
+        "new_samples": 153600,
+        "aggregate_samples": 460800,
+        "validation_score_deg_s": 3.9507358260452747
+      },
+      {
+        "round": 3,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.0,
+        "new_samples": 153600,
+        "aggregate_samples": 614400,
+        "validation_score_deg_s": 5.397953346371651
+      },
+      {
+        "round": 4,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.0,
+        "new_samples": 153600,
+        "aggregate_samples": 768000,
+        "validation_score_deg_s": 2.087761207483709
+      },
+      {
+        "round": 5,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.0,
+        "new_samples": 153600,
+        "aggregate_samples": 921600,
+        "validation_score_deg_s": 2.090354689707359
+      },
+      {
+        "round": 6,
+        "stage": "DAgger",
+        "teacher_action_probability": 0.0,
+        "new_samples": 153600,
+        "aggregate_samples": 1075200,
+        "validation_score_deg_s": 2.1905143301313124
+      }
+    ]
+  }
+}

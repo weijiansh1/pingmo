@@ -1,0 +1,23 @@
+{
+  "run": "C:\\Users\\24307\\Documents\\ChatGPT\\品模\\roll_autopilot\\20261019",
+  "n_cases": 72,
+  "n_finite": 72,
+  "representative_condition": "V080_H2500",
+  "selection": "fixed V080_H2500, not selected by score",
+  "rate_parity": {
+    "n_cases": 288,
+    "tolerance_deg_s": 0.001,
+    "max_p_difference_deg_s": 1.5902773407317584e-14,
+    "max_surface_difference_deg": 1.7763568394002505e-15,
+    "max_reference_difference_rad_s": 0.0,
+    "passed": true
+  },
+  "data_sha256": {
+    "manifest.json": "86c9a7facd54090f6e9cfa7e916e60a0349ced856dd178105adf2751aa6bffbc",
+    "metrics.json": "815097c8e2e7611be708cc930443ade0de01872779c586e587f8b9c6d4fd2a20"
+  },
+  "figure_sha256": {
+    "roll_periphery_trajectories.png": "ac9c1278f79a9729535fb0fe878e38b039edd49ad78a75c6996c96139887acd8",
+    "roll_periphery_heatmap.png": "13e53506d9973b06cc5448a9181095808f3f614f948fa23f3871c3bf423a3fe0"
+  }
+}

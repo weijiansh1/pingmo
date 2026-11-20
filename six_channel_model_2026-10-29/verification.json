@@ -1,0 +1,196 @@
+{
+  "roll_source": {
+    "p_channel.py": {
+      "sha256": "c57ea00a176dc6cc3bf700065dbefff41fca42dd09132a42f46e2f01469d3a43",
+      "identical_to_FQControl_Model": true
+    },
+    "delay.py": {
+      "sha256": "c433f812a78d0eebf16035a12048da76106db2850776cfeada3e4872b1121310",
+      "identical_to_FQControl_Model": true
+    },
+    "parameters.py": {
+      "sha256": "2d6e8b990370b47abb8d7169b4b597768a7d607b308b4670711059eecd103b2b",
+      "identical_to_FQControl_Model": true
+    }
+  },
+  "library_sha256": "57ba2f4f54aa3714296c06c77034d4fae954bf727008b03802e52e88a2e4ad6b",
+  "library": {
+    "plants": 5000,
+    "joint_level_counts": {
+      "1": 1500,
+      "2": 1500,
+      "3": 1500,
+      "None": 500
+    },
+    "sampling_bucket_by_longitudinal_level": {
+      "L1/lon_L1": 1500,
+      "L2/lon_L1": 733,
+      "L2/lon_L2": 767,
+      "L3/lon_L1": 504,
+      "L3/lon_L2": 492,
+      "L3/lon_L3": 504,
+      "OOD/lon_L1": 174,
+      "OOD/lon_L2": 158,
+      "OOD/lon_L3": 168
+    },
+    "longitudinal_component_level_counts": {
+      "frequency": {
+        "1": 3624,
+        "2": 1047,
+        "3": 329
+      },
+      "damping": {
+        "1": 3609,
+        "2": 1058,
+        "3": 333
+      },
+      "delay": {
+        "1": 3633,
+        "2": 1023,
+        "3": 344
+      },
+      "stick_force": {
+        "1": 3634,
+        "2": 1044,
+        "3": 322
+      }
+    },
+    "longitudinal_ranges": {
+      "omega_sp_rad_s": [
+        0.4839180359154144,
+        27.352359111850674
+      ],
+      "zeta_sp": [
+        0.10000480822753162,
+        2.5917770822532473
+      ],
+      "n_alpha_g_rad": [
+        2.5304087951627237,
+        62.23130664121971
+      ],
+      "cap": [
+        0.08011765584383393,
+        19.96322237623451
+      ],
+      "t_theta2_s": [
+        0.4000932601518924,
+        2.4988852966809643
+      ],
+      "fs_per_g_n": [
+        9.101220000209123,
+        246.78878710729333
+      ],
+      "tau_theta_s": [
+        0.005017583118751646,
+        0.29976859265193345
+      ],
+      "v0_m_s": [
+        60.01175807521776,
+        249.97044642399007
+      ]
+    },
+    "directional_ranges": {
+      "sideslip_per_force_deg_per_n": [
+        0.02000911693116493,
+        0.19999124183121514
+      ],
+      "r_omega_r": [
+        0.10007468722760678,
+        0.4999445680528879
+      ],
+      "zeta_r": [
+        0.05001387828961015,
+        0.5999730501789601
+      ],
+      "tau_rp_s": [
+        0.0010042274501174688,
+        0.19996585291530938
+      ]
+    }
+  },
+  "fractional_delay_transfer_function_check": {
+    "plants": 40,
+    "seconds": 6.0,
+    "max_relative_error": {
+      "q": 0.0002246154950785955,
+      "alpha": 1.177219287324192e-05,
+      "nz": 1.177219287307093e-05,
+      "p": 6.36289019573344e-06,
+      "beta": 3.919817570496275e-06,
+      "r": 4.261355856020398e-06
+    },
+    "median_relative_error": {
+      "q": 3.887202860404066e-06,
+      "alpha": 1.2073569352048613e-06,
+      "nz": 1.2073569350724078e-06,
+      "p": 3.409537844957716e-07,
+      "beta": 2.8566311589622894e-07,
+      "r": 1.2532727892133052e-07
+    }
+  },
+  "step_responses": {
+    "figure": "figures/step_responses.png",
+    "aircraft": [
+      {
+        "plant_id": "train_core-0000",
+        "joint_level": 1,
+        "pitch_stick_n": 37.61246742429193,
+        "pedal_n": 90.85131948226756,
+        "nz_at_6s_g": 0.4991953759240738,
+        "beta_at_6s_deg": -4.999998341033041,
+        "omega_sp": 1.6266831924532061,
+        "zeta_sp": 0.6991019991654903,
+        "cap": 0.32586832297564483,
+        "roll_sensitivity_deg_per_n": 1.3240733552934827
+      },
+      {
+        "plant_id": "train_core-0004",
+        "joint_level": 2,
+        "pitch_stick_n": 39.53442583983092,
+        "pedal_n": 57.49086876364849,
+        "nz_at_6s_g": 0.4999999901363518,
+        "beta_at_6s_deg": -4.999999992627848,
+        "omega_sp": 7.591454183848846,
+        "zeta_sp": 1.4342536074575039,
+        "cap": 3.5047461487079508,
+        "roll_sensitivity_deg_per_n": 2.708110587345393
+      },
+      {
+        "plant_id": "train_core-0005",
+        "joint_level": 3,
+        "pitch_stick_n": 5.752720216922089,
+        "pedal_n": 105.57908318443026,
+        "nz_at_6s_g": 0.5026573970341759,
+        "beta_at_6s_deg": -4.745667228038311,
+        "omega_sp": 0.9214663972052415,
+        "zeta_sp": 0.84828590965271,
+        "cap": 0.08847433648755372,
+        "roll_sensitivity_deg_per_n": 1.4597522795909026
+      }
+    ]
+  },
+  "maneuver": {
+    "figure": "figures/maneuver.png",
+    "inputs": "lateral stick for 30 deg at 1 s, released; 0.3 g pull from 3 s",
+    "aircraft": [
+      {
+        "plant_id": "train_core-0000",
+        "phi_at_3s_deg": 50.52215458267897,
+        "heading_change_deg": 10.7293502974087,
+        "altitude_change_m": 306.1814980438232
+      },
+      {
+        "plant_id": "train_core-0004",
+        "phi_at_3s_deg": 59.02554869629008,
+        "heading_change_deg": 10.697237920560395,
+        "altitude_change_m": -4.247936614763678
+      },
+      {
+        "plant_id": "train_core-0005",
+        "phi_at_3s_deg": 92.7951909103927,
+        "heading_change_deg": 41.8138936613742,
+        "altitude_change_m": 204.05783815369105
+      }
+    ]
+  }
+}

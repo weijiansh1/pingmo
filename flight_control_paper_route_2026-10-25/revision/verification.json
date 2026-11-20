@@ -1,0 +1,92 @@
+{
+  "checks_passed": 37,
+  "checks": [
+    "Frozen protocol checksum",
+    "Frozen copy controller_route_protocol.json",
+    "Frozen copy controller_route_report_summary.json",
+    "Transfer table 20261031/frozen_source_student/adaptation_condition",
+    "Transfer table 20261031/frozen_source_student/heldout_condition",
+    "Transfer table 20261031/adapted_source_student/adaptation_condition",
+    "Transfer table 20261031/adapted_source_student/heldout_condition",
+    "Transfer table 20261031/scratch_student_same_budget/adaptation_condition",
+    "Transfer table 20261031/scratch_student_same_budget/heldout_condition",
+    "Control result 20261031/teacher/source",
+    "Control result 20261031/student/source",
+    "Control result 20261031/student/id_test",
+    "Control result 20261031/student/ood_test",
+    "Transfer table 20261101/frozen_source_student/adaptation_condition",
+    "Transfer table 20261101/frozen_source_student/heldout_condition",
+    "Transfer table 20261101/adapted_source_student/adaptation_condition",
+    "Transfer table 20261101/adapted_source_student/heldout_condition",
+    "Transfer table 20261101/scratch_student_same_budget/adaptation_condition",
+    "Transfer table 20261101/scratch_student_same_budget/heldout_condition",
+    "Control result 20261101/teacher/source",
+    "Control result 20261101/student/source",
+    "Control result 20261101/student/id_test",
+    "Control result 20261101/student/ood_test",
+    "Transfer table 20261102/frozen_source_student/adaptation_condition",
+    "Transfer table 20261102/frozen_source_student/heldout_condition",
+    "Transfer table 20261102/adapted_source_student/adaptation_condition",
+    "Transfer table 20261102/adapted_source_student/heldout_condition",
+    "Transfer table 20261102/scratch_student_same_budget/adaptation_condition",
+    "Transfer table 20261102/scratch_student_same_budget/heldout_condition",
+    "Control result 20261102/teacher/source",
+    "Control result 20261102/student/source",
+    "Control result 20261102/student/id_test",
+    "Control result 20261102/student/ood_test",
+    "Results follow controller construction order",
+    "Teacher first, adaptation last",
+    "Local links and assets",
+    "PDF contains all principal sections"
+  ],
+  "new_training": false,
+  "mainline": "controller construction, then optional adaptation",
+  "pdf": {
+    "pages": 17,
+    "bytes": 1575310,
+    "sha256": "775c26d0db569a8584df7ba9d3e248223157c9eafebd0c2bd5078c4bdd51468e",
+    "section_pages": {
+      "1引言": [
+        1
+      ],
+      "5.1专用教师": [
+        7
+      ],
+      "5.5新目标适配": [
+        10
+      ],
+      "7结论": [
+        12
+      ],
+      "附录A强化学习": [
+        12
+      ],
+      "附录B品质判据": [
+        15
+      ],
+      "参考文献": [
+        16
+      ]
+    }
+  },
+  "browser": {
+    "desktop": [
+      1280,
+      1280
+    ],
+    "mobile": [
+      390,
+      390
+    ],
+    "inline_math": 153,
+    "display_math": 15,
+    "wide_inline_math": 0,
+    "print_display_overflow": 0,
+    "base_font_px": 17.325,
+    "script_font_px": 12.1275,
+    "all_four_images_loaded": true,
+    "subscript_top_offset_px": 3.59375,
+    "superscript_top_offset_px": -5.296875
+  },
+  "manuscript_sha256": "e9e0f5c345c754d9c7641e4ef8e20823adf69bb1272c4d2f5fcb6036eb5e4dbe"
+}

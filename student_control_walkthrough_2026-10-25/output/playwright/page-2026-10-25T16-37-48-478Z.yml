@@ -1,0 +1,130 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]: 一次真实的冻结学生仿真回放
+    - heading "看一次学生怎样控制滚转" [level=1] [ref=e5]
+    - paragraph [ref=e6]:
+      - text: 对象 1 在 1.00 秒收到
+      - strong [ref=e7]: +15 deg/s
+      - text: 指令。沿着一个 20 ms 控制周期，依次看输入、动作、控制力和飞机响应。
+    - paragraph [ref=e8]: 示例使用原始 3,856 参数学生，权重保持固定，仍保留原实验的参考目标。此前的无参考试训只有教师，尚未蒸馏新学生。
+  - region "固定的测试设置" [ref=e9]:
+    - generic [ref=e10]:
+      - generic [ref=e11]: 固定学生
+      - strong [ref=e12]: 3,856 个参数
+      - generic [ref=e13]: 本次回放不更新权重
+    - generic [ref=e14]:
+      - generic [ref=e15]: 固定对象
+      - strong [ref=e16]: 对象 1 · 品质 2 级
+      - generic [ref=e17]: 8 个对象参数全程保持不变
+    - generic [ref=e18]:
+      - generic [ref=e19]: 控制周期
+      - strong [ref=e20]: 20 ms / 50 Hz
+      - generic [ref=e21]: 每个周期获得反馈，再算一个动作
+    - generic [ref=e22]:
+      - generic [ref=e23]: 对象运输时延
+      - strong [ref=e24]: 约 43 ms
+      - generic [ref=e25]: 控制力改变后，响应需要时间
+  - region [ref=e26]:
+    - generic [ref=e27]:
+      - heading "沿时间看一个周期" [level=2] [ref=e28]
+      - generic [ref=e29]: 1.00 → 1.02 s · 第 51 周期
+    - generic [ref=e30]: 选择本周期开始的时刻
+    - slider "控制周期时间" [ref=e31]: "50"
+    - generic [ref=e32]:
+      - generic [ref=e33]: 0 s
+      - generic [ref=e34]: 1 s：指令到达
+      - generic [ref=e35]: 7.96 s
+    - generic [ref=e36]:
+      - button "← 前一周期" [ref=e37] [cursor=pointer]
+      - button "播放" [ref=e38] [cursor=pointer]
+      - button "后一周期 →" [ref=e39] [cursor=pointer]
+      - generic [ref=e40]: 播放速度为真实时间的 1/6
+    - generic "跳到关键时刻" [ref=e41]:
+      - button "1.00 s · 指令到达" [ref=e42] [cursor=pointer]
+      - button "1.10 s" [ref=e43] [cursor=pointer]
+      - button "2.00 s" [ref=e44] [cursor=pointer]
+      - button "3.00 s" [ref=e45] [cursor=pointer]
+      - button "6.00 s" [ref=e46] [cursor=pointer]
+    - paragraph [ref=e47]: 指令已经变为 +15 deg/s，学生开始加力；但这 20 ms 内角速度仍为零。对象有约 43 ms 运输时延，力的变化不会立即出现在角速度上。
+  - region "这个控制周期中的四个步骤" [ref=e48]:
+    - article [ref=e49]:
+      - generic [ref=e50]:
+        - generic [ref=e51]: "1"
+        - heading "学生先看当前输入" [level=2] [ref=e52]
+      - paragraph [ref=e53]: 1.00 s：做动作之前
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - term [ref=e56]: 外部角速度指令
+          - definition [ref=e57]: 15.00 deg/s
+        - generic [ref=e58]:
+          - term [ref=e59]: 旧实验的跟踪目标
+          - definition [ref=e60]: 0.000 deg/s
+        - generic [ref=e61]:
+          - term [ref=e62]: 当前实际角速度
+          - definition [ref=e63]: 0.000 deg/s
+        - generic [ref=e64]:
+          - term [ref=e65]: 目标 − 当前响应
+          - definition [ref=e66]: 0.000 deg/s
+      - paragraph [ref=e67]: 学生同时读取误差积分、角速度变化、力反馈、过去 32 步历史和最近 7 个动作。
+    - article [ref=e68]:
+      - generic [ref=e69]:
+        - generic [ref=e70]: "2"
+        - heading "冻结网络算出动作" [level=2] [ref=e71]
+      - paragraph [ref=e72]: 输入这一步的 176 维观测
+      - generic [ref=e73]: "+0.0813"
+      - generic [ref=e74]:
+        - generic [ref=e75]: −1 · 减力
+        - generic [ref=e78]: +1 · 加力
+      - paragraph [ref=e79]: 这个动作表示本步增加请求力。按当前接口：1.76 × 动作 = +0.1430 N，再作力限幅。
+      - paragraph [ref=e80]: 传递函数和 8 维参数向量没有作为显式输入传给这个学生。网络权重在测试中不变。
+    - article [ref=e81]:
+      - generic [ref=e82]:
+        - generic [ref=e83]: "3"
+        - heading "动作转换成控制力" [level=2] [ref=e84]
+      - paragraph [ref=e85]: 本周期内经过积分、限幅和执行机构
+      - generic [ref=e86]:
+        - generic [ref=e87]:
+          - term [ref=e88]: 原请求力
+          - definition [ref=e89]: 0.000 N
+        - generic [ref=e90]:
+          - term [ref=e91]: 本步请求力变化
+          - definition [ref=e92]: +0.1430 N
+        - generic [ref=e93]:
+          - term [ref=e94]: 新请求力
+          - definition [ref=e95]: 0.143 N
+        - generic [ref=e96]:
+          - term [ref=e97]: 周期末执行机构输出
+          - definition [ref=e98]: 0.089 N
+      - paragraph [ref=e99]: 每周期请求力最多改变 1.76 N，限幅为 ±22 N。执行机构输出再经过对象的运输时延。
+    - article [ref=e100]:
+      - generic [ref=e101]:
+        - generic [ref=e102]: "4"
+        - heading "仿真飞机产生新响应" [level=2] [ref=e103]
+      - paragraph [ref=e104]: 1.02 s：20 ms 之后
+      - generic [ref=e105]: 0.000 deg/s
+      - paragraph [ref=e106]: 本周期角速度变化：0.0000 deg/s
+      - paragraph [ref=e107]: 这里由固定的对象传递函数推进飞机状态。新角速度与历史记录，进入下一周期的学生输入。
+      - generic [ref=e108]: ↩ 新反馈 → 下一周期重新算动作
+  - region [ref=e109]:
+    - heading "把这个周期放回完整响应里" [level=2] [ref=e110]
+    - generic [ref=e111]:
+      - generic [ref=e112]: 外部指令
+      - generic [ref=e114]: 旧参考目标
+      - generic [ref=e116]: 实际角速度
+    - generic "外部指令、旧参考目标和实际角速度随时间变化" [ref=e118]
+    - generic [ref=e119]:
+      - generic [ref=e120]: 请求力
+      - generic [ref=e122]: 执行机构输出
+    - generic "请求力和执行机构输出随时间变化" [ref=e124]
+    - paragraph [ref=e125]: 直线标记当前周期。响应取自一次真实的冻结权重仿真；移动滑块只是回看记录。
+  - group [ref=e126]:
+    - generic "查看本周期学生实际收到的输入" [ref=e127] [cursor=pointer]
+  - group [ref=e128]:
+    - generic "查看这架虚拟飞机的 8 个参数" [ref=e129] [cursor=pointer]
+  - generic [ref=e130]:
+    - text: 只回放原始学生，未训练或改变模型。
+    - link "下载逐周期记录" [ref=e131] [cursor=pointer]:
+      - /url: cycles.csv
+    - text: ·
+    - link "下载完整输入与轨迹" [ref=e132] [cursor=pointer]:
+      - /url: run.json

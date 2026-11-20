@@ -1,0 +1,128 @@
+[
+  {
+    "id": "raptor",
+    "url": "https://arxiv.org/html/2509.11481v2",
+    "ok": true,
+    "bytes": 359427,
+    "format": "html"
+  },
+  {
+    "id": "aggressive_2026",
+    "url": "https://arxiv.org/html/2604.05828v1",
+    "ok": true,
+    "bytes": 451279,
+    "format": "html"
+  },
+  {
+    "id": "learning_seconds",
+    "url": "https://arxiv.org/html/2311.13081v3",
+    "ok": false,
+    "error": "404 Client Error: Not Found for url: https://arxiv.org/html/2311.13081v3"
+  },
+  {
+    "id": "jansen_2025",
+    "url": "https://pure.tudelft.nl/ws/portalfiles/portal/234262255/jansen-van-kampen-2025-longitudinal-handling-qualities-evaluation-for-soft-actor-critic-deep-reinforcement-learning.pdf",
+    "ok": false,
+    "error": "HTTPSConnectionPool(host='pure.tudelft.nl', port=443): Max retries exceeded with url: /ws/portalfiles/portal/234262255/jansen-van-kampen-2025-longitudinal-handling-qualities-evaluation-for-soft-actor-critic-deep-reinforcement-learning.pdf (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x733b939faa40>, 'Connection to pure.tudelft.nl timed out. (connect timeout=35)'))"
+  },
+  {
+    "id": "acrobatics",
+    "url": "https://arxiv.org/html/2006.05768",
+    "ok": true,
+    "bytes": 300070,
+    "format": "html"
+  },
+  {
+    "id": "policy_distillation",
+    "url": "https://arxiv.org/html/1511.06295",
+    "ok": true,
+    "bytes": 152653,
+    "format": "html"
+  },
+  {
+    "id": "generalized_distillation",
+    "url": "https://arxiv.org/html/1511.03643",
+    "ok": true,
+    "bytes": 191072,
+    "format": "html"
+  },
+  {
+    "id": "born_again",
+    "url": "https://proceedings.mlr.press/v80/furlanello18a/furlanello18a.pdf",
+    "ok": false,
+    "error": "('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
+  },
+  {
+    "id": "distilling_policy",
+    "url": "https://proceedings.mlr.press/v89/czarnecki19a/czarnecki19a.pdf",
+    "ok": true,
+    "bytes": 789079,
+    "format": "pdf"
+  },
+  {
+    "id": "teacher_assistant",
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/download/5963/5819",
+    "ok": false,
+    "error": "('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+  },
+  {
+    "id": "bohn_2024",
+    "url": "https://arxiv.org/html/2111.04153",
+    "ok": true,
+    "bytes": 272361
+  },
+  {
+    "id": "extreme_adaptation",
+    "url": "https://arxiv.org/html/2409.12949",
+    "ok": true,
+    "bytes": 364944
+  },
+  {
+    "id": "rma",
+    "url": "https://arxiv.org/html/2107.04034",
+    "ok": true,
+    "bytes": 238763
+  },
+  {
+    "id": "datt",
+    "url": "https://arxiv.org/html/2310.09053",
+    "ok": true,
+    "bytes": 214176
+  },
+  {
+    "id": "learning_seconds",
+    "url": "https://arxiv.org/html/2311.13081",
+    "ok": true,
+    "bytes": 225188
+  },
+  {
+    "id": "born_again",
+    "url": "https://arxiv.org/html/1805.04770",
+    "ok": true,
+    "bytes": 164954
+  },
+  {
+    "id": "teacher_assistant",
+    "url": "https://arxiv.org/html/1902.03393",
+    "ok": true,
+    "bytes": 228578
+  },
+  {
+    "id": "dagger",
+    "url": "https://arxiv.org/html/1011.0686",
+    "ok": true,
+    "bytes": 256588
+  },
+  {
+    "id": "distral",
+    "url": "https://arxiv.org/html/1707.04175",
+    "ok": true,
+    "bytes": 195494
+  },
+  {
+    "id": "kickstarting",
+    "url": "https://arxiv.org/html/1803.03835",
+    "ok": true,
+    "bytes": 139973
+  }
+]

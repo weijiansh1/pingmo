@@ -1,0 +1,878 @@
+{
+  "budgets": [
+    {
+      "run_id": "unified-b15",
+      "budget_s": 15.0,
+      "manifest_sha256": "ff7cb2d4caa4346ea9999d131efe75b3ef9fefb3ddd25dc309107a25ab89ba95",
+      "eval_models_sha256": "dcb435c8302e40a9e14d78b18623d7bfb69a7abd7a6cbaebe79b645a7f8b3d8b",
+      "budget_row": {
+        "budget_s": 15.0,
+        "per_state_window_s": 15.0,
+        "n_adaptation_states": 8,
+        "independent_adaptation_seconds": 120.0,
+        "prior_probe_exposure_seconds": 15.0,
+        "prior_probe_state": "V050_H2500",
+        "total_target_seconds": 135.0,
+        "note": "pilot lr probe already saw V050_H2500 [0,30) s; at B=15 only [0,15) is fitted and the other 15 s is counted as prior exposure"
+      },
+      "arms": {
+        "frozen": {
+          "weights_sha256": "1a9a688b51969b31d291ce53997544bbb338a7c894e9b6816910f55f22ed8249",
+          "l2_relative": 0.0,
+          "n_changed_values": 0,
+          "optimizer_steps": 0,
+          "trainable_params": 0,
+          "wall_clock_s": 0.0,
+          "summary": {
+            "adaptation": {
+              "n_cells": 96,
+              "mean_rmse_deg_s": 2.9193902812132424,
+              "mean_peak_err_deg_s": 4.368952489000173,
+              "mean_tv_n_per_s": 4.095095464997576,
+              "sum_tv_n_per_s": 393.1291646397673,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 26
+            },
+            "heldout": {
+              "n_cells": 48,
+              "mean_rmse_deg_s": 2.2428929247854144,
+              "mean_peak_err_deg_s": 3.4198055024052683,
+              "mean_tv_n_per_s": 3.2185338134489334,
+              "sum_tv_n_per_s": 154.4896230455488,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 1
+            }
+          },
+          "vs_frozen": null,
+          "vs_scratch": null
+        },
+        "full": {
+          "weights_sha256": "49cfb6ac5b29e5d0b9f05377c5c062d2ac82cf01808cec08a2032ddcd370bd54",
+          "l2_relative": 0.14156442105151182,
+          "n_changed_values": 540161,
+          "optimizer_steps": 64,
+          "trainable_params": 540417,
+          "wall_clock_s": 74.00598869999521,
+          "summary": {
+            "adaptation": {
+              "n_cells": 96,
+              "mean_rmse_deg_s": 1.5025385321001377,
+              "mean_peak_err_deg_s": 2.2966975409770485,
+              "mean_tv_n_per_s": 6.320881699952103,
+              "sum_tv_n_per_s": 606.8046431954019,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 26
+            },
+            "heldout": {
+              "n_cells": 48,
+              "mean_rmse_deg_s": 0.75446175141276,
+              "mean_peak_err_deg_s": 1.2855644370261967,
+              "mean_tv_n_per_s": 4.877570231011486,
+              "sum_tv_n_per_s": 234.12337108855132,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 1
+            }
+          },
+          "vs_frozen": {
+            "better": 142,
+            "worse": 2,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": [
+              {
+                "state": "V080_H3500",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 2.603707685367419,
+                "reference": 2.5666292009746323,
+                "delta": 0.03707848439278649
+              },
+              {
+                "state": "V080_H3500",
+                "command": "eval-step-neg-15deg-s",
+                "candidate": 2.603707685367419,
+                "reference": 2.5666292009746323,
+                "delta": 0.03707848439278649
+              }
+            ]
+          },
+          "vs_scratch": {
+            "better": 132,
+            "worse": 12,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": [
+              {
+                "state": "V060_H3500",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 1.7535424820122196,
+                "reference": 0.8928531986766075,
+                "delta": 0.8606892833356121
+              },
+              {
+                "state": "V060_H3500",
+                "command": "eval-step-neg-15deg-s",
+                "candidate": 1.7535424820122196,
+                "reference": 0.8928531986766075,
+                "delta": 0.8606892833356121
+              },
+              {
+                "state": "V060_H3000",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 1.7570211816739403,
+                "reference": 0.9083845255523202,
+                "delta": 0.8486366561216201
+              },
+              {
+                "state": "V060_H3000",
+                "command": "eval-step-neg-15deg-s",
+                "candidate": 1.7570211816739403,
+                "reference": 0.9083845255523202,
+                "delta": 0.8486366561216201
+              },
+              {
+                "state": "V060_H2500",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 1.753344747335294,
+                "reference": 0.9129910600613136,
+                "delta": 0.8403536872739805
+              }
+            ]
+          }
+        },
+        "head_only": {
+          "weights_sha256": "7f319dd2a179d23e7a7e1c7124c65b07210a03bdb6e85feb6125a654b0c1bf7c",
+          "l2_relative": 0.001504705749557258,
+          "n_changed_values": 257,
+          "optimizer_steps": 64,
+          "trainable_params": 257,
+          "wall_clock_s": 48.87743870000122,
+          "summary": {
+            "adaptation": {
+              "n_cells": 96,
+              "mean_rmse_deg_s": 1.6148659796778144,
+              "mean_peak_err_deg_s": 2.467882124426846,
+              "mean_tv_n_per_s": 6.337928505570017,
+              "sum_tv_n_per_s": 608.4411365347216,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 26
+            },
+            "heldout": {
+              "n_cells": 48,
+              "mean_rmse_deg_s": 0.76219073279583,
+              "mean_peak_err_deg_s": 1.3673002386541453,
+              "mean_tv_n_per_s": 4.729247480015329,
+              "sum_tv_n_per_s": 227.0038790407358,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 1
+            }
+          },
+          "vs_frozen": {
+            "better": 144,
+            "worse": 0,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": []
+          },
+          "vs_scratch": {
+            "better": 116,
+            "worse": 28,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": [
+              {
+                "state": "V070_H3000",
+                "command": "eval-multisine",
+                "candidate": 0.753893133767869,
+                "reference": 0.33750359428372717,
+                "delta": 0.41638953948414187
+              },
+              {
+                "state": "V070_H2500",
+                "command": "eval-multisine",
+                "candidate": 0.7716664576565491,
+                "reference": 0.3610362033848725,
+                "delta": 0.41063025427167654
+              },
+              {
+                "state": "V060_H2500",
+                "command": "held-multisine-b",
+                "candidate": 0.7812409682867577,
+                "reference": 0.3713867483068751,
+                "delta": 0.4098542199798826
+              },
+              {
+                "state": "V070_H3000",
+                "command": "held-multisine-b",
+                "candidate": 0.7315419573770251,
+                "reference": 0.3788375578480138,
+                "delta": 0.3527043995290113
+              },
+              {
+                "state": "V070_H2500",
+                "command": "held-multisine-b",
+                "candidate": 0.744575304485077,
+                "reference": 0.39570430268135076,
+                "delta": 0.34887100180372627
+              }
+            ]
+          }
+        },
+        "scratch": {
+          "weights_sha256": "5cb873f20bca3cf435002c6b45f8f50b1566e4f6a26f3e9b2322f9092f7f7f97",
+          "l2_relative": 0.13937926519339613,
+          "n_changed_values": 540161,
+          "optimizer_steps": 64,
+          "trainable_params": 540417,
+          "wall_clock_s": 69.66454749999684,
+          "summary": {
+            "adaptation": {
+              "n_cells": 96,
+              "mean_rmse_deg_s": 1.9427520888302674,
+              "mean_peak_err_deg_s": 2.930868311690368,
+              "mean_tv_n_per_s": 6.327498499636082,
+              "sum_tv_n_per_s": 607.4398559650639,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 26
+            },
+            "heldout": {
+              "n_cells": 48,
+              "mean_rmse_deg_s": 1.2898511630363145,
+              "mean_peak_err_deg_s": 2.096989070435149,
+              "mean_tv_n_per_s": 5.345134544010701,
+              "sum_tv_n_per_s": 256.56645811251366,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 1
+            }
+          },
+          "vs_frozen": {
+            "better": 134,
+            "worse": 10,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": [
+              {
+                "state": "V080_H3500",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 3.4792476239978396,
+                "reference": 2.5666292009746323,
+                "delta": 0.9126184230232073
+              },
+              {
+                "state": "V080_H3500",
+                "command": "eval-step-neg-15deg-s",
+                "candidate": 3.4792476239978396,
+                "reference": 2.5666292009746323,
+                "delta": 0.9126184230232073
+              },
+              {
+                "state": "V080_H2500",
+                "command": "held-sine-1.35hz",
+                "candidate": 0.3822545219719056,
+                "reference": 0.21511718958021864,
+                "delta": 0.167137332391687
+              },
+              {
+                "state": "V080_H3000",
+                "command": "held-sine-1.35hz",
+                "candidate": 0.35499471081918144,
+                "reference": 0.19949501480918339,
+                "delta": 0.15549969600999805
+              },
+              {
+                "state": "V080_H3500",
+                "command": "held-sine-1.35hz",
+                "candidate": 0.32711899654058113,
+                "reference": 0.17488782116394194,
+                "delta": 0.1522311753766392
+              }
+            ]
+          },
+          "vs_scratch": null
+        }
+      },
+      "theta_outside_bounds": true,
+      "validation_failures": [],
+      "audit": {
+        "condition": "V050_H2500",
+        "command": "all 12 profiles",
+        "max_abs_dp_rad": 2.049065045417464e-08,
+        "max_abs_dforce_n": 5.900859832763672e-06,
+        "arm": "full"
+      },
+      "elapsed_s": 212.0990738000255
+    },
+    {
+      "run_id": "unified-b30",
+      "budget_s": 30.0,
+      "manifest_sha256": "834a71cfb07790ab7d9c99414dce16788d64108b7deace6b96dac2f242947290",
+      "eval_models_sha256": "dcb435c8302e40a9e14d78b18623d7bfb69a7abd7a6cbaebe79b645a7f8b3d8b",
+      "budget_row": {
+        "budget_s": 30.0,
+        "per_state_window_s": 30.0,
+        "n_adaptation_states": 8,
+        "independent_adaptation_seconds": 240.0,
+        "prior_probe_exposure_seconds": 0.0,
+        "prior_probe_state": null,
+        "total_target_seconds": 240.0,
+        "note": "no extra prior exposure at or above 30 s"
+      },
+      "arms": {
+        "frozen": {
+          "weights_sha256": "98c4b3070ba83445e3e0880d38d31934212ff2e920c549b52c90f9596f4f7927",
+          "l2_relative": 0.0,
+          "n_changed_values": 0,
+          "optimizer_steps": 0,
+          "trainable_params": 0,
+          "wall_clock_s": 0.0,
+          "summary": {
+            "adaptation": {
+              "n_cells": 96,
+              "mean_rmse_deg_s": 3.050601962248603,
+              "mean_peak_err_deg_s": 4.543882726018917,
+              "mean_tv_n_per_s": 3.947634582318521,
+              "sum_tv_n_per_s": 378.972919902578,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 26
+            },
+            "heldout": {
+              "n_cells": 48,
+              "mean_rmse_deg_s": 2.3532806505242463,
+              "mean_peak_err_deg_s": 3.5694178771361122,
+              "mean_tv_n_per_s": 3.2132909121811584,
+              "sum_tv_n_per_s": 154.2379637846956,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 1
+            }
+          },
+          "vs_frozen": null,
+          "vs_scratch": null
+        },
+        "full": {
+          "weights_sha256": "f49be7aea43900d90a35781a08c73e44863c38cd38bb894da2bdf11228baef29",
+          "l2_relative": 0.14117924256180053,
+          "n_changed_values": 540161,
+          "optimizer_steps": 64,
+          "trainable_params": 540417,
+          "wall_clock_s": 68.83907230000477,
+          "summary": {
+            "adaptation": {
+              "n_cells": 96,
+              "mean_rmse_deg_s": 1.4998414506526074,
+              "mean_peak_err_deg_s": 2.303588683453031,
+              "mean_tv_n_per_s": 6.194199925755189,
+              "sum_tv_n_per_s": 594.6431928724982,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 26
+            },
+            "heldout": {
+              "n_cells": 48,
+              "mean_rmse_deg_s": 0.5888834524407455,
+              "mean_peak_err_deg_s": 1.0574688513327064,
+              "mean_tv_n_per_s": 4.7813664055662235,
+              "sum_tv_n_per_s": 229.5055874671787,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 1
+            }
+          },
+          "vs_frozen": {
+            "better": 144,
+            "worse": 0,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": []
+          },
+          "vs_scratch": {
+            "better": 136,
+            "worse": 8,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": [
+              {
+                "state": "V060_H3500",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 1.4946815923240868,
+                "reference": 0.9420651518070247,
+                "delta": 0.5526164405170622
+              },
+              {
+                "state": "V060_H3500",
+                "command": "eval-step-neg-15deg-s",
+                "candidate": 1.4946815923240868,
+                "reference": 0.9420651518070247,
+                "delta": 0.5526164405170622
+              },
+              {
+                "state": "V060_H3000",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 0.8833910478381071,
+                "reference": 0.4551057841795766,
+                "delta": 0.4282852636585305
+              },
+              {
+                "state": "V060_H3000",
+                "command": "eval-step-neg-15deg-s",
+                "candidate": 0.8833910478381071,
+                "reference": 0.4551057841795766,
+                "delta": 0.4282852636585305
+              },
+              {
+                "state": "V060_H2500",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 0.8904132893389588,
+                "reference": 0.47780670920507196,
+                "delta": 0.41260658013388685
+              }
+            ]
+          }
+        },
+        "head_only": {
+          "weights_sha256": "ac411db3066223c0745ddbfca51d6125bc3fb26e55a02c25e1d551048ceed945",
+          "l2_relative": 0.0014606411251198135,
+          "n_changed_values": 257,
+          "optimizer_steps": 64,
+          "trainable_params": 257,
+          "wall_clock_s": 48.578292199992575,
+          "summary": {
+            "adaptation": {
+              "n_cells": 96,
+              "mean_rmse_deg_s": 1.6192838009152386,
+              "mean_peak_err_deg_s": 2.510222580224761,
+              "mean_tv_n_per_s": 6.296782863205105,
+              "sum_tv_n_per_s": 604.49115486769,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 26
+            },
+            "heldout": {
+              "n_cells": 48,
+              "mean_rmse_deg_s": 0.8262688062577478,
+              "mean_peak_err_deg_s": 1.4715553646049717,
+              "mean_tv_n_per_s": 4.84936062048073,
+              "sum_tv_n_per_s": 232.76930978307502,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 1
+            }
+          },
+          "vs_frozen": {
+            "better": 144,
+            "worse": 0,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": []
+          },
+          "vs_scratch": {
+            "better": 112,
+            "worse": 32,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": [
+              {
+                "state": "V060_H3500",
+                "command": "held-multisine-b",
+                "candidate": 0.9810076163463898,
+                "reference": 0.33379251642256913,
+                "delta": 0.6472150999238206
+              },
+              {
+                "state": "V060_H3500",
+                "command": "eval-multisine",
+                "candidate": 0.8941438548189379,
+                "reference": 0.39825736489102703,
+                "delta": 0.49588648992791085
+              },
+              {
+                "state": "V060_H2500",
+                "command": "eval-multisine",
+                "candidate": 0.6577147612939389,
+                "reference": 0.2776237828966492,
+                "delta": 0.3800909783972897
+              },
+              {
+                "state": "V060_H3000",
+                "command": "eval-multisine",
+                "candidate": 0.6399265330044348,
+                "reference": 0.3025563264777534,
+                "delta": 0.3373702065266814
+              },
+              {
+                "state": "V060_H3000",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 0.7793647858035633,
+                "reference": 0.4551057841795766,
+                "delta": 0.3242590016239867
+              }
+            ]
+          }
+        },
+        "scratch": {
+          "weights_sha256": "924d755a28d99ea7370cc7a1bcf1a3c00c8e196cb59ffe3d5feb623cdd24eb99",
+          "l2_relative": 0.14318579792588595,
+          "n_changed_values": 540161,
+          "optimizer_steps": 64,
+          "trainable_params": 540417,
+          "wall_clock_s": 66.85938590002479,
+          "summary": {
+            "adaptation": {
+              "n_cells": 96,
+              "mean_rmse_deg_s": 1.9232949814249893,
+              "mean_peak_err_deg_s": 2.9312631305175256,
+              "mean_tv_n_per_s": 6.647473214689913,
+              "sum_tv_n_per_s": 638.1574286102316,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 26
+            },
+            "heldout": {
+              "n_cells": 48,
+              "mean_rmse_deg_s": 1.2762101962858399,
+              "mean_peak_err_deg_s": 2.1911090229996706,
+              "mean_tv_n_per_s": 5.547925006932928,
+              "sum_tv_n_per_s": 266.30040033278055,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 1
+            }
+          },
+          "vs_frozen": {
+            "better": 134,
+            "worse": 10,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": [
+              {
+                "state": "V080_H3500",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 3.1625028822869092,
+                "reference": 2.746678498374769,
+                "delta": 0.41582438391214005
+              },
+              {
+                "state": "V080_H3500",
+                "command": "eval-step-neg-15deg-s",
+                "candidate": 3.1625028822869092,
+                "reference": 2.746678498374769,
+                "delta": 0.41582438391214005
+              },
+              {
+                "state": "V080_H3500",
+                "command": "held-sine-1.35hz",
+                "candidate": 0.3147765764835494,
+                "reference": 0.1584586051392724,
+                "delta": 0.156317971344277
+              },
+              {
+                "state": "V080_H3000",
+                "command": "held-sine-1.35hz",
+                "candidate": 0.3267209132722724,
+                "reference": 0.20168494964518113,
+                "delta": 0.12503596362709124
+              },
+              {
+                "state": "V080_H2500",
+                "command": "held-sine-1.35hz",
+                "candidate": 0.34249725185987845,
+                "reference": 0.23713766962805458,
+                "delta": 0.10535958223182387
+              }
+            ]
+          },
+          "vs_scratch": null
+        }
+      },
+      "theta_outside_bounds": true,
+      "validation_failures": [],
+      "audit": {
+        "condition": "V050_H2500",
+        "command": "all 12 profiles",
+        "max_abs_dp_rad": 1.8809508950390352e-08,
+        "max_abs_dforce_n": 5.245208740234375e-06,
+        "arm": "full"
+      },
+      "elapsed_s": 201.948154600017
+    },
+    {
+      "run_id": "unified-b60",
+      "budget_s": 60.0,
+      "manifest_sha256": "a30299479d47f5944a0d3e441af05e7e0fbfbc35d70975ea13fd73c87f50fce2",
+      "eval_models_sha256": "dcb435c8302e40a9e14d78b18623d7bfb69a7abd7a6cbaebe79b645a7f8b3d8b",
+      "budget_row": {
+        "budget_s": 60.0,
+        "per_state_window_s": 60.0,
+        "n_adaptation_states": 8,
+        "independent_adaptation_seconds": 480.0,
+        "prior_probe_exposure_seconds": 0.0,
+        "prior_probe_state": null,
+        "total_target_seconds": 480.0,
+        "note": "no extra prior exposure at or above 30 s"
+      },
+      "arms": {
+        "frozen": {
+          "weights_sha256": "5e989ed79dd6ee316869623c7f8a4c51a50b8eb4d21e32398e42759f7157c862",
+          "l2_relative": 0.0,
+          "n_changed_values": 0,
+          "optimizer_steps": 0,
+          "trainable_params": 0,
+          "wall_clock_s": 0.0,
+          "summary": {
+            "adaptation": {
+              "n_cells": 96,
+              "mean_rmse_deg_s": 3.0670510253413155,
+              "mean_peak_err_deg_s": 4.569685537524756,
+              "mean_tv_n_per_s": 3.91460527222686,
+              "sum_tv_n_per_s": 375.8021061337786,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 26
+            },
+            "heldout": {
+              "n_cells": 48,
+              "mean_rmse_deg_s": 2.6508201080098073,
+              "mean_peak_err_deg_s": 4.0121440332611185,
+              "mean_tv_n_per_s": 2.905304462499771,
+              "sum_tv_n_per_s": 139.454614199989,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 1
+            }
+          },
+          "vs_frozen": null,
+          "vs_scratch": null
+        },
+        "full": {
+          "weights_sha256": "07ea4dc4ffedaa5bd8c1a152a0faad0a75fe944cd94633026d040b2a19b40601",
+          "l2_relative": 0.1451514533380526,
+          "n_changed_values": 540161,
+          "optimizer_steps": 64,
+          "trainable_params": 540417,
+          "wall_clock_s": 66.588451299991,
+          "summary": {
+            "adaptation": {
+              "n_cells": 96,
+              "mean_rmse_deg_s": 1.51845577944066,
+              "mean_peak_err_deg_s": 2.3353596268135326,
+              "mean_tv_n_per_s": 6.248828714171154,
+              "sum_tv_n_per_s": 599.8875565604308,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 26
+            },
+            "heldout": {
+              "n_cells": 48,
+              "mean_rmse_deg_s": 0.6684924099587244,
+              "mean_peak_err_deg_s": 1.198615514051382,
+              "mean_tv_n_per_s": 4.65383515971868,
+              "sum_tv_n_per_s": 223.38408766649664,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 1
+            }
+          },
+          "vs_frozen": {
+            "better": 144,
+            "worse": 0,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": []
+          },
+          "vs_scratch": {
+            "better": 135,
+            "worse": 9,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": [
+              {
+                "state": "V060_H3500",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 1.1460428221403276,
+                "reference": 0.5851406391730092,
+                "delta": 0.5609021829673184
+              },
+              {
+                "state": "V060_H3500",
+                "command": "eval-step-neg-15deg-s",
+                "candidate": 1.1460428221403276,
+                "reference": 0.5851406391730092,
+                "delta": 0.5609021829673184
+              },
+              {
+                "state": "V060_H3000",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 1.1570333110049618,
+                "reference": 0.6190952300156118,
+                "delta": 0.5379380809893499
+              },
+              {
+                "state": "V060_H3000",
+                "command": "eval-step-neg-15deg-s",
+                "candidate": 1.1570333110049618,
+                "reference": 0.6190952300156118,
+                "delta": 0.5379380809893499
+              },
+              {
+                "state": "V060_H2500",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 1.1664894883849009,
+                "reference": 0.6546974702122315,
+                "delta": 0.5117920181726694
+              }
+            ]
+          }
+        },
+        "head_only": {
+          "weights_sha256": "30d2d19190a6b20bfe2101b6758f3d41f5302dbc4cbed24430d3535810fabb19",
+          "l2_relative": 0.0015480730060478736,
+          "n_changed_values": 257,
+          "optimizer_steps": 64,
+          "trainable_params": 257,
+          "wall_clock_s": 44.65166120001231,
+          "summary": {
+            "adaptation": {
+              "n_cells": 96,
+              "mean_rmse_deg_s": 1.5930845818686772,
+              "mean_peak_err_deg_s": 2.46407005050402,
+              "mean_tv_n_per_s": 6.329397439178623,
+              "sum_tv_n_per_s": 607.6221541611478,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 26
+            },
+            "heldout": {
+              "n_cells": 48,
+              "mean_rmse_deg_s": 0.7895437072484266,
+              "mean_peak_err_deg_s": 1.4235540795983759,
+              "mean_tv_n_per_s": 4.209071180278503,
+              "sum_tv_n_per_s": 202.03541665336815,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 1
+            }
+          },
+          "vs_frozen": {
+            "better": 144,
+            "worse": 0,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": []
+          },
+          "vs_scratch": {
+            "better": 118,
+            "worse": 26,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": [
+              {
+                "state": "V060_H2500",
+                "command": "eval-multisine",
+                "candidate": 0.5655409313152892,
+                "reference": 0.23928257230748803,
+                "delta": 0.3262583590078011
+              },
+              {
+                "state": "V080_H2500",
+                "command": "held-sine-0.62hz",
+                "candidate": 0.5685281798184425,
+                "reference": 0.260122376416923,
+                "delta": 0.3084058034015195
+              },
+              {
+                "state": "V060_H3000",
+                "command": "eval-multisine",
+                "candidate": 0.5429065798840154,
+                "reference": 0.2459346684413574,
+                "delta": 0.296971911442658
+              },
+              {
+                "state": "V080_H3000",
+                "command": "held-sine-0.62hz",
+                "candidate": 0.6248114363738976,
+                "reference": 0.359023391531193,
+                "delta": 0.2657880448427046
+              },
+              {
+                "state": "V060_H3500",
+                "command": "eval-multisine",
+                "candidate": 0.5211995367130887,
+                "reference": 0.2638905572701335,
+                "delta": 0.2573089794429552
+              }
+            ]
+          }
+        },
+        "scratch": {
+          "weights_sha256": "cf234f1dc5fefdcd5c299959c6d01719ab102a7acd559f0cffc788bc960c01da",
+          "l2_relative": 0.14318948420434574,
+          "n_changed_values": 540161,
+          "optimizer_steps": 64,
+          "trainable_params": 540417,
+          "wall_clock_s": 67.47147299998323,
+          "summary": {
+            "adaptation": {
+              "n_cells": 96,
+              "mean_rmse_deg_s": 1.922821813055623,
+              "mean_peak_err_deg_s": 2.939717814956589,
+              "mean_tv_n_per_s": 6.744665304902445,
+              "sum_tv_n_per_s": 647.4878692706347,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 26
+            },
+            "heldout": {
+              "n_cells": 48,
+              "mean_rmse_deg_s": 1.346618860664126,
+              "mean_peak_err_deg_s": 2.36637349304141,
+              "mean_tv_n_per_s": 5.425246669905028,
+              "sum_tv_n_per_s": 260.4118401554413,
+              "n_nonfinite": 0,
+              "n_unreachable_demand": 1
+            }
+          },
+          "vs_frozen": {
+            "better": 133,
+            "worse": 11,
+            "equal": 0,
+            "n_cells": 144,
+            "worst_regressions": [
+              {
+                "state": "V080_H2500",
+                "command": "eval-step-pos-15deg-s",
+                "candidate": 3.58927421476483,
+                "reference": 3.183252753293844,
+                "delta": 0.40602146147098583
+              },
+              {
+                "state": "V080_H2500",
+                "command": "eval-step-neg-15deg-s",
+                "candidate": 3.58927421476483,
+                "reference": 3.183252753293844,
+                "delta": 0.40602146147098583
+              },
+              {
+                "state": "V080_H3500",
+                "command": "held-sine-1.35hz",
+                "candidate": 0.3459806000824676,
+                "reference": 0.23652208654653442,
+                "delta": 0.1094585135359332
+              },
+              {
+                "state": "V080_H3000",
+                "command": "held-sine-1.35hz",
+                "candidate": 0.3382924850793331,
+                "reference": 0.24171229643378797,
+                "delta": 0.09658018864554516
+              },
+              {
+                "state": "V080_H2500",
+                "command": "held-sine-1.35hz",
+                "candidate": 0.32264882931374445,
+                "reference": 0.2519475739859157,
+                "delta": 0.07070125532782873
+              }
+            ]
+          },
+          "vs_scratch": null
+        }
+      },
+      "theta_outside_bounds": true,
+      "validation_failures": [],
+      "audit": {
+        "condition": "V050_H2500",
+        "command": "all 12 profiles",
+        "max_abs_dp_rad": 1.882782589557319e-08,
+        "max_abs_dforce_n": 5.245208740234375e-06,
+        "arm": "full"
+      },
+      "elapsed_s": 196.86352120002266
+    }
+  ],
+  "complete": true
+}

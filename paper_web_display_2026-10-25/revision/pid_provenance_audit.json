@@ -1,0 +1,23 @@
+{
+  "source_manuscript": "flight_control_original_restored_2026-10-25/paper_source/dhc6_paper.py:407",
+  "source_section": "原稿 5.3.4 与固定增益 PID 的对照",
+  "manuscript_description": {
+    "controller": "带参考前馈及抗积分饱和的二自由度固定增益 PID",
+    "tuning_plant_original_id": "train_core-0421",
+    "tuning_plant_display_id": 7,
+    "reported_tuning": "单对象网格搜索",
+    "reported_gains": {
+      "kp": 128,
+      "ki": 60,
+      "kd": 0.8,
+      "kff": 6.0
+    },
+    "reported_evaluation": "300 同分布 + 500 分布外对象，同输入与力接口，固定增益"
+  },
+  "figure_script_data_reference": "paper_source/_report_review/pid_vs_student.json",
+  "referenced_data_file_found_in_original_zip": false,
+  "matching_execution_and_search_records_located": false,
+  "bundled_generic_pid": "pingmo_src/src/controllers/pid.py：三个 P/I/D 增益、差分进化整定；未与原稿的四增益前馈网格搜索配置对应",
+  "later_protocol_pid": "controller_route_20261024 的联合整定 PID 为另一协议，所选增益 45/24/1，不用于追认原稿这组数据",
+  "provenance_status": "原稿与汇总表可追溯；对应执行记录尚未找到。本轮未重跑 PID 实验。"
+}

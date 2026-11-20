@@ -1,0 +1,751 @@
+[
+  {
+    "round": 0,
+    "stage": "BC",
+    "teacher_action_probability": 1.0,
+    "new_samples": 153600,
+    "aggregate_samples": 153600,
+    "source_plants": [
+      {
+        "plant_id": "train_core-1875",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "9682d236d3a6034936ff73742f3437f946a66cc4797171dc56615e309e7214f4"
+      },
+      {
+        "plant_id": "train_core-0750",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "64fdabc8cbf11a7521af4e1e77d7e142206ce8739c2ba91d3bd9fb2c6e3dea21"
+      },
+      {
+        "plant_id": "train_core-1998",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "438e950603df4031a730ecbefb44b693fdfd81abe565b78597da6af928bb64e9"
+      },
+      {
+        "plant_id": "train_core-1197",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "a112eb5776ca850a29a5315fa3082d9c80f6c0772ad2c98b31753bce5b16f4bf"
+      },
+      {
+        "plant_id": "train_core-0553",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "4d4c3056a241792c55c7395d427dd73a84f29dd671e375ed117242bf107ebfa7"
+      },
+      {
+        "plant_id": "train_core-0262",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "ebc6ddb1f13e3f58cd2f67c860452bb34a06659b50a17c370f7eab27a5390421"
+      },
+      {
+        "plant_id": "train_core-0148",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "eb84b7ea590e3b310a92eb1bdd4095700975947ddcec38d88101c9f7875a83a2"
+      },
+      {
+        "plant_id": "train_core-1450",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "b63cde0f23e4737964c13c9b8d804f49e0bfca9b3b0160f8eb3c7a10d041fd54"
+      },
+      {
+        "plant_id": "train_core-0401",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "cb3dd6504fe157df8b6e9d53b32b93c68224b7134119464f55371ca014edca49"
+      },
+      {
+        "plant_id": "train_core-1871",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "6e24191cd0a1146be554064cc91be3b64f3e7e272ef3e6c32558ebbb4791bc38"
+      },
+      {
+        "plant_id": "train_core-1187",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "bfdb0d4bd073d44acda1c011ce582e689601bf91baa8e68de701995ae0e22152"
+      },
+      {
+        "plant_id": "train_core-1442",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "c8f2cb3de6bb42a5d2f997bb9773d28710af51f0ece198263de467d40e0d976f"
+      }
+    ],
+    "validation_score_deg_s": 4.66807473047326,
+    "validation": {
+      "episodes": 192,
+      "failed_episodes": 0,
+      "passed_episodes": 84,
+      "pass_rate": 0.4375,
+      "rmse_deg_s_median_finite": 1.9829448461532593,
+      "peak_deg_s_median_finite": 3.727324962615967,
+      "tv_n_s_median_finite": 2.2601241060131976,
+      "tail_rms_deg_s_median_finite": 1.5276086330413818,
+      "post_release_rms_deg_s_median_finite": null,
+      "settling_s_median_finite": null
+    },
+    "elapsed_s": 64.37397766113281
+  },
+  {
+    "round": 1,
+    "stage": "DAgger",
+    "teacher_action_probability": 0.5,
+    "new_samples": 153600,
+    "aggregate_samples": 307200,
+    "source_plants": [
+      {
+        "plant_id": "train_core-1875",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "9682d236d3a6034936ff73742f3437f946a66cc4797171dc56615e309e7214f4"
+      },
+      {
+        "plant_id": "train_core-0750",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "64fdabc8cbf11a7521af4e1e77d7e142206ce8739c2ba91d3bd9fb2c6e3dea21"
+      },
+      {
+        "plant_id": "train_core-1998",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "438e950603df4031a730ecbefb44b693fdfd81abe565b78597da6af928bb64e9"
+      },
+      {
+        "plant_id": "train_core-1197",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "a112eb5776ca850a29a5315fa3082d9c80f6c0772ad2c98b31753bce5b16f4bf"
+      },
+      {
+        "plant_id": "train_core-0553",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "4d4c3056a241792c55c7395d427dd73a84f29dd671e375ed117242bf107ebfa7"
+      },
+      {
+        "plant_id": "train_core-0262",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "ebc6ddb1f13e3f58cd2f67c860452bb34a06659b50a17c370f7eab27a5390421"
+      },
+      {
+        "plant_id": "train_core-0148",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "eb84b7ea590e3b310a92eb1bdd4095700975947ddcec38d88101c9f7875a83a2"
+      },
+      {
+        "plant_id": "train_core-1450",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "b63cde0f23e4737964c13c9b8d804f49e0bfca9b3b0160f8eb3c7a10d041fd54"
+      },
+      {
+        "plant_id": "train_core-0401",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "cb3dd6504fe157df8b6e9d53b32b93c68224b7134119464f55371ca014edca49"
+      },
+      {
+        "plant_id": "train_core-1871",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "6e24191cd0a1146be554064cc91be3b64f3e7e272ef3e6c32558ebbb4791bc38"
+      },
+      {
+        "plant_id": "train_core-1187",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "bfdb0d4bd073d44acda1c011ce582e689601bf91baa8e68de701995ae0e22152"
+      },
+      {
+        "plant_id": "train_core-1442",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "c8f2cb3de6bb42a5d2f997bb9773d28710af51f0ece198263de467d40e0d976f"
+      }
+    ],
+    "validation_score_deg_s": 4.533739371535678,
+    "validation": {
+      "episodes": 192,
+      "failed_episodes": 0,
+      "passed_episodes": 82,
+      "pass_rate": 0.4270833333333333,
+      "rmse_deg_s_median_finite": 1.6698676943778992,
+      "peak_deg_s_median_finite": 3.450681447982788,
+      "tv_n_s_median_finite": 2.309740914238824,
+      "tail_rms_deg_s_median_finite": 1.504055142402649,
+      "post_release_rms_deg_s_median_finite": null,
+      "settling_s_median_finite": null
+    },
+    "elapsed_s": 130.16126918792725
+  },
+  {
+    "round": 2,
+    "stage": "DAgger",
+    "teacher_action_probability": 0.25,
+    "new_samples": 153600,
+    "aggregate_samples": 460800,
+    "source_plants": [
+      {
+        "plant_id": "train_core-1875",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "9682d236d3a6034936ff73742f3437f946a66cc4797171dc56615e309e7214f4"
+      },
+      {
+        "plant_id": "train_core-0750",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "64fdabc8cbf11a7521af4e1e77d7e142206ce8739c2ba91d3bd9fb2c6e3dea21"
+      },
+      {
+        "plant_id": "train_core-1998",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "438e950603df4031a730ecbefb44b693fdfd81abe565b78597da6af928bb64e9"
+      },
+      {
+        "plant_id": "train_core-1197",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "a112eb5776ca850a29a5315fa3082d9c80f6c0772ad2c98b31753bce5b16f4bf"
+      },
+      {
+        "plant_id": "train_core-0553",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "4d4c3056a241792c55c7395d427dd73a84f29dd671e375ed117242bf107ebfa7"
+      },
+      {
+        "plant_id": "train_core-0262",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "ebc6ddb1f13e3f58cd2f67c860452bb34a06659b50a17c370f7eab27a5390421"
+      },
+      {
+        "plant_id": "train_core-0148",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "eb84b7ea590e3b310a92eb1bdd4095700975947ddcec38d88101c9f7875a83a2"
+      },
+      {
+        "plant_id": "train_core-1450",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "b63cde0f23e4737964c13c9b8d804f49e0bfca9b3b0160f8eb3c7a10d041fd54"
+      },
+      {
+        "plant_id": "train_core-0401",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "cb3dd6504fe157df8b6e9d53b32b93c68224b7134119464f55371ca014edca49"
+      },
+      {
+        "plant_id": "train_core-1871",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "6e24191cd0a1146be554064cc91be3b64f3e7e272ef3e6c32558ebbb4791bc38"
+      },
+      {
+        "plant_id": "train_core-1187",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "bfdb0d4bd073d44acda1c011ce582e689601bf91baa8e68de701995ae0e22152"
+      },
+      {
+        "plant_id": "train_core-1442",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "c8f2cb3de6bb42a5d2f997bb9773d28710af51f0ece198263de467d40e0d976f"
+      }
+    ],
+    "validation_score_deg_s": 3.232616384824117,
+    "validation": {
+      "episodes": 192,
+      "failed_episodes": 0,
+      "passed_episodes": 92,
+      "pass_rate": 0.4791666666666667,
+      "rmse_deg_s_median_finite": 1.6096388101577759,
+      "peak_deg_s_median_finite": 2.972381591796875,
+      "tv_n_s_median_finite": 1.7689652592368275,
+      "tail_rms_deg_s_median_finite": 1.3672634363174438,
+      "post_release_rms_deg_s_median_finite": null,
+      "settling_s_median_finite": null
+    },
+    "elapsed_s": 196.99522471427917
+  },
+  {
+    "round": 3,
+    "stage": "DAgger",
+    "teacher_action_probability": 0.0,
+    "new_samples": 153600,
+    "aggregate_samples": 614400,
+    "source_plants": [
+      {
+        "plant_id": "train_core-1875",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "9682d236d3a6034936ff73742f3437f946a66cc4797171dc56615e309e7214f4"
+      },
+      {
+        "plant_id": "train_core-0750",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "64fdabc8cbf11a7521af4e1e77d7e142206ce8739c2ba91d3bd9fb2c6e3dea21"
+      },
+      {
+        "plant_id": "train_core-1998",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "438e950603df4031a730ecbefb44b693fdfd81abe565b78597da6af928bb64e9"
+      },
+      {
+        "plant_id": "train_core-1197",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "a112eb5776ca850a29a5315fa3082d9c80f6c0772ad2c98b31753bce5b16f4bf"
+      },
+      {
+        "plant_id": "train_core-0553",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "4d4c3056a241792c55c7395d427dd73a84f29dd671e375ed117242bf107ebfa7"
+      },
+      {
+        "plant_id": "train_core-0262",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "ebc6ddb1f13e3f58cd2f67c860452bb34a06659b50a17c370f7eab27a5390421"
+      },
+      {
+        "plant_id": "train_core-0148",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "eb84b7ea590e3b310a92eb1bdd4095700975947ddcec38d88101c9f7875a83a2"
+      },
+      {
+        "plant_id": "train_core-1450",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "b63cde0f23e4737964c13c9b8d804f49e0bfca9b3b0160f8eb3c7a10d041fd54"
+      },
+      {
+        "plant_id": "train_core-0401",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "cb3dd6504fe157df8b6e9d53b32b93c68224b7134119464f55371ca014edca49"
+      },
+      {
+        "plant_id": "train_core-1871",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "6e24191cd0a1146be554064cc91be3b64f3e7e272ef3e6c32558ebbb4791bc38"
+      },
+      {
+        "plant_id": "train_core-1187",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "bfdb0d4bd073d44acda1c011ce582e689601bf91baa8e68de701995ae0e22152"
+      },
+      {
+        "plant_id": "train_core-1442",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "c8f2cb3de6bb42a5d2f997bb9773d28710af51f0ece198263de467d40e0d976f"
+      }
+    ],
+    "validation_score_deg_s": 2.482215247427424,
+    "validation": {
+      "episodes": 192,
+      "failed_episodes": 0,
+      "passed_episodes": 74,
+      "pass_rate": 0.3854166666666667,
+      "rmse_deg_s_median_finite": 2.3551411628723145,
+      "peak_deg_s_median_finite": 5.617587089538574,
+      "tv_n_s_median_finite": 7.672354706332214,
+      "tail_rms_deg_s_median_finite": 1.972605049610138,
+      "post_release_rms_deg_s_median_finite": null,
+      "settling_s_median_finite": 4.12
+    },
+    "elapsed_s": 264.8726522922516
+  },
+  {
+    "round": 4,
+    "stage": "DAgger",
+    "teacher_action_probability": 0.0,
+    "new_samples": 153600,
+    "aggregate_samples": 768000,
+    "source_plants": [
+      {
+        "plant_id": "train_core-1875",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "9682d236d3a6034936ff73742f3437f946a66cc4797171dc56615e309e7214f4"
+      },
+      {
+        "plant_id": "train_core-0750",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "64fdabc8cbf11a7521af4e1e77d7e142206ce8739c2ba91d3bd9fb2c6e3dea21"
+      },
+      {
+        "plant_id": "train_core-1998",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "438e950603df4031a730ecbefb44b693fdfd81abe565b78597da6af928bb64e9"
+      },
+      {
+        "plant_id": "train_core-1197",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "a112eb5776ca850a29a5315fa3082d9c80f6c0772ad2c98b31753bce5b16f4bf"
+      },
+      {
+        "plant_id": "train_core-0553",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "4d4c3056a241792c55c7395d427dd73a84f29dd671e375ed117242bf107ebfa7"
+      },
+      {
+        "plant_id": "train_core-0262",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "ebc6ddb1f13e3f58cd2f67c860452bb34a06659b50a17c370f7eab27a5390421"
+      },
+      {
+        "plant_id": "train_core-0148",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "eb84b7ea590e3b310a92eb1bdd4095700975947ddcec38d88101c9f7875a83a2"
+      },
+      {
+        "plant_id": "train_core-1450",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "b63cde0f23e4737964c13c9b8d804f49e0bfca9b3b0160f8eb3c7a10d041fd54"
+      },
+      {
+        "plant_id": "train_core-0401",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "cb3dd6504fe157df8b6e9d53b32b93c68224b7134119464f55371ca014edca49"
+      },
+      {
+        "plant_id": "train_core-1871",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "6e24191cd0a1146be554064cc91be3b64f3e7e272ef3e6c32558ebbb4791bc38"
+      },
+      {
+        "plant_id": "train_core-1187",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "bfdb0d4bd073d44acda1c011ce582e689601bf91baa8e68de701995ae0e22152"
+      },
+      {
+        "plant_id": "train_core-1442",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "c8f2cb3de6bb42a5d2f997bb9773d28710af51f0ece198263de467d40e0d976f"
+      }
+    ],
+    "validation_score_deg_s": 1.0622541379804413,
+    "validation": {
+      "episodes": 192,
+      "failed_episodes": 0,
+      "passed_episodes": 154,
+      "pass_rate": 0.8020833333333334,
+      "rmse_deg_s_median_finite": 0.8154617547988892,
+      "peak_deg_s_median_finite": 1.7418067455291748,
+      "tv_n_s_median_finite": 2.078044923961672,
+      "tail_rms_deg_s_median_finite": 0.6217284500598907,
+      "post_release_rms_deg_s_median_finite": null,
+      "settling_s_median_finite": 5.04
+    },
+    "elapsed_s": 333.86575841903687
+  },
+  {
+    "round": 5,
+    "stage": "DAgger",
+    "teacher_action_probability": 0.0,
+    "new_samples": 153600,
+    "aggregate_samples": 921600,
+    "source_plants": [
+      {
+        "plant_id": "train_core-1875",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "9682d236d3a6034936ff73742f3437f946a66cc4797171dc56615e309e7214f4"
+      },
+      {
+        "plant_id": "train_core-0750",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "64fdabc8cbf11a7521af4e1e77d7e142206ce8739c2ba91d3bd9fb2c6e3dea21"
+      },
+      {
+        "plant_id": "train_core-1998",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "438e950603df4031a730ecbefb44b693fdfd81abe565b78597da6af928bb64e9"
+      },
+      {
+        "plant_id": "train_core-1197",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "a112eb5776ca850a29a5315fa3082d9c80f6c0772ad2c98b31753bce5b16f4bf"
+      },
+      {
+        "plant_id": "train_core-0553",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "4d4c3056a241792c55c7395d427dd73a84f29dd671e375ed117242bf107ebfa7"
+      },
+      {
+        "plant_id": "train_core-0262",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "ebc6ddb1f13e3f58cd2f67c860452bb34a06659b50a17c370f7eab27a5390421"
+      },
+      {
+        "plant_id": "train_core-0148",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "eb84b7ea590e3b310a92eb1bdd4095700975947ddcec38d88101c9f7875a83a2"
+      },
+      {
+        "plant_id": "train_core-1450",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "b63cde0f23e4737964c13c9b8d804f49e0bfca9b3b0160f8eb3c7a10d041fd54"
+      },
+      {
+        "plant_id": "train_core-0401",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "cb3dd6504fe157df8b6e9d53b32b93c68224b7134119464f55371ca014edca49"
+      },
+      {
+        "plant_id": "train_core-1871",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "6e24191cd0a1146be554064cc91be3b64f3e7e272ef3e6c32558ebbb4791bc38"
+      },
+      {
+        "plant_id": "train_core-1187",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "bfdb0d4bd073d44acda1c011ce582e689601bf91baa8e68de701995ae0e22152"
+      },
+      {
+        "plant_id": "train_core-1442",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "c8f2cb3de6bb42a5d2f997bb9773d28710af51f0ece198263de467d40e0d976f"
+      }
+    ],
+    "validation_score_deg_s": 1.0333679327741265,
+    "validation": {
+      "episodes": 192,
+      "failed_episodes": 0,
+      "passed_episodes": 164,
+      "pass_rate": 0.8541666666666666,
+      "rmse_deg_s_median_finite": 0.8615497350692749,
+      "peak_deg_s_median_finite": 1.8038020133972168,
+      "tv_n_s_median_finite": 1.9548194700496488,
+      "tail_rms_deg_s_median_finite": 0.6441571116447449,
+      "post_release_rms_deg_s_median_finite": null,
+      "settling_s_median_finite": 5.220000000000001
+    },
+    "elapsed_s": 404.444616317749
+  },
+  {
+    "round": 6,
+    "stage": "DAgger",
+    "teacher_action_probability": 0.0,
+    "new_samples": 153600,
+    "aggregate_samples": 1075200,
+    "source_plants": [
+      {
+        "plant_id": "train_core-1875",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "9682d236d3a6034936ff73742f3437f946a66cc4797171dc56615e309e7214f4"
+      },
+      {
+        "plant_id": "train_core-0750",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "64fdabc8cbf11a7521af4e1e77d7e142206ce8739c2ba91d3bd9fb2c6e3dea21"
+      },
+      {
+        "plant_id": "train_core-1998",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "438e950603df4031a730ecbefb44b693fdfd81abe565b78597da6af928bb64e9"
+      },
+      {
+        "plant_id": "train_core-1197",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "a112eb5776ca850a29a5315fa3082d9c80f6c0772ad2c98b31753bce5b16f4bf"
+      },
+      {
+        "plant_id": "train_core-0553",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "4d4c3056a241792c55c7395d427dd73a84f29dd671e375ed117242bf107ebfa7"
+      },
+      {
+        "plant_id": "train_core-0262",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "ebc6ddb1f13e3f58cd2f67c860452bb34a06659b50a17c370f7eab27a5390421"
+      },
+      {
+        "plant_id": "train_core-0148",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "eb84b7ea590e3b310a92eb1bdd4095700975947ddcec38d88101c9f7875a83a2"
+      },
+      {
+        "plant_id": "train_core-1450",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "b63cde0f23e4737964c13c9b8d804f49e0bfca9b3b0160f8eb3c7a10d041fd54"
+      },
+      {
+        "plant_id": "train_core-0401",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "cb3dd6504fe157df8b6e9d53b32b93c68224b7134119464f55371ca014edca49"
+      },
+      {
+        "plant_id": "train_core-1871",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "6e24191cd0a1146be554064cc91be3b64f3e7e272ef3e6c32558ebbb4791bc38"
+      },
+      {
+        "plant_id": "train_core-1187",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "bfdb0d4bd073d44acda1c011ce582e689601bf91baa8e68de701995ae0e22152"
+      },
+      {
+        "plant_id": "train_core-1442",
+        "kept_samples": 12800,
+        "diverged_episodes": 0,
+        "total_episodes": 32,
+        "teacher_sha256": "c8f2cb3de6bb42a5d2f997bb9773d28710af51f0ece198263de467d40e0d976f"
+      }
+    ],
+    "validation_score_deg_s": 0.9596256498868266,
+    "validation": {
+      "episodes": 192,
+      "failed_episodes": 0,
+      "passed_episodes": 166,
+      "pass_rate": 0.8645833333333334,
+      "rmse_deg_s_median_finite": 0.6809290051460266,
+      "peak_deg_s_median_finite": 1.493006408214569,
+      "tv_n_s_median_finite": 2.054516881959051,
+      "tail_rms_deg_s_median_finite": 0.44835707545280457,
+      "post_release_rms_deg_s_median_finite": null,
+      "settling_s_median_finite": 4.0
+    },
+    "elapsed_s": 475.8707163333893
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "base": "/home/swj/pingmo/FQControl_Model",
+  "scope": "PPO raw action probability and final-state bootstrap",
+  "files": [
+    {
+      "file": "src/teacher/ppo/networks.py",
+      "before_sha256": "ac9a2545b7c78d458979be3750d4ecaa14590341986512e436ee3baf1e32e3e6",
+      "after_sha256": "2de8af0ffcba278723f7c6790048a91fee414e4396c3d9b89fe893e4d21c31f6",
+      "base_file_unchanged": true
+    },
+    {
+      "file": "src/teacher/ppo/trainer.py",
+      "before_sha256": "082c65373c16631ee865673bff588ed4627d7a23c4d7898a778014586924f4a2",
+      "after_sha256": "96847ab0a04003997ae1d3da6d26c472eba742ed1bf601215a2e1189e0c10a79",
+      "base_file_unchanged": true
+    },
+    {
+      "file": "src/envs/batched_p_channel.py",
+      "before_sha256": "2d8a73e24e2ccdee693245aaebfbf21d769aec270436498b61141f0fd2d42fd7",
+      "after_sha256": "ca52a83e69a8607ae318d153cf7e1c2ea2d2094405e62b43d86d1c34e140e238",
+      "base_file_unchanged": true
+    },
+    {
+      "file": "src/aircraft/gain_calibration.py",
+      "before_sha256": "42cb4f7c26feaced5bf123ddd6df2a9a7f072b1aaf580e93cfeb90c4e3545f2a",
+      "reason": "NumPy 1.26/2.x trapezoidal integration API compatibility",
+      "after_sha256": "0c6948dc4e0351e8ee7dc87a48d01b18e72f380007b8e2f3ae60ffd48c2cd29b",
+      "base_file_unchanged": true
+    }
+  ],
+  "training_started": false,
+  "verification": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v",
+    "tests_passed": 8,
+    "duration_s": 2.629,
+    "device": "cpu",
+    "optimizer_step_in_integration_test": "mocked_no_op",
+    "research_training_started": false
+  }
+}

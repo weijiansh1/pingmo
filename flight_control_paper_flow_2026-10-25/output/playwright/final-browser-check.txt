@@ -1,0 +1,22 @@
+### Result
+{"desktop":{"width":1440,"scrollWidth":1440,"displayMath":15,"inlineMath":106,"mathErrors":0,"figures":10,"imagesLoaded":true},"mobile":{"width":390,"scrollWidth":390,"titleTop":97.890625,"contentsOpen":false},"print":{"overflowEquations":0,"oversizedTables":0,"ungroupedImages":0,"captionedTables":7}}
+### Ran Playwright code
+```js
+await (async (page) => {
+ await page.emulateMedia({media:'screen'});
+ await page.setViewportSize({width:1440,height:1000});
+ await page.reload();
+ await page.evaluate(async()=>{document.documentElement.style.scrollBehavior='auto';await document.fonts.ready;await Promise.all(Array.from(document.images,im=>{im.loading='eager';return im.decode();}));window.scrollTo({top:0,behavior:'instant'});});
+ await page.screenshot({path:'output/playwright/final-desktop-opening.png'});
+ await page.locator('figure').filter({has:page.locator('img[src="paper/teacher_student_time_domain.svg"]')}).screenshot({path:'output/playwright/final-teacher-student.png'});
+ const desktop=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,displayMath:document.querySelectorAll('.eq .katex').length,inlineMath:document.querySelectorAll('.math-inline .katex').length,mathErrors:document.querySelectorAll('.katex-error').length,figures:document.querySelectorAll('figure').length,imagesLoaded:Array.from(document.images).every(im=>im.complete&&im.naturalWidth>0)}));
+ await page.setViewportSize({width:390,height:844});
+ await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
+ await page.screenshot({path:'output/playwright/final-mobile-opening.png'});
+ const mobile=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,titleTop:document.querySelector('h1.title').getBoundingClientRect().top,contentsOpen:document.querySelector('.toc-panel').open}));
+ await page.emulateMedia({media:'print'});await page.setViewportSize({width:673,height:950});
+ const print=await page.evaluate(()=>({overflowEquations:Array.from(document.querySelectorAll('.eq')).filter(e=>e.scrollWidth>e.clientWidth+2).length,oversizedTables:Array.from(document.querySelectorAll('table')).filter(e=>e.getBoundingClientRect().width>document.querySelector('main').clientWidth+2).length,ungroupedImages:document.querySelectorAll('main > p > img').length,captionedTables:document.querySelectorAll('table caption').length}));
+ await page.pdf({path:'论文_全文统稿_2026-10-25.pdf',format:'A4',preferCSSPageSize:true,printBackground:true,tagged:true,outline:true,displayHeaderFooter:true,headerTemplate:'<span></span>',footerTemplate:'<div style="font-size:9px;text-align:center;width:100%;"><span class="pageNumber"></span> / <span class="totalPages"></span></div>'});
+ return {desktop,mobile,print};
+})(page);
+```

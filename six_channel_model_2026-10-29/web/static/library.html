@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>六通道品模 v4 对象库</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="viz-root">
+<main>
+  <header>
+    <h1>六通道品模 · v4 对象库</h1>
+    <p class="lede">模态按 GJB 等级采样，耦合形状取自 10 架真实飞机的 94 个飞行状态（NASA CR-2144），由模态精确解出全部导数，滚转零点和交叉通道都是推导结果；再按滚转、交叉轴、俯仰、长周期的全部判据综合定级。下面的响应都由耦合模型现场仿真。</p>
+    <div class="links"><a href="./">← 模型与公式</a><a href="docs/design" target="_blank">设计说明（Markdown）</a><a href="docs/readme" target="_blank">README</a><span class="muted" id="revision"></span></div>
+  </header>
+
+  <section>
+    <h2>链路</h2>
+    <div class="pipeline">
+      <div class="pipe-step"><b>1 · 模态按 GJB 等级</b><span>T_R、螺旋、荷兰滚、1 s 灵敏度、俯仰短周期；L2/L3 轮流把一项推到该级</span></div>
+      <div class="pipe-step"><b>2 · 真实飞机耦合形状</b><span>Yβ、N′p/L′p、L′r/N′r、副翼偏航；方向舵比例相对上反与侧滑导数按真实分位数抽取</span></div>
+      <div class="pipe-step"><b>3 · 精确解出导数</b><span>L′p 的四次方程；ωφ、ζφ 与全部交叉通道成为结果；纵向保持 GJB 短周期</span></div>
+      <div class="pipe-step"><b>4 · 耦合六自由度模型</b><span>线性气动 + 风轴重力与运动学 + 完整惯性耦合 + 油门 + Dryden 湍流</span></div>
+      <div class="pipe-step"><b>5 · 全部判据综合定级</b><span>取最差项；1/2/3 级各 1,500，OOD 500；每级按定级来源轮流选取</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section>
+    <h2>每一级由什么判据定级</h2>
+    <p class="note">原滚转库只按 T_R、螺旋、荷兰滚、灵敏度四项定级；v4 让滚转延迟、交叉轴、俯仰与长周期判据一起参与，并在每级内部轮流选取定级来源，使各类品质缺陷都有代表。标准对各级都要求的项（定常侧滑方向、1/Tθ1 > 0、长周期不得非周期发散）不满足时归入 OOD。</p>
+    <div class="grid-3" id="binding"></div>
+  </section>
+
+  <section>
+    <h2>参数分布：v4、原滚转库与真实飞机</h2>
+    <p class="note">曲线为各库中对象所占百分比；底部短线为 CR-2144 的 94 个真实飞行状态。ωφ/ωd、ζφ 在原库中是独立均匀采样的，在 v4 中由导数推出。</p>
+    <div class="legend" id="dist-legend"></div>
+    <div class="grid-4" id="distributions"></div>
+    <div class="card" style="margin-top:12px"><table class="stats" id="dist-table"></table></div>
+  </section>
+
+  <section>
+    <h2>对象浏览</h2>
+    <div class="filters" id="filters"></div>
+    <div class="browser">
+      <div class="card">
+        <div class="legend" id="scatter-legend"></div>
+        <div class="chart" id="scatter"></div>
+        <p class="note">点击任意一点查看该对象；空心圈为真实飞机（坐标在 CR-2144 中有对应量时显示）。</p>
+      </div>
+      <div class="card" id="detail"><p class="muted">选择一个对象…</p></div>
+    </div>
+  </section>
+
+  <section id="responses-section">
+    <h2>选中对象的响应（耦合模型现场仿真，1 kHz）</h2>
+    <p class="note" id="steps-note"></p>
+    <div class="grid-3" id="steps"></div>
+  </section>
+
+  <section>
+    <h2>大机动</h2>
+    <p class="note">横向杆给 1.5 s 脉冲，杆力按线性横航向模型标定，使滚转模态衰减后（1.5 s + 3T_R）的坡度为 60°；随后不拉杆或拉 1 g（平飞 60° 转弯需要 n = 2）；以及 MIL-STD-1797A 4.8.1 的 360° 滚转：线性模型没有杆行程上限，杆力按本对象速度段的 1 级滚转性能（表 XXX）标定，转满 360° 后松杆，对比有无惯性耦合。迎角变化或侧滑超过 15° 时停止计算（线性导数不再可信）。</p>
+    <p><button id="maneuver-button">计算选中对象的大机动</button></p>
+    <div id="maneuver-warn"></div>
+    <div class="grid-4" id="maneuvers"></div>
+  </section>
+
+  <section class="note">
+    <p>来源：GJB 2874-97 与 MIL-STD-1797A（判据与页码见设计说明）；NASA CR-2144（真实飞机导数）；Davidson &amp; Andrisani NASA TM-110306（横航向特征向量）。滚转振荡在 |φ/β| &lt; 1.5 时按规范不适用；侧滑偏离的 k 按各对象 V0 所在速度段；定常侧滑上反或脚蹬方向错误不属任何等级（OOD）。v3 库（修正前）保留在 library/six_channel_5000_v3。</p>
+  </section>
+</main>
+<div class="tooltip" id="tooltip"></div>
+</div>
+<script src="common.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

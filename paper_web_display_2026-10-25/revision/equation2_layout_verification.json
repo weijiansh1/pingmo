@@ -1,0 +1,43 @@
+{
+  "scope": "Equation 2 layout",
+  "snapshot": "/home/swj/pingmo/paper_web_display_2026-10-25/revision/before_equation2_layout_20261025T145752868304Z",
+  "pages": [
+    {
+      "file": "dhc6_report.html",
+      "problem_definition_unchanged_except_equation2": true,
+      "abstract_unchanged": true,
+      "served_content_matches": true,
+      "equation_number": 2,
+      "rows": 2,
+      "sha256": "3b1fa67c5a9f5236dc7b4c6a7d42725028a227a36dd0ee693259cbc06ac89082"
+    },
+    {
+      "file": "dhc6_paper.html",
+      "problem_definition_unchanged_except_equation2": true,
+      "abstract_unchanged": true,
+      "served_content_matches": true,
+      "equation_number": 2,
+      "rows": 2,
+      "sha256": "3b1fa67c5a9f5236dc7b4c6a7d42725028a227a36dd0ee693259cbc06ac89082"
+    }
+  ],
+  "desktop": {
+    "viewport_width": 1440,
+    "equation_width": 784,
+    "math_client_width": 716,
+    "math_scroll_width": 716
+  },
+  "mobile": {
+    "viewport_width": 390,
+    "page_scroll_width": 390,
+    "math_client_width": 299,
+    "math_scroll_width": 498,
+    "behavior": "Local horizontal scrolling; no page overflow"
+  },
+  "concurrent_edits": "Other sections changed separately during this task and were preserved; the equation was updated in place without rebuilding the full paper.",
+  "pdf_preview": {
+    "file": "paper_web_proxy_2026-10-25/output/playwright/equation2-print-preview.pdf",
+    "pages": 1,
+    "visual_render_checked": true
+  }
+}

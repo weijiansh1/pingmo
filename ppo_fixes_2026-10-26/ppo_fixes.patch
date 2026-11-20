@@ -1,0 +1,200 @@
+--- a/src/teacher/ppo/networks.py
++++ b/src/teacher/ppo/networks.py
+@@ -128,25 +128,40 @@
+ 
+     def act(self, observation: torch.Tensor, privileged: torch.Tensor,
+             deterministic: bool = False):
++        """Return the bounded environment action, sample log-probability and mean.
++
++        PPO collectors use ``sample_for_ppo`` to retain the raw Gaussian draw
++        alongside its log-probability. This three-value interface is retained
++        for existing evaluation and teacher-label callers.
++        """
++        action, log_prob, mean, _ = self.sample_for_ppo(
++            observation, privileged, deterministic=deterministic)
++        return action, log_prob, mean
++
++    def sample_for_ppo(self, observation: torch.Tensor, privileged: torch.Tensor,
++                       deterministic: bool = False):
++        """Return environment action, log-probability, mean and raw sample.
++
++        The environment receives the clipped draw. PPO evaluates the same raw
++        draw under both the rollout policy and the updated Gaussian policy.
++        """
+         mean, log_std = self(observation, privileged)
+         if deterministic:
+-            return mean, torch.zeros_like(mean), mean
++            return mean, torch.zeros_like(mean), mean, mean
+         std = log_std.exp()
+         normal = torch.distributions.Normal(mean, std)
+         sample = normal.rsample()
+         action = sample.clamp(-1.0, 1.0)
+-        # Log-probability of the pre-clamp sample, corrected for the tanh? No tanh
+-        # is applied to the output; the mean itself is tanh-squashed, so the
+-        # distribution is a clipped Gaussian around a bounded mean.
+         log_prob = normal.log_prob(sample).sum(-1, keepdim=True)
+-        return action, log_prob, mean
++        return action, log_prob, mean, sample
+ 
+     def evaluate(self, observation: torch.Tensor, privileged: torch.Tensor,
+-                 action: torch.Tensor):
++                 raw_action: torch.Tensor):
++        """Evaluate stored raw Gaussian draws, before environment clipping."""
+         mean, log_std = self(observation, privileged)
+         std = log_std.exp()
+         normal = torch.distributions.Normal(mean, std)
+-        log_prob = normal.log_prob(action).sum(-1, keepdim=True)
++        log_prob = normal.log_prob(raw_action).sum(-1, keepdim=True)
+         entropy = normal.entropy().sum(-1, keepdim=True)
+         return log_prob, entropy, mean
+ 
+--- a/src/teacher/ppo/trainer.py
++++ b/src/teacher/ppo/trainer.py
+@@ -2,10 +2,10 @@
+ 
+     python scripts/50_train_ppo_teacher.py --plant-id train_core-0312 ...
+ 
+-One Teacher per aircraft.  The rollout is one full 8 s episode per environment;
+-advantages use GAE(lambda) with bootstrapping across episode truncation (the
+-episode resets to a zero state, so the bootstrap value is evaluated on the reset
+-observation rather than assumed to be zero).
++One Teacher per aircraft. Each rollout is an 8 s sample of the continuing
++control task. GAE bootstraps from its final state before reset. The next
++rollout explicitly resets the batch. PPO stores the raw Gaussian actions for
++probability ratios and sends their clipped values to the environment.
+ """
+ from __future__ import annotations
+ 
+@@ -32,6 +32,8 @@
+     PPOTeacherCritic,
+     parameter_count,
+ )
++
++PPO_TRAINING_PROTOCOL = "ppo-raw-sample-final-state-v2"
+ 
+ 
+ def _autocast(device: torch.device, enabled: bool):
+@@ -158,7 +160,7 @@
+ 
+     for rollout in range(1, config.total_rollouts + 1):
+         observations, actor_privileges, privileges = [], [], []
+-        actions, log_probs = [], []
++        raw_actions, log_probs = [], []
+         rewards, values = [], []
+         env.reset()
+         for _ in range(EPISODE_STEPS):
+@@ -166,24 +168,27 @@
+             actor_privileged = env.actor_privileged()
+             privileged = env.privileged()
+             with torch.no_grad(), _autocast(device, config.amp):
+-                action, log_prob, _ = actor.act(observation, actor_privileged)
++                action, log_prob, _, raw_action = actor.sample_for_ppo(
++                    observation, actor_privileged)
+                 value = critic(observation, privileged)
+-            obs_next, reward, _ = env.step(action)
++            obs_next, reward, _ = env.step(action, auto_reset=False)
+             observations.append(observation)
+             actor_privileges.append(actor_privileged)
+             privileges.append(privileged)
+-            actions.append(action)
++            raw_actions.append(raw_action)
+             log_probs.append(log_prob)
+             rewards.append(reward)
+             values.append(value.squeeze(-1))
+         obs_t = torch.stack(observations)          # (T, N, obs)
+         actor_priv_t = torch.stack(actor_privileges)
+         priv_t = torch.stack(privileges)
+-        act_t = torch.stack(actions)
++        raw_act_t = torch.stack(raw_actions)
+         logp_t = torch.stack(log_probs).squeeze(-1)
+         rew_t = torch.stack(rewards)
+         val_t = torch.stack(values)
+         with torch.no_grad(), _autocast(device, config.amp):
++            # env still holds the last rollout state; reset happens only at
++            # the beginning of the next rollout, after this bootstrap.
+             bootstrap = critic(env.observation(), env.privileged()).squeeze(-1)
+         advantages, returns = _gae(rew_t, val_t, bootstrap, config.gamma, config.gae_lambda)
+         adv = advantages.reshape(-1)
+@@ -191,7 +196,7 @@
+         flat_obs = obs_t.reshape(-1, obs_t.shape[-1])
+         flat_actor_priv = actor_priv_t.reshape(-1, actor_priv_t.shape[-1])
+         flat_priv = priv_t.reshape(-1, priv_t.shape[-1])
+-        flat_act = act_t.reshape(-1, act_t.shape[-1])
++        flat_raw_act = raw_act_t.reshape(-1, raw_act_t.shape[-1])
+         flat_logp = logp_t.reshape(-1)
+         flat_ret = returns.reshape(-1)
+         total = flat_obs.shape[0]
+@@ -202,7 +207,7 @@
+                 index = permutation[start:start + config.minibatch]
+                 with _autocast(device, config.amp):
+                     new_logp, entropy, _ = actor.evaluate(
+-                        flat_obs[index], flat_actor_priv[index], flat_act[index])
++                        flat_obs[index], flat_actor_priv[index], flat_raw_act[index])
+                     value = critic(flat_obs[index], flat_priv[index]).squeeze(-1)
+                 ratio = (new_logp.squeeze(-1) - flat_logp[index]).exp()
+                 unclipped = ratio * adv[index]
+@@ -223,6 +228,7 @@
+                 stats["count"] += 1
+         metrics = evaluate(actor, env, config)
+         record = {
++            "ppo_protocol": PPO_TRAINING_PROTOCOL,
+             "rollout": rollout,
+             "steps": rollout * EPISODE_STEPS * config.n_envs,
+             "policy_loss": stats["policy_loss"] / max(stats["count"], 1),
+@@ -239,6 +245,7 @@
+             handle.write(json.dumps(record, ensure_ascii=False) + "\n")
+         if rollout % config.checkpoint_every == 0 or rollout == config.total_rollouts:
+             torch.save({
++                "ppo_protocol": PPO_TRAINING_PROTOCOL,
+                 "actor": actor.state_dict(),
+                 "critic": critic.state_dict(),
+                 "config": asdict(config),
+@@ -248,6 +255,7 @@
+             }, output / "checkpoint.pt")
+     final = history[-1]
+     (output / "summary.json").write_text(json.dumps({
++        "ppo_protocol": PPO_TRAINING_PROTOCOL,
+         "plant_id": str(output.name),
+         "actor_parameters": parameter_count(actor),
+         "critic_parameters": parameter_count(critic),
+--- a/src/envs/batched_p_channel.py
++++ b/src/envs/batched_p_channel.py
+@@ -271,7 +271,14 @@
+         ], dim=-1)
+ 
+     # -------------------------------------------------------------------- step
+-    def step(self, action_normalized: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
++    def step(self, action_normalized: torch.Tensor, *, auto_reset: bool = True
++             ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
++        """Advance one policy step, optionally retaining the final state.
++
++        PPO uses ``auto_reset=False`` through its full rollout so value
++        bootstrapping sees the state before a time-limit reset. Existing
++        evaluation callers retain the default automatic reset behavior.
++        """
+         action = action_normalized.clamp(-1.0, 1.0).squeeze(-1)
+         previous_output = (self.state @ self.plant.c.squeeze(0))
+         self.requested = (self.requested + action * self.max_step_n).clamp(
+@@ -300,7 +307,7 @@
+         self._advance_history(action, reference, output)
+         self.t = self.t + 1
+         truncated = self.t >= EPISODE_STEPS
+-        if bool(truncated.any()):
++        if auto_reset and bool(truncated.any()):
+             self.reset(truncated)
+         return self.observation(), reward, output
+ 
+--- a/src/aircraft/gain_calibration.py
++++ b/src/aircraft/gain_calibration.py
+@@ -20,7 +20,10 @@
+     roll_rate[0] = 0.0
+     for index in range(1, steps + 1):
+         roll_rate[index] = plant.step(force_n)[0]
+-    bank_angle_rad = np.trapezoid(roll_rate, dx=dt)
++    integrate_trapezoid = getattr(np, "trapezoid", None)
++    if integrate_trapezoid is None:
++        integrate_trapezoid = np.trapz
++    bank_angle_rad = integrate_trapezoid(roll_rate, dx=dt)
+     return float(abs(np.degrees(bank_angle_rad) / force_n))
+ 
+ 

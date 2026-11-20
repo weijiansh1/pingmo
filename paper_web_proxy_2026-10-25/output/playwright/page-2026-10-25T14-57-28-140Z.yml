@@ -1,0 +1,39 @@
+- generic [active] [ref=e1]:
+  - navigation "Top Menu" [ref=e2]:
+    - link [ref=e5] [cursor=pointer]:
+      - /url: /lab
+      - img "Jupyter Server" [ref=e6]
+  - generic [ref=e9]:
+    - generic [ref=e15]:
+      - strong [ref=e17]: "Password or token:"
+      - textbox "Password or token:" [ref=e18]
+      - button "Log in" [ref=e19] [cursor=pointer]
+    - generic [ref=e20]:
+      - heading "Token authentication is enabled" [level=3] [ref=e21]
+      - paragraph [ref=e22]:
+        - text: If no password has been configured, you need to open the server with its login token in the URL, or paste it above. This requirement will be lifted if you
+        - link "enable a password" [ref=e24] [cursor=pointer]:
+          - /url: https://jupyter-server.readthedocs.io/en/latest/operators/public-server.html
+        - text: .
+      - paragraph [ref=e25]: "The command:"
+      - generic [ref=e26]: jupyter server list
+      - text: "will show you the URLs of running servers with their tokens, which you can copy and paste into your browser. For example:"
+      - paragraph
+      - generic [ref=e27]: "Currently running servers: http://localhost:8888/?token=c8de56fa... :: /Users/you/notebooks"
+      - paragraph [ref=e28]: or you can paste just the token value into the password field on this page.
+      - paragraph [ref=e29]:
+        - text: See
+        - link "the documentation on how to enable a password" [ref=e31] [cursor=pointer]:
+          - /url: https://jupyter-server.readthedocs.io/en/latest/operators/public-server.html
+        - text: in place of token authentication, if you would like to avoid dealing with random tokens.
+      - paragraph [ref=e32]: Cookies are required for authenticated access to the Jupyter server.
+      - heading "Setup a Password" [level=3] [ref=e33]
+      - paragraph [ref=e34]: "You can also setup a password by entering your token and a new password on the fields below:"
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - heading "Token" [level=4] [ref=e38]
+          - textbox "Token" [ref=e39]
+        - generic [ref=e40]:
+          - heading "New Password" [level=4] [ref=e42]
+          - textbox "New Password" [ref=e43]
+        - button "Log in and set new password" [ref=e45] [cursor=pointer]

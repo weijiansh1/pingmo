@@ -1,0 +1,30 @@
+{
+  "files": [
+    {
+      "file": "dhc6_report.html",
+      "sha256": "e0a2a7d8c028be90cef299b205ee1e77d5aaf583d03efab8f94c6f4b7a738656",
+      "figures": 22,
+      "figure13_caption": "图 13　学生响应随指令幅值的变化。蓝为 300 架同分布对象，红为 500 架分布外对象；(a) 中位误差与四分位带（虚线为门限），(b) 三门槛通过率。",
+      "quoted_paragraph_removed": true,
+      "student_only_figure_removed": true,
+      "teacher_student_comparison_retained": true
+    },
+    {
+      "file": "dhc6_paper.html",
+      "sha256": "e0a2a7d8c028be90cef299b205ee1e77d5aaf583d03efab8f94c6f4b7a738656",
+      "figures": 22,
+      "figure13_caption": "图 13　学生响应随指令幅值的变化。蓝为 300 架同分布对象，红为 500 架分布外对象；(a) 中位误差与四分位带（虚线为门限），(b) 三门槛通过率。",
+      "quoted_paragraph_removed": true,
+      "student_only_figure_removed": true,
+      "teacher_student_comparison_retained": true
+    }
+  ],
+  "actual_proxy_status": 200,
+  "actual_proxy_matches_current_file": true,
+  "removed_figures": [
+    "paper/student_library_eval.svg",
+    "paper/student_grid.svg"
+  ],
+  "figure_count": 22,
+  "math_errors": 0
+}

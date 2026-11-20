@@ -1,0 +1,148 @@
+{
+  "version": "illustration-v2",
+  "created_utc": "2026-10-25T15:59:05.925296+00:00",
+  "seed": 20261031,
+  "selection_rule": "After auditing the first illustration, select the first teacher passing the original independent validation gates in each quality level, in frozen object order. Cycle those qualified teachers across the three selected targets. Test results are not used for selection. All twelve-object matrix results remain unchanged.",
+  "thresholds": {
+    "rmse_deg_s": 1.5,
+    "peak_deg_s": 5.0,
+    "tv_rate_n_s": 12.0
+  },
+  "source_protocol_sha256": "a81a47909fcefb57af6b8ccc1d842af5546a5a279efee6b33c8dedd94c0bc46d",
+  "examples": [
+    {
+      "target": "train_core-1875",
+      "foreign_teacher": "train_core-0262"
+    },
+    {
+      "target": "train_core-0262",
+      "foreign_teacher": "train_core-0401"
+    },
+    {
+      "target": "train_core-0401",
+      "foreign_teacher": "train_core-1875"
+    }
+  ],
+  "validation_audit": [
+    {
+      "object_number": 1,
+      "plant_id": "train_core-1875",
+      "level": 1,
+      "rmse_deg_s": 0.479679137468338,
+      "peak_deg_s": 1.4476721286773682,
+      "tv_rate_n_s": 3.256357192993164,
+      "qualified": true,
+      "checkpoint_sha256": "9682d236d3a6034936ff73742f3437f946a66cc4797171dc56615e309e7214f4"
+    },
+    {
+      "object_number": 2,
+      "plant_id": "train_core-0750",
+      "level": 1,
+      "rmse_deg_s": 3.786614418029785,
+      "peak_deg_s": 16.571910858154297,
+      "tv_rate_n_s": 2.6645164489746094,
+      "qualified": false,
+      "checkpoint_sha256": "64fdabc8cbf11a7521af4e1e77d7e142206ce8739c2ba91d3bd9fb2c6e3dea21"
+    },
+    {
+      "object_number": 3,
+      "plant_id": "train_core-1998",
+      "level": 1,
+      "rmse_deg_s": 3.8558921813964844,
+      "peak_deg_s": 13.515459060668945,
+      "tv_rate_n_s": 3.9930760860443115,
+      "qualified": false,
+      "checkpoint_sha256": "438e950603df4031a730ecbefb44b693fdfd81abe565b78597da6af928bb64e9"
+    },
+    {
+      "object_number": 4,
+      "plant_id": "train_core-1197",
+      "level": 1,
+      "rmse_deg_s": 0.5630115270614624,
+      "peak_deg_s": 3.1715900897979736,
+      "tv_rate_n_s": 6.093418121337891,
+      "qualified": true,
+      "checkpoint_sha256": "a112eb5776ca850a29a5315fa3082d9c80f6c0772ad2c98b31753bce5b16f4bf"
+    },
+    {
+      "object_number": 5,
+      "plant_id": "train_core-0553",
+      "level": 2,
+      "rmse_deg_s": 1.532799482345581,
+      "peak_deg_s": 22.90782928466797,
+      "tv_rate_n_s": 3.419574737548828,
+      "qualified": false,
+      "checkpoint_sha256": "4d4c3056a241792c55c7395d427dd73a84f29dd671e375ed117242bf107ebfa7"
+    },
+    {
+      "object_number": 6,
+      "plant_id": "train_core-0262",
+      "level": 2,
+      "rmse_deg_s": 0.4588893949985504,
+      "peak_deg_s": 1.869673728942871,
+      "tv_rate_n_s": 3.7181224822998047,
+      "qualified": true,
+      "checkpoint_sha256": "ebc6ddb1f13e3f58cd2f67c860452bb34a06659b50a17c370f7eab27a5390421"
+    },
+    {
+      "object_number": 7,
+      "plant_id": "train_core-0148",
+      "level": 2,
+      "rmse_deg_s": 1.3321994543075562,
+      "peak_deg_s": 6.593070030212402,
+      "tv_rate_n_s": 5.774243354797363,
+      "qualified": false,
+      "checkpoint_sha256": "eb84b7ea590e3b310a92eb1bdd4095700975947ddcec38d88101c9f7875a83a2"
+    },
+    {
+      "object_number": 8,
+      "plant_id": "train_core-1450",
+      "level": 2,
+      "rmse_deg_s": 0.3119402527809143,
+      "peak_deg_s": 1.8076990842819214,
+      "tv_rate_n_s": 2.535769462585449,
+      "qualified": true,
+      "checkpoint_sha256": "b63cde0f23e4737964c13c9b8d804f49e0bfca9b3b0160f8eb3c7a10d041fd54"
+    },
+    {
+      "object_number": 9,
+      "plant_id": "train_core-0401",
+      "level": 3,
+      "rmse_deg_s": 0.4800891578197479,
+      "peak_deg_s": 1.5509161949157715,
+      "tv_rate_n_s": 4.208280563354492,
+      "qualified": true,
+      "checkpoint_sha256": "cb3dd6504fe157df8b6e9d53b32b93c68224b7134119464f55371ca014edca49"
+    },
+    {
+      "object_number": 10,
+      "plant_id": "train_core-1871",
+      "level": 3,
+      "rmse_deg_s": 0.3462473154067993,
+      "peak_deg_s": 2.241503953933716,
+      "tv_rate_n_s": 3.3757009506225586,
+      "qualified": true,
+      "checkpoint_sha256": "6e24191cd0a1146be554064cc91be3b64f3e7e272ef3e6c32558ebbb4791bc38"
+    },
+    {
+      "object_number": 11,
+      "plant_id": "train_core-1187",
+      "level": 3,
+      "rmse_deg_s": 0.78909832239151,
+      "peak_deg_s": 2.9122555255889893,
+      "tv_rate_n_s": 3.520030975341797,
+      "qualified": true,
+      "checkpoint_sha256": "bfdb0d4bd073d44acda1c011ce582e689601bf91baa8e68de701995ae0e22152"
+    },
+    {
+      "object_number": 12,
+      "plant_id": "train_core-1442",
+      "level": 3,
+      "rmse_deg_s": 0.5688018202781677,
+      "peak_deg_s": 2.291860818862915,
+      "tv_rate_n_s": 4.700353145599365,
+      "qualified": true,
+      "checkpoint_sha256": "c8f2cb3de6bb42a5d2f997bb9773d28710af51f0ece198263de467d40e0d976f"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "archive": "飞控大模型研究_修订_v3_最佳实践_2026-10-24.zip",
+  "archive_bytes": 1091938186,
+  "archive_sha256": "f7e9b846bc819d24fdf22da82ac28eb8c36ce3220ca39f099a538b6a740ad0c7",
+  "archive_entries": 4163,
+  "verified_file_hashes": 4162,
+  "all_file_hashes_match": true,
+  "independent_extraction_verified": true,
+  "documents_regenerated_byte_identically": [
+    "03_控制器路线验证与最佳实践.md",
+    "webpage/dhc6_report.md",
+    "webpage/dhc6_report.html",
+    "webpage/dhc6_paper.html"
+  ],
+  "regressions": {
+    "run": 31,
+    "failures": 0,
+    "errors": 0
+  },
+  "controller_route": {
+    "all_passed": true,
+    "check_count": 1141,
+    "teacher_transitions": 221184000,
+    "evaluation_episodes": 9408,
+    "target_evaluation_episodes": 1944,
+    "protocol_sha256": "d386adac16b1e4169fe22a19830d61864e3c43f46fe79077eb768cd91350015e"
+  },
+  "all_checks_passed": true,
+  "scope": "Compact archive; selected teachers and all student/adaptation weights retained. Three regenerable student buffers are omitted, so their local-only hash checks are skipped."
+}

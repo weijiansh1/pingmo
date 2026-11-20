@@ -1,0 +1,16 @@
+{
+  "accepted": 32,
+  "accepted_actor_hashes_present": 32,
+  "bank": {
+    "path": "pingmo\\results\\pure_reward_teacher_bank_coverage_v3\\merged_bank\\teacher_bank.json",
+    "sha256": "579765e3d206145c0e9527f43760f83d6b5bb6c8e9777403efbdb2aaa2564d5c"
+  },
+  "bank_only": 20,
+  "entries": 68,
+  "final_gate_vs_bank_disagreements": 11,
+  "local_runs": 48,
+  "pass_matches_bank": 48,
+  "rejected": 36,
+  "report_sha_matches": 48,
+  "step_matches_bank": 48
+}

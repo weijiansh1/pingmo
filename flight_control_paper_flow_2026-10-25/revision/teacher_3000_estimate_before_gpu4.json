@@ -1,0 +1,37 @@
+{
+  "created_at_utc": "2026-10-25T10:43:24.686926+00:00",
+  "hardware": "NVIDIA H20-3e, 143771 MiB per GPU",
+  "measured_teachers": 36,
+  "distinct_source_objects": 12,
+  "measured_device_labels": [
+    "cuda:0",
+    "cuda:1",
+    "cuda:2",
+    "cuda:4"
+  ],
+  "mean_teacher_wall_seconds": 225.88788452413348,
+  "per_teacher_transitions": 6144000,
+  "total_rollouts_per_teacher": 30,
+  "assumed_exclusive_gpus": 5,
+  "training_jobs": 3000,
+  "total_transitions": 18432000000,
+  "linear_job_time_hours": 37.64798075402225,
+  "queue_elapsed_from_file_times_seconds": 2115.1357543468475,
+  "queue_scaled_hours": 39.16918063605274,
+  "planning_range_hours": [
+    45,
+    55
+  ],
+  "planning_range_basis": "Planning allowance, not a measured confidence interval. Host contention, I/O, restart and scheduling overhead.",
+  "if_3000_objects_times_3_seeds": {
+    "jobs": 9000,
+    "linear_hours": 112.94394226206674,
+    "queue_scaled_hours": 117.5075419081582,
+    "planning_hours": [
+      135,
+      165
+    ]
+  },
+  "saturation_status": "Historical timing has no recorded utilization/VRAM trace. It is not a measured 90%-VRAM, multi-process saturation benchmark.",
+  "new_training_started_for_estimate": false
+}

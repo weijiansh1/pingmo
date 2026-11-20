@@ -1,0 +1,35 @@
+{
+  "updated_at_utc": "2026-10-25T11:38:47.962230+00:00",
+  "basis": "Completed physical GPU 4 benchmark, 16 real concurrent full-budget teachers",
+  "benchmark_directory": "/home/swj/pingmo/teacher_gpu4_benchmark_2026-10-25",
+  "measured_gpus": 1,
+  "physical_gpu": 4,
+  "measured_concurrent_jobs": 16,
+  "jobs": 3000,
+  "seeds_per_object": 1,
+  "assumed_exclusive_gpus": 5,
+  "per_teacher_transitions": 6144000,
+  "batch_elapsed_seconds": 2284.711984872818,
+  "teachers_per_gpu_hour": 25.21105521456193,
+  "extrapolated_hours": 23.799083175758522,
+  "planning_range_hours": [
+    28,
+    31
+  ],
+  "planning_range_basis": "15–30% engineering allowance rounded upward, not a confidence interval",
+  "steady_memory_pct": 90.40021823661843,
+  "steady_gpu_util_pct": 100.0,
+  "whole_batch_memory_pct": 84.30711521127287,
+  "whole_batch_gpu_util_pct": 99.51099978061818,
+  "historical_estimate_file": "teacher_3000_estimate_before_gpu4.json",
+  "conditions": [
+    "Five exclusive identical GPUs with matching host resources and similar object difficulty.",
+    "Same fixed per-teacher 30-rollout budget and PPO KL early-stop rule.",
+    "Five-GPU concurrency and all 3000 objects were not measured.",
+    "Excludes additional quality screening, retries, student distillation and independent closed-loop testing.",
+    "Planning range is a rounded engineering allowance, not a statistical confidence interval.",
+    "Completed training does not imply passing controller-quality requirements."
+  ],
+  "new_training_for_estimate": true,
+  "new_results_merged_into_paper": false
+}

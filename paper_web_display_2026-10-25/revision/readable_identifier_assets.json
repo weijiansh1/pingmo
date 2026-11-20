@@ -1,0 +1,785 @@
+{
+  "paper/cross_object_diagnostic.svg": {
+    "source_sha256": "aa9c7c11b9676da17e10095d820107bd22ebc99dbf87d219db6c6c8b6f73a9a2",
+    "display_sha256": "acb9116159c4b44d76869b38541e284748f6029da6b0e666bb8ce2a05c0fcf9a",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "L1 · B=0750 · 指令 +15 deg/s",
+        "new": "L1 · 对象 2 · 指令 +15 deg/s"
+      },
+      {
+        "old": "自身教师指令通过 4/18 · 外对象教师 A=0148",
+        "new": "自身教师指令通过 4/18 · 迁移教师 7"
+      },
+      {
+        "old": "L1 · B=0750 · 初始偏差 +5 deg/s",
+        "new": "L1 · 对象 2 · 初始偏差 +5 deg/s"
+      },
+      {
+        "old": "外对象教师 A=0148",
+        "new": "迁移教师 7"
+      },
+      {
+        "old": "L1 · B=0750 · 外力扰动 +1 N",
+        "new": "L1 · 对象 2 · 外力扰动 +1 N"
+      },
+      {
+        "old": "外对象教师 A=0148",
+        "new": "迁移教师 7"
+      },
+      {
+        "old": "L2 · B=0148 · 指令 +15 deg/s",
+        "new": "L2 · 对象 7 · 指令 +15 deg/s"
+      },
+      {
+        "old": "自身教师指令通过 12/18 · 外对象教师 A=0401",
+        "new": "自身教师指令通过 12/18 · 迁移教师 9"
+      },
+      {
+        "old": "L2 · B=0148 · 初始偏差 +5 deg/s",
+        "new": "L2 · 对象 7 · 初始偏差 +5 deg/s"
+      },
+      {
+        "old": "外对象教师 A=0401",
+        "new": "迁移教师 9"
+      },
+      {
+        "old": "L2 · B=0148 · 外力扰动 +1 N",
+        "new": "L2 · 对象 7 · 外力扰动 +1 N"
+      },
+      {
+        "old": "外对象教师 A=0401",
+        "new": "迁移教师 9"
+      },
+      {
+        "old": "L3 · B=0401 · 指令 +15 deg/s",
+        "new": "L3 · 对象 9 · 指令 +15 deg/s"
+      },
+      {
+        "old": "自身教师指令通过 18/18 · 外对象教师 A=0750",
+        "new": "自身教师指令通过 18/18 · 迁移教师 2"
+      },
+      {
+        "old": "L3 · B=0401 · 初始偏差 +5 deg/s",
+        "new": "L3 · 对象 9 · 初始偏差 +5 deg/s"
+      },
+      {
+        "old": "外对象教师 A=0750",
+        "new": "迁移教师 2"
+      },
+      {
+        "old": "L3 · B=0401 · 外力扰动 +1 N",
+        "new": "L3 · 对象 9 · 外力扰动 +1 N"
+      },
+      {
+        "old": "外对象教师 A=0750",
+        "new": "迁移教师 2"
+      }
+    ]
+  },
+  "paper/cross_object_matrix.svg": {
+    "source_sha256": "e4067df94fd369ce8106ebfe1ae13d8dcc51d4a7bf4c7d879ca3a0237ba3360d",
+    "display_sha256": "5135639fad5f9db10ab72286b0e41c632bff12839a99105619916ab1d939daf3",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "1875",
+        "new": "1"
+      },
+      {
+        "old": "0750",
+        "new": "2"
+      },
+      {
+        "old": "1998",
+        "new": "3"
+      },
+      {
+        "old": "1197",
+        "new": "4"
+      },
+      {
+        "old": "0553",
+        "new": "5"
+      },
+      {
+        "old": "0262",
+        "new": "6"
+      },
+      {
+        "old": "0148",
+        "new": "7"
+      },
+      {
+        "old": "1450",
+        "new": "8"
+      },
+      {
+        "old": "0401",
+        "new": "9"
+      },
+      {
+        "old": "1871",
+        "new": "10"
+      },
+      {
+        "old": "1187",
+        "new": "11"
+      },
+      {
+        "old": "1442",
+        "new": "12"
+      },
+      {
+        "old": "受控对象 B · 按 L1 / L2 / L3 各四个排列",
+        "new": "受控对象编号 · 按 L1 / L2 / L3 各四个排列"
+      },
+      {
+        "old": "T1875",
+        "new": "教师 1"
+      },
+      {
+        "old": "T0750",
+        "new": "教师 2"
+      },
+      {
+        "old": "T1998",
+        "new": "教师 3"
+      },
+      {
+        "old": "T1197",
+        "new": "教师 4"
+      },
+      {
+        "old": "T0553",
+        "new": "教师 5"
+      },
+      {
+        "old": "T0262",
+        "new": "教师 6"
+      },
+      {
+        "old": "T0148",
+        "new": "教师 7"
+      },
+      {
+        "old": "T1450",
+        "new": "教师 8"
+      },
+      {
+        "old": "T0401",
+        "new": "教师 9"
+      },
+      {
+        "old": "T1871",
+        "new": "教师 10"
+      },
+      {
+        "old": "T1187",
+        "new": "教师 11"
+      },
+      {
+        "old": "T1442",
+        "new": "教师 12"
+      },
+      {
+        "old": "专用教师的训练对象 A",
+        "new": "教师编号"
+      }
+    ]
+  },
+  "paper/cross_object_matrix_seed_20261031.svg": {
+    "source_sha256": "e2fdd2777329b99d40fe689988adbb31477c68d8275d2c0459807ca8c56e05c0",
+    "display_sha256": "5a75e2e7422d6fe7681d757c6f4600dac1d8cc42a4352fd75c5d58a90778b649",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "1875",
+        "new": "1"
+      },
+      {
+        "old": "0750",
+        "new": "2"
+      },
+      {
+        "old": "1998",
+        "new": "3"
+      },
+      {
+        "old": "1197",
+        "new": "4"
+      },
+      {
+        "old": "0553",
+        "new": "5"
+      },
+      {
+        "old": "0262",
+        "new": "6"
+      },
+      {
+        "old": "0148",
+        "new": "7"
+      },
+      {
+        "old": "1450",
+        "new": "8"
+      },
+      {
+        "old": "0401",
+        "new": "9"
+      },
+      {
+        "old": "1871",
+        "new": "10"
+      },
+      {
+        "old": "1187",
+        "new": "11"
+      },
+      {
+        "old": "1442",
+        "new": "12"
+      },
+      {
+        "old": "受控对象 B · 按 L1 / L2 / L3 各四个排列",
+        "new": "受控对象编号 · 按 L1 / L2 / L3 各四个排列"
+      },
+      {
+        "old": "T1875",
+        "new": "教师 1"
+      },
+      {
+        "old": "T0750",
+        "new": "教师 2"
+      },
+      {
+        "old": "T1998",
+        "new": "教师 3"
+      },
+      {
+        "old": "T1197",
+        "new": "教师 4"
+      },
+      {
+        "old": "T0553",
+        "new": "教师 5"
+      },
+      {
+        "old": "T0262",
+        "new": "教师 6"
+      },
+      {
+        "old": "T0148",
+        "new": "教师 7"
+      },
+      {
+        "old": "T1450",
+        "new": "教师 8"
+      },
+      {
+        "old": "T0401",
+        "new": "教师 9"
+      },
+      {
+        "old": "T1871",
+        "new": "教师 10"
+      },
+      {
+        "old": "T1187",
+        "new": "教师 11"
+      },
+      {
+        "old": "T1442",
+        "new": "教师 12"
+      },
+      {
+        "old": "专用教师的训练对象 A",
+        "new": "教师编号"
+      },
+      {
+        "old": "训练重复 1 · seed 20261031",
+        "new": "训练重复 1"
+      }
+    ]
+  },
+  "paper/cross_object_matrix_seed_20261101.svg": {
+    "source_sha256": "82acee7e9e57630a578c7bc449290afa4a783c3769eadce189742d02c52ed333",
+    "display_sha256": "db9abe6f2b94e87c93bccc39f0a9407b5bd850235856653d7009700859a0b25a",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "1875",
+        "new": "1"
+      },
+      {
+        "old": "0750",
+        "new": "2"
+      },
+      {
+        "old": "1998",
+        "new": "3"
+      },
+      {
+        "old": "1197",
+        "new": "4"
+      },
+      {
+        "old": "0553",
+        "new": "5"
+      },
+      {
+        "old": "0262",
+        "new": "6"
+      },
+      {
+        "old": "0148",
+        "new": "7"
+      },
+      {
+        "old": "1450",
+        "new": "8"
+      },
+      {
+        "old": "0401",
+        "new": "9"
+      },
+      {
+        "old": "1871",
+        "new": "10"
+      },
+      {
+        "old": "1187",
+        "new": "11"
+      },
+      {
+        "old": "1442",
+        "new": "12"
+      },
+      {
+        "old": "受控对象 B · 按 L1 / L2 / L3 各四个排列",
+        "new": "受控对象编号 · 按 L1 / L2 / L3 各四个排列"
+      },
+      {
+        "old": "T1875",
+        "new": "教师 1"
+      },
+      {
+        "old": "T0750",
+        "new": "教师 2"
+      },
+      {
+        "old": "T1998",
+        "new": "教师 3"
+      },
+      {
+        "old": "T1197",
+        "new": "教师 4"
+      },
+      {
+        "old": "T0553",
+        "new": "教师 5"
+      },
+      {
+        "old": "T0262",
+        "new": "教师 6"
+      },
+      {
+        "old": "T0148",
+        "new": "教师 7"
+      },
+      {
+        "old": "T1450",
+        "new": "教师 8"
+      },
+      {
+        "old": "T0401",
+        "new": "教师 9"
+      },
+      {
+        "old": "T1871",
+        "new": "教师 10"
+      },
+      {
+        "old": "T1187",
+        "new": "教师 11"
+      },
+      {
+        "old": "T1442",
+        "new": "教师 12"
+      },
+      {
+        "old": "专用教师的训练对象 A",
+        "new": "教师编号"
+      },
+      {
+        "old": "训练重复 2 · seed 20261101",
+        "new": "训练重复 2"
+      }
+    ]
+  },
+  "paper/cross_object_matrix_seed_20261102.svg": {
+    "source_sha256": "f5167d8729ca7de824ede345f51d0ad2cdaa3409ad61f5b79507d18ea6fec453",
+    "display_sha256": "998e38c14eca77558766aae41732fdfecdfb6ed11c8ec20ad5d7e312809f9337",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "1875",
+        "new": "1"
+      },
+      {
+        "old": "0750",
+        "new": "2"
+      },
+      {
+        "old": "1998",
+        "new": "3"
+      },
+      {
+        "old": "1197",
+        "new": "4"
+      },
+      {
+        "old": "0553",
+        "new": "5"
+      },
+      {
+        "old": "0262",
+        "new": "6"
+      },
+      {
+        "old": "0148",
+        "new": "7"
+      },
+      {
+        "old": "1450",
+        "new": "8"
+      },
+      {
+        "old": "0401",
+        "new": "9"
+      },
+      {
+        "old": "1871",
+        "new": "10"
+      },
+      {
+        "old": "1187",
+        "new": "11"
+      },
+      {
+        "old": "1442",
+        "new": "12"
+      },
+      {
+        "old": "受控对象 B · 按 L1 / L2 / L3 各四个排列",
+        "new": "受控对象编号 · 按 L1 / L2 / L3 各四个排列"
+      },
+      {
+        "old": "T1875",
+        "new": "教师 1"
+      },
+      {
+        "old": "T0750",
+        "new": "教师 2"
+      },
+      {
+        "old": "T1998",
+        "new": "教师 3"
+      },
+      {
+        "old": "T1197",
+        "new": "教师 4"
+      },
+      {
+        "old": "T0553",
+        "new": "教师 5"
+      },
+      {
+        "old": "T0262",
+        "new": "教师 6"
+      },
+      {
+        "old": "T0148",
+        "new": "教师 7"
+      },
+      {
+        "old": "T1450",
+        "new": "教师 8"
+      },
+      {
+        "old": "T0401",
+        "new": "教师 9"
+      },
+      {
+        "old": "T1871",
+        "new": "教师 10"
+      },
+      {
+        "old": "T1187",
+        "new": "教师 11"
+      },
+      {
+        "old": "T1442",
+        "new": "教师 12"
+      },
+      {
+        "old": "专用教师的训练对象 A",
+        "new": "教师编号"
+      },
+      {
+        "old": "训练重复 3 · seed 20261102",
+        "new": "训练重复 3"
+      }
+    ]
+  },
+  "paper/cross_object_responses.svg": {
+    "source_sha256": "e0be15e0be505ba170c8d9f9d45afa7c7a168f1065c841ab58c6d4b3be3d3908",
+    "display_sha256": "526d23b743eaad2325b2dcd8e0de094fc0d134b0af36343e9189646b0a35be5e",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "L1 · B=1875 · 指令 +15 deg/s",
+        "new": "L1 · 对象 1 · 指令 +15 deg/s"
+      },
+      {
+        "old": "自身教师指令通过 18/18 · 外对象教师 A=0262",
+        "new": "自身教师指令通过 18/18 · 迁移教师 6"
+      },
+      {
+        "old": "L1 · B=1875 · 初始偏差 +5 deg/s",
+        "new": "L1 · 对象 1 · 初始偏差 +5 deg/s"
+      },
+      {
+        "old": "外对象教师 A=0262",
+        "new": "迁移教师 6"
+      },
+      {
+        "old": "L1 · B=1875 · 外力扰动 +1 N",
+        "new": "L1 · 对象 1 · 外力扰动 +1 N"
+      },
+      {
+        "old": "外对象教师 A=0262",
+        "new": "迁移教师 6"
+      },
+      {
+        "old": "L2 · B=0262 · 指令 +15 deg/s",
+        "new": "L2 · 对象 6 · 指令 +15 deg/s"
+      },
+      {
+        "old": "自身教师指令通过 18/18 · 外对象教师 A=0401",
+        "new": "自身教师指令通过 18/18 · 迁移教师 9"
+      },
+      {
+        "old": "L2 · B=0262 · 初始偏差 +5 deg/s",
+        "new": "L2 · 对象 6 · 初始偏差 +5 deg/s"
+      },
+      {
+        "old": "外对象教师 A=0401",
+        "new": "迁移教师 9"
+      },
+      {
+        "old": "L2 · B=0262 · 外力扰动 +1 N",
+        "new": "L2 · 对象 6 · 外力扰动 +1 N"
+      },
+      {
+        "old": "外对象教师 A=0401",
+        "new": "迁移教师 9"
+      },
+      {
+        "old": "L3 · B=0401 · 指令 +15 deg/s",
+        "new": "L3 · 对象 9 · 指令 +15 deg/s"
+      },
+      {
+        "old": "自身教师指令通过 18/18 · 外对象教师 A=1875",
+        "new": "自身教师指令通过 18/18 · 迁移教师 1"
+      },
+      {
+        "old": "L3 · B=0401 · 初始偏差 +5 deg/s",
+        "new": "L3 · 对象 9 · 初始偏差 +5 deg/s"
+      },
+      {
+        "old": "外对象教师 A=1875",
+        "new": "迁移教师 1"
+      },
+      {
+        "old": "L3 · B=0401 · 外力扰动 +1 N",
+        "new": "L3 · 对象 9 · 外力扰动 +1 N"
+      },
+      {
+        "old": "外对象教师 A=1875",
+        "new": "迁移教师 1"
+      }
+    ]
+  },
+  "paper/delay_closed_loop.svg": {
+    "source_sha256": "93e176c25dbfdce93345d2313a57bdacf2be841fd0a88415ea1a45a120be2d04",
+    "display_sha256": "03c15e6e1cf81b98c0a01ffd7738bd68bcbabe8da4762f413c8a4cf40053fddf",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "(b) 跨时延：训练分布对长延迟留出的影响",
+        "new": "(b) 再训练样本范围与长延迟表现"
+      },
+      {
+        "old": "全延迟训练",
+        "new": "全延迟再训练"
+      },
+      {
+        "old": "仅短/中延迟训练",
+        "new": "仅短/中延迟再训练"
+      },
+      {
+        "old": "闭环对照：延迟分层与跨时延迁移（120 架留出）",
+        "new": "历史表征的闭环对照（120 架留出）"
+      }
+    ]
+  },
+  "paper/dhc6_states.svg": {
+    "source_sha256": "518ab0820785d40d8709700dfb693aa0c6f0c89c47760663904beab2246bef09",
+    "display_sha256": "3090e8b83c66a794e4aad5b6e0e0cf77277806f87b6c2bccace44fa9a7816558",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "V060_H3000（适配）",
+        "new": "状态 2（适配）"
+      },
+      {
+        "old": "V070_H3000（适配）",
+        "new": "状态 5（适配）"
+      },
+      {
+        "old": "V080_H3000（适配）",
+        "new": "状态 8（适配）"
+      },
+      {
+        "old": "V050_H2500（留出）",
+        "new": "状态 9（留出）"
+      }
+    ]
+  },
+  "paper/dhc6_transfer.svg": {
+    "source_sha256": "8f252bcfc716b9d1985155368cddf12bc7408f514404045d7d99bced1c688f11",
+    "display_sha256": "720a47a3955583384f1a7559e9bb1797c9e0c4ec339df2e335e9b835519494f4",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "V060_H2500",
+        "new": "状态 1"
+      },
+      {
+        "old": "V060_H3000",
+        "new": "状态 2"
+      },
+      {
+        "old": "V060_H3500",
+        "new": "状态 3"
+      },
+      {
+        "old": "V070_H2500",
+        "new": "状态 4"
+      },
+      {
+        "old": "V070_H3000",
+        "new": "状态 5"
+      },
+      {
+        "old": "V070_H3500",
+        "new": "状态 6"
+      },
+      {
+        "old": "V080_H2500",
+        "new": "状态 7"
+      },
+      {
+        "old": "V080_H3000",
+        "new": "状态 8"
+      },
+      {
+        "old": "V050_H2500",
+        "new": "状态 9"
+      },
+      {
+        "old": "V050_H3000",
+        "new": "状态 10"
+      },
+      {
+        "old": "V050_H3500",
+        "new": "状态 11"
+      },
+      {
+        "old": "V080_H3500",
+        "new": "状态 12"
+      },
+      {
+        "old": "DHC-6 迁移：8 个适配状态大幅改善，3 个 V050 留出状态几乎未动",
+        "new": "DHC-6 迁移：8 个适配状态大幅改善，留出状态 9–11几乎未动"
+      }
+    ]
+  },
+  "paper/tau_e_eval.svg": {
+    "source_sha256": "0c9a6faf52c6d7f53f5f972ee808cba0c24e7bea1ea6332e2868798237b9f347",
+    "display_sha256": "917d1f4b4d39c3bc7bfe101c9bcf43743d39fee19054d8e775b62f18bf2c4f17",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "id_test-3941  τp=0.052s  τe=0.073s",
+        "new": "时延对象 1  τp=0.052s  τe=0.073s"
+      }
+    ]
+  },
+  "paper/teacher_closed_loop.svg": {
+    "source_sha256": "1b23b9652c33b5f9db1b3e0b4ce646a7b8c56e774381f8cb95039953dfb28b7e",
+    "display_sha256": "d40221358482bbb2f619d0baa3dd39f5c79c5539cfdc08fcb6b1aac97d24451c",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "L1 · train_boundary-1488 · 阶跃 +15 deg/s",
+        "new": "L1 · 主试验对象 4 · 阶跃 +15 deg/s"
+      },
+      {
+        "old": "L1 · train_boundary-1488 · 多正弦（0.30/0.85/1.40 Hz）",
+        "new": "L1 · 主试验对象 4 · 多正弦（0.30/0.85/1.40 Hz）"
+      },
+      {
+        "old": "L2 · train_core-0175 · 阶跃 +15 deg/s",
+        "new": "L2 · 主试验对象 5 · 阶跃 +15 deg/s"
+      },
+      {
+        "old": "L2 · train_core-0175 · 多正弦（0.30/0.85/1.40 Hz）",
+        "new": "L2 · 主试验对象 5 · 多正弦（0.30/0.85/1.40 Hz）"
+      },
+      {
+        "old": "L3 · train_boundary-1388 · 阶跃 +15 deg/s",
+        "new": "L3 · 主试验对象 6 · 阶跃 +15 deg/s"
+      },
+      {
+        "old": "L3 · train_boundary-1388 · 多正弦（0.30/0.85/1.40 Hz）",
+        "new": "L3 · 主试验对象 6 · 多正弦（0.30/0.85/1.40 Hz）"
+      }
+    ]
+  },
+  "paper/teacher_student_compare.svg": {
+    "source_sha256": "38a2883b4c1b64a1d387c170829eff5805e2b3347fd7aa72b90e3786ff1296d2",
+    "display_sha256": "8b6fb02c17f6d7ae35a68ce07e6beb3c3199fe6b8673b046be3bca6a3306b5af",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "对象 train_core-0421（2 级品质）；RMSE 为 2 s 后的跟踪误差，全库 44 架中位比 1.28×；八组指令均保留完整时域。",
+        "new": "主试验对象 7（2 级品质）；RMSE 为 2 s 后的跟踪误差，全库 44 架中位比 1.28×；八组指令均保留完整时域。"
+      }
+    ]
+  },
+  "paper/topk4_diagnostic.svg": {
+    "source_sha256": "1b42a37899344ad11e3998d82d9a9808024ff4af10ab1693dbe4c24d7f5e7d13",
+    "display_sha256": "e1a9874e054f1756ba399196f4e5d65ce5918c0d63e9da1afbf4684d2ebf1555",
+    "all_nontext_geometry_unchanged": true,
+    "changes": [
+      {
+        "old": "Top-k SAE 与原始历史的 180 s 闭环响应（id_test-3458）",
+        "new": "Top-k SAE 与原始历史的 180 s 闭环响应（时延对象 2）"
+      }
+    ]
+  }
+}

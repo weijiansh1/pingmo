@@ -1,0 +1,17 @@
+{
+  "purpose": "One original frozen-student walkthrough; no training or paper-result replacement",
+  "raw_object_id": "train_core-0421",
+  "object_label": "对象 1",
+  "weights": "/home/swj/pingmo/flight_control_original_restored_2026-10-25/evidence/weights/student_tiny.pt",
+  "weights_sha256": "ff5f5b5b1a63d9f28204f2f9693d1a4b600385aa50f935743cee95ede9fa1aea",
+  "library_sha256": "1daaccbef44b36274d2ce53612a3f46e54bd5c691d7f7bc8d498f1b903273fde",
+  "student_source": "/home/swj/pingmo/flight_control_original_restored_2026-10-25/experiments/sae_delay_20261023/common.py",
+  "student_source_sha256": "9a200de5e22a7039c905be941e36d48697f0950d52542f207d3e6fdc847aa1a8",
+  "environment_source_sha256": "2d8a73e24e2ccdee693245aaebfbf21d769aec270436498b61141f0fd2d42fd7",
+  "trajectory_alignment": "Each cycle stores inputs at t0 and response at t1=t0+20ms; no terminal auto-reset included",
+  "observation_contract": "9 current + 32x5 history + 7 previous actions, no explicit object parameter vector",
+  "historical_reference": "The archived reference generator uses true plant tau_p, as in the original implementation",
+  "cycles": 399,
+  "device": "cpu",
+  "compatibility": "NumPy 1.26 np.trapz supplies the original np.trapezoid spelling; original source unchanged"
+}

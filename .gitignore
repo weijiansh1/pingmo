@@ -1,0 +1,16 @@
+# Local assistant notes
+AGENTS.md
+
+# Editor / runtime junk
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+
+# Symlinks into /data (data disk not mounted on this host)
+/FQControl_Model
+/flight_control_corrected_2026-10-24
+/flight_control_distillation100_2026-10-25
+/github_publish_2026-10-25
+/teacher_gpu4_benchmark_2026-10-25
+/teacher_no_reference_gpu4_2026-10-25
+/飞控大模型研究_修订_v3_最佳实践_2026-10-24.zip

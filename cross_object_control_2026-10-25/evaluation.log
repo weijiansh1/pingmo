@@ -1,0 +1,64 @@
+Start 39 jobs, 468 pairs, frozen weights only.
+{"job": [20261031, "student", "unified"], "completed_pairs": 12, "elapsed_s": 63.5208473210223}
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/concurrent/futures/process.py", line 246, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+  File "/home/swj/pingmo/cross_object_control_2026-10-25/run_evaluation.py", line 63, in run_job
+    torch.set_num_interop_threads(1)
+RuntimeError: Error: cannot set number of interop threads after parallel work has started or set_num_interop_threads called
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/swj/pingmo/cross_object_control_2026-10-25/run_evaluation.py", line 172, in <module>
+    main()
+  File "/home/swj/pingmo/cross_object_control_2026-10-25/run_evaluation.py", line 156, in main
+    result = future.result()
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/home/swj/data/miniconda/envs/torch/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+RuntimeError: Error: cannot set number of interop threads after parallel work has started or set_num_interop_threads called
+Start 39 jobs, 468 pairs, frozen weights only.
+{"job": [20261031, "student", "unified"], "completed_pairs": 12, "elapsed_s": 0.0023790872655808926}
+{"job": [20261031, "teacher", "train_core-0750"], "completed_pairs": 12, "elapsed_s": 0.02756352722644806}
+{"job": [20261031, "teacher", "train_core-1197"], "completed_pairs": 12, "elapsed_s": 0.027651302982121706}
+{"job": [20261031, "teacher", "train_core-1998"], "completed_pairs": 12, "elapsed_s": 0.028604999650269747}
+{"job": [20261031, "teacher", "train_core-0262"], "completed_pairs": 12, "elapsed_s": 0.02796012908220291}
+{"job": [20261031, "teacher", "train_core-1875"], "completed_pairs": 12, "elapsed_s": 0.028708800207823515}
+{"job": [20261031, "teacher", "train_core-0553"], "completed_pairs": 12, "elapsed_s": 0.027793955989181995}
+{"job": [20261031, "teacher", "train_core-0148"], "completed_pairs": 12, "elapsed_s": 0.028720127884298563}
+{"job": [20261031, "teacher", "train_core-0401"], "completed_pairs": 12, "elapsed_s": 0.027466408908367157}
+{"job": [20261031, "teacher", "train_core-1450"], "completed_pairs": 12, "elapsed_s": 0.027479297947138548}
+{"job": [20261031, "teacher", "train_core-1187"], "completed_pairs": 12, "elapsed_s": 0.02765585668385029}
+{"job": [20261031, "teacher", "train_core-1871"], "completed_pairs": 12, "elapsed_s": 0.027981014922261238}
+{"job": [20261031, "teacher", "train_core-1442"], "completed_pairs": 12, "elapsed_s": 0.02742089983075857}
+{"job": [20261101, "teacher", "train_core-1875"], "completed_pairs": 12, "elapsed_s": 0.027927168179303408}
+{"job": [20261101, "teacher", "train_core-0750"], "completed_pairs": 12, "elapsed_s": 0.026923622004687786}
+{"job": [20261101, "teacher", "train_core-1998"], "completed_pairs": 12, "elapsed_s": 0.027211325243115425}
+{"job": [20261101, "student", "unified"], "completed_pairs": 12, "elapsed_s": 63.5601045046933}
+{"job": [20261101, "teacher", "train_core-0148"], "completed_pairs": 12, "elapsed_s": 139.69081554329023}
+{"job": [20261101, "teacher", "train_core-1450"], "completed_pairs": 12, "elapsed_s": 139.83474453818053}
+{"job": [20261101, "teacher", "train_core-0262"], "completed_pairs": 12, "elapsed_s": 140.03124018386006}
+{"job": [20261101, "teacher", "train_core-1871"], "completed_pairs": 12, "elapsed_s": 140.19099208619446}
+{"job": [20261101, "teacher", "train_core-1197"], "completed_pairs": 12, "elapsed_s": 140.5012590070255}
+{"job": [20261101, "teacher", "train_core-0553"], "completed_pairs": 12, "elapsed_s": 140.60767820570618}
+{"job": [20261102, "teacher", "train_core-1197"], "completed_pairs": 12, "elapsed_s": 140.59027565689757}
+{"job": [20261101, "teacher", "train_core-1442"], "completed_pairs": 12, "elapsed_s": 140.77680594706908}
+{"job": [20261102, "teacher", "train_core-0750"], "completed_pairs": 12, "elapsed_s": 141.01667605899274}
+{"job": [20261102, "teacher", "train_core-0553"], "completed_pairs": 12, "elapsed_s": 141.05993478931487}
+{"job": [20261101, "teacher", "train_core-0401"], "completed_pairs": 12, "elapsed_s": 141.3485423871316}
+{"job": [20261102, "teacher", "train_core-0262"], "completed_pairs": 12, "elapsed_s": 141.53266010666266}
+{"job": [20261101, "teacher", "train_core-1187"], "completed_pairs": 12, "elapsed_s": 142.2600073539652}
+{"job": [20261102, "teacher", "train_core-1998"], "completed_pairs": 12, "elapsed_s": 142.85548725817353}
+{"job": [20261102, "teacher", "train_core-1875"], "completed_pairs": 12, "elapsed_s": 143.32422008737922}
+{"job": [20261102, "student", "unified"], "completed_pairs": 12, "elapsed_s": 64.19529312988743}
+{"job": [20261102, "teacher", "train_core-0148"], "completed_pairs": 12, "elapsed_s": 141.71698547014967}
+{"job": [20261102, "teacher", "train_core-1187"], "completed_pairs": 12, "elapsed_s": 138.15701913833618}
+{"job": [20261102, "teacher", "train_core-0401"], "completed_pairs": 12, "elapsed_s": 139.1033514738083}
+{"job": [20261102, "teacher", "train_core-1450"], "completed_pairs": 12, "elapsed_s": 139.4627043819055}
+{"job": [20261102, "teacher", "train_core-1871"], "completed_pairs": 12, "elapsed_s": 139.39592236094177}
+{"job": [20261102, "teacher", "train_core-1442"], "completed_pairs": 12, "elapsed_s": 139.80459546716884}

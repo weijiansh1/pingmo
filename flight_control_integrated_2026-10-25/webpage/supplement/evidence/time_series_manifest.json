@@ -1,0 +1,1539 @@
+{
+  "selection": {
+    "protocol": "controller-route-v1",
+    "selection_timing": "Figure selection rule recorded before inspecting selected response traces; deterministic identifiers, not outcome ranks.",
+    "source_by_partial_level": {
+      "L1": "train_core-0750",
+      "L2": "train_core-0148",
+      "L3": "train_core-0401"
+    },
+    "source_for_teacher_student": "train_core-0148",
+    "id": "id_test-3451",
+    "ood": "ood_test-4510",
+    "seeds": [
+      20261031,
+      20261101,
+      20261102
+    ],
+    "commands": [
+      "test-11-step",
+      "test-17-multisine"
+    ],
+    "recovery": [
+      "initial_+5",
+      "disturbance_+1"
+    ],
+    "target_seed": 20261101,
+    "target_conditions": {
+      "adaptation_condition": "V050_H2500",
+      "heldout_condition": "V070_H3500"
+    },
+    "target_case": "test-11-step",
+    "atlas": "All 12 source objects + 24 ID + 24 OOD; both displayed commands and every seed; no outcome-based exclusion."
+  },
+  "trace_index": [
+    {
+      "prefix": "trace_000",
+      "key": "teacher__20261031__train_core-0750__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_001",
+      "key": "teacher__20261101__train_core-0750__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_002",
+      "key": "teacher__20261102__train_core-0750__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_003",
+      "key": "teacher__20261031__train_core-0148__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_004",
+      "key": "teacher__20261101__train_core-0148__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_005",
+      "key": "teacher__20261102__train_core-0148__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_006",
+      "key": "teacher__20261031__train_core-0401__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_007",
+      "key": "teacher__20261101__train_core-0401__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_008",
+      "key": "teacher__20261102__train_core-0401__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_009",
+      "key": "student__20261031__train_core-0148__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_010",
+      "key": "student__20261031__train_core-0148__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_011",
+      "key": "teacher__20261031__train_core-0148__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_012",
+      "key": "student__20261101__train_core-0148__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_013",
+      "key": "student__20261101__train_core-0148__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_014",
+      "key": "teacher__20261101__train_core-0148__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_015",
+      "key": "student__20261102__train_core-0148__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_016",
+      "key": "student__20261102__train_core-0148__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_017",
+      "key": "teacher__20261102__train_core-0148__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_018",
+      "key": "student__20261031__id_test-3451__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_019",
+      "key": "student__20261101__id_test-3451__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_020",
+      "key": "student__20261102__id_test-3451__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_021",
+      "key": "pid__None__id_test-3451__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_022",
+      "key": "student__20261031__id_test-3451__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_023",
+      "key": "student__20261101__id_test-3451__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_024",
+      "key": "student__20261102__id_test-3451__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_025",
+      "key": "pid__None__id_test-3451__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_026",
+      "key": "student__20261031__ood_test-4510__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_027",
+      "key": "student__20261101__ood_test-4510__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_028",
+      "key": "student__20261102__ood_test-4510__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_029",
+      "key": "pid__None__ood_test-4510__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_030",
+      "key": "student__20261031__ood_test-4510__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_031",
+      "key": "student__20261101__ood_test-4510__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_032",
+      "key": "student__20261102__ood_test-4510__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_033",
+      "key": "pid__None__ood_test-4510__test-17-multisine__8s"
+    },
+    {
+      "prefix": "trace_034",
+      "key": "student__20261031__ood_test-4510__initial_+5__30s"
+    },
+    {
+      "prefix": "trace_035",
+      "key": "student__20261101__ood_test-4510__initial_+5__30s"
+    },
+    {
+      "prefix": "trace_036",
+      "key": "student__20261102__ood_test-4510__initial_+5__30s"
+    },
+    {
+      "prefix": "trace_037",
+      "key": "uncontrolled__None__ood_test-4510__initial_+5__30s"
+    },
+    {
+      "prefix": "trace_038",
+      "key": "student__20261031__ood_test-4510__disturbance_+1__30s"
+    },
+    {
+      "prefix": "trace_039",
+      "key": "student__20261101__ood_test-4510__disturbance_+1__30s"
+    },
+    {
+      "prefix": "trace_040",
+      "key": "student__20261102__ood_test-4510__disturbance_+1__30s"
+    },
+    {
+      "prefix": "trace_041",
+      "key": "uncontrolled__None__ood_test-4510__disturbance_+1__30s"
+    },
+    {
+      "prefix": "trace_042",
+      "key": "frozen_source_student__20261101__V050_H2500__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_043",
+      "key": "adapted_source_student__20261101__V050_H2500__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_044",
+      "key": "scratch_student_same_budget__20261101__V050_H2500__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_045",
+      "key": "frozen_source_student__20261101__V070_H3500__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_046",
+      "key": "adapted_source_student__20261101__V070_H3500__test-11-step__8s"
+    },
+    {
+      "prefix": "trace_047",
+      "key": "scratch_student_same_budget__20261101__V070_H3500__test-11-step__8s"
+    }
+  ],
+  "selected_case_metrics": [
+    {
+      "key": "teacher__20261031__train_core-0750__test-11-step__8s",
+      "policy": "teacher",
+      "seed": 20261031,
+      "object": "train_core-0750",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 5.698379039764404,
+      "first_failure_s": null
+    },
+    {
+      "key": "teacher__20261101__train_core-0750__test-11-step__8s",
+      "policy": "teacher",
+      "seed": 20261101,
+      "object": "train_core-0750",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 0.9336316585540771,
+      "first_failure_s": null
+    },
+    {
+      "key": "teacher__20261102__train_core-0750__test-11-step__8s",
+      "policy": "teacher",
+      "seed": 20261102,
+      "object": "train_core-0750",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 19.30014419555664,
+      "first_failure_s": null
+    },
+    {
+      "key": "teacher__20261031__train_core-0148__test-11-step__8s",
+      "policy": "teacher",
+      "seed": 20261031,
+      "object": "train_core-0148",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 2.694575071334839,
+      "first_failure_s": null
+    },
+    {
+      "key": "teacher__20261101__train_core-0148__test-11-step__8s",
+      "policy": "teacher",
+      "seed": 20261101,
+      "object": "train_core-0148",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 0.8266351222991943,
+      "first_failure_s": null
+    },
+    {
+      "key": "teacher__20261102__train_core-0148__test-11-step__8s",
+      "policy": "teacher",
+      "seed": 20261102,
+      "object": "train_core-0148",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 4.303123950958252,
+      "first_failure_s": null
+    },
+    {
+      "key": "teacher__20261031__train_core-0401__test-11-step__8s",
+      "policy": "teacher",
+      "seed": 20261031,
+      "object": "train_core-0401",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 0.39953306317329407,
+      "first_failure_s": null
+    },
+    {
+      "key": "teacher__20261101__train_core-0401__test-11-step__8s",
+      "policy": "teacher",
+      "seed": 20261101,
+      "object": "train_core-0401",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 6.0182576179504395,
+      "first_failure_s": null
+    },
+    {
+      "key": "teacher__20261102__train_core-0401__test-11-step__8s",
+      "policy": "teacher",
+      "seed": 20261102,
+      "object": "train_core-0401",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 3.454164981842041,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261031__train_core-0148__test-11-step__8s",
+      "policy": "student",
+      "seed": 20261031,
+      "object": "train_core-0148",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 3.0340232849121094,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261031__train_core-0148__test-17-multisine__8s",
+      "policy": "student",
+      "seed": 20261031,
+      "object": "train_core-0148",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 0.534206748008728,
+      "first_failure_s": null
+    },
+    {
+      "key": "teacher__20261031__train_core-0148__test-17-multisine__8s",
+      "policy": "teacher",
+      "seed": 20261031,
+      "object": "train_core-0148",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 0.49842438101768494,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261101__train_core-0148__test-11-step__8s",
+      "policy": "student",
+      "seed": 20261101,
+      "object": "train_core-0148",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 1.765869379043579,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261101__train_core-0148__test-17-multisine__8s",
+      "policy": "student",
+      "seed": 20261101,
+      "object": "train_core-0148",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 0.7014122605323792,
+      "first_failure_s": null
+    },
+    {
+      "key": "teacher__20261101__train_core-0148__test-17-multisine__8s",
+      "policy": "teacher",
+      "seed": 20261101,
+      "object": "train_core-0148",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 0.7415611147880554,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261102__train_core-0148__test-11-step__8s",
+      "policy": "student",
+      "seed": 20261102,
+      "object": "train_core-0148",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 3.0706112384796143,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261102__train_core-0148__test-17-multisine__8s",
+      "policy": "student",
+      "seed": 20261102,
+      "object": "train_core-0148",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 1.3274927139282227,
+      "first_failure_s": null
+    },
+    {
+      "key": "teacher__20261102__train_core-0148__test-17-multisine__8s",
+      "policy": "teacher",
+      "seed": 20261102,
+      "object": "train_core-0148",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 1.844420075416565,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261031__id_test-3451__test-11-step__8s",
+      "policy": "student",
+      "seed": 20261031,
+      "object": "id_test-3451",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 0.8474791049957275,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261101__id_test-3451__test-11-step__8s",
+      "policy": "student",
+      "seed": 20261101,
+      "object": "id_test-3451",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 3.5989699363708496,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261102__id_test-3451__test-11-step__8s",
+      "policy": "student",
+      "seed": 20261102,
+      "object": "id_test-3451",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 2.1702330112457275,
+      "first_failure_s": null
+    },
+    {
+      "key": "pid__None__id_test-3451__test-11-step__8s",
+      "policy": "pid",
+      "seed": null,
+      "object": "id_test-3451",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 2.4573357105255127,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261031__id_test-3451__test-17-multisine__8s",
+      "policy": "student",
+      "seed": 20261031,
+      "object": "id_test-3451",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 0.41302645206451416,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261101__id_test-3451__test-17-multisine__8s",
+      "policy": "student",
+      "seed": 20261101,
+      "object": "id_test-3451",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 0.3660008907318115,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261102__id_test-3451__test-17-multisine__8s",
+      "policy": "student",
+      "seed": 20261102,
+      "object": "id_test-3451",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 1.2694584131240845,
+      "first_failure_s": null
+    },
+    {
+      "key": "pid__None__id_test-3451__test-17-multisine__8s",
+      "policy": "pid",
+      "seed": null,
+      "object": "id_test-3451",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 0.7690497636795044,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261031__ood_test-4510__test-11-step__8s",
+      "policy": "student",
+      "seed": 20261031,
+      "object": "ood_test-4510",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 3.0632848739624023,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261101__ood_test-4510__test-11-step__8s",
+      "policy": "student",
+      "seed": 20261101,
+      "object": "ood_test-4510",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 7.79721736907959,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261102__ood_test-4510__test-11-step__8s",
+      "policy": "student",
+      "seed": 20261102,
+      "object": "ood_test-4510",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 6.350114822387695,
+      "first_failure_s": null
+    },
+    {
+      "key": "pid__None__ood_test-4510__test-11-step__8s",
+      "policy": "pid",
+      "seed": null,
+      "object": "ood_test-4510",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 1.901509165763855,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261031__ood_test-4510__test-17-multisine__8s",
+      "policy": "student",
+      "seed": 20261031,
+      "object": "ood_test-4510",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 1.210401177406311,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261101__ood_test-4510__test-17-multisine__8s",
+      "policy": "student",
+      "seed": 20261101,
+      "object": "ood_test-4510",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 1.484575867652893,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261102__ood_test-4510__test-17-multisine__8s",
+      "policy": "student",
+      "seed": 20261102,
+      "object": "ood_test-4510",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 1.1835720539093018,
+      "first_failure_s": null
+    },
+    {
+      "key": "pid__None__ood_test-4510__test-17-multisine__8s",
+      "policy": "pid",
+      "seed": null,
+      "object": "ood_test-4510",
+      "case": "test-17-multisine",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 0.8601426482200623,
+      "first_failure_s": null
+    },
+    {
+      "key": "student__20261031__ood_test-4510__initial_+5__30s",
+      "policy": "student",
+      "seed": 20261031,
+      "object": "ood_test-4510",
+      "case": "initial_+5",
+      "horizon_s": 30,
+      "metric_start_s": 0.0,
+      "rmse_deg_s": 4.013004302978516,
+      "first_failure_s": null,
+      "post_release_rms_deg_s": 4.013004302978516
+    },
+    {
+      "key": "student__20261101__ood_test-4510__initial_+5__30s",
+      "policy": "student",
+      "seed": 20261101,
+      "object": "ood_test-4510",
+      "case": "initial_+5",
+      "horizon_s": 30,
+      "metric_start_s": 0.0,
+      "rmse_deg_s": 5.915362358093262,
+      "first_failure_s": null,
+      "post_release_rms_deg_s": 5.915362358093262
+    },
+    {
+      "key": "student__20261102__ood_test-4510__initial_+5__30s",
+      "policy": "student",
+      "seed": 20261102,
+      "object": "ood_test-4510",
+      "case": "initial_+5",
+      "horizon_s": 30,
+      "metric_start_s": 0.0,
+      "rmse_deg_s": 3.1504504680633545,
+      "first_failure_s": null,
+      "post_release_rms_deg_s": 3.1504504680633545
+    },
+    {
+      "key": "uncontrolled__None__ood_test-4510__initial_+5__30s",
+      "policy": "uncontrolled",
+      "seed": null,
+      "object": "ood_test-4510",
+      "case": "initial_+5",
+      "horizon_s": 30,
+      "metric_start_s": 0.0,
+      "rmse_deg_s": null,
+      "first_failure_s": 24.0
+    },
+    {
+      "key": "student__20261031__ood_test-4510__disturbance_+1__30s",
+      "policy": "student",
+      "seed": 20261031,
+      "object": "ood_test-4510",
+      "case": "disturbance_+1",
+      "horizon_s": 30,
+      "metric_start_s": 2.0,
+      "rmse_deg_s": 2.0987184047698975,
+      "first_failure_s": null,
+      "post_release_rms_deg_s": 2.109344720840454
+    },
+    {
+      "key": "student__20261101__ood_test-4510__disturbance_+1__30s",
+      "policy": "student",
+      "seed": 20261101,
+      "object": "ood_test-4510",
+      "case": "disturbance_+1",
+      "horizon_s": 30,
+      "metric_start_s": 2.0,
+      "rmse_deg_s": 1.9502849578857422,
+      "first_failure_s": null,
+      "post_release_rms_deg_s": 1.9600615501403809
+    },
+    {
+      "key": "student__20261102__ood_test-4510__disturbance_+1__30s",
+      "policy": "student",
+      "seed": 20261102,
+      "object": "ood_test-4510",
+      "case": "disturbance_+1",
+      "horizon_s": 30,
+      "metric_start_s": 2.0,
+      "rmse_deg_s": 1.237847089767456,
+      "first_failure_s": null,
+      "post_release_rms_deg_s": 1.2433315515518188
+    },
+    {
+      "key": "uncontrolled__None__ood_test-4510__disturbance_+1__30s",
+      "policy": "uncontrolled",
+      "seed": null,
+      "object": "ood_test-4510",
+      "case": "disturbance_+1",
+      "horizon_s": 30,
+      "metric_start_s": 2.0,
+      "rmse_deg_s": 40.10179901123047,
+      "first_failure_s": null,
+      "post_release_rms_deg_s": 40.31817626953125
+    },
+    {
+      "key": "frozen_source_student__20261101__V050_H2500__test-11-step__8s",
+      "policy": "frozen_source_student",
+      "seed": 20261101,
+      "object": "V050_H2500",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 3.601896286010742,
+      "first_failure_s": null
+    },
+    {
+      "key": "adapted_source_student__20261101__V050_H2500__test-11-step__8s",
+      "policy": "adapted_source_student",
+      "seed": 20261101,
+      "object": "V050_H2500",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 3.427180528640747,
+      "first_failure_s": null
+    },
+    {
+      "key": "scratch_student_same_budget__20261101__V050_H2500__test-11-step__8s",
+      "policy": "scratch_student_same_budget",
+      "seed": 20261101,
+      "object": "V050_H2500",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 3.176413059234619,
+      "first_failure_s": null
+    },
+    {
+      "key": "frozen_source_student__20261101__V070_H3500__test-11-step__8s",
+      "policy": "frozen_source_student",
+      "seed": 20261101,
+      "object": "V070_H3500",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 1.9836965799331665,
+      "first_failure_s": null
+    },
+    {
+      "key": "adapted_source_student__20261101__V070_H3500__test-11-step__8s",
+      "policy": "adapted_source_student",
+      "seed": 20261101,
+      "object": "V070_H3500",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 1.1247897148132324,
+      "first_failure_s": null
+    },
+    {
+      "key": "scratch_student_same_budget__20261101__V070_H3500__test-11-step__8s",
+      "policy": "scratch_student_same_budget",
+      "seed": 20261101,
+      "object": "V070_H3500",
+      "case": "test-11-step",
+      "horizon_s": 8,
+      "metric_start_s": 1.0,
+      "rmse_deg_s": 3.320732355117798,
+      "first_failure_s": null
+    }
+  ],
+  "atlas": [
+    {
+      "page": 1,
+      "group": "source",
+      "object": "train_core-0148",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/train_core-0148.svg"
+    },
+    {
+      "page": 2,
+      "group": "source",
+      "object": "train_core-0262",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/train_core-0262.svg"
+    },
+    {
+      "page": 3,
+      "group": "source",
+      "object": "train_core-0401",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/train_core-0401.svg"
+    },
+    {
+      "page": 4,
+      "group": "source",
+      "object": "train_core-0553",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/train_core-0553.svg"
+    },
+    {
+      "page": 5,
+      "group": "source",
+      "object": "train_core-0750",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/train_core-0750.svg"
+    },
+    {
+      "page": 6,
+      "group": "source",
+      "object": "train_core-1187",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/train_core-1187.svg"
+    },
+    {
+      "page": 7,
+      "group": "source",
+      "object": "train_core-1197",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/train_core-1197.svg"
+    },
+    {
+      "page": 8,
+      "group": "source",
+      "object": "train_core-1442",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/train_core-1442.svg"
+    },
+    {
+      "page": 9,
+      "group": "source",
+      "object": "train_core-1450",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/train_core-1450.svg"
+    },
+    {
+      "page": 10,
+      "group": "source",
+      "object": "train_core-1871",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/train_core-1871.svg"
+    },
+    {
+      "page": 11,
+      "group": "source",
+      "object": "train_core-1875",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/train_core-1875.svg"
+    },
+    {
+      "page": 12,
+      "group": "source",
+      "object": "train_core-1998",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/train_core-1998.svg"
+    },
+    {
+      "page": 13,
+      "group": "id_test",
+      "object": "id_test-3451",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/id_test-3451.svg"
+    },
+    {
+      "page": 14,
+      "group": "id_test",
+      "object": "id_test-3464",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/id_test-3464.svg"
+    },
+    {
+      "page": 15,
+      "group": "id_test",
+      "object": "id_test-3492",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/id_test-3492.svg"
+    },
+    {
+      "page": 16,
+      "group": "id_test",
+      "object": "id_test-3538",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/id_test-3538.svg"
+    },
+    {
+      "page": 17,
+      "group": "id_test",
+      "object": "id_test-3592",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/id_test-3592.svg"
+    },
+    {
+      "page": 18,
+      "group": "id_test",
+      "object": "id_test-3601",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/id_test-3601.svg"
+    },
+    {
+      "page": 19,
+      "group": "id_test",
+      "object": "id_test-3617",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/id_test-3617.svg"
+    },
+    {
+      "page": 20,
+      "group": "id_test",
+      "object": "id_test-3671",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/id_test-3671.svg"
+    },
+    {
+      "page": 21,
+      "group": "id_test",
+      "object": "id_test-3802",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/id_test-3802.svg"
+    },
+    {
+      "page": 22,
+      "group": "id_test",
+      "object": "id_test-3897",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/id_test-3897.svg"
+    },
+    {
+      "page": 23,
+      "group": "id_test",
+      "object": "id_test-3973",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/id_test-3973.svg"
+    },
+    {
+      "page": 24,
+      "group": "id_test",
+      "object": "id_test-3988",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/id_test-3988.svg"
+    },
+    {
+      "page": 25,
+      "group": "id_test",
+      "object": "id_test-4067",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/id_test-4067.svg"
+    },
+    {
+      "page": 26,
+      "group": "id_test",
+      "object": "id_test-4076",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/id_test-4076.svg"
+    },
+    {
+      "page": 27,
+      "group": "id_test",
+      "object": "id_test-4158",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/id_test-4158.svg"
+    },
+    {
+      "page": 28,
+      "group": "id_test",
+      "object": "id_test-4182",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/id_test-4182.svg"
+    },
+    {
+      "page": 29,
+      "group": "id_test",
+      "object": "id_test-4194",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/id_test-4194.svg"
+    },
+    {
+      "page": 30,
+      "group": "id_test",
+      "object": "id_test-4205",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/id_test-4205.svg"
+    },
+    {
+      "page": 31,
+      "group": "id_test",
+      "object": "id_test-4206",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/id_test-4206.svg"
+    },
+    {
+      "page": 32,
+      "group": "id_test",
+      "object": "id_test-4280",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/id_test-4280.svg"
+    },
+    {
+      "page": 33,
+      "group": "id_test",
+      "object": "id_test-4299",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/id_test-4299.svg"
+    },
+    {
+      "page": 34,
+      "group": "id_test",
+      "object": "id_test-4325",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/id_test-4325.svg"
+    },
+    {
+      "page": 35,
+      "group": "id_test",
+      "object": "id_test-4395",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/id_test-4395.svg"
+    },
+    {
+      "page": 36,
+      "group": "id_test",
+      "object": "id_test-4465",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/id_test-4465.svg"
+    },
+    {
+      "page": 37,
+      "group": "ood_test",
+      "object": "ood_test-4510",
+      "partial_level": null,
+      "svg": "paper/time_domain_atlas/ood_test-4510.svg"
+    },
+    {
+      "page": 38,
+      "group": "ood_test",
+      "object": "ood_test-4535",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/ood_test-4535.svg"
+    },
+    {
+      "page": 39,
+      "group": "ood_test",
+      "object": "ood_test-4584",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/ood_test-4584.svg"
+    },
+    {
+      "page": 40,
+      "group": "ood_test",
+      "object": "ood_test-4617",
+      "partial_level": null,
+      "svg": "paper/time_domain_atlas/ood_test-4617.svg"
+    },
+    {
+      "page": 41,
+      "group": "ood_test",
+      "object": "ood_test-4638",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/ood_test-4638.svg"
+    },
+    {
+      "page": 42,
+      "group": "ood_test",
+      "object": "ood_test-4645",
+      "partial_level": null,
+      "svg": "paper/time_domain_atlas/ood_test-4645.svg"
+    },
+    {
+      "page": 43,
+      "group": "ood_test",
+      "object": "ood_test-4651",
+      "partial_level": null,
+      "svg": "paper/time_domain_atlas/ood_test-4651.svg"
+    },
+    {
+      "page": 44,
+      "group": "ood_test",
+      "object": "ood_test-4699",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/ood_test-4699.svg"
+    },
+    {
+      "page": 45,
+      "group": "ood_test",
+      "object": "ood_test-4700",
+      "partial_level": null,
+      "svg": "paper/time_domain_atlas/ood_test-4700.svg"
+    },
+    {
+      "page": 46,
+      "group": "ood_test",
+      "object": "ood_test-4723",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/ood_test-4723.svg"
+    },
+    {
+      "page": 47,
+      "group": "ood_test",
+      "object": "ood_test-4742",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/ood_test-4742.svg"
+    },
+    {
+      "page": 48,
+      "group": "ood_test",
+      "object": "ood_test-4748",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/ood_test-4748.svg"
+    },
+    {
+      "page": 49,
+      "group": "ood_test",
+      "object": "ood_test-4775",
+      "partial_level": null,
+      "svg": "paper/time_domain_atlas/ood_test-4775.svg"
+    },
+    {
+      "page": 50,
+      "group": "ood_test",
+      "object": "ood_test-4787",
+      "partial_level": null,
+      "svg": "paper/time_domain_atlas/ood_test-4787.svg"
+    },
+    {
+      "page": 51,
+      "group": "ood_test",
+      "object": "ood_test-4793",
+      "partial_level": null,
+      "svg": "paper/time_domain_atlas/ood_test-4793.svg"
+    },
+    {
+      "page": 52,
+      "group": "ood_test",
+      "object": "ood_test-4795",
+      "partial_level": 2,
+      "svg": "paper/time_domain_atlas/ood_test-4795.svg"
+    },
+    {
+      "page": 53,
+      "group": "ood_test",
+      "object": "ood_test-4812",
+      "partial_level": 3,
+      "svg": "paper/time_domain_atlas/ood_test-4812.svg"
+    },
+    {
+      "page": 54,
+      "group": "ood_test",
+      "object": "ood_test-4822",
+      "partial_level": null,
+      "svg": "paper/time_domain_atlas/ood_test-4822.svg"
+    },
+    {
+      "page": 55,
+      "group": "ood_test",
+      "object": "ood_test-4828",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/ood_test-4828.svg"
+    },
+    {
+      "page": 56,
+      "group": "ood_test",
+      "object": "ood_test-4881",
+      "partial_level": null,
+      "svg": "paper/time_domain_atlas/ood_test-4881.svg"
+    },
+    {
+      "page": 57,
+      "group": "ood_test",
+      "object": "ood_test-4893",
+      "partial_level": null,
+      "svg": "paper/time_domain_atlas/ood_test-4893.svg"
+    },
+    {
+      "page": 58,
+      "group": "ood_test",
+      "object": "ood_test-4947",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/ood_test-4947.svg"
+    },
+    {
+      "page": 59,
+      "group": "ood_test",
+      "object": "ood_test-4951",
+      "partial_level": null,
+      "svg": "paper/time_domain_atlas/ood_test-4951.svg"
+    },
+    {
+      "page": 60,
+      "group": "ood_test",
+      "object": "ood_test-4985",
+      "partial_level": 1,
+      "svg": "paper/time_domain_atlas/ood_test-4985.svg"
+    }
+  ],
+  "source_root": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024",
+  "source_sha256": {
+    "evaluations/teacher_seed_20261031/train_core-0750/teacher_8s.npz": "22780f9feba9c14040e4143f83de0559e983ab3b055c625c11d1b8a2c73ceaf5",
+    "evaluations/teacher_seed_20261101/train_core-0750/teacher_8s.npz": "353d46e5a2f5c86482a0e148c251b02425a473358d34575f70b9630b4422237e",
+    "evaluations/teacher_seed_20261102/train_core-0750/teacher_8s.npz": "9908a0784d28c893ea9f90faf3084c1eddac6f91a8e82b1c8bf497717137e041",
+    "evaluations/teacher_seed_20261031/train_core-0148/teacher_8s.npz": "bd7295637ded011f28caed528cb0c329524241999f01d969635116475d19fcf1",
+    "evaluations/teacher_seed_20261101/train_core-0148/teacher_8s.npz": "20996a1e02887168bc778df92240313c48fbe6c4c867029bd036a570224ab9fe",
+    "evaluations/teacher_seed_20261102/train_core-0148/teacher_8s.npz": "04c8524fe466e24f769082b20acdcaf2ef587a22f0234597b0351aebdc8b6362",
+    "evaluations/teacher_seed_20261031/train_core-0401/teacher_8s.npz": "40c04c4c344e26e484dbe5fc6370f1d90f76b8d21f1868c7904908105f42d652",
+    "evaluations/teacher_seed_20261101/train_core-0401/teacher_8s.npz": "19516e53619225fc5047855ad5a7f380a758bc8be614fc34cdff5e81173a7c70",
+    "evaluations/teacher_seed_20261102/train_core-0401/teacher_8s.npz": "85e610a24afee37f320ebdbd62278649866d897068bccd2309de869e1b5aa28a",
+    "evaluations/student_seed_20261031/train_core-0148/student_8s.npz": "bf2461416a045ca77cbe00132323bafded043c7783c2b6cde02ce2e2ba15da4d",
+    "evaluations/student_seed_20261101/train_core-0148/student_8s.npz": "f2f74803bf0740060699894178d05a6429e2d2532eddcd8d0185e7fa2403090f",
+    "evaluations/student_seed_20261102/train_core-0148/student_8s.npz": "b0dbce6463147c6cf7da33530c798fc767185f34a645148f3eb9911ecae2c624",
+    "evaluations/student_seed_20261031/id_test-3451/student_8s.npz": "86b21ee33e43fca55f6ef563aebe2a6f344f90229b3bea1dc789ddcb7bd121f7",
+    "evaluations/student_seed_20261101/id_test-3451/student_8s.npz": "1aaeade21a01e32b9c447e091240a36f6a07022f73ebd10daf134dbabc6db8ca",
+    "evaluations/student_seed_20261102/id_test-3451/student_8s.npz": "c8ccb1dca525638690bf005096af725ea73d5b8f25ef0220cae2eda74bec1939",
+    "evaluations/baselines/id_test-3451/pid_8s.npz": "a8fa2404825b2ce5cc241de7a987eefc4e8e05f5002d7db803961d2215eb2fbd",
+    "evaluations/student_seed_20261031/ood_test-4510/student_8s.npz": "492d77f5a8bde8bf0c84d1a2d98bcda974d933f650b0a670db7d819c5375daaa",
+    "evaluations/student_seed_20261101/ood_test-4510/student_8s.npz": "3524439e7ebc08614041d768a027466b85f732ffb9152545857171cb382cb3dd",
+    "evaluations/student_seed_20261102/ood_test-4510/student_8s.npz": "30621e7078c9f213e5401c65645681d0288ad393bffcc864f6a7663fd90313ee",
+    "evaluations/baselines/ood_test-4510/pid_8s.npz": "9d3b3118ae627ba8b2440dd3b5ceac6948a717d70566666f412eab12805ac395",
+    "evaluations/student_seed_20261031/ood_test-4510/student_30s.npz": "5775b94e839b7479c3370da6e8d0d36d6a96a45eff86f3f8b5b3939fcafc851b",
+    "evaluations/student_seed_20261101/ood_test-4510/student_30s.npz": "897d27b800789d800f4828681a963ac58e2044d7efdacd496fc0e41ccaa74075",
+    "evaluations/student_seed_20261102/ood_test-4510/student_30s.npz": "fe2475d659899b1e81272329ed889cea654d8f2df6b72145d6902c8d63b74243",
+    "evaluations/baselines/ood_test-4510/uncontrolled_30s.npz": "a19b245f1c9355b358db38150bf9aba91245c38b33cb1167976c6a347df4c64e",
+    "adaptation/seed_20261101/frozen_source_student_V050_H2500.npz": "f1b67ada69843ddc61089f3efd3b987971534586d7fb15c5921f4dfa5223f3de",
+    "adaptation/seed_20261101/adapted_source_student_V050_H2500.npz": "53783aeac755b544087e6a9b52027626880afd40333a8118358a31b59f6d2e89",
+    "adaptation/seed_20261101/scratch_student_same_budget_V050_H2500.npz": "f1f8f635c90057e80e044bede01341143894941e00ea8630ca3f2c317250f4d7",
+    "adaptation/seed_20261101/frozen_source_student_V070_H3500.npz": "7936d9f7c0406ce7747530263494ee427ca07acd7876753ff0f3dc90a4d51f82",
+    "adaptation/seed_20261101/adapted_source_student_V070_H3500.npz": "c887a80515541a9137aa20be43f207cdbd712390c1480fef6e8805dbe12f5cd7",
+    "adaptation/seed_20261101/scratch_student_same_budget_V070_H3500.npz": "dbb738f5d4b94fd01d2ab356008ffab1a13464de61a5fbd5b40a414371211865",
+    "evaluations/student_seed_20261031/train_core-0262/student_8s.npz": "7f53ce77f52c9d9661b22dcf7ca43cec299728248d770da87e315243efa69602",
+    "evaluations/teacher_seed_20261031/train_core-0262/teacher_8s.npz": "c4a721404acd224e5fe9a2e45bfadd50895c622c1a7281147e47f381ca2133db",
+    "evaluations/student_seed_20261101/train_core-0262/student_8s.npz": "d0384e52e218edee61ab9b15a5e83470f3fb65dfd7d3978afd163ec173125edc",
+    "evaluations/teacher_seed_20261101/train_core-0262/teacher_8s.npz": "eda975cc26431744ecedeb6547ce269469b940a15970556f38d5874483048d04",
+    "evaluations/student_seed_20261102/train_core-0262/student_8s.npz": "505e528470b53f81ddb4b99d7359b7172a9318abe4efce16f600ba970d3fd61a",
+    "evaluations/teacher_seed_20261102/train_core-0262/teacher_8s.npz": "f2a0c006c033de3825b9769cbc458701dff22ce34dd6fd49190135908ba3599f",
+    "evaluations/student_seed_20261031/train_core-0401/student_8s.npz": "1922b0fc939c6104897a87cd42fc51c503acf6dc3895a336c287b76e85e20ef1",
+    "evaluations/student_seed_20261101/train_core-0401/student_8s.npz": "4ea360a9ea477b0b8e330a5c28e44680ca799149783d5b91b387366507c98384",
+    "evaluations/student_seed_20261102/train_core-0401/student_8s.npz": "37e8136ff979fc94db70bc1981cbd4a378c68f0d8c10766df3c73439c9e5ebcc",
+    "evaluations/student_seed_20261031/train_core-0553/student_8s.npz": "3a515df121f1af0cd79db243c1c952234daed216b1d431f4f16a0a611e327708",
+    "evaluations/teacher_seed_20261031/train_core-0553/teacher_8s.npz": "15a7ab942d7309da48b234db8e37b3b6b83d6c4e268470b924c599df74d05c10",
+    "evaluations/student_seed_20261101/train_core-0553/student_8s.npz": "52a4d621179be79802e645a97cb2693ec38ff23d7c6dadf994c6bcfef1642abb",
+    "evaluations/teacher_seed_20261101/train_core-0553/teacher_8s.npz": "d3a320627311c98acb26ad8a84d1db02f0c27377690dc277bf3d869298663224",
+    "evaluations/student_seed_20261102/train_core-0553/student_8s.npz": "d6aeb4c625d1fdc69cc68564a7a8ff62d4f2507cf1dbe66307d6e264e66eeb46",
+    "evaluations/teacher_seed_20261102/train_core-0553/teacher_8s.npz": "0de3b78db0501763525b90a2a3dba7445d5f3b7b8bbef4a4826fcb49cf278b18",
+    "evaluations/student_seed_20261031/train_core-0750/student_8s.npz": "6689d410f7c4be9868f25772faaadaa152c0c59ae47dd00007262cde6e06281c",
+    "evaluations/student_seed_20261101/train_core-0750/student_8s.npz": "860b210d8ef8772473475bdbc8e33a4a506b463bfc4199ee806b8a56f41aa429",
+    "evaluations/student_seed_20261102/train_core-0750/student_8s.npz": "76e15803019198afdac6a47bb6eaf89027374f66084feb057a8a684378657251",
+    "evaluations/student_seed_20261031/train_core-1187/student_8s.npz": "75b2f34ec38c52a3f08c03b6300aa67e6de9b3b9ab5374e5a9746d1925eb2819",
+    "evaluations/teacher_seed_20261031/train_core-1187/teacher_8s.npz": "8d98fec5dddc3ab233d32278ddf884ae696d4c393edff190e04f1eca1a946b2f",
+    "evaluations/student_seed_20261101/train_core-1187/student_8s.npz": "0b64ce8c8178441f66bf203a1648f05637431ff8fa9d91a795f954aee4765bfa",
+    "evaluations/teacher_seed_20261101/train_core-1187/teacher_8s.npz": "65b5ba868f7cc8cfdd2b887637fb42af79d7bef26d8555203466f73df7bfd5e5",
+    "evaluations/student_seed_20261102/train_core-1187/student_8s.npz": "98164bd9d3a8e987f3ac175067aacc3afbec570675688a6bebe735955f0181cb",
+    "evaluations/teacher_seed_20261102/train_core-1187/teacher_8s.npz": "99274fb96e81db8f7118165f8300f83ad9672593b2b675ccd9b7468b2e609347",
+    "evaluations/student_seed_20261031/train_core-1197/student_8s.npz": "cf8ce7e936e00790f274e1e0571bb5d3300b932759f9e7d6a1ec9ae4a8994937",
+    "evaluations/teacher_seed_20261031/train_core-1197/teacher_8s.npz": "4a5d4fbdaa78f0e305febeb2dedf855755f4c56dea5ba3b62a2a8640030385c7",
+    "evaluations/student_seed_20261101/train_core-1197/student_8s.npz": "1bbdffa10407398d7de08a65b736b1fcd93290d14ff4673455a4a44aa40278ee",
+    "evaluations/teacher_seed_20261101/train_core-1197/teacher_8s.npz": "567a286d29a97996cb1e6544cc0a3cbc4fda422444f0ea2d604bb0905b56ec10",
+    "evaluations/student_seed_20261102/train_core-1197/student_8s.npz": "fa6ca4e3f44d7574239848b7fb3de9dbe661a2da7a800d1cc61b20d913b4f248",
+    "evaluations/teacher_seed_20261102/train_core-1197/teacher_8s.npz": "79f3dd30de06f839b4084291063fcb83f700b40354f3ed5249f32392c6ad0879",
+    "evaluations/student_seed_20261031/train_core-1442/student_8s.npz": "b00946a9bc71798191a03068b4798f14751f2fd565ad637f19eb92b4d55f3fa6",
+    "evaluations/teacher_seed_20261031/train_core-1442/teacher_8s.npz": "6a517404c3a7a8895c10d9bfb259aece2cbd5f8e0d746c8e9a3f7d2c5240e1d0",
+    "evaluations/student_seed_20261101/train_core-1442/student_8s.npz": "a2eafa68c024c1e7509a63856ec749e2c19cd2b0553a0e52b5913d32f03865e2",
+    "evaluations/teacher_seed_20261101/train_core-1442/teacher_8s.npz": "6a600c5c41737afd4240f71ddf88927faea5d87f32afc10e2ce75c88c0c9289a",
+    "evaluations/student_seed_20261102/train_core-1442/student_8s.npz": "273579b02137d467541afd73f2d105edd7832b8b97bdc337d6469ec2ee04352b",
+    "evaluations/teacher_seed_20261102/train_core-1442/teacher_8s.npz": "e03cc970eeddbfbef2041a4ef2bf63d016ba17328cb2dfeb7ace3d4c2a651f9e",
+    "evaluations/student_seed_20261031/train_core-1450/student_8s.npz": "51f0dbe4894ecc7d7d13266b1acf6c57e4ed87032d7a9ae441ae3b3e0641afc7",
+    "evaluations/teacher_seed_20261031/train_core-1450/teacher_8s.npz": "2f3db810b740f78064ed6f4add74dd8ae4ff166cbfa72b8a0f07703b8e0e9f19",
+    "evaluations/student_seed_20261101/train_core-1450/student_8s.npz": "bdd52e361a0b88a0c4515a21594c4ac0a88b3ee46b9cb1e0981c3b2f92ad1f7b",
+    "evaluations/teacher_seed_20261101/train_core-1450/teacher_8s.npz": "96f44f406425c4823f03784a1a9dbc6a0af87a6799b9e00d3e14ed1d6f8480df",
+    "evaluations/student_seed_20261102/train_core-1450/student_8s.npz": "146248a0fb05091e69f456f5260983c2b29d3225217e09e077520a285965505a",
+    "evaluations/teacher_seed_20261102/train_core-1450/teacher_8s.npz": "4453b8984ca53e3c27027e63069cd8c42a38b01eef7c92448b18c7b85dc7d1c9",
+    "evaluations/student_seed_20261031/train_core-1871/student_8s.npz": "862627397b800f4bc5e40e32b13eb79b09e5cc7e1bc0a3eeae811f6e7eea7c80",
+    "evaluations/teacher_seed_20261031/train_core-1871/teacher_8s.npz": "b2bfcdba5ad4bfa50a093bd4917b2aa7c0662f7f07c9aede2221fb576b338655",
+    "evaluations/student_seed_20261101/train_core-1871/student_8s.npz": "1f500c61005003ace67db7d30342b5731cda6e511295062e3c5be10e7a1117a3",
+    "evaluations/teacher_seed_20261101/train_core-1871/teacher_8s.npz": "bb91f2f2ff597b0e7ab118dde31b9c2cf98d4dfb66a8ea7b67234179cde5b128",
+    "evaluations/student_seed_20261102/train_core-1871/student_8s.npz": "df78c938c98c46f867d7a89a1e3bf0dd59cc19ebc598708da567d8041332d42d",
+    "evaluations/teacher_seed_20261102/train_core-1871/teacher_8s.npz": "d8f34851e96482b8de6ea7e0567421e1d145561aebf29f418cc81037f0f60d08",
+    "evaluations/student_seed_20261031/train_core-1875/student_8s.npz": "fa11a70b61398e684af32429295b6677b3cf0468f317554bc6f900f0251b0124",
+    "evaluations/teacher_seed_20261031/train_core-1875/teacher_8s.npz": "116538a07c52d6841aa5698c9874c8f7b389c5f736d77d3305514703e90fe9de",
+    "evaluations/student_seed_20261101/train_core-1875/student_8s.npz": "9e14373ab3922b08b458405d2a5d9554fed1d4d1f08de948d43fd6db398156ec",
+    "evaluations/teacher_seed_20261101/train_core-1875/teacher_8s.npz": "e16e576421fb0578bb6a49b766e6971cacb796f99c2d18d650d2e511e81922cf",
+    "evaluations/student_seed_20261102/train_core-1875/student_8s.npz": "7a2c1cba8c6e33816ad6d8cd1187ec8fdaa7f0fed471d181a282369388dde80f",
+    "evaluations/teacher_seed_20261102/train_core-1875/teacher_8s.npz": "28839e1fe5e5cee778112cecd386001f0b5e836a55ae36888dfc0c12d144c386",
+    "evaluations/student_seed_20261031/train_core-1998/student_8s.npz": "5895039b0b666b3766eb1bffb5ca03e2cf528d746d014c2119e90b6cb7bf41ed",
+    "evaluations/teacher_seed_20261031/train_core-1998/teacher_8s.npz": "c1de1dac28eeb53d08535d47e46f6961ae7fa20701f2eb94d92da46e13a4e72f",
+    "evaluations/student_seed_20261101/train_core-1998/student_8s.npz": "665ce6385780e7d73ba8480918d72100a0c937c376aee6cfdc38ff277a23aac7",
+    "evaluations/teacher_seed_20261101/train_core-1998/teacher_8s.npz": "381c10f04d55ad1a1752ad900386bff917dba60da9e3bacee364ca171b4dd0d4",
+    "evaluations/student_seed_20261102/train_core-1998/student_8s.npz": "1cf48d59b8a12fa0b56548b3810cd0b03dc40e3919405eff9ffb044faeb15428",
+    "evaluations/teacher_seed_20261102/train_core-1998/teacher_8s.npz": "b500a249805224eb4a0cea6ddc17ff656aaa854884899946d3614162267663e0",
+    "evaluations/student_seed_20261031/id_test-3464/student_8s.npz": "2c22b0de0bd9765904ca0cf10861586036b42812899d80ef40c748963247c728",
+    "evaluations/baselines/id_test-3464/pid_8s.npz": "e16be94a04057bf59e5f894ebfa77d5f7f86d85e320a80d233301d81c1570650",
+    "evaluations/student_seed_20261101/id_test-3464/student_8s.npz": "f3d7826110b23c07e5df85e3868bc85e4dcd4b0f21be29430528c85c461027c9",
+    "evaluations/student_seed_20261102/id_test-3464/student_8s.npz": "fc3a3e5fcf56f94046caa92f78bd995e7580f9a7a55d6c2f4b199b1321bd3318",
+    "evaluations/student_seed_20261031/id_test-3492/student_8s.npz": "70ddcfc87d93083a0ba4bd9a7124b52bf935012f60f643109962bca360f45b6c",
+    "evaluations/baselines/id_test-3492/pid_8s.npz": "2c40cb4b576556a1f3d455966f10e52217caa7800d1806a42da0ff165389d5c6",
+    "evaluations/student_seed_20261101/id_test-3492/student_8s.npz": "d1abd678ec108210148dc30cf72b127e6de08aa542d00151f8999bfaec528647",
+    "evaluations/student_seed_20261102/id_test-3492/student_8s.npz": "241890189847afaa67c12c2fc7d77da3b184e27095a5b402548f54a1c1864aa8",
+    "evaluations/student_seed_20261031/id_test-3538/student_8s.npz": "a50d4b2278630ce94168b9ff4b923533e006bb582ef27e7eb7cf2bbd3252bef1",
+    "evaluations/baselines/id_test-3538/pid_8s.npz": "9c7e1be3b33f2bff83d410b070ac4f153b2109b856a1afe1660f62487b2d0898",
+    "evaluations/student_seed_20261101/id_test-3538/student_8s.npz": "455267c195c898e6c0a7130c7250287698a08095ec1d92bd8fca599b286cf4ac",
+    "evaluations/student_seed_20261102/id_test-3538/student_8s.npz": "c67812db27b8052652b935862ed7edf5ac71103b843afe6da813d6903648ee64",
+    "evaluations/student_seed_20261031/id_test-3592/student_8s.npz": "b3fb37c41c07417564e3f6d0aa18b91a638daac6a567e0b14255ba851670670c",
+    "evaluations/baselines/id_test-3592/pid_8s.npz": "81bcbe7726483d3b7528e07d63c4cfdadca2d10903cec727d53c16266af274bd",
+    "evaluations/student_seed_20261101/id_test-3592/student_8s.npz": "69df9d2a8da05f52e95c594c68d3a478ce59f16660440f478c95e8c5c4b6601b",
+    "evaluations/student_seed_20261102/id_test-3592/student_8s.npz": "12cefef15b4fdb4dce79543b8308f11f0372b19e68e934c94cce4d6ce4defd2d",
+    "evaluations/student_seed_20261031/id_test-3601/student_8s.npz": "2b3c9b770acc17f8eb8aea05847b1463e4c02477c143bc22ddd5801263cbb0ff",
+    "evaluations/baselines/id_test-3601/pid_8s.npz": "e246d3bfe7f32acc94cc3f27c2a494eb29169297c5dd0ddeebe6f9915e49cdfb",
+    "evaluations/student_seed_20261101/id_test-3601/student_8s.npz": "4f53a92614ab1162f58144b2d86b53db09695ec9d2782140f9d0a613c470b875",
+    "evaluations/student_seed_20261102/id_test-3601/student_8s.npz": "210bad096b21216d76961f44d4fc88aab03653b0493d1792a909d8b1516c4d53",
+    "evaluations/student_seed_20261031/id_test-3617/student_8s.npz": "ac2a1c36bcd435e01b4d62d3fd47918234b495204685562a906da532221da07d",
+    "evaluations/baselines/id_test-3617/pid_8s.npz": "43a461ad7d9e8bf3b854596358c6424ff8ebb2708fe9eb992ef9d9293236f452",
+    "evaluations/student_seed_20261101/id_test-3617/student_8s.npz": "01b4d9b5b4c03f54c85c1708f4b8230f47736ea75c43ebc31557f082d019423f",
+    "evaluations/student_seed_20261102/id_test-3617/student_8s.npz": "de5816049d0fd2e6c771a482572c39fd303360d9bbfc8c328f4bd3344de7d395",
+    "evaluations/student_seed_20261031/id_test-3671/student_8s.npz": "4137c9d7128d16b64d5a41f4aa06ed5d58f9c6a50ae7e6b4b788d3718e3ea93c",
+    "evaluations/baselines/id_test-3671/pid_8s.npz": "68ba24f9484ad111fad07deda6e32d266e5d3f10994290b5fdbc34673ce9aef5",
+    "evaluations/student_seed_20261101/id_test-3671/student_8s.npz": "06b5b568e7240d9e3a1887ee3d2515ff9b0b0740c1bf0e7b1bc7c50d1f4d7e46",
+    "evaluations/student_seed_20261102/id_test-3671/student_8s.npz": "db7e943ffaef98f8b66f323bde58bb45e813d9893d293b69775a0ce356e9a1a6",
+    "evaluations/student_seed_20261031/id_test-3802/student_8s.npz": "89649bc1d5b628406e1ad0a0ee125b06b294be29f7ed87d530232fdb4999f505",
+    "evaluations/baselines/id_test-3802/pid_8s.npz": "e1e1373d27f9d3fc88a93c9f6437c85051555e025747cebd176404f40a10ebab",
+    "evaluations/student_seed_20261101/id_test-3802/student_8s.npz": "40bfe4cc4b678ac769c4b06b641321f3e210d2c21b6e6f29f2bf14c20a3126ab",
+    "evaluations/student_seed_20261102/id_test-3802/student_8s.npz": "e8ed0521e04b1f46bad20d994dea2b8360646a2e48cfd609da72619e9c3c646f",
+    "evaluations/student_seed_20261031/id_test-3897/student_8s.npz": "002b5a1ecd78d5753435d3426d39707f77944191f402e7b713d83df5c9814318",
+    "evaluations/baselines/id_test-3897/pid_8s.npz": "2a230a1b80404cfe18bc0f8fef6bd4abcbff156c427239f5ad8ccbea8af289b0",
+    "evaluations/student_seed_20261101/id_test-3897/student_8s.npz": "a5ebf5580f807cf1fec111531463afef876f9bb5e695508e46ac87f0995083c9",
+    "evaluations/student_seed_20261102/id_test-3897/student_8s.npz": "d7a02cfa5d9cbdb3efad24969a237a4c933be231122c9cc1ad482cd8f635d4aa",
+    "evaluations/student_seed_20261031/id_test-3973/student_8s.npz": "c819d16bc74545e4ddf5ec6e63ea0e34901810a723ec43679c92e84489d1a2bb",
+    "evaluations/baselines/id_test-3973/pid_8s.npz": "9acb22c988e4859a18a6bbb5629a56c3a340b73b8fc3cafacc33b6047e4db8b6",
+    "evaluations/student_seed_20261101/id_test-3973/student_8s.npz": "45e297fea32849d415908496396776b7b99f71f77e43bb02c4f2f5d03790fa84",
+    "evaluations/student_seed_20261102/id_test-3973/student_8s.npz": "b9aea82bf2ebbb8b7309b11d6aaa1eba6dcb06ff2f9e2a6543f82562881f8caa",
+    "evaluations/student_seed_20261031/id_test-3988/student_8s.npz": "cd5a370f0758318745e61e98f478ec29697890aec7723204332c03945aaae810",
+    "evaluations/baselines/id_test-3988/pid_8s.npz": "21595b765718d10c36f42199f89a824da4f2c97e57ccece6dd9b143ce6fe8f33",
+    "evaluations/student_seed_20261101/id_test-3988/student_8s.npz": "efc51579e8f9c0535cf4dab67242c1ce098c5f0de30dae26ab4b19310f3acd35",
+    "evaluations/student_seed_20261102/id_test-3988/student_8s.npz": "10e54286caecf10185d00dc0ba64404c7c0b74fa7666e40434d9571cbe39d085",
+    "evaluations/student_seed_20261031/id_test-4067/student_8s.npz": "13a774772ac969513154b8c708672170ed49418c6df4d87e42e75e6a366ddabb",
+    "evaluations/baselines/id_test-4067/pid_8s.npz": "d839d2e61828173b5c2cf1b1f464988aa24c8db93bdd8a82025ff72acdf98d13",
+    "evaluations/student_seed_20261101/id_test-4067/student_8s.npz": "9ef471b90d92c172532327e944e98f8fb53a3f47f322b959e6279470e72d9697",
+    "evaluations/student_seed_20261102/id_test-4067/student_8s.npz": "c36bba16be050229ddfbed8d1762a96c2c02a60a8021bfa11cdf9e1d105c7d3a",
+    "evaluations/student_seed_20261031/id_test-4076/student_8s.npz": "7fe0daa5987f59addbad83205878927cbfe122031168ce22e517df63c60850fe",
+    "evaluations/baselines/id_test-4076/pid_8s.npz": "6f2141b11097537ac70ab9d9e7f54c23e71e1ebbcbed4aa9949bbf15a6ddaa9e",
+    "evaluations/student_seed_20261101/id_test-4076/student_8s.npz": "35407f897b50e83b92942cca40840795401a3970ab6d0025fc88a3d839c17d30",
+    "evaluations/student_seed_20261102/id_test-4076/student_8s.npz": "c7811102e0b353e4ee98014c7f8d38ebe44ae4dca84e48ec8dd48938bce5d965",
+    "evaluations/student_seed_20261031/id_test-4158/student_8s.npz": "ded4c5cbe5307356ca31bdd83af248a5143e3809c49c96586837f2c58f0bcd5f",
+    "evaluations/baselines/id_test-4158/pid_8s.npz": "073e9bfaae6e1591626e5ddd79b4ec7730870590dd89c1603ceeeb21bb730671",
+    "evaluations/student_seed_20261101/id_test-4158/student_8s.npz": "5d0aee9dc7fd19c8b69b4c0f0f906807db6935e4f7da00ca21d5697385c406d1",
+    "evaluations/student_seed_20261102/id_test-4158/student_8s.npz": "56e449b4efe5746deca6420c623a391106ff6083b975e2106856fd2d8cb07bd8",
+    "evaluations/student_seed_20261031/id_test-4182/student_8s.npz": "053f0a7dae6a78bb49ad4193d2c55c27d844d5d7aca4883681b9e0288268a87a",
+    "evaluations/baselines/id_test-4182/pid_8s.npz": "98c9ec25557a8cd84a745517d12702974948cf91f2d438ce8c84208ab813f578",
+    "evaluations/student_seed_20261101/id_test-4182/student_8s.npz": "fdda431f341843860553d18a99a41d55f83ae6f8580640289e6a354270536b28",
+    "evaluations/student_seed_20261102/id_test-4182/student_8s.npz": "7e1af9fe4605d29e18eed30b5e93a4852e6a92dfc14a76efd56b51dea268ad1d",
+    "evaluations/student_seed_20261031/id_test-4194/student_8s.npz": "7c9e8195c40cf931aa149331f624f284c43bd58b5b10659ef07a486dbe9fd545",
+    "evaluations/baselines/id_test-4194/pid_8s.npz": "b94ae9850cf285e0d67b595294dd7e77083758a460c75c9a20acfc645010ef37",
+    "evaluations/student_seed_20261101/id_test-4194/student_8s.npz": "8a6e1ade493f58dd5874cc794fbba31edc896d64b75ee5c1e805750ab3ed479f",
+    "evaluations/student_seed_20261102/id_test-4194/student_8s.npz": "d1e44c7fd83218005d0ed0afb480dc21eb542a39d7d14e10c93626525e5e1319",
+    "evaluations/student_seed_20261031/id_test-4205/student_8s.npz": "ce5ffa0964032faf78eb24543e73415e68bae77ef196530904734857d2cbd588",
+    "evaluations/baselines/id_test-4205/pid_8s.npz": "7a7d5626fd5a6d4664ad64e12a33b0550fb17e91cec6915eaafb867df674cb4f",
+    "evaluations/student_seed_20261101/id_test-4205/student_8s.npz": "a87c00bdf26bbf1fe02683aad34e643dce2b176b3e8a698c72de0a7ef91fbc30",
+    "evaluations/student_seed_20261102/id_test-4205/student_8s.npz": "d61cda66ae90b796dad2f3ea2f11b67d762809a331cab3520943e0d7eaf28f5e",
+    "evaluations/student_seed_20261031/id_test-4206/student_8s.npz": "a4999eb34e8daa66f8c83959adb1c76efb61d6e6a03f998347d0066c13c00cdd",
+    "evaluations/baselines/id_test-4206/pid_8s.npz": "d1a0caaf0f2df58e0944bce4bbd0575122d3284f9a3eb7dc9597c1f0913e40ca",
+    "evaluations/student_seed_20261101/id_test-4206/student_8s.npz": "db7945c59a1bc26243dc51914a682c79d379975996eb75c5889d6f69c58cfe65",
+    "evaluations/student_seed_20261102/id_test-4206/student_8s.npz": "8c6d50078d11908e63062587bd0967ec1154e83d871c04838aaf755887896e5d",
+    "evaluations/student_seed_20261031/id_test-4280/student_8s.npz": "32af59f7daf83554578075b8244cb829ae5d60344a83f7e5e4f3697c3065779d",
+    "evaluations/baselines/id_test-4280/pid_8s.npz": "0fcf480a8cb589fe9bb2e7c45e9911b3ed632f2d974031f24ae394ace058cfe1",
+    "evaluations/student_seed_20261101/id_test-4280/student_8s.npz": "7511aa18972c4c13cb7f73376f48b9df1d171d4e9805e264c72c19dd43516659",
+    "evaluations/student_seed_20261102/id_test-4280/student_8s.npz": "1a01f4a3262551b4697a696ff5b92935598fb0a45c2d424b7d9971be1aae6f69",
+    "evaluations/student_seed_20261031/id_test-4299/student_8s.npz": "9b5beb51cd617923feb3a5d693b44734cd9f572c4b6ddbf9a96b7a47ac5b09dc",
+    "evaluations/baselines/id_test-4299/pid_8s.npz": "ae3f3c0e09e0afbaabb31f4ac0b79b8d1e6fea0a259aebe1d6a0b351ad37e0d1",
+    "evaluations/student_seed_20261101/id_test-4299/student_8s.npz": "0e64888b2de9ddaff99367f027aee935e3848fb688f49979b809941db2bed437",
+    "evaluations/student_seed_20261102/id_test-4299/student_8s.npz": "2f3db3f78b551dcf1b14a9471d7d5c826bd707321218d255f11a784460150c66",
+    "evaluations/student_seed_20261031/id_test-4325/student_8s.npz": "df2f1ebc2cf3f2c91bf0799022620eb1d27429c837273326640a913e6eb52d4d",
+    "evaluations/baselines/id_test-4325/pid_8s.npz": "e251958a7d51bbe03a0d0544b25ced2d7e432aaa3b05caaa14f2ae66a14c7cf4",
+    "evaluations/student_seed_20261101/id_test-4325/student_8s.npz": "bc67a2c019232c940c76dcd6809e965da5cd11532a7da6d12b98ccfbb12e2b99",
+    "evaluations/student_seed_20261102/id_test-4325/student_8s.npz": "b30caa760326b6e9ce0eec082a20db360277929449a2c4cf5bd8aecdf088e4ca",
+    "evaluations/student_seed_20261031/id_test-4395/student_8s.npz": "12d142a73d1201fe74ec4fe89a9b253564282fa7f18e7e63b7c278f374d85e12",
+    "evaluations/baselines/id_test-4395/pid_8s.npz": "890f3bfe458598e181d0d6b94ab449eb41f75155dbe12aeab2bd2e7df6cd45ef",
+    "evaluations/student_seed_20261101/id_test-4395/student_8s.npz": "0162290a3061f390a3ccc4b35f892b05e6274f897184a908b4097e26b41fa3d3",
+    "evaluations/student_seed_20261102/id_test-4395/student_8s.npz": "10dc3689c6df888925a4ca93f0f61d1747cde898f3b22a92bae02b04d838de30",
+    "evaluations/student_seed_20261031/id_test-4465/student_8s.npz": "641d1db836eec08081fdf44772c13e19e676ec98d418d11e0b3811d281ab5fca",
+    "evaluations/baselines/id_test-4465/pid_8s.npz": "8d996176bee36e75e969a863645a3713ceb859378c7685424a9f20881af4514c",
+    "evaluations/student_seed_20261101/id_test-4465/student_8s.npz": "3c835e8d0efc0b457d727166686aaa3dad51f1c3d0a7311fbe2e4f7356ab86a9",
+    "evaluations/student_seed_20261102/id_test-4465/student_8s.npz": "8811c42cc0e6eb7b82bef12e2fdd8c133efd4cc200ae91e3def9456b3041eaa2",
+    "evaluations/student_seed_20261031/ood_test-4535/student_8s.npz": "b13fc21f91e799a99e57c1e0313037eaa0c7667fd7c7a3fb7a067d01de3fdc05",
+    "evaluations/baselines/ood_test-4535/pid_8s.npz": "fc9a947bef910c20f2cc20fe3b46088ffdd7a2b76b57bbb69518a35cda5d6045",
+    "evaluations/student_seed_20261101/ood_test-4535/student_8s.npz": "c423e0921acdc4ac43f36e5059c7bef5e7ebb4f0d21dbfeb98702b7c0745b5e9",
+    "evaluations/student_seed_20261102/ood_test-4535/student_8s.npz": "d5d14a91a543e07b262b73f2e2ce58f90a17d5cc1e35a2f4e86821654f26f4b7",
+    "evaluations/student_seed_20261031/ood_test-4584/student_8s.npz": "89d13a25cd9d6090bd2067889377de8311cc87fcf28a230f3223ec88739b959d",
+    "evaluations/baselines/ood_test-4584/pid_8s.npz": "800c1c597f28ccd3739a630bd7e074f72ecd2fd557f3b47de6283a57d5031ac0",
+    "evaluations/student_seed_20261101/ood_test-4584/student_8s.npz": "b9a772daf6c3a8c19e15aac6b69b59decbad054c3a77462c39e6916a499205dd",
+    "evaluations/student_seed_20261102/ood_test-4584/student_8s.npz": "38767a0871701f243478bd40bb1da7e4ac96ee8f156f7a398b55a31b835eb49a",
+    "evaluations/student_seed_20261031/ood_test-4617/student_8s.npz": "f416bd7b1cc77bc8c76c3af2d278961a98a74c8f6871d825177e7e111af5e139",
+    "evaluations/baselines/ood_test-4617/pid_8s.npz": "1f0029c27f7f4eebfd1cd84c6cfbf307676902f93be170127834f3b6fe8339c7",
+    "evaluations/student_seed_20261101/ood_test-4617/student_8s.npz": "479c1d5b8f2d2a09c1cef2521b4211c1574221619fe868a8c2df62fbb5973b6a",
+    "evaluations/student_seed_20261102/ood_test-4617/student_8s.npz": "c0845b53420bf4bb3d8811f90f79a65a751fb9309bfb8c5785d1aa42495c9312",
+    "evaluations/student_seed_20261031/ood_test-4638/student_8s.npz": "9848aa819179e81049dbf13652ff20414bb580278e3469a01f69eaec9e838a1a",
+    "evaluations/baselines/ood_test-4638/pid_8s.npz": "acd7e11f5807f6f5993508266d352cf48c19444c4348b9924d9f6e6f2d582ff2",
+    "evaluations/student_seed_20261101/ood_test-4638/student_8s.npz": "ec6ce2643c8806877b69178132e98c20cf9a52c73a32954d88eeab15d15dc77b",
+    "evaluations/student_seed_20261102/ood_test-4638/student_8s.npz": "4fefd9ed0b54ec94370d4c99340f92c5f80d4c963d0540ae2fb66ff723c8fa7d",
+    "evaluations/student_seed_20261031/ood_test-4645/student_8s.npz": "b857e47c364c4e5c139e36f37d5b755758e9844938fc062c7350dcc02c2402c6",
+    "evaluations/baselines/ood_test-4645/pid_8s.npz": "7f65f2f6401361722ddf80d51c46e72c30a4c67592208b9848396eb60010a227",
+    "evaluations/student_seed_20261101/ood_test-4645/student_8s.npz": "08300221112e58b84121bc3a60dd6e4dab2f1e02a95f0521dfb5f0432b7d9f5e",
+    "evaluations/student_seed_20261102/ood_test-4645/student_8s.npz": "faf079cde3331d03e95420403c7cfa2d4f4dd3613116e35e43aa6e44dc2c41f1",
+    "evaluations/student_seed_20261031/ood_test-4651/student_8s.npz": "eebdcbb10b7360f3675840d4eff89a50f59740fb8c2f537b14aa09f22f3edfb5",
+    "evaluations/baselines/ood_test-4651/pid_8s.npz": "b5c0c89fc213ebc0a50255f26a1d65ded5061011ada2fbdb9c104e2e9f0b4245",
+    "evaluations/student_seed_20261101/ood_test-4651/student_8s.npz": "283a5e9bfb8a8cd94d27b8e2fb510d5c623937995832984b7a6ca0670e7b4aa6",
+    "evaluations/student_seed_20261102/ood_test-4651/student_8s.npz": "1cee26fa204e48338c197bc71a666bfea0f2dfc295a75be42c0aea89a2ecdc3a",
+    "evaluations/student_seed_20261031/ood_test-4699/student_8s.npz": "bd8d64db75bf15485cadbe0b4cf33ed851db86d92e6a155d7a2a8bacd4ee6fc2",
+    "evaluations/baselines/ood_test-4699/pid_8s.npz": "24455b25cb4c0233b3ff233cc3ebc350813ca7c60574eb33a4dbc6a96dcf65ec",
+    "evaluations/student_seed_20261101/ood_test-4699/student_8s.npz": "7004dc8a42e399fd85f9b1e251fa071103a1f9572bc9f3c30b3ffa4892bf36ad",
+    "evaluations/student_seed_20261102/ood_test-4699/student_8s.npz": "c77524462a5617d9338b64151ffe5f7a07288dd3b19fd17f8b4549492dd55448",
+    "evaluations/student_seed_20261031/ood_test-4700/student_8s.npz": "1c92172f367ce1cfac4c2bdadfb74f97429db7f89d04eb3c5dbef13d60499cdd",
+    "evaluations/baselines/ood_test-4700/pid_8s.npz": "75fd9d541dc89643f82ce4f6e67501c634adc0a4b1a79a3805500f3a581d67df",
+    "evaluations/student_seed_20261101/ood_test-4700/student_8s.npz": "1464cf02486d9f0f4fb5a5fd36a4368a34d6475a8799edd7b013f997e33a94ba",
+    "evaluations/student_seed_20261102/ood_test-4700/student_8s.npz": "1e339932abb1de42277ab96cb5e88f8272ddf148a767a19ec33a279b5f108d79",
+    "evaluations/student_seed_20261031/ood_test-4723/student_8s.npz": "a47a2d5c89ef9e9586c1581c6d9caccbc76f9967c55839714b0a3d043293a7c3",
+    "evaluations/baselines/ood_test-4723/pid_8s.npz": "583301bf306b8d8efea029471690aa6673ee8d8cbc4bb0e6e6d84e7e50ae23e7",
+    "evaluations/student_seed_20261101/ood_test-4723/student_8s.npz": "a996098be1c8ad461bd17470c03bfa4b6582315cde0907843a8850724307f5ec",
+    "evaluations/student_seed_20261102/ood_test-4723/student_8s.npz": "b453c0b6ff51dc4658e548896dbda20a791435265d83de0cb9473e6dc357beb2",
+    "evaluations/student_seed_20261031/ood_test-4742/student_8s.npz": "ed1ac33118466f08dd66a04f87381269d26c613a16a5d26821f58e738094b4e1",
+    "evaluations/baselines/ood_test-4742/pid_8s.npz": "d0c760b467259e10c97d3b795b38e51f2d4e511b3277a4ba92a8761496757001",
+    "evaluations/student_seed_20261101/ood_test-4742/student_8s.npz": "1e534e8c807e8a7c2192ed2b7f9ab65b642f6f70f80c48a210941ffcdb63499f",
+    "evaluations/student_seed_20261102/ood_test-4742/student_8s.npz": "cb1f9d925ab0ae8bb0d3a80de18c846dde1d1e25cbf2d12ec0664f1a15526d93",
+    "evaluations/student_seed_20261031/ood_test-4748/student_8s.npz": "0f26da8eb06e9f85b817e2ae89deee49af3773a605916a73dd80d80558a7bb00",
+    "evaluations/baselines/ood_test-4748/pid_8s.npz": "bd4ff69cbaf7fdb0cca1925418d1bb0100095f326717a3210c7e430c0d485491",
+    "evaluations/student_seed_20261101/ood_test-4748/student_8s.npz": "3fff39d66d6e5f00bafc1ef858f4286878c6ad56c4dabfae24152a46d0279448",
+    "evaluations/student_seed_20261102/ood_test-4748/student_8s.npz": "9fbf56ed649db019d5c04919e3d767e91c0c294810ea0870f1853b4764d3d33e",
+    "evaluations/student_seed_20261031/ood_test-4775/student_8s.npz": "1051ef0df360b64d6ffb40aed1b1fe460d6651e0de70d6c50f43875451fd00e5",
+    "evaluations/baselines/ood_test-4775/pid_8s.npz": "d2ece24a768dc3453244b1c3e81808a1d45f7bb2cb02fce19b0330f194838064",
+    "evaluations/student_seed_20261101/ood_test-4775/student_8s.npz": "2e2bf9d589ff833781b7dbec80510ff475a108567ecd11119e5a736c91c1e6e4",
+    "evaluations/student_seed_20261102/ood_test-4775/student_8s.npz": "ba009b853c7c559d1a8f8f30db120ff22041f7819605755967b766a0c4729b4a",
+    "evaluations/student_seed_20261031/ood_test-4787/student_8s.npz": "c70086058d0593139ef584099df64433ac9aaceb11abe1020596bf6dfaffc1d8",
+    "evaluations/baselines/ood_test-4787/pid_8s.npz": "dc5831d32e962c0c7606ad6e90870c26408fb90d725265d55af3f27f070519bb",
+    "evaluations/student_seed_20261101/ood_test-4787/student_8s.npz": "849a92cdf281642e2d8efabb2b0a5389d88c763da2ed46b11d2a1683efdf33e4",
+    "evaluations/student_seed_20261102/ood_test-4787/student_8s.npz": "c62dacf029983d00a55a204ce2a38fd504e31ae26941d07d1d68774e1c5eb330",
+    "evaluations/student_seed_20261031/ood_test-4793/student_8s.npz": "b7128e387855f25abcbf51e10e1253d84d5982ee3ba38a526a44c35c588d13df",
+    "evaluations/baselines/ood_test-4793/pid_8s.npz": "514ab10c1bd312c2e62314f06b314a1ac62fc26d77b0d41b2f4828ba6b56d8db",
+    "evaluations/student_seed_20261101/ood_test-4793/student_8s.npz": "8d2e08af76fb9c0abf983573928871754fdc603dc9fe6899d59c65f7f071bc21",
+    "evaluations/student_seed_20261102/ood_test-4793/student_8s.npz": "a8d6cd403b0145edc89b6d03496e20769d80b218138c486179bce8e451745b13",
+    "evaluations/student_seed_20261031/ood_test-4795/student_8s.npz": "0e92b68dcd9237123a970daeec6f1fe33a02cfd727605c256a36fb60693b7d60",
+    "evaluations/baselines/ood_test-4795/pid_8s.npz": "e6df33a982dfbd14b451be355031e3f13058de0987e082d8e217444d679342ae",
+    "evaluations/student_seed_20261101/ood_test-4795/student_8s.npz": "b1b55a85540a946a8111c1e9cc3762c460413ab00ce43092ddbad11b02c46b74",
+    "evaluations/student_seed_20261102/ood_test-4795/student_8s.npz": "16fa11854ff563e32417c1bf2b00636b5a91b52f1944b7c6782ccd3e7f087d7f",
+    "evaluations/student_seed_20261031/ood_test-4812/student_8s.npz": "c2d312781698a6fdb367e974dacf7b33a9c95c60c1b37280fde55b7be2237a8c",
+    "evaluations/baselines/ood_test-4812/pid_8s.npz": "182fc823190e37cdb30c567393f2518839cfe8636bfb4c7311342d67b99ffada",
+    "evaluations/student_seed_20261101/ood_test-4812/student_8s.npz": "22549c818546de6214a2ed591d8c2747e0c573a72b485bb081aaf199d7e3cd7a",
+    "evaluations/student_seed_20261102/ood_test-4812/student_8s.npz": "5f5ed0c7671af0128c768d78eea1ef1e669e376a7c0ac637593435d05fe67508",
+    "evaluations/student_seed_20261031/ood_test-4822/student_8s.npz": "30eee4bcc7404123d182e95b09f3971ea96c2a6b8dd3d0333910faf2c69318cf",
+    "evaluations/baselines/ood_test-4822/pid_8s.npz": "3d02b93d82affb8d4d854ca2d383715bedb1c7f4c9fd61ee8d46af0fe99d3601",
+    "evaluations/student_seed_20261101/ood_test-4822/student_8s.npz": "41bcffda6a4da751af9562703bbce5925b41a71f99105b1538139be70d9572ed",
+    "evaluations/student_seed_20261102/ood_test-4822/student_8s.npz": "09c0f9345f03ee066b1fed10e929fda7701f2637f4d24080c0592cec16da9e38",
+    "evaluations/student_seed_20261031/ood_test-4828/student_8s.npz": "85f0f5f3cb9f074760f4269b7c02d59442f377008808cfd428c33ffa6a0e0d65",
+    "evaluations/baselines/ood_test-4828/pid_8s.npz": "d0da808f19d64f1b947d879423e786b4bf78a7b3464ae27d628338bcd74dd548",
+    "evaluations/student_seed_20261101/ood_test-4828/student_8s.npz": "2de4b8b75e3f2e71e4c93f59109a055c5185101539142b21d6a731121004ffb0",
+    "evaluations/student_seed_20261102/ood_test-4828/student_8s.npz": "bccf58a608e0995d61083bde1b1d96ce507643f1b94eafd78c3fadf31b33a7f6",
+    "evaluations/student_seed_20261031/ood_test-4881/student_8s.npz": "ab7b26d19e64eb3b365359a6b23e28b1be5242d421cf7b7477c246e5d8f17a42",
+    "evaluations/baselines/ood_test-4881/pid_8s.npz": "79137a25307eb63ecb980023c22d4ceb22ad9828aaad9703a1aa414551bb5872",
+    "evaluations/student_seed_20261101/ood_test-4881/student_8s.npz": "6336173f033a3cf6325ebde3f6370ab6357bdff227d457d59bcf09735d3bd697",
+    "evaluations/student_seed_20261102/ood_test-4881/student_8s.npz": "fdcb2a3a24e5ca382be399e3086938ea0d45674040bd589b16b0938c7adad4f7",
+    "evaluations/student_seed_20261031/ood_test-4893/student_8s.npz": "25427c1e4b77c26278a64bcf0618f3f1f29c11e17098f0a143f2029c72efa776",
+    "evaluations/baselines/ood_test-4893/pid_8s.npz": "e39f91469cbcce510ae3dc532452eb1bac360b956da849fd8e3d05c1615fac2f",
+    "evaluations/student_seed_20261101/ood_test-4893/student_8s.npz": "6f8132a8bfbc3b153c14af65726b3cd20c800a728f699896eda1b20fa2307f09",
+    "evaluations/student_seed_20261102/ood_test-4893/student_8s.npz": "7918fc4b377d56ea3dc1a86176649275c0f7fdf819acbe3fb66c1ea3e3c9967c",
+    "evaluations/student_seed_20261031/ood_test-4947/student_8s.npz": "a3aa6b5d2cd5da3c779e25e77569cb83d896355af8e5664cd2e8460d24d6b175",
+    "evaluations/baselines/ood_test-4947/pid_8s.npz": "3d9a79d3d48c6f467374ae222bfac9d5087d73cffe0ee445da212671b8f02d94",
+    "evaluations/student_seed_20261101/ood_test-4947/student_8s.npz": "2c9e7a7271f78437e8c41f2dcd80ee02afe9d7bbfc5cbbe5385a2edbc983fb8d",
+    "evaluations/student_seed_20261102/ood_test-4947/student_8s.npz": "fe060fb9e7e70e41d2639e41034c56ee8bfbbb0894631164af5351d8bc481139",
+    "evaluations/student_seed_20261031/ood_test-4951/student_8s.npz": "681420ae72a539765fdba98440ded1259dc062097ab8f380fcc1f03d649b410e",
+    "evaluations/baselines/ood_test-4951/pid_8s.npz": "20c06d155a5eb99aae306b4e8ddab1e844f4208d622a0792d80530df0aa4928e",
+    "evaluations/student_seed_20261101/ood_test-4951/student_8s.npz": "d006e2c6ac38972fcc642ab3d4f4e8e957d3faafc07870fc9a5a01baedad6cf4",
+    "evaluations/student_seed_20261102/ood_test-4951/student_8s.npz": "820ccb4d487a9c62ae6e9427bf97da3de179f0bcf35e232d8260b9f85ea2c589",
+    "evaluations/student_seed_20261031/ood_test-4985/student_8s.npz": "ee0b3348d029c5612c43245792a97dbff80f5614b252abe87a878e87d49eea05",
+    "evaluations/baselines/ood_test-4985/pid_8s.npz": "92b594c1eb8549168a4a7ec9541a0b6aa419f84557733763db1722534c2112d4",
+    "evaluations/student_seed_20261101/ood_test-4985/student_8s.npz": "cce7878e766f84d5da70ac8942314548c330cc2e90ed3795637199111acad00e",
+    "evaluations/student_seed_20261102/ood_test-4985/student_8s.npz": "83b9601d47fc17e9cf4bcde244e40f48cf3f4b3991f357cf4dbc9ed863542266"
+  },
+  "transformations": [
+    "Radians to degrees for p, reference, command.",
+    "Original 50 Hz samples, including t=0 and terminal sample.",
+    "No smoothing, decimation, interpolation, or zero fill.",
+    "Shared output limits per comparison row; force limits fixed at +/-23 N."
+  ],
+  "figure_generator_sha256": "ab9094a0788319cec324f351e03bd5c109894b18b660f2b360571ae43f9fcd95",
+  "figures": [
+    {
+      "name": "teacher_time_domain",
+      "description": "Lowest identifier within each source partial-quality level; all three seeds, +15 deg/s step; full response and force.",
+      "inches": [
+        7.0,
+        3.8
+      ],
+      "outputs": {
+        "svg": "5abd22c07af3e1d7d68f185c5949e99337443a3bf64a39b9e546a902a2b14c12",
+        "pdf": "743d9d5317d9e5c9614a6c758aadacf59979f2c463df00d4a54c99e1f18703b5",
+        "png": "932f1f757aa014b2f5a9f72fcbd6b8e5330b346d74ba2f49651294d762def8a4"
+      }
+    },
+    {
+      "name": "teacher_student_time_domain",
+      "description": "Same L2 source object, same commands, and each paired seed; step and multisine responses and force.",
+      "inches": [
+        7.0,
+        6.8
+      ],
+      "outputs": {
+        "svg": "67c3a246a70e1da818e62bac0c137b23c06d405949995ca8ef7471e6c8f56dfc",
+        "pdf": "43212838acd6cd58f0ff07afeec059f94c3b221b6d5b94c70ca5911dbac9a4bb",
+        "png": "bc909120dd6385e6b449acc2107da877a3bbedda49d4a58e718332aab6d06621"
+      }
+    },
+    {
+      "name": "student_unseen_time_domain",
+      "description": "Lowest ID and OOD identifiers; all student seeds and fixed PID; two test commands with full responses and force.",
+      "inches": [
+        7.0,
+        6.6
+      ],
+      "outputs": {
+        "svg": "057bd8d65796d8d74ae9390bf93c6099fb74102f5c6a9f58e9fe98ba949e8bae",
+        "pdf": "ba0e77040cbb26eee99a467ab80148c17ee1faf4101052b1daffc567e788c2c5",
+        "png": "c5fd64cf9b0acbbd1bfbf4438543a6fc029515bcd105ee8f684d49188c9f7286"
+      }
+    },
+    {
+      "name": "recovery_time_domain",
+      "description": "Same fixed OOD object as tracking; full response, a separately labeled student-only detail row, and force. All three seeds and the uncontrolled full response are retained; missing divergent tail stays missing.",
+      "inches": [
+        7.0,
+        5.5
+      ],
+      "outputs": {
+        "svg": "4cb427579aac6f07dca7e1f1900844f33572c3b8dad3e6b3b42d1712d16ccd4d",
+        "pdf": "494b50a9595ec42c377b8d042f3dee456d8e0837eae21a7ce2465dcc2e093f6f",
+        "png": "756bd781d52f7c9afa5b219824ded1f1da4d911cc6217432347544a3a31aff96"
+      }
+    },
+    {
+      "name": "target_time_domain",
+      "description": "First condition identifier in each target group; middle listed seed S2, +15 deg/s step; all three target arms at the fixed endpoint.",
+      "inches": [
+        7.0,
+        4.1
+      ],
+      "outputs": {
+        "svg": "22ddedfc0190373e63ff6fd5d7754f9c09e24c80d452bd883aa63737ea848f31",
+        "pdf": "3f19b24ed8598c39cacaad07ea092db1761147e0b210f89157012c22cb26c7a6",
+        "png": "e7143f57b8c54fcb5b1180b54c05ae6d6e600786b0e3ac2a0de4dcc55ba169b3"
+      }
+    }
+  ],
+  "journal_format": "General research manuscript; no target journal specified."
+}

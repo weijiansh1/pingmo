@@ -1,0 +1,263 @@
+{
+  "library": {
+    "joint_level_counts": {
+      "L1": 1500,
+      "L2": 1500,
+      "L3": 1500,
+      "OOD": 500
+    },
+    "speed_ranges": {
+      "M": 3613,
+      "VL": 82,
+      "L": 859,
+      "H": 446
+    },
+    "binding_components_by_level": {
+      "L2": {
+        "sideslip_excursion": 788,
+        "long_period": 316,
+        "roll_dutch_roll": 148,
+        "pitch_damping": 131,
+        "pitch_delay": 131,
+        "pitch_frequency": 131,
+        "pitch_stick_force": 131,
+        "roll_delay": 131,
+        "roll_sensitivity_1s": 130,
+        "roll_spiral": 130,
+        "roll_t_r": 130,
+        "roll_oscillation": 73
+      },
+      "L3": {
+        "sideslip_excursion": 545,
+        "long_period": 186,
+        "pitch_damping": 163,
+        "pitch_delay": 163,
+        "pitch_frequency": 163,
+        "pitch_stick_force": 163,
+        "roll_delay": 163,
+        "roll_spiral": 163,
+        "roll_t_r": 163,
+        "roll_dutch_roll": 24,
+        "roll_oscillation": 11
+      }
+    },
+    "component_levels_in_distribution": {
+      "long_period": {
+        "L1": 3783,
+        "L2": 531,
+        "L3": 186
+      },
+      "pitch_damping": {
+        "L1": 4201,
+        "L2": 136,
+        "L3": 163
+      },
+      "pitch_delay": {
+        "L1": 4195,
+        "L2": 142,
+        "L3": 163
+      },
+      "pitch_frequency": {
+        "L1": 4197,
+        "L2": 140,
+        "L3": 163
+      },
+      "pitch_inv_t_theta1": {
+        "L1": 4500
+      },
+      "pitch_stick_force": {
+        "L1": 4194,
+        "L2": 143,
+        "L3": 163
+      },
+      "roll_delay": {
+        "L1": 4196,
+        "L2": 141,
+        "L3": 163
+      },
+      "roll_dutch_roll": {
+        "L1": 4310,
+        "L2": 166,
+        "L3": 24
+      },
+      "roll_oscillation": {
+        "L1": 4397,
+        "L2": 92,
+        "L3": 11
+      },
+      "roll_sensitivity_1s": {
+        "L1": 4365,
+        "L2": 135
+      },
+      "roll_spiral": {
+        "L1": 4201,
+        "L2": 136,
+        "L3": 163
+      },
+      "roll_t_r": {
+        "L1": 4197,
+        "L2": 140,
+        "L3": 163
+      },
+      "sideslip_excursion": {
+        "L1": 2700,
+        "L2": 1255,
+        "L3": 545
+      },
+      "steady_sideslip_sense": {
+        "L1": 4500
+      }
+    },
+    "ood_reasons": {
+      "steady_sideslip_sense_beyond_level_3": 128,
+      "zeta_phi_outside_research_envelope": 89,
+      "r_omega_outside_evidence_envelope": 71,
+      "sensitivity_1s_above_level_2_ungraded": 62,
+      "transport_delay_above_research_envelope": 55,
+      "long_period_beyond_level_3": 50,
+      "pitch_inv_t_theta1_beyond_level_3": 50,
+      "spiral_beyond_level_3": 49,
+      "t_r_beyond_level_3": 48,
+      "dutch_roll_beyond_level_3": 46,
+      "l_fa_outside_iv_force_input_evidence": 46
+    },
+    "long_period_forms": {
+      "oscillatory": 4713,
+      "divergent": 229,
+      "two_stable_real_roots": 9,
+      "aperiodic_divergence": 49
+    }
+  },
+  "distributions": {
+    "figure": "figures/distributions_v4.png",
+    "p5_median_p95": {
+      "T_R (s)": {
+        "original roll library": [
+          0.20066824672918077,
+          0.5278124497535066,
+          4.762758649326745
+        ],
+        "v4 library": [
+          0.2095127250865359,
+          0.5274920562291988,
+          1.2734424128437511
+        ]
+      },
+      "omega_d (rad/s)": {
+        "original roll library": [
+          0.5125150157081719,
+          1.956841384110453,
+          5.351013598547089
+        ],
+        "v4 library": [
+          1.2167676842549224,
+          3.468208816885887,
+          5.7275975196608675
+        ]
+      },
+      "zeta_d": {
+        "original roll library": [
+          0.009886843721524591,
+          0.4266784503305725,
+          0.6730853503732942
+        ],
+        "v4 library": [
+          0.2195386704803023,
+          0.45103727421723305,
+          0.6712336288980566
+        ]
+      },
+      "lambda_s (1/s)": {
+        "original roll library": [
+          -0.13718060240878793,
+          -0.020822878017379906,
+          0.14033663273199407
+        ],
+        "v4 library": [
+          -0.13677331009627022,
+          -0.03407718033137584,
+          0.07978151491332687
+        ]
+      },
+      "omega_phi / omega_d": {
+        "original roll library": [
+          0.6723132511250098,
+          0.93884515789155,
+          1.3061019541973082
+        ],
+        "v4 library": [
+          0.7262162783441808,
+          0.9639565943601519,
+          1.1034753558578214
+        ]
+      },
+      "zeta_phi": {
+        "original roll library": [
+          0.13066961890086531,
+          0.40058862445876003,
+          0.6700758485402912
+        ],
+        "v4 library": [
+          0.21223928376244067,
+          0.43382736570869695,
+          0.6623901146698642
+        ]
+      },
+      "1 s sensitivity (deg/N)": {
+        "original roll library": [
+          0.9178964789417934,
+          1.8008764761436922,
+          4.232351892712391
+        ],
+        "v4 library": [
+          0.9089419845721566,
+          1.7252943103689953,
+          3.322948942965118
+        ]
+      },
+      "v4 aileron yaw N'a/L'a": {
+        "v4 library": [
+          -0.21715494910078123,
+          -0.07285524270124732,
+          0.051042574514681506
+        ]
+      }
+    }
+  },
+  "responses": {
+    "figure": "figures/responses_v4.png",
+    "aircraft": [
+      {
+        "plant_id": "train_core-0000",
+        "joint_level": 1,
+        "binding_components": [],
+        "speed_range": "M",
+        "eta": -0.17705246089026333,
+        "phi_over_beta": 1.6354033001595065,
+        "delta_beta_over_k": 3.3197592033986765
+      },
+      {
+        "plant_id": "train_core-0001",
+        "joint_level": 2,
+        "binding_components": [
+          "long_period"
+        ],
+        "speed_range": "M",
+        "eta": -0.18718057870678603,
+        "phi_over_beta": 0.3285083154111853,
+        "delta_beta_over_k": 4.519224126989037
+      },
+      {
+        "plant_id": "train_core-0002",
+        "joint_level": 3,
+        "binding_components": [
+          "long_period"
+        ],
+        "speed_range": "VL",
+        "eta": -0.16730497411452233,
+        "phi_over_beta": 2.636948093738265,
+        "delta_beta_over_k": 2.803078533506154
+      }
+    ]
+  }
+}

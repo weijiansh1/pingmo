@@ -1,0 +1,10 @@
+{
+  "browser": {
+    "browserName": "chromium",
+    "launchOptions": {
+      "executablePath": "/home/swj/.cache/ms-playwright/chromium-1247/chrome-linux64/chrome",
+      "headless": true
+    }
+  },
+  "outputDir": "/home/swj/pingmo/flight_control_paper_flow_2026-10-25/output/playwright"
+}

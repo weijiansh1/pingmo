@@ -1,0 +1,44 @@
+{
+ "raw_ft": {
+  "phase8": {
+   "n": 53,
+   "tau_median": 0.07102323112410269
+  },
+  "phase10": {
+   "n": 73,
+   "tau_median": 0.07314658202400728
+  },
+  "phase12": {
+   "n": 84,
+   "tau_median": 0.08955763828614685
+  }
+ },
+ "aux_topk4": {
+  "phase8": {
+   "n": 81,
+   "tau_median": 0.09956165355320569
+  },
+  "phase10": {
+   "n": 102,
+   "tau_median": 0.10248820714112214
+  },
+  "phase12": {
+   "n": 110,
+   "tau_median": 0.09779991451723516
+  }
+ },
+ "topk4": {
+  "phase8": {
+   "n": 0,
+   "tau_median": null
+  },
+  "phase10": {
+   "n": 0,
+   "tau_median": null
+  },
+  "phase12": {
+   "n": 0,
+   "tau_median": null
+  }
+ }
+}

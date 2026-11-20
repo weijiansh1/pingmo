@@ -1,0 +1,377 @@
+{
+  "registry": "pingmo/data/aircraft/reference/gjb/quality_parameter_matrix_20261021/quality_parameter_registry.csv",
+  "boundaries": "pingmo/data/aircraft/reference/gjb/p_fas_parameter_ranges_20260826/standard_boundaries.csv",
+  "groups": {
+    "5.1": "俯仰轴",
+    "5.2": "垂直于飞行轨迹轴",
+    "5.3": "纵向（速度）轴",
+    "5.4": "滚转轴",
+    "5.5": "偏航轴",
+    "5.6": "飞行轨迹侧向轴",
+    "5.7": "各轴组合",
+    "5.8": "大气扰动"
+  },
+  "coverage": {
+    "per_group": {
+      "5.1": {
+        "total": 7,
+        "covered": 0,
+        "partial": 0,
+        "not_covered": 7,
+        "digitized": 3
+      },
+      "5.2": {
+        "total": 2,
+        "covered": 0,
+        "partial": 0,
+        "not_covered": 2,
+        "digitized": 1
+      },
+      "5.3": {
+        "total": 2,
+        "covered": 0,
+        "partial": 0,
+        "not_covered": 2,
+        "digitized": 1
+      },
+      "5.4": {
+        "total": 7,
+        "covered": 3,
+        "partial": 2,
+        "not_covered": 2,
+        "digitized": 5
+      },
+      "5.5": {
+        "total": 6,
+        "covered": 3,
+        "partial": 1,
+        "not_covered": 2,
+        "digitized": 4
+      },
+      "5.6": {
+        "total": 1,
+        "covered": 0,
+        "partial": 0,
+        "not_covered": 1,
+        "digitized": 0
+      },
+      "5.7": {
+        "total": 3,
+        "covered": 0,
+        "partial": 0,
+        "not_covered": 3,
+        "digitized": 0
+      },
+      "5.8": {
+        "total": 5,
+        "covered": 0,
+        "partial": 0,
+        "not_covered": 5,
+        "digitized": 4
+      }
+    },
+    "total": 33,
+    "covered": 6,
+    "partial": 3,
+    "not_covered": 24,
+    "digitized": 18,
+    "dynamics_total": 28,
+    "dynamics_covered": 6,
+    "dynamics_partial": 3,
+    "cross_axis_rows": 12,
+    "axis_counts": {
+      "pitch": 7,
+      "vertical": 2,
+      "speed": 2,
+      "roll": 7,
+      "yaw": 6,
+      "lateral_path": 1,
+      "combination": 3,
+      "disturbance": 5
+    }
+  },
+  "cross_check": [
+    "T_R: GJB A18/A:I,IV 数值与登记表一致（<=1.0 等）",
+    "T_2_spiral: GJB A19/A,C 数值与登记表一致（>=12.0 等）",
+    "tau_e: GJB A21/all 数值与登记表一致（<=0.10 等）",
+    "S_1s: GJB A31/IV stick-controlled A 数值与登记表一致（<=3.38 等）",
+    "zeta_d: GJB A35/A:I,IV 数值与登记表一致（>=0.19 等）",
+    "omega_d: GJB A35/A:I,IV 数值与登记表一致（>=1.0 等）",
+    "zeta_d_omega_d: GJB A35/A:I,IV 数值与登记表一致（>=0.35 等）"
+  ],
+  "status_label": {
+    "covered": "可直接评级",
+    "partial": "部分可评",
+    "not_covered": "未覆盖"
+  },
+  "state_label": {
+    "digitized": "已数字化",
+    "figure_only": "仅图形",
+    "qualitative": "定性条款",
+    "pending": "待抽取"
+  },
+  "page": {
+    "group_rows": [
+      [
+        "5.1 俯仰轴",
+        7,
+        0,
+        0,
+        7,
+        3
+      ],
+      [
+        "5.2 垂直于飞行轨迹轴",
+        2,
+        0,
+        0,
+        2,
+        1
+      ],
+      [
+        "5.3 纵向（速度）轴",
+        2,
+        0,
+        0,
+        2,
+        1
+      ],
+      [
+        "5.4 滚转轴",
+        7,
+        3,
+        2,
+        2,
+        5
+      ],
+      [
+        "5.5 偏航轴",
+        6,
+        3,
+        1,
+        2,
+        4
+      ],
+      [
+        "5.6 飞行轨迹侧向轴",
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        "5.7 各轴组合",
+        3,
+        0,
+        0,
+        3,
+        0
+      ],
+      [
+        "5.8 大气扰动",
+        5,
+        0,
+        0,
+        5,
+        4
+      ]
+    ],
+    "detail_rows": [
+      [
+        "5.4.1.1.1",
+        "T_R",
+        "滚转模态时间常数",
+        "s",
+        "L1 <=1.0／L2 <=1.4／L3 <=10.0",
+        "已数字化",
+        "表A18（A:I·IV）",
+        "可直接评级"
+      ],
+      [
+        "5.4.1.1.2",
+        "T_2_spiral",
+        "发散螺旋倍幅时间",
+        "s",
+        "L1 >=12.0／L2 >=8.0／L3 >=4.0",
+        "已数字化",
+        "表A19（A·C阶段）",
+        "可直接评级"
+      ],
+      [
+        "5.4.1.1.3",
+        "ER_Rs",
+        "滚转-螺旋阻尼参数",
+        "-",
+        "L1 A阶段不允许耦合模态／L2 <=0.3／L3 <=0.15",
+        "已数字化",
+        "表A20",
+        "未覆盖"
+      ],
+      [
+        "5.4.1.1.4",
+        "P_osc_over_P_av",
+        "阶跃滚转的振荡比",
+        "-",
+        "L1 figure_only／L2 figure_only／L3 figure_only",
+        "仅图形",
+        "图A116／图A120",
+        "部分可评"
+      ],
+      [
+        "5.4.1.1.5",
+        "tau_e",
+        "拟合等效滚转时间延迟",
+        "s",
+        "L1 <=0.10／L2 <=0.20／L3 <=0.25",
+        "已数字化",
+        "表A21",
+        "部分可评"
+      ],
+      [
+        "5.4.5",
+        "a_y_over_p",
+        "驾驶员位置侧向加速度与滚转速率之比",
+        "g/(rad/s)",
+        "L1 pending／L2 pending／L3 pending",
+        "待抽取",
+        "5.4.5",
+        "未覆盖"
+      ],
+      [
+        "5.4.10.3",
+        "S_1s",
+        "滚转操纵灵敏度",
+        "deg/N",
+        "L1 <=3.38／L2 <=5.62／L3 -",
+        "已数字化",
+        "表A31（IV类杆式A阶段）",
+        "可直接评级"
+      ],
+      [
+        "5.5.1.1.1",
+        "zeta_d",
+        "荷兰滚阻尼比",
+        "-",
+        "L1 >=0.19／L2 >=0.02／L3 >=0",
+        "已数字化",
+        "表A35（A:I·IV与all行）",
+        "可直接评级"
+      ],
+      [
+        "5.5.1.1.1",
+        "omega_d",
+        "荷兰滚频率",
+        "rad/s",
+        "L1 >=1.0／L2 >=0.4／L3 >=0.4",
+        "已数字化",
+        "表A35",
+        "可直接评级"
+      ],
+      [
+        "5.5.1.1.1",
+        "zeta_d_omega_d",
+        "荷兰滚乘积",
+        "rad/s",
+        "L1 >=0.35／L2 >=0.05／L3 无限制",
+        "已数字化",
+        "表A35",
+        "可直接评级"
+      ],
+      [
+        "5.5.1.1.1",
+        "phi_over_beta",
+        "荷兰滚倾斜-侧滑比",
+        "-",
+        "L1 当ω_d²·|φ/β|>20时加修正／L2 当ω_d²·|φ/β|>20时加修正／L3 当ω_d²·|φ/β|>20时加修正",
+        "已数字化",
+        "表A35注",
+        "部分可评"
+      ],
+      [
+        "5.5.1.1.2",
+        "beta_over_delta_r",
+        "稳态侧滑反应",
+        "deg/deg",
+        "L1 pending／L2 pending／L3 pending",
+        "待抽取",
+        "5.5.1.1.2",
+        "未覆盖"
+      ],
+      [
+        "5.5.2.1",
+        "coordination_index",
+        "滚转输入引起的侧滑协调量",
+        "deg",
+        "L1 figure_only／L2 figure_only／L3 figure_only",
+        "仅图形",
+        "5.5.2.1.1与5.5.2.1.2",
+        "未覆盖"
+      ]
+    ],
+    "detail_groups": [
+      "5.4",
+      "5.5"
+    ],
+    "covered_params": [
+      "T_R",
+      "T_2_spiral",
+      "S_1s",
+      "zeta_d",
+      "omega_d",
+      "zeta_d_omega_d"
+    ],
+    "partial_params": [
+      "P_osc_over_P_av",
+      "tau_e",
+      "phi_over_beta"
+    ],
+    "needs_control_law": [
+      "omega_BW",
+      "gamma_theta_ss",
+      "gamma_theta_phase",
+      "P_osc_over_P_av",
+      "a_y_over_p",
+      "S_1s",
+      "coordination_index",
+      "lateral_BW",
+      "roll_coupled_beta",
+      "roll_coupled_alpha_nz",
+      "control_compat"
+    ],
+    "open_loop": [
+      "omega_nsp",
+      "zeta_sp",
+      "T_theta1",
+      "T_theta2",
+      "tau_theta",
+      "n_alpha",
+      "zeta_p",
+      "dV_dtheta",
+      "T_R",
+      "T_2_spiral",
+      "ER_Rs",
+      "tau_e",
+      "zeta_d",
+      "omega_d",
+      "zeta_d_omega_d",
+      "phi_over_beta",
+      "beta_over_delta_r",
+      "sigma_w",
+      "L_w",
+      "sigma_u",
+      "sigma_v",
+      "windshear"
+    ],
+    "by_axis": {
+      "pitch": 7,
+      "vertical": 2,
+      "speed": 2,
+      "roll": 7,
+      "yaw": 6,
+      "lateral_path": 1,
+      "combination": 3,
+      "disturbance": 5
+    }
+  }
+}

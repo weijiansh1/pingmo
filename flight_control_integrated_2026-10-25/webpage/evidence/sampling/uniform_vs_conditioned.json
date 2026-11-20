@@ -1,0 +1,44 @@
+{
+ "library": "data/aircraft/generated/p_channel_library_iv_a_5000_v1/plants.jsonl",
+ "library_size": 5000,
+ "graded_objects": 4774,
+ "grader": "three components (A18 t_r, A19 spiral, A35 Dutch roll); S_1s omitted",
+ "box": {
+  "lambda_s": [
+   -0.14997468851024512,
+   0.17324387480084408
+  ],
+  "t_r": [
+   0.18001361028057664,
+   9.93050758712464
+  ],
+  "zeta_d": [
+   0.00501100197649215,
+   0.6998854404222221
+  ],
+  "omega_d": [
+   0.40010192299304415,
+   5.998019406025572
+  ]
+ },
+ "uniform": {
+  "n": 20000,
+  "seed": 20261022,
+  "shares": {
+   "1": 0.0367,
+   "2": 0.05395,
+   "3": 0.90935
+  }
+ },
+ "library_three_component": {
+  "1": 0.4197737746124843,
+  "2": 0.2595307917888563,
+  "3": 0.32069543359865943
+ },
+ "library_final_label": {
+  "1": 0.3443653121072476,
+  "2": 0.334939254294093,
+  "3": 0.32069543359865943
+ },
+ "note": "uniform draws come from the graded subset's own parameter envelope, so the difference is caused by the construction, not by the box"
+}

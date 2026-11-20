@@ -1,0 +1,72 @@
+{
+  "archive": "飞控大模型研究_修订_2026-10-24.zip",
+  "sha256": "3a329784219238e5b1f0b444f3bcadcd279f7dec062b50f57b5f8d024b46d33e",
+  "included_file_sha256_checks": 2131,
+  "fresh_extraction_commands": [
+    {
+      "script": "revision/summarize_fair.py",
+      "exit_code": 0
+    },
+    {
+      "script": "revision/compose_report.py",
+      "exit_code": 0
+    },
+    {
+      "script": "paper_source/dhc6_paper.py",
+      "exit_code": 0
+    },
+    {
+      "script": "revision/verify_delivery.py",
+      "exit_code": 0
+    }
+  ],
+  "manuscript_rebuild_identical": true,
+  "fresh_extraction_verification": {
+    "checks": {
+      "regression_tests_passed": true,
+      "regression_test_count": 11,
+      "dhc6_report.html_local_links": true,
+      "dhc6_report.html_24_images": true,
+      "dhc6_report.html_offline": true,
+      "dhc6_paper.html_local_links": true,
+      "dhc6_paper.html_24_images": true,
+      "dhc6_paper.html_offline": true,
+      "same_html_content": true,
+      "figure_source_hashes_and_formats": true,
+      "all_1440_phase_corrected_fits": true,
+      "failed_tau_values_are_null": true,
+      "58_training_and_metric_checks": true,
+      "ten_retrained_policy_checkpoints": true,
+      "executed_training_code_matches_protocol": true,
+      "new_frf_end_to_end_three_objects": true,
+      "current_python_sources_compile": true
+    },
+    "all_passed": true,
+    "image_counts": {
+      "dhc6_report.html": 24,
+      "dhc6_paper.html": 24
+    },
+    "phase_corrected_case_counts": {
+      "batch": 360,
+      "batch_amp050": 360,
+      "batch_amp200": 360,
+      "batch_seed2": 360
+    },
+    "regressions": {
+      "run": 11,
+      "failures": 0,
+      "errors": 0
+    },
+    "environment": {
+      "python": "3.10.16",
+      "numpy": "1.26.4",
+      "scipy": "1.13.1",
+      "torch": "2.6.0+cu124",
+      "matplotlib": "3.10.3",
+      "Pillow": "11.0.0",
+      "Markdown": "3.8",
+      "beautifulsoup4": "4.13.4"
+    }
+  },
+  "all_passed": true
+}

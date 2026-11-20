@@ -1,0 +1,885 @@
+{
+  "revision": "route-2026-10-25",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2237,
+      "sha256": "0a2745959197030bbac87e38b2680217bd093b717ba8d26838589ee337db8bea"
+    },
+    {
+      "path": "paper_source/FONT_LICENSE.txt",
+      "bytes": 4388,
+      "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9"
+    },
+    {
+      "path": "paper_source/chinese_font.css",
+      "bytes": 5716,
+      "sha256": "a21ec82041acef6c43d1e9bc304cb98bbe1cc11b19d7daa514a6c6d35b21e632"
+    },
+    {
+      "path": "paper_source/dhc6_paper.py",
+      "bytes": 4116,
+      "sha256": "358f243e169a97e3eceb4aae2cb660a8c5d3db0393a18ed841512aea11039ad3"
+    },
+    {
+      "path": "paper_source/make_story_figures.py",
+      "bytes": 6313,
+      "sha256": "eed37c32db91269ae9dc5170fefe5362166ddd65cd7633b923db5357ec95a3e3"
+    },
+    {
+      "path": "paper_source/prepare_fonts.py",
+      "bytes": 2955,
+      "sha256": "806225f46b7fdec2723098b18fc42d3cede146f51f104c6217a379205c35c578"
+    },
+    {
+      "path": "paper_source/render_math.cjs",
+      "bytes": 440,
+      "sha256": "d499b879a90f55e0dc1d9660529de27db83a7cd47e1673772974ea7e81484095"
+    },
+    {
+      "path": "paper_source/report_style.css",
+      "bytes": 7362,
+      "sha256": "74ada803bd51dd3c969985e9306c9d37331ffc5b0e777390f1745a7e40c8ddc6"
+    },
+    {
+      "path": "revision/figure_manifest_inherited.json",
+      "bytes": 2266,
+      "sha256": "815d55a8b531428d4f97ca5f4cbecb0021564972fa3a8834b66e423989a5a903"
+    },
+    {
+      "path": "revision/figure_sources.json",
+      "bytes": 1021,
+      "sha256": "948224072bad178c27858aa27f47aca5e68464a223895271f1a80b00ad2b6ab0"
+    },
+    {
+      "path": "revision/font_manifest.json",
+      "bytes": 3811,
+      "sha256": "6c537a7418b29e941d11478633bdfde95cf45128dc38b2f8d420c14292c66e61"
+    },
+    {
+      "path": "revision/format_inline_math.py",
+      "bytes": 4426,
+      "sha256": "7e56611aef149c53d3fdfdef8f5f7c43bdcaa9d8fb654198dfb0991839089d99"
+    },
+    {
+      "path": "revision/manuscript.diff",
+      "bytes": 74107,
+      "sha256": "79d87f3623585ef6952a1ff317c384850626921b281d03cb42d6122d7b5a4105"
+    },
+    {
+      "path": "revision/math_manifest.json",
+      "bytes": 13887,
+      "sha256": "76ca1b46b49c7ce0798b41ac799e0a6bb010c1880aa6b1eadc383911ad0f2dd5"
+    },
+    {
+      "path": "revision/math_verification.json",
+      "bytes": 706,
+      "sha256": "d7e0ae52644c6710d83bd5f9287a109f6a03fce76a7410e5f9a77380febe882a"
+    },
+    {
+      "path": "revision/previous_manuscript.md",
+      "bytes": 46380,
+      "sha256": "2d956662e1594850fdbdc25f4a20a877e62c89f428c4b192ee03d293b9b759cc"
+    },
+    {
+      "path": "revision/proxy_verification.json",
+      "bytes": 5995,
+      "sha256": "c771e621ffd0388a93e5623ebe2d7c9497dddbf2ac7bdadcdac3c3478725295a"
+    },
+    {
+      "path": "revision/source_record.json",
+      "bytes": 348,
+      "sha256": "0e421244bd3b8d61b0967e4e29c22aca90386c45cd48ddd065242abb38d8f7e5"
+    },
+    {
+      "path": "revision/verification.json",
+      "bytes": 3317,
+      "sha256": "c8a119c37a0843aa9dc179c95f014f3d3fc5ea1157818f28662ae990572514e5"
+    },
+    {
+      "path": "webpage/dhc6_paper.html",
+      "bytes": 388835,
+      "sha256": "acfb7e8894fcbc4e6784e3315eb4ff0cde06d7f878d5ad20589783514e960879"
+    },
+    {
+      "path": "webpage/dhc6_report.html",
+      "bytes": 388835,
+      "sha256": "acfb7e8894fcbc4e6784e3315eb4ff0cde06d7f878d5ad20589783514e960879"
+    },
+    {
+      "path": "webpage/dhc6_report.md",
+      "bytes": 50114,
+      "sha256": "e9e0f5c345c754d9c7641e4ef8e20823adf69bb1272c4d2f5fcb6036eb5e4dbe"
+    },
+    {
+      "path": "webpage/evidence/controller_route_protocol.json",
+      "bytes": 125566,
+      "sha256": "d386adac16b1e4169fe22a19830d61864e3c43f46fe79077eb768cd91350015e"
+    },
+    {
+      "path": "webpage/evidence/controller_route_report_summary.json",
+      "bytes": 876510,
+      "sha256": "2fcb241e6b1f90576f5b30edbd63dfa926f33d47e59677cc6bb63587a1a55b88"
+    },
+    {
+      "path": "webpage/evidence/dagger_rounds_20261031.json",
+      "bytes": 25316,
+      "sha256": "c35c69ee47668018b79e7e8b241d11d3820f0f5f4bdc08880dffd4af8ae70e8e"
+    },
+    {
+      "path": "webpage/evidence/dagger_rounds_20261101.json",
+      "bytes": 25265,
+      "sha256": "5d3c5247e0ac55117f011c4d3d87d577249feb688f9676c1f89d935596eb6261"
+    },
+    {
+      "path": "webpage/evidence/dagger_rounds_20261102.json",
+      "bytes": 25294,
+      "sha256": "c0b5314cbdd4d6aecc2287f6f14faee9f4340ac0e04e86f44f02abc2a5a7dee7"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/coverage.json",
+      "bytes": 8315,
+      "sha256": "e492289dba644e63a92443775aadc1cf9df267284343066053e8164475f12d2a"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/formula_215.png",
+      "bytes": 22447,
+      "sha256": "e531359bdd53a0d533334ab6f97bc5a7d0275f629ce67129dff08bb841d2ff46"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/formula_240.png",
+      "bytes": 88510,
+      "sha256": "726e426aef4893fa1f31404d31b56ae05a2bfeb0f4a36e6d0ec8fcc143be7555"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_001.png",
+      "bytes": 41104,
+      "sha256": "706cac9a1db3cf353b590723e409eb25561c926dd8d5b5b2de90dbb64ec8be27"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_002.png",
+      "bytes": 76538,
+      "sha256": "192fb13ca6116f06fb84c4baaf872b836ac05cfa0810412712731b91ba2508cb"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_003.png",
+      "bytes": 98315,
+      "sha256": "29e87983511978c158a8d1d71f016eccf4e48e75cc5b1493fb886d515ed56591"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_004.png",
+      "bytes": 31401,
+      "sha256": "ce331554eb6eb513bd141cd345df3582021d515c7121f7f6f41fb44b12b9b1c2"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_005.png",
+      "bytes": 96910,
+      "sha256": "a720a555ce19bea64b3eb0842d8a062a027cbe9874756de06f0cef76b6dba330"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_006.png",
+      "bytes": 78152,
+      "sha256": "b1c11c09f1e075e9caeab044ceb7af65c9478f92f007d504f9735702d12d25b0"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_007.png",
+      "bytes": 130848,
+      "sha256": "b709a5ed4b319d9dc4a2b6550bcea86006c834b81ec5f613b2c1d88c979eb2a7"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_008.png",
+      "bytes": 79759,
+      "sha256": "136ab907a03d2ba5d4b1ce7a8169e80d05de011456b95b6e96fb941ce0aa47c9"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_012.png",
+      "bytes": 84457,
+      "sha256": "09734d78558c315c31d0d51fc334e63e0dd61af52c3c4eae6ab09947d8e2d788"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_013.png",
+      "bytes": 130821,
+      "sha256": "fd4a9a331bb6aa721c451fb1edc5f1ed165097f2ec9e0705302034bc41f69cb3"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_014.png",
+      "bytes": 50634,
+      "sha256": "43886dd10e0d76b832e3093310f8aaeb04e8a5ce4420d1ecef96a7db7d36c7d8"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_015.png",
+      "bytes": 52114,
+      "sha256": "d54989f9469baab9ff5ff753d7a3241d235bea044b0f83fc2df2b8179b176091"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_019.png",
+      "bytes": 138435,
+      "sha256": "a6d60504aad0945167d7bc03440047b13747790b036280ea88986a606743de2a"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_032.png",
+      "bytes": 109184,
+      "sha256": "130980579d23e94aceeba9fbefa2c572937ccab46395e9da027868ef4f838d51"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_033.png",
+      "bytes": 134007,
+      "sha256": "908031fb789e5001dd30273b1132ab6b0553b6a743f1b98f03aa41bd7be91eb4"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_034.png",
+      "bytes": 131328,
+      "sha256": "200319d6010d3235058e2eee5da4de40bd63a0cdf6bb1d2c05ca2c64334c29e2"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_035.png",
+      "bytes": 137747,
+      "sha256": "e01cfcb0a3e59a332ef779ccd6ed671dc81de76fdf062871361e95c54b0e8d3e"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_036.png",
+      "bytes": 115210,
+      "sha256": "cbdee219f8ca5d9397c1fef30f1c084d4b74435b2e788941c143367cc03f6c88"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_037.png",
+      "bytes": 121503,
+      "sha256": "fe531ce8833c0f18c3b83403c3e51364c0ee73cd830933fa1df6ad23a4a11dd2"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_046.png",
+      "bytes": 98207,
+      "sha256": "20c6912f42baa1b1a2023f6ad85602d648cab0def184be6ba9222d3fc9b5cad1"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_047.png",
+      "bytes": 86078,
+      "sha256": "bc93245cf36c659615a408dc2f13899e85f27fdbb91cfeed03c84fc259e00dc8"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_048.png",
+      "bytes": 114731,
+      "sha256": "15b690c0cf2d9ce036a3158c722e9ee2395f6a722535722589712e6a014a630a"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_049.png",
+      "bytes": 114979,
+      "sha256": "d13663f13ecb4e53acea4823c5d6e9417169e4662705deabbe2ed7528169d123"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_068.png",
+      "bytes": 99700,
+      "sha256": "07d7786aa23c16f87efe7d10c17e7dd4fbc07fa696b2b7aebd76c3737c212f44"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_072.png",
+      "bytes": 147030,
+      "sha256": "a2dad080c581cccedd05d8a9ca8fc656f0d6e35844fe5cef8b7294451567fffa"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_211.png",
+      "bytes": 154831,
+      "sha256": "a1d7fa4a6ef32fe43f0c34ef34cd23f73602e83976a12953ec6b33528a90b8e3"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_212.png",
+      "bytes": 160344,
+      "sha256": "1d69225d5697f685ab8525970b92b34a45e5634a30521738de4b3b21fb35bef4"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_214.png",
+      "bytes": 99330,
+      "sha256": "2f9a9502deeaa4541ed6c8172a40d1833569b8f1d8322fe5b15194ecaa1a1a49"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_215.png",
+      "bytes": 96316,
+      "sha256": "fba12be95b749e0b7fc984fe1ba579697107cd43401f8a3404ed2473ba62cdca"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_216.png",
+      "bytes": 76082,
+      "sha256": "2d94482b948595957b68ea09e5b04420ac2a12f9befbbdfc13d17a71c7e75dd3"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_217.png",
+      "bytes": 71310,
+      "sha256": "cc93654cb95555a7a0c9d369531757f985cc0878fcacbe88be639243160ed6d2"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_218.png",
+      "bytes": 84511,
+      "sha256": "91de486ea649c52dc23f669eee812e35e3f2cc5f44b76b7ed29fc3acf85575f5"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_219.png",
+      "bytes": 50678,
+      "sha256": "70e7c7384982c682fae38644f6ed43776673d7734455b76adf657db8e2a80a2d"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_220.png",
+      "bytes": 51121,
+      "sha256": "d3999b1d90c5f2183cdbfaabd47fb70b8069aeed0a2e60fd2e3f1f2768263509"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_227.png",
+      "bytes": 115018,
+      "sha256": "9f2e03dc8c85b66173b3ada4af3afc2b3b38af6c75f4efe5d42c147ec9754448"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_228.png",
+      "bytes": 107373,
+      "sha256": "b69e36b1a8e4a104addb855e72b75065e63916123dd81fef55e80405e7e56c81"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_229.png",
+      "bytes": 91266,
+      "sha256": "b37d981d191efd016198481ceba36661a7705583eb2db1b9408f26ba76e2e2cf"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_230.png",
+      "bytes": 92976,
+      "sha256": "39a3cd4aefeb0db2483bb42430235174baa7fa40a3cf6e7861ee10c360df0ebd"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_231.png",
+      "bytes": 109689,
+      "sha256": "2d62ccb47c5b158760bf11b32387e230149f39f30a17190b807dcb565817156e"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_232.png",
+      "bytes": 117016,
+      "sha256": "38f2a5cbf245be894a7f1eb859901cc81092d917dd9806ad372304ac337bf09e"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_233.png",
+      "bytes": 146120,
+      "sha256": "b61085dfa3c01423a490ddd44cc0fe843f91953a32ad0018093b56bc3a7b436d"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_234.png",
+      "bytes": 89669,
+      "sha256": "13b386c24053e4ef12ba4a5d552e20f58a7eb11c9ec2119725cee740b884ef24"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_237.png",
+      "bytes": 49323,
+      "sha256": "6c79acfad06f7583464705c1c0ccbe49391283bca6c03cf90da9c76bebfb189b"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_238.png",
+      "bytes": 47245,
+      "sha256": "46c9d83b8cd17af496c24a4079951fffff2b7bf8e5563f6b03dc2efb5d975f14"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_239.png",
+      "bytes": 62221,
+      "sha256": "f48625c209b1f43ebcd2a7ba3824550f9425e2dc6aac987cd3bdcf634757c09d"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_240.png",
+      "bytes": 105947,
+      "sha256": "75a7d668f43d61eae0286b0e0ee800f96bb26417a1ebc3813d96588e64cdf6b7"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_241.png",
+      "bytes": 89844,
+      "sha256": "efc06c213bfdb825c0c1911d488c3832d51dc17d09cf6726e9dff0524ea4855f"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_242.png",
+      "bytes": 72331,
+      "sha256": "47e981d5de9909f34df22137d5076dd22f449274d3ebbe013a7dc566e7d18741"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_246.png",
+      "bytes": 65049,
+      "sha256": "f01e359ea89d3c77335b8c0662b22d4b64b444caad8a43d8d5931f51c11a4680"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_247.png",
+      "bytes": 70953,
+      "sha256": "efda64feab6d60d587465805967ed9aa422ebe378ed24f0b131ef9678e1dbd7c"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_250.png",
+      "bytes": 102782,
+      "sha256": "2bdbcceb6380376821d1fb63c394b0e7ddba9506c55d61ce64a8fac983e20983"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_251.png",
+      "bytes": 81176,
+      "sha256": "e283c73dabaf31df3e5dccbfad4099bf803fcc489c8c1a8d51053ea30cbd84e6"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_275.png",
+      "bytes": 82913,
+      "sha256": "26bbaca14306c13caa730d8e85dc9dd173e113d66145e39eb474cef68fa5d37e"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_276.png",
+      "bytes": 91564,
+      "sha256": "8ef18eb441b69b1e6624b44549f29535076158f4d20be5d0b063f1bc0c24ce7d"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_277.png",
+      "bytes": 123340,
+      "sha256": "0835e973ce03306459d6f79a52150526824553a2ce23de210ef09bf013da2678"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_278.png",
+      "bytes": 91201,
+      "sha256": "e5a0e30da6564b21e586048ac6ad65a56fa2ac4084cb6c945fc4a5d77b468916"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_302.png",
+      "bytes": 104938,
+      "sha256": "7451a808ccbe0ffb781a1907991736b8ce94e4c811a000b8812ea0f7754ea812"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_303.png",
+      "bytes": 109891,
+      "sha256": "0b9516798983fde3e3d06effff74b5f70951ac429881dd6f0d919513563c04ea"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_304.png",
+      "bytes": 148146,
+      "sha256": "9c3b69bc5d42734383b0734898a2046b310f2775e2b9b8c8b16ca938b3af9d2d"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_305.png",
+      "bytes": 61585,
+      "sha256": "6e9ba4c760b36d87c3aec9e3246467faaf77821f722fcf9062b6d3922e95d0e5"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pages/pdf_306.png",
+      "bytes": 62083,
+      "sha256": "d67b3517e595be52622f9c7e17cd8f9c424dcd77f693826a7101289c135f2850"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pilot_joint_v1/manifest.json",
+      "bytes": 2249,
+      "sha256": "73e26ef279c0b68a824eb154815e5a6f6dc8b5f2834c98559c0c8b7192e3c43a"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/pilot_joint_v1/plants.jsonl",
+      "bytes": 144302,
+      "sha256": "5a915312919e741d04317acccc4d4c5837b755d449bfffe1c5f5523ab8d2a46f"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/quality_parameter_registry_reviewed.csv",
+      "bytes": 6687,
+      "sha256": "a28693845077d7e29da36def701484ca838ac4c0a473f23cf2bbd0b4ffdaa05e"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/source.json",
+      "bytes": 9677,
+      "sha256": "6ead6b44897e53da659aa797e6dd0ad14a81332839185156c6f151b3bcd7516f"
+    },
+    {
+      "path": "webpage/evidence/gjb_audit/verification.json",
+      "bytes": 13082,
+      "sha256": "55bea556ca4eee17a4332f59426053d7459e09e903ec975b9710549ea7ddba6e"
+    },
+    {
+      "path": "webpage/evidence/story_figure_data.json",
+      "bytes": 8021,
+      "sha256": "b99e854f3fa8845e2b2e0538a203bf94cd288b916d24744649d0e78414e62da3"
+    },
+    {
+      "path": "webpage/paper/01_teacher_learning.pdf",
+      "bytes": 21950,
+      "sha256": "43e0c24932e1b339af800d19dd64bcf3ce08409ab9377e8e926cff5ac58be3ee"
+    },
+    {
+      "path": "webpage/paper/01_teacher_learning.png",
+      "bytes": 597472,
+      "sha256": "9972b8e2385dfa9b8d65a9439947767f7133b6df7aab961c8f22f8ef803fb3f4"
+    },
+    {
+      "path": "webpage/paper/01_teacher_learning.svg",
+      "bytes": 69078,
+      "sha256": "ffd044f5126de7015842d6b44876c716517caa7ae2dbd8111cf23904a6ba0366"
+    },
+    {
+      "path": "webpage/paper/05_failure_trace.pdf",
+      "bytes": 16381,
+      "sha256": "ec76baa87c51896fb7c852ec46b618674a282c42eebe0ca4e86e795a92f4cdee"
+    },
+    {
+      "path": "webpage/paper/05_failure_trace.png",
+      "bytes": 194932,
+      "sha256": "f5104c5bf17dcc2fc332f53a5813be9150cc87fc7ca8a4d86199c8d253473adf"
+    },
+    {
+      "path": "webpage/paper/05_failure_trace.svg",
+      "bytes": 27136,
+      "sha256": "03c52c6037c838b7d3a65bcec82baecb0b9a4d5ec89dd40b01735d0bdd93bdc2"
+    },
+    {
+      "path": "webpage/paper/distillation_rounds.pdf",
+      "bytes": 14883,
+      "sha256": "c89c4cf808c4f9418eebd9d38e12fd90da8a0115da964bc14239b312d58b9d89"
+    },
+    {
+      "path": "webpage/paper/distillation_rounds.png",
+      "bytes": 130050,
+      "sha256": "85b4db5290a2ac86ee4e5bf6324f2cba9db619bd3104a962ec4a40b8cd4d9ce8"
+    },
+    {
+      "path": "webpage/paper/distillation_rounds.svg",
+      "bytes": 39259,
+      "sha256": "0d0549e9290fb4e7fd330d8ec89c4740877e5e978de4f3f4c961486494b0faf1"
+    },
+    {
+      "path": "webpage/paper/transfer_budget.pdf",
+      "bytes": 14274,
+      "sha256": "68809063dafc0b308faae510e163baa5cdba8ea40aa1887d0268f200c7e35c42"
+    },
+    {
+      "path": "webpage/paper/transfer_budget.png",
+      "bytes": 125360,
+      "sha256": "607db78b43207cd831b383b09e1f186e55d9560a5878f7c544bea42899dfd336"
+    },
+    {
+      "path": "webpage/paper/transfer_budget.svg",
+      "bytes": 47756,
+      "sha256": "70336c317bae3042448cee2a901e3a1597e12a9225a4b6ea07d3ddbc7a0da20b"
+    },
+    {
+      "path": "webpage/vendor/fonts/noto-sc-subset-00.ttf",
+      "bytes": 109568,
+      "sha256": "229b5d9be2d0d9d586ffc4788c705ad6018f8ce6f26ace40925817a74dd3daf8"
+    },
+    {
+      "path": "webpage/vendor/fonts/noto-sc-subset-01.ttf",
+      "bytes": 94520,
+      "sha256": "b98a81e96c7e69e97054ab7ed72404791ea5ee7640d7fd14321d9715b275d7bf"
+    },
+    {
+      "path": "webpage/vendor/katex/LICENSE",
+      "bytes": 1107,
+      "sha256": "766ccc1f306c885aa45542a9846bbd0a505b27a0374f146778171c2254ce18e3"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_AMS-Regular.ttf",
+      "bytes": 63632,
+      "sha256": "68534840bcfdd2bffb6f0e8deb48684dd01e7f04ea2813267577afb906de1d13"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_AMS-Regular.woff",
+      "bytes": 33516,
+      "sha256": "30da91e84c893f875e252689faebdc590b2871145e8adc7f9a9d4dbd8ce0b251"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_AMS-Regular.woff2",
+      "bytes": 28076,
+      "sha256": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Caligraphic-Bold.ttf",
+      "bytes": 12368,
+      "sha256": "07d8e303ce4fc12b4bb54f1004170dd190a1f3db45d400fe68060df3e0897268"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff",
+      "bytes": 7716,
+      "sha256": "1ae6bd7475590e97e7f145a89e09ccde322f7a6bc0b91607b1c8b8ee28290fed"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2",
+      "bytes": 6912,
+      "sha256": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Caligraphic-Regular.ttf",
+      "bytes": 12344,
+      "sha256": "ed0b74372feefcbb9c0666b2e210da37b7e49fa7fbbf3eeb11db5f693dacfbb7"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff",
+      "bytes": 7656,
+      "sha256": "3398dd02302557a793f2863f88e02d96ce10df2abffa07c8e9fa90775116e65c"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2",
+      "bytes": 6908,
+      "sha256": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Fraktur-Bold.ttf",
+      "bytes": 19584,
+      "sha256": "9163df9c7122432e6495b4229fa9071cf9ae86a758ae5efc4924ec2e1a6dbce1"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Fraktur-Bold.woff",
+      "bytes": 13296,
+      "sha256": "9be7ceb88004ab8ad124082246fbfcca4091e36385d4ec6ed1df67375dad50fb"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2",
+      "bytes": 11348,
+      "sha256": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Fraktur-Regular.ttf",
+      "bytes": 19572,
+      "sha256": "1e6f9579e90e2cac37f8f60a597c436e075c114385652b7cbeb0dec0421291b3"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Fraktur-Regular.woff",
+      "bytes": 13208,
+      "sha256": "5e28753be717dac97f559f49bc10be9cf3c124ddcabda6659d11cb68febc6463"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2",
+      "bytes": 11316,
+      "sha256": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Main-Bold.ttf",
+      "bytes": 51336,
+      "sha256": "138ac28d1663b3037e9c5f52371fa5c63d8324f4a38d22cd573e6ea3a3fd0cf8"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Main-Bold.woff",
+      "bytes": 29912,
+      "sha256": "c76c5d696297d51b9cb1639c7da4334f0e7dec81b42b11213b5e25ef671bb822"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Main-Bold.woff2",
+      "bytes": 25324,
+      "sha256": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Main-BoldItalic.ttf",
+      "bytes": 32968,
+      "sha256": "70ee1f64a20f2048c21940ef46d0144fd215baa953ca69afd1e31e98544f708f"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Main-BoldItalic.woff",
+      "bytes": 19412,
+      "sha256": "a6f7ec0d846ac7ad975adb8959c37ed49b94acbc4ae436db9ce9e20287e4a64c"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2",
+      "bytes": 16780,
+      "sha256": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Main-Italic.ttf",
+      "bytes": 33580,
+      "sha256": "0d85ae7cc30f23790a7f1a58c4a112fdca8aae769b6ba11429af1d98b1b6cb3a"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Main-Italic.woff",
+      "bytes": 19676,
+      "sha256": "f1d6ef86f3b11a528bd5185199bd2443ecb2b0dead96d88674b5a2c12be24bdf"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Main-Italic.woff2",
+      "bytes": 16988,
+      "sha256": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Main-Regular.ttf",
+      "bytes": 53580,
+      "sha256": "d0332f52868370fd83ae7fa46470f90c8f2eab2fcf12bc4f88080b340c95a830"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Main-Regular.woff",
+      "bytes": 30772,
+      "sha256": "c6368d87e8a1a3a5d337623d83d8dc4b868f242a9ad476237d6f8d1e0f168cdc"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Main-Regular.woff2",
+      "bytes": 26272,
+      "sha256": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Math-BoldItalic.ttf",
+      "bytes": 31196,
+      "sha256": "f9377ab0271cda59af24bcffbd46a4d0c8a3572ffafdbb38de2ad5ea7b0d5ee5"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Math-BoldItalic.woff",
+      "bytes": 18668,
+      "sha256": "850c0af5c2238497febaf5e461d880bf458c341f42f4f330f1b1ab5698b1998e"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2",
+      "bytes": 16400,
+      "sha256": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Math-Italic.ttf",
+      "bytes": 31308,
+      "sha256": "08ce98e51b04d58945a301e639e02b6998af29fdfd61a7b8afdd07bbfc479d4a"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Math-Italic.woff",
+      "bytes": 18748,
+      "sha256": "8a8d244581371912b8f3f5a23e2437cb2a59cd9bcaebb0346e722c05737a2571"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Math-Italic.woff2",
+      "bytes": 16440,
+      "sha256": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_SansSerif-Bold.ttf",
+      "bytes": 24504,
+      "sha256": "1ece03f79f95277d57dc7f6b435a74e1379b0d46104a8530286b60ff49369ea0"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_SansSerif-Bold.woff",
+      "bytes": 14408,
+      "sha256": "ece03cfd83e22c212cdef66feb8442d25a083beb988db3f1883f3f9738d750ba"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2",
+      "bytes": 12216,
+      "sha256": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_SansSerif-Italic.ttf",
+      "bytes": 22364,
+      "sha256": "3931dd81faed86ba021bb2bbdc36f5bed9a38d6b4f4077aca59b265aa1b02083"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_SansSerif-Italic.woff",
+      "bytes": 14112,
+      "sha256": "91ee67500cc0129aa0ace3ac5c61ff1692102f0f31d02b69347fba35dcb75bf2"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2",
+      "bytes": 12028,
+      "sha256": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_SansSerif-Regular.ttf",
+      "bytes": 19436,
+      "sha256": "f36ea897e19f4a2e571d1e900e4e3710e438deb05a842486045ba0a3e616a4ad"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_SansSerif-Regular.woff",
+      "bytes": 12316,
+      "sha256": "11e4dc8a6471ff6d6ee561d53d10fde8f7489e798257ff449c5d37c197435605"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2",
+      "bytes": 10344,
+      "sha256": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Script-Regular.ttf",
+      "bytes": 16648,
+      "sha256": "1c67f068fea8bb09bf099c088b1cf64bd27516a6e07f4684344873564bb66a67"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Script-Regular.woff",
+      "bytes": 10588,
+      "sha256": "d96cdf2b3bdd4d64a8fd5f74a4c467f123a8a73931cd435889f08ffaf9bf947a"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Script-Regular.woff2",
+      "bytes": 9644,
+      "sha256": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Size1-Regular.ttf",
+      "bytes": 12228,
+      "sha256": "95b6d2f1a50173bfedb8c63e1d1c99b10427d0a4df4201cb44513b226951a22b"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Size1-Regular.woff",
+      "bytes": 6496,
+      "sha256": "c943cc986384f59e86bea5fd7dc50a9c4dfe567a7c05eb40d6790720dead97c9"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Size1-Regular.woff2",
+      "bytes": 5468,
+      "sha256": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Size2-Regular.ttf",
+      "bytes": 11508,
+      "sha256": "a6b2099fb555c60e3a0db3a08842ebf1d732c6eb4e4bf44913613bed4fc4e39b"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Size2-Regular.woff",
+      "bytes": 6188,
+      "sha256": "2014c523c3210bcc166648c4d4cc57f05b747df07a24277bf71c51e67dc79e3d"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Size2-Regular.woff2",
+      "bytes": 5208,
+      "sha256": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Size3-Regular.ttf",
+      "bytes": 7588,
+      "sha256": "500e04d54f0d51666332c9d2089aa803be22aa878eca539e59fa53c6e522b082"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Size3-Regular.woff",
+      "bytes": 4420,
+      "sha256": "6ab6b62e9b62dae2c00dd90f791bd10950be0ecc3490d7d6045f51c2e8fe0949"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Size3-Regular.woff2",
+      "bytes": 3624,
+      "sha256": "73d591271b1604960cb10bb90fee021670af7297017e0e98480b332d11f51995"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Size4-Regular.ttf",
+      "bytes": 10364,
+      "sha256": "c647367d1dd4e162468717d020e1fc0f1dc5c26ebfdffbe55261713bf88c5877"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Size4-Regular.woff",
+      "bytes": 5980,
+      "sha256": "99f9c6750b489c9462bf04900bd3f939df9b829339daaaaa99ef5495cdddea58"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Size4-Regular.woff2",
+      "bytes": 4928,
+      "sha256": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Typewriter-Regular.ttf",
+      "bytes": 27556,
+      "sha256": "f01f3e87d9c6a61c0c081ceb577abd864eb00a612f7ac1620dd6915fad2ef5aa"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Typewriter-Regular.woff",
+      "bytes": 16028,
+      "sha256": "e14fed02b1aba7ce9f5afd5844b5d0321b22351febc720e0de8b8723527609f7"
+    },
+    {
+      "path": "webpage/vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2",
+      "bytes": 13568,
+      "sha256": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b"
+    },
+    {
+      "path": "webpage/vendor/katex/katex.min.css",
+      "bytes": 23335,
+      "sha256": "717bc9ae7853b61f0f76455dddf0ecd4f527a783f42de2ac24684899c1c46258"
+    },
+    {
+      "path": "webpage/vendor/katex/katex.min.js",
+      "bytes": 275414,
+      "sha256": "e6bfe5deebd4c7ccd272055bab63bd3ab2c73b907b6e6a22d352740a81381fd4"
+    },
+    {
+      "path": "主线与公式修订说明.md",
+      "bytes": 2035,
+      "sha256": "72d7ac07f8d267d53b0d8122d57022035c2f562fb57f3301e22be45fab20e9bc"
+    },
+    {
+      "path": "论文_飞控构建路线_2026-10-25.pdf",
+      "bytes": 1575310,
+      "sha256": "775c26d0db569a8584df7ba9d3e248223157c9eafebd0c2bd5078c4bdd51468e"
+    }
+  ]
+}

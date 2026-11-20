@@ -1,0 +1,36 @@
+{
+  "check": {
+    "roll_tiny_student": 3856,
+    "roll_teacher_actor": 4255537
+  },
+  "observation": {
+    "loops": 3,
+    "shared_signals": 4,
+    "history_steps": 32,
+    "dim": 660,
+    "roll_dim": 176,
+    "privileged_theta_dim_roll": 8
+  },
+  "three_loop_student_parameters": {
+    "tiny_like (conv 8, 32 x 1)": 5408,
+    "wider_tiny (conv 16, 64 x 2)": 25152,
+    "small_like (conv 24, 256 x 4)": 560416,
+    "teacher_scale (conv 24, 512 x 8)": 4269856
+  },
+  "per_loop_teacher_actor_parameters": 4255537,
+  "teacher_seconds_per_gpu_from_benchmark": 142.794,
+  "teacher_budget_extrapolated": {
+    "3000_aircraft": {
+      "teachers": 9000,
+      "gpu_hours": 357.0,
+      "hours_on_5_gpus": 71.4,
+      "teacher_bank_actor_parameters": 38299833000
+    },
+    "5000_aircraft": {
+      "teachers": 15000,
+      "gpu_hours": 595.0,
+      "hours_on_5_gpus": 119.0,
+      "teacher_bank_actor_parameters": 63833055000
+    }
+  }
+}

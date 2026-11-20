@@ -1,0 +1,235 @@
+{
+  "library_v2": {
+    "selection": {
+      "L1/closest_to_envelope": 668,
+      "L1/within_envelope": 681,
+      "L1/within_envelope_no_downgrade": 151,
+      "L2/closest_to_envelope": 671,
+      "L2/within_envelope": 488,
+      "L2/within_envelope_no_downgrade": 341,
+      "L3/closest_to_envelope": 1003,
+      "L3/within_envelope_no_downgrade": 497,
+      "OOD/closest_to_envelope": 324,
+      "OOD/within_envelope": 146,
+      "OOD/within_envelope_no_downgrade": 30
+    },
+    "dutch_roll": {
+      "L1/L1": 1464,
+      "L1/L2": 33,
+      "L1/L3": 3,
+      "L2/L1": 1065,
+      "L2/L2": 434,
+      "L2/L3": 1,
+      "L3/L1": 969,
+      "L3/L2": 18,
+      "L3/L3": 508,
+      "L3/LNone": 5,
+      "OOD/L1": 422,
+      "OOD/L2": 16,
+      "OOD/L3": 4,
+      "OOD/LNone": 58
+    },
+    "roll_oscillation": {
+      "L1/L1": 1191,
+      "L1/L2": 229,
+      "L1/L3": 80,
+      "L2/L1": 1117,
+      "L2/L2": 260,
+      "L2/L3": 123,
+      "L3/L1": 909,
+      "L3/L2": 163,
+      "L3/L3": 428,
+      "OOD/L1": 348,
+      "OOD/L2": 82,
+      "OOD/L3": 70
+    },
+    "sideslip_M": {
+      "L1/L1": 224,
+      "L1/L2": 358,
+      "L1/L3": 918,
+      "L2/L1": 144,
+      "L2/L2": 374,
+      "L2/L3": 982,
+      "L3/L1": 123,
+      "L3/L2": 292,
+      "L3/L3": 1085,
+      "OOD/L1": 44,
+      "OOD/L2": 104,
+      "OOD/L3": 352
+    },
+    "sideslip_L": {
+      "L1/L1": 554,
+      "L1/L2": 521,
+      "L1/L3": 425,
+      "L2/L1": 446,
+      "L2/L2": 340,
+      "L2/L3": 714,
+      "L3/L1": 388,
+      "L3/L2": 421,
+      "L3/L3": 691,
+      "OOD/L1": 143,
+      "OOD/L2": 143,
+      "OOD/L3": 214
+    },
+    "cross_worst": {
+      "L1/L1": 203,
+      "L1/L2": 376,
+      "L1/L3": 921,
+      "L2/L1": 130,
+      "L2/L2": 387,
+      "L2/L3": 983,
+      "L3/L1": 110,
+      "L3/L2": 250,
+      "L3/L3": 1135,
+      "L3/LNone": 5,
+      "OOD/L1": 36,
+      "OOD/L2": 109,
+      "OOD/L3": 297,
+      "OOD/LNone": 58
+    },
+    "joint_v2": {
+      "L1/L1": 141,
+      "L1/L2": 376,
+      "L1/L3": 902,
+      "L1/LNone": 81,
+      "L2/L2": 421,
+      "L2/L3": 870,
+      "L2/LNone": 209,
+      "L3/L3": 1210,
+      "L3/LNone": 290,
+      "OOD/LNone": 500
+    },
+    "long_period": {
+      "L1/L1": 1073,
+      "L1/L2": 258,
+      "L1/L3": 88,
+      "L1/LNone": 81,
+      "L2/L1": 1017,
+      "L2/L2": 192,
+      "L2/L3": 82,
+      "L2/LNone": 209,
+      "L3/L1": 929,
+      "L3/L2": 195,
+      "L3/L3": 90,
+      "L3/LNone": 286,
+      "OOD/L1": 320,
+      "OOD/L2": 67,
+      "OOD/L3": 22,
+      "OOD/LNone": 91
+    },
+    "dihedral_sense": {
+      "L1/False": 793,
+      "L1/True": 707,
+      "L2/False": 875,
+      "L2/True": 625,
+      "L3/False": 961,
+      "L3/True": 539,
+      "OOD/False": 305,
+      "OOD/True": 195
+    },
+    "pedal_sense": {
+      "L1/False": 54,
+      "L1/True": 1446,
+      "L2/False": 46,
+      "L2/True": 1454,
+      "L3/False": 75,
+      "L3/True": 1425,
+      "OOD/False": 22,
+      "OOD/True": 478
+    },
+    "violated": {
+      "dihedral_ratio": 520,
+      "eta": 707,
+      "l_p_times_t_r": 969,
+      "l_r_over_n_r": 822,
+      "n_b_over_omega_d2": 1163,
+      "n_p_over_l_p": 1654,
+      "n_r_over_2_zeta_omega": 405
+    }
+  },
+  "cross_channels": {
+    "figure": "figures/cross_channels_v2.png",
+    "aircraft": [
+      {
+        "plant_id": "train_core-0009",
+        "eta": 0.09379318960615667,
+        "phi_over_beta": 1.9696129371801052,
+        "psi_beta_deg": -324.6353902825545,
+        "sideslip_excursion_M": {
+          "delta_beta_over_k_deg": 4.100318366396188,
+          "level": 2,
+          "limit_level_1": 2.877977698139742,
+          "limit_level_2": 8.420576214680686,
+          "speed_range": "M",
+          "status": "assessable",
+          "window_s": 2.0
+        },
+        "lateral_selection": "within_envelope"
+      },
+      {
+        "plant_id": "train_core-0001",
+        "eta": -0.11685548421838854,
+        "phi_over_beta": 2.084354602134617,
+        "psi_beta_deg": -220.22648723133958,
+        "sideslip_excursion_M": {
+          "delta_beta_over_k_deg": 28.707289207986,
+          "level": 3,
+          "limit_level_1": 6.0,
+          "limit_level_2": 15.0,
+          "speed_range": "M",
+          "status": "assessable",
+          "window_s": 2.0
+        },
+        "lateral_selection": "within_envelope"
+      },
+      {
+        "plant_id": "train_core-0008",
+        "eta": -0.08534645150344157,
+        "phi_over_beta": 2.8955184869454977,
+        "psi_beta_deg": -277.4214362603352,
+        "sideslip_excursion_M": {
+          "delta_beta_over_k_deg": 32.656114414799596,
+          "level": 3,
+          "limit_level_1": 5.575917927980845,
+          "limit_level_2": 14.322320467458098,
+          "speed_range": "M",
+          "status": "assessable",
+          "window_s": 2.0826897904884536
+        },
+        "lateral_selection": "within_envelope_no_downgrade"
+      }
+    ]
+  },
+  "large_maneuvers": {
+    "plant_id": "train_core-0009",
+    "altitude_change_m_bank, no pull": -558.3243380691717,
+    "heading_change_deg_bank, no pull": 56.38360692355137,
+    "altitude_change_m_bank, 1 g pull": -203.72066477010875,
+    "heading_change_deg_bank, 1 g pull": 113.3249497112437,
+    "roll_360_with inertial coupling": {
+      "time_s": 1.733,
+      "max_abs_d_alpha_deg": 1.5984838063871452,
+      "max_abs_beta_deg": 1.5247419137870593
+    },
+    "roll_360_without": {
+      "time_s": 1.694,
+      "max_abs_d_alpha_deg": 1.507691764724804,
+      "max_abs_beta_deg": 2.568896385357066
+    },
+    "throttle_step": {
+      "phugoid": {
+        "omega_p": 0.09051628652098408,
+        "zeta_p": 0.07719725328025903
+      },
+      "long_period_level": 1,
+      "speed_change_at_120s": -2.8102522511087926,
+      "altitude_change_at_120s": 701.9285059383477
+    },
+    "turbulence": {
+      "sigma_m_s": 3.048,
+      "rms_nz_g": 0.22527137396360497,
+      "rms_beta_deg": 1.7356228519487533
+    },
+    "figure": "figures/large_maneuvers_v2.png"
+  }
+}

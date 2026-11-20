@@ -1,0 +1,438 @@
+{
+  "checked_pairs": 72,
+  "all_reproduced": true,
+  "comparisons": [
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/train_core-0148/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/train_core-1187/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/train_core-1875/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/train_core-0148/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/train_core-1871/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/train_core-0262/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/train_core-1197/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/train_core-1875/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/train_core-0750/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/train_core-1998/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/train_core-1187/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/train_core-0401/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/train_core-1450/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/train_core-0553/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261102/train_core-1442/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/train_core-0262/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/train_core-1871/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/train_core-1197/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/train_core-0553/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/train_core-1998/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/train_core-1450/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/train_core-0401/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/train_core-1442/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261102/train_core-0750/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/train_core-0148/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/train_core-1187/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/train_core-1875/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/train_core-0148/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/train_core-1871/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/train_core-0262/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/train_core-1197/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/train_core-1875/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/train_core-0750/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/train_core-1998/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/train_core-1187/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/train_core-0401/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/train_core-1450/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/train_core-0553/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261101/train_core-1442/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/train_core-0262/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/train_core-1871/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/train_core-1197/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/train_core-0553/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/train_core-1998/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/train_core-1450/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/train_core-0401/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/train_core-1442/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261101/train_core-0750/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/train_core-0148/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/train_core-1187/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/train_core-1875/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/train_core-0148/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/train_core-1871/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/train_core-0262/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/train_core-1197/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/train_core-1875/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/train_core-0750/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/train_core-1998/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/train_core-1187/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/train_core-0401/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/train_core-1450/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/train_core-0553/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/student_seed_20261031/train_core-1442/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/train_core-0262/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/train_core-1871/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/train_core-1197/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/train_core-0553/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/train_core-1998/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/train_core-1450/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/train_core-0401/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/train_core-1442/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    },
+    {
+      "archive": "/home/swj/pingmo/flight_control_corrected_2026-10-24/experiments/controller_route_20261024/evaluations/teacher_seed_20261031/train_core-0750/metrics.json",
+      "max_absolute_rmse_difference_deg_s": 0.0,
+      "pass_fail_mismatches": [],
+      "reproduced": true
+    }
+  ]
+}

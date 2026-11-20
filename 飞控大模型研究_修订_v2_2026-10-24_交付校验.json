@@ -1,0 +1,69 @@
+{
+  "archive": "/home/swj/pingmo/飞控大模型研究_修订_v2_2026-10-24.zip",
+  "sha256": "79caa6a397c38a832845912ea8220e6d217421f3edd7f22ab09dd192c19ad396",
+  "bytes": 91567138,
+  "zip_entries": 2155,
+  "verified_manifest_files": 2154,
+  "crc_passed": true,
+  "fresh_extract_verification_passed": true,
+  "regressions": {
+    "run": 18,
+    "failures": 0,
+    "errors": 0
+  },
+  "recomputed_audit_and_manuscript_identical": true,
+  "recomputed_sha256": {
+    "webpage/dhc6_report.md": "270cd2ae8b637577ab0db38e62f7328f4d08aa5e62a07d37f897a43351c48d4f",
+    "webpage/dhc6_report.html": "4ff1720996b9a381871080d2d7dc25e5d9d8cdad356a4190fe5f3645a1db1bb5",
+    "webpage/dhc6_paper.html": "4ff1720996b9a381871080d2d7dc25e5d9d8cdad356a4190fe5f3645a1db1bb5",
+    "revision/deep_review/audit_metrics.json": "1300ba6ded5c3d35f05ac88e3dd5b1246a9bbd4b01d17aebdf44549ebee8e114"
+  },
+  "verification_checks": {
+    "regression_tests_passed": true,
+    "regression_test_count": 18,
+    "dhc6_report.html_local_links": true,
+    "dhc6_report.html_24_images": true,
+    "dhc6_report.html_offline": true,
+    "dhc6_paper.html_local_links": true,
+    "dhc6_paper.html_24_images": true,
+    "dhc6_paper.html_offline": true,
+    "same_html_content": true,
+    "deep_review_and_delivery_document_links": true,
+    "figure_source_hashes_and_formats": true,
+    "all_1440_phase_corrected_fits": true,
+    "failed_tau_values_are_null": true,
+    "58_training_and_metric_checks": true,
+    "ten_retrained_policy_checkpoints": true,
+    "executed_training_code_matches_protocol": true,
+    "new_frf_end_to_end_three_objects": true,
+    "original_5000_object_bank_preserved": true,
+    "two_sensitivity_boundary_corrections_recorded": true,
+    "deep_review_archived_source_hashes": true,
+    "ppo_smoke_executed_sources_match_protocol": true,
+    "ppo_smoke_two_rollouts_25600_transitions": true,
+    "ppo_smoke_finite_diagnostics_and_saved_weights": true,
+    "current_python_sources_compile": true
+  },
+  "execution": {
+    "revision/deep_review/audit_model_and_ppo.py": {
+      "exit_code": 0,
+      "stdout_tail": "4.380315538142536,\n        \"continuous\": 4.380316556324954\n      },\n      {\n        \"plant_id\": \"validation-3000\",\n        \"archived_function\": 1.1836531470465395,\n        \"aligned_grid\": 1.1855294101773663,\n        \"continuous\": 1.1855299681722462\n      },\n      {\n        \"plant_id\": \"id_test-3500\",\n        \"archived_function\": 1.8500522548171097,\n        \"aligned_grid\": 1.8533919404918822,\n        \"continuous\": 1.853392248995398\n      },\n      {\n        \"plant_id\": \"id_test-4000\",\n        \"archived_function\": 1.7027245751337976,\n        \"aligned_grid\": 1.7059117531963528,\n        \"continuous\": 1.7059119477006335\n      },\n      {\n        \"plant_id\": \"ood_test-4500\",\n        \"archived_function\": 2.853843221631804,\n        \"aligned_grid\": 2.8584656314741346,\n        \"continuous\": 2.8584661889361165\n      }\n    ]\n  },\n  \"ppo\": {\n    \"synthetic_probability_ratio_checks\": {\n      \"mean0_std1\": {\n        \"n\": 10000,\n        \"clipped\": 3260,\n        \"ratios_not_one\": 3260,\n        \"ratio_median_clipped\": 1.6236029863357544,\n        \"ratio_max\": 60729.96875\n      },\n      \"mean095_default_std\": {\n        \"n\": 10000,\n        \"clipped\": 3532,\n        \"ratios_not_one\": 3532,\n        \"ratio_median_clipped\": 1.439825415611267,\n        \"ratio_max\": 596.1364135742188\n      }\n    },\n    \"synthetic_not_historical_training_frequency\": true,\n    \"final_step_reset\": {\n      \"clock_after_final_step\": 0,\n      \"state_after_final_step_is_reset\": true,\n      \"returned_last_output\": 0.6639515161514282,\n      \"returned_observation_output\": 0.0\n    },\n    \"training_bank_entries\": 30,\n    \"training_bank_unique_commands\": 9,\n    \"family_entry_counts\": {\n      \"step\": 24,\n      \"doublet\": 3,\n      \"sine\": 2,\n      \"multisine\": 1\n    },\n    \"discount_time_constant_s\": 3.9899916457671227,\n    \"gae_trace_time_constant_s\": 0.35520296555082614,\n    \"coefficient_per_step\": {\n      \"tracking_normalized_squared\": 1.0,\n      \"force_normalized_squared\": 0.02,\n      \"action_squared\": 1.0\n    }\n  },\n  \"reference_integral_deg_by_step_amplitude\": {\n    \"15.0\": 94.49951714153062,\n    \"31.0\": 195.2990020925101\n  },\n  \"scope\": \"Algorithm/model consistency audit; no PPO performance improvement is claimed\"\n}\n",
+      "stderr_tail": ""
+    },
+    "revision/compose_report.py": {
+      "exit_code": 0,
+      "stdout_tail": "Wrote checked manuscript with regenerated evidence tables\n",
+      "stderr_tail": ""
+    },
+    "paper_source/dhc6_paper.py": {
+      "exit_code": 0,
+      "stdout_tail": "Built /tmp/flight_v2_delivery_cpfellwi/flight_control_corrected_2026-10-24/webpage/dhc6_report.html; 24 image links verified\n",
+      "stderr_tail": ""
+    },
+    "revision/verify_delivery.py": {
+      "exit_code": 0,
+      "stdout_tail": "{\n  \"checks\": {\n    \"regression_tests_passed\": true,\n    \"regression_test_count\": 18,\n    \"dhc6_report.html_local_links\": true,\n    \"dhc6_report.html_24_images\": true,\n    \"dhc6_report.html_offline\": true,\n    \"dhc6_paper.html_local_links\": true,\n    \"dhc6_paper.html_24_images\": true,\n    \"dhc6_paper.html_offline\": true,\n    \"same_html_content\": true,\n    \"deep_review_and_delivery_document_links\": true,\n    \"figure_source_hashes_and_formats\": true,\n    \"all_1440_phase_corrected_fits\": true,\n    \"failed_tau_values_are_null\": true,\n    \"58_training_and_metric_checks\": true,\n    \"ten_retrained_policy_checkpoints\": true,\n    \"executed_training_code_matches_protocol\": true,\n    \"new_frf_end_to_end_three_objects\": true,\n    \"original_5000_object_bank_preserved\": true,\n    \"two_sensitivity_boundary_corrections_recorded\": true,\n    \"deep_review_archived_source_hashes\": true,\n    \"ppo_smoke_executed_sources_match_protocol\": true,\n    \"ppo_smoke_two_rollouts_25600_transitions\": true,\n    \"ppo_smoke_finite_diagnostics_and_saved_weights\": true,\n    \"current_python_sources_compile\": true\n  },\n  \"all_passed\": true,\n  \"image_counts\": {\n    \"dhc6_report.html\": 24,\n    \"dhc6_paper.html\": 24\n  },\n  \"phase_corrected_case_counts\": {\n    \"batch\": 360,\n    \"batch_amp050\": 360,\n    \"batch_amp200\": 360,\n    \"batch_seed2\": 360\n  },\n  \"regressions\": {\n    \"run\": 18,\n    \"failures\": 0,\n    \"errors\": 0\n  },\n  \"environment\": {\n    \"python\": \"3.10.16\",\n    \"numpy\": \"1.26.4\",\n    \"scipy\": \"1.13.1\",\n    \"torch\": \"2.6.0+cu124\",\n    \"matplotlib\": \"3.10.3\",\n    \"Pillow\": \"11.0.0\",\n    \"Markdown\": \"3.8\",\n    \"beautifulsoup4\": \"4.13.4\"\n  }\n}\n",
+      "stderr_tail": ""
+    }
+  }
+}

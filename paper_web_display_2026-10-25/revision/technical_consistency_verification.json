@@ -1,0 +1,63 @@
+{
+  "figures": 22,
+  "tables": 16,
+  "display_equations": 13,
+  "inline_equation_elements": 101,
+  "references": 13,
+  "math_parse_errors": 0,
+  "duplicate_ids": [],
+  "missing_internal_links": [],
+  "figure_numbering_sequential": true,
+  "table_numbering_sequential": true,
+  "preserved_setup_and_experimental_tables": 14,
+  "existing_table_cells_unchanged": true,
+  "changed_equation_numbers": [
+    5,
+    8,
+    10
+  ],
+  "pid_only_in_appendix": true,
+  "amplitude_plot_absent": true,
+  "missing_cjk_glyphs": "",
+  "proxy_http_status": 200,
+  "proxy_matches_current_file": true,
+  "html_sha256": "57d0b673573a9d392c0d86839a5c4fa4e3c7927384665b6ad711c89bf3df7b46",
+  "network_assets": {
+    "teacher_network_tensor.svg": {
+      "http_status": 200,
+      "matches_local": true,
+      "url": "paper/teacher_network_tensor.svg?v=686b027091c1"
+    },
+    "student_network_tensor.svg": {
+      "http_status": 200,
+      "matches_local": true,
+      "url": "paper/student_network_tensor.svg?v=dcd596d46b6f"
+    }
+  },
+  "training_or_simulation_run": false,
+  "browser": {
+    "desktop": {
+      "width": 1440,
+      "document_width": 1440,
+      "math_errors": 0,
+      "broken_images": []
+    },
+    "mobile": {
+      "width": 390,
+      "document_width": 390,
+      "math_errors": 0
+    },
+    "page_errors": [],
+    "artifacts": "technical_visual",
+    "pdf": {
+      "pages": 1,
+      "same_origin_print": true,
+      "chinese_and_math_visually_checked": true,
+      "sha256": "b253ceada5022c37138b1bd3321da47f1af94edb25fbedb25f71936d03720678",
+      "preview": "technical_visual/ppo-math-pdf-page-1.png"
+    }
+  },
+  "original_archive_files_verified": 2076,
+  "original_source_and_weights_byte_identical": true,
+  "review_document": "当前稿技术合理性核查.md"
+}

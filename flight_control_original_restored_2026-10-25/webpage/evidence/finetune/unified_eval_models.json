@@ -1,0 +1,627 @@
+{
+  "fit_record_format": "run_<state>_c01_chirp_A10.mat (whole record)",
+  "order_search": {
+    "na": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "nb": [
+      2,
+      3,
+      4
+    ],
+    "nk": [
+      1,
+      2,
+      3
+    ],
+    "criterion": "in-record VAF, stable poles only"
+  },
+  "validation_records": [
+    "prbs_A10",
+    "step3211_A10"
+  ],
+  "validation_vaf_threshold": 85.0,
+  "budget_independent": true,
+  "boards": {
+    "V050_H2500": {
+      "condition": "V050_H2500",
+      "group": "adaptation",
+      "fit_record": {
+        "record": "run_V050_H2500_c01_chirp_A10.mat",
+        "file_sha256": "dbe020f8969d276fddfc58121e268b588ddd0c3e5c77a290426a85ea0e054efc",
+        "n_samples": 6001,
+        "dt_s": 0.02,
+        "units": "angles_deg / speeds_mps / altitude_m",
+        "pD_units": "deg/s^2"
+      },
+      "fit": {
+        "na": 4,
+        "nb": 4,
+        "nk": 1,
+        "a": [
+          -0.20146436611857532,
+          -0.19406538514309885,
+          -0.2168129909651712,
+          -0.21789473488485595
+        ],
+        "b": [
+          -0.12587805890407266,
+          -0.07529787196487878,
+          -0.015351000685021293,
+          -0.04747282642618908
+        ],
+        "vaf_percent": 99.4737187183797,
+        "n_samples": 6001
+      },
+      "dc_gain_deg_s_per_deg": -1.555112126566769,
+      "validation": [
+        {
+          "record": "run_V050_H2500_c01_prbs_A10.mat",
+          "file_sha256": "074d66a566104f6e77fdfbf1ceca63ef1854ba019dd03c13ae8dd49ca996a5a1",
+          "n_samples": 3001,
+          "vaf_percent": 94.94715055281625,
+          "rmse_deg_s": 2.1472159953815257
+        },
+        {
+          "record": "run_V050_H2500_c01_step3211_A10.mat",
+          "file_sha256": "b7059d113051dfe6a85e8f2af350fab47538b5a5a11b43f9ab3d2b17d61f327f",
+          "n_samples": 3001,
+          "vaf_percent": 94.26020312656553,
+          "rmse_deg_s": 1.2885854610120857
+        }
+      ],
+      "estimated_steady_authority_deg_s": 15.551121265667689,
+      "min_validation_vaf_percent": 94.26020312656553,
+      "validation_ok": true
+    },
+    "V050_H3000": {
+      "condition": "V050_H3000",
+      "group": "adaptation",
+      "fit_record": {
+        "record": "run_V050_H3000_c05_chirp_A10.mat",
+        "file_sha256": "c142b82d563f02611b8ae133834ed06b5831013dc41d291761249d262fa96695",
+        "n_samples": 6001,
+        "dt_s": 0.02,
+        "units": "angles_deg / speeds_mps / altitude_m",
+        "pD_units": "deg/s^2"
+      },
+      "fit": {
+        "na": 4,
+        "nb": 4,
+        "nk": 1,
+        "a": [
+          -0.20173614973889395,
+          -0.19539835339696882,
+          -0.21915924140948906,
+          -0.22136820730839812
+        ],
+        "b": [
+          -0.11913762223583653,
+          -0.07335879560532366,
+          -0.012105576165326315,
+          -0.04750190177988475
+        ],
+        "vaf_percent": 99.44740534262863,
+        "n_samples": 6001
+      },
+      "dc_gain_deg_s_per_deg": -1.5529563073177488,
+      "validation": [
+        {
+          "record": "run_V050_H3000_c05_prbs_A10.mat",
+          "file_sha256": "632c47c448a19c5b1b82e0cf3ceb370b44f1d873d43fe7a610990560c4490daf",
+          "n_samples": 3001,
+          "vaf_percent": 94.63773784792157,
+          "rmse_deg_s": 2.189370441553483
+        },
+        {
+          "record": "run_V050_H3000_c05_step3211_A10.mat",
+          "file_sha256": "0242802da249007afe66136070f7ef091824e5297de84366a9df94797145e970",
+          "n_samples": 3001,
+          "vaf_percent": 93.80829484224837,
+          "rmse_deg_s": 1.3289692732843328
+        }
+      ],
+      "estimated_steady_authority_deg_s": 15.529563073177489,
+      "min_validation_vaf_percent": 93.80829484224837,
+      "validation_ok": true
+    },
+    "V050_H3500": {
+      "condition": "V050_H3500",
+      "group": "adaptation",
+      "fit_record": {
+        "record": "run_V050_H3500_c09_chirp_A10.mat",
+        "file_sha256": "aadd9e90e00c43bb14ca93204f22f2fdb6de83507567312fa7e733f52afb5aa9",
+        "n_samples": 6001,
+        "dt_s": 0.02,
+        "units": "angles_deg / speeds_mps / altitude_m",
+        "pD_units": "deg/s^2"
+      },
+      "fit": {
+        "na": 4,
+        "nb": 4,
+        "nk": 1,
+        "a": [
+          -0.20217701210445,
+          -0.1967631827068324,
+          -0.22139569726453617,
+          -0.22456644332864223
+        ],
+        "b": [
+          -0.11266539398383166,
+          -0.07142565616259852,
+          -0.008959210324887765,
+          -0.04743924595737353
+        ],
+        "vaf_percent": 99.41807862271781,
+        "n_samples": 6001
+      },
+      "dc_gain_deg_s_per_deg": -1.5505681987916153,
+      "validation": [
+        {
+          "record": "run_V050_H3500_c09_prbs_A10.mat",
+          "file_sha256": "a8ca61e7de15532a5694e7527c8084ec0dcce857eabc8286848d8b2a689e0f5b",
+          "n_samples": 3001,
+          "vaf_percent": 94.31435394354251,
+          "rmse_deg_s": 2.231289583082885
+        },
+        {
+          "record": "run_V050_H3500_c09_step3211_A10.mat",
+          "file_sha256": "55b2d4b5a022fa6f6f32a279f07319279670ad9d5afecdb71f411523d860aabd",
+          "n_samples": 3001,
+          "vaf_percent": 93.29279851005204,
+          "rmse_deg_s": 1.3732406068309728
+        }
+      ],
+      "estimated_steady_authority_deg_s": 15.505681987916153,
+      "min_validation_vaf_percent": 93.29279851005204,
+      "validation_ok": true
+    },
+    "V060_H2500": {
+      "condition": "V060_H2500",
+      "group": "adaptation",
+      "fit_record": {
+        "record": "run_V060_H2500_c02_chirp_A10.mat",
+        "file_sha256": "c50188024ec43da153ed81905b9b8e001888ad97f5f0bbb76a6a787cd276de57",
+        "n_samples": 6001,
+        "dt_s": 0.02,
+        "units": "angles_deg / speeds_mps / altitude_m",
+        "pD_units": "deg/s^2"
+      },
+      "fit": {
+        "na": 3,
+        "nb": 4,
+        "nk": 1,
+        "a": [
+          -0.2876800250470467,
+          -0.267517420190641,
+          -0.2857440728993933
+        ],
+        "b": [
+          -0.1826118213111127,
+          -0.07676386867314705,
+          -0.027357580952053706,
+          -0.012766713883127695
+        ],
+        "vaf_percent": 99.57361338690359,
+        "n_samples": 6001
+      },
+      "dc_gain_deg_s_per_deg": -1.882955132676034,
+      "validation": [
+        {
+          "record": "run_V060_H2500_c02_prbs_A10.mat",
+          "file_sha256": "c97ded2a0e9ef56512b49f6e174d9268e85ba56f6554ef66ea5911be4545dfc6",
+          "n_samples": 3001,
+          "vaf_percent": 96.35005389932594,
+          "rmse_deg_s": 2.346751326416606
+        },
+        {
+          "record": "run_V060_H2500_c02_step3211_A10.mat",
+          "file_sha256": "a582d8e8f6771f249b978db64a5999674fc5e422aff0fda4c408e9d423545d22",
+          "n_samples": 3001,
+          "vaf_percent": 95.6888948325991,
+          "rmse_deg_s": 1.3529000863634588
+        }
+      ],
+      "estimated_steady_authority_deg_s": 18.829551326760342,
+      "min_validation_vaf_percent": 95.6888948325991,
+      "validation_ok": true
+    },
+    "V060_H3000": {
+      "condition": "V060_H3000",
+      "group": "adaptation",
+      "fit_record": {
+        "record": "run_V060_H3000_c06_chirp_A10.mat",
+        "file_sha256": "8d057bcb0286f1f9b6f44d18589f6dcb4e244fbd0f5d6413dc66d702bb412b56",
+        "n_samples": 6001,
+        "dt_s": 0.02,
+        "units": "angles_deg / speeds_mps / altitude_m",
+        "pD_units": "deg/s^2"
+      },
+      "fit": {
+        "na": 3,
+        "nb": 4,
+        "nk": 1,
+        "a": [
+          -0.2874604157215041,
+          -0.2697335126930121,
+          -0.2906216316756362
+        ],
+        "b": [
+          -0.17301928696994712,
+          -0.07466415213722563,
+          -0.024153925539317,
+          -0.014331969616547868
+        ],
+        "vaf_percent": 99.55931535994476,
+        "n_samples": 6001
+      },
+      "dc_gain_deg_s_per_deg": -1.8804112590785322,
+      "validation": [
+        {
+          "record": "run_V060_H3000_c06_prbs_A10.mat",
+          "file_sha256": "d587e5e1e6304e5fc11b17747ea79baba68188bf7eea81c4422af592876b97b5",
+          "n_samples": 3001,
+          "vaf_percent": 96.1911595402735,
+          "rmse_deg_s": 2.3712039765702597
+        },
+        {
+          "record": "run_V060_H3000_c06_step3211_A10.mat",
+          "file_sha256": "5fc8e05e94f2c3fc8b3cf78d742500fa9134f63e50ad819128f36a5382995658",
+          "n_samples": 3001,
+          "vaf_percent": 95.45659937011392,
+          "rmse_deg_s": 1.380672951387005
+        }
+      ],
+      "estimated_steady_authority_deg_s": 18.804112590785323,
+      "min_validation_vaf_percent": 95.45659937011392,
+      "validation_ok": true
+    },
+    "V060_H3500": {
+      "condition": "V060_H3500",
+      "group": "adaptation",
+      "fit_record": {
+        "record": "run_V060_H3500_c10_chirp_A10.mat",
+        "file_sha256": "2165e5092a5b11be0e7904133c54fc4403dea48c92403b3f45c7115da290c4ab",
+        "n_samples": 6001,
+        "dt_s": 0.02,
+        "units": "angles_deg / speeds_mps / altitude_m",
+        "pD_units": "deg/s^2"
+      },
+      "fit": {
+        "na": 3,
+        "nb": 4,
+        "nk": 1,
+        "a": [
+          -0.2875250872416623,
+          -0.2719123590298799,
+          -0.29509546169589573
+        ],
+        "b": [
+          -0.16382863050066676,
+          -0.07250467452970133,
+          -0.020995150445697247,
+          -0.01579985311933682
+        ],
+        "vaf_percent": 99.54320462782526,
+        "n_samples": 6001
+      },
+      "dc_gain_deg_s_per_deg": -1.877595164508162,
+      "validation": [
+        {
+          "record": "run_V060_H3500_c10_prbs_A10.mat",
+          "file_sha256": "7ca24b6b6c914b774f7f01eee09dcc22290f99d833866789915cf534899ed864",
+          "n_samples": 3001,
+          "vaf_percent": 96.01240146942544,
+          "rmse_deg_s": 2.398570977212105
+        },
+        {
+          "record": "run_V060_H3500_c10_step3211_A10.mat",
+          "file_sha256": "bd5052444572fcd86ffb7c5aad78b29dd33851371de88ebc0234da367df34c73",
+          "n_samples": 3001,
+          "vaf_percent": 95.20296536458413,
+          "rmse_deg_s": 1.4091949927323166
+        }
+      ],
+      "estimated_steady_authority_deg_s": 18.77595164508162,
+      "min_validation_vaf_percent": 95.20296536458413,
+      "validation_ok": true
+    },
+    "V070_H2500": {
+      "condition": "V070_H2500",
+      "group": "adaptation",
+      "fit_record": {
+        "record": "run_V070_H2500_c03_chirp_A10.mat",
+        "file_sha256": "4d9bac4eec7e85ccd120817cf2736756479fffa12386e831fa50bca5cadc8217",
+        "n_samples": 6001,
+        "dt_s": 0.02,
+        "units": "angles_deg / speeds_mps / altitude_m",
+        "pD_units": "deg/s^2"
+      },
+      "fit": {
+        "na": 2,
+        "nb": 4,
+        "nk": 1,
+        "a": [
+          -0.4432591963558607,
+          -0.41885514400854373
+        ],
+        "b": [
+          -0.2384841894759554,
+          -0.0801800835655157,
+          0.023819411540464158,
+          -0.01021476629916196
+        ],
+        "vaf_percent": 99.58605768024901,
+        "n_samples": 6001
+      },
+      "dc_gain_deg_s_per_deg": -2.2124101128890494,
+      "validation": [
+        {
+          "record": "run_V070_H2500_c03_prbs_A10.mat",
+          "file_sha256": "79d9321343d320a9812bcdc0a63e6c9cd6addd19479ad32975e4713ccf7e20e4",
+          "n_samples": 3001,
+          "vaf_percent": 96.27541972972968,
+          "rmse_deg_s": 2.9611771307104586
+        },
+        {
+          "record": "run_V070_H2500_c03_step3211_A10.mat",
+          "file_sha256": "ee55cca0b78a3f37fe5dbb5026accefa4d2c5b26c93b714e137ab923558a6ffb",
+          "n_samples": 3001,
+          "vaf_percent": 96.42010491590591,
+          "rmse_deg_s": 1.4463786869032982
+        }
+      ],
+      "estimated_steady_authority_deg_s": 22.124101128890494,
+      "min_validation_vaf_percent": 96.27541972972968,
+      "validation_ok": true
+    },
+    "V070_H3000": {
+      "condition": "V070_H3000",
+      "group": "adaptation",
+      "fit_record": {
+        "record": "run_V070_H3000_c07_chirp_A10.mat",
+        "file_sha256": "d1d1ddcdbf5aceb7dac4083ab5265f3b0a7217b30d3adc08e7057845b33ef2c9",
+        "n_samples": 6001,
+        "dt_s": 0.02,
+        "units": "angles_deg / speeds_mps / altitude_m",
+        "pD_units": "deg/s^2"
+      },
+      "fit": {
+        "na": 2,
+        "nb": 4,
+        "nk": 1,
+        "a": [
+          -0.4437288145549851,
+          -0.42444566356812136
+        ],
+        "b": [
+          -0.22532078314458617,
+          -0.07935519559534504,
+          0.025682938431723507,
+          -0.012216830417284857
+        ],
+        "vaf_percent": 99.57900616191725,
+        "n_samples": 6001
+      },
+      "dc_gain_deg_s_per_deg": -2.2090553223634615,
+      "validation": [
+        {
+          "record": "run_V070_H3000_c07_prbs_A10.mat",
+          "file_sha256": "a93606485de99e618552f7d6b93700c30faaa434dcebd7b1d00dc8957b3ab317",
+          "n_samples": 3001,
+          "vaf_percent": 96.23741120359722,
+          "rmse_deg_s": 2.946873154139821
+        },
+        {
+          "record": "run_V070_H3000_c07_step3211_A10.mat",
+          "file_sha256": "18ff6365ceb912dcd3347e3f4f0f3439347132fe68f5ae725ee4578b00a49a00",
+          "n_samples": 3001,
+          "vaf_percent": 96.23673427945454,
+          "rmse_deg_s": 1.4772043893289049
+        }
+      ],
+      "estimated_steady_authority_deg_s": 22.090553223634615,
+      "min_validation_vaf_percent": 96.23673427945454,
+      "validation_ok": true
+    },
+    "V070_H3500": {
+      "condition": "V070_H3500",
+      "group": "heldout",
+      "fit_record": {
+        "record": "run_V070_H3500_c11_chirp_A10.mat",
+        "file_sha256": "b3f3d2168c08e1b70d5edad3748acde0e8e2ae6c8afa244cbc75bb62cc06c45e",
+        "n_samples": 6001,
+        "dt_s": 0.02,
+        "units": "angles_deg / speeds_mps / altitude_m",
+        "pD_units": "deg/s^2"
+      },
+      "fit": {
+        "na": 2,
+        "nb": 4,
+        "nk": 1,
+        "a": [
+          -0.4444901376859091,
+          -0.42957905656246553
+        ],
+        "b": [
+          -0.21272740241618054,
+          -0.07833707246584468,
+          0.02744873256820976,
+          -0.01409809688945407
+        ],
+        "vaf_percent": 99.57055596842383,
+        "n_samples": 6001
+      },
+      "dc_gain_deg_s_per_deg": -2.2052891470495912,
+      "validation": [
+        {
+          "record": "run_V070_H3500_c11_prbs_A10.mat",
+          "file_sha256": "db15e57994f9606e3fed8e18d122aec534634b8d7058970b982e334571eef66f",
+          "n_samples": 3001,
+          "vaf_percent": 96.1868368877801,
+          "rmse_deg_s": 2.935964524197928
+        },
+        {
+          "record": "run_V070_H3500_c11_step3211_A10.mat",
+          "file_sha256": "03dcae895e6a6adc62892eeed74a46ad30801cdd083346d42543fa3a62ead280",
+          "n_samples": 3001,
+          "vaf_percent": 96.0481182168844,
+          "rmse_deg_s": 1.5073622619228955
+        }
+      ],
+      "estimated_steady_authority_deg_s": 22.05289147049591,
+      "min_validation_vaf_percent": 96.0481182168844,
+      "validation_ok": true
+    },
+    "V080_H2500": {
+      "condition": "V080_H2500",
+      "group": "heldout",
+      "fit_record": {
+        "record": "run_V080_H2500_c04_chirp_A10.mat",
+        "file_sha256": "0cf3a3c81c372a05db3cc650b513cdc2e7a0bcdba32638533283934b77db4602",
+        "n_samples": 6001,
+        "dt_s": 0.02,
+        "units": "angles_deg / speeds_mps / altitude_m",
+        "pD_units": "deg/s^2"
+      },
+      "fit": {
+        "na": 5,
+        "nb": 2,
+        "nk": 1,
+        "a": [
+          -0.3856138591426188,
+          -0.26626434843201763,
+          -0.17627474605029733,
+          -0.06111060566396073,
+          0.06054121342750607
+        ],
+        "b": [
+          -0.3475010457351217,
+          -0.09148044499993434
+        ],
+        "vaf_percent": 99.54569365214161,
+        "n_samples": 6001
+      },
+      "dc_gain_deg_s_per_deg": -2.5629816857475007,
+      "validation": [
+        {
+          "record": "run_V080_H2500_c04_prbs_A10.mat",
+          "file_sha256": "b9f285e649b8b5e668a8b83caa7b0bafa493ead697d6e7e62855a4ed4aaaa852",
+          "n_samples": 3001,
+          "vaf_percent": 95.21536178408397,
+          "rmse_deg_s": 4.081022978508161
+        },
+        {
+          "record": "run_V080_H2500_c04_step3211_A10.mat",
+          "file_sha256": "dfd4fea52789e06db1c8ea622887d69157e309e6e405583fcd6cf1bf83feb6be",
+          "n_samples": 3001,
+          "vaf_percent": 96.78720661934666,
+          "rmse_deg_s": 1.5698784397498187
+        }
+      ],
+      "estimated_steady_authority_deg_s": 25.629816857475006,
+      "min_validation_vaf_percent": 95.21536178408397,
+      "validation_ok": true
+    },
+    "V080_H3000": {
+      "condition": "V080_H3000",
+      "group": "heldout",
+      "fit_record": {
+        "record": "run_V080_H3000_c08_chirp_A10.mat",
+        "file_sha256": "d7b6a78e0b82a697cbe9cef8e276a71555331143bab590f34acda8e59a13fb9e",
+        "n_samples": 6001,
+        "dt_s": 0.02,
+        "units": "angles_deg / speeds_mps / altitude_m",
+        "pD_units": "deg/s^2"
+      },
+      "fit": {
+        "na": 5,
+        "nb": 2,
+        "nk": 1,
+        "a": [
+          -0.3703454659616123,
+          -0.2619647769276782,
+          -0.1802944246829015,
+          -0.06974393064740672,
+          0.05222994836970829
+        ],
+        "b": [
+          -0.31508426820168484,
+          -0.12068576372212163
+        ],
+        "vaf_percent": 99.54259624439685,
+        "n_samples": 6001
+      },
+      "dc_gain_deg_s_per_deg": -2.5651434459330233,
+      "validation": [
+        {
+          "record": "run_V080_H3000_c08_prbs_A10.mat",
+          "file_sha256": "ef75c9d3b75424c7c1acd09a1075bc9f9d1c5528f6b76e0276f4788b1e274a9d",
+          "n_samples": 3001,
+          "vaf_percent": 95.207815458404,
+          "rmse_deg_s": 4.051254517138505
+        },
+        {
+          "record": "run_V080_H3000_c08_step3211_A10.mat",
+          "file_sha256": "19bf6292d97c005699418aa932a121d19cd4f80ce2e7f840f1b8bd93aad2d5f2",
+          "n_samples": 3001,
+          "vaf_percent": 96.57218437616751,
+          "rmse_deg_s": 1.6153813706566913
+        }
+      ],
+      "estimated_steady_authority_deg_s": 25.651434459330233,
+      "min_validation_vaf_percent": 95.207815458404,
+      "validation_ok": true
+    },
+    "V080_H3500": {
+      "condition": "V080_H3500",
+      "group": "heldout",
+      "fit_record": {
+        "record": "run_V080_H3500_c12_chirp_A10.mat",
+        "file_sha256": "481c46a4ae86b9095af3596b93f64a314180bebb58400f822b9e85355bfcaf4d",
+        "n_samples": 6001,
+        "dt_s": 0.02,
+        "units": "angles_deg / speeds_mps / altitude_m",
+        "pD_units": "deg/s^2"
+      },
+      "fit": {
+        "na": 2,
+        "nb": 2,
+        "nk": 1,
+        "a": [
+          -0.462950859312699,
+          -0.3995387866477847
+        ],
+        "b": [
+          -0.30039373350464504,
+          -0.05118264478554402
+        ],
+        "vaf_percent": 99.53971987404768,
+        "n_samples": 6001
+      },
+      "dc_gain_deg_s_per_deg": -2.556726587942291,
+      "validation": [
+        {
+          "record": "run_V080_H3500_c12_prbs_A10.mat",
+          "file_sha256": "b222e6af9eb07fd039eb204a68b67e2eba0a45f30d317c714af446eb9fa4bd33",
+          "n_samples": 3001,
+          "vaf_percent": 95.2052887965685,
+          "rmse_deg_s": 4.016814998607359
+        },
+        {
+          "record": "run_V080_H3500_c12_step3211_A10.mat",
+          "file_sha256": "89f0217a4ecbd6f17b80a5a7baf271f6e165f15f84762adbf724273317867103",
+          "n_samples": 3001,
+          "vaf_percent": 96.45320698955602,
+          "rmse_deg_s": 1.637336324853152
+        }
+      ],
+      "estimated_steady_authority_deg_s": 25.567265879422912,
+      "min_validation_vaf_percent": 95.2052887965685,
+      "validation_ok": true
+    }
+  }
+}
